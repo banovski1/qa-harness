@@ -1,0 +1,397 @@
+page: web-index.php-performance-searchEvaluatePerformanceReview
+url: /web/index.php/performance/searchEvaluatePerformanceReview
+title: "OrangeHRM"
+verified: 2026-08-09
+elements:
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: clientBrandBannerImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], name: "client brand banner" }
+    comment: "client brand banner (image)"
+  - name: searchInput
+    component: input
+    locator: { strategy: getByRole, args: ["textbox"], name: "Search" }
+    comment: "Search (input)"
+  - name: elementButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: adminLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pIMLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: claimImgImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], within: { strategy: getByRole, args: ["link"], name: "Claim" }, unstable: true, unstableReason: "no accessible name; scoped to nearest named ancestor" }
+    comment: "Claim img (image)"
+  - name: buzzLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: performanceHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Performance" }
+    comment: "Performance (text)"
+  - name: manageReviewsHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "/ Manage Reviews" }
+    comment: "/ Manage Reviews (text)"
+  - name: upgradeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Upgrade" }
+    comment: "Upgrade (link)"
+  - name: upgradeButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Upgrade" }
+    comment: "Upgrade (button)"
+  - name: profilePictureImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], name: "profile picture" }
+    comment: "profile picture (image)"
+  - name: myTrackersLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Trackers" }
+    comment: "My Trackers (link)"
+  - name: employeeTrackersLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Employee Trackers" }
+    comment: "Employee Trackers (link)"
+  - name: elementButton2
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: employeeReviewsHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Employee Reviews" }
+    comment: "Employee Reviews (text)"
+  - name: elementButton3
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: typeForHintsInput
+    component: input
+    locator: { strategy: getByRole, args: ["textbox"], name: "Type for hints..." }
+    comment: "Type for hints... (input)"
+  - name: yyyyDdMmInput
+    component: input
+    locator: { strategy: getByRole, args: ["textbox"], nth: 2, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "yyyy-dd-mm (input)"
+  - name: yyyyDdMmInput2
+    component: input
+    locator: { strategy: getByRole, args: ["textbox"], nth: 3, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "yyyy-dd-mm (input)"
+  - name: resetButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Reset" }
+    comment: "Reset (button)"
+  - name: searchButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Search" }
+    comment: "Search (button)"
+  - name: tableTable
+    component: table
+    locator: { strategy: getByRole, args: ["table"], nth: 0, unstable: true, unstableReason: "table has no accessible name; positional index used" }
+    comment: "Table (Employee , Job Title, Sub Unit, Review Period , Due Date , Review Status , Actions; 1 row(s)) (table)"
+  - name: orangeHRMIncLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "OrangeHRM, Inc" }
+    comment: "OrangeHRM, Inc (link)"
+  - name: elementButton4
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "×" }
+    comment: "× (button)"
+states:
+  - name: gbYasuserOpen
+    trigger: "open trigger \"gb yasuser\""
+    elements:
+      - name: aboutMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "About" }
+        comment: "About (menuItem)"
+      - name: supportMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "Support" }
+        comment: "Support (menuItem)"
+      - name: changePasswordMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "Change Password" }
+        comment: "Change Password (menuItem)"
+      - name: logoutMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "Logout" }
+        comment: "Logout (menuItem)"
+  - name: selectOpen
+    trigger: "open trigger \"-- Select --\""
+    elements:
+      - name: listboxOptions
+        component: dropdown
+        comment: "(unnamed) (dropdown)"
+      - name: selectOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "-- Select --" }
+        comment: "-- Select -- (dropdown)"
+      - name: automatonTesterOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Automaton Tester" }
+        comment: "Automaton Tester (dropdown)"
+      - name: chiefExecutiveOfficerOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Chief Executive Officer" }
+        comment: "Chief Executive Officer (dropdown)"
+      - name: chiefFinancialOfficerOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Chief Financial Officer" }
+        comment: "Chief Financial Officer (dropdown)"
+      - name: chiefTechnicalOfficerOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Chief Technical Officer" }
+        comment: "Chief Technical Officer (dropdown)"
+      - name: contentSpecialistOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Content Specialist" }
+        comment: "Content Specialist (dropdown)"
+      - name: customerSuccessManagerOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Customer Success Manager" }
+        comment: "Customer Success Manager (dropdown)"
+      - name: databaseAdministratorOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Database Administrator" }
+        comment: "Database Administrator (dropdown)"
+      - name: doctorOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "doctor" }
+        comment: "doctor (dropdown)"
+      - name: financeManagerOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Finance Manager" }
+        comment: "Finance Manager (dropdown)"
+      - name: financialAnalystOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Financial Analyst" }
+        comment: "Financial Analyst (dropdown)"
+      - name: headOfSupportOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Head of Support" }
+        comment: "Head of Support (dropdown)"
+      - name: hRAssociateOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "HR Associate" }
+        comment: "HR Associate (dropdown)"
+      - name: hRManagerOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "HR Manager" }
+        comment: "HR Manager (dropdown)"
+      - name: iTManagerOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "IT Manager" }
+        comment: "IT Manager (dropdown)"
+      - name: networkAdministratorOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Network Administrator" }
+        comment: "Network Administrator (dropdown)"
+      - name: payrollAdministratorOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Payroll Administrator" }
+        comment: "Payroll Administrator (dropdown)"
+      - name: preSalesCoordinatorOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Pre-Sales Coordinator" }
+        comment: "Pre-Sales Coordinator (dropdown)"
+      - name: qAEngineerOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "QA Engineer" }
+        comment: "QA Engineer (dropdown)"
+      - name: qALeadOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "QA Lead" }
+        comment: "QA Lead (dropdown)"
+      - name: qwerOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "qwer" }
+        comment: "qwer (dropdown)"
+      - name: rsjsriiOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "rsjsrii" }
+        comment: "rsjsrii (dropdown)"
+      - name: salesRepresentativeOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Sales Representative" }
+        comment: "Sales Representative (dropdown)"
+      - name: socialMediaMarketerOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Social Media Marketer" }
+        comment: "Social Media Marketer (dropdown)"
+      - name: softwareArchitectOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Software Architect" }
+        comment: "Software Architect (dropdown)"
+      - name: softwareEngineerOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Software Engineer" }
+        comment: "Software Engineer (dropdown)"
+      - name: supportSpecialistOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Support Specialist" }
+        comment: "Support Specialist (dropdown)"
+      - name: vPClientServicesOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "VP - Client Services" }
+        comment: "VP - Client Services (dropdown)"
+      - name: vPSalesMarketingOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "VP - Sales & Marketing" }
+        comment: "VP - Sales & Marketing (dropdown)"
+  - name: selectOpen2
+    trigger: "open trigger \"-- Select --\""
+    elements:
+      - name: listboxOptions2
+        component: dropdown
+        comment: "(unnamed) (dropdown)"
+      - name: selectOption2
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "-- Select --" }
+        comment: "-- Select -- (dropdown)"
+      - name: orangeHRMOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "OrangeHRM" }
+        comment: "OrangeHRM (dropdown)"
+      - name: administrationOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Administration" }
+        comment: "Administration (dropdown)"
+      - name: engineeringOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Engineering" }
+        comment: "Engineering (dropdown)"
+      - name: developmentOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Development" }
+        comment: "Development (dropdown)"
+      - name: qualityAssuranceOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Quality Assurance" }
+        comment: "Quality Assurance (dropdown)"
+      - name: techOpsOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "TechOps" }
+        comment: "TechOps (dropdown)"
+      - name: salesMarketingOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Sales & Marketing" }
+        comment: "Sales & Marketing (dropdown)"
+      - name: salesOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Sales" }
+        comment: "Sales (dropdown)"
+      - name: marketingOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Marketing" }
+        comment: "Marketing (dropdown)"
+      - name: clientServicesOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Client Services" }
+        comment: "Client Services (dropdown)"
+      - name: technicalSupportOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Technical Support" }
+        comment: "Technical Support (dropdown)"
+      - name: financeOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Finance" }
+        comment: "Finance (dropdown)"
+      - name: humanResourcesOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Human Resources" }
+        comment: "Human Resources (dropdown)"
+      - name: holaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "hola" }
+        comment: "hola (dropdown)"
+      - name: juanPerezOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "juan perez" }
+        comment: "juan perez (dropdown)"
+  - name: currentEmployeesOnlyOpen
+    trigger: "open trigger \"Current Employees Only\""
+    elements:
+      - name: listboxOptions3
+        component: dropdown
+        comment: "(unnamed) (dropdown)"
+      - name: currentEmployeesOnlyOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Current Employees Only" }
+        comment: "Current Employees Only (dropdown)"
+      - name: currentAndPastEmployeesOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Current and Past Employees" }
+        comment: "Current and Past Employees (dropdown)"
+      - name: pastEmployeesOnlyOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Past Employees Only" }
+        comment: "Past Employees Only (dropdown)"
+  - name: selectOpen3
+    trigger: "open trigger \"-- Select --\""
+    elements:
+      - name: listboxOptions4
+        component: dropdown
+        comment: "(unnamed) (dropdown)"
+      - name: selectOption3
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "-- Select --" }
+        comment: "-- Select -- (dropdown)"
+      - name: activatedOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Activated" }
+        comment: "Activated (dropdown)"
+      - name: inProgressOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "In Progress" }
+        comment: "In Progress (dropdown)"
+      - name: completedOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Completed" }
+        comment: "Completed (dropdown)"

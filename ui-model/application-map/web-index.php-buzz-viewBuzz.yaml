@@ -1,0 +1,237 @@
+page: web-index.php-buzz-viewBuzz
+url: /web/index.php/buzz/viewBuzz
+title: "OrangeHRM"
+verified: 2026-08-09
+elements:
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: clientBrandBannerImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], name: "client brand banner" }
+    comment: "client brand banner (image)"
+  - name: searchInput
+    component: input
+    locator: { strategy: getByRole, args: ["textbox"], name: "Search" }
+    comment: "Search (input)"
+  - name: elementButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: adminLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pIMLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: claimImgImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], within: { strategy: getByRole, args: ["link"], name: "Claim" }, unstable: true, unstableReason: "no accessible name; scoped to nearest named ancestor" }
+    comment: "Claim img (image)"
+  - name: buzzLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: buzzHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Buzz" }
+    comment: "Buzz (text)"
+  - name: upgradeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Upgrade" }
+    comment: "Upgrade (link)"
+  - name: upgradeButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Upgrade" }
+    comment: "Upgrade (button)"
+  - name: profilePictureImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], nth: 2, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "profile picture (image)"
+  - name: elementButton2
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: profilePictureImage2
+    component: image
+    locator: { strategy: getByRole, args: ["img"], nth: 3, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "profile picture (image)"
+  - name: whatSOnYourMindInput
+    component: input
+    locator: { strategy: getByRole, args: ["textbox"], name: "What's on your mind?" }
+    comment: "What's on your mind? (input)"
+  - name: postButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Post" }
+    comment: "Post (button)"
+  - name: sharePhotosButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Share Photos" }
+    comment: "Share Photos (button)"
+  - name: shareVideoButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Share Video" }
+    comment: "Share Video (button)"
+  - name: mostRecentPostsButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: " Most Recent Posts" }
+    comment: " Most Recent Posts (button)"
+  - name: mostLikedPostsButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: " Most Liked Posts" }
+    comment: " Most Liked Posts (button)"
+  - name: mostCommentedPostsButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: " Most Commented Posts" }
+    comment: " Most Commented Posts (button)"
+  - name: profilePictureImage3
+    component: image
+    locator: { strategy: getByRole, args: ["img"], nth: 4, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "profile picture (image)"
+  - name: elementButton3
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 9, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: imgImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], nth: 5, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "(unnamed) (image)"
+  - name: elementButton4
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 10, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton5
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 11, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: profilePictureImage4
+    component: image
+    locator: { strategy: getByRole, args: ["img"], nth: 6, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "profile picture (image)"
+  - name: elementButton6
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 12, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: imgImage2
+    component: image
+    locator: { strategy: getByRole, args: ["img"], nth: 7, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "(unnamed) (image)"
+  - name: elementButton7
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 13, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton8
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 14, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: profilePictureImage5
+    component: image
+    locator: { strategy: getByRole, args: ["img"], nth: 8, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "profile picture (image)"
+  - name: elementButton9
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 15, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: imgImage3
+    component: image
+    locator: { strategy: getByRole, args: ["img"], nth: 9, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "(unnamed) (image)"
+  - name: imgImage4
+    component: image
+    locator: { strategy: getByRole, args: ["img"], nth: 10, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "(unnamed) (image)"
+  - name: elementButton10
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 16, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton11
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 17, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: profilePictureImage6
+    component: image
+    locator: { strategy: getByRole, args: ["img"], nth: 11, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "profile picture (image)"
+  - name: elementButton12
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 18, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: imgImage5
+    component: image
+    locator: { strategy: getByRole, args: ["img"], nth: 12, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "(unnamed) (image)"
+  - name: elementButton13
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 19, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton14
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 20, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: noContentImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], name: "No Content" }
+    comment: "No Content (image)"
+  - name: orangeHRMIncLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "OrangeHRM, Inc" }
+    comment: "OrangeHRM, Inc (link)"
+states:
+  - name: gbYasuserOpen
+    trigger: "open trigger \"gb yasuser\""
+    elements:
+      - name: aboutMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "About" }
+        comment: "About (menuItem)"
+      - name: supportMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "Support" }
+        comment: "Support (menuItem)"
+      - name: changePasswordMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "Change Password" }
+        comment: "Change Password (menuItem)"
+      - name: logoutMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "Logout" }
+        comment: "Logout (menuItem)"
