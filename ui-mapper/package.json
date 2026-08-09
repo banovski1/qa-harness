@@ -1,0 +1,17 @@
+{
+  "name": "ui-mapper",
+  "version": "1.0.0",
+  "description": "Deterministic UI mapper: parameterized login flow in, application map (from the a11y tree) out.",
+  "type": "module",
+  "bin": {
+    "ui-mapper": "mapper.mjs"
+  },
+  "scripts": {
+    "map": "node mapper.mjs",
+    "postinstall": "playwright install chromium"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "playwright": "^1.49.0"
+  }
+}
