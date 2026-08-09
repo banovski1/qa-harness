@@ -1,0 +1,237 @@
+page: web-index.php-pim-viewDependents-empNumber-7
+url: /web/index.php/pim/viewDependents/empNumber/7
+title: "OrangeHRM"
+verified: 2026-08-09
+elements:
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: clientBrandBannerImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], name: "client brand banner" }
+    comment: "client brand banner (image)"
+  - name: searchInput
+    component: input
+    locator: { strategy: getByRole, args: ["textbox"], name: "Search" }
+    comment: "Search (input)"
+  - name: elementButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: adminLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pIMLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: claimImgImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], within: { strategy: getByRole, args: ["link"], name: "Claim" }, unstable: true, unstableReason: "no accessible name; scoped to nearest named ancestor" }
+    comment: "Claim img (image)"
+  - name: buzzLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: pIMHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "PIM" }
+    comment: "PIM (text)"
+  - name: upgradeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Upgrade" }
+    comment: "Upgrade (link)"
+  - name: upgradeButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Upgrade" }
+    comment: "Upgrade (button)"
+  - name: profilePictureImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], nth: 2, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "profile picture (image)"
+  - name: elementButton2
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: gbYasuserHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "gb yasuser" }
+    comment: "gb yasuser (text)"
+  - name: profilePictureImage2
+    component: image
+    locator: { strategy: getByRole, args: ["img"], nth: 3, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "profile picture (image)"
+  - name: personalDetailsTab
+    component: tab
+    locator: { strategy: getByRole, args: ["tab"], name: "Personal Details" }
+    comment: "Personal Details (tab)"
+  - name: personalDetailsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Personal Details" }
+    comment: "Personal Details (link)"
+  - name: contactDetailsTab
+    component: tab
+    locator: { strategy: getByRole, args: ["tab"], name: "Contact Details" }
+    comment: "Contact Details (tab)"
+  - name: contactDetailsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Contact Details" }
+    comment: "Contact Details (link)"
+  - name: emergencyContactsTab
+    component: tab
+    locator: { strategy: getByRole, args: ["tab"], name: "Emergency Contacts" }
+    comment: "Emergency Contacts (tab)"
+  - name: emergencyContactsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Emergency Contacts" }
+    comment: "Emergency Contacts (link)"
+  - name: dependentsTab
+    component: tab
+    locator: { strategy: getByRole, args: ["tab"], name: "Dependents" }
+    comment: "Dependents (tab)"
+  - name: dependentsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dependents" }
+    comment: "Dependents (link)"
+  - name: immigrationTab
+    component: tab
+    locator: { strategy: getByRole, args: ["tab"], name: "Immigration" }
+    comment: "Immigration (tab)"
+  - name: immigrationLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Immigration" }
+    comment: "Immigration (link)"
+  - name: jobTab
+    component: tab
+    locator: { strategy: getByRole, args: ["tab"], name: "Job" }
+    comment: "Job (tab)"
+  - name: jobLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Job" }
+    comment: "Job (link)"
+  - name: salaryTab
+    component: tab
+    locator: { strategy: getByRole, args: ["tab"], name: "Salary" }
+    comment: "Salary (tab)"
+  - name: salaryLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Salary" }
+    comment: "Salary (link)"
+  - name: reportToTab
+    component: tab
+    locator: { strategy: getByRole, args: ["tab"], name: "Report-to" }
+    comment: "Report-to (tab)"
+  - name: reportToLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Report-to" }
+    comment: "Report-to (link)"
+  - name: qualificationsTab
+    component: tab
+    locator: { strategy: getByRole, args: ["tab"], name: "Qualifications" }
+    comment: "Qualifications (tab)"
+  - name: qualificationsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Qualifications" }
+    comment: "Qualifications (link)"
+  - name: membershipsTab
+    component: tab
+    locator: { strategy: getByRole, args: ["tab"], name: "Memberships" }
+    comment: "Memberships (tab)"
+  - name: membershipsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Memberships" }
+    comment: "Memberships (link)"
+  - name: assignedDependentsHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Assigned Dependents" }
+    comment: "Assigned Dependents (text)"
+  - name: addButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 3, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " Add (button)"
+  - name: tableTable
+    component: table
+    locator: { strategy: getByRole, args: ["table"], nth: 0, unstable: true, unstableReason: "table has no accessible name; positional index used" }
+    comment: "Table (, Name, Relationship, Date of Birth, Actions; 1 row(s)) (table)"
+  - name: elementCheckbox
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 0, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: attachmentsHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Attachments" }
+    comment: "Attachments (text)"
+  - name: addButton2
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 4, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " Add (button)"
+  - name: tableTable2
+    component: table
+    locator: { strategy: getByRole, args: ["table"], nth: 1, unstable: true, unstableReason: "table has no accessible name; positional index used" }
+    comment: "Table (, File Name, Description, Size, Type, Date Added, Added By, Actions; 1 row(s)) (table)"
+  - name: elementCheckbox2
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 1, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: orangeHRMIncLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "OrangeHRM, Inc" }
+    comment: "OrangeHRM, Inc (link)"
+states:
+  - name: gbYasuserOpen
+    trigger: "open trigger \"gb yasuser\""
+    elements:
+      - name: aboutMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "About" }
+        comment: "About (menuItem)"
+      - name: supportMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "Support" }
+        comment: "Support (menuItem)"
+      - name: changePasswordMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "Change Password" }
+        comment: "Change Password (menuItem)"
+      - name: logoutMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "Logout" }
+        comment: "Logout (menuItem)"
