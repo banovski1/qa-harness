@@ -1,77 +1,38 @@
 ---
 name: app-map
-description: Crawl a web application with the Playwright MCP and produce two artifacts — a component inventory report with stable locators, and a per-page YAML application map. Use for "map the app", "component inventory", "application map", "regenerate ui-model".
+description: Regenerate the UI application map by running the deterministic ui-mapper script. Use for "map the app", "component inventory", "application map", "regenerate ui-model".
 ---
 
-# app-map
+This skill does not crawl anything itself. It checks the spec file, then runs the mapper script.
 
-Walk a live web app with the `playwright` MCP and write **two artifacts**:
-`ui-model/component-inventory.md` and `ui-model/application-map/<page-slug>.yaml` (one file per page).
+## 1. Check the spec
 
-## 1. Inputs
+Read `ui-model/app-map.yaml` (or the path passed as a skill argument). These fields are required — without them the script either hard-fails or silently produces garbage:
 
-Read `src/main/resources/config.properties`: `baseUrl`, `username`, `password`, and every
-`*Page=` path — those paths are the crawl seed list. Skill args override any of them
-(e.g. `/app-map https://other.app user pass`). If args name an app with no config file, ask only
-for the entry URL and credentials.
+- `baseUrl`
+- `credentials.username`, `credentials.password`
+- `login.loginUrl`
+- `login.usernameLocator`, `login.passwordLocator`, `login.submitLocator` — each `{ strategy, args, name }`, where `strategy` is one of `getByRole`, `getByLabel`, `getByPlaceholder`, `getByText`, `getByAltText`, `getByTitle`, `getByTestId`, `css` (see `ui-mapper/locator-spec.mjs`)
+- at least one entry under `seeds:`, or `crawl.discoverLinks: true`
 
-## 2. Crawl
+Optional — never prompt for these: `app`, `login.successSignal`, `crawl.*`.
 
-Per seed path: `browser_navigate` → log in once (session persists) → `browser_snapshot`.
-Then, one level deep: follow in-page nav links, and open each modal, dropdown, tab and date picker
-reachable from that page, snapshotting each opened state. One page = one YAML file; opened states
-go in that page's `states:` block. Record where a link leads in `navigatesTo:`.
+If something required is missing or empty, ask the user for it with `AskUserQuestion` (one question per missing group), write the answers into the spec file, then continue. If nothing is missing, ask nothing and go straight to step 2.
 
-## 3. Locator priority (closed vocabulary — first that applies wins)
+## 2. Run the mapper
 
-1. `getByRole` (role + accessible name) 2. `getByLabel` 3. `getByPlaceholder` 4. `getByText`
-5. `getByAltText` 6. `getByTitle` 7. `getByTestId` 8. CSS/XPath — last resort only, and it must
-carry `unstable: true` with a reason.
+From the repo root:
 
-Before writing any locator, confirm from the snapshot that it resolves to **exactly one** element;
-if not, scope it (`within` a named group/row) rather than dropping to a lower tier.
-
-## 4. Artifact 1 — `ui-model/component-inventory.md`
-
-One table per component type found: button, input, long input (textarea), dropdown, searchable
-dropdown, checkbox, radio group, date picker, file upload, table, tab, pagination, toast/alert,
-modal, link, image.
-
-| Component | Page | Accessible name | Locator | Tier | Notes |
-
-Close with a **Coverage** section: which types already have a class in
-`src/main/java/components/`, and which appeared in the app with no class yet.
-
-## 5. Artifact 2 — `ui-model/application-map/<page-slug>.yaml`
-
-```yaml
-page: login
-url: /web/index.php/auth/login
-title: OrangeHRM
-verified: 2026-08-05
-elements:
-  - name: usernameInput
-    component: input
-    locator: { strategy: getByPlaceholder, args: ["Username"] }
-    comment: Username field on the login form
-  - name: loginButton
-    component: button
-    locator: { strategy: getByRole, args: ["BUTTON"], name: "Login" }
-    navigatesTo: dashboard
-states:
-  - name: invalidCredentials
-    trigger: submit loginButton with a bad password
-    elements:
-      - name: invalidCredentialsAlert
-        component: alert
-        locator: { strategy: getByRole, args: ["ALERT"] }
+```
+node ui-mapper/mapper.mjs [path/to/app-map.yaml]
 ```
 
-`name` is camelCase and becomes the Java accessor; `comment` becomes its Javadoc. This schema is
-what the locator classes in `src/main/java/pages/locators/` consume — keep it exact.
+If it fails with a missing-module error, run `npm install` in `ui-mapper/` (its `postinstall` installs Chromium) and retry once.
 
-## Rules
+## 3. Report
 
-- Never invent a locator you did not verify against a live snapshot.
-- Re-running overwrites both artifacts idempotently — same app, same output.
-- This skill writes only under `ui-model/`. Never edit `src/`.
+Relay the script's summary plus how many files it wrote under `ui-model/application-map/`, and that `ui-model/component-inventory.md` was refreshed. Never hand-edit the generated artifacts.
+
+## Rule
+
+Never use the Playwright MCP (`mcp__playwright__*`) tools — not for crawling, not for verifying a locator, not for "just checking" the login page. `node ui-mapper/mapper.mjs` is the only thing allowed to drive a browser. If the script fails, fix the spec or fix the script; do not fall back to the MCP.
