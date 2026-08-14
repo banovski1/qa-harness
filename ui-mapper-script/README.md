@@ -30,12 +30,12 @@ npm install          # also downloads the Chromium binary (postinstall)
 From the **repo root** (so `ui-map-results/` resolves):
 
 ```bash
-node ui-mapper-script/mapper.mjs [path/to/spec.yaml]   # default: ui-mapper-script/app-map.yaml
+node ui-mapper-script/mapper.mjs [path/to/spec.yaml]   # default: ui-mapper-script/app-map-config.yaml
 ```
 
 A Chromium window opens, logs in, crawls the `seeds:` pages, and writes the artifacts.
 
-## Spec file (`ui-mapper-script/app-map.yaml`)
+## Spec file (`ui-mapper-script/app-map-config.yaml`)
 
 The parameterized login flow. Point it at any app by editing this file only — no code changes:
 

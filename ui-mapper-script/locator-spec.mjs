@@ -56,7 +56,7 @@ export function resolve(root, spec) {
   return spec.nth != null ? locator.nth(spec.nth) : locator;
 }
 
-/** Emit the inline-YAML shape used across app-map.yaml and application-map/*.yaml. */
+/** Emit the inline-YAML shape used across app-map-config.yaml and application-map/*.yaml. */
 export function toYamlInline(spec) {
   const args = spec.args.map(yamlString).join(', ');
   let out = `{ strategy: ${spec.strategy}, args: [${args}]`;
