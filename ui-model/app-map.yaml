@@ -22,5 +22,8 @@ seeds:
 crawl:
   captureStates: true
   maxStatesPerPage: 6
-  discoverLinks: true   # BFS-follow same-origin nav links found on each mapped page
+  discoverLinks: true   # BFS-follow same-origin nav links found on each mapped page —
+                         # both real <a href> markup AND JS-driven nav (buttons, SPA
+                         # routers, href="#" icons) discovered by click-probing
   maxPages: 40           # safety cap on how many pages a single run will map
+  maxClickProbesPerPage: 20  # cap on click-discovery probes (buttons/links) per page

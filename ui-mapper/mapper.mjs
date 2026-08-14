@@ -116,6 +116,7 @@ function loadSpec(path) {
     maxStatesPerPage: Number(root.crawl?.maxStatesPerPage ?? 6),
     discoverLinks: root.crawl?.discoverLinks !== false, // on by default
     maxPages: Number(root.crawl?.maxPages ?? 40),
+    maxClickProbesPerPage: Number(root.crawl?.maxClickProbesPerPage ?? 20),
   };
 }
 
@@ -165,7 +166,16 @@ async function mapPage(page, spec, seed, inventory) {
     await settle(page);
   }
 
-  return discoverNavLinks(page, spec.baseUrl);
+  const hrefPaths = await discoverNavLinks(page, spec.baseUrl);
+  const clickPaths = await discoverNavByClicking(page, spec, seed);
+
+  // discoverNavByClicking() leaves the page wherever the last successful probe
+  // navigated to — reset to the seed so callers reading page state afterwards
+  // (or a subsequent mapPage() call) start clean.
+  await page.goto(spec.baseUrl + seed, { waitUntil: 'domcontentloaded', timeout: 60000 });
+  await settle(page);
+
+  return [...new Set([...hrefPaths, ...clickPaths])];
 }
 
 async function snapshotTree(page) {
@@ -460,6 +470,72 @@ async function discoverNavLinks(page, baseUrl) {
     } catch {
       // ignore malformed hrefs (e.g. "javascript:void(0)")
     }
+  }
+  return [...paths];
+}
+
+// Raw-DOM candidates for click-discovery — deliberately NOT the ARIA-tree-derived
+// ctx.elements list. Elements with no accessible name and no text content (e.g.
+// saucedemo's cart icon: `<a class="shopping_cart_link"></a>`, an empty anchor
+// styled via a CSS pseudo-element) never produce a node in the ARIA snapshot at
+// all, so they're invisible to the rest of the pipeline. Querying markup directly
+// catches those too.
+const CLICKABLE_SELECTOR = 'a, button, [role="link"], [role="button"], [onclick]';
+
+/**
+ * Fallback discovery for apps that don't navigate via real `<a href>`s (JS click
+ * handlers, SPA routers, href="#" icons/buttons with no accessible name at all).
+ * discoverNavLinks() can't see any of that since it only reads `href` off anchors,
+ * and the ARIA-tree walk skips elements with no name/content. Instead, actually
+ * click every clickable-looking element on the page and see where the browser
+ * ends up: if the pathname changed to a same-origin path, that's a page a real
+ * user could reach that we'd otherwise miss.
+ */
+async function discoverNavByClicking(page, spec, seed) {
+  const origin = new URL(spec.baseUrl).origin;
+  const seedPath = new URL(spec.baseUrl + seed).pathname;
+
+  let count;
+  try {
+    count = await page.locator(CLICKABLE_SELECTOR).count();
+  } catch {
+    return [];
+  }
+  const probeCount = Math.min(count, spec.maxClickProbesPerPage);
+
+  const paths = new Set();
+  for (let i = 0; i < probeCount; i++) {
+    // Reset to a clean seed state before every probe so clicks can't compound
+    // (same pattern captureStates() uses for opening triggers) — the reload also
+    // keeps DOM order (and so `nth(i)`) stable across probes.
+    await page.goto(spec.baseUrl + seed, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await settle(page);
+
+    const candidate = page.locator(CLICKABLE_SELECTOR).nth(i);
+    let label = '';
+    try {
+      label = (await candidate.getAttribute('aria-label'))
+        || (await candidate.innerText().catch(() => ''))
+        || '';
+    } catch { /* keep default label */ }
+    if (/logout|sign ?out/i.test(label)) continue; // don't crawl into logout
+
+    try {
+      await candidate.click({ timeout: 5000 });
+    } catch {
+      continue; // not clickable / detached — skip this candidate
+    }
+    await page.waitForTimeout(300);
+
+    let url;
+    try {
+      url = new URL(page.url());
+    } catch {
+      continue;
+    }
+    if (url.origin !== origin) continue;         // left the app entirely
+    if (url.pathname === seedPath) continue;      // didn't navigate (opened a widget, or a no-op)
+    paths.add(url.pathname + url.search);
   }
   return [...paths];
 }
