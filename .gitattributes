@@ -1,0 +1,9 @@
+# Check out LF on every platform.
+#
+# framework-generator writes LF, and generated-framework/ is committed. With
+# Windows' core.autocrlf=true, git would check those files out as CRLF and the
+# very next generator run would rewrite all 74 of them — showing as "modified"
+# with no content change at all. Pinning eol=lf keeps the working tree and the
+# generator's output byte-identical, so a re-run after an unchanged map really
+# does report zero writes.
+* text=auto eol=lf
