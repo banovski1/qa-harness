@@ -11,8 +11,10 @@
 //   * A component never reaches for `page`; it only knows its own Locator. That
 //     is what makes it composable inside another component's scope.
 
+import { quote } from '../code-writer.mjs';
+
 /** @returns {{path: string, contents: string, kind: 'generated'|'protected'}[]} */
-export function runtimeFiles() {
+export function runtimeFiles(context) {
   return [
     file('src/components/base/BaseComponent.ts', BASE_COMPONENT),
     file('src/components/ButtonComponent.ts', BUTTON),
@@ -31,7 +33,7 @@ export function runtimeFiles() {
     file('src/components/index.ts', COMPONENT_INDEX),
     file('src/pages/base/BasePage.ts', BASE_PAGE),
     file('src/utils/env.ts', ENV),
-    file('src/utils/waitHelpers.ts', WAIT_HELPERS),
+    file('src/utils/waitHelpers.ts', waitHelpers(context.config.waits.spinnerSelector)),
     file('src/config/constants.ts', CONSTANTS),
   ];
 }
@@ -458,11 +460,18 @@ export function optionalEnv(name: string, fallback: string): string {
 }
 `;
 
-const WAIT_HELPERS = `import type { Locator, Page } from '@playwright/test';
+/**
+ * The spinner selector is the one thing here that depends on the app under test,
+ * so it comes from `waits.spinnerSelector` in the generator config rather than
+ * being guessed. The default is role-based and therefore app-agnostic; add your
+ * app's own class to the config if it has no accessible busy state.
+ */
+function waitHelpers(spinnerSelector) {
+  return `import type { Locator, Page } from '@playwright/test';
 
-/** Wait for the app's loading spinner to disappear, if one is present at all. */
+/** Wait for the app's loading indicator to disappear, if one is present at all. */
 export async function waitForSpinnerToClear(page: Page, timeout = 15_000): Promise<void> {
-  const spinner = page.locator('.oxd-loading-spinner, [role="progressbar"]').first();
+  const spinner = page.locator(${quote(spinnerSelector)}).first();
   if ((await spinner.count()) === 0) return;
   await spinner.waitFor({ state: 'hidden', timeout }).catch(() => {
     // A spinner that never resolves is the assertion's problem, not the wait's.
@@ -479,8 +488,9 @@ export async function waitForUnique(locator: Locator, timeout = 10_000): Promise
   throw new Error(\`Locator did not resolve to exactly one element within \${timeout}ms\`);
 }
 `;
+}
 
-const CONSTANTS = `export const TIMEOUTS = {
+const CONSTANTS =`export const TIMEOUTS = {
   action: 15_000,
   navigation: 30_000,
   assertion: 10_000,

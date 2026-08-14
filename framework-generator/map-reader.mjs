@@ -45,6 +45,18 @@ export function readApplicationMap(config) {
   const stats = { files: files.length, elementsRead: 0, skippedNoLocator: 0, unstable: 0, tables: 0 };
   let pages = files.map((file) => readPage(join(config.mapDir, file), config, stats));
 
+  // Grouping needs every URL at once, so it happens after all files are read.
+  const folderSegment = config.pages.folderSegment === 'auto'
+    ? detectFolderSegment(pages.map((p) => p.url))
+    : config.pages.folderSegment;
+  stats.folderSegment = folderSegment;
+  stats.folderSegmentDetected = config.pages.folderSegment === 'auto';
+  for (const page of pages) {
+    const { group, action } = splitUrl(page.url, { ...config.pages, folderSegment });
+    page.group = group;
+    page.className = pageClassName(group, action);
+  }
+
   const { sharedChrome, sharedStates } = extractSharedChrome(pages, config.elements.sharedChromeThreshold);
   if (config.pages.mergeDuplicates) pages = mergeDuplicatePages(pages);
   assignUniqueClassNames(pages);
@@ -76,13 +88,12 @@ function readPage(path, config, stats) {
   // every file the mapper emits and carry no per-page information.
   const elements = readElements(raw.elements, path, stats);
   const states = config.elements.includeStates ? readStates(raw.states, path, stats) : [];
-  const { group, action } = splitUrl(raw.url, config.pages);
 
   return {
     slug: String(raw.page ?? ''),
     url: String(raw.url),
-    group,
-    className: pageClassName(group, action),
+    group: '', // assigned once every URL is known — see readApplicationMap
+    className: '',
     fileBase: '',
     elements,
     states,
@@ -170,6 +181,34 @@ function parseTableComment(comment) {
 }
 
 // ---- url -> folder + action --------------------------------------------------
+
+/**
+ * Work out which path segment names the app's module, by stripping the prefix
+ * every mapped URL shares.
+ *
+ * OrangeHRM mounts its whole app under `/web/index.php/`, so segments 1 and 2
+ * are identical everywhere and carry no grouping information; the first segment
+ * that actually varies is the module (`admin`, `pim`, `leave`), which is what a
+ * folder should be named after. An app served from the root gets 1, and an app
+ * behind `/app/v2/` gets 3, with no configuration either way.
+ *
+ * At least one segment is always left over for the action, so a flat app whose
+ * URLs are `/users`, `/orders` groups by those rather than collapsing to one
+ * folder.
+ *
+ * @returns {number} a 1-based segment index
+ */
+function detectFolderSegment(urls) {
+  const parts = urls.map((u) => String(u).split('/').filter(Boolean));
+  if (parts.length === 0) return 1;
+  const shortest = Math.min(...parts.map((p) => p.length));
+
+  let common = 0;
+  while (common < shortest - 1 && parts.every((p) => p[common] === parts[0][common])) {
+    common += 1;
+  }
+  return common + 1;
+}
 
 /**
  * `/web/index.php/admin/viewSystemUsers` with folderSegment 3 -> group `admin`,

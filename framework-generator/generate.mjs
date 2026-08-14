@@ -27,8 +27,9 @@ const DEFAULTS = {
   baseUrl: '',
   mapDir: join('ui-map-results', 'application-map'),
   loginConfig: null,
-  pages: { folderSegment: 3, dropParamSegments: true, mergeDuplicates: true },
+  pages: { folderSegment: 'auto', dropParamSegments: true, mergeDuplicates: true },
   elements: { sharedChromeThreshold: 0.8, includeUnstable: true, includeStates: true },
+  waits: { spinnerSelector: '[role="progressbar"], [aria-busy="true"]' },
   tests: { generateSmokeSpecs: true },
 };
 
@@ -44,6 +45,10 @@ async function main() {
   console.log(`[framework-gen] ${config.language} -> ${config.outputDir}${dryRun ? ' (dry run)' : ''}`);
 
   const model = readApplicationMap(config);
+  if (model.stats.folderSegmentDetected) {
+    console.log(`[framework-gen] grouping pages by URL segment ${model.stats.folderSegment} (auto-detected): ` +
+      `${[...new Set(model.pages.map((p) => p.group))].sort().join(', ')}`);
+  }
   console.log(`[framework-gen] read ${model.stats.files} map file(s): ${model.pages.length} page object(s), ` +
     `${model.stats.elementsRead} element(s), ${model.stats.sharedChrome} shared in navigation`);
 
@@ -89,6 +94,7 @@ function loadConfig(path) {
     ...raw,
     pages: { ...DEFAULTS.pages, ...(raw.pages ?? {}) },
     elements: { ...DEFAULTS.elements, ...(raw.elements ?? {}) },
+    waits: { ...DEFAULTS.waits, ...(raw.waits ?? {}) },
     tests: { ...DEFAULTS.tests, ...(raw.tests ?? {}) },
   };
 
@@ -102,6 +108,15 @@ function loadConfig(path) {
     throw new Error(`elements.sharedChromeThreshold must be between 0 and 1, got ${config.elements.sharedChromeThreshold}`);
   }
   config.elements.sharedChromeThreshold = threshold;
+
+  const segment = config.pages.folderSegment;
+  if (segment !== 'auto' && !(Number.isInteger(segment) && segment >= 1)) {
+    throw new Error(`pages.folderSegment must be 'auto' or a positive integer, got ${JSON.stringify(segment)}`);
+  }
+  if (!config.waits.spinnerSelector) {
+    throw new Error("waits.spinnerSelector must be a CSS selector. Remove the key to use the default.");
+  }
+
   config.login = config.loginConfig ? loadLoginFlow(config.loginConfig) : null;
   return config;
 }

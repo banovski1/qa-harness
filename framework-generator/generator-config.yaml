@@ -19,7 +19,8 @@ mapDir: ui-map-results/application-map
 loginConfig: ui-mapper-script/app-map-config.yaml
 
 pages:
-  folderSegment: 3            # URL path segment used as the folder group (admin, pim, leave, ...)
+  folderSegment: auto         # URL segment used as the folder group; `auto` strips the
+                              # prefix every mapped URL shares, or set a 1-based number
   dropParamSegments: true     # drop trailing /empNumber/7 style pairs from page identity
   mergeDuplicates: true       # collapse *Module redirect pages onto their list-page twin
 
@@ -27,6 +28,12 @@ elements:
   sharedChromeThreshold: 0.8  # elements on >= this fraction of pages become a shared nav component
   includeUnstable: true       # emit nth-based locators, annotated with the reason they are brittle
   includeStates: true         # emit state elements (menus, dropdown options) as sub-groups
+
+waits:
+  # Selector for the app's loading indicator, used by waitForSpinnerToClear().
+  # The default is role-based and works on any accessible app; add your app's own
+  # class if it renders a spinner with no busy state, e.g. '.my-spinner, [role="progressbar"]'.
+  spinnerSelector: '[role="progressbar"], [aria-busy="true"]'
 
 tests:
   generateSmokeSpecs: true    # one navigate + assert spec per generated page object

@@ -1,8 +1,8 @@
 import type { Locator, Page } from '@playwright/test';
 
-/** Wait for the app's loading spinner to disappear, if one is present at all. */
+/** Wait for the app's loading indicator to disappear, if one is present at all. */
 export async function waitForSpinnerToClear(page: Page, timeout = 15_000): Promise<void> {
-  const spinner = page.locator('.oxd-loading-spinner, [role="progressbar"]').first();
+  const spinner = page.locator('[role="progressbar"], [aria-busy="true"]').first();
   if ((await spinner.count()) === 0) return;
   await spinner.waitFor({ state: 'hidden', timeout }).catch(() => {
     // A spinner that never resolves is the assertion's problem, not the wait's.
