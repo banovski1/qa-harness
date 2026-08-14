@@ -7,7 +7,7 @@
     "ui-mapper-script": "mapper.mjs"
   },
   "scripts": {
-    "map": "node mapper.mjs",
+    "map": "cd ../.. && node scripts/ui-mapper-script/mapper.mjs",
     "postinstall": "playwright install chromium"
   },
   "dependencies": {

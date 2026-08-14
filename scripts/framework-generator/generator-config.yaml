@@ -1,6 +1,6 @@
 # Framework generator input — the only file you need to edit.
 #
-#   node framework-generator/generate.mjs [path/to/this-file.yaml] [--dry-run]
+#   node scripts/framework-generator/generate.mjs [path/to/this-file.yaml] [--dry-run]
 #
 # Run from the repo root so mapDir and outputDir resolve correctly. The generator
 # reads the application map produced by ui-mapper-script and emits a Playwright
@@ -16,7 +16,7 @@ mapDir: ui-map-results/application-map
 # before it crawls), so point this at the mapper's spec to get a working login
 # helper instead of a stub. Credentials are NOT read from it — they come from
 # APP_USERNAME / APP_PASSWORD in the generated project's .env.
-loginConfig: ui-mapper-script/app-map-config.yaml
+loginConfig: scripts/ui-mapper-script/app-map-config.yaml
 
 pages:
   folderSegment: auto         # URL segment used as the folder group; `auto` strips the

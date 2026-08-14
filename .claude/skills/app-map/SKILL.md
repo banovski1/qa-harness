@@ -7,12 +7,12 @@ This skill does not crawl anything itself. It checks the spec file, then runs th
 
 ## 1. Check the spec
 
-Read `ui-mapper-script/app-map-config.yaml` (or the path passed as a skill argument). These fields are required — without them the script either hard-fails or silently produces garbage:
+Read `scripts/ui-mapper-script/app-map-config.yaml` (or the path passed as a skill argument). These fields are required — without them the script either hard-fails or silently produces garbage:
 
 - `baseUrl`
 - `credentials.username`, `credentials.password`
 - `login.loginUrl`
-- `login.usernameLocator`, `login.passwordLocator`, `login.submitLocator` — each `{ strategy, args, name }`, where `strategy` is one of `getByRole`, `getByLabel`, `getByPlaceholder`, `getByText`, `getByAltText`, `getByTitle`, `getByTestId`, `css` (see `ui-mapper-script/locator-spec.mjs`)
+- `login.usernameLocator`, `login.passwordLocator`, `login.submitLocator` — each `{ strategy, args, name }`, where `strategy` is one of `getByRole`, `getByLabel`, `getByPlaceholder`, `getByText`, `getByAltText`, `getByTitle`, `getByTestId`, `css` (see `scripts/ui-mapper-script/locator-spec.mjs`)
 - at least one entry under `seeds:`, or `crawl.discoverLinks: true`
 
 Optional — never prompt for these: `app`, `login.successSignal`, `crawl.*`.
@@ -24,10 +24,10 @@ If something required is missing or empty, ask the user for it with `AskUserQues
 From the repo root:
 
 ```
-node ui-mapper-script/mapper.mjs [path/to/app-map-config.yaml]
+node scripts/ui-mapper-script/mapper.mjs [path/to/app-map-config.yaml]
 ```
 
-If it fails with a missing-module error, run `npm install` in `ui-mapper-script/` (its `postinstall` installs Chromium) and retry once.
+If it fails with a missing-module error, run `npm install` in `scripts/ui-mapper-script/` (its `postinstall` installs Chromium) and retry once.
 
 ## 3. Report
 
@@ -35,4 +35,4 @@ Relay the script's summary plus how many files it wrote under `ui-map-results/ap
 
 ## Rule
 
-Never use the Playwright MCP (`mcp__playwright__*`) tools — not for crawling, not for verifying a locator, not for "just checking" the login page. `node ui-mapper-script/mapper.mjs` is the only thing allowed to drive a browser. If the script fails, fix the spec or fix the script; do not fall back to the MCP.
+Never use the Playwright MCP (`mcp__playwright__*`) tools — not for crawling, not for verifying a locator, not for "just checking" the login page. `node scripts/ui-mapper-script/mapper.mjs` is the only thing allowed to drive a browser. If the script fails, fix the spec or fix the script; do not fall back to the MCP.
