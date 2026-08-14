@@ -466,7 +466,11 @@ async function discoverNavLinks(page, baseUrl) {
       const u = new URL(href);
       if (u.origin !== origin) continue;               // skip external/social links
       if (/logout|signout/i.test(u.pathname)) continue; // don't crawl into logout
-      paths.add(u.pathname + u.search);
+      // Keep the hash: apps that route submodule tabs client-side (OrangeHRM's
+      // Claim module: #/submitClaim, #/viewMyClaimList, ...) differ ONLY in the
+      // fragment. Dropping it collapses every tab onto its parent path, which the
+      // caller's `visited` set then dedupes away — those pages are never crawled.
+      paths.add(u.pathname + u.search + u.hash);
     } catch {
       // ignore malformed hrefs (e.g. "javascript:void(0)")
     }
@@ -493,7 +497,8 @@ const CLICKABLE_SELECTOR = 'a, button, [role="link"], [role="button"], [onclick]
  */
 async function discoverNavByClicking(page, spec, seed) {
   const origin = new URL(spec.baseUrl).origin;
-  const seedPath = new URL(spec.baseUrl + seed).pathname;
+  const seedUrl = new URL(spec.baseUrl + seed);
+  const seedPath = seedUrl.pathname + seedUrl.hash;
 
   let count;
   try {
@@ -534,8 +539,8 @@ async function discoverNavByClicking(page, spec, seed) {
       continue;
     }
     if (url.origin !== origin) continue;         // left the app entirely
-    if (url.pathname === seedPath) continue;      // didn't navigate (opened a widget, or a no-op)
-    paths.add(url.pathname + url.search);
+    if (url.pathname + url.hash === seedPath) continue; // didn't navigate (opened a widget, or a no-op)
+    paths.add(url.pathname + url.search + url.hash);
   }
   return [...paths];
 }
@@ -613,9 +618,14 @@ function writeInventory(rows) {
  * instead, so the slug is unique whenever the path is.
  */
 function slugOf(path) {
-  const clean = path.replace(/[?#].*$/, '');
-  const segments = clean.split('/').filter(Boolean);
-  return segments.length ? segments.join('-') : 'index';
+  // The hash participates in page identity (see discoverNavLinks), so it has to
+  // participate in the slug too — otherwise two hash-routed tabs share one
+  // filename and the second overwrites the first.
+  const [base, hash = ''] = path.replace(/\?.*?(?=#|$)/, '').split('#');
+  const segments = base.split('/').filter(Boolean);
+  const hashSegments = hash.split('/').filter(Boolean);
+  const all = [...segments, ...hashSegments];
+  return all.length ? all.join('-') : 'index';
 }
 
 /** camelCase from an arbitrary accessible name (or fallback label). */
