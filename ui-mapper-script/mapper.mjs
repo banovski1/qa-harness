@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 // Deterministic replacement for the LLM-driven `app-map` skill.
 //
-// Given a login flow as parameters (see ui-mapper-script/app-map.yaml) — entry URL,
+// Given a login flow as parameters (see ui-mapper-script/app-map-config.yaml) — entry URL,
 // credentials, and the locators for username / password / submit — it logs in once
 // and builds the UI map of any application from the accessibility (ARIA) tree,
 // emitting ui-map-results/application-map/<slug>.yaml and ui-map-results/component-inventory.md
 // with the same schema the skill produced.
 //
-//   node ui-mapper-script/mapper.mjs [path/to/app-map.yaml]
+//   node ui-mapper-script/mapper.mjs [path/to/app-map-config.yaml]
 //
 // Run from the repo root so ui-map-results/ resolves correctly.
 
@@ -51,7 +51,7 @@ const STRUCTURAL_SKIP = new Set([
 ]);
 
 async function main() {
-  const specPath = process.argv[2] ?? join('ui-mapper-script', 'app-map.yaml');
+  const specPath = process.argv[2] ?? join('ui-mapper-script', 'app-map-config.yaml');
   const spec = loadSpec(specPath);
   console.log(`[app-map] mapping ${spec.app} @ ${spec.baseUrl}`);
 

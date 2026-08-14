@@ -7,7 +7,7 @@ This skill does not crawl anything itself. It checks the spec file, then runs th
 
 ## 1. Check the spec
 
-Read `ui-mapper-script/app-map.yaml` (or the path passed as a skill argument). These fields are required — without them the script either hard-fails or silently produces garbage:
+Read `ui-mapper-script/app-map-config.yaml` (or the path passed as a skill argument). These fields are required — without them the script either hard-fails or silently produces garbage:
 
 - `baseUrl`
 - `credentials.username`, `credentials.password`
@@ -24,7 +24,7 @@ If something required is missing or empty, ask the user for it with `AskUserQues
 From the repo root:
 
 ```
-node ui-mapper-script/mapper.mjs [path/to/app-map.yaml]
+node ui-mapper-script/mapper.mjs [path/to/app-map-config.yaml]
 ```
 
 If it fails with a missing-module error, run `npm install` in `ui-mapper-script/` (its `postinstall` installs Chromium) and retry once.
