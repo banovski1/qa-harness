@@ -1,0 +1,13 @@
+{
+  "name": "framework-generator",
+  "version": "1.0.0",
+  "description": "Application map in, Playwright test framework out. Reads ui-map-results/ and generates a component-object-model framework in a configurable language.",
+  "type": "module",
+  "bin": { "framework-generator": "generate.mjs" },
+  "scripts": {
+    "generate": "node generate.mjs ../framework-generator/generator-config.yaml"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
