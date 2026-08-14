@@ -38,7 +38,7 @@ mapDir: ui-map-results/application-map
 loginConfig: ui-mapper-script/app-map-config.yaml   # optional, see below
 
 pages:
-  folderSegment: 3            # URL path segment used as the folder group
+  folderSegment: auto         # see below; or a 1-based segment number
   dropParamSegments: true     # drop trailing /empNumber/7 pairs from page identity
   mergeDuplicates: true       # collapse *Module redirect pages onto their list-page twin
 
@@ -47,9 +47,29 @@ elements:
   includeUnstable: true       # emit positional locators, annotated with why they are brittle
   includeStates: true         # emit state elements (menus, dropdown options)
 
+waits:
+  spinnerSelector: '[role="progressbar"], [aria-busy="true"]'
+
 tests:
   generateSmokeSpecs: true
 ```
+
+`folderSegment: auto` works out which URL segment names the app's module by
+stripping the prefix every mapped URL shares, and logs what it picked:
+
+| Mapped URLs | Detected | Folders |
+|---|---|---|
+| `/users/list`, `/orders/list` | 1 | `users/`, `orders/` |
+| `/web/index.php/admin/viewSystemUsers`, `/web/index.php/pim/…` | 3 | `admin/`, `pim/` |
+| `/app/v2/billing/invoices`, `/app/v2/settings/profile` | 3 | `billing/`, `settings/` |
+
+At least one segment is always left for the action, so a flat app (`/users`,
+`/orders`) still groups by those rather than collapsing into one folder. Set a
+number instead if you want different grouping.
+
+`waits.spinnerSelector` feeds the generated `waitForSpinnerToClear()` helper. The
+default is role-based and works on any accessible app; add your own class if your
+app renders a spinner with no busy state.
 
 `loginConfig` points at the **mapper's** spec file. The login flow is not in the
 application map — the mapper logs in before it starts crawling — so reading the
@@ -104,7 +124,9 @@ adapter has to know about them:
 - `*Module` URLs that redirect onto a list page are merged into one page object
   with the extra URL kept as an alias,
 - names that start with a digit or collide with a keyword are made safe per
-  target language.
+  target language,
+- the folder-grouping segment is detected from the mapped URLs, so pointing the
+  generator at a different app needs no tuning.
 
 ## Limitations
 

@@ -40,7 +40,7 @@ export const typescript = {
 
   staticFiles(context) {
     return [
-      ...runtimeFiles(),
+      ...runtimeFiles(context),
       ...projectFiles(context),
       navigationComponent(context),
       ...fixtureFiles(context),
