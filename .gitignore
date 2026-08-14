@@ -2,9 +2,6 @@ node_modules/
 ui-mapper-script/node_modules
 framework-generator/node_modules
 
-# Generator output — regenerate it, don't commit it.
-generated-framework/
-
 *.log
 
 .idea
