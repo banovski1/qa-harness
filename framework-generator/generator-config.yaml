@@ -1,0 +1,32 @@
+# Framework generator input — the only file you need to edit.
+#
+#   node framework-generator/generate.mjs [path/to/this-file.yaml] [--dry-run]
+#
+# Run from the repo root so mapDir and outputDir resolve correctly. The generator
+# reads the application map produced by ui-mapper-script and emits a Playwright
+# component-object-model framework in the language named below.
+
+language: typescript    # typescript | javascript | java | python | csharp
+projectName: orangehrm-e2e
+outputDir: ./generated-framework
+baseUrl: https://opensource-demo.orangehrmlive.com
+mapDir: ui-map-results/application-map
+
+# Optional. The login flow is not in the application map (the mapper logs in
+# before it crawls), so point this at the mapper's spec to get a working login
+# helper instead of a stub. Credentials are NOT read from it — they come from
+# APP_USERNAME / APP_PASSWORD in the generated project's .env.
+loginConfig: ui-mapper-script/app-map-config.yaml
+
+pages:
+  folderSegment: 3            # URL path segment used as the folder group (admin, pim, leave, ...)
+  dropParamSegments: true     # drop trailing /empNumber/7 style pairs from page identity
+  mergeDuplicates: true       # collapse *Module redirect pages onto their list-page twin
+
+elements:
+  sharedChromeThreshold: 0.8  # elements on >= this fraction of pages become a shared nav component
+  includeUnstable: true       # emit nth-based locators, annotated with the reason they are brittle
+  includeStates: true         # emit state elements (menus, dropdown options) as sub-groups
+
+tests:
+  generateSmokeSpecs: true    # one navigate + assert spec per generated page object
