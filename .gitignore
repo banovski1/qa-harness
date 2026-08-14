@@ -24,5 +24,5 @@ hs_err_pid*
 replay_pid*
 .idea
 target
-ui-mapper/node_modules
+ui-mapper-script/node_modules
 .playwright-mcp
