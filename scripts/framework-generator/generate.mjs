@@ -6,7 +6,7 @@
 // it validates the config, builds the model, hands it to a language adapter, and
 // applies the write policy. It never branches on the language.
 //
-//   node framework-generator/generate.mjs [path/to/generator-config.yaml] [--dry-run]
+//   node scripts/framework-generator/generate.mjs [path/to/generator-config.yaml] [--dry-run]
 //
 // Run from the repo root so mapDir and outputDir resolve correctly.
 
@@ -18,7 +18,7 @@ import { readApplicationMap } from './map-reader.mjs';
 import { adapterFor, SUPPORTED_LANGUAGES } from './languages/index.mjs';
 import { FileWriter } from './file-writer.mjs';
 
-const DEFAULT_CONFIG = join('framework-generator', 'generator-config.yaml');
+const DEFAULT_CONFIG = join('scripts', 'framework-generator', 'generator-config.yaml');
 
 const DEFAULTS = {
   language: 'typescript',

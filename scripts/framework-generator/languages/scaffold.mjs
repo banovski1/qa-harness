@@ -45,7 +45,7 @@ ${model.stats.elementsRead} element(s) in \`${config.mapDir}\`.
 
 To generate working page objects now, set \`language: typescript\` in
 \`generator-config.yaml\` and re-run. To add ${def.displayName} support, implement
-\`renderPage\` in \`framework-generator/languages/${def.id}.mjs\` — the orchestrator
+\`renderPage\` in \`scripts/framework-generator/languages/${def.id}.mjs\` — the orchestrator
 needs no changes.
 
 ## Layout

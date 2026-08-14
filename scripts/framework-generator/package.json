@@ -5,7 +5,7 @@
   "type": "module",
   "bin": { "framework-generator": "generate.mjs" },
   "scripts": {
-    "generate": "node generate.mjs ../framework-generator/generator-config.yaml"
+    "generate": "cd ../.. && node scripts/framework-generator/generate.mjs"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"

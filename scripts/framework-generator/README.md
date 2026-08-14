@@ -13,7 +13,7 @@ generation time. The same map always produces the same framework.
 ## Install (one-time)
 
 ```bash
-cd framework-generator
+cd scripts/framework-generator
 npm install
 ```
 
@@ -22,9 +22,9 @@ npm install
 From the **repo root** (so `mapDir` and `outputDir` resolve):
 
 ```bash
-node framework-generator/generate.mjs                     # generate
-node framework-generator/generate.mjs --dry-run           # show the file plan, write nothing
-node framework-generator/generate.mjs path/to/config.yaml # a different config
+node scripts/framework-generator/generate.mjs                     # generate
+node scripts/framework-generator/generate.mjs --dry-run           # show the file plan, write nothing
+node scripts/framework-generator/generate.mjs path/to/config.yaml # a different config
 ```
 
 ## Config (`generator-config.yaml`)
@@ -35,7 +35,7 @@ projectName: orangehrm-e2e
 outputDir: ./generated-framework
 baseUrl: https://opensource-demo.orangehrmlive.com
 mapDir: ui-map-results/application-map
-loginConfig: ui-mapper-script/app-map-config.yaml   # optional, see below
+loginConfig: scripts/ui-mapper-script/app-map-config.yaml   # optional, see below
 
 pages:
   folderSegment: auto         # see below; or a 1-based segment number
