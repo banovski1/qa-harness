@@ -1,14 +1,15 @@
-# ui-mapper
+# ui-mapper-script
 
 Deterministic replacement for the LLM-driven `app-map` skill. You give it a **login
 flow as parameters** — entry URL, credentials, and the locators for the username field,
 password field, and login button — and it logs in and **builds the UI map of any web app
 from the accessibility (ARIA) tree**.
 
-It emits the same two artifacts the skill produced, with the same schema:
+It emits the same two artifacts the skill produced, with the same schema, into the
+sibling results folder:
 
-- `ui-model/application-map/<slug>.yaml` — one file per crawled page
-- `ui-model/component-inventory.md` — aggregated component inventory
+- `ui-map-results/application-map/<slug>.yaml` — one file per crawled page
+- `ui-map-results/component-inventory.md` — aggregated component inventory
 
 ## Why the a11y tree
 
@@ -20,21 +21,21 @@ getByAltText → …`) is a mechanical function of that tree, and each candidate
 ## Install (one-time)
 
 ```bash
-cd ui-mapper
+cd ui-mapper-script
 npm install          # also downloads the Chromium binary (postinstall)
 ```
 
 ## Run
 
-From the **repo root** (so `ui-model/` resolves):
+From the **repo root** (so `ui-map-results/` resolves):
 
 ```bash
-node ui-mapper/mapper.mjs [path/to/spec.yaml]   # default: ui-model/app-map.yaml
+node ui-mapper-script/mapper.mjs [path/to/spec.yaml]   # default: ui-mapper-script/app-map.yaml
 ```
 
 A Chromium window opens, logs in, crawls the `seeds:` pages, and writes the artifacts.
 
-## Spec file (`ui-model/app-map.yaml`)
+## Spec file (`ui-mapper-script/app-map.yaml`)
 
 The parameterized login flow. Point it at any app by editing this file only — no code changes:
 

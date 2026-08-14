@@ -1,10 +1,10 @@
 {
-  "name": "ui-mapper",
+  "name": "ui-mapper-script",
   "version": "1.0.0",
   "description": "Deterministic UI mapper: parameterized login flow in, application map (from the a11y tree) out.",
   "type": "module",
   "bin": {
-    "ui-mapper": "mapper.mjs"
+    "ui-mapper-script": "mapper.mjs"
   },
   "scripts": {
     "map": "node mapper.mjs",
