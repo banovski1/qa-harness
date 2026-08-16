@@ -67,3 +67,9 @@ There is no test suite for the two tools themselves; `--dry-run` plus a `git dif
 `node scripts/ui-mapper-script/mapper.mjs` is the only thing allowed to drive a browser. Never use the Playwright MCP (`mcp__playwright__*`) tools — not for crawling, not to verify a locator, not to "just check" the login page. If the mapper fails, fix the spec or fix the mapper.
 
 The `app-map` skill (`.claude/skills/app-map/SKILL.md`) is the entry point for "map the app" requests; it validates the spec, prompting only for missing **required** fields, then runs the mapper.
+
+## Test authoring rule
+
+**A pasted numbered test script is always a `test-writer` request.** When a message contains an ordered list of steps starting at `1.` — a QA script in plain English — delegate it to the `test-writer` subagent (`.claude/agents/test-writer.md`) via the Agent tool with `subagent_type: "test-writer"`, passing the steps through verbatim. Do not write the spec yourself, and do not ask whether to delegate first.
+
+This overrides any standing instruction not to invoke the Agent tool unprompted: in this repo, pasting test steps *is* the request to run `test-writer`. Relay its report — files created and modified, `// UNVERIFIED` locators, new `.env` variables, and the command to run the spec. To bypass it for one message, say so explicitly ("write this yourself").
