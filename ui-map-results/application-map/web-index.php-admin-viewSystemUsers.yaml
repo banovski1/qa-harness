@@ -1,7 +1,6 @@
 page: web-index.php-admin-viewSystemUsers
 url: /web/index.php/admin/viewSystemUsers
 title: "OrangeHRM"
-verified: 2026-08-09
 elements:
   - name: clientBrandBannerLink
     component: link
@@ -134,7 +133,15 @@ elements:
   - name: tableTable
     component: table
     locator: { strategy: getByRole, args: ["table"], nth: 0, unstable: true, unstableReason: "table has no accessible name; positional index used" }
-    comment: "Table (, Username , User Role , Employee Name , Status , Actions; 3 row(s)) (table)"
+    columns:
+      - name: ""
+      - name: "Username "
+      - name: "User Role "
+      - name: "Employee Name "
+      - name: "Status "
+      - name: "Actions"
+    rowCount: 15
+    comment: "table (table)"
   - name: elementCheckbox
     component: checkbox
     locator: { strategy: getByRole, args: ["checkbox"], name: "", within: { strategy: getByRole, args: ["columnheader"], name: "" } }
@@ -163,13 +170,157 @@ elements:
     component: button
     locator: { strategy: getByRole, args: ["button"], nth: 10, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
     comment: " (button)"
+  - name: elementCheckbox4
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 3, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: elementButton8
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 11, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton9
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 12, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementCheckbox5
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 4, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: elementButton10
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 13, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton11
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 14, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementCheckbox6
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 5, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: elementButton12
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 15, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton13
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 16, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementCheckbox7
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 6, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: elementButton14
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 17, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton15
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 18, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementCheckbox8
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 7, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: elementButton16
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 19, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton17
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 20, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementCheckbox9
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 8, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: elementButton18
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 21, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton19
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 22, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementCheckbox10
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 9, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: elementButton20
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 23, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton21
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 24, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementCheckbox11
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 10, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: elementButton22
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 25, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton23
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 26, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementCheckbox12
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 11, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: elementButton24
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 27, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton25
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 28, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementCheckbox13
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 12, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: elementButton26
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 29, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton27
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 30, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementCheckbox14
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 13, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: elementButton28
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 31, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton29
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 32, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementCheckbox15
+    component: checkbox
+    locator: { strategy: getByRole, args: ["checkbox"], nth: 14, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (checkbox)"
+  - name: elementButton30
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 33, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
+  - name: elementButton31
+    component: button
+    locator: { strategy: getByRole, args: ["button"], nth: 34, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: " (button)"
   - name: orangeHRMIncLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "OrangeHRM, Inc" }
     comment: "OrangeHRM, Inc (link)"
 states:
-  - name: gbYasuserOpen
-    trigger: "open trigger \"gb yasuser\""
+  - name: suryaKingOpen
+    trigger: "open trigger \"Surya king\""
     elements:
       - name: aboutMenuItem
         component: menuItem

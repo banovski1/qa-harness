@@ -9,6 +9,7 @@ import { CheckboxComponent } from '../../components/CheckboxComponent';
 import { ImageComponent } from '../../components/ImageComponent';
 import { InputComponent } from '../../components/InputComponent';
 import { LinkComponent } from '../../components/LinkComponent';
+import { MenuItemComponent } from '../../components/MenuItemComponent';
 import { OptionComponent } from '../../components/OptionComponent';
 import { TableComponent } from '../../components/tables/TableComponent';
 import { TextComponent } from '../../components/TextComponent';
@@ -92,10 +93,10 @@ export abstract class SystemUsersPageGenerated extends BasePage {
     return new ButtonComponent(this.page.getByRole('button', { name: ' Add', exact: true }), ' Add (button)');
   }
 
-  /** Table (, Username , User Role , Employee Name , Status , Actions; 3 row(s)) (table) */
+  /** table (table) */
   // UNSTABLE: table has no accessible name; positional index used
   get tableTable(): TableComponent {
-    return new TableComponent(this.page.getByRole('table').nth(0), ['', 'Username ', 'User Role ', 'Employee Name ', 'Status ', 'Actions'], 'Table (, Username , User Role , Employee Name , Status , Actions; 3 row(s)) (table)');
+    return new TableComponent(this.page.getByRole('table').nth(0), ['', 'Username ', 'User Role ', 'Employee Name ', 'Status ', 'Actions'], 'table (table)');
   }
 
   /**  (checkbox) */
@@ -139,11 +140,255 @@ export abstract class SystemUsersPageGenerated extends BasePage {
     return new ButtonComponent(this.page.getByRole('button').nth(10), ' (button)');
   }
 
+  /**  (checkbox) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementCheckbox4(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox').nth(3), ' (checkbox)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton8(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(11), ' (button)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton9(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(12), ' (button)');
+  }
+
+  /**  (checkbox) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementCheckbox5(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox').nth(4), ' (checkbox)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton10(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(13), ' (button)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton11(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(14), ' (button)');
+  }
+
+  /**  (checkbox) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementCheckbox6(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox').nth(5), ' (checkbox)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton12(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(15), ' (button)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton13(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(16), ' (button)');
+  }
+
+  /**  (checkbox) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementCheckbox7(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox').nth(6), ' (checkbox)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton14(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(17), ' (button)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton15(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(18), ' (button)');
+  }
+
+  /**  (checkbox) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementCheckbox8(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox').nth(7), ' (checkbox)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton16(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(19), ' (button)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton17(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(20), ' (button)');
+  }
+
+  /**  (checkbox) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementCheckbox9(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox').nth(8), ' (checkbox)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton18(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(21), ' (button)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton19(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(22), ' (button)');
+  }
+
+  /**  (checkbox) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementCheckbox10(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox').nth(9), ' (checkbox)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton20(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(23), ' (button)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton21(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(24), ' (button)');
+  }
+
+  /**  (checkbox) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementCheckbox11(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox').nth(10), ' (checkbox)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton22(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(25), ' (button)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton23(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(26), ' (button)');
+  }
+
+  /**  (checkbox) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementCheckbox12(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox').nth(11), ' (checkbox)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton24(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(27), ' (button)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton25(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(28), ' (button)');
+  }
+
+  /**  (checkbox) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementCheckbox13(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox').nth(12), ' (checkbox)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton26(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(29), ' (button)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton27(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(30), ' (button)');
+  }
+
+  /**  (checkbox) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementCheckbox14(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox').nth(13), ' (checkbox)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton28(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(31), ' (button)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton29(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(32), ' (button)');
+  }
+
+  /**  (checkbox) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementCheckbox15(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox').nth(14), ' (checkbox)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton30(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(33), ' (button)');
+  }
+
+  /**  (button) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get elementButton31(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button').nth(34), ' (button)');
+  }
+
+  /** Elements revealed by opening 'Surya king'. Open the trigger first. */
+  readonly suryaKingOpen = new SystemUsersPageSuryaKingOpen(this.page);
+
   /** Elements revealed by opening '-- Select --'. Open the trigger first. */
   readonly selectOpen = new SystemUsersPageSelectOpen(this.page);
 
   /** Elements revealed by opening '-- Select --'. Open the trigger first. */
   readonly selectOpen2 = new SystemUsersPageSelectOpen2(this.page);
+}
+
+/** Only present while 'Surya king' is open. */
+export class SystemUsersPageSuryaKingOpen {
+  constructor(private readonly page: Page) {}
+
+  /** About (menuItem) */
+  get aboutMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'About', exact: true }), 'About (menuItem)');
+  }
+
+  /** Support (menuItem) */
+  get supportMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Support', exact: true }), 'Support (menuItem)');
+  }
+
+  /** Change Password (menuItem) */
+  get changePasswordMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Change Password', exact: true }), 'Change Password (menuItem)');
+  }
+
+  /** Logout (menuItem) */
+  get logoutMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Logout', exact: true }), 'Logout (menuItem)');
+  }
 }
 
 /** Only present while '-- Select --' is open. */

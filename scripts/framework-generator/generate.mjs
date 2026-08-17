@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Application map in, Playwright test framework out.
 //
-// Reads the map produced by ui-mapper-script and generates a component-object-model
+// Reads the map produced by the smart-map skill and generates a component-object-model
 // framework in the language named in the config. This file is orchestration only:
 // it validates the config, builds the model, hands it to a language adapter, and
 // applies the write policy. It never branches on the language.
@@ -13,7 +13,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import yaml from 'js-yaml';
-import { fromMap } from '../ui-mapper-script/locator-spec.mjs';
+import { fromMap } from './locator-spec.mjs';
 import { readApplicationMap } from './map-reader.mjs';
 import { adapterFor, SUPPORTED_LANGUAGES } from './languages/index.mjs';
 import { FileWriter } from './file-writer.mjs';
@@ -122,10 +122,10 @@ function loadConfig(path) {
 }
 
 /**
- * The login flow is not in the application map — the mapper logs in before it
- * starts crawling, so the locators live in the mapper's own spec file. Reading
- * them here is what lets the generator emit a working login helper instead of a
- * TODO. Credentials are deliberately not read: they belong in the environment.
+ * The login flow is not in the application map — the mapping skill logs in before
+ * it starts walking, so the locators live in scripts/app-config.yaml. Reading them
+ * here is what lets the generator emit a working login helper instead of a TODO.
+ * Credentials are deliberately not read: they belong in the environment.
  */
 function loadLoginFlow(path) {
   if (!existsSync(path)) throw new Error(`loginConfig file not found: ${path}`);
@@ -149,9 +149,9 @@ function loadLoginFlow(path) {
 // ---- reporting ---------------------------------------------------------------
 
 /**
- * Every positional locator the mapper flagged, in one file. 31% of the OrangeHRM
- * map is positional; burying that in code comments alone would let it look
- * stable when it is not.
+ * Every positional locator in the map, in one file. Burying that in code comments
+ * alone would let a locator look stable when it is not. These are all legacy from
+ * the deleted crawler — walking a module with the smart-map skill clears them.
  */
 function report(context) {
   const { model, config } = context;

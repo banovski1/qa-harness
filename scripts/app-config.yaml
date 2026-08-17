@@ -1,0 +1,39 @@
+# The target application: where it is, how to log in, and the two conventions the
+# mapping skill needs. Point this at ANY web app.
+#
+# Read by:
+#   - the `smart-map` skill, which drives playwright-cli and writes ui-map-results/application-map/
+#   - scripts/framework-generator (via `loginConfig:` in generator-config.yaml), which reads ONLY the
+#     `login:` block to emit a working login helper. Credentials are NOT read from here — they come
+#     from APP_USERNAME / APP_PASSWORD in the generated project's .env.
+#
+# Locator shape { strategy, args, name } is identical to the emitted map schema.
+# Strategies: getByRole | getByLabel | getByPlaceholder | getByText | getByAltText
+#             | getByTitle | getByTestId | css   (see framework-generator/locator-spec.mjs)
+app: orangehrm
+baseUrl: https://opensource-demo.orangehrmlive.com
+credentials:
+  username: Admin
+  password: admin123
+login:
+  loginUrl: /web/index.php/auth/login
+  usernameLocator: { strategy: getByRole, args: ["textbox"], name: "Username" }
+  passwordLocator: { strategy: getByRole, args: ["textbox"], name: "Password" }
+  submitLocator:   { strategy: getByRole, args: ["button"],  name: "Login" }
+  successSignal:   { strategy: getByRole, args: ["heading"], name: "Dashboard" }
+
+# Path segments matching this collapse to {id} in a map file's `url:` and filename, so one
+# representative page is mapped per entity view rather than one per row.
+idSegmentPattern: "^\\d+$"
+
+# The mapping skill never clicks a control whose label contains one of these words.
+denyClickNames:
+  - delete
+  - save
+  - submit
+  - remove
+  - logout
+  - sign out
+  - trash
+  - terminate
+  - reset

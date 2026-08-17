@@ -1,0 +1,820 @@
+page: web-index.php-claim-assignClaim
+url: /web/index.php/claim/assignClaim
+title: "OrangeHRM"
+elements:
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: clientBrandBannerImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], name: "client brand banner" }
+    comment: "client brand banner (image)"
+  - name: searchInput
+    component: input
+    locator: { strategy: getByRole, args: ["textbox"], name: "Search" }
+    comment: "Search (input)"
+  - name: elementButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: adminLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pIMLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: claimImgImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], within: { strategy: getByRole, args: ["link"], name: "Claim" }, unstable: true, unstableReason: "no accessible name; scoped to nearest named ancestor" }
+    comment: "Claim img (image)"
+  - name: buzzLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: claimHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Claim" }
+    comment: "Claim (text)"
+  - name: upgradeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Upgrade" }
+    comment: "Upgrade (link)"
+  - name: upgradeButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Upgrade" }
+    comment: "Upgrade (button)"
+  - name: profilePictureImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], name: "profile picture" }
+    comment: "profile picture (image)"
+  - name: submitClaimLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Submit Claim" }
+    comment: "Submit Claim (link)"
+  - name: myClaimsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Claims" }
+    comment: "My Claims (link)"
+  - name: employeeClaimsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Employee Claims" }
+    comment: "Employee Claims (link)"
+  - name: assignClaimLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Assign Claim" }
+    comment: "Assign Claim (link)"
+  - name: elementButton2
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: createClaimRequestHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Create Claim Request" }
+    comment: "Create Claim Request (text)"
+  - name: typeForHintsInput
+    component: input
+    locator: { strategy: getByRole, args: ["textbox"], name: "Type for hints..." }
+    comment: "Type for hints... (input)"
+  - name: textboxInput
+    component: input
+    locator: { strategy: getByRole, args: ["textbox"], nth: 2, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
+    comment: "(unnamed) (input)"
+  - name: cancelButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Cancel" }
+    comment: "Cancel (button)"
+  - name: createButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Create" }
+    comment: "Create (button)"
+  - name: orangeHRMIncLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "OrangeHRM, Inc" }
+    comment: "OrangeHRM, Inc (link)"
+states:
+  - name: suryaKingOpen
+    trigger: "open trigger \"Surya king\""
+    elements:
+      - name: aboutMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "About" }
+        comment: "About (menuItem)"
+      - name: supportMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "Support" }
+        comment: "Support (menuItem)"
+      - name: changePasswordMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "Change Password" }
+        comment: "Change Password (menuItem)"
+      - name: logoutMenuItem
+        component: menuItem
+        locator: { strategy: getByRole, args: ["menuitem"], name: "Logout" }
+        comment: "Logout (menuItem)"
+  - name: selectOpen
+    trigger: "open trigger \"-- Select --\""
+    elements:
+      - name: listboxOptions
+        component: dropdown
+        comment: "(unnamed) (dropdown)"
+      - name: selectOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "-- Select --" }
+        comment: "-- Select -- (dropdown)"
+      - name: accommodationOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Accommodation" }
+        comment: "Accommodation (dropdown)"
+      - name: medicalReimbursementOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Medical Reimbursement" }
+        comment: "Medical Reimbursement (dropdown)"
+      - name: travelAllowanceOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Travel Allowance" }
+        comment: "Travel Allowance (dropdown)"
+  - name: selectOpen2
+    trigger: "open trigger \"-- Select --\""
+    elements:
+      - name: listboxOptions2
+        component: dropdown
+        comment: "(unnamed) (dropdown)"
+      - name: selectOption2
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "-- Select --" }
+        comment: "-- Select -- (dropdown)"
+      - name: afghanistanAfghaniOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Afghanistan Afghani" }
+        comment: "Afghanistan Afghani (dropdown)"
+      - name: albanianLekOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Albanian Lek" }
+        comment: "Albanian Lek (dropdown)"
+      - name: algerianDinarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Algerian Dinar" }
+        comment: "Algerian Dinar (dropdown)"
+      - name: angolanNewKwanzaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Angolan New Kwanza" }
+        comment: "Angolan New Kwanza (dropdown)"
+      - name: argentinaPesosOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Argentina Pesos" }
+        comment: "Argentina Pesos (dropdown)"
+      - name: argentinePesoOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Argentine Peso" }
+        comment: "Argentine Peso (dropdown)"
+      - name: arubanFlorinOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Aruban Florin" }
+        comment: "Aruban Florin (dropdown)"
+      - name: australianDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Australian Dollar" }
+        comment: "Australian Dollar (dropdown)"
+      - name: bahamianDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Bahamian Dollar" }
+        comment: "Bahamian Dollar (dropdown)"
+      - name: bahrainiDinarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Bahraini Dinar" }
+        comment: "Bahraini Dinar (dropdown)"
+      - name: bangladeshiTakaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Bangladeshi Taka" }
+        comment: "Bangladeshi Taka (dropdown)"
+      - name: barbadosDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Barbados Dollar" }
+        comment: "Barbados Dollar (dropdown)"
+      - name: belizeDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Belize Dollar" }
+        comment: "Belize Dollar (dropdown)"
+      - name: bermudianDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Bermudian Dollar" }
+        comment: "Bermudian Dollar (dropdown)"
+      - name: bhutanNgultrumOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Bhutan Ngultrum" }
+        comment: "Bhutan Ngultrum (dropdown)"
+      - name: bolivianBolivianoOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Bolivian Boliviano" }
+        comment: "Bolivian Boliviano (dropdown)"
+      - name: botswanaPulaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Botswana Pula" }
+        comment: "Botswana Pula (dropdown)"
+      - name: brazilianRealOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Brazilian Real" }
+        comment: "Brazilian Real (dropdown)"
+      - name: bruneiDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Brunei Dollar" }
+        comment: "Brunei Dollar (dropdown)"
+      - name: bulgarianLevOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Bulgarian Lev" }
+        comment: "Bulgarian Lev (dropdown)"
+      - name: burundiFrancOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Burundi Franc" }
+        comment: "Burundi Franc (dropdown)"
+      - name: canadianDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Canadian Dollar" }
+        comment: "Canadian Dollar (dropdown)"
+      - name: capeVerdeEscudoOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Cape Verde Escudo" }
+        comment: "Cape Verde Escudo (dropdown)"
+      - name: caymanIslandsDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Cayman Islands Dollar" }
+        comment: "Cayman Islands Dollar (dropdown)"
+      - name: cFAFrancBCEAOOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "CFA Franc BCEAO" }
+        comment: "CFA Franc BCEAO (dropdown)"
+      - name: cFAFrancBEACOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "CFA Franc BEAC" }
+        comment: "CFA Franc BEAC (dropdown)"
+      - name: cFPFrancOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "CFP Franc" }
+        comment: "CFP Franc (dropdown)"
+      - name: chileanPesoOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Chilean Peso" }
+        comment: "Chilean Peso (dropdown)"
+      - name: chineseYuanRenminbiOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Chinese Yuan Renminbi" }
+        comment: "Chinese Yuan Renminbi (dropdown)"
+      - name: colombianPesoOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Colombian Peso" }
+        comment: "Colombian Peso (dropdown)"
+      - name: comorosFrancOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Comoros Franc" }
+        comment: "Comoros Franc (dropdown)"
+      - name: costaRicanColonOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Costa Rican Colon" }
+        comment: "Costa Rican Colon (dropdown)"
+      - name: croatianKunaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Croatian Kuna" }
+        comment: "Croatian Kuna (dropdown)"
+      - name: cubanPesoOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Cuban Peso" }
+        comment: "Cuban Peso (dropdown)"
+      - name: cyprusPoundOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Cyprus Pound" }
+        comment: "Cyprus Pound (dropdown)"
+      - name: czechKorunaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Czech Koruna" }
+        comment: "Czech Koruna (dropdown)"
+      - name: danishKronaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Danish Krona" }
+        comment: "Danish Krona (dropdown)"
+      - name: djiboutiFrancOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Djibouti Franc" }
+        comment: "Djibouti Franc (dropdown)"
+      - name: dominicanPesoOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Dominican Peso" }
+        comment: "Dominican Peso (dropdown)"
+      - name: easternCaribbeanDollarsOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Eastern Caribbean Dollars" }
+        comment: "Eastern Caribbean Dollars (dropdown)"
+      - name: ecuadorSucreOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Ecuador Sucre" }
+        comment: "Ecuador Sucre (dropdown)"
+      - name: egyptianPoundOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Egyptian Pound" }
+        comment: "Egyptian Pound (dropdown)"
+      - name: elSalvadorColonOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "El Salvador Colon" }
+        comment: "El Salvador Colon (dropdown)"
+      - name: estonianKronaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Estonian Krona" }
+        comment: "Estonian Krona (dropdown)"
+      - name: ethiopianBirrOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Ethiopian Birr" }
+        comment: "Ethiopian Birr (dropdown)"
+      - name: euroOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Euro" }
+        comment: "Euro (dropdown)"
+      - name: falklandIslandsPoundOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Falkland Islands Pound" }
+        comment: "Falkland Islands Pound (dropdown)"
+      - name: fijiDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Fiji Dollar" }
+        comment: "Fiji Dollar (dropdown)"
+      - name: gambianDalasiOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Gambian Dalasi" }
+        comment: "Gambian Dalasi (dropdown)"
+      - name: ghanaianCediOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Ghanaian Cedi" }
+        comment: "Ghanaian Cedi (dropdown)"
+      - name: gibraltarPoundOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Gibraltar Pound" }
+        comment: "Gibraltar Pound (dropdown)"
+      - name: goldOzOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Gold (oz.)" }
+        comment: "Gold (oz.) (dropdown)"
+      - name: guatemalanQuetzalOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Guatemalan Quetzal" }
+        comment: "Guatemalan Quetzal (dropdown)"
+      - name: guineaFrancOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Guinea Franc" }
+        comment: "Guinea Franc (dropdown)"
+      - name: guyananDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Guyanan Dollar" }
+        comment: "Guyanan Dollar (dropdown)"
+      - name: haitianGourdeOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Haitian Gourde" }
+        comment: "Haitian Gourde (dropdown)"
+      - name: honduranLempiraOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Honduran Lempira" }
+        comment: "Honduran Lempira (dropdown)"
+      - name: hongKongDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Hong Kong Dollar" }
+        comment: "Hong Kong Dollar (dropdown)"
+      - name: hungarianForintOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Hungarian Forint" }
+        comment: "Hungarian Forint (dropdown)"
+      - name: icelandKronaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Iceland Krona" }
+        comment: "Iceland Krona (dropdown)"
+      - name: iMFSpecialDrawingRightOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "IMF Special Drawing Right" }
+        comment: "IMF Special Drawing Right (dropdown)"
+      - name: indianRupeeOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Indian Rupee" }
+        comment: "Indian Rupee (dropdown)"
+      - name: indonesianRupiahOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Indonesian Rupiah" }
+        comment: "Indonesian Rupiah (dropdown)"
+      - name: iranianRialOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Iranian Rial" }
+        comment: "Iranian Rial (dropdown)"
+      - name: iraqiDinarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Iraqi Dinar" }
+        comment: "Iraqi Dinar (dropdown)"
+      - name: israeliNewShekelOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Israeli New Shekel" }
+        comment: "Israeli New Shekel (dropdown)"
+      - name: jamaicanDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Jamaican Dollar" }
+        comment: "Jamaican Dollar (dropdown)"
+      - name: japaneseYenOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Japanese Yen" }
+        comment: "Japanese Yen (dropdown)"
+      - name: jordanianDinarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Jordanian Dinar" }
+        comment: "Jordanian Dinar (dropdown)"
+      - name: kampucheanRielOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Kampuchean Riel" }
+        comment: "Kampuchean Riel (dropdown)"
+      - name: kazakhstanTengeOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Kazakhstan Tenge" }
+        comment: "Kazakhstan Tenge (dropdown)"
+      - name: kenyanShillingOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Kenyan Shilling" }
+        comment: "Kenyan Shilling (dropdown)"
+      - name: koreanWonOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Korean Won" }
+        comment: "Korean Won (dropdown)"
+      - name: kuwaitiDinarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Kuwaiti Dinar" }
+        comment: "Kuwaiti Dinar (dropdown)"
+      - name: laoKipOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Lao Kip" }
+        comment: "Lao Kip (dropdown)"
+      - name: latvianLatsOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Latvian Lats" }
+        comment: "Latvian Lats (dropdown)"
+      - name: lebanesePoundOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Lebanese Pound" }
+        comment: "Lebanese Pound (dropdown)"
+      - name: lesothoLotiOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Lesotho Loti" }
+        comment: "Lesotho Loti (dropdown)"
+      - name: liberianDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Liberian Dollar" }
+        comment: "Liberian Dollar (dropdown)"
+      - name: libyanDinarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Libyan Dinar" }
+        comment: "Libyan Dinar (dropdown)"
+      - name: lithuanianLitasOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Lithuanian Litas" }
+        comment: "Lithuanian Litas (dropdown)"
+      - name: macauPatacaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Macau Pataca" }
+        comment: "Macau Pataca (dropdown)"
+      - name: malagasyFrancOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Malagasy Franc" }
+        comment: "Malagasy Franc (dropdown)"
+      - name: malawiKwachaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Malawi Kwacha" }
+        comment: "Malawi Kwacha (dropdown)"
+      - name: malaysianRinggitOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Malaysian Ringgit" }
+        comment: "Malaysian Ringgit (dropdown)"
+      - name: maldiveRufiyaaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Maldive Rufiyaa" }
+        comment: "Maldive Rufiyaa (dropdown)"
+      - name: malteseLiraOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Maltese Lira" }
+        comment: "Maltese Lira (dropdown)"
+      - name: mauritanianOuguiyaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Mauritanian Ouguiya" }
+        comment: "Mauritanian Ouguiya (dropdown)"
+      - name: mauritiusRupeeOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Mauritius Rupee" }
+        comment: "Mauritius Rupee (dropdown)"
+      - name: mexicanNewPesoOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Mexican New Peso" }
+        comment: "Mexican New Peso (dropdown)"
+      - name: mexicanPesoOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Mexican Peso" }
+        comment: "Mexican Peso (dropdown)"
+      - name: mongolianTugrikOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Mongolian Tugrik" }
+        comment: "Mongolian Tugrik (dropdown)"
+      - name: moroccanDirhamOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Moroccan Dirham" }
+        comment: "Moroccan Dirham (dropdown)"
+      - name: mozambiqueMeticalOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Mozambique Metical" }
+        comment: "Mozambique Metical (dropdown)"
+      - name: myanmarKyatOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Myanmar Kyat" }
+        comment: "Myanmar Kyat (dropdown)"
+      - name: namibiaDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Namibia Dollar" }
+        comment: "Namibia Dollar (dropdown)"
+      - name: nepaleseRupeeOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Nepalese Rupee" }
+        comment: "Nepalese Rupee (dropdown)"
+      - name: newZaireOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "New Zaire" }
+        comment: "New Zaire (dropdown)"
+      - name: newZealandDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "New Zealand Dollar" }
+        comment: "New Zealand Dollar (dropdown)"
+      - name: nicaraguanCordobaOroOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Nicaraguan Cordoba Oro" }
+        comment: "Nicaraguan Cordoba Oro (dropdown)"
+      - name: nigerianNairaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Nigerian Naira" }
+        comment: "Nigerian Naira (dropdown)"
+      - name: nLAntillianGuilderOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "NL Antillian Guilder" }
+        comment: "NL Antillian Guilder (dropdown)"
+      - name: northKoreanWonOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "North Korean Won" }
+        comment: "North Korean Won (dropdown)"
+      - name: norwegianKronaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Norwegian Krona" }
+        comment: "Norwegian Krona (dropdown)"
+      - name: omaniRialOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Omani Rial" }
+        comment: "Omani Rial (dropdown)"
+      - name: pakistanRupeeOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Pakistan Rupee" }
+        comment: "Pakistan Rupee (dropdown)"
+      - name: palladiumOzOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Palladium (oz.)" }
+        comment: "Palladium (oz.) (dropdown)"
+      - name: panamanianBalboaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Panamanian Balboa" }
+        comment: "Panamanian Balboa (dropdown)"
+      - name: papuaNewGuineaKinaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Papua New Guinea Kina" }
+        comment: "Papua New Guinea Kina (dropdown)"
+      - name: paraguayGuaraniOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Paraguay Guarani" }
+        comment: "Paraguay Guarani (dropdown)"
+      - name: peruvianNuevoSolOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Peruvian Nuevo Sol" }
+        comment: "Peruvian Nuevo Sol (dropdown)"
+      - name: philippinePesoOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Philippine Peso" }
+        comment: "Philippine Peso (dropdown)"
+      - name: platinumOzOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Platinum (oz.)" }
+        comment: "Platinum (oz.) (dropdown)"
+      - name: polishZlotyOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Polish Zloty" }
+        comment: "Polish Zloty (dropdown)"
+      - name: poundSterlingOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Pound Sterling" }
+        comment: "Pound Sterling (dropdown)"
+      - name: qatariRialOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Qatari Rial" }
+        comment: "Qatari Rial (dropdown)"
+      - name: romanianLeuOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Romanian Leu" }
+        comment: "Romanian Leu (dropdown)"
+      - name: russiaRublesOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Russia Rubles" }
+        comment: "Russia Rubles (dropdown)"
+      - name: russianRoubleOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Russian Rouble" }
+        comment: "Russian Rouble (dropdown)"
+      - name: samoanTalaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Samoan Tala" }
+        comment: "Samoan Tala (dropdown)"
+      - name: saoTomePrincipeDobraOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Sao Tome/Principe Dobra" }
+        comment: "Sao Tome/Principe Dobra (dropdown)"
+      - name: saudiArabiaRiyalOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Saudi Arabia Riyal" }
+        comment: "Saudi Arabia Riyal (dropdown)"
+      - name: seychellesRupeeOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Seychelles Rupee" }
+        comment: "Seychelles Rupee (dropdown)"
+      - name: sierraLeoneLeoneOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Sierra Leone Leone" }
+        comment: "Sierra Leone Leone (dropdown)"
+      - name: silverOzOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Silver (oz.)" }
+        comment: "Silver (oz.) (dropdown)"
+      - name: singaporeDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Singapore Dollar" }
+        comment: "Singapore Dollar (dropdown)"
+      - name: slovakKorunaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Slovak Koruna" }
+        comment: "Slovak Koruna (dropdown)"
+      - name: solomonIslandsDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Solomon Islands Dollar" }
+        comment: "Solomon Islands Dollar (dropdown)"
+      - name: somaliShillingOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Somali Shilling" }
+        comment: "Somali Shilling (dropdown)"
+      - name: southAfricanRandOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "South African Rand" }
+        comment: "South African Rand (dropdown)"
+      - name: sriLankaRupeeOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Sri Lanka Rupee" }
+        comment: "Sri Lanka Rupee (dropdown)"
+      - name: stHelenaPoundOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "St. Helena Pound" }
+        comment: "St. Helena Pound (dropdown)"
+      - name: sudaneseDinarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Sudanese Dinar" }
+        comment: "Sudanese Dinar (dropdown)"
+      - name: sudanesePoundOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Sudanese Pound" }
+        comment: "Sudanese Pound (dropdown)"
+      - name: surinameseDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Surinamese Dollar" }
+        comment: "Surinamese Dollar (dropdown)"
+      - name: swazilandLilangeniOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Swaziland Lilangeni" }
+        comment: "Swaziland Lilangeni (dropdown)"
+      - name: swedishKronaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Swedish Krona" }
+        comment: "Swedish Krona (dropdown)"
+      - name: swissFrancOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Swiss Franc" }
+        comment: "Swiss Franc (dropdown)"
+      - name: syrianPoundOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Syrian Pound" }
+        comment: "Syrian Pound (dropdown)"
+      - name: taiwanDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Taiwan Dollar" }
+        comment: "Taiwan Dollar (dropdown)"
+      - name: tanzanianShillingOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Tanzanian Shilling" }
+        comment: "Tanzanian Shilling (dropdown)"
+      - name: thaiBahtOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Thai Baht" }
+        comment: "Thai Baht (dropdown)"
+      - name: tonganPaAngaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Tongan Pa'anga" }
+        comment: "Tongan Pa'anga (dropdown)"
+      - name: trinidadTobagoDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Trinidad/Tobago Dollar" }
+        comment: "Trinidad/Tobago Dollar (dropdown)"
+      - name: tunisianDinarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Tunisian Dinar" }
+        comment: "Tunisian Dinar (dropdown)"
+      - name: turkishLiraOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Turkish Lira" }
+        comment: "Turkish Lira (dropdown)"
+      - name: ugandaShillingOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Uganda Shilling" }
+        comment: "Uganda Shilling (dropdown)"
+      - name: ukraineHryvniaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Ukraine Hryvnia" }
+        comment: "Ukraine Hryvnia (dropdown)"
+      - name: unitedStatesDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "United States Dollar" }
+        comment: "United States Dollar (dropdown)"
+      - name: uruguayanPesoOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Uruguayan Peso" }
+        comment: "Uruguayan Peso (dropdown)"
+      - name: utdArabEmirDirhamOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Utd. Arab Emir. Dirham" }
+        comment: "Utd. Arab Emir. Dirham (dropdown)"
+      - name: vanuatuVatuOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Vanuatu Vatu" }
+        comment: "Vanuatu Vatu (dropdown)"
+      - name: venezuelanBolivarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Venezuelan Bolivar" }
+        comment: "Venezuelan Bolivar (dropdown)"
+      - name: vietnameseDongOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Vietnamese Dong" }
+        comment: "Vietnamese Dong (dropdown)"
+      - name: yemeniRiyalOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Yemeni Riyal" }
+        comment: "Yemeni Riyal (dropdown)"
+      - name: yugoslavDinarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Yugoslav Dinar" }
+        comment: "Yugoslav Dinar (dropdown)"
+      - name: yugoslavianDinarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Yugoslavian Dinar" }
+        comment: "Yugoslavian Dinar (dropdown)"
+      - name: zambianKwachaOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Zambian Kwacha" }
+        comment: "Zambian Kwacha (dropdown)"
+      - name: zimbabweDollarOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Zimbabwe Dollar" }
+        comment: "Zimbabwe Dollar (dropdown)"

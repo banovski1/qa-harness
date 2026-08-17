@@ -9,15 +9,15 @@ import { CheckboxComponent } from '../../components/CheckboxComponent';
 import { ImageComponent } from '../../components/ImageComponent';
 import { InputComponent } from '../../components/InputComponent';
 import { LinkComponent } from '../../components/LinkComponent';
+import { MenuItemComponent } from '../../components/MenuItemComponent';
 import { OptionComponent } from '../../components/OptionComponent';
 import { TableComponent } from '../../components/tables/TableComponent';
 import { TextComponent } from '../../components/TextComponent';
 import { NavigationBar } from '../../components/navigation/NavigationBar';
 
-/** /web/index.php/leave/viewLeaveList (also reachable at /web/index.php/leave/viewLeaveModule) */
+/** /web/index.php/leave/viewLeaveList */
 export abstract class LeaveListPageGenerated extends BasePage {
   static readonly path = '/web/index.php/leave/viewLeaveList';
-  static readonly aliases = ['/web/index.php/leave/viewLeaveModule'] as const;
 
   constructor(page: Page) {
     super(page, LeaveListPageGenerated.path);
@@ -105,21 +105,14 @@ export abstract class LeaveListPageGenerated extends BasePage {
     return new ButtonComponent(this.page.getByRole('button', { name: 'Search', exact: true }), 'Search (button)');
   }
 
-  /** Table (, Date, Employee Name, Leave Type, Leave Balance (Days), Number of Days, Status, Comments, Actions; 1 row(s)) (table) */
+  /** table (table) */
   // UNSTABLE: table has no accessible name; positional index used
   get tableTable(): TableComponent {
-    return new TableComponent(this.page.getByRole('table').nth(0), ['', 'Date', 'Employee Name', 'Leave Type', 'Leave Balance (Days)', 'Number of Days', 'Status', 'Comments', 'Actions'], 'Table (, Date, Employee Name, Leave Type, Leave Balance (Days), Number of Days, Status, Comments, Actions; 1 row(s)) (table)');
+    return new TableComponent(this.page.getByRole('table').nth(0), [], 'table (table)');
   }
 
-  /**  (checkbox) */
-  get elementCheckbox(): CheckboxComponent {
-    return new CheckboxComponent(this.page.getByRole('checkbox', { name: '', exact: true }), ' (checkbox)');
-  }
-
-  /** × (button) */
-  get elementButton4(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: '×', exact: true }), '× (button)');
-  }
+  /** Elements revealed by opening 'Surya king'. Open the trigger first. */
+  readonly suryaKingOpen = new LeaveListPageSuryaKingOpen(this.page);
 
   /** Elements revealed by opening '-- Select --'. Open the trigger first. */
   readonly selectOpen = new LeaveListPageSelectOpen(this.page);
@@ -129,6 +122,31 @@ export abstract class LeaveListPageGenerated extends BasePage {
 
   /** Elements revealed by opening '-- Select --'. Open the trigger first. */
   readonly selectOpen3 = new LeaveListPageSelectOpen3(this.page);
+}
+
+/** Only present while 'Surya king' is open. */
+export class LeaveListPageSuryaKingOpen {
+  constructor(private readonly page: Page) {}
+
+  /** About (menuItem) */
+  get aboutMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'About', exact: true }), 'About (menuItem)');
+  }
+
+  /** Support (menuItem) */
+  get supportMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Support', exact: true }), 'Support (menuItem)');
+  }
+
+  /** Change Password (menuItem) */
+  get changePasswordMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Change Password', exact: true }), 'Change Password (menuItem)');
+  }
+
+  /** Logout (menuItem) */
+  get logoutMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Logout', exact: true }), 'Logout (menuItem)');
+  }
 }
 
 /** Only present while '-- Select --' is open. */
@@ -158,6 +176,16 @@ export class LeaveListPageSelectOpen {
   /** Taken (dropdown) */
   get takenOption(): OptionComponent {
     return new OptionComponent(this.page.getByRole('option', { name: 'Taken', exact: true }), 'Taken (dropdown)');
+  }
+
+  /**  (checkbox) */
+  get elementCheckbox(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox', { name: '', exact: true }), ' (checkbox)');
+  }
+
+  /** × (button) */
+  get elementButton4(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button', { name: '×', exact: true }), '× (button)');
   }
 }
 
@@ -218,6 +246,16 @@ export class LeaveListPageSelectOpen2 {
   /** US - Vacation (dropdown) */
   get uSVacationOption(): OptionComponent {
     return new OptionComponent(this.page.getByRole('option', { name: 'US - Vacation', exact: true }), 'US - Vacation (dropdown)');
+  }
+
+  /**  (checkbox) */
+  get elementCheckbox2(): CheckboxComponent {
+    return new CheckboxComponent(this.page.getByRole('checkbox', { name: '', exact: true }), ' (checkbox)');
+  }
+
+  /** × (button) */
+  get elementButton5(): ButtonComponent {
+    return new ButtonComponent(this.page.getByRole('button', { name: '×', exact: true }), '× (button)');
   }
 }
 

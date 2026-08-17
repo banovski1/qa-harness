@@ -14,7 +14,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import yaml from 'js-yaml';
-import { fromMap } from '../ui-mapper-script/locator-spec.mjs';
+import { fromMap } from './locator-spec.mjs';
 import { pageClassName, toKebab, toPascal } from './naming.mjs';
 
 const TABLE_COMMENT_RE = /^Table \((.*); (\d+) row\(s\)\)/;
@@ -39,7 +39,7 @@ const TRIGGER_RE = /^open trigger "(.*)"$/;
 export function readApplicationMap(config) {
   const files = listMapFiles(config.mapDir);
   if (files.length === 0) {
-    throw new Error(`No *.yaml files found in ${config.mapDir}. Run ui-mapper-script first.`);
+    throw new Error(`No *.yaml files found in ${config.mapDir}. Run the smart-map skill first.`);
   }
 
   const stats = { files: files.length, elementsRead: 0, skippedNoLocator: 0, unstable: 0, tables: 0 };
@@ -153,7 +153,7 @@ function toElement(raw, path) {
     label: labelFromComment(comment, raw.component) || locator.name || String(raw.name),
     unstable: Boolean(locator.unstable),
     unstableReason: locator.unstableReason ?? null,
-    table: raw.component === 'table' ? parseTableComment(comment) : null,
+    table: raw.component === 'table' ? tableShapeOf(raw, comment) : null,
     signature: `${raw.component}|${locatorSignature(locator)}`,
   };
 }
@@ -161,15 +161,30 @@ function toElement(raw, path) {
 // ---- comment parsing ---------------------------------------------------------
 
 /** `"Change Password (menuItem)"` -> `"Change Password"`. */
-function labelFromComment(comment, component) {
+export function labelFromComment(comment, component) {
   const suffix = ` (${component})`;
   const text = comment.endsWith(suffix) ? comment.slice(0, -suffix.length) : comment;
   return text.trim();
 }
 
 /**
- * Recover a table's shape from its prose comment, which is the only place the
- * mapper records it: `Table (, Username , User Role ; 3 row(s)) (table)`.
+ * A table's shape comes from the structured `columns:`/`rowCount:` keys the
+ * mapper emits; older map files only recorded it inside the prose comment, so
+ * the comment parse stays as a fallback.
+ */
+function tableShapeOf(raw, comment) {
+  if (Array.isArray(raw.columns)) {
+    return {
+      columns: raw.columns.map((c) => String(c?.name ?? '').trim()).filter(Boolean),
+      rowCount: Number(raw.rowCount ?? 0),
+    };
+  }
+  return parseTableComment(comment);
+}
+
+/**
+ * Legacy fallback: recover a table's shape from its prose comment, which used to
+ * be the only place the mapper recorded it: `Table (, Username , User Role ; 3 row(s)) (table)`.
  * The leading empty column is the select-all checkbox column and is dropped;
  * every label is trimmed because the mapper preserves the DOM's whitespace.
  */
@@ -216,7 +231,9 @@ function detectFolderSegment(urls) {
  * noise (fixture data baked into the crawl) and are dropped by default.
  */
 function splitUrl(url, pagesConfig) {
-  const parts = String(url).split('/').filter(Boolean);
+  // `{id}` segments are the mapper's collapsed entity-ID placeholders — identity
+  // noise, never grouping or action information.
+  const parts = String(url).split('/').filter((p) => p && p !== '{id}');
   const groupIndex = Math.max(0, pagesConfig.folderSegment - 1);
   const group = parts[groupIndex] ?? 'app';
   let action = parts[groupIndex + 1] ?? 'index';

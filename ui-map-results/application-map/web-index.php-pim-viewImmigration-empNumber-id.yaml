@@ -1,0 +1,169 @@
+page: web-index.php-pim-viewImmigration-empNumber-id
+url: /web/index.php/pim/viewImmigration/empNumber/{id}
+title: "OrangeHRM"
+elements:
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: clientBrandBannerImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], name: "client brand banner" }
+    comment: "client brand banner (image)"
+  - name: searchInput
+    component: input
+    locator: { strategy: getByRole, args: ["textbox"], name: "Search" }
+    comment: "Search (input)"
+  - name: elementButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: adminLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pIMLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: claimImgImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], within: { strategy: getByRole, args: ["link"], name: "Claim" }, unstable: true, unstableReason: "no accessible name; scoped to nearest named ancestor" }
+    comment: "Claim img (image)"
+  - name: buzzLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: upgradeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Upgrade" }
+    comment: "Upgrade (link)"
+  - name: upgradeButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Upgrade" }
+    comment: "Upgrade (button)"
+  - name: elementButton2
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: orangeHRMIncLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "OrangeHRM, Inc" }
+    comment: "OrangeHRM, Inc (link)"
+  - name: pIMHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "PIM" }
+    comment: "PIM (text)"
+  - name: personalDetailsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Personal Details" }
+    comment: "Personal Details (link)"
+  - name: contactDetailsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Contact Details" }
+    comment: "Contact Details (link)"
+  - name: emergencyContactsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Emergency Contacts" }
+    comment: "Emergency Contacts (link)"
+  - name: dependentsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dependents" }
+    comment: "Dependents (link)"
+  - name: immigrationLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Immigration" }
+    comment: "Immigration (link)"
+  - name: jobLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Job" }
+    comment: "Job (link)"
+  - name: salaryLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Salary" }
+    comment: "Salary (link)"
+  - name: reportToLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Report-to" }
+    comment: "Report-to (link)"
+  - name: qualificationsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Qualifications" }
+    comment: "Qualifications (link)"
+  - name: membershipsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Memberships" }
+    comment: "Memberships (link)"
+  - name: assignedImmigrationRecordsHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Assigned Immigration Records" }
+    comment: "Assigned Immigration Records (text)"
+  - name: addImmigrationRecordsButton
+    component: button
+    locator: { strategy: css, args: [".orangehrm-horizontal-padding:has(h6:text-is(\"Assigned Immigration Records\")) button"] }
+    comment: "Add Immigration Records (button)"
+  - name: assignedImmigrationRecordsTable
+    component: table
+    locator: { strategy: css, args: ["div:has(> .orangehrm-horizontal-padding:has(h6:text-is(\"Assigned Immigration Records\"))) > .orangehrm-container .oxd-table"] }
+    columns:
+      - name: "Document"
+      - name: "Number"
+      - name: "Issued By"
+      - name: "Issued Date"
+      - name: "Expiry Date"
+      - name: "Actions"
+    rowCount: 0
+    comment: "Assigned Immigration Records (table)"
+  - name: attachmentsHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Attachments" }
+    comment: "Attachments (text)"
+  - name: addAttachmentButton
+    component: button
+    locator: { strategy: css, args: [".orangehrm-horizontal-padding:has(h6:text-is(\"Attachments\")) button"] }
+    comment: "Add Attachment (button)"
+actions:
+  - do: "Add an immigration record"
+    kind: reveal
+    target: "addImmigrationRecordsButton"
+    effect: "Reveals an inline form on the same URL; the fields switch between Passport and Visa."
+  - do: "Delete a record"
+    kind: destructive
+    target: "row → button i.bi-trash"
+    notExercised: true

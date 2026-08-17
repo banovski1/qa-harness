@@ -11,9 +11,11 @@ You write tests for a framework whose architecture is fixed by the generator. Yo
 `ui-map-results/application-map/web-index.php-<module>-<action>.yaml` is one file per screen. Read every screen the script touches. Use `ui-map-results/component-inventory.md` to locate an element by accessible name when you do not know its page.
 
 - An element's `name:` is the getter name on the page object.
-- `comment:` is `"<label> (<component>)"`. Table columns and row counts exist **only** inside the table's comment prose: `Table (Col A , Col B ; 13 row(s)) (table)` — column strings keep their trailing spaces.
+- `comment:` is `"<label> (<component>)"`. Table columns and row counts are structured keys on the table element — `columns:` and `rowCount:`.
 - An element with no `locator:` key is skipped by the generator and has no getter. Do not reference it.
 - `states:` list elements that appear only after the named trigger fires.
+
+A map file's `actions:` block, when present, is the other half of the story. `elements:` says what is on the screen; `actions:` says what those controls *do* — which one opens which modal, what a click leads to, which fields are required, how an autocomplete behaves, and which controls are destructive. Read it before writing steps, and prefer the element names it references in `submit:` and `target:`. A file with no `actions:` block has not been walked yet; say so in your report.
 
 ## 2. Screen to page object
 
@@ -51,7 +53,7 @@ Then call `loginAs` at each user switch. Credentials come from `requiredEnv` in 
 
 ## 7. Screens missing from the map
 
-Write the step anyway, using named `getByRole` locators inferred from the closest mapped page. Mark each inferred locator `// UNVERIFIED` and list them all in your report, suggesting a re-run of the `app-map` skill. Prefer a named role over anything positional.
+Write the step anyway, using named `getByRole` locators inferred from the closest mapped page. Mark each inferred locator `// UNVERIFIED` and list them all in your report, suggesting the `smart-map` skill be run for that module. Prefer a named role over anything positional.
 
 ## 8. Verify and report
 
@@ -60,7 +62,7 @@ Run `npm run typecheck` in `generated-framework/`. Report: files created and mod
 ## Rules
 
 - Never edit `*.generated.ts`, `NavigationBar.ts`, `page-fixtures.ts`, `auth-fixtures.ts`, `global-setup.ts`, or anything under `ui-map-results/`. The next generator run destroys the edit.
-- Never use `mcp__playwright__*`. The map is the only source of UI truth; if it is wrong, re-run the mapper.
+- Never use `mcp__playwright__*`. The map is the only source of UI truth; if it is wrong, run the `smart-map` skill for that module.
 - Leave no comments in emitted code except `// UNVERIFIED` markers and genuinely non-obvious logic.
 - One responsibility per method, intention-revealing names, no abstraction without a second caller.
 - Do not run the test. The QA executes and reviews it.

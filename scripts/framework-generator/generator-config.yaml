@@ -3,7 +3,7 @@
 #   node scripts/framework-generator/generate.mjs [path/to/this-file.yaml] [--dry-run]
 #
 # Run from the repo root so mapDir and outputDir resolve correctly. The generator
-# reads the application map produced by ui-mapper-script and emits a Playwright
+# reads the application map produced by the smart-map skill and emits a Playwright
 # component-object-model framework in the language named below.
 
 language: typescript    # typescript | javascript | java | python | csharp
@@ -12,11 +12,11 @@ outputDir: ./generated-framework
 baseUrl: https://opensource-demo.orangehrmlive.com
 mapDir: ui-map-results/application-map
 
-# Optional. The login flow is not in the application map (the mapper logs in
-# before it crawls), so point this at the mapper's spec to get a working login
+# Optional. The login flow is not in the application map (the mapping skill logs
+# in before it walks), so point this at the app config to get a working login
 # helper instead of a stub. Credentials are NOT read from it — they come from
 # APP_USERNAME / APP_PASSWORD in the generated project's .env.
-loginConfig: scripts/ui-mapper-script/app-map-config.yaml
+loginConfig: scripts/app-config.yaml
 
 pages:
   folderSegment: auto         # URL segment used as the folder group; `auto` strips the

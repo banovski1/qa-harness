@@ -8,15 +8,15 @@ import { ButtonComponent } from '../../components/ButtonComponent';
 import { ImageComponent } from '../../components/ImageComponent';
 import { InputComponent } from '../../components/InputComponent';
 import { LinkComponent } from '../../components/LinkComponent';
+import { MenuItemComponent } from '../../components/MenuItemComponent';
 import { OptionComponent } from '../../components/OptionComponent';
 import { TableComponent } from '../../components/tables/TableComponent';
 import { TextComponent } from '../../components/TextComponent';
 import { NavigationBar } from '../../components/navigation/NavigationBar';
 
-/** /web/index.php/performance/searchEvaluatePerformanceReview (also reachable at /web/index.php/performance/viewPerformanceModule) */
+/** /web/index.php/performance/searchEvaluatePerformanceReview */
 export abstract class SearchEvaluatePerformanceReviewPageGenerated extends BasePage {
   static readonly path = '/web/index.php/performance/searchEvaluatePerformanceReview';
-  static readonly aliases = ['/web/index.php/performance/viewPerformanceModule'] as const;
 
   constructor(page: Page) {
     super(page, SearchEvaluatePerformanceReviewPageGenerated.path);
@@ -93,16 +93,14 @@ export abstract class SearchEvaluatePerformanceReviewPageGenerated extends BaseP
     return new ButtonComponent(this.page.getByRole('button', { name: 'Search', exact: true }), 'Search (button)');
   }
 
-  /** Table (Employee , Job Title, Sub Unit, Review Period , Due Date , Review Status , Actions; 1 row(s)) (table) */
+  /** table (table) */
   // UNSTABLE: table has no accessible name; positional index used
   get tableTable(): TableComponent {
-    return new TableComponent(this.page.getByRole('table').nth(0), ['Employee ', 'Job Title', 'Sub Unit', 'Review Period ', 'Due Date ', 'Review Status ', 'Actions'], 'Table (Employee , Job Title, Sub Unit, Review Period , Due Date , Review Status , Actions; 1 row(s)) (table)');
+    return new TableComponent(this.page.getByRole('table').nth(0), [], 'table (table)');
   }
 
-  /** × (button) */
-  get elementButton4(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: '×', exact: true }), '× (button)');
-  }
+  /** Elements revealed by opening 'Surya king'. Open the trigger first. */
+  readonly suryaKingOpen = new SearchEvaluatePerformanceReviewPageSuryaKingOpen(this.page);
 
   /** Elements revealed by opening '-- Select --'. Open the trigger first. */
   readonly selectOpen = new SearchEvaluatePerformanceReviewPageSelectOpen(this.page);
@@ -117,153 +115,38 @@ export abstract class SearchEvaluatePerformanceReviewPageGenerated extends BaseP
   readonly selectOpen3 = new SearchEvaluatePerformanceReviewPageSelectOpen3(this.page);
 }
 
+/** Only present while 'Surya king' is open. */
+export class SearchEvaluatePerformanceReviewPageSuryaKingOpen {
+  constructor(private readonly page: Page) {}
+
+  /** About (menuItem) */
+  get aboutMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'About', exact: true }), 'About (menuItem)');
+  }
+
+  /** Support (menuItem) */
+  get supportMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Support', exact: true }), 'Support (menuItem)');
+  }
+
+  /** Change Password (menuItem) */
+  get changePasswordMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Change Password', exact: true }), 'Change Password (menuItem)');
+  }
+
+  /** Logout (menuItem) */
+  get logoutMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Logout', exact: true }), 'Logout (menuItem)');
+  }
+}
+
 /** Only present while '-- Select --' is open. */
 export class SearchEvaluatePerformanceReviewPageSelectOpen {
   constructor(private readonly page: Page) {}
 
-  /** -- Select -- (dropdown) */
-  get selectOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: '-- Select --', exact: true }), '-- Select -- (dropdown)');
-  }
-
-  /** Automaton Tester (dropdown) */
-  get automatonTesterOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Automaton Tester', exact: true }), 'Automaton Tester (dropdown)');
-  }
-
-  /** Chief Executive Officer (dropdown) */
-  get chiefExecutiveOfficerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Chief Executive Officer', exact: true }), 'Chief Executive Officer (dropdown)');
-  }
-
-  /** Chief Financial Officer (dropdown) */
-  get chiefFinancialOfficerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Chief Financial Officer', exact: true }), 'Chief Financial Officer (dropdown)');
-  }
-
-  /** Chief Technical Officer (dropdown) */
-  get chiefTechnicalOfficerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Chief Technical Officer', exact: true }), 'Chief Technical Officer (dropdown)');
-  }
-
-  /** Content Specialist (dropdown) */
-  get contentSpecialistOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Content Specialist', exact: true }), 'Content Specialist (dropdown)');
-  }
-
-  /** Customer Success Manager (dropdown) */
-  get customerSuccessManagerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Customer Success Manager', exact: true }), 'Customer Success Manager (dropdown)');
-  }
-
-  /** Database Administrator (dropdown) */
-  get databaseAdministratorOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Database Administrator', exact: true }), 'Database Administrator (dropdown)');
-  }
-
-  /** doctor (dropdown) */
-  get doctorOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'doctor', exact: true }), 'doctor (dropdown)');
-  }
-
-  /** Finance Manager (dropdown) */
-  get financeManagerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Finance Manager', exact: true }), 'Finance Manager (dropdown)');
-  }
-
-  /** Financial Analyst (dropdown) */
-  get financialAnalystOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Financial Analyst', exact: true }), 'Financial Analyst (dropdown)');
-  }
-
-  /** Head of Support (dropdown) */
-  get headOfSupportOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Head of Support', exact: true }), 'Head of Support (dropdown)');
-  }
-
-  /** HR Associate (dropdown) */
-  get hRAssociateOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'HR Associate', exact: true }), 'HR Associate (dropdown)');
-  }
-
-  /** HR Manager (dropdown) */
-  get hRManagerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'HR Manager', exact: true }), 'HR Manager (dropdown)');
-  }
-
-  /** IT Manager (dropdown) */
-  get iTManagerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'IT Manager', exact: true }), 'IT Manager (dropdown)');
-  }
-
-  /** Network Administrator (dropdown) */
-  get networkAdministratorOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Network Administrator', exact: true }), 'Network Administrator (dropdown)');
-  }
-
-  /** Payroll Administrator (dropdown) */
-  get payrollAdministratorOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Payroll Administrator', exact: true }), 'Payroll Administrator (dropdown)');
-  }
-
-  /** Pre-Sales Coordinator (dropdown) */
-  get preSalesCoordinatorOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Pre-Sales Coordinator', exact: true }), 'Pre-Sales Coordinator (dropdown)');
-  }
-
-  /** QA Engineer (dropdown) */
-  get qAEngineerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'QA Engineer', exact: true }), 'QA Engineer (dropdown)');
-  }
-
-  /** QA Lead (dropdown) */
-  get qALeadOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'QA Lead', exact: true }), 'QA Lead (dropdown)');
-  }
-
-  /** qwer (dropdown) */
-  get qwerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'qwer', exact: true }), 'qwer (dropdown)');
-  }
-
-  /** rsjsrii (dropdown) */
-  get rsjsriiOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'rsjsrii', exact: true }), 'rsjsrii (dropdown)');
-  }
-
-  /** Sales Representative (dropdown) */
-  get salesRepresentativeOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Sales Representative', exact: true }), 'Sales Representative (dropdown)');
-  }
-
-  /** Social Media Marketer (dropdown) */
-  get socialMediaMarketerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Social Media Marketer', exact: true }), 'Social Media Marketer (dropdown)');
-  }
-
-  /** Software Architect (dropdown) */
-  get softwareArchitectOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Software Architect', exact: true }), 'Software Architect (dropdown)');
-  }
-
-  /** Software Engineer (dropdown) */
-  get softwareEngineerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Software Engineer', exact: true }), 'Software Engineer (dropdown)');
-  }
-
-  /** Support Specialist (dropdown) */
-  get supportSpecialistOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Support Specialist', exact: true }), 'Support Specialist (dropdown)');
-  }
-
-  /** VP - Client Services (dropdown) */
-  get vPClientServicesOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'VP - Client Services', exact: true }), 'VP - Client Services (dropdown)');
-  }
-
-  /** VP - Sales & Marketing (dropdown) */
-  get vPSalesMarketingOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'VP - Sales & Marketing', exact: true }), 'VP - Sales & Marketing (dropdown)');
+  /** No Records Found (dropdown) */
+  get noRecordsFoundOption(): OptionComponent {
+    return new OptionComponent(this.page.getByRole('option', { name: 'No Records Found', exact: true }), 'No Records Found (dropdown)');
   }
 }
 
@@ -272,13 +155,13 @@ export class SearchEvaluatePerformanceReviewPageSelectOpen2 {
   constructor(private readonly page: Page) {}
 
   /** -- Select -- (dropdown) */
-  get selectOption2(): OptionComponent {
+  get selectOption(): OptionComponent {
     return new OptionComponent(this.page.getByRole('option', { name: '-- Select --', exact: true }), '-- Select -- (dropdown)');
   }
 
-  /** OrangeHRM (dropdown) */
-  get orangeHRMOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'OrangeHRM', exact: true }), 'OrangeHRM (dropdown)');
+  /** abhi (dropdown) */
+  get abhiOption(): OptionComponent {
+    return new OptionComponent(this.page.getByRole('option', { name: 'abhi', exact: true }), 'abhi (dropdown)');
   }
 
   /** Administration (dropdown) */
@@ -377,7 +260,7 @@ export class SearchEvaluatePerformanceReviewPageSelectOpen3 {
   constructor(private readonly page: Page) {}
 
   /** -- Select -- (dropdown) */
-  get selectOption3(): OptionComponent {
+  get selectOption2(): OptionComponent {
     return new OptionComponent(this.page.getByRole('option', { name: '-- Select --', exact: true }), '-- Select -- (dropdown)');
   }
 

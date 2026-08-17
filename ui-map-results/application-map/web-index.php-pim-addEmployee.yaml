@@ -1,0 +1,161 @@
+page: web-index.php-pim-addEmployee
+url: /web/index.php/pim/addEmployee
+title: "OrangeHRM"
+elements:
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: clientBrandBannerImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], name: "client brand banner" }
+    comment: "client brand banner (image)"
+  - name: searchInput
+    component: input
+    locator: { strategy: getByRole, args: ["textbox"], name: "Search" }
+    comment: "Search (input)"
+  - name: elementButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: adminLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pIMLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: claimImgImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], within: { strategy: getByRole, args: ["link"], name: "Claim" }, unstable: true, unstableReason: "no accessible name; scoped to nearest named ancestor" }
+    comment: "Claim img (image)"
+  - name: buzzLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: upgradeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Upgrade" }
+    comment: "Upgrade (link)"
+  - name: upgradeButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Upgrade" }
+    comment: "Upgrade (button)"
+  - name: elementButton2
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: orangeHRMIncLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "OrangeHRM, Inc" }
+    comment: "OrangeHRM, Inc (link)"
+  - name: pIMHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "PIM" }
+    comment: "PIM (text)"
+  - name: employeeListLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Employee List" }
+    comment: "Employee List (link)"
+  - name: addEmployeeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Add Employee" }
+    comment: "Add Employee (link)"
+  - name: reportsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Reports" }
+    comment: "Reports (link)"
+  - name: addEmployeeHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Add Employee" }
+    comment: "Add Employee (text)"
+  - name: firstNameInput
+    component: input
+    locator: { strategy: getByPlaceholder, args: ["First Name"] }
+    comment: "First Name (input)"
+  - name: middleNameInput
+    component: input
+    locator: { strategy: getByPlaceholder, args: ["Middle Name"] }
+    comment: "Middle Name (input)"
+  - name: lastNameInput
+    component: input
+    locator: { strategy: getByPlaceholder, args: ["Last Name"] }
+    comment: "Last Name (input)"
+  - name: employeeIdInput
+    component: input
+    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Employee Id\")) input"] }
+    comment: "Employee Id (input)"
+  - name: employeePhotoInput
+    component: input
+    locator: { strategy: css, args: ["input[type=file]"] }
+    comment: "Employee Photo (input)"
+  - name: createLoginDetailsSwitch
+    component: switch
+    locator: { strategy: css, args: [".oxd-switch-input"] }
+    comment: "Create Login Details (switch)"
+  - name: cancelButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Cancel" }
+    comment: "Cancel (button)"
+  - name: saveButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Save" }
+    comment: "Save (button)"
+actions:
+  - do: "Create an employee"
+    kind: form
+    fields:
+      - "First Name (required)"
+      - "Middle Name"
+      - "Last Name (required)"
+      - "Employee Id (prefilled with the next id, editable)"
+      - "Employee Photo (file)"
+    submit: "saveButton"
+    effect: "Saves and navigates to the new employee's Personal Details tab."
+  - do: "Abandon the new employee"
+    kind: navigation
+    target: "cancelButton"
+    leadsTo: "/web/index.php/pim/viewEmployeeList"
+  - do: "Also create login credentials"
+    kind: reveal
+    target: "createLoginDetailsSwitch"
+    effect: "Reveals Username, a Status radio pair (Enabled/Disabled), Password and Confirm Password. None of them exist until the switch is on, so they are not mapped as elements."
+validations:
+  - "Saving the form empty shows exactly two \"Required\" messages, under First Name and Last Name. Read them from `.oxd-input-field-error-message`."

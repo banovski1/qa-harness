@@ -4,83 +4,110 @@
 // so declaring all of them costs nothing at run time.
 
 import { test as base } from '@playwright/test';
-import { AdminPage } from '../pages/admin/AdminPage';
+import { AddThemePage } from '../pages/admin/AddThemePage';
+import { NationalityPage } from '../pages/admin/NationalityPage';
 import { SystemUsersPage } from '../pages/admin/SystemUsersPage';
 import { BuzzPage } from '../pages/buzz/BuzzPage';
 import { AssignClaimPage } from '../pages/claim/AssignClaimPage';
+import { ClaimAssignClaimPage } from '../pages/claim/ClaimAssignClaimPage';
+import { ClaimPage } from '../pages/claim/ClaimPage';
 import { DashboardPage } from '../pages/dashboard/DashboardPage';
 import { DirectoryPage } from '../pages/directory/DirectoryPage';
+import { ApplyLeavePage } from '../pages/leave/ApplyLeavePage';
+import { AssignLeavePage } from '../pages/leave/AssignLeavePage';
 import { LeaveListPage } from '../pages/leave/LeaveListPage';
-import { MaintenancePage } from '../pages/maintenance/MaintenancePage';
+import { MyLeaveListPage } from '../pages/leave/MyLeaveListPage';
+import { PurgeEmployeePage } from '../pages/maintenance/PurgeEmployeePage';
 import { SearchEvaluatePerformanceReviewPage } from '../pages/performance/SearchEvaluatePerformanceReviewPage';
+import { EmployeePerformanceTrackerListPage } from '../pages/performance/EmployeePerformanceTrackerListPage';
+import { MyPerformanceTrackerListPage } from '../pages/performance/MyPerformanceTrackerListPage';
+import { AddEmployeePage } from '../pages/pim/AddEmployeePage';
 import { ContactDetailsPage } from '../pages/pim/ContactDetailsPage';
+import { DefinePredefinedReportPage } from '../pages/pim/DefinePredefinedReportPage';
+import { DefinedPredefinedReportsPage } from '../pages/pim/DefinedPredefinedReportsPage';
 import { DependentsPage } from '../pages/pim/DependentsPage';
 import { EmergencyContactsPage } from '../pages/pim/EmergencyContactsPage';
 import { EmployeeListPage } from '../pages/pim/EmployeeListPage';
 import { ImmigrationPage } from '../pages/pim/ImmigrationPage';
 import { JobDetailsPage } from '../pages/pim/JobDetailsPage';
 import { MembershipsPage } from '../pages/pim/MembershipsPage';
-import { MyDetailsPage } from '../pages/pim/MyDetailsPage';
-import { PimPage } from '../pages/pim/PimPage';
+import { PersonalDetailsPage } from '../pages/pim/PersonalDetailsPage';
 import { QualificationsPage } from '../pages/pim/QualificationsPage';
 import { ReportToDetailsPage } from '../pages/pim/ReportToDetailsPage';
 import { SalaryListPage } from '../pages/pim/SalaryListPage';
 import { CandidatesPage } from '../pages/recruitment/CandidatesPage';
-import { RecruitmentPage } from '../pages/recruitment/RecruitmentPage';
-import { TimePage } from '../pages/time/TimePage';
+import { EmployeeTimesheetPage } from '../pages/time/EmployeeTimesheetPage';
 
 export type PageObjects = {
-  adminPage: AdminPage;
+  addThemePage: AddThemePage;
+  nationalityPage: NationalityPage;
   systemUsersPage: SystemUsersPage;
   buzzPage: BuzzPage;
   assignClaimPage: AssignClaimPage;
+  claimAssignClaimPage: ClaimAssignClaimPage;
+  claimPage: ClaimPage;
   dashboardPage: DashboardPage;
   directoryPage: DirectoryPage;
+  applyLeavePage: ApplyLeavePage;
+  assignLeavePage: AssignLeavePage;
   leaveListPage: LeaveListPage;
-  maintenancePage: MaintenancePage;
+  myLeaveListPage: MyLeaveListPage;
+  purgeEmployeePage: PurgeEmployeePage;
   searchEvaluatePerformanceReviewPage: SearchEvaluatePerformanceReviewPage;
+  employeePerformanceTrackerListPage: EmployeePerformanceTrackerListPage;
+  myPerformanceTrackerListPage: MyPerformanceTrackerListPage;
+  addEmployeePage: AddEmployeePage;
   contactDetailsPage: ContactDetailsPage;
+  definePredefinedReportPage: DefinePredefinedReportPage;
+  definedPredefinedReportsPage: DefinedPredefinedReportsPage;
   dependentsPage: DependentsPage;
   emergencyContactsPage: EmergencyContactsPage;
   employeeListPage: EmployeeListPage;
   immigrationPage: ImmigrationPage;
   jobDetailsPage: JobDetailsPage;
   membershipsPage: MembershipsPage;
-  myDetailsPage: MyDetailsPage;
-  pimPage: PimPage;
+  personalDetailsPage: PersonalDetailsPage;
   qualificationsPage: QualificationsPage;
   reportToDetailsPage: ReportToDetailsPage;
   salaryListPage: SalaryListPage;
   candidatesPage: CandidatesPage;
-  recruitmentPage: RecruitmentPage;
-  timePage: TimePage;
+  employeeTimesheetPage: EmployeeTimesheetPage;
 };
 
 export const test = base.extend<PageObjects>({
-  adminPage: async ({ page }, use) => { await use(new AdminPage(page)); },
+  addThemePage: async ({ page }, use) => { await use(new AddThemePage(page)); },
+  nationalityPage: async ({ page }, use) => { await use(new NationalityPage(page)); },
   systemUsersPage: async ({ page }, use) => { await use(new SystemUsersPage(page)); },
   buzzPage: async ({ page }, use) => { await use(new BuzzPage(page)); },
   assignClaimPage: async ({ page }, use) => { await use(new AssignClaimPage(page)); },
+  claimAssignClaimPage: async ({ page }, use) => { await use(new ClaimAssignClaimPage(page)); },
+  claimPage: async ({ page }, use) => { await use(new ClaimPage(page)); },
   dashboardPage: async ({ page }, use) => { await use(new DashboardPage(page)); },
   directoryPage: async ({ page }, use) => { await use(new DirectoryPage(page)); },
+  applyLeavePage: async ({ page }, use) => { await use(new ApplyLeavePage(page)); },
+  assignLeavePage: async ({ page }, use) => { await use(new AssignLeavePage(page)); },
   leaveListPage: async ({ page }, use) => { await use(new LeaveListPage(page)); },
-  maintenancePage: async ({ page }, use) => { await use(new MaintenancePage(page)); },
+  myLeaveListPage: async ({ page }, use) => { await use(new MyLeaveListPage(page)); },
+  purgeEmployeePage: async ({ page }, use) => { await use(new PurgeEmployeePage(page)); },
   searchEvaluatePerformanceReviewPage: async ({ page }, use) => { await use(new SearchEvaluatePerformanceReviewPage(page)); },
+  employeePerformanceTrackerListPage: async ({ page }, use) => { await use(new EmployeePerformanceTrackerListPage(page)); },
+  myPerformanceTrackerListPage: async ({ page }, use) => { await use(new MyPerformanceTrackerListPage(page)); },
+  addEmployeePage: async ({ page }, use) => { await use(new AddEmployeePage(page)); },
   contactDetailsPage: async ({ page }, use) => { await use(new ContactDetailsPage(page)); },
+  definePredefinedReportPage: async ({ page }, use) => { await use(new DefinePredefinedReportPage(page)); },
+  definedPredefinedReportsPage: async ({ page }, use) => { await use(new DefinedPredefinedReportsPage(page)); },
   dependentsPage: async ({ page }, use) => { await use(new DependentsPage(page)); },
   emergencyContactsPage: async ({ page }, use) => { await use(new EmergencyContactsPage(page)); },
   employeeListPage: async ({ page }, use) => { await use(new EmployeeListPage(page)); },
   immigrationPage: async ({ page }, use) => { await use(new ImmigrationPage(page)); },
   jobDetailsPage: async ({ page }, use) => { await use(new JobDetailsPage(page)); },
   membershipsPage: async ({ page }, use) => { await use(new MembershipsPage(page)); },
-  myDetailsPage: async ({ page }, use) => { await use(new MyDetailsPage(page)); },
-  pimPage: async ({ page }, use) => { await use(new PimPage(page)); },
+  personalDetailsPage: async ({ page }, use) => { await use(new PersonalDetailsPage(page)); },
   qualificationsPage: async ({ page }, use) => { await use(new QualificationsPage(page)); },
   reportToDetailsPage: async ({ page }, use) => { await use(new ReportToDetailsPage(page)); },
   salaryListPage: async ({ page }, use) => { await use(new SalaryListPage(page)); },
   candidatesPage: async ({ page }, use) => { await use(new CandidatesPage(page)); },
-  recruitmentPage: async ({ page }, use) => { await use(new RecruitmentPage(page)); },
-  timePage: async ({ page }, use) => { await use(new TimePage(page)); },
+  employeeTimesheetPage: async ({ page }, use) => { await use(new EmployeeTimesheetPage(page)); },
 });
 
 export { expect } from '@playwright/test';

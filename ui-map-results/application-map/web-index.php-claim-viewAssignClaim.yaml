@@ -1,7 +1,6 @@
 page: web-index.php-claim-viewAssignClaim
 url: /web/index.php/claim/viewAssignClaim
 title: "OrangeHRM"
-verified: 2026-08-09
 elements:
   - name: clientBrandBannerLink
     component: link
@@ -146,62 +145,16 @@ elements:
   - name: tableTable
     component: table
     locator: { strategy: getByRole, args: ["table"], nth: 0, unstable: true, unstableReason: "table has no accessible name; positional index used" }
-    comment: "Table (Reference Id , Employee Name , Event Name , Description, Currency, Submitted Date , Status , Amount, Actions; 13 row(s)) (table)"
-  - name: viewDetailsButton
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 7, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton2
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 8, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton3
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 9, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton4
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 10, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton5
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 11, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton6
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 12, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton7
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 13, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton8
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 14, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton9
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 15, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton10
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 16, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton11
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 17, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton12
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 18, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
+    columns:
+    rowCount: 0
+    comment: "table (table)"
   - name: orangeHRMIncLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "OrangeHRM, Inc" }
     comment: "OrangeHRM, Inc (link)"
 states:
-  - name: gbYasuserOpen
-    trigger: "open trigger \"gb yasuser\""
+  - name: mandaaKingOpen
+    trigger: "open trigger \"mandaa king\""
     elements:
       - name: aboutMenuItem
         component: menuItem
@@ -225,29 +178,17 @@ states:
       - name: listboxOptions
         component: dropdown
         comment: "(unnamed) (dropdown)"
-      - name: selectOption
+      - name: noRecordsFoundOption
         component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "-- Select --" }
-        comment: "-- Select -- (dropdown)"
-      - name: accommodationOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Accommodation" }
-        comment: "Accommodation (dropdown)"
-      - name: medicalReimbursementOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Medical Reimbursement" }
-        comment: "Medical Reimbursement (dropdown)"
-      - name: travelAllowanceOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Travel Allowance" }
-        comment: "Travel Allowance (dropdown)"
+        locator: { strategy: getByRole, args: ["option"], name: "No Records Found" }
+        comment: "No Records Found (dropdown)"
   - name: selectOpen2
     trigger: "open trigger \"-- Select --\""
     elements:
       - name: listboxOptions2
         component: dropdown
         comment: "(unnamed) (dropdown)"
-      - name: selectOption2
+      - name: selectOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "-- Select --" }
         comment: "-- Select -- (dropdown)"

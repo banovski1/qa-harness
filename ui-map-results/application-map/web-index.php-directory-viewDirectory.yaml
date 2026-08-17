@@ -1,7 +1,6 @@
 page: web-index.php-directory-viewDirectory
 url: /web/index.php/directory/viewDirectory
 title: "OrangeHRM"
-verified: 2026-08-09
 elements:
   - name: clientBrandBannerLink
     component: link
@@ -111,69 +110,13 @@ elements:
     component: button
     locator: { strategy: getByRole, args: ["button"], name: "Search" }
     comment: "Search (button)"
-  - name: profilePictureImage2
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 3, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
-  - name: profilePictureImage3
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 4, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
-  - name: profilePictureImage4
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 5, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
-  - name: profilePictureImage5
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 6, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
-  - name: profilePictureImage6
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 7, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
-  - name: profilePictureImage7
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 8, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
-  - name: profilePictureImage8
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 9, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
-  - name: profilePictureImage9
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 10, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
-  - name: profilePictureImage10
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 11, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
-  - name: profilePictureImage11
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 12, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
-  - name: profilePictureImage12
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 13, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
-  - name: profilePictureImage13
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 14, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
-  - name: profilePictureImage14
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 15, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
-  - name: profilePictureImage15
-    component: image
-    locator: { strategy: getByRole, args: ["img"], nth: 16, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Profile Picture (image)"
   - name: orangeHRMIncLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "OrangeHRM, Inc" }
     comment: "OrangeHRM, Inc (link)"
 states:
-  - name: gbYasuserOpen
-    trigger: "open trigger \"gb yasuser\""
+  - name: mandaaKingOpen
+    trigger: "open trigger \"mandaa king\""
     elements:
       - name: aboutMenuItem
         component: menuItem
@@ -201,10 +144,26 @@ states:
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "-- Select --" }
         comment: "-- Select -- (dropdown)"
+      - name: accountAssistantOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Account Assistant" }
+        comment: "Account Assistant (dropdown)"
+      - name: accountantOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Accountant" }
+        comment: "Accountant (dropdown)"
+      - name: administrativeAssistantOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Administrative Assistant" }
+        comment: "Administrative Assistant (dropdown)"
       - name: automatonTesterOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Automaton Tester" }
         comment: "Automaton Tester (dropdown)"
+      - name: businessAnalystOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Business Analyst" }
+        comment: "Business Analyst (dropdown)"
       - name: chiefExecutiveOfficerOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Chief Executive Officer" }
@@ -213,6 +172,10 @@ states:
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Chief Financial Officer" }
         comment: "Chief Financial Officer (dropdown)"
+      - name: chiefImplementationArchitectOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Chief Implementation Architect" }
+        comment: "Chief Implementation Architect (dropdown)"
       - name: chiefTechnicalOfficerOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Chief Technical Officer" }
@@ -221,6 +184,10 @@ states:
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Content Specialist" }
         comment: "Content Specialist (dropdown)"
+      - name: customerServiceRepresentativeOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Customer Service Representative" }
+        comment: "Customer Service Representative (dropdown)"
       - name: customerSuccessManagerOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Customer Success Manager" }
@@ -229,10 +196,10 @@ states:
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Database Administrator" }
         comment: "Database Administrator (dropdown)"
-      - name: doctorOption
+      - name: fghfOption
         component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "doctor" }
-        comment: "doctor (dropdown)"
+        locator: { strategy: getByRole, args: ["option"], name: "fghf" }
+        comment: "fghf (dropdown)"
       - name: financeManagerOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Finance Manager" }
@@ -241,6 +208,10 @@ states:
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Financial Analyst" }
         comment: "Financial Analyst (dropdown)"
+      - name: gfgdfgOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "gfgdfg" }
+        comment: "gfgdfg (dropdown)"
       - name: headOfSupportOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Head of Support" }
@@ -253,6 +224,10 @@ states:
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "HR Manager" }
         comment: "HR Manager (dropdown)"
+      - name: hROfficerOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "HR Officer" }
+        comment: "HR Officer (dropdown)"
       - name: iTManagerOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "IT Manager" }
@@ -265,10 +240,18 @@ states:
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Payroll Administrator" }
         comment: "Payroll Administrator (dropdown)"
+      - name: payrollSpecialistOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Payroll Specialist" }
+        comment: "Payroll Specialist (dropdown)"
       - name: preSalesCoordinatorOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Pre-Sales Coordinator" }
         comment: "Pre-Sales Coordinator (dropdown)"
+      - name: projectManagerOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Project Manager" }
+        comment: "Project Manager (dropdown)"
       - name: qAEngineerOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "QA Engineer" }
@@ -281,10 +264,22 @@ states:
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "qwer" }
         comment: "qwer (dropdown)"
+      - name: recruitmentSpecialistOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Recruitment Specialist" }
+        comment: "Recruitment Specialist (dropdown)"
+      - name: rPADeveloperOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "RPA Developer" }
+        comment: "RPA Developer (dropdown)"
       - name: rsjsriiOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "rsjsrii" }
         comment: "rsjsrii (dropdown)"
+      - name: salesExecutiveOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Sales Executive" }
+        comment: "Sales Executive (dropdown)"
       - name: salesRepresentativeOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Sales Representative" }
@@ -297,6 +292,10 @@ states:
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Software Architect" }
         comment: "Software Architect (dropdown)"
+      - name: softwareDeveloperOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Software Developer" }
+        comment: "Software Developer (dropdown)"
       - name: softwareEngineerOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "Software Engineer" }
@@ -331,6 +330,10 @@ states:
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "HQ - CA, USA" }
         comment: "HQ - CA, USA (dropdown)"
+      - name: muscatHeadOfficeOption
+        component: dropdown
+        locator: { strategy: getByRole, args: ["option"], name: "Muscat Head Office" }
+        comment: "Muscat Head Office (dropdown)"
       - name: newYorkSalesOfficeOption
         component: dropdown
         locator: { strategy: getByRole, args: ["option"], name: "New York Sales Office" }

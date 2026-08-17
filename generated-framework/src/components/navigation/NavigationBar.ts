@@ -7,7 +7,6 @@ import { ButtonComponent } from '../ButtonComponent';
 import { ImageComponent } from '../ImageComponent';
 import { InputComponent } from '../InputComponent';
 import { LinkComponent } from '../LinkComponent';
-import { MenuItemComponent } from '../MenuItemComponent';
 
 export class NavigationBar {
   constructor(private readonly page: Page) {}
@@ -110,29 +109,5 @@ export class NavigationBar {
   /** OrangeHRM, Inc (link) */
   get orangeHRMIncLink(): LinkComponent {
     return new LinkComponent(this.page.getByRole('link', { name: 'OrangeHRM, Inc', exact: true }), 'OrangeHRM, Inc (link)');
-  }
-
-  // revealed by opening 'gb yasuser'
-  /** About (menuItem) */
-  get aboutMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'About', exact: true }), 'About (menuItem)');
-  }
-
-  // revealed by opening 'gb yasuser'
-  /** Support (menuItem) */
-  get supportMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Support', exact: true }), 'Support (menuItem)');
-  }
-
-  // revealed by opening 'gb yasuser'
-  /** Change Password (menuItem) */
-  get changePasswordMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Change Password', exact: true }), 'Change Password (menuItem)');
-  }
-
-  // revealed by opening 'gb yasuser'
-  /** Logout (menuItem) */
-  get logoutMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Logout', exact: true }), 'Logout (menuItem)');
   }
 }

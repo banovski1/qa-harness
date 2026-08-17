@@ -1,0 +1,152 @@
+page: web-index.php-pim-definePredefinedReport
+url: /web/index.php/pim/definePredefinedReport
+title: "OrangeHRM"
+elements:
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: clientBrandBannerImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], name: "client brand banner" }
+    comment: "client brand banner (image)"
+  - name: searchInput
+    component: input
+    locator: { strategy: getByRole, args: ["textbox"], name: "Search" }
+    comment: "Search (input)"
+  - name: elementButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: adminLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pIMLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: claimImgImage
+    component: image
+    locator: { strategy: getByRole, args: ["img"], within: { strategy: getByRole, args: ["link"], name: "Claim" }, unstable: true, unstableReason: "no accessible name; scoped to nearest named ancestor" }
+    comment: "Claim img (image)"
+  - name: buzzLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: upgradeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Upgrade" }
+    comment: "Upgrade (link)"
+  - name: upgradeButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Upgrade" }
+    comment: "Upgrade (button)"
+  - name: elementButton2
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "" }
+    comment: " (button)"
+  - name: orangeHRMIncLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "OrangeHRM, Inc" }
+    comment: "OrangeHRM, Inc (link)"
+  - name: pIMHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "PIM" }
+    comment: "PIM (text)"
+  - name: employeeListLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Employee List" }
+    comment: "Employee List (link)"
+  - name: addEmployeeLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Add Employee" }
+    comment: "Add Employee (link)"
+  - name: reportsLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Reports" }
+    comment: "Reports (link)"
+  - name: addReportHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Add Report" }
+    comment: "Add Report (text)"
+  - name: reportNameInput
+    component: input
+    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Report Name\")) input"] }
+    comment: "Report Name (input)"
+  - name: selectionCriteriaDropdown
+    component: dropdown
+    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Selection Criteria\")) .oxd-select-text"] }
+    comment: "Selection Criteria (dropdown)"
+  - name: includeDropdown
+    component: dropdown
+    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Include\")) .oxd-select-text"] }
+    comment: "Include (dropdown)"
+  - name: selectDisplayFieldGroupDropdown
+    component: dropdown
+    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Select Display Field Group\")) .oxd-select-text"] }
+    comment: "Select Display Field Group (dropdown)"
+  - name: selectDisplayFieldDropdown
+    component: dropdown
+    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Select Display Field\")) .oxd-select-text"] }
+    comment: "Select Display Field (dropdown)"
+  - name: cancelButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Cancel" }
+    comment: "Cancel (button)"
+  - name: saveButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Save" }
+    comment: "Save (button)"
+actions:
+  - do: "Define a report"
+    kind: form
+    fields:
+      - "Report Name (required)"
+      - "Selection Criteria — pick a criterion, then a + button adds it as a row with its own value control"
+      - "Include"
+      - "Select Display Field Group"
+      - "Select Display Field (options depend on the group)"
+    submit: "saveButton"
+    effect: "Saves the report and returns to the Reports list."
+  - do: "Abandon the report"
+    kind: navigation
+    target: "cancelButton"
+    leadsTo: "/web/index.php/pim/viewDefinedPredefinedReports"
+note: "Reached only via Add on the Reports screen; the old crawler never found it."

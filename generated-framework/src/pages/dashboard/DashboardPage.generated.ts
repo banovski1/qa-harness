@@ -6,6 +6,7 @@ import type { Page } from '@playwright/test';
 import { BasePage } from '../base/BasePage';
 import { ButtonComponent } from '../../components/ButtonComponent';
 import { ImageComponent } from '../../components/ImageComponent';
+import { MenuItemComponent } from '../../components/MenuItemComponent';
 import { TextComponent } from '../../components/TextComponent';
 import { NavigationBar } from '../../components/navigation/NavigationBar';
 
@@ -52,12 +53,6 @@ export abstract class DashboardPageGenerated extends BasePage {
   // UNSTABLE: no accessible name or unique ancestor scope; positional index used
   get buttonButton(): ButtonComponent {
     return new ButtonComponent(this.page.getByRole('button').nth(4), '(unnamed) (button)');
-  }
-
-  /** (unnamed) (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get buttonButton2(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(5), '(unnamed) (button)');
   }
 
   /** Assign Leave (button) */
@@ -120,8 +115,48 @@ export abstract class DashboardPageGenerated extends BasePage {
     return new ImageComponent(this.page.getByRole('img').nth(8), 'profile picture (image)');
   }
 
+  /** (unnamed) (image) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get imgImage2(): ImageComponent {
+    return new ImageComponent(this.page.getByRole('img').nth(9), '(unnamed) (image)');
+  }
+
+  /** profile picture (image) */
+  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
+  get profilePictureImage7(): ImageComponent {
+    return new ImageComponent(this.page.getByRole('img').nth(10), 'profile picture (image)');
+  }
+
   /** No Content (image) */
   get noContentImage(): ImageComponent {
     return new ImageComponent(this.page.getByRole('img', { name: 'No Content', exact: true }), 'No Content (image)');
+  }
+
+  /** Elements revealed by opening 'Surya king'. Open the trigger first. */
+  readonly suryaKingOpen = new DashboardPageSuryaKingOpen(this.page);
+}
+
+/** Only present while 'Surya king' is open. */
+export class DashboardPageSuryaKingOpen {
+  constructor(private readonly page: Page) {}
+
+  /** About (menuItem) */
+  get aboutMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'About', exact: true }), 'About (menuItem)');
+  }
+
+  /** Support (menuItem) */
+  get supportMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Support', exact: true }), 'Support (menuItem)');
+  }
+
+  /** Change Password (menuItem) */
+  get changePasswordMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Change Password', exact: true }), 'Change Password (menuItem)');
+  }
+
+  /** Logout (menuItem) */
+  get logoutMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Logout', exact: true }), 'Logout (menuItem)');
   }
 }
