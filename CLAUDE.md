@@ -78,4 +78,6 @@ The `smart-map` skill (`.claude/skills/smart-map/SKILL.md`) is the entry point f
 
 **A pasted numbered test script is always a `test-writer` request.** When a message contains an ordered list of steps starting at `1.` — a QA script in plain English — delegate it to the `test-writer` subagent (`.claude/agents/test-writer.md`) via the Agent tool with `subagent_type: "test-writer"`, passing the steps through verbatim. Do not write the spec yourself, and do not ask whether to delegate first.
 
+Once `test-writer` reports its files, hand off to the `test-runner` subagent (`.claude/agents/test-runner.md`) to execute the new spec and resolve it against `.claude/agents/test-runner-known-issues.md`. This is automatic — pasting a numbered script triggers both agents in sequence, no separate request needed. Relay `test-runner`'s final report in whichever of its three shapes it comes back: passed, fixed-and-passed (citing the known-issues row), or handed back to a human with evidence.
+
 This overrides any standing instruction not to invoke the Agent tool unprompted: in this repo, pasting test steps *is* the request to run `test-writer`. Relay its report — files created and modified, `// UNVERIFIED` locators, new `.env` variables, and the command to run the spec. To bypass it for one message, say so explicitly ("write this yourself").

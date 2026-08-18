@@ -66,4 +66,4 @@ Run `npm run typecheck` in `generated-framework/`. Report: files created and mod
 - Never use `mcp__playwright__*`. The map is the only source of UI truth; if it is wrong, run the `smart-map` skill for that module.
 - Do not add explanatory comments. Emit a comment only for an `// UNVERIFIED` marker or when a piece of logic is genuinely too complex to follow from the code itself — never to restate what a line already says.
 - One responsibility per method, intention-revealing names, no abstraction without a second caller.
-- Do not run the test. The QA executes and reviews it.
+- Do not run the test. The `test-runner` subagent executes it after you report.
