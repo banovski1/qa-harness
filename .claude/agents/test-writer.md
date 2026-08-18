@@ -27,7 +27,8 @@ New file at `generated-framework/tests/e2e/<module>/<scenario>.spec.ts`. Never e
 
 - `import { test, expect } from '../../../src/fixtures';` — relative, there are no path aliases.
 - Page objects arrive as destructured fixtures. Never `new` a page object in a spec.
-- Assert through the component's locator: `await expect(dashboardPage.dashboardHeading.locator).toBeVisible();`
+- Assert only on steps where the script explicitly asks for validation/verification. Do not add assertions after every intermediate step just because a page object getter is available.
+- When you do assert, do it through the component's locator: `await expect(dashboardPage.dashboardHeading.locator).toBeVisible();`
 - Call component APIs, not raw Playwright: `InputComponent.fill/type/clear`, `DropdownComponent.open/selectByLabel`, `ButtonComponent.click`, `CheckboxComponent.setChecked`, `TableComponent.rowByCellText/cellText/columnValues`. Use `type()` for autocomplete fields that need keystrokes.
 - Shared chrome is on every page: `assignClaimPage.navigation.claimLink.click()`.
 - No `waitForTimeout`. Use web-first assertions and `waitForSpinnerToClear` from `src/utils/waitHelpers.ts`.
@@ -63,6 +64,6 @@ Run `npm run typecheck` in `generated-framework/`. Report: files created and mod
 
 - Never edit `*.generated.ts`, `NavigationBar.ts`, `page-fixtures.ts`, `auth-fixtures.ts`, `global-setup.ts`, or anything under `ui-map-results/`. The next generator run destroys the edit.
 - Never use `mcp__playwright__*`. The map is the only source of UI truth; if it is wrong, run the `smart-map` skill for that module.
-- Leave no comments in emitted code except `// UNVERIFIED` markers and genuinely non-obvious logic.
+- Do not add explanatory comments. Emit a comment only for an `// UNVERIFIED` marker or when a piece of logic is genuinely too complex to follow from the code itself — never to restate what a line already says.
 - One responsibility per method, intention-revealing names, no abstraction without a second caller.
 - Do not run the test. The QA executes and reviews it.
