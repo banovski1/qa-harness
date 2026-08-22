@@ -6,9 +6,9 @@ import type { Page } from '@playwright/test';
 import { BasePage } from '../base/BasePage';
 import { ButtonComponent } from '../../components/ButtonComponent';
 import { CheckboxComponent } from '../../components/CheckboxComponent';
-import { ImageComponent } from '../../components/ImageComponent';
 import { InputComponent } from '../../components/InputComponent';
-import { LinkComponent } from '../../components/LinkComponent';
+import { MenuItemComponent } from '../../components/MenuItemComponent';
+import { RadioComponent } from '../../components/RadioComponent';
 import { TextComponent } from '../../components/TextComponent';
 import { NavigationBar } from '../../components/navigation/NavigationBar';
 
@@ -23,35 +23,34 @@ export abstract class AddEmployeePageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
-  /** Claim img (image) */
-  // UNSTABLE: no accessible name; scoped to nearest named ancestor
-  get claimImgImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('link', { name: 'Claim', exact: true }).getByRole('img'), 'Claim img (image)');
+  /** Employee List (menuItem) */
+  get employeeListMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee List")'), 'Employee List (menuItem)');
   }
 
-  /** PIM (text) */
-  get pIMHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'PIM', exact: true }), 'PIM (text)');
+  /** Add Employee (menuItem) */
+  get addEmployeeMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Add Employee")'), 'Add Employee (menuItem)');
   }
 
-  /** Employee List (link) */
-  get employeeListLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Employee List', exact: true }), 'Employee List (link)');
-  }
-
-  /** Add Employee (link) */
-  get addEmployeeLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Add Employee', exact: true }), 'Add Employee (link)');
-  }
-
-  /** Reports (link) */
-  get reportsLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Reports', exact: true }), 'Reports (link)');
+  /** Reports (menuItem) */
+  get reportsMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Reports")'), 'Reports (menuItem)');
   }
 
   /** Add Employee (text) */
   get addEmployeeHeading(): TextComponent {
     return new TextComponent(this.page.getByRole('heading', { name: 'Add Employee', exact: true }), 'Add Employee (text)');
+  }
+
+  /** Change employee photo (button) */
+  get employeePhotoButton(): ButtonComponent {
+    return new ButtonComponent(this.page.locator('button.employee-image-action'), 'Change employee photo (button)');
+  }
+
+  /** Employee photo file (input) */
+  get employeePhotoInput(): InputComponent {
+    return new InputComponent(this.page.locator('input[type="file"]'), 'Employee photo file (input)');
   }
 
   /** First Name (input) */
@@ -74,14 +73,34 @@ export abstract class AddEmployeePageGenerated extends BasePage {
     return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Employee Id")) input'), 'Employee Id (input)');
   }
 
-  /** Employee Photo (input) */
-  get employeePhotoInput(): InputComponent {
-    return new InputComponent(this.page.locator('input[type=file]'), 'Employee Photo (input)');
-  }
-
   /** Create Login Details (switch) */
   get createLoginDetailsSwitch(): CheckboxComponent {
     return new CheckboxComponent(this.page.locator('.oxd-switch-input'), 'Create Login Details (switch)');
+  }
+
+  /** Username (input) */
+  get usernameInput(): InputComponent {
+    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Username")) input'), 'Username (input)');
+  }
+
+  /** Password (input) */
+  get passwordInput(): InputComponent {
+    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Password")) input'), 'Password (input)');
+  }
+
+  /** Confirm Password (input) */
+  get confirmPasswordInput(): InputComponent {
+    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Confirm Password")) input'), 'Confirm Password (input)');
+  }
+
+  /** Enabled (radio) */
+  get enabledRadio(): RadioComponent {
+    return new RadioComponent(this.page.getByRole('radio', { name: 'Enabled', exact: true }), 'Enabled (radio)');
+  }
+
+  /** Disabled (radio) */
+  get disabledRadio(): RadioComponent {
+    return new RadioComponent(this.page.getByRole('radio', { name: 'Disabled', exact: true }), 'Disabled (radio)');
   }
 
   /** Cancel (button) */

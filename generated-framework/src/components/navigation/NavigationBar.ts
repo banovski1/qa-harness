@@ -4,9 +4,10 @@
 
 import type { Page } from '@playwright/test';
 import { ButtonComponent } from '../ButtonComponent';
-import { ImageComponent } from '../ImageComponent';
 import { InputComponent } from '../InputComponent';
 import { LinkComponent } from '../LinkComponent';
+import { MenuItemComponent } from '../MenuItemComponent';
+import { TextComponent } from '../TextComponent';
 
 export class NavigationBar {
   constructor(private readonly page: Page) {}
@@ -16,98 +17,83 @@ export class NavigationBar {
     return new LinkComponent(this.page.getByRole('link', { name: 'client brand banner', exact: true }), 'client brand banner (link)');
   }
 
-  /** client brand banner (image) */
-  get clientBrandBannerImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img', { name: 'client brand banner', exact: true }), 'client brand banner (image)');
+  /** Collapse menu (button) */
+  get collapseMenuButton(): ButtonComponent {
+    return new ButtonComponent(this.page.locator('button.oxd-main-menu-button'), 'Collapse menu (button)');
   }
 
-  /** Search (input) */
-  get searchInput(): InputComponent {
-    return new InputComponent(this.page.getByRole('textbox', { name: 'Search', exact: true }), 'Search (input)');
-  }
-
-  /**  (button) */
-  get elementButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: '', exact: true }), ' (button)');
+  /** Search menu (input) */
+  get searchMenuInput(): InputComponent {
+    return new InputComponent(this.page.locator('.oxd-main-menu-search input'), 'Search menu (input)');
   }
 
   /** Admin (link) */
-  get adminLink(): LinkComponent {
+  get adminMenuLink(): LinkComponent {
     return new LinkComponent(this.page.getByRole('link', { name: 'Admin', exact: true }), 'Admin (link)');
   }
 
   /** PIM (link) */
-  get pIMLink(): LinkComponent {
+  get pimMenuLink(): LinkComponent {
     return new LinkComponent(this.page.getByRole('link', { name: 'PIM', exact: true }), 'PIM (link)');
   }
 
   /** Leave (link) */
-  get leaveLink(): LinkComponent {
+  get leaveMenuLink(): LinkComponent {
     return new LinkComponent(this.page.getByRole('link', { name: 'Leave', exact: true }), 'Leave (link)');
   }
 
   /** Time (link) */
-  get timeLink(): LinkComponent {
+  get timeMenuLink(): LinkComponent {
     return new LinkComponent(this.page.getByRole('link', { name: 'Time', exact: true }), 'Time (link)');
   }
 
   /** Recruitment (link) */
-  get recruitmentLink(): LinkComponent {
+  get recruitmentMenuLink(): LinkComponent {
     return new LinkComponent(this.page.getByRole('link', { name: 'Recruitment', exact: true }), 'Recruitment (link)');
   }
 
   /** My Info (link) */
-  get myInfoLink(): LinkComponent {
+  get myInfoMenuLink(): LinkComponent {
     return new LinkComponent(this.page.getByRole('link', { name: 'My Info', exact: true }), 'My Info (link)');
   }
 
   /** Performance (link) */
-  get performanceLink(): LinkComponent {
+  get performanceMenuLink(): LinkComponent {
     return new LinkComponent(this.page.getByRole('link', { name: 'Performance', exact: true }), 'Performance (link)');
   }
 
   /** Dashboard (link) */
-  get dashboardLink(): LinkComponent {
+  get dashboardMenuLink(): LinkComponent {
     return new LinkComponent(this.page.getByRole('link', { name: 'Dashboard', exact: true }), 'Dashboard (link)');
   }
 
   /** Directory (link) */
-  get directoryLink(): LinkComponent {
+  get directoryMenuLink(): LinkComponent {
     return new LinkComponent(this.page.getByRole('link', { name: 'Directory', exact: true }), 'Directory (link)');
   }
 
   /** Maintenance (link) */
-  get maintenanceLink(): LinkComponent {
+  get maintenanceMenuLink(): LinkComponent {
     return new LinkComponent(this.page.getByRole('link', { name: 'Maintenance', exact: true }), 'Maintenance (link)');
   }
 
   /** Claim (link) */
-  get claimLink(): LinkComponent {
+  get claimMenuLink(): LinkComponent {
     return new LinkComponent(this.page.getByRole('link', { name: 'Claim', exact: true }), 'Claim (link)');
   }
 
   /** Buzz (link) */
-  get buzzLink(): LinkComponent {
+  get buzzMenuLink(): LinkComponent {
     return new LinkComponent(this.page.getByRole('link', { name: 'Buzz', exact: true }), 'Buzz (link)');
   }
 
-  /** Upgrade (link) */
-  get upgradeLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Upgrade', exact: true }), 'Upgrade (link)');
+  /** Current user (text) */
+  get currentUserHeading(): TextComponent {
+    return new TextComponent(this.page.locator('.oxd-userdropdown-name'), 'Current user (text)');
   }
 
-  /** Upgrade (button) */
-  get upgradeButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Upgrade', exact: true }), 'Upgrade (button)');
-  }
-
-  /**  (button) */
-  get elementButton2(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: '', exact: true }), ' (button)');
-  }
-
-  /** OrangeHRM, Inc (link) */
-  get orangeHRMIncLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'OrangeHRM, Inc', exact: true }), 'OrangeHRM, Inc (link)');
+  /** Configuration (menuItem) */
+  get configurationMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Configuration")'), 'Configuration (menuItem)');
   }
 }

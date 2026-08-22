@@ -7,9 +7,8 @@ import { BasePage } from '../base/BasePage';
 import { ButtonComponent } from '../../components/ButtonComponent';
 import { CheckboxComponent } from '../../components/CheckboxComponent';
 import { DropdownComponent } from '../../components/DropdownComponent';
-import { ImageComponent } from '../../components/ImageComponent';
 import { InputComponent } from '../../components/InputComponent';
-import { LinkComponent } from '../../components/LinkComponent';
+import { MenuItemComponent } from '../../components/MenuItemComponent';
 import { TableComponent } from '../../components/tables/TableComponent';
 import { TextComponent } from '../../components/TextComponent';
 import { NavigationBar } from '../../components/navigation/NavigationBar';
@@ -25,30 +24,19 @@ export abstract class EmployeeListPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
-  /** Claim img (image) */
-  // UNSTABLE: no accessible name; scoped to nearest named ancestor
-  get claimImgImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('link', { name: 'Claim', exact: true }).getByRole('img'), 'Claim img (image)');
+  /** Employee List (menuItem) */
+  get employeeListMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee List")'), 'Employee List (menuItem)');
   }
 
-  /** PIM (text) */
-  get pIMHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'PIM', exact: true }), 'PIM (text)');
+  /** Add Employee (menuItem) */
+  get addEmployeeMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Add Employee")'), 'Add Employee (menuItem)');
   }
 
-  /** Employee List (link) */
-  get employeeListLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Employee List', exact: true }), 'Employee List (link)');
-  }
-
-  /** Add Employee (link) */
-  get addEmployeeLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Add Employee', exact: true }), 'Add Employee (link)');
-  }
-
-  /** Reports (link) */
-  get reportsLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Reports', exact: true }), 'Reports (link)');
+  /** Reports (menuItem) */
+  get reportsMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Reports")'), 'Reports (menuItem)');
   }
 
   /** Employee Information (text) */
@@ -103,16 +91,21 @@ export abstract class EmployeeListPageGenerated extends BasePage {
 
   /** Add (button) */
   get addButton(): ButtonComponent {
-    return new ButtonComponent(this.page.locator('.orangehrm-header-container button:has-text("Add")'), 'Add (button)');
+    return new ButtonComponent(this.page.getByRole('button', { name: 'Add', exact: true }), 'Add (button)');
   }
 
-  /** Select All (checkbox) */
+  /** Records Found (text) */
+  get recordsFoundHeading(): TextComponent {
+    return new TextComponent(this.page.locator('.orangehrm-horizontal-padding .oxd-text--span'), 'Records Found (text)');
+  }
+
+  /** Select all rows (checkbox) */
   get selectAllCheckbox(): CheckboxComponent {
-    return new CheckboxComponent(this.page.getByRole('columnheader').getByRole('checkbox'), 'Select All (checkbox)');
+    return new CheckboxComponent(this.page.locator('.oxd-table-header .oxd-checkbox-input'), 'Select all rows (checkbox)');
   }
 
-  /** Employee (table) */
+  /** Employee list (table) */
   get employeeTable(): TableComponent {
-    return new TableComponent(this.page.getByRole('table'), ['Id', 'First (& Middle) Name', 'Last Name', 'Job Title', 'Employment Status', 'Sub Unit', 'Supervisor', 'Actions'], 'Employee (table)');
+    return new TableComponent(this.page.locator('.oxd-table:has(.oxd-table-th:text-is("Employment Status"))'), ['Id', 'First (& Middle) Name', 'Last Name', 'Job Title', 'Employment Status', 'Sub Unit', 'Supervisor', 'Actions'], 'Employee list (table)');
   }
 }

@@ -5,11 +5,9 @@
 import type { Page } from '@playwright/test';
 import { BasePage } from '../base/BasePage';
 import { ButtonComponent } from '../../components/ButtonComponent';
-import { ImageComponent } from '../../components/ImageComponent';
+import { DropdownComponent } from '../../components/DropdownComponent';
 import { InputComponent } from '../../components/InputComponent';
-import { LinkComponent } from '../../components/LinkComponent';
 import { MenuItemComponent } from '../../components/MenuItemComponent';
-import { OptionComponent } from '../../components/OptionComponent';
 import { TableComponent } from '../../components/tables/TableComponent';
 import { TextComponent } from '../../components/TextComponent';
 import { NavigationBar } from '../../components/navigation/NavigationBar';
@@ -25,40 +23,24 @@ export abstract class ClaimPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
-  /** Claim img (image) */
-  // UNSTABLE: no accessible name; scoped to nearest named ancestor
-  get claimImgImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('link', { name: 'Claim', exact: true }).getByRole('img'), 'Claim img (image)');
+  /** Submit Claim (menuItem) */
+  get submitClaimMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Submit Claim")'), 'Submit Claim (menuItem)');
   }
 
-  /** Claim (text) */
-  get claimHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Claim', exact: true }), 'Claim (text)');
+  /** My Claims (menuItem) */
+  get myClaimsMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("My Claims")'), 'My Claims (menuItem)');
   }
 
-  /** profile picture (image) */
-  get profilePictureImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img', { name: 'profile picture', exact: true }), 'profile picture (image)');
+  /** Employee Claims (menuItem) */
+  get employeeClaimsMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee Claims")'), 'Employee Claims (menuItem)');
   }
 
-  /** Submit Claim (link) */
-  get submitClaimLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Submit Claim', exact: true }), 'Submit Claim (link)');
-  }
-
-  /** My Claims (link) */
-  get myClaimsLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'My Claims', exact: true }), 'My Claims (link)');
-  }
-
-  /** Employee Claims (link) */
-  get employeeClaimsLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Employee Claims', exact: true }), 'Employee Claims (link)');
-  }
-
-  /** Assign Claim (link) */
-  get assignClaimLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Assign Claim', exact: true }), 'Assign Claim (link)');
+  /** Assign Claim (menuItem) */
+  get assignClaimMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Assign Claim")'), 'Assign Claim (menuItem)');
   }
 
   /** My Claims (text) */
@@ -66,26 +48,34 @@ export abstract class ClaimPageGenerated extends BasePage {
     return new TextComponent(this.page.getByRole('heading', { name: 'My Claims', exact: true }), 'My Claims (text)');
   }
 
-  /**  (button) */
-  get elementButton3(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: '', exact: true }), ' (button)');
+  /** Submit Claim (button) */
+  get submitClaimButton(): ButtonComponent {
+    return new ButtonComponent(this.page.locator('.orangehrm-header-container button:has-text("Submit Claim")'), 'Submit Claim (button)');
   }
 
-  /** Type for hints... (input) */
-  get typeForHintsInput(): InputComponent {
-    return new InputComponent(this.page.getByRole('textbox', { name: 'Type for hints...', exact: true }), 'Type for hints... (input)');
+  /** Reference Id (input) */
+  get referenceIdInput(): InputComponent {
+    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Reference Id")) input'), 'Reference Id (input)');
   }
 
-  /** yyyy-dd-mm (input) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get yyyyDdMmInput(): InputComponent {
-    return new InputComponent(this.page.getByRole('textbox').nth(2), 'yyyy-dd-mm (input)');
+  /** Event Name (dropdown) */
+  get eventNameDropdown(): DropdownComponent {
+    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Event Name")) .oxd-select-text'), 'Event Name (dropdown)');
   }
 
-  /** yyyy-dd-mm (input) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get yyyyDdMmInput2(): InputComponent {
-    return new InputComponent(this.page.getByRole('textbox').nth(3), 'yyyy-dd-mm (input)');
+  /** Status (dropdown) */
+  get statusDropdown(): DropdownComponent {
+    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Status")) .oxd-select-text'), 'Status (dropdown)');
+  }
+
+  /** From Date (input) */
+  get fromDateInput(): InputComponent {
+    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("From Date")) input'), 'From Date (input)');
+  }
+
+  /** To Date (input) */
+  get toDateInput(): InputComponent {
+    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("To Date")) input'), 'To Date (input)');
   }
 
   /** Reset (button) */
@@ -98,98 +88,13 @@ export abstract class ClaimPageGenerated extends BasePage {
     return new ButtonComponent(this.page.getByRole('button', { name: 'Search', exact: true }), 'Search (button)');
   }
 
-  /**  Submit Claim (button) */
-  get submitClaimButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: ' Submit Claim', exact: true }), ' Submit Claim (button)');
+  /** Records Found (text) */
+  get recordsFoundHeading(): TextComponent {
+    return new TextComponent(this.page.locator('.orangehrm-horizontal-padding > .oxd-text:has-text("Records Found")'), 'Records Found (text)');
   }
 
-  /** table (table) */
-  // UNSTABLE: table has no accessible name; positional index used
-  get tableTable(): TableComponent {
-    return new TableComponent(this.page.getByRole('table').nth(0), [], 'table (table)');
-  }
-
-  /** Elements revealed by opening 'Surya king'. Open the trigger first. */
-  readonly suryaKingOpen = new ClaimPageSuryaKingOpen(this.page);
-
-  /** Elements revealed by opening '-- Select --'. Open the trigger first. */
-  readonly selectOpen = new ClaimPageSelectOpen(this.page);
-
-  /** Elements revealed by opening '-- Select --'. Open the trigger first. */
-  readonly selectOpen2 = new ClaimPageSelectOpen2(this.page);
-}
-
-/** Only present while 'Surya king' is open. */
-export class ClaimPageSuryaKingOpen {
-  constructor(private readonly page: Page) {}
-
-  /** About (menuItem) */
-  get aboutMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'About', exact: true }), 'About (menuItem)');
-  }
-
-  /** Support (menuItem) */
-  get supportMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Support', exact: true }), 'Support (menuItem)');
-  }
-
-  /** Change Password (menuItem) */
-  get changePasswordMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Change Password', exact: true }), 'Change Password (menuItem)');
-  }
-
-  /** Logout (menuItem) */
-  get logoutMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.getByRole('menuitem', { name: 'Logout', exact: true }), 'Logout (menuItem)');
-  }
-}
-
-/** Only present while '-- Select --' is open. */
-export class ClaimPageSelectOpen {
-  constructor(private readonly page: Page) {}
-
-  /** No Records Found (dropdown) */
-  get noRecordsFoundOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'No Records Found', exact: true }), 'No Records Found (dropdown)');
-  }
-}
-
-/** Only present while '-- Select --' is open. */
-export class ClaimPageSelectOpen2 {
-  constructor(private readonly page: Page) {}
-
-  /** -- Select -- (dropdown) */
-  get selectOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: '-- Select --', exact: true }), '-- Select -- (dropdown)');
-  }
-
-  /** Initiated (dropdown) */
-  get initiatedOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Initiated', exact: true }), 'Initiated (dropdown)');
-  }
-
-  /** Submitted (dropdown) */
-  get submittedOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Submitted', exact: true }), 'Submitted (dropdown)');
-  }
-
-  /** Approved (dropdown) */
-  get approvedOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Approved', exact: true }), 'Approved (dropdown)');
-  }
-
-  /** Rejected (dropdown) */
-  get rejectedOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Rejected', exact: true }), 'Rejected (dropdown)');
-  }
-
-  /** Cancelled (dropdown) */
-  get cancelledOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Cancelled', exact: true }), 'Cancelled (dropdown)');
-  }
-
-  /** Paid (dropdown) */
-  get paidOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Paid', exact: true }), 'Paid (dropdown)');
+  /** My Claims (table) */
+  get myClaimsTable(): TableComponent {
+    return new TableComponent(this.page.locator('.oxd-table'), ['Reference Id', 'Event Name', 'Description', 'Currency', 'Submitted Date', 'Status', 'Amount', 'Actions'], 'My Claims (table)');
   }
 }

@@ -3,9 +3,9 @@
 
 import { test, expect } from '../../../src/fixtures';
 
-test.describe('AddEmployeePage', () => {
-  test('loads', async ({ addEmployeePage }) => {
-    await addEmployeePage.goto();
-    await expect(addEmployeePage.addEmployeeHeading.locator).toBeVisible();
+test.describe('EventsPage', () => {
+  test('loads', async ({ eventsPage }) => {
+    await eventsPage.goto();
+    await expect(eventsPage.eventsHeading.locator).toBeVisible();
   });
 });

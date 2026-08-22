@@ -6,9 +6,10 @@ import type { Page } from '@playwright/test';
 import { BasePage } from '../base/BasePage';
 import { ButtonComponent } from '../../components/ButtonComponent';
 import { DropdownComponent } from '../../components/DropdownComponent';
-import { ImageComponent } from '../../components/ImageComponent';
 import { InputComponent } from '../../components/InputComponent';
-import { LinkComponent } from '../../components/LinkComponent';
+import { MenuItemComponent } from '../../components/MenuItemComponent';
+import { TabComponent } from '../../components/TabComponent';
+import { TableComponent } from '../../components/tables/TableComponent';
 import { TextComponent } from '../../components/TextComponent';
 import { NavigationBar } from '../../components/navigation/NavigationBar';
 
@@ -23,65 +24,74 @@ export abstract class ContactDetailsPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
-  /** Claim img (image) */
-  // UNSTABLE: no accessible name; scoped to nearest named ancestor
-  get claimImgImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('link', { name: 'Claim', exact: true }).getByRole('img'), 'Claim img (image)');
+  /** Employee List (menuItem) */
+  get employeeListMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee List")'), 'Employee List (menuItem)');
   }
 
-  /** PIM (text) */
-  get pIMHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'PIM', exact: true }), 'PIM (text)');
+  /** Add Employee (menuItem) */
+  get addEmployeeMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Add Employee")'), 'Add Employee (menuItem)');
   }
 
-  /** Personal Details (link) */
-  get personalDetailsLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Personal Details', exact: true }), 'Personal Details (link)');
+  /** Reports (menuItem) */
+  get reportsMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Reports")'), 'Reports (menuItem)');
   }
 
-  /** Contact Details (link) */
-  get contactDetailsLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Contact Details', exact: true }), 'Contact Details (link)');
+  /** Personal Details (tab) */
+  get personalDetailsTab(): TabComponent {
+    return new TabComponent(this.page.getByRole('link', { name: 'Personal Details', exact: true }), 'Personal Details (tab)');
   }
 
-  /** Emergency Contacts (link) */
-  get emergencyContactsLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Emergency Contacts', exact: true }), 'Emergency Contacts (link)');
+  /** Contact Details (tab) */
+  get contactDetailsTab(): TabComponent {
+    return new TabComponent(this.page.getByRole('link', { name: 'Contact Details', exact: true }), 'Contact Details (tab)');
   }
 
-  /** Dependents (link) */
-  get dependentsLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Dependents', exact: true }), 'Dependents (link)');
+  /** Emergency Contacts (tab) */
+  get emergencyContactsTab(): TabComponent {
+    return new TabComponent(this.page.getByRole('link', { name: 'Emergency Contacts', exact: true }), 'Emergency Contacts (tab)');
   }
 
-  /** Immigration (link) */
-  get immigrationLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Immigration', exact: true }), 'Immigration (link)');
+  /** Dependents (tab) */
+  get dependentsTab(): TabComponent {
+    return new TabComponent(this.page.getByRole('link', { name: 'Dependents', exact: true }), 'Dependents (tab)');
   }
 
-  /** Job (link) */
-  get jobLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Job', exact: true }), 'Job (link)');
+  /** Immigration (tab) */
+  get immigrationTab(): TabComponent {
+    return new TabComponent(this.page.getByRole('link', { name: 'Immigration', exact: true }), 'Immigration (tab)');
   }
 
-  /** Salary (link) */
-  get salaryLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Salary', exact: true }), 'Salary (link)');
+  /** Job (tab) */
+  get jobTab(): TabComponent {
+    return new TabComponent(this.page.getByRole('link', { name: 'Job', exact: true }), 'Job (tab)');
   }
 
-  /** Report-to (link) */
-  get reportToLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Report-to', exact: true }), 'Report-to (link)');
+  /** Salary (tab) */
+  get salaryTab(): TabComponent {
+    return new TabComponent(this.page.getByRole('link', { name: 'Salary', exact: true }), 'Salary (tab)');
   }
 
-  /** Qualifications (link) */
-  get qualificationsLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Qualifications', exact: true }), 'Qualifications (link)');
+  /** Report-to (tab) */
+  get reportToTab(): TabComponent {
+    return new TabComponent(this.page.getByRole('link', { name: 'Report-to', exact: true }), 'Report-to (tab)');
   }
 
-  /** Memberships (link) */
-  get membershipsLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Memberships', exact: true }), 'Memberships (link)');
+  /** Qualifications (tab) */
+  get qualificationsTab(): TabComponent {
+    return new TabComponent(this.page.getByRole('link', { name: 'Qualifications', exact: true }), 'Qualifications (tab)');
+  }
+
+  /** Memberships (tab) */
+  get membershipsTab(): TabComponent {
+    return new TabComponent(this.page.getByRole('link', { name: 'Memberships', exact: true }), 'Memberships (tab)');
+  }
+
+  /** Employee name (text) */
+  get employeeNameHeading(): TextComponent {
+    return new TextComponent(this.page.locator('.orangehrm-edit-employee-name h6'), 'Employee name (text)');
   }
 
   /** Contact Details (text) */
@@ -149,13 +159,13 @@ export abstract class ContactDetailsPageGenerated extends BasePage {
     return new ButtonComponent(this.page.getByRole('button', { name: 'Save', exact: true }), 'Save (button)');
   }
 
-  /** Attachments (text) */
-  get attachmentsHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Attachments', exact: true }), 'Attachments (text)');
+  /** Add attachment (button) */
+  get addAttachmentButton(): ButtonComponent {
+    return new ButtonComponent(this.page.locator('.orangehrm-horizontal-padding:has(h6:text-is("Attachments")) button'), 'Add attachment (button)');
   }
 
-  /** Add Attachment (button) */
-  get addAttachmentButton(): ButtonComponent {
-    return new ButtonComponent(this.page.locator('.orangehrm-horizontal-padding:has(h6:text-is("Attachments")) button'), 'Add Attachment (button)');
+  /** Attachments (table) */
+  get attachmentsTable(): TableComponent {
+    return new TableComponent(this.page.locator('.oxd-table:has(.oxd-table-th:text-is("File Name"))'), ['File Name', 'Description', 'Size', 'Type', 'Date Added', 'Added By', 'Actions'], 'Attachments (table)');
   }
 }

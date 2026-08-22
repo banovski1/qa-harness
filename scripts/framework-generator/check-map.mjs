@@ -15,9 +15,13 @@ import yaml from 'js-yaml';
 import { readApplicationMap } from './map-reader.mjs';
 
 // The NavigationBar is lifted from elements present on >= ceil(threshold * fileCount) pages.
-// 19 of the 20 chrome entries sit on exactly 30 of 32 files, so the margin is 4: the fifth file
-// that drops or re-locates a nav element collapses all 20 getters into every page object at once.
-const EXPECTED_SHARED_CHROME = 20;
+// The 17 real chrome entries — sidebar module links, the brand banner, the menu search, the current
+// user and the Configuration tab — sit on every mapped page. A file that drops or re-locates one of
+// them collapses all 17 getters into every page object at once, which is what this number guards.
+// Module-specific top-bar tabs (PIM's Employee List / Add Employee / Reports, Claim's four) are NOT
+// chrome: they live on one module's pages only, and they re-inline by design as soon as a second
+// module is mapped and they fall below the 80% threshold.
+const EXPECTED_SHARED_CHROME = 17;
 
 const strictArgIndex = process.argv.indexOf('--strict');
 const strictTargets = new Set(
