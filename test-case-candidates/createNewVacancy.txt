@@ -1,0 +1,18 @@
+1. Navigate to the OrangeHRM login page.
+2. Enter username Admin and password admin123, then click Login.
+3. Click Recruitment in the left sidepanel.
+4. Click Vacancies in the Recruitment sidepanel.
+5. Click the Add button.
+6. Enter "QA Engineer" in the Vacancy Name field.
+7. Select "QA Engineer" from the Job Title dropdown.
+8. Enter description: "We are looking for a new QA to join our team."
+9. In the Hiring Manager field, type A to trigger the autocomplete/search.
+10. Select an employee from the suggestions.
+11. Enter 1 in the Number of Positions field.
+12. Click Save.
+13. Validate vacancy is saved successfully; user is returned to a page with the sidepanel visible.
+14. Navigate back to Vacancies and validate the list contains a row with:
+    - Vacancy Name: QA Engineer
+    - Job Title: QA Engineer
+    - Hiring Manager: The selected hiring manager selected from step 9
+    - Status: Active
