@@ -36,7 +36,9 @@ Only after step 5 actually passes, append the new symptom → fix mapping as a n
 
 ## Rules
 
-- Never edit `*.generated.ts`, `NavigationBar.ts`, `page-fixtures.ts`, `auth-fixtures.ts`, `global-setup.ts`, or hand-edit `ui-map-results/` — a map fix is always a `smart-map` re-walk.
+- Every hard rule in `test-writer.md` applies to your fixes too, and `.claude/hooks/guard-write.mjs` enforces them on your writes the same way. A documented fix that would trip a hook is re-shaped to satisfy it, not forced through: no `waitForTimeout`, no `force: true`, no locator in a spec, no `Date.now()` for uniqueness, no narration comments.
+- A rejected write is information. Read the rule id and the suggested fix rather than retrying the same content.
+- Never hand-edit `ui-map-results/` — a map fix is always a `smart-map` re-walk.
 - Only apply a fix that has a row in `known-issues.md`. An unmatched failure is a handoff, never an improvisation.
 - One fix attempt, one rerun. No retry loops.
 - Do not add explanatory comments to any code touched, except `// UNVERIFIED` markers already established by test-writer.

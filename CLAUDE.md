@@ -81,3 +81,21 @@ The `smart-map` skill (`.claude/skills/smart-map/SKILL.md`) is the entry point f
 Once `test-writer` reports its files, hand off to the `test-runner` subagent (`.claude/agents/test-runner.md`) to execute the new spec and resolve it against `.claude/agents/test-runner-known-issues.md`. This is automatic — pasting a numbered script triggers both agents in sequence, no separate request needed. Relay `test-runner`'s final report in whichever of its three shapes it comes back: passed, fixed-and-passed (citing the known-issues row), or handed back to a human with evidence.
 
 This overrides any standing instruction not to invoke the Agent tool unprompted: in this repo, pasting test steps *is* the request to run `test-writer`. Relay its report — files created and modified, `// UNVERIFIED` locators, new `.env` variables, and the command to run the spec. To bypass it for one message, say so explicitly ("write this yourself").
+
+### Hook-enforced rules
+
+`.claude/settings.json` registers a `PreToolUse` hook on every Write/Edit/MultiEdit. Writes under
+`generated-framework/` run through `.claude/hooks/guard-write.mjs`, which **rejects** the write when
+a rule in `.claude/hooks/rules/` fails; the Playwright MCP tools are rejected outright. This applies
+to every writer — `test-writer`, `test-runner`, and you — so a rule cannot be dodged by writing the
+file yourself.
+
+`.claude/hooks/rules/` is the single source of truth: `paths.mjs` (generator-owned files are
+unwritable), `locators.mjs` (locators live in the component/page-object layer and stay semantic),
+`comments.mjs` (one comment line per thirty code lines, no narration), `playwright.mjs` (wait for
+evidence, not for time, decoration, or a retry). The table in `.claude/agents/test-writer.md`
+summarises them for the agents. `node .claude/hooks/__fixtures__/run.mjs` is the rule set's test
+suite — run it after changing a rule.
+
+A single line that genuinely needs an exception carries a trailing `// allow:<rule-id> <reason>`,
+which stays visible in review. `protected-path` has no exception.

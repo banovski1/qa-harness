@@ -34,6 +34,9 @@ export function runtimeFiles(context) {
     file('src/pages/base/BasePage.ts', BASE_PAGE),
     file('src/utils/env.ts', ENV),
     file('src/utils/waitHelpers.ts', waitHelpers(context.config.waits.spinnerSelector)),
+    file('src/utils/testData.ts', TEST_DATA),
+    file('src/utils/network.ts', NETWORK),
+    file('src/api/clients/ApiClient.ts', API_CLIENT),
     file('src/config/constants.ts', CONSTANTS),
   ];
 }
@@ -467,25 +470,29 @@ export function optionalEnv(name: string, fallback: string): string {
  * app's own class to the config if it has no accessible busy state.
  */
 function waitHelpers(spinnerSelector) {
-  return `import type { Locator, Page } from '@playwright/test';
+  return `import { expect, type Locator, type Page } from '@playwright/test';
 
-/** Wait for the app's loading indicator to disappear, if one is present at all. */
+/**
+ * Wait for the app's loading indicator to disappear, if one is present at all.
+ *
+ * A cleared spinner is not evidence that anything succeeded — it is a UI
+ * decoration that a redesign can remove. Use this to settle an intermediate
+ * screen, never in place of asserting the response or the result the user sees.
+ */
 export async function waitForSpinnerToClear(page: Page, timeout = 15_000): Promise<void> {
-  const spinner = page.locator(${quote(spinnerSelector)}).first();
+  const spinner = page.locator(${quote(spinnerSelector)});
   if ((await spinner.count()) === 0) return;
-  await spinner.waitFor({ state: 'hidden', timeout }).catch(() => {
-    // A spinner that never resolves is the assertion's problem, not the wait's.
-  });
+  await expect(spinner.first()).toBeHidden({ timeout }); // allow:positional-locator
 }
 
 /** Poll until the locator resolves to exactly one element. */
 export async function waitForUnique(locator: Locator, timeout = 10_000): Promise<void> {
-  const deadline = Date.now() + timeout;
-  while (Date.now() < deadline) {
-    if ((await locator.count()) === 1) return;
-    await locator.page().waitForTimeout(100);
-  }
-  throw new Error(\`Locator did not resolve to exactly one element within \${timeout}ms\`);
+  await expect
+    .poll(async () => locator.count(), {
+      message: 'locator did not resolve to exactly one element',
+      timeout,
+    })
+    .toBe(1);
 }
 `;
 }
@@ -495,4 +502,116 @@ const CONSTANTS =`export const TIMEOUTS = {
   navigation: 30_000,
   assertion: 10_000,
 } as const;
+`;
+
+// ---- test data ---------------------------------------------------------------
+
+const TEST_DATA = `import { randomUUID } from 'node:crypto';
+
+/**
+ * Unique values for anything a test creates.
+ *
+ * Tests that share a record cannot run in parallel: one edits what another is
+ * asserting on, and the failure surfaces as a flake rather than as the
+ * collision it is. A timestamp is not enough — two workers can start inside the
+ * same millisecond — so these are UUID-backed.
+ */
+export function uniqueSuffix(): string {
+  return randomUUID().replace(/-/g, '').slice(0, 10);
+}
+
+export function uniqueUsername(prefix = 'qa'): string {
+  return \`\${prefix}.\${uniqueSuffix()}\`;
+}
+
+export function uniqueEmail(prefix = 'qa', domain = 'example.com'): string {
+  return \`\${prefix}.\${uniqueSuffix()}@\${domain}\`;
+}
+
+export function uniqueName(prefix: string): string {
+  return \`\${prefix} \${uniqueSuffix()}\`;
+}
+`;
+
+// ---- network ----------------------------------------------------------------
+
+const NETWORK = `import type { Page, Response } from '@playwright/test';
+
+export interface ResponseCriteria {
+  urlIncludes: string;
+  method?: string;
+  status?: number;
+}
+
+/**
+ * Register a response wait *before* the action that triggers it.
+ *
+ * The listener has to exist before the request is sent, or a fast response
+ * lands before anything is watching and the wait hangs until it times out. So
+ * this deliberately returns an un-awaited promise:
+ *
+ *   const saved = expectResponse(page, { urlIncludes: '/users', method: 'POST', status: 200 });
+ *   await page.saveButton.click();
+ *   await saved;
+ *
+ * Asserting the response rather than a spinner also means the test knows the
+ * difference between "the operation succeeded" and "the loading state ended".
+ */
+export function expectResponse(page: Page, criteria: ResponseCriteria): Promise<Response> {
+  return page.waitForResponse(
+    (response) =>
+      response.url().includes(criteria.urlIncludes) &&
+      (criteria.method === undefined || response.request().method() === criteria.method) &&
+      (criteria.status === undefined || response.status() === criteria.status),
+  );
+}
+
+/** The same wait, resolved to the parsed JSON body. */
+export async function expectJson<T>(page: Page, criteria: ResponseCriteria): Promise<T> {
+  const response = await expectResponse(page, criteria);
+  return (await response.json()) as T;
+}
+`;
+
+// ---- api --------------------------------------------------------------------
+
+const API_CLIENT = `import type { APIRequestContext, APIResponse } from '@playwright/test';
+
+/**
+ * A thin wrapper over Playwright's request context, for the work that does not
+ * need a browser.
+ *
+ * Validation rules, authorization, pagination, response codes and boundary
+ * values are cheaper, faster and steadier to check here than through a form —
+ * and setup/teardown through the API keeps a browser test focused on the
+ * journey it is actually about instead of on arranging its own fixtures.
+ */
+export class ApiClient {
+  constructor(private readonly request: APIRequestContext) {}
+
+  async get(path: string): Promise<APIResponse> {
+    return this.request.get(path);
+  }
+
+  async post(path: string, data: unknown): Promise<APIResponse> {
+    return this.request.post(path, { data });
+  }
+
+  async put(path: string, data: unknown): Promise<APIResponse> {
+    return this.request.put(path, { data });
+  }
+
+  async delete(path: string): Promise<APIResponse> {
+    return this.request.delete(path);
+  }
+
+  /** GET the path and fail loudly if it did not succeed, so callers can trust the body. */
+  async json<T>(path: string): Promise<T> {
+    const response = await this.get(path);
+    if (!response.ok()) {
+      throw new Error(\`GET \${path} failed with \${response.status()} \${response.statusText()}\`);
+    }
+    return (await response.json()) as T;
+  }
+}
 `;
