@@ -1,0 +1,131 @@
+page: web-index.php-dashboard-index
+url: /web/index.php/dashboard/index
+title: "OrangeHRM"
+elements:
+  # --- shared chrome: pasted verbatim from a sibling map file, never re-located ---
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: collapseMenuButton
+    component: button
+    locator: { strategy: css, args: ["button.oxd-main-menu-button"] }
+    comment: "Collapse menu (button)"
+  - name: searchMenuInput
+    component: input
+    locator: { strategy: css, args: [".oxd-main-menu-search input"] }
+    comment: "Search menu (input)"
+  - name: adminMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: buzzMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: currentUserHeading
+    component: text
+    locator: { strategy: css, args: [".oxd-userdropdown-name"] }
+    comment: "Current user (text)"
+  # --- this screen ---
+  - name: dashboardHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Dashboard" }
+    comment: "Dashboard (text)"
+  - name: timeAtWorkHeading
+    component: text
+    locator: { strategy: getByText, args: ["Time at Work"] }
+    comment: "Time at Work (text)"
+  - name: myActionsHeading
+    component: text
+    locator: { strategy: getByText, args: ["My Actions"] }
+    comment: "My Actions (text)"
+  - name: quickLaunchHeading
+    component: text
+    locator: { strategy: getByText, args: ["Quick Launch"] }
+    comment: "Quick Launch (text)"
+  - name: buzzLatestPostsHeading
+    component: text
+    locator: { strategy: getByText, args: ["Buzz Latest Posts"] }
+    comment: "Buzz Latest Posts (text)"
+  - name: employeesOnLeaveTodayHeading
+    component: text
+    locator: { strategy: getByText, args: ["Employees on Leave Today"] }
+    comment: "Employees on Leave Today (text)"
+  - name: employeeDistributionBySubUnitHeading
+    component: text
+    locator: { strategy: getByText, args: ["Employee Distribution by Sub Unit"] }
+    comment: "Employee Distribution by Sub Unit (text)"
+  - name: employeeDistributionByLocationHeading
+    component: text
+    locator: { strategy: getByText, args: ["Employee Distribution by Location"] }
+    comment: "Employee Distribution by Location (text)"
+  - name: assignLeaveQuickLaunchLink
+    component: link
+    locator: { strategy: getByText, args: ["Assign Leave"] }
+    comment: "Assign Leave quick launch (link)"
+  - name: leaveListQuickLaunchLink
+    component: link
+    locator: { strategy: getByText, args: ["Leave List"] }
+    comment: "Leave List quick launch (link)"
+  - name: timesheetsQuickLaunchLink
+    component: link
+    locator: { strategy: getByText, args: ["Timesheets"] }
+    comment: "Timesheets quick launch (link)"
+  - name: applyLeaveQuickLaunchLink
+    component: link
+    locator: { strategy: getByText, args: ["Apply Leave"] }
+    comment: "Apply Leave quick launch (link)"
+  - name: myLeaveQuickLaunchLink
+    component: link
+    locator: { strategy: getByText, args: ["My Leave"] }
+    comment: "My Leave quick launch (link)"
+  - name: myTimesheetQuickLaunchLink
+    component: link
+    locator: { strategy: getByText, args: ["My Timesheet"] }
+    comment: "My Timesheet quick launch (link)"
+actions:
+  - do: View this screen
+    kind: click
+    target: 'getByRole("link", { name: "Dashboard" })'
+    effect: The screen is read-only from the mapping walk; no form or table action was observed.

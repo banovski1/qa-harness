@@ -1,0 +1,153 @@
+page: web-index.php-recruitment-addCandidate
+url: /web/index.php/recruitment/addCandidate
+title: "OrangeHRM"
+elements:
+  # --- shared chrome: pasted verbatim from a sibling map file, never re-located ---
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: collapseMenuButton
+    component: button
+    locator: { strategy: css, args: ["button.oxd-main-menu-button"] }
+    comment: "Collapse menu (button)"
+  - name: searchMenuInput
+    component: input
+    locator: { strategy: css, args: [".oxd-main-menu-search input"] }
+    comment: "Search menu (input)"
+  - name: adminMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: buzzMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: currentUserHeading
+    component: text
+    locator: { strategy: css, args: [".oxd-userdropdown-name"] }
+    comment: "Current user (text)"
+  # --- this screen ---
+  - name: candidatesMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Candidates" }
+    comment: "Candidates (menuItem)"
+  - name: vacanciesMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Vacancies" }
+    comment: "Vacancies (menuItem)"
+  - name: recruitmentHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Recruitment" }
+    comment: "Recruitment (text)"
+  - name: addCandidateHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Add Candidate" }
+    comment: "Add Candidate (text)"
+  - name: vacancyDropdown
+    component: dropdown
+    locator: { strategy: template, args: ["labelledSelect"], name: "Vacancy" }
+    comment: "Vacancy (dropdown)"
+  - name: emailInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Email" }
+    comment: "Email (input)"
+  - name: contactNumberInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Contact Number" }
+    comment: "Contact Number (input)"
+  - name: resumeInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Resume" }
+    comment: "Resume (input)"
+  - name: keywordsInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Keywords" }
+    comment: "Keywords (input)"
+  - name: dateOfApplicationInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Date of Application" }
+    comment: "Date of Application (input)"
+  - name: notesTextArea
+    component: longInput
+    locator: { strategy: template, args: ["labelledTextarea"], name: "Notes" }
+    comment: "Notes (longInput)"
+  - name: consentToKeepDataInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Consent to keep data" }
+    comment: "Consent to keep data (input)"
+  - name: cancelButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Cancel" }
+    comment: "Cancel (button)"
+  - name: saveButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Save" }
+    comment: "Save (button)"
+  # --- added by the full-app remap ---
+  - name: firstNameInput
+    component: input
+    locator: { strategy: getByPlaceholder, args: ["First Name"] }
+    comment: "First Name (input)"
+  - name: middleNameInput
+    component: input
+    locator: { strategy: getByPlaceholder, args: ["Middle Name"] }
+    comment: "Middle Name (input)"
+  - name: lastNameInput
+    component: input
+    locator: { strategy: getByPlaceholder, args: ["Last Name"] }
+    comment: "Last Name (input)"
+actions:
+  - do: Complete and submit this form
+    kind: form
+    fields:
+      - { label: Vacancy, locator: '.oxd-input-group:has(label:text-is("Vacancy")) .oxd-select-text', type: dropdown }
+      - { label: Email, locator: '.oxd-input-group:has(label:text-is("Email")) input', type: text }
+      - { label: Contact Number, locator: '.oxd-input-group:has(label:text-is("Contact Number")) input', type: text }
+      - { label: Resume, locator: '.oxd-input-group:has(label:text-is("Resume")) input', type: text }
+      - { label: Keywords, locator: '.oxd-input-group:has(label:text-is("Keywords")) input', type: text }
+      - { label: Date of Application, locator: '.oxd-input-group:has(label:text-is("Date of Application")) input', type: text }
+      - { label: Notes, locator: '.oxd-input-group:has(label:text-is("Notes")) textarea', type: text }
+      - { label: Consent to keep data, locator: '.oxd-input-group:has(label:text-is("Consent to keep data")) input', type: text }
+    submit: 'getByRole("button", { name: "Save" })'
+    effect: Submits the form. Required fields left empty raise "Required" under each field.

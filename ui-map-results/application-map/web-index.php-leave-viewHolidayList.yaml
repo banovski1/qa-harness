@@ -1,0 +1,142 @@
+page: web-index.php-leave-viewHolidayList
+url: /web/index.php/leave/viewHolidayList
+title: "OrangeHRM"
+elements:
+  # --- shared chrome: pasted verbatim from a sibling map file, never re-located ---
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: collapseMenuButton
+    component: button
+    locator: { strategy: css, args: ["button.oxd-main-menu-button"] }
+    comment: "Collapse menu (button)"
+  - name: searchMenuInput
+    component: input
+    locator: { strategy: css, args: [".oxd-main-menu-search input"] }
+    comment: "Search menu (input)"
+  - name: adminMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: buzzMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: currentUserHeading
+    component: text
+    locator: { strategy: css, args: [".oxd-userdropdown-name"] }
+    comment: "Current user (text)"
+  # --- this screen ---
+  - name: entitlementsMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Entitlements\")"] }
+    comment: "Entitlements (menuItem)"
+  - name: reportsMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Reports\")"] }
+    comment: "Reports (menuItem)"
+  - name: configureMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Configure\")"] }
+    comment: "Configure (menuItem)"
+  - name: applyMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Apply" }
+    comment: "Apply (menuItem)"
+  - name: myLeaveMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "My Leave" }
+    comment: "My Leave (menuItem)"
+  - name: leaveListMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Leave List" }
+    comment: "Leave List (menuItem)"
+  - name: assignLeaveMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Assign Leave" }
+    comment: "Assign Leave (menuItem)"
+  - name: leaveHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Leave" }
+    comment: "Leave (text)"
+  - name: holidaysHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Holidays" }
+    comment: "Holidays (text)"
+  - name: fromInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "From" }
+    comment: "From (input)"
+  - name: toInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "To" }
+    comment: "To (input)"
+  - name: resetButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Reset" }
+    comment: "Reset (button)"
+  - name: searchButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Search" }
+    comment: "Search (button)"
+  - name: addButton
+    component: button
+    locator: { strategy: css, args: ["button:text-is(\"Add\")"] }
+    comment: "Add (button)"
+actions:
+  - do: Search this screen
+    kind: form
+    fields:
+      - { label: From, locator: '.oxd-input-group:has(label:text-is("From")) input', type: text }
+      - { label: To, locator: '.oxd-input-group:has(label:text-is("To")) input', type: text }
+    submit: 'getByRole("button", { name: "Search" })'
+    effect: Filters the records table in place. No navigation.
+  - do: Clear the search filters
+    kind: click
+    target: 'getByRole("button", { name: "Reset" })'
+    effect: Restores the unfiltered list and clears every filter field.
+  - do: Start adding a record
+    kind: click
+    target: 'button:text-is("Add")'
+    effect: Opens the add form for this screen.

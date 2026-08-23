@@ -1,0 +1,121 @@
+page: web-index.php-pim-viewReportToDetails-empNumber-id
+url: /web/index.php/pim/viewReportToDetails/empNumber/{id}
+title: "OrangeHRM"
+elements:
+  # --- shared chrome: pasted verbatim from a sibling map file, never re-located ---
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: collapseMenuButton
+    component: button
+    locator: { strategy: css, args: ["button.oxd-main-menu-button"] }
+    comment: "Collapse menu (button)"
+  - name: searchMenuInput
+    component: input
+    locator: { strategy: css, args: [".oxd-main-menu-search input"] }
+    comment: "Search menu (input)"
+  - name: adminMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: buzzMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: currentUserHeading
+    component: text
+    locator: { strategy: css, args: [".oxd-userdropdown-name"] }
+    comment: "Current user (text)"
+  # --- this screen ---
+  - name: pimHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "PIM" }
+    comment: "PIM (text)"
+  - name: automationQeHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Automation QE" }
+    comment: "Automation QE (text)"
+  - name: reportToHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Report to" }
+    comment: "Report to (text)"
+  - name: assignedSupervisorsHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Assigned Supervisors" }
+    comment: "Assigned Supervisors (text)"
+  - name: assignedSubordinatesHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Assigned Subordinates" }
+    comment: "Assigned Subordinates (text)"
+  - name: attachmentsHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Attachments" }
+    comment: "Attachments (text)"
+  - name: recordsTable
+    component: table
+    locator: { strategy: template, args: ["tableByColumn"], name: "File Name" }
+    columns:
+      - name: "Name"
+      - name: "Reporting Method"
+      - name: "Name"
+      - name: "Reporting Method"
+      - name: "File Name"
+      - name: "Description"
+      - name: "Size"
+      - name: "Type"
+      - name: "Date Added"
+      - name: "Added By"
+      - name: "Actions"
+    rowCount: 1
+    comment: "Records (table)"
+actions:
+  - do: Open a record for editing
+    kind: rowAction
+    target: '.oxd-table-card:has-text("<record>") i.bi-pencil-fill'
+    effect: Opens the edit form for that row.
+  - do: Delete a record
+    kind: destructive
+    notExercised: true
+    target: '.oxd-table-card:has-text("<record>") i.bi-trash'
+    effect: Opens a confirmation dialog and permanently deletes the row. Never performed while mapping.

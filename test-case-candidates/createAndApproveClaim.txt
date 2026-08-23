@@ -1,4 +1,6 @@
-1. Login with ess_test user and password admin123
+Precondition: ess_test user exists with password Test1234!
+
+1. Login with ess_test user and password Test1234!
 2. Navigate to the claims section
 3. Click on "Submit Claim"
 4. Fill in the Event field as "Travel Allowance", Currency field as "Bulgarian Lev" and Remarks field "Trip to NYC"
@@ -9,4 +11,4 @@
 9. Navigate to Claims section
 10. Select Employee Claims
 11. Filter the new Claim and Approve it
-12. Validate all the expense details and status must become "Paid"
+12. Validate all the expense details a1nd status must become "Paid"

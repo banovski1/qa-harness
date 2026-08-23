@@ -144,6 +144,11 @@ elements:
     component: button
     locator: { strategy: getByRole, args: ["button"], name: "Save" }
     comment: "Save (button)"
+  # --- added by the full-app remap ---
+  - name: pimHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "PIM" }
+    comment: "PIM (text)"
 actions:
   - do: Reveal the login-details fields
     kind: click

@@ -121,6 +121,15 @@ elements:
       - name: "Actions"
     rowCount: 4
     comment: "Employee reports (table)"
+  # --- added by the full-app remap ---
+  - name: pimHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "PIM" }
+    comment: "PIM (text)"
+  - name: addButton2
+    component: button
+    locator: { strategy: css, args: ["button:text-is(\"Add\")"] }
+    comment: "Add (button)"
 actions:
   - do: Search reports by name
     kind: form

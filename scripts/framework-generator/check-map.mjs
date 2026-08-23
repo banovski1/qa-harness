@@ -15,13 +15,15 @@ import yaml from 'js-yaml';
 import { readApplicationMap } from './map-reader.mjs';
 
 // The NavigationBar is lifted from elements present on >= ceil(threshold * fileCount) pages.
-// The 17 real chrome entries — sidebar module links, the brand banner, the menu search, the current
-// user and the Configuration tab — sit on every mapped page. A file that drops or re-locates one of
-// them collapses all 17 getters into every page object at once, which is what this number guards.
-// Module-specific top-bar tabs (PIM's Employee List / Add Employee / Reports, Claim's four) are NOT
-// chrome: they live on one module's pages only, and they re-inline by design as soon as a second
-// module is mapped and they fall below the 80% threshold.
-const EXPECTED_SHARED_CHROME = 17;
+// The 16 real chrome entries — the brand banner, the menu collapse button, the menu search and the
+// thirteen sidebar module links, plus the current-user name — sit on every mapped page. A file that
+// drops or re-locates one of them collapses all 16 getters into every page object at once, which is
+// what this number guards.
+// Module-specific top-bar tabs are NOT chrome: they live on one module's pages only, and they
+// re-inline by design as soon as they fall below the 80% threshold. The Configuration tab was the
+// 17th entry while only PIM and Claim were mapped; the full-app walk added ten modules without it,
+// so it now sits below the threshold and is inlined per page.
+const EXPECTED_SHARED_CHROME = 16;
 
 const strictArgIndex = process.argv.indexOf('--strict');
 const strictTargets = new Set(

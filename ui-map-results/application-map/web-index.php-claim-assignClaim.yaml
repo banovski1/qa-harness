@@ -117,6 +117,11 @@ elements:
     component: button
     locator: { strategy: getByRole, args: ["button"], name: "Create" }
     comment: "Create (button)"
+  # --- added by the full-app remap ---
+  - name: claimHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Claim" }
+    comment: "Claim (text)"
 actions:
   - do: Assign a claim to an employee
     kind: form

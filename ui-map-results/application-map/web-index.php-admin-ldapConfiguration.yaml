@@ -1,0 +1,180 @@
+page: web-index.php-admin-ldapConfiguration
+url: /web/index.php/admin/ldapConfiguration
+title: "OrangeHRM"
+elements:
+  # --- shared chrome: pasted verbatim from a sibling map file, never re-located ---
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: collapseMenuButton
+    component: button
+    locator: { strategy: css, args: ["button.oxd-main-menu-button"] }
+    comment: "Collapse menu (button)"
+  - name: searchMenuInput
+    component: input
+    locator: { strategy: css, args: [".oxd-main-menu-search input"] }
+    comment: "Search menu (input)"
+  - name: adminMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: buzzMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: currentUserHeading
+    component: text
+    locator: { strategy: css, args: [".oxd-userdropdown-name"] }
+    comment: "Current user (text)"
+  # --- this screen ---
+  - name: userManagementMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"User Management\")"] }
+    comment: "User Management (menuItem)"
+  - name: jobMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Job\")"] }
+    comment: "Job (menuItem)"
+  - name: organizationMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Organization\")"] }
+    comment: "Organization (menuItem)"
+  - name: qualificationsMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Qualifications\")"] }
+    comment: "Qualifications (menuItem)"
+  - name: configurationMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Configuration\")"] }
+    comment: "Configuration (menuItem)"
+  - name: nationalitiesMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Nationalities" }
+    comment: "Nationalities (menuItem)"
+  - name: corporateBrandingMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Corporate Branding" }
+    comment: "Corporate Branding (menuItem)"
+  - name: adminHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Admin" }
+    comment: "Admin (text)"
+  - name: ldapConfigurationHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "LDAP Configuration" }
+    comment: "LDAP Configuration (text)"
+  - name: hostInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Host" }
+    comment: "Host (input)"
+  - name: portInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Port" }
+    comment: "Port (input)"
+  - name: encryptionDropdown
+    component: dropdown
+    locator: { strategy: template, args: ["labelledSelect"], name: "Encryption" }
+    comment: "Encryption (dropdown)"
+  - name: ldapImplementationDropdown
+    component: dropdown
+    locator: { strategy: template, args: ["labelledSelect"], name: "LDAP Implementation" }
+    comment: "LDAP Implementation (dropdown)"
+  - name: distinguishedNameInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Distinguished Name" }
+    comment: "Distinguished Name (input)"
+  - name: passwordInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Password" }
+    comment: "Password (input)"
+  - name: baseDistinguishedNameInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Base Distinguished Name" }
+    comment: "Base Distinguished Name (input)"
+  - name: searchScopeDropdown
+    component: dropdown
+    locator: { strategy: template, args: ["labelledSelect"], name: "Search Scope" }
+    comment: "Search Scope (dropdown)"
+  - name: userNameAttributeInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "User Name Attribute" }
+    comment: "User Name Attribute (input)"
+  - name: userSearchFilterInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "User Search Filter" }
+    comment: "User Search Filter (input)"
+  - name: userUniqueIdAttributeInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "User Unique ID Attribute" }
+    comment: "User Unique ID Attribute (input)"
+  - name: syncIntervalInHoursInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Sync Interval (in Hours)" }
+    comment: "Sync Interval (in Hours) (input)"
+  - name: testConnectionButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Test Connection" }
+    comment: "Test Connection (button)"
+  - name: saveButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Save" }
+    comment: "Save (button)"
+actions:
+  - do: Complete and submit this form
+    kind: form
+    fields:
+      - { label: Host, locator: '.oxd-input-group:has(label:text-is("Host")) input', type: text }
+      - { label: Port, locator: '.oxd-input-group:has(label:text-is("Port")) input', type: text }
+      - { label: Encryption, locator: '.oxd-input-group:has(label:text-is("Encryption")) .oxd-select-text', type: dropdown }
+      - { label: LDAP Implementation, locator: '.oxd-input-group:has(label:text-is("LDAP Implementation")) .oxd-select-text', type: dropdown }
+      - { label: Distinguished Name, locator: '.oxd-input-group:has(label:text-is("Distinguished Name")) input', type: text }
+      - { label: Password, locator: '.oxd-input-group:has(label:text-is("Password")) input', type: text }
+      - { label: Base Distinguished Name, locator: '.oxd-input-group:has(label:text-is("Base Distinguished Name")) input', type: text }
+      - { label: Search Scope, locator: '.oxd-input-group:has(label:text-is("Search Scope")) .oxd-select-text', type: dropdown }
+      - { label: User Name Attribute, locator: '.oxd-input-group:has(label:text-is("User Name Attribute")) input', type: text }
+      - { label: User Search Filter, locator: '.oxd-input-group:has(label:text-is("User Search Filter")) input', type: text }
+      - { label: User Unique ID Attribute, locator: '.oxd-input-group:has(label:text-is("User Unique ID Attribute")) input', type: text }
+      - { label: Sync Interval (in Hours), locator: '.oxd-input-group:has(label:text-is("Sync Interval (in Hours)")) input', type: text }
+    submit: 'getByRole("button", { name: "Save" })'
+    effect: Submits the form. Required fields left empty raise "Required" under each field.

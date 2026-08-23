@@ -130,6 +130,24 @@ elements:
       - name: "Actions"
     rowCount: 10
     comment: "Events (table)"
+  # --- added by the full-app remap ---
+  - name: claimHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Claim" }
+    comment: "Claim (text)"
+  - name: addButton2
+    component: button
+    locator: { strategy: css, args: ["button:text-is(\"Add\")"] }
+    comment: "Add (button)"
+  - name: recordsTable
+    component: table
+    locator: { strategy: template, args: ["tableByColumn"], name: "Event Name" }
+    columns:
+      - name: "Event Name"
+      - name: "Status"
+      - name: "Actions"
+    rowCount: 3
+    comment: "Records (table)"
 actions:
   - do: Filter claim events
     kind: form

@@ -1,0 +1,172 @@
+page: web-index.php-admin-viewSystemUsers
+url: /web/index.php/admin/viewSystemUsers
+title: "OrangeHRM"
+elements:
+  # --- shared chrome: pasted verbatim from a sibling map file, never re-located ---
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: collapseMenuButton
+    component: button
+    locator: { strategy: css, args: ["button.oxd-main-menu-button"] }
+    comment: "Collapse menu (button)"
+  - name: searchMenuInput
+    component: input
+    locator: { strategy: css, args: [".oxd-main-menu-search input"] }
+    comment: "Search menu (input)"
+  - name: adminMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: buzzMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: currentUserHeading
+    component: text
+    locator: { strategy: css, args: [".oxd-userdropdown-name"] }
+    comment: "Current user (text)"
+  # --- this screen ---
+  - name: userManagementMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"User Management\")"] }
+    comment: "User Management (menuItem)"
+  - name: jobMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Job\")"] }
+    comment: "Job (menuItem)"
+  - name: organizationMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Organization\")"] }
+    comment: "Organization (menuItem)"
+  - name: qualificationsMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Qualifications\")"] }
+    comment: "Qualifications (menuItem)"
+  - name: configurationMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Configuration\")"] }
+    comment: "Configuration (menuItem)"
+  - name: nationalitiesMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Nationalities" }
+    comment: "Nationalities (menuItem)"
+  - name: corporateBrandingMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Corporate Branding" }
+    comment: "Corporate Branding (menuItem)"
+  - name: adminHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Admin" }
+    comment: "Admin (text)"
+  - name: systemUsersHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "System Users" }
+    comment: "System Users (text)"
+  - name: usernameInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Username" }
+    comment: "Username (input)"
+  - name: userRoleDropdown
+    component: dropdown
+    locator: { strategy: template, args: ["labelledSelect"], name: "User Role" }
+    comment: "User Role (dropdown)"
+  - name: employeeNameInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Employee Name" }
+    comment: "Employee Name (input)"
+  - name: statusDropdown
+    component: dropdown
+    locator: { strategy: template, args: ["labelledSelect"], name: "Status" }
+    comment: "Status (dropdown)"
+  - name: resetButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Reset" }
+    comment: "Reset (button)"
+  - name: searchButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Search" }
+    comment: "Search (button)"
+  - name: addButton
+    component: button
+    locator: { strategy: css, args: ["button:text-is(\"Add\")"] }
+    comment: "Add (button)"
+  - name: recordsTable
+    component: table
+    locator: { strategy: template, args: ["tableByColumn"], name: "Username" }
+    columns:
+      - name: "Username"
+      - name: "User Role"
+      - name: "Employee Name"
+      - name: "Status"
+      - name: "Actions"
+    rowCount: 35
+    comment: "Records (table)"
+actions:
+  - do: Search this screen
+    kind: form
+    fields:
+      - { label: Username, locator: '.oxd-input-group:has(label:text-is("Username")) input', type: text }
+      - { label: User Role, locator: '.oxd-input-group:has(label:text-is("User Role")) .oxd-select-text', type: dropdown }
+      - { label: Employee Name, locator: '.oxd-input-group:has(label:text-is("Employee Name")) input', type: text }
+      - { label: Status, locator: '.oxd-input-group:has(label:text-is("Status")) .oxd-select-text', type: dropdown }
+    submit: 'getByRole("button", { name: "Search" })'
+    effect: Filters the records table in place. No navigation.
+  - do: Clear the search filters
+    kind: click
+    target: 'getByRole("button", { name: "Reset" })'
+    effect: Restores the unfiltered list and clears every filter field.
+  - do: Start adding a record
+    kind: click
+    target: 'button:text-is("Add")'
+    effect: Opens the add form for this screen.
+  - do: Open a record for editing
+    kind: rowAction
+    target: '.oxd-table-card:has-text("<record>") i.bi-pencil-fill'
+    effect: Opens the edit form for that row.
+  - do: Delete a record
+    kind: destructive
+    notExercised: true
+    target: '.oxd-table-card:has-text("<record>") i.bi-trash'
+    effect: Opens a confirmation dialog and permanently deletes the row. Never performed while mapping.

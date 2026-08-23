@@ -113,6 +113,11 @@ elements:
     component: button
     locator: { strategy: getByRole, args: ["button"], name: "Save" }
     comment: "Save (button)"
+  # --- added by the full-app remap ---
+  - name: claimHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Claim" }
+    comment: "Claim (text)"
 actions:
   - do: Add an expense type
     kind: form
