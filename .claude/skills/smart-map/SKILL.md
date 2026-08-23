@@ -240,14 +240,16 @@ node scripts/framework-generator/generate.mjs --dry-run
 ```
 
 `check-map.mjs` must pass. Pass every slug you wrote to `--strict` so a mistake in your files is a
-failure rather than a warning. If it reports shared navigation as anything other than 20, you broke the
-chrome rule — fix it before going further.
+failure rather than a warning. If it reports shared navigation as anything other than the number
+`EXPECTED_SHARED_CHROME` in `check-map.mjs`, you broke the chrome rule — fix it before going further.
+The one legitimate reason for that number to change is mapping a module whose top bar lacks a tab the
+previously-mapped modules all had; then update the constant and say so in the report.
 
 Then `playwright-cli -s=smartmap close` and report:
 
 - screens written, with element and action counts per screen;
 - unstable locator count before and after, from the two `--dry-run` reports;
-- **shared navigation elements — must still be 20**;
+- **shared navigation elements — must still match `EXPECTED_SHARED_CHROME`**;
 - destructive actions recorded but not performed;
 - any screen that failed to load, and any locator left `unstable: true`.
 
