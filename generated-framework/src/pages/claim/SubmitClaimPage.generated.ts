@@ -24,51 +24,51 @@ export abstract class SubmitClaimPageGenerated extends BasePage {
 
   /** Submit Claim (menuItem) */
   get submitClaimMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Submit Claim")'), 'Submit Claim (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Submit Claim');
   }
 
   /** My Claims (menuItem) */
   get myClaimsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("My Claims")'), 'My Claims (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'My Claims');
   }
 
   /** Employee Claims (menuItem) */
   get employeeClaimsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee Claims")'), 'Employee Claims (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Employee Claims');
   }
 
   /** Assign Claim (menuItem) */
   get assignClaimMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Assign Claim")'), 'Assign Claim (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Assign Claim');
   }
 
   /** Create Claim Request (text) */
   get createClaimRequestHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Create Claim Request', exact: true }), 'Create Claim Request (text)');
+    return TextComponent.byHeading(this.page, 'Create Claim Request');
   }
 
   /** Event (dropdown) */
   get eventDropdown(): DropdownComponent {
-    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Event")) .oxd-select-text'), 'Event (dropdown)');
+    return DropdownComponent.byLabel(this.page, 'Event');
   }
 
   /** Currency (dropdown) */
   get currencyDropdown(): DropdownComponent {
-    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Currency")) .oxd-select-text'), 'Currency (dropdown)');
+    return DropdownComponent.byLabel(this.page, 'Currency');
   }
 
   /** Remarks (longInput) */
   get remarksTextArea(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Remarks")) textarea'), 'Remarks (longInput)');
+    return InputComponent.textareaByLabel(this.page, 'Remarks');
   }
 
   /** Cancel (button) */
   get cancelButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Cancel', exact: true }), 'Cancel (button)');
+    return ButtonComponent.byLabel(this.page, 'Cancel');
   }
 
   /** Create (button) */
   get createButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Create', exact: true }), 'Create (button)');
+    return ButtonComponent.byLabel(this.page, 'Create');
   }
 }

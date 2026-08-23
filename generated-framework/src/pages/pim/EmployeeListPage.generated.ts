@@ -26,72 +26,72 @@ export abstract class EmployeeListPageGenerated extends BasePage {
 
   /** Employee List (menuItem) */
   get employeeListMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee List")'), 'Employee List (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Employee List');
   }
 
   /** Add Employee (menuItem) */
   get addEmployeeMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Add Employee")'), 'Add Employee (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Add Employee');
   }
 
   /** Reports (menuItem) */
   get reportsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Reports")'), 'Reports (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Reports');
   }
 
   /** Employee Information (text) */
   get employeeInformationHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Employee Information', exact: true }), 'Employee Information (text)');
+    return TextComponent.byHeading(this.page, 'Employee Information');
   }
 
   /** Employee Name (input) */
   get employeeNameInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Employee Name")) input'), 'Employee Name (input)');
+    return InputComponent.byLabel(this.page, 'Employee Name');
   }
 
   /** Employee Id (input) */
   get employeeIdInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Employee Id")) input'), 'Employee Id (input)');
+    return InputComponent.byLabel(this.page, 'Employee Id');
   }
 
   /** Employment Status (dropdown) */
   get employmentStatusDropdown(): DropdownComponent {
-    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Employment Status")) .oxd-select-text'), 'Employment Status (dropdown)');
+    return DropdownComponent.byLabel(this.page, 'Employment Status');
   }
 
   /** Include (dropdown) */
   get includeDropdown(): DropdownComponent {
-    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Include")) .oxd-select-text'), 'Include (dropdown)');
+    return DropdownComponent.byLabel(this.page, 'Include');
   }
 
   /** Supervisor Name (input) */
   get supervisorNameInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Supervisor Name")) input'), 'Supervisor Name (input)');
+    return InputComponent.byLabel(this.page, 'Supervisor Name');
   }
 
   /** Job Title (dropdown) */
   get jobTitleDropdown(): DropdownComponent {
-    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Job Title")) .oxd-select-text'), 'Job Title (dropdown)');
+    return DropdownComponent.byLabel(this.page, 'Job Title');
   }
 
   /** Sub Unit (dropdown) */
   get subUnitDropdown(): DropdownComponent {
-    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Sub Unit")) .oxd-select-text'), 'Sub Unit (dropdown)');
+    return DropdownComponent.byLabel(this.page, 'Sub Unit');
   }
 
   /** Reset (button) */
   get resetButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Reset', exact: true }), 'Reset (button)');
+    return ButtonComponent.byLabel(this.page, 'Reset');
   }
 
   /** Search (button) */
   get searchButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Search', exact: true }), 'Search (button)');
+    return ButtonComponent.byLabel(this.page, 'Search');
   }
 
   /** Add (button) */
   get addButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Add', exact: true }), 'Add (button)');
+    return ButtonComponent.byLabel(this.page, 'Add');
   }
 
   /** Records Found (text) */

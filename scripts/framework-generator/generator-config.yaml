@@ -37,3 +37,20 @@ waits:
 
 tests:
   generateSmokeSpecs: true    # one navigate + assert spec per generated page object
+
+# Label-parameterised locator templates: the app's answer to "how do I find the input
+# belonging to this label". `{label}` is substituted with the element's label, and a page
+# object then reads `InputComponent.byLabel(this.page, 'City')` instead of carrying the
+# selector. This block and the file it renders are the ONLY places an app-specific
+# selector appears — retargeting to another app means replacing these five lines.
+#
+# An element is emitted through a factory only when the template reproduces the map's
+# locator exactly; anything else keeps its own locator, so a one-off never gets bent to
+# fit. Remove a line to turn its factory off; remove the block for an app whose labels
+# are properly associated (`getByLabel` needs no template at all).
+locatorTemplates:
+  labelledInput:    '.oxd-input-group:has(label:text-is("{label}")) input'
+  labelledTextarea: '.oxd-input-group:has(label:text-is("{label}")) textarea'
+  labelledSelect:   '.oxd-input-group:has(label:text-is("{label}")) .oxd-select-text'
+  topNavTab:        '.oxd-topbar-body-nav-tab > a:text-is("{label}")'
+  tableByColumn:    '.oxd-table:has(.oxd-table-th:text-is("{label}"))'

@@ -36,6 +36,7 @@ const config = {
   mapDir: rawConfig.mapDir ?? join('ui-map-results', 'application-map'),
   pages: { folderSegment: 'auto', dropParamSegments: true, mergeDuplicates: true, ...(rawConfig.pages ?? {}) },
   elements: { sharedChromeThreshold: 0.8, includeUnstable: true, includeStates: true, ...(rawConfig.elements ?? {}) },
+  locatorTemplates: { ...(rawConfig.locatorTemplates ?? {}) },
 };
 const failures = [];
 const warnings = [];

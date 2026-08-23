@@ -56,6 +56,17 @@ There is no test suite for the generator itself; `check-map.mjs`, `--dry-run` an
 
 **The locator vocabulary is closed and shared.** `framework-generator/locator-spec.mjs` defines the `{ strategy, args, name, within, nth }` shape used by the login config (input), the map (output), and the generator (consumer). Adding a strategy means touching that one module. The `smart-map` skill must verify every candidate resolves to exactly one element before writing it; ambiguous elements are left out rather than guessed.
 
+**`locatorTemplates:` keeps app selectors out of the page objects.** The block in
+`generator-config.yaml` maps a label to a selector (`{label}` is the placeholder), and the generator
+emits it into `src/components/locator-templates.generated.ts` — the only file in the output naming an
+app-specific selector. Where a template reproduces a mapped locator *exactly*, `factoryFor` in
+`languages/typescript.mjs` emits `InputComponent.byLabel(this.page, 'City')` instead of the selector;
+anything else keeps the locator the mapper verified. Equivalence is proved per element, never assumed,
+so editing the block cannot silently re-point an accessor — it can only fall back. The
+`GENERATION-REPORT.md` factory tally is how you see that happen. Component *instance* constructors stay
+`(locator, description)`: the factories are statics taking a root, which is what keeps `BaseComponent.nth()`
+and `within:` scoping working.
+
 **`map-reader.mjs` absorbs every quirk of the map format** so no language adapter has to know about them: skipping locator-less synthetic nodes, parsing table columns out of the prose `comment:` string, lifting chrome present on ≥`sharedChromeThreshold` of pages into one `NavigationBar`, merging `*Module` redirect pages onto their list-page twin, keeping identifiers safe per target language, and detecting the URL segment used for folder grouping. It reads only `url`, `page`, `elements` and `states` from a map file, so a map file's `actions:` block rides along untouched.
 
 **`check-map.mjs` guards the invariants that fail silently.** A map element missing `name`, `component` or `locator` is dropped without an error, and the shared-`NavigationBar` group collapses quietly if a nav locator changes on a handful of pages. Run it after any change to `ui-map-results/`, with `--strict <slug>` for the files you just wrote.

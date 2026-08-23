@@ -1,5 +1,6 @@
-import { BaseComponent } from './base/BaseComponent';
+import { BaseComponent, type LocatorRoot } from './base/BaseComponent';
 import { OptionComponent } from './OptionComponent';
+import { LOCATOR_TEMPLATES } from './locator-templates.generated';
 
 /**
  * A dropdown trigger. Application dropdowns are usually not a native <select>,
@@ -7,6 +8,11 @@ import { OptionComponent } from './OptionComponent';
  * then read or pick an option.
  */
 export class DropdownComponent extends BaseComponent {
+  /** The dropdown belonging to this label. */
+  static byLabel(root: LocatorRoot, label: string): DropdownComponent {
+    return new DropdownComponent(root.locator(LOCATOR_TEMPLATES.labelledSelect(label)), `${label} (dropdown)`);
+  }
+
   async open(): Promise<void> {
     await this.locator.click();
   }

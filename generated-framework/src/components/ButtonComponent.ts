@@ -1,6 +1,11 @@
-import { BaseComponent } from './base/BaseComponent';
+import { BaseComponent, type RoleRoot } from './base/BaseComponent';
 
 export class ButtonComponent extends BaseComponent {
+  /** The button whose accessible name is this label. */
+  static byLabel(root: RoleRoot, label: string): ButtonComponent {
+    return new ButtonComponent(root.getByRole('button', { name: label, exact: true }), `${label} (button)`);
+  }
+
   async click(): Promise<void> {
     await this.locator.click();
   }

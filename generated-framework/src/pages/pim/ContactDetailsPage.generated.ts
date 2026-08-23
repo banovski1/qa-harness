@@ -26,17 +26,17 @@ export abstract class ContactDetailsPageGenerated extends BasePage {
 
   /** Employee List (menuItem) */
   get employeeListMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee List")'), 'Employee List (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Employee List');
   }
 
   /** Add Employee (menuItem) */
   get addEmployeeMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Add Employee")'), 'Add Employee (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Add Employee');
   }
 
   /** Reports (menuItem) */
   get reportsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Reports")'), 'Reports (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Reports');
   }
 
   /** Personal Details (tab) */
@@ -96,67 +96,67 @@ export abstract class ContactDetailsPageGenerated extends BasePage {
 
   /** Contact Details (text) */
   get contactDetailsHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Contact Details', exact: true }), 'Contact Details (text)');
+    return TextComponent.byHeading(this.page, 'Contact Details');
   }
 
   /** Street 1 (input) */
   get street1Input(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Street 1")) input'), 'Street 1 (input)');
+    return InputComponent.byLabel(this.page, 'Street 1');
   }
 
   /** Street 2 (input) */
   get street2Input(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Street 2")) input'), 'Street 2 (input)');
+    return InputComponent.byLabel(this.page, 'Street 2');
   }
 
   /** City (input) */
   get cityInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("City")) input'), 'City (input)');
+    return InputComponent.byLabel(this.page, 'City');
   }
 
   /** State/Province (input) */
   get stateProvinceInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("State/Province")) input'), 'State/Province (input)');
+    return InputComponent.byLabel(this.page, 'State/Province');
   }
 
   /** Zip/Postal Code (input) */
   get zipPostalCodeInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Zip/Postal Code")) input'), 'Zip/Postal Code (input)');
+    return InputComponent.byLabel(this.page, 'Zip/Postal Code');
   }
 
   /** Country (dropdown) */
   get countryDropdown(): DropdownComponent {
-    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Country")) .oxd-select-text'), 'Country (dropdown)');
+    return DropdownComponent.byLabel(this.page, 'Country');
   }
 
   /** Home (input) */
   get homeInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Home")) input'), 'Home (input)');
+    return InputComponent.byLabel(this.page, 'Home');
   }
 
   /** Mobile (input) */
   get mobileInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Mobile")) input'), 'Mobile (input)');
+    return InputComponent.byLabel(this.page, 'Mobile');
   }
 
   /** Work (input) */
   get workInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Work")) input'), 'Work (input)');
+    return InputComponent.byLabel(this.page, 'Work');
   }
 
   /** Work Email (input) */
   get workEmailInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Work Email")) input'), 'Work Email (input)');
+    return InputComponent.byLabel(this.page, 'Work Email');
   }
 
   /** Other Email (input) */
   get otherEmailInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Other Email")) input'), 'Other Email (input)');
+    return InputComponent.byLabel(this.page, 'Other Email');
   }
 
   /** Save (button) */
   get saveButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Save', exact: true }), 'Save (button)');
+    return ButtonComponent.byLabel(this.page, 'Save');
   }
 
   /** Add attachment (button) */

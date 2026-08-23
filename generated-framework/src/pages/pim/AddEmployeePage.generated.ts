@@ -25,22 +25,22 @@ export abstract class AddEmployeePageGenerated extends BasePage {
 
   /** Employee List (menuItem) */
   get employeeListMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee List")'), 'Employee List (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Employee List');
   }
 
   /** Add Employee (menuItem) */
   get addEmployeeMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Add Employee")'), 'Add Employee (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Add Employee');
   }
 
   /** Reports (menuItem) */
   get reportsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Reports")'), 'Reports (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Reports');
   }
 
   /** Add Employee (text) */
   get addEmployeeHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Add Employee', exact: true }), 'Add Employee (text)');
+    return TextComponent.byHeading(this.page, 'Add Employee');
   }
 
   /** Change employee photo (button) */
@@ -70,7 +70,7 @@ export abstract class AddEmployeePageGenerated extends BasePage {
 
   /** Employee Id (input) */
   get employeeIdInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Employee Id")) input'), 'Employee Id (input)');
+    return InputComponent.byLabel(this.page, 'Employee Id');
   }
 
   /** Create Login Details (switch) */
@@ -80,36 +80,36 @@ export abstract class AddEmployeePageGenerated extends BasePage {
 
   /** Username (input) */
   get usernameInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Username")) input'), 'Username (input)');
+    return InputComponent.byLabel(this.page, 'Username');
   }
 
   /** Password (input) */
   get passwordInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Password")) input'), 'Password (input)');
+    return InputComponent.byLabel(this.page, 'Password');
   }
 
   /** Confirm Password (input) */
   get confirmPasswordInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Confirm Password")) input'), 'Confirm Password (input)');
+    return InputComponent.byLabel(this.page, 'Confirm Password');
   }
 
   /** Enabled (radio) */
   get enabledRadio(): RadioComponent {
-    return new RadioComponent(this.page.getByRole('radio', { name: 'Enabled', exact: true }), 'Enabled (radio)');
+    return RadioComponent.byLabel(this.page, 'Enabled');
   }
 
   /** Disabled (radio) */
   get disabledRadio(): RadioComponent {
-    return new RadioComponent(this.page.getByRole('radio', { name: 'Disabled', exact: true }), 'Disabled (radio)');
+    return RadioComponent.byLabel(this.page, 'Disabled');
   }
 
   /** Cancel (button) */
   get cancelButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Cancel', exact: true }), 'Cancel (button)');
+    return ButtonComponent.byLabel(this.page, 'Cancel');
   }
 
   /** Save (button) */
   get saveButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Save', exact: true }), 'Save (button)');
+    return ButtonComponent.byLabel(this.page, 'Save');
   }
 }

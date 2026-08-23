@@ -31,7 +31,12 @@ const DEFAULTS = {
   elements: { sharedChromeThreshold: 0.8, includeUnstable: true, includeStates: true },
   waits: { spinnerSelector: '[role="progressbar"], [aria-busy="true"]' },
   tests: { generateSmokeSpecs: true },
+  locatorTemplates: {},
 };
+
+// Every template id the generator knows how to emit a factory for, and the component
+// kinds that use it. An id absent from the config simply has no factory.
+export const TEMPLATE_IDS = ['labelledInput', 'labelledTextarea', 'labelledSelect', 'topNavTab', 'tableByColumn'];
 
 // ---- entry point -------------------------------------------------------------
 
@@ -52,7 +57,7 @@ async function main() {
   console.log(`[framework-gen] read ${model.stats.files} map file(s): ${model.pages.length} page object(s), ` +
     `${model.stats.elementsRead} element(s), ${model.stats.sharedChrome} shared in navigation`);
 
-  const context = { config, model };
+  const context = { config, model, adapter };
   const writer = new FileWriter(config.outputDir, { dryRun });
 
   for (const dir of adapter.emptyDirs(context)) writer.ensureDir(dir);
@@ -96,6 +101,7 @@ function loadConfig(path) {
     elements: { ...DEFAULTS.elements, ...(raw.elements ?? {}) },
     waits: { ...DEFAULTS.waits, ...(raw.waits ?? {}) },
     tests: { ...DEFAULTS.tests, ...(raw.tests ?? {}) },
+    locatorTemplates: { ...(raw.locatorTemplates ?? {}) },
   };
 
   if (!SUPPORTED_LANGUAGES.includes(config.language)) {
@@ -115,6 +121,17 @@ function loadConfig(path) {
   }
   if (!config.waits.spinnerSelector) {
     throw new Error("waits.spinnerSelector must be a CSS selector. Remove the key to use the default.");
+  }
+
+  // A template whose id the generator does not know, or which forgets {label}, would
+  // silently never match an element and quietly disable the factory it was written for.
+  for (const [id, template] of Object.entries(config.locatorTemplates)) {
+    if (!TEMPLATE_IDS.includes(id)) {
+      throw new Error(`Unknown locatorTemplates id '${id}'. Known ids: ${TEMPLATE_IDS.join(', ')}`);
+    }
+    if (typeof template !== 'string' || !template.includes('{label}')) {
+      throw new Error(`locatorTemplates.${id} must be a selector string containing {label}, got ${JSON.stringify(template)}`);
+    }
   }
 
   config.login = config.loginConfig ? loadLoginFlow(config.loginConfig) : null;
@@ -171,7 +188,25 @@ function report(context) {
   md += `| Skipped (no locator) | ${model.stats.skippedNoLocator} |\n`;
   md += `| Shared navigation elements | ${model.stats.sharedChrome} |\n`;
   md += `| Tables | ${model.stats.tables} |\n`;
-  md += `| Unstable locators | ${model.stats.unstable} |\n\n`;
+  md += `| Unstable locators | ${model.stats.unstable} |\n`;
+
+  // How many accessors resolve through a component factory instead of carrying a
+  // selector. A drop here after a redesign means a locatorTemplate stopped matching
+  // and those elements fell back to their mapped locator — same behaviour, but the
+  // template needs updating.
+  const locators = context.adapter.locatorStats?.(model, config);
+  if (locators) md += `| Accessors via component factory | ${locators.derived} of ${locators.total} |\n`;
+  md += '\n';
+
+  if (locators) {
+    md += '## Locator ownership\n\n';
+    md += 'A factory accessor names only its label; the selector lives in the component,\n';
+    md += 'from `locatorTemplates:` in the generator config. The rest keep the locator the\n';
+    md += 'mapper verified, which is what a genuine one-off needs.\n\n';
+    md += '| Resolved by | Accessors |\n|---|---|\n';
+    for (const [factory, count] of locators.byFactory) md += `| \`${factory}\` | ${count} |\n`;
+    md += `| its own locator | ${locators.total - locators.derived} |\n\n`;
+  }
 
   md += '## Unstable locators\n\n';
   if (rows.length === 0) {

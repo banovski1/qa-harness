@@ -14,7 +14,7 @@ export class NavigationBar {
 
   /** client brand banner (link) */
   get clientBrandBannerLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'client brand banner', exact: true }), 'client brand banner (link)');
+    return LinkComponent.byLabel(this.page, 'client brand banner');
   }
 
   /** Collapse menu (button) */
@@ -29,62 +29,62 @@ export class NavigationBar {
 
   /** Admin (link) */
   get adminMenuLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Admin', exact: true }), 'Admin (link)');
+    return LinkComponent.byLabel(this.page, 'Admin');
   }
 
   /** PIM (link) */
   get pimMenuLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'PIM', exact: true }), 'PIM (link)');
+    return LinkComponent.byLabel(this.page, 'PIM');
   }
 
   /** Leave (link) */
   get leaveMenuLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Leave', exact: true }), 'Leave (link)');
+    return LinkComponent.byLabel(this.page, 'Leave');
   }
 
   /** Time (link) */
   get timeMenuLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Time', exact: true }), 'Time (link)');
+    return LinkComponent.byLabel(this.page, 'Time');
   }
 
   /** Recruitment (link) */
   get recruitmentMenuLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Recruitment', exact: true }), 'Recruitment (link)');
+    return LinkComponent.byLabel(this.page, 'Recruitment');
   }
 
   /** My Info (link) */
   get myInfoMenuLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'My Info', exact: true }), 'My Info (link)');
+    return LinkComponent.byLabel(this.page, 'My Info');
   }
 
   /** Performance (link) */
   get performanceMenuLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Performance', exact: true }), 'Performance (link)');
+    return LinkComponent.byLabel(this.page, 'Performance');
   }
 
   /** Dashboard (link) */
   get dashboardMenuLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Dashboard', exact: true }), 'Dashboard (link)');
+    return LinkComponent.byLabel(this.page, 'Dashboard');
   }
 
   /** Directory (link) */
   get directoryMenuLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Directory', exact: true }), 'Directory (link)');
+    return LinkComponent.byLabel(this.page, 'Directory');
   }
 
   /** Maintenance (link) */
   get maintenanceMenuLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Maintenance', exact: true }), 'Maintenance (link)');
+    return LinkComponent.byLabel(this.page, 'Maintenance');
   }
 
   /** Claim (link) */
   get claimMenuLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Claim', exact: true }), 'Claim (link)');
+    return LinkComponent.byLabel(this.page, 'Claim');
   }
 
   /** Buzz (link) */
   get buzzMenuLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Buzz', exact: true }), 'Buzz (link)');
+    return LinkComponent.byLabel(this.page, 'Buzz');
   }
 
   /** Current user (text) */

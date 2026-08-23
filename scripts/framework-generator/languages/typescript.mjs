@@ -32,6 +32,30 @@ const IMPORT_PATH = {
   TableComponent: 'components/tables/TableComponent',
 };
 
+/**
+ * Which static factory can stand in for a mapped locator, per component class.
+ *
+ * `role` factories are pure Playwright and always available. `template` factories
+ * read an app pattern from `locatorTemplates:` and exist only when it is configured.
+ * `kind` is the component name the factory bakes into its description, so a factory
+ * is only usable for an element of that exact kind — otherwise the description
+ * would change.
+ */
+const FACTORIES = {
+  LinkComponent: [{ method: 'byLabel', kind: 'link', role: 'link' }],
+  ButtonComponent: [{ method: 'byLabel', kind: 'button', role: 'button' }],
+  RadioComponent: [{ method: 'byLabel', kind: 'radio', role: 'radio' }],
+  TabComponent: [{ method: 'byLabel', kind: 'tab', role: 'tab' }],
+  TextComponent: [{ method: 'byHeading', kind: 'text', role: 'heading' }],
+  InputComponent: [
+    { method: 'byLabel', kind: 'input', template: 'labelledInput' },
+    { method: 'textareaByLabel', kind: 'longInput', template: 'labelledTextarea' },
+  ],
+  DropdownComponent: [{ method: 'byLabel', kind: 'dropdown', template: 'labelledSelect' }],
+  MenuItemComponent: [{ method: 'byLabel', kind: 'menuItem', template: 'topNavTab' }],
+  TableComponent: [{ method: 'byColumn', kind: 'table', template: 'tableByColumn' }],
+};
+
 export const typescript = {
   id: 'typescript',
   extension: EXT,
@@ -57,6 +81,32 @@ export const typescript = {
   renderTest(page, context) {
     if (!context.config.tests.generateSmokeSpecs) return null;
     return { path: `tests/e2e/${page.group}/${toKebab(page.className)}.spec.ts`, contents: smokeSpec(page), kind: 'generated' };
+  },
+
+  /**
+   * The same decision the emitter makes, counted for the report. Asking `factoryFor`
+   * rather than re-deriving the rule is the point: the report cannot drift from what
+   * was actually written.
+   */
+  locatorStats(model, config) {
+    const byFactory = new Map();
+    let total = 0;
+    let derived = 0;
+    const elements = [
+      ...model.sharedChrome,
+      ...model.sharedStates.flatMap((s) => s.elements),
+      ...model.pages.flatMap((p) => [...p.elements, ...p.states.flatMap((s) => s.elements)]),
+    ];
+    for (const element of elements) {
+      total += 1;
+      const cls = classFor(element);
+      const call = factoryFor(element, cls, 'root', config);
+      if (!call) continue;
+      derived += 1;
+      const key = call.slice(0, call.indexOf('('));
+      byFactory.set(key, (byFactory.get(key) ?? 0) + 1);
+    }
+    return { total, derived, byFactory: [...byFactory].sort((a, b) => b[1] - a[1]) };
   },
 };
 
@@ -108,7 +158,7 @@ function generatedPage(page, context) {
 
     for (const element of page.elements) {
       b.blank();
-      emitAccessor(b, element, used, 'this.page');
+      emitAccessor(b, element, used, 'this.page', context.config);
     }
 
     for (const { state, className, accessor } of stateClasses) {
@@ -120,25 +170,25 @@ function generatedPage(page, context) {
 
   for (const { state, className } of stateClasses) {
     w.blank();
-    emitStateClass(w, state, className);
+    emitStateClass(w, state, className, context.config);
   }
 
   return w.toString();
 }
 
-function emitStateClass(w, state, className) {
+function emitStateClass(w, state, className, config) {
   const used = new Set();
   w.line(`/** Only present while ${quote(state.triggerLabel)} is open. */`);
   w.block(`export class ${className} {`, (b) => {
     b.line('constructor(private readonly page: Page) {}');
     for (const element of state.elements) {
       b.blank();
-      emitAccessor(b, element, used, 'this.page');
+      emitAccessor(b, element, used, 'this.page', config);
     }
   });
 }
 
-function emitAccessor(w, element, used, root) {
+function emitAccessor(w, element, used, root, config) {
   const name = uniqueAccessor(element.rawName, used);
   const cls = classFor(element);
   const doc = element.label ? `${element.label} (${element.component})` : element.component;
@@ -146,13 +196,15 @@ function emitAccessor(w, element, used, root) {
   w.line(`/** ${doc.replace(/\*\//g, '*\\/')} */`);
   if (element.unstable) w.line(`// UNSTABLE: ${element.unstableReason}`);
 
+  const factory = config ? factoryFor(element, cls, root, config) : null;
   const locator = renderLocator(element.locator, root);
   const args = element.table
     ? `${locator}, [${element.table.columns.map(quote).join(', ')}], ${quote(doc)}`
     : `${locator}, ${quote(doc)}`;
   w.line(`get ${name}(): ${cls} {`);
-  w.indent().line(`return new ${cls}(${args});`).dedent();
+  w.indent().line(factory ? `return ${factory};` : `return new ${cls}(${args});`).dedent();
   w.line('}');
+  return Boolean(factory);
 }
 
 /** The protected half — written once, then left alone forever. */
@@ -201,6 +253,42 @@ function renderLocator(spec, root) {
   }
   if (spec.nth != null) expr += `.nth(${spec.nth})`;
   return expr;
+}
+
+/**
+ * The factory call that reproduces this element's locator exactly, or null.
+ *
+ * Equivalence is *proved*, never assumed: a role factory has to match the role and
+ * the accessible name, and a template factory has to render the byte-identical
+ * selector the map already carries. Anything else — a one-off selector, a label the
+ * template cannot rebuild, a scoped or positional locator — returns null and keeps
+ * the locator the mapper verified. That is what makes this safe to switch on for a
+ * whole map at once: a template that stops matching degrades to the old output
+ * instead of silently addressing a different element.
+ */
+function factoryFor(element, cls, root, config) {
+  const spec = element.locator;
+  if (spec.within || spec.nth != null || spec.unstable) return null;
+
+  const templates = config.locatorTemplates ?? {};
+  for (const factory of FACTORIES[cls] ?? []) {
+    if (factory.kind !== element.component) continue;
+
+    if (factory.role) {
+      if (spec.strategy !== 'getByRole') continue;
+      if (spec.args[0] !== factory.role || spec.name !== element.label) continue;
+    } else {
+      const pattern = templates[factory.template];
+      if (!pattern || spec.strategy !== 'css') continue;
+      if (pattern.replaceAll('{label}', element.label) !== spec.args[0]) continue;
+    }
+
+    const args = element.table
+      ? `${root}, ${quote(element.label)}, [${element.table.columns.map(quote).join(', ')}]`
+      : `${root}, ${quote(element.label)}`;
+    return `${cls}.${factory.method}(${args})`;
+  }
+  return null;
 }
 
 function classFor(element) {
@@ -252,13 +340,13 @@ function navigationComponent(context) {
     b.line('constructor(private readonly page: Page) {}');
     for (const element of sharedChrome) {
       b.blank();
-      emitAccessor(b, element, used, 'this.page');
+      emitAccessor(b, element, used, 'this.page', context.config);
     }
     for (const state of sharedStates) {
       for (const element of state.elements) {
         b.blank();
         b.line(`// revealed by opening ${quote(state.triggerLabel)}`);
-        emitAccessor(b, element, used, 'this.page');
+        emitAccessor(b, element, used, 'this.page', context.config);
       }
     }
   });

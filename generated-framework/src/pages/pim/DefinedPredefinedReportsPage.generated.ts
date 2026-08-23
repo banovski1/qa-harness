@@ -25,42 +25,42 @@ export abstract class DefinedPredefinedReportsPageGenerated extends BasePage {
 
   /** Employee List (menuItem) */
   get employeeListMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee List")'), 'Employee List (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Employee List');
   }
 
   /** Add Employee (menuItem) */
   get addEmployeeMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Add Employee")'), 'Add Employee (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Add Employee');
   }
 
   /** Reports (menuItem) */
   get reportsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Reports")'), 'Reports (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Reports');
   }
 
   /** Employee Reports (text) */
   get employeeReportsHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Employee Reports', exact: true }), 'Employee Reports (text)');
+    return TextComponent.byHeading(this.page, 'Employee Reports');
   }
 
   /** Report Name (input) */
   get reportNameInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Report Name")) input'), 'Report Name (input)');
+    return InputComponent.byLabel(this.page, 'Report Name');
   }
 
   /** Reset (button) */
   get resetButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Reset', exact: true }), 'Reset (button)');
+    return ButtonComponent.byLabel(this.page, 'Reset');
   }
 
   /** Search (button) */
   get searchButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Search', exact: true }), 'Search (button)');
+    return ButtonComponent.byLabel(this.page, 'Search');
   }
 
   /** Add (button) */
   get addButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Add', exact: true }), 'Add (button)');
+    return ButtonComponent.byLabel(this.page, 'Add');
   }
 
   /** Records Found (text) */

@@ -26,27 +26,27 @@ export abstract class ExpensePageGenerated extends BasePage {
 
   /** Submit Claim (menuItem) */
   get submitClaimMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Submit Claim")'), 'Submit Claim (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Submit Claim');
   }
 
   /** My Claims (menuItem) */
   get myClaimsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("My Claims")'), 'My Claims (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'My Claims');
   }
 
   /** Employee Claims (menuItem) */
   get employeeClaimsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee Claims")'), 'Employee Claims (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Employee Claims');
   }
 
   /** Assign Claim (menuItem) */
   get assignClaimMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Assign Claim")'), 'Assign Claim (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Assign Claim');
   }
 
   /** Expense Types (text) */
   get expenseTypesHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Expense Types', exact: true }), 'Expense Types (text)');
+    return TextComponent.byHeading(this.page, 'Expense Types');
   }
 
   /** Add (button) */
@@ -56,22 +56,22 @@ export abstract class ExpensePageGenerated extends BasePage {
 
   /** Name (input) */
   get nameInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Name")) input'), 'Name (input)');
+    return InputComponent.byLabel(this.page, 'Name');
   }
 
   /** Status (dropdown) */
   get statusDropdown(): DropdownComponent {
-    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Status")) .oxd-select-text'), 'Status (dropdown)');
+    return DropdownComponent.byLabel(this.page, 'Status');
   }
 
   /** Reset (button) */
   get resetButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Reset', exact: true }), 'Reset (button)');
+    return ButtonComponent.byLabel(this.page, 'Reset');
   }
 
   /** Search (button) */
   get searchButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Search', exact: true }), 'Search (button)');
+    return ButtonComponent.byLabel(this.page, 'Search');
   }
 
   /** Records Found (text) */

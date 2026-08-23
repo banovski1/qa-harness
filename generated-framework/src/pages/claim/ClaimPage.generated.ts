@@ -25,27 +25,27 @@ export abstract class ClaimPageGenerated extends BasePage {
 
   /** Submit Claim (menuItem) */
   get submitClaimMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Submit Claim")'), 'Submit Claim (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Submit Claim');
   }
 
   /** My Claims (menuItem) */
   get myClaimsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("My Claims")'), 'My Claims (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'My Claims');
   }
 
   /** Employee Claims (menuItem) */
   get employeeClaimsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee Claims")'), 'Employee Claims (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Employee Claims');
   }
 
   /** Assign Claim (menuItem) */
   get assignClaimMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Assign Claim")'), 'Assign Claim (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Assign Claim');
   }
 
   /** My Claims (text) */
   get myClaimsHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'My Claims', exact: true }), 'My Claims (text)');
+    return TextComponent.byHeading(this.page, 'My Claims');
   }
 
   /** Submit Claim (button) */
@@ -55,37 +55,37 @@ export abstract class ClaimPageGenerated extends BasePage {
 
   /** Reference Id (input) */
   get referenceIdInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Reference Id")) input'), 'Reference Id (input)');
+    return InputComponent.byLabel(this.page, 'Reference Id');
   }
 
   /** Event Name (dropdown) */
   get eventNameDropdown(): DropdownComponent {
-    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Event Name")) .oxd-select-text'), 'Event Name (dropdown)');
+    return DropdownComponent.byLabel(this.page, 'Event Name');
   }
 
   /** Status (dropdown) */
   get statusDropdown(): DropdownComponent {
-    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Status")) .oxd-select-text'), 'Status (dropdown)');
+    return DropdownComponent.byLabel(this.page, 'Status');
   }
 
   /** From Date (input) */
   get fromDateInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("From Date")) input'), 'From Date (input)');
+    return InputComponent.byLabel(this.page, 'From Date');
   }
 
   /** To Date (input) */
   get toDateInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("To Date")) input'), 'To Date (input)');
+    return InputComponent.byLabel(this.page, 'To Date');
   }
 
   /** Reset (button) */
   get resetButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Reset', exact: true }), 'Reset (button)');
+    return ButtonComponent.byLabel(this.page, 'Reset');
   }
 
   /** Search (button) */
   get searchButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Search', exact: true }), 'Search (button)');
+    return ButtonComponent.byLabel(this.page, 'Search');
   }
 
   /** Records Found (text) */

@@ -52,6 +52,9 @@ waits:
 
 tests:
   generateSmokeSpecs: true
+
+locatorTemplates:             # label -> selector patterns; see below
+  labelledInput: '.oxd-input-group:has(label:text-is("{label}")) input'
 ```
 
 `folderSegment: auto` works out which URL segment names the app's module by
@@ -70,6 +73,27 @@ number instead if you want different grouping.
 `waits.spinnerSelector` feeds the generated `waitForSpinnerToClear()` helper. The
 default is role-based and works on any accessible app; add your own class if your
 app renders a spinner with no busy state.
+
+`locatorTemplates` answers "how does this app connect a visible label to its
+control". Each entry is a selector with a `{label}` placeholder, and the generator
+emits it once into `src/components/locator-templates.generated.ts` — the only file
+in the output that names an app-specific selector. A page-object accessor whose
+mapped locator the template reproduces **exactly** is then emitted as a component
+factory carrying just the label:
+
+```ts
+get employeeNameInput(): InputComponent { return InputComponent.byLabel(this.page, 'Employee Name'); }
+```
+
+The equivalence is checked per element, so a genuine one-off keeps the locator the
+mapper verified rather than being bent to fit a pattern. That makes the block safe
+to add or edit wholesale: a template that stops matching degrades to the previous
+output instead of silently addressing a different element, and
+`GENERATION-REPORT.md` counts how many accessors took each path — a drop there is
+the signal that a template needs updating. Known ids are `labelledInput`,
+`labelledTextarea`, `labelledSelect`, `topNavTab` and `tableByColumn`; an app whose
+labels are properly associated with their controls needs none of them, because
+`getByLabel` already works.
 
 `loginConfig` points at `scripts/app-config.yaml`. The login flow is not in the
 application map — the mapping skill logs in before it starts walking — so reading

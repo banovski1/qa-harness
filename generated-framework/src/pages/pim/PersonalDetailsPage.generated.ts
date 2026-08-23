@@ -27,17 +27,17 @@ export abstract class PersonalDetailsPageGenerated extends BasePage {
 
   /** Employee List (menuItem) */
   get employeeListMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee List")'), 'Employee List (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Employee List');
   }
 
   /** Add Employee (menuItem) */
   get addEmployeeMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Add Employee")'), 'Add Employee (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Add Employee');
   }
 
   /** Reports (menuItem) */
   get reportsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Reports")'), 'Reports (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Reports');
   }
 
   /** Personal Details (tab) */
@@ -97,7 +97,7 @@ export abstract class PersonalDetailsPageGenerated extends BasePage {
 
   /** Personal Details (text) */
   get personalDetailsHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Personal Details', exact: true }), 'Personal Details (text)');
+    return TextComponent.byHeading(this.page, 'Personal Details');
   }
 
   /** First Name (input) */
@@ -117,57 +117,57 @@ export abstract class PersonalDetailsPageGenerated extends BasePage {
 
   /** Employee Id (input) */
   get employeeIdInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Employee Id")) input'), 'Employee Id (input)');
+    return InputComponent.byLabel(this.page, 'Employee Id');
   }
 
   /** Other Id (input) */
   get otherIdInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Other Id")) input'), 'Other Id (input)');
+    return InputComponent.byLabel(this.page, 'Other Id');
   }
 
   /** Driver's License Number (input) */
   get driversLicenseNumberInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Driver\'s License Number")) input'), 'Driver\'s License Number (input)');
+    return InputComponent.byLabel(this.page, 'Driver\'s License Number');
   }
 
   /** License Expiry Date (input) */
   get licenseExpiryDateInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("License Expiry Date")) input'), 'License Expiry Date (input)');
+    return InputComponent.byLabel(this.page, 'License Expiry Date');
   }
 
   /** Nationality (dropdown) */
   get nationalityDropdown(): DropdownComponent {
-    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Nationality")) .oxd-select-text'), 'Nationality (dropdown)');
+    return DropdownComponent.byLabel(this.page, 'Nationality');
   }
 
   /** Marital Status (dropdown) */
   get maritalStatusDropdown(): DropdownComponent {
-    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Marital Status")) .oxd-select-text'), 'Marital Status (dropdown)');
+    return DropdownComponent.byLabel(this.page, 'Marital Status');
   }
 
   /** Date of Birth (input) */
   get dateOfBirthInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Date of Birth")) input'), 'Date of Birth (input)');
+    return InputComponent.byLabel(this.page, 'Date of Birth');
   }
 
   /** Male (radio) */
   get maleRadio(): RadioComponent {
-    return new RadioComponent(this.page.getByRole('radio', { name: 'Male', exact: true }), 'Male (radio)');
+    return RadioComponent.byLabel(this.page, 'Male');
   }
 
   /** Female (radio) */
   get femaleRadio(): RadioComponent {
-    return new RadioComponent(this.page.getByRole('radio', { name: 'Female', exact: true }), 'Female (radio)');
+    return RadioComponent.byLabel(this.page, 'Female');
   }
 
   /** Blood Type (dropdown) */
   get bloodTypeDropdown(): DropdownComponent {
-    return new DropdownComponent(this.page.locator('.oxd-input-group:has(label:text-is("Blood Type")) .oxd-select-text'), 'Blood Type (dropdown)');
+    return DropdownComponent.byLabel(this.page, 'Blood Type');
   }
 
   /** Test_Field (input) */
   get testFieldInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Test_Field")) input'), 'Test_Field (input)');
+    return InputComponent.byLabel(this.page, 'Test_Field');
   }
 
   /** Save personal details (button) */

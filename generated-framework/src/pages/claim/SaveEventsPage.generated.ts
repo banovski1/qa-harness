@@ -24,37 +24,37 @@ export abstract class SaveEventsPageGenerated extends BasePage {
 
   /** Submit Claim (menuItem) */
   get submitClaimMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Submit Claim")'), 'Submit Claim (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Submit Claim');
   }
 
   /** My Claims (menuItem) */
   get myClaimsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("My Claims")'), 'My Claims (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'My Claims');
   }
 
   /** Employee Claims (menuItem) */
   get employeeClaimsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee Claims")'), 'Employee Claims (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Employee Claims');
   }
 
   /** Assign Claim (menuItem) */
   get assignClaimMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Assign Claim")'), 'Assign Claim (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Assign Claim');
   }
 
   /** Add Event (text) */
   get addEventHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Add Event', exact: true }), 'Add Event (text)');
+    return TextComponent.byHeading(this.page, 'Add Event');
   }
 
   /** Event Name (input) */
   get eventNameInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Event Name")) input'), 'Event Name (input)');
+    return InputComponent.byLabel(this.page, 'Event Name');
   }
 
   /** Description (longInput) */
   get descriptionTextArea(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Description")) textarea'), 'Description (longInput)');
+    return InputComponent.textareaByLabel(this.page, 'Description');
   }
 
   /** Status (switch) */
@@ -64,11 +64,11 @@ export abstract class SaveEventsPageGenerated extends BasePage {
 
   /** Cancel (button) */
   get cancelButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Cancel', exact: true }), 'Cancel (button)');
+    return ButtonComponent.byLabel(this.page, 'Cancel');
   }
 
   /** Save (button) */
   get saveButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Save', exact: true }), 'Save (button)');
+    return ButtonComponent.byLabel(this.page, 'Save');
   }
 }

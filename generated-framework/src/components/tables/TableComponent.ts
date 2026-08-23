@@ -1,5 +1,6 @@
 import type { Locator } from '@playwright/test';
-import { BaseComponent } from '../base/BaseComponent';
+import { BaseComponent, type LocatorRoot } from '../base/BaseComponent';
+import { LOCATOR_TEMPLATES } from '../locator-templates.generated';
 
 /**
  * A data table addressed by column name.
@@ -9,6 +10,11 @@ import { BaseComponent } from '../base/BaseComponent';
  * zero-based and exclude the header row.
  */
 export class TableComponent extends BaseComponent {
+  /** The table identified by one of its column headings. */
+  static byColumn(root: LocatorRoot, label: string, columns: readonly string[]): TableComponent {
+    return new TableComponent(root.locator(LOCATOR_TEMPLATES.tableByColumn(label)), columns, `${label} (table)`);
+  }
+
   constructor(
     locator: Locator,
     readonly columns: readonly string[],

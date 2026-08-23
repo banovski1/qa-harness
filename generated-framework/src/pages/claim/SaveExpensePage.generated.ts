@@ -24,37 +24,37 @@ export abstract class SaveExpensePageGenerated extends BasePage {
 
   /** Submit Claim (menuItem) */
   get submitClaimMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Submit Claim")'), 'Submit Claim (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Submit Claim');
   }
 
   /** My Claims (menuItem) */
   get myClaimsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("My Claims")'), 'My Claims (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'My Claims');
   }
 
   /** Employee Claims (menuItem) */
   get employeeClaimsMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Employee Claims")'), 'Employee Claims (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Employee Claims');
   }
 
   /** Assign Claim (menuItem) */
   get assignClaimMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab > a:text-is("Assign Claim")'), 'Assign Claim (menuItem)');
+    return MenuItemComponent.byLabel(this.page, 'Assign Claim');
   }
 
   /** Add Expense Type (text) */
   get addExpenseTypeHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Add Expense Type', exact: true }), 'Add Expense Type (text)');
+    return TextComponent.byHeading(this.page, 'Add Expense Type');
   }
 
   /** Name (input) */
   get nameInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Name")) input'), 'Name (input)');
+    return InputComponent.byLabel(this.page, 'Name');
   }
 
   /** Description (longInput) */
   get descriptionTextArea(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-input-group:has(label:text-is("Description")) textarea'), 'Description (longInput)');
+    return InputComponent.textareaByLabel(this.page, 'Description');
   }
 
   /** Status (switch) */
@@ -64,11 +64,11 @@ export abstract class SaveExpensePageGenerated extends BasePage {
 
   /** Cancel (button) */
   get cancelButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Cancel', exact: true }), 'Cancel (button)');
+    return ButtonComponent.byLabel(this.page, 'Cancel');
   }
 
   /** Save (button) */
   get saveButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Save', exact: true }), 'Save (button)');
+    return ButtonComponent.byLabel(this.page, 'Save');
   }
 }
