@@ -75,19 +75,19 @@ elements:
   # --- this screen ---
   - name: submitClaimMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Submit Claim\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Submit Claim" }
     comment: "Submit Claim (menuItem)"
   - name: myClaimsMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"My Claims\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "My Claims" }
     comment: "My Claims (menuItem)"
   - name: employeeClaimsMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Employee Claims\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee Claims" }
     comment: "Employee Claims (menuItem)"
   - name: assignClaimMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Assign Claim\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Assign Claim" }
     comment: "Assign Claim (menuItem)"
   - name: eventsHeading
     component: text
@@ -99,11 +99,11 @@ elements:
     comment: "Add (button)"
   - name: eventNameInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Event Name\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Event Name" }
     comment: "Event Name (input)"
   - name: statusDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Status\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Status" }
     comment: "Status (dropdown)"
   - name: resetButton
     component: button

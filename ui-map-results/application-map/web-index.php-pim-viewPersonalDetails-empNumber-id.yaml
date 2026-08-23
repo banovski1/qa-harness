@@ -73,15 +73,15 @@ elements:
     comment: "Configuration (menuItem)"
   - name: employeeListMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Employee List\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee List" }
     comment: "Employee List (menuItem)"
   - name: addEmployeeMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Add Employee\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Add Employee" }
     comment: "Add Employee (menuItem)"
   - name: reportsMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Reports\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Reports" }
     comment: "Reports (menuItem)"
   - name: personalDetailsTab
     component: tab
@@ -146,31 +146,31 @@ elements:
     comment: "Last Name (input)"
   - name: employeeIdInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Employee Id\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Employee Id" }
     comment: "Employee Id (input)"
   - name: otherIdInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Other Id\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Other Id" }
     comment: "Other Id (input)"
   - name: driversLicenseNumberInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Driver's License Number\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Driver's License Number" }
     comment: "Driver's License Number (input)"
   - name: licenseExpiryDateInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"License Expiry Date\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "License Expiry Date" }
     comment: "License Expiry Date (input)"
   - name: nationalityDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Nationality\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Nationality" }
     comment: "Nationality (dropdown)"
   - name: maritalStatusDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Marital Status\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Marital Status" }
     comment: "Marital Status (dropdown)"
   - name: dateOfBirthInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Date of Birth\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Date of Birth" }
     comment: "Date of Birth (input)"
   - name: maleRadio
     component: radio
@@ -182,11 +182,11 @@ elements:
     comment: "Female (radio)"
   - name: bloodTypeDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Blood Type\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Blood Type" }
     comment: "Blood Type (dropdown)"
   - name: testFieldInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Test_Field\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Test_Field" }
     comment: "Test_Field (input)"
   - name: savePersonalDetailsButton
     component: button
@@ -198,7 +198,7 @@ elements:
     comment: "Add attachment (button)"
   - name: attachmentsTable
     component: table
-    locator: { strategy: css, args: [".oxd-table:has(.oxd-table-th:text-is(\"File Name\"))"] }
+    locator: { strategy: template, args: ["tableByColumn"], name: "File Name" }
     columns:
       - name: ""
       - name: "File Name"

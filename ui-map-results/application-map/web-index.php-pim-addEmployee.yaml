@@ -73,15 +73,15 @@ elements:
     comment: "Configuration (menuItem)"
   - name: employeeListMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Employee List\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee List" }
     comment: "Employee List (menuItem)"
   - name: addEmployeeMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Add Employee\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Add Employee" }
     comment: "Add Employee (menuItem)"
   - name: reportsMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Reports\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Reports" }
     comment: "Reports (menuItem)"
   # --- this screen ---
   - name: addEmployeeHeading
@@ -110,7 +110,7 @@ elements:
     comment: "Last Name (input)"
   - name: employeeIdInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Employee Id\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Employee Id" }
     comment: "Employee Id (input)"
   - name: createLoginDetailsSwitch
     component: switch
@@ -118,15 +118,15 @@ elements:
     comment: "Create Login Details (switch)"
   - name: usernameInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Username\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Username" }
     comment: "Username (input)"
   - name: passwordInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Password\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Password" }
     comment: "Password (input)"
   - name: confirmPasswordInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Confirm Password\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Confirm Password" }
     comment: "Confirm Password (input)"
   - name: enabledRadio
     component: radio

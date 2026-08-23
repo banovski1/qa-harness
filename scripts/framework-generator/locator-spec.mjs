@@ -4,28 +4,65 @@
 
 export const STRATEGIES = [
   'getByRole', 'getByLabel', 'getByPlaceholder', 'getByText',
-  'getByAltText', 'getByTitle', 'getByTestId', 'css',
+  'getByAltText', 'getByTitle', 'getByTestId', 'css', 'template',
 ];
 
-/** Build a spec object from a parsed YAML map: { strategy, args, name, unstable, within, nth }. */
-export function fromMap(m) {
+/**
+ * Build a spec object from a parsed YAML map: { strategy, args, name, unstable, within, nth }.
+ *
+ * `template` is expanded here, at read time, into the plain `css` spec it stands for:
+ * `{ strategy: template, args: ["labelledInput"], name: "City" }` becomes the app's
+ * configured pattern with the label substituted in. Expanding this early is what keeps
+ * everything downstream ignorant of templates — resolve(), the other language adapters
+ * and every consumer only ever see a selector they already understand. The template id
+ * and label ride along so toYamlInline can write the short form back out.
+ */
+export function fromMap(m, templates = {}) {
   if (!m || !STRATEGIES.includes(m.strategy)) {
     throw new Error(`Invalid locator strategy: ${JSON.stringify(m)}`);
   }
-  return {
+  const spec = {
     strategy: m.strategy,
     args: Array.isArray(m.args) ? m.args.map(String) : [],
     name: m.name != null ? String(m.name) : null,
     unstable: Boolean(m.unstable),
     unstableReason: m.unstableReason ?? null,
-    within: m.within ? fromMap(m.within) : null,
+    within: m.within ? fromMap(m.within, templates) : null,
     nth: Number.isInteger(m.nth) ? m.nth : null,
+    template: null,
   };
+  return spec.strategy === 'template' ? expandTemplate(spec, templates) : spec;
+}
+
+/**
+ * Substitute a label into a template pattern.
+ *
+ * The label lands inside a quoted selector argument, so a double quote in it has to be
+ * escaped — and escaped exactly the way the emitted LOCATOR_TEMPLATES table does it, or
+ * the generator and the runtime would disagree about the same element. Both the map
+ * expansion and the emitter's equivalence check call this, so there is one rule.
+ */
+export function renderTemplate(pattern, label) {
+  return pattern.replaceAll('{label}', String(label).replaceAll('"', '\\"'));
+}
+
+/** Substitute the label into the configured pattern, yielding an ordinary css spec. */
+function expandTemplate(spec, templates) {
+  const id = spec.args[0];
+  const pattern = templates[id];
+  if (!pattern) {
+    const known = Object.keys(templates).join(', ') || 'none configured';
+    throw new Error(`unknown template '${id}' (locatorTemplates: has ${known})`);
+  }
+  if (!spec.name) {
+    throw new Error(`template '${id}' needs name: <label> to substitute for {label}`);
+  }
+  return { ...spec, strategy: 'css', args: [renderTemplate(pattern, spec.name)], template: id };
 }
 
 /** Convenience constructor with the same defaults as fromMap. */
 export function make(strategy, args, name = null, extra = {}) {
-  return { strategy, args, name, unstable: false, unstableReason: null, within: null, nth: null, ...extra };
+  return { strategy, args, name, unstable: false, unstableReason: null, within: null, nth: null, template: null, ...extra };
 }
 
 /**
@@ -58,8 +95,11 @@ export function resolve(root, spec) {
 
 /** Emit the inline-YAML shape used across app-config.yaml and application-map/*.yaml. */
 export function toYamlInline(spec) {
-  const args = spec.args.map(yamlString).join(', ');
-  let out = `{ strategy: ${spec.strategy}, args: [${args}]`;
+  // An expanded template writes back as the template it came from, not as the
+  // selector it expanded to — otherwise a round-trip would silently inline the app's
+  // CSS back into the map and undo the reason for having templates.
+  const args = (spec.template ? [spec.template] : spec.args).map(yamlString).join(', ');
+  let out = `{ strategy: ${spec.template ? 'template' : spec.strategy}, args: [${args}]`;
   if (spec.name) out += `, name: ${yamlString(spec.name)}`;
   if (spec.nth != null) out += `, nth: ${spec.nth}`;
   if (spec.within) out += `, within: ${toYamlInline(spec.within)}`;

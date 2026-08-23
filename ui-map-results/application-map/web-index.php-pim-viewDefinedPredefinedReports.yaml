@@ -73,15 +73,15 @@ elements:
     comment: "Configuration (menuItem)"
   - name: employeeListMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Employee List\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee List" }
     comment: "Employee List (menuItem)"
   - name: addEmployeeMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Add Employee\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Add Employee" }
     comment: "Add Employee (menuItem)"
   - name: reportsMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Reports\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Reports" }
     comment: "Reports (menuItem)"
   # --- this screen ---
   - name: employeeReportsHeading
@@ -90,7 +90,7 @@ elements:
     comment: "Employee Reports (text)"
   - name: reportNameInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Report Name\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Report Name" }
     comment: "Report Name (input)"
   - name: resetButton
     component: button
@@ -114,7 +114,7 @@ elements:
     comment: "Select all rows (checkbox)"
   - name: reportsTable
     component: table
-    locator: { strategy: css, args: [".oxd-table:has(.oxd-table-th:text-is(\"Name\"))"] }
+    locator: { strategy: template, args: ["tableByColumn"], name: "Name" }
     columns:
       - name: ""
       - name: "Name"

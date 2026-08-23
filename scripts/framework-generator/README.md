@@ -74,6 +74,25 @@ number instead if you want different grouping.
 default is role-based and works on any accessible app; add your own class if your
 app renders a spinner with no busy state.
 
+A map file names a template instead of repeating the selector:
+
+```yaml
+locator: { strategy: template, args: ["labelledInput"], name: "City" }
+```
+
+`fromMap` expands that into the plain `css` spec at read time, so `resolve()`, the
+other language adapters and every other consumer only ever see a selector they
+already understand. An unknown template id or a missing `name:` is a hard error, not
+a silent drop. `to-templates.mjs` converts an existing file:
+
+```bash
+node scripts/framework-generator/to-templates.mjs ui-map-results/application-map/<slug>.yaml [--write]
+```
+
+It only rewrites a locator when a configured template reproduces it exactly, and
+prints what it matched, so a re-generate after `--write` should report zero files
+written — the map says the same thing more briefly.
+
 `locatorTemplates` answers "how does this app connect a visible label to its
 control". Each entry is a selector with a `{label}` placeholder, and the generator
 emits it once into `src/components/locator-templates.generated.ts` — the only file

@@ -75,19 +75,19 @@ elements:
   # --- this screen ---
   - name: submitClaimMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Submit Claim\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Submit Claim" }
     comment: "Submit Claim (menuItem)"
   - name: myClaimsMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"My Claims\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "My Claims" }
     comment: "My Claims (menuItem)"
   - name: employeeClaimsMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Employee Claims\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee Claims" }
     comment: "Employee Claims (menuItem)"
   - name: assignClaimMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Assign Claim\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Assign Claim" }
     comment: "Assign Claim (menuItem)"
   - name: addExpenseTypeHeading
     component: text
@@ -95,11 +95,11 @@ elements:
     comment: "Add Expense Type (text)"
   - name: nameInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Name\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Name" }
     comment: "Name (input)"
   - name: descriptionTextArea
     component: longInput
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Description\")) textarea"] }
+    locator: { strategy: template, args: ["labelledTextarea"], name: "Description" }
     comment: "Description (longInput)"
   - name: statusSwitch
     component: switch

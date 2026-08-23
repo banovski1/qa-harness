@@ -86,8 +86,9 @@ function readPage(path, config, stats) {
 
   // `title` and `verified` are deliberately ignored — they are constants across
   // every file the mapper emits and carry no per-page information.
-  const elements = readElements(raw.elements, path, stats);
-  const states = config.elements.includeStates ? readStates(raw.states, path, stats) : [];
+  const templates = config.locatorTemplates ?? {};
+  const elements = readElements(raw.elements, path, stats, templates);
+  const states = config.elements.includeStates ? readStates(raw.states, path, stats, templates) : [];
 
   return {
     slug: String(raw.page ?? ''),
@@ -101,11 +102,11 @@ function readPage(path, config, stats) {
   };
 }
 
-function readElements(list, path, stats) {
+function readElements(list, path, stats, templates) {
   const out = [];
   for (const raw of Array.isArray(list) ? list : []) {
     stats.elementsRead += 1;
-    const element = toElement(raw, path);
+    const element = toElement(raw, path, templates);
     if (!element) {
       stats.skippedNoLocator += 1;
       continue;
@@ -117,10 +118,10 @@ function readElements(list, path, stats) {
   return out;
 }
 
-function readStates(list, path, stats) {
+function readStates(list, path, stats, templates) {
   const out = [];
   for (const raw of Array.isArray(list) ? list : []) {
-    const elements = readElements(raw?.elements, path, stats);
+    const elements = readElements(raw?.elements, path, stats, templates);
     if (elements.length === 0) continue;
     const triggerLabel = TRIGGER_RE.exec(String(raw?.trigger ?? ''))?.[1] ?? String(raw?.name ?? '');
     out.push({
@@ -134,13 +135,13 @@ function readStates(list, path, stats) {
 }
 
 /** One map element -> ElementModel, or null when it carries no locator to generate from. */
-function toElement(raw, path) {
+function toElement(raw, path, templates) {
   if (!raw || !raw.name || !raw.component) return null;
   if (!raw.locator) return null; // synthetic container (e.g. the unnamed listbox wrappers)
 
   let locator;
   try {
-    locator = fromMap(raw.locator);
+    locator = fromMap(raw.locator, templates);
   } catch (err) {
     throw new Error(`${path}: element '${raw.name}' has an unusable locator — ${err.message}`);
   }

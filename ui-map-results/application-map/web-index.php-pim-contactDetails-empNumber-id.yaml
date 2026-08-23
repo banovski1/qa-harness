@@ -73,15 +73,15 @@ elements:
     comment: "Configuration (menuItem)"
   - name: employeeListMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Employee List\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee List" }
     comment: "Employee List (menuItem)"
   - name: addEmployeeMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Add Employee\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Add Employee" }
     comment: "Add Employee (menuItem)"
   - name: reportsMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Reports\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Reports" }
     comment: "Reports (menuItem)"
   - name: personalDetailsTab
     component: tab
@@ -134,47 +134,47 @@ elements:
     comment: "Contact Details (text)"
   - name: street1Input
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Street 1\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Street 1" }
     comment: "Street 1 (input)"
   - name: street2Input
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Street 2\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Street 2" }
     comment: "Street 2 (input)"
   - name: cityInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"City\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "City" }
     comment: "City (input)"
   - name: stateProvinceInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"State/Province\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "State/Province" }
     comment: "State/Province (input)"
   - name: zipPostalCodeInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Zip/Postal Code\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Zip/Postal Code" }
     comment: "Zip/Postal Code (input)"
   - name: countryDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Country\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Country" }
     comment: "Country (dropdown)"
   - name: homeInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Home\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Home" }
     comment: "Home (input)"
   - name: mobileInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Mobile\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Mobile" }
     comment: "Mobile (input)"
   - name: workInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Work\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Work" }
     comment: "Work (input)"
   - name: workEmailInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Work Email\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Work Email" }
     comment: "Work Email (input)"
   - name: otherEmailInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Other Email\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Other Email" }
     comment: "Other Email (input)"
   - name: saveButton
     component: button
@@ -186,7 +186,7 @@ elements:
     comment: "Add attachment (button)"
   - name: attachmentsTable
     component: table
-    locator: { strategy: css, args: [".oxd-table:has(.oxd-table-th:text-is(\"File Name\"))"] }
+    locator: { strategy: template, args: ["tableByColumn"], name: "File Name" }
     columns:
       - name: ""
       - name: "File Name"

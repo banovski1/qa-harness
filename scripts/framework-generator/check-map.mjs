@@ -90,6 +90,18 @@ for (const file of files) {
 
 const model = readApplicationMap(config);
 
+// A template no file references is dead weight that still reads as coverage: it looks
+// like the app's field pattern is centralised when nothing actually uses it. An
+// unknown id is already a hard throw from fromMap, so only the reverse needs saying.
+const usedTemplates = new Set(
+  [...model.sharedChrome, ...model.sharedStates.flatMap((s) => s.elements),
+    ...model.pages.flatMap((p) => [...p.elements, ...p.states.flatMap((s) => s.elements)])]
+    .map((e) => e.locator.template).filter(Boolean),
+);
+for (const id of Object.keys(config.locatorTemplates)) {
+  if (!usedTemplates.has(id)) warnings.push(`locatorTemplates.${id} is not used by any map file`);
+}
+
 if (model.stats.sharedChrome !== EXPECTED_SHARED_CHROME) {
   failures.push(
     `shared navigation is ${model.stats.sharedChrome}, expected ${EXPECTED_SHARED_CHROME}. `

@@ -98,14 +98,34 @@ Anything returning 0 or >1 needs a better locator before it goes in the file.
 
 1. Named role: `{ strategy: getByRole, args: ["button"], name: "Search" }`.
 2. `getByPlaceholder` / `getByLabel` / `getByTestId` where a real one exists.
-3. **`css` scoped by label text** — the workhorse on this app, because the visible label is an
-   unassociated sibling `<label>` and `getByLabel()` therefore fails:
+3. **`template` + label** — for the label-scoped patterns this app repeats on every form.
+   `locatorTemplates:` in `scripts/framework-generator/generator-config.yaml` holds the selector; the
+   map names the template and the label, and the generator expands one into the other:
+
+   | template | expands to | use for |
+   |---|---|---|
+   | `labelledInput` | `.oxd-input-group:has(label:text-is("{label}")) input` | a text field |
+   | `labelledTextarea` | the same, ending `textarea` | a multi-line field |
+   | `labelledSelect` | the same, ending `.oxd-select-text` | a dropdown trigger |
+   | `topNavTab` | `.oxd-topbar-body-nav-tab > a:text-is("{label}")` | a module's top-bar tab |
+   | `tableByColumn` | `.oxd-table:has(.oxd-table-th:text-is("{label}"))` | a table keyed by a column |
+
+   ```yaml
+   locator: { strategy: template, args: ["labelledInput"], name: "City" }
+   ```
+
+   Prefer this over rung 4 whenever the pattern fits: it is shorter to write, impossible to mistype
+   into a *nearly* correct selector, and it survives a redesign of the wrapper as a config edit.
+   **Verify it exactly as you would a raw selector** — expand the template yourself and count, since
+   the template guarantees the shape but not that the label is unique on the screen.
+4. **`css` scoped by label text** — for a control the templates do not cover, because the visible
+   label is an unassociated sibling `<label>` and `getByLabel()` therefore fails:
    `.oxd-input-group:has(label:text-is("City")) input`, or ` .oxd-select-text` for a dropdown.
-4. **`css` scoped by section heading**, for a control that repeats per section:
+5. **`css` scoped by section heading**, for a control that repeats per section:
    `.orangehrm-horizontal-padding:has(h6:text-is("Work Experience")) button` — on Qualifications the
    unscoped `Add` matches 6 buttons and each scoped one matches 1.
-5. `within:` chained off a named ancestor.
-6. Positional `nth:` — last resort only, and it must carry `unstable: true` with a reason.
+6. `within:` chained off a named ancestor.
+7. Positional `nth:` — last resort only, and it must carry `unstable: true` with a reason.
 
 Use **double** quotes inside a css selector. `code-writer.mjs quote()` emits single-quoted TypeScript,
 so double quotes inside pass through safely; a literal apostrophe gets escaped for you.
@@ -129,12 +149,16 @@ elements:
   # --- this screen ---
   - name: cityInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"City\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "City" }
     comment: "City (input)"
   - name: countryDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Country\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Country" }
     comment: "Country (dropdown)"
+  - name: employeePhotoInput
+    component: input
+    locator: { strategy: css, args: ["input[type=\"file\"]"] }
+    comment: "Employee photo file (input)"
 actions:
   - do: Edit contact details
     kind: form
@@ -153,9 +177,10 @@ Every rule below exists because the generator depends on it:
 - **`component:`** from this closed set only — `button link input longInput checkbox switch radio tab
   menuItem text image table dropdown`. Anything else silently degrades to `GenericComponent`.
 - **`locator:`** from the closed vocabulary — `getByRole getByLabel getByPlaceholder getByText
-  getByAltText getByTitle getByTestId css` — shaped
+  getByAltText getByTitle getByTestId css template` — shaped
   `{ strategy, args, name?, nth?, within?, unstable?, unstableReason? }`. See
-  `scripts/framework-generator/locator-spec.mjs`.
+  `scripts/framework-generator/locator-spec.mjs`. For `template`, `args[0]` is the template id and
+  `name:` is the label substituted into it; an unknown id is a hard error, not a silent drop.
 - **`comment:`** always the last key, always `"<label> (<component>)"`. The generator strips exactly
   `" (<component>)"` to recover the label; any other shape makes the whole string the label.
 - **`name:`** camelCase label plus a component suffix, unique within the file — append `2`, `3`, … on a

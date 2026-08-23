@@ -75,19 +75,19 @@ elements:
   # --- this screen ---
   - name: submitClaimMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Submit Claim\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Submit Claim" }
     comment: "Submit Claim (menuItem)"
   - name: myClaimsMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"My Claims\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "My Claims" }
     comment: "My Claims (menuItem)"
   - name: employeeClaimsMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Employee Claims\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee Claims" }
     comment: "Employee Claims (menuItem)"
   - name: assignClaimMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Assign Claim\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Assign Claim" }
     comment: "Assign Claim (menuItem)"
   - name: employeeClaimsHeading
     component: text
@@ -99,31 +99,31 @@ elements:
     comment: "Assign Claim (button)"
   - name: employeeNameInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Employee Name\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Employee Name" }
     comment: "Employee Name (input)"
   - name: referenceIdInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Reference Id\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Reference Id" }
     comment: "Reference Id (input)"
   - name: eventNameDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Event Name\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Event Name" }
     comment: "Event Name (dropdown)"
   - name: statusDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Status\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Status" }
     comment: "Status (dropdown)"
   - name: fromDateInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"From Date\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "From Date" }
     comment: "From Date (input)"
   - name: toDateInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"To Date\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "To Date" }
     comment: "To Date (input)"
   - name: includeDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Include\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Include" }
     comment: "Include (dropdown)"
   - name: resetButton
     component: button

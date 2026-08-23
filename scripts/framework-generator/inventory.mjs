@@ -16,6 +16,11 @@ import { labelFromComment } from './map-reader.mjs';
 const MAP_DIR = process.argv[2] ?? join('ui-map-results', 'application-map');
 const OUT = join('ui-map-results', 'component-inventory.md');
 
+// Needed to expand a `template` locator into the selector it stands for. The inventory
+// prints the template form back out, so this only has to be good enough to parse.
+const GENERATOR_CONFIG = join('scripts', 'framework-generator', 'generator-config.yaml');
+const templates = yaml.load(readFileSync(GENERATOR_CONFIG, 'utf8'))?.locatorTemplates ?? {};
+
 /** Every element in a map file, page elements first then each state's, as inventory rows. */
 function rowsFromFile(path, page) {
   const raw = yaml.load(readFileSync(path, 'utf8'));
@@ -29,7 +34,7 @@ function rowsFromFile(path, page) {
         component: e.component,
         page,
         accName: labelFromComment(String(e.comment ?? ''), e.component),
-        locator: fromMap(e.locator),
+        locator: fromMap(e.locator, templates),
       });
     }
   };
@@ -55,7 +60,7 @@ function render(rows) {
     for (const r of byType.get(type)) {
       const notes = r.locator.unstable ? (r.locator.unstableReason ?? 'unstable') : '';
       sb += `| ${r.component} | ${r.page} | ${r.accName} | \`${toYamlInline(r.locator)}\``
-          + ` | ${r.locator.strategy} | ${notes} |\n`;
+          + ` | ${r.locator.template ? 'template' : r.locator.strategy} | ${notes} |\n`;
     }
     sb += '\n';
   }

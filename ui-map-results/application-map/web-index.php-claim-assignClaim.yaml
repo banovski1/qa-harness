@@ -75,19 +75,19 @@ elements:
   # --- this screen ---
   - name: submitClaimMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Submit Claim\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Submit Claim" }
     comment: "Submit Claim (menuItem)"
   - name: myClaimsMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"My Claims\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "My Claims" }
     comment: "My Claims (menuItem)"
   - name: employeeClaimsMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Employee Claims\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee Claims" }
     comment: "Employee Claims (menuItem)"
   - name: assignClaimMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Assign Claim\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Assign Claim" }
     comment: "Assign Claim (menuItem)"
   - name: createClaimRequestHeading
     component: text
@@ -95,19 +95,19 @@ elements:
     comment: "Create Claim Request (text)"
   - name: employeeNameInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Employee Name\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Employee Name" }
     comment: "Employee Name (input)"
   - name: eventDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Event\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Event" }
     comment: "Event (dropdown)"
   - name: currencyDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Currency\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Currency" }
     comment: "Currency (dropdown)"
   - name: remarksTextArea
     component: longInput
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Remarks\")) textarea"] }
+    locator: { strategy: template, args: ["labelledTextarea"], name: "Remarks" }
     comment: "Remarks (longInput)"
   - name: cancelButton
     component: button

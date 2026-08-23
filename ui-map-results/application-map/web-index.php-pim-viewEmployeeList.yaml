@@ -73,15 +73,15 @@ elements:
     comment: "Configuration (menuItem)"
   - name: employeeListMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Employee List\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee List" }
     comment: "Employee List (menuItem)"
   - name: addEmployeeMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Add Employee\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Add Employee" }
     comment: "Add Employee (menuItem)"
   - name: reportsMenuItem
     component: menuItem
-    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab > a:text-is(\"Reports\")"] }
+    locator: { strategy: template, args: ["topNavTab"], name: "Reports" }
     comment: "Reports (menuItem)"
   # --- this screen ---
   - name: employeeInformationHeading
@@ -90,31 +90,31 @@ elements:
     comment: "Employee Information (text)"
   - name: employeeNameInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Employee Name\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Employee Name" }
     comment: "Employee Name (input)"
   - name: employeeIdInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Employee Id\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Employee Id" }
     comment: "Employee Id (input)"
   - name: employmentStatusDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Employment Status\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Employment Status" }
     comment: "Employment Status (dropdown)"
   - name: includeDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Include\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Include" }
     comment: "Include (dropdown)"
   - name: supervisorNameInput
     component: input
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Supervisor Name\")) input"] }
+    locator: { strategy: template, args: ["labelledInput"], name: "Supervisor Name" }
     comment: "Supervisor Name (input)"
   - name: jobTitleDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Job Title\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Job Title" }
     comment: "Job Title (dropdown)"
   - name: subUnitDropdown
     component: dropdown
-    locator: { strategy: css, args: [".oxd-input-group:has(label:text-is(\"Sub Unit\")) .oxd-select-text"] }
+    locator: { strategy: template, args: ["labelledSelect"], name: "Sub Unit" }
     comment: "Sub Unit (dropdown)"
   - name: resetButton
     component: button
@@ -138,7 +138,7 @@ elements:
     comment: "Select all rows (checkbox)"
   - name: employeeTable
     component: table
-    locator: { strategy: css, args: [".oxd-table:has(.oxd-table-th:text-is(\"Employment Status\"))"] }
+    locator: { strategy: template, args: ["tableByColumn"], name: "Employment Status" }
     columns:
       - name: ""
       - name: "Id"

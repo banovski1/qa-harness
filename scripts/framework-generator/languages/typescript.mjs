@@ -6,6 +6,7 @@
 // spec per page. Everything static lives in ./typescript-runtime.mjs.
 
 import { CodeWriter, quote } from '../code-writer.mjs';
+import { renderTemplate } from '../locator-spec.mjs';
 import { safeIdentifier, toKebab, toPascal, toCamel } from '../naming.mjs';
 import { runtimeFiles } from './typescript-runtime.mjs';
 
@@ -280,7 +281,7 @@ function factoryFor(element, cls, root, config) {
     } else {
       const pattern = templates[factory.template];
       if (!pattern || spec.strategy !== 'css') continue;
-      if (pattern.replaceAll('{label}', element.label) !== spec.args[0]) continue;
+      if (renderTemplate(pattern, element.label) !== spec.args[0]) continue;
     }
 
     const args = element.table

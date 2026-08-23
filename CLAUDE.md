@@ -56,10 +56,15 @@ There is no test suite for the generator itself; `check-map.mjs`, `--dry-run` an
 
 **The locator vocabulary is closed and shared.** `framework-generator/locator-spec.mjs` defines the `{ strategy, args, name, within, nth }` shape used by the login config (input), the map (output), and the generator (consumer). Adding a strategy means touching that one module. The `smart-map` skill must verify every candidate resolves to exactly one element before writing it; ambiguous elements are left out rather than guessed.
 
-**`locatorTemplates:` keeps app selectors out of the page objects.** The block in
+**`locatorTemplates:` keeps app selectors out of both the page objects and the map.** The block in
 `generator-config.yaml` maps a label to a selector (`{label}` is the placeholder), and the generator
 emits it into `src/components/locator-templates.generated.ts` — the only file in the output naming an
-app-specific selector. Where a template reproduces a mapped locator *exactly*, `factoryFor` in
+app-specific selector. A map file names the template rather than repeating it —
+`{ strategy: template, args: ["labelledInput"], name: "City" }` — and `fromMap` expands it into a plain
+`css` spec at read time, which is what keeps `resolve()` and the other language adapters ignorant of
+templates. `renderTemplate` in `locator-spec.mjs` is the single substitution rule, shared by that
+expansion and the emitter's equivalence check so the two cannot disagree.
+`to-templates.mjs <map file> [--write]` converts existing files, rewriting only exact matches. Where a template reproduces a mapped locator *exactly*, `factoryFor` in
 `languages/typescript.mjs` emits `InputComponent.byLabel(this.page, 'City')` instead of the selector;
 anything else keeps the locator the mapper verified. Equivalence is proved per element, never assumed,
 so editing the block cannot silently re-point an accessor — it can only fall back. The
