@@ -1,0 +1,23 @@
+resource: Mobile/Menu Items
+source: openapi
+operations:
+  - operationId: list-mobile-menu-items
+    method: GET
+    path: /api/v2/mobile/menus
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-mobile-menu-items.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-mobile-menu-items.responses.200.meta: nested object narrowed to ''unknown'''

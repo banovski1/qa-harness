@@ -1,0 +1,27 @@
+resource: Buzz/Feed
+source: openapi
+operations:
+  - operationId: list-the-buzz-feed
+    method: GET
+    path: /api/v2/buzz/feed
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-the-buzz-feed.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-the-buzz-feed.responses.200.meta: nested object narrowed to ''unknown'''

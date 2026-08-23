@@ -1,0 +1,132 @@
+resource: PIM/Defined Report
+source: openapi
+operations:
+  - operationId: list-all-pim-reports
+    method: GET
+    path: /api/v2/pim/reports/defined
+    queryParams:
+      - name: name
+        type: string
+        required: false
+      - name: reportId
+        type: string
+        required: false
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-pim-reports.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-a-pim-report
+    method: POST
+    path: /api/v2/pim/reports/defined
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: include
+            type: string
+            required: true
+            nullable: false
+          - name: criteria
+            type: unknown
+            required: true
+            nullable: false
+          - name: fieldGroup
+            type: unknown
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'create-a-pim-report.requestBody.criteria: nested object narrowed to ''unknown'''
+      - 'create-a-pim-report.requestBody.fieldGroup: nested object narrowed to ''unknown'''
+      - 'create-a-pim-report.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-pim-reports
+    method: DELETE
+    path: /api/v2/pim/reports/defined
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+      - status: 404
+        contentType: null
+        schema: null
+  - operationId: update-a-pim-report
+    method: PUT
+    path: /api/v2/pim/reports/defined/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: false
+            nullable: false
+          - name: include
+            type: string
+            required: false
+            nullable: false
+          - name: criteria
+            type: unknown
+            required: false
+            nullable: false
+          - name: fieldGroup
+            type: unknown
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-a-pim-report.requestBody.criteria: nested object narrowed to ''unknown'''
+      - 'update-a-pim-report.requestBody.fieldGroup: nested object narrowed to ''unknown'''
+      - 'update-a-pim-report.responses.200.meta: nested object narrowed to ''unknown'''

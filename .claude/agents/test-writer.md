@@ -69,7 +69,9 @@ await expect(systemUsersPage.successToast.locator).toBeVisible();
 
 ## 6c. Not everything belongs in the browser
 
-Validation rules, authorization, pagination, response codes and boundary values are cheaper and steadier at the API layer — use the `api` fixture (`ApiClient`) for those, and for setup and teardown of records the journey merely needs to exist. A browser test should answer a journey question: can this user log in, create the record, complete the flow. If the pasted script is really twenty validation permutations, write the few that prove the UI is wired up, cover the rest through `api`, and say so in your report.
+Validation rules, authorization, pagination, response codes and boundary values are cheaper and steadier at the API layer, and for setup and teardown of records the journey merely needs to exist. A browser test should answer a journey question: can this user log in, create the record, complete the flow. If the pasted script is really twenty validation permutations, write the few that prove the UI is wired up, cover the rest through the API layer, and say so in your report.
+
+When a resource has been walked by `smart-api-map` (check `ui-map-results/api-map/` and `generated-framework/src/api/clients/`), prefer its typed fixture over the generic one — e.g. `usersApi` (a `UsersClient`) instead of `api` (`ApiClient`) — because its methods are typed to the mapped operation, not a bare path string. Fall back to `api`/`ApiClient` for any endpoint outside the api-map. For creating preconditions, prefer a generated factory helper in `src/data/factories/<resource>-factory.ts` (e.g. `createUser()`) over calling the typed client directly — factories are the one place field values get filled in, and a scaffolded-but-empty factory is a signal to fill it in, not to work around it inline.
 
 ## 7. Screens missing from the map
 
@@ -85,7 +87,7 @@ Run `npm run typecheck` in `generated-framework/`. Report: files created and mod
 
 | rule | blocked | instead |
 |---|---|---|
-| `protected-path` | `*.generated.ts`, `src/components/**`, `BasePage.ts`, `page-fixtures.ts`, `auth-fixtures.ts`, `global-setup.ts`, generator-owned `src/utils/*` and `ApiClient.ts` | the protected subclass, or `extra-fixtures.ts`, or the generator template |
+| `protected-path` | `*.generated.ts`, `src/components/**`, `BasePage.ts`, `page-fixtures.ts`, `auth-fixtures.ts`, `global-setup.ts`, generator-owned `src/utils/*` (including `schema-assert.ts`) and `ApiClient.ts` | the protected subclass, or `extra-fixtures.ts`, or the generator template |
 | `locator-in-spec` | any `page.locator` / `page.getBy*` / raw CSS in `tests/**` | a getter on the page object |
 | `wrap-in-component` | a page-object getter returning a bare `Locator` | wrap it in a component |
 | `locator-priority` | `.locator(` or `getByTestId` in a page object with no provenance | `getByRole` > `getByLabel` > `getByPlaceholder` > `getByText`, or mark it `// UNVERIFIED` |

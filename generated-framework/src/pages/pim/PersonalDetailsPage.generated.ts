@@ -25,6 +25,11 @@ export abstract class PersonalDetailsPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
+  /** Configuration (menuItem) */
+  get configurationMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Configuration")'), 'Configuration (menuItem)');
+  }
+
   /** Employee List (menuItem) */
   get employeeListMenuItem(): MenuItemComponent {
     return MenuItemComponent.byLabel(this.page, 'Employee List');
@@ -183,5 +188,40 @@ export abstract class PersonalDetailsPageGenerated extends BasePage {
   /** Attachments (table) */
   get attachmentsTable(): TableComponent {
     return new TableComponent(this.page.locator('.oxd-table:has(.oxd-table-th:text-is("File Name"))'), ['File Name', 'Description', 'Size', 'Type', 'Date Added', 'Added By', 'Actions'], 'Attachments (table)');
+  }
+
+  /** PIM (text) */
+  get pimHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'PIM');
+  }
+
+  /** Automation QE (text) */
+  get automationQeHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'Automation QE');
+  }
+
+  /** Custom Fields (text) */
+  get customFieldsHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'Custom Fields');
+  }
+
+  /** Attachments (text) */
+  get attachmentsHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'Attachments');
+  }
+
+  /** Add (button) */
+  get addButton(): ButtonComponent {
+    return new ButtonComponent(this.page.locator('button:text-is("Add")'), 'Add (button)');
+  }
+
+  /** Male (radio) */
+  get maleRadio2(): RadioComponent {
+    return new RadioComponent(this.page.locator('.oxd-radio-wrapper:has(label:text-is("Male")) input'), 'Male (radio)');
+  }
+
+  /** Female (radio) */
+  get femaleRadio2(): RadioComponent {
+    return new RadioComponent(this.page.locator('.oxd-radio-wrapper:has(label:text-is("Female")) input'), 'Female (radio)');
   }
 }

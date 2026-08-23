@@ -23,6 +23,11 @@ export abstract class AddEmployeePageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
+  /** Configuration (menuItem) */
+  get configurationMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Configuration")'), 'Configuration (menuItem)');
+  }
+
   /** Employee List (menuItem) */
   get employeeListMenuItem(): MenuItemComponent {
     return MenuItemComponent.byLabel(this.page, 'Employee List');
@@ -111,5 +116,10 @@ export abstract class AddEmployeePageGenerated extends BasePage {
   /** Save (button) */
   get saveButton(): ButtonComponent {
     return ButtonComponent.byLabel(this.page, 'Save');
+  }
+
+  /** PIM (text) */
+  get pimHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'PIM');
   }
 }

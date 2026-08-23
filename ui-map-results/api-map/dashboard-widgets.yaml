@@ -1,0 +1,171 @@
+resource: Dashboard/Widgets
+source: openapi
+operations:
+  - operationId: get-my-action-summary
+    method: GET
+    path: /api/v2/dashboard/employees/action-summary
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: id
+              type: number
+              required: false
+              nullable: false
+            - name: group
+              type: string
+              required: false
+              nullable: false
+            - name: pendingActionCount
+              type: number
+              required: false
+              nullable: false
+  - operationId: get-employee-distribution-by-location
+    method: GET
+    path: /api/v2/dashboard/employees/locations
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-employee-distribution-by-location.responses.200.data: nested array narrowed to ''unknown'''
+      - 'get-employee-distribution-by-location.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: get-employee-distribution-by-subunit
+    method: GET
+    path: /api/v2/dashboard/employees/subunit
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-employee-distribution-by-subunit.responses.200.data: nested array narrowed to ''unknown'''
+      - 'get-employee-distribution-by-subunit.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: get-employees-on-leave-today
+    method: GET
+    path: /api/v2/dashboard/employees/leaves
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-employees-on-leave-today.responses.200.data: nested array narrowed to ''unknown'''
+      - 'get-employees-on-leave-today.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: get-employees-on-leave-today-configuration
+    method: GET
+    path: /api/v2/dashboard/config/employee-on-leave-today
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: showOnlyAccessibleEmployeesOnLeaveToday
+              type: boolean
+              required: false
+              nullable: false
+  - operationId: configure-employees-on-leave-today
+    method: PUT
+    path: /api/v2/dashboard/config/employee-on-leave-today
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: showOnlyAccessibleEmployeesOnLeaveToday
+            type: boolean
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: showOnlyAccessibleEmployeesOnLeaveToday
+              type: boolean
+              required: false
+              nullable: false
+  - operationId: get-my-time-at-work
+    method: GET
+    path: /api/v2/dashboard/employees/time-at-work
+    queryParams:
+      - name: currentDate
+        type: string
+        required: false
+      - name: currentTime
+        type: string
+        required: false
+      - name: timezoneOffset
+        type: number
+        required: false
+      - name: empNumber
+        type: number
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-my-time-at-work.responses.200.data: nested array narrowed to ''unknown'''
+      - 'get-my-time-at-work.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: get-quick-launch-shortcuts
+    method: GET
+    path: /api/v2/dashboard/shortcuts
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-quick-launch-shortcuts.responses.200.data: nested object narrowed to ''unknown'''

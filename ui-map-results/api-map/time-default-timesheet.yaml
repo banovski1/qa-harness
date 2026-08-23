@@ -1,0 +1,29 @@
+resource: Time/Default Timesheet
+source: openapi
+operations:
+  - operationId: get-default-timesheet
+    method: GET
+    path: /api/v2/time/timesheets/default
+    queryParams:
+      - name: date
+        type: string
+        required: false
+      - name: empNumber
+        type: number
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-default-timesheet.responses.200.meta: nested object narrowed to ''unknown'''

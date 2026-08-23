@@ -22,6 +22,11 @@ export abstract class AssignClaimPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
+  /** Configuration (menuItem) */
+  get configurationMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Configuration")'), 'Configuration (menuItem)');
+  }
+
   /** Submit Claim (menuItem) */
   get submitClaimMenuItem(): MenuItemComponent {
     return MenuItemComponent.byLabel(this.page, 'Submit Claim');
@@ -75,5 +80,10 @@ export abstract class AssignClaimPageGenerated extends BasePage {
   /** Create (button) */
   get createButton(): ButtonComponent {
     return ButtonComponent.byLabel(this.page, 'Create');
+  }
+
+  /** Claim (text) */
+  get claimHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'Claim');
   }
 }

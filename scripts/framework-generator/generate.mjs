@@ -15,6 +15,7 @@ import { join } from 'node:path';
 import yaml from 'js-yaml';
 import { fromMap } from './locator-spec.mjs';
 import { readApplicationMap } from './map-reader.mjs';
+import { readApiMap } from './api-map-reader.mjs';
 import { adapterFor, SUPPORTED_LANGUAGES } from './languages/index.mjs';
 import { FileWriter } from './file-writer.mjs';
 
@@ -32,6 +33,8 @@ const DEFAULTS = {
   waits: { spinnerSelector: '[role="progressbar"], [aria-busy="true"]' },
   tests: { generateSmokeSpecs: true },
   locatorTemplates: {},
+  apiMapDir: join('ui-map-results', 'api-map'),
+  api: { enabled: false, include: {}, exclude: {}, generateAssertionSpecs: true, generateFactories: true },
 };
 
 // Every template id the generator knows how to emit a factory for, and the component
@@ -57,7 +60,13 @@ async function main() {
   console.log(`[framework-gen] read ${model.stats.files} map file(s): ${model.pages.length} page object(s), ` +
     `${model.stats.elementsRead} element(s), ${model.stats.sharedChrome} shared in navigation`);
 
-  const context = { config, model, adapter };
+  const apiModel = readApiMap(config);
+  if (apiModel.resources.length > 0) {
+    console.log(`[framework-gen] read ${apiModel.stats.files} api-map file(s): ${apiModel.resources.length} resource(s), ` +
+      `${apiModel.stats.operations} operation(s)${apiModel.stats.droppedFields ? `, ${apiModel.stats.droppedFields} dropped field(s)` : ''}`);
+  }
+
+  const context = { config, model, apiModel, adapter };
   const writer = new FileWriter(config.outputDir, { dryRun });
 
   for (const dir of adapter.emptyDirs(context)) writer.ensureDir(dir);
@@ -77,8 +86,15 @@ async function main() {
     writer.write(report(context));
   }
 
+  let apiResources = 0;
+  for (const resource of apiModel.resources) {
+    for (const file of adapter.renderApiClient?.(resource, context) ?? []) writer.write(file);
+    for (const file of adapter.renderApiTest?.(resource, context) ?? []) writer.write(file);
+    apiResources += 1;
+  }
+
   if (dryRun) printPlan(writer);
-  console.log(`[framework-gen] done: ${pageObjects} page object(s), ${writer.summary()}.`);
+  console.log(`[framework-gen] done: ${pageObjects} page object(s), ${apiResources} api resource(s), ${writer.summary()}.`);
 }
 
 main().catch((err) => {
@@ -102,6 +118,7 @@ function loadConfig(path) {
     waits: { ...DEFAULTS.waits, ...(raw.waits ?? {}) },
     tests: { ...DEFAULTS.tests, ...(raw.tests ?? {}) },
     locatorTemplates: { ...(raw.locatorTemplates ?? {}) },
+    api: { ...DEFAULTS.api, ...(raw.api ?? {}) },
   };
 
   if (!SUPPORTED_LANGUAGES.includes(config.language)) {
@@ -197,6 +214,17 @@ function report(context) {
   const locators = context.adapter.locatorStats?.(model, config);
   if (locators) md += `| Accessors via component factory | ${locators.derived} of ${locators.total} |\n`;
   md += '\n';
+
+  if (context.apiModel.resources.length > 0) {
+    md += '## API layer\n\n';
+    md += `Generated from \`${config.apiMapDir}\`.\n\n`;
+    md += '| | |\n|---|---|\n';
+    md += `| Resources | ${context.apiModel.resources.length} |\n`;
+    md += `| Operations | ${context.apiModel.stats.operations} |\n`;
+    md += `| Dropped fields | ${context.apiModel.stats.droppedFields} |\n`;
+    const sources = [...new Set(context.apiModel.resources.map((r) => r.source))].sort();
+    md += `| Source(s) | ${sources.join(', ')} |\n\n`;
+  }
 
   if (locators) {
     md += '## Locator ownership\n\n';

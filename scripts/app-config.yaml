@@ -37,3 +37,12 @@ denyClickNames:
   - trash
   - terminate
   - reset
+
+# Where the app's API spec lives, read by scripts/framework-generator/smart-api-map.mjs (a
+# deterministic script, not a browser skill — parsing a self-describing JSON doc needs no AI
+# judgment). Tries specUrl/specPath first; on failure, falls back to fallbackSpec, which is
+# already written in this repo's own request-spec vocabulary.
+apiSpec:
+  specPath: openapi-spec.json   # OrangeHRM's own REST API v2 OpenAPI doc — covers the app fully,
+                                 # so no fallbackSpec is configured here. scripts/api-fallback-spec.yaml
+                                 # remains as a worked example for an app with no OpenAPI doc at all.

@@ -1,0 +1,9 @@
+import { LeaveLeaveTypeClientGenerated } from './LeaveLeaveTypeClient.generated';
+
+/**
+ * LeaveLeaveTypeClient — add resource-specific helpers/assertions here.
+ *
+ * The generator created this file once and will never overwrite it. Mapped
+ * operations live in LeaveLeaveTypeClient.generated.ts, regenerated every run.
+ */
+export class LeaveLeaveTypeClient extends LeaveLeaveTypeClientGenerated {}

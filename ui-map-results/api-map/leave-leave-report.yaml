@@ -1,0 +1,83 @@
+resource: Leave/Leave Report
+source: openapi
+operations:
+  - operationId: get-leave-report
+    method: GET
+    path: /api/v2/leave/reports
+    queryParams:
+      - name: name
+        type: string
+        required: true
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 400
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: error
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-leave-report.responses.200.data: nested array narrowed to ''unknown'''
+      - 'get-leave-report.responses.200.meta: nested object narrowed to ''unknown'''
+      - 'get-leave-report.responses.400.error: nested object narrowed to ''unknown'''
+  - operationId: get-leave-report-data
+    method: GET
+    path: /api/v2/leave/reports/data
+    queryParams:
+      - name: name
+        type: string
+        required: true
+      - name: empNumber
+        type: number
+        required: false
+      - name: fromDate
+        type: string
+        required: false
+      - name: toDate
+        type: string
+        required: false
+      - name: includeEmployees
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 400
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: error
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-leave-report-data.responses.200.data: nested array narrowed to ''unknown'''
+      - 'get-leave-report-data.responses.200.meta: nested object narrowed to ''unknown'''
+      - 'get-leave-report-data.responses.400.error: nested object narrowed to ''unknown'''

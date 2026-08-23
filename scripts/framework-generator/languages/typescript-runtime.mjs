@@ -38,6 +38,7 @@ export function runtimeFiles(context) {
     file('src/utils/waitHelpers.ts', waitHelpers(context.config.waits.spinnerSelector)),
     file('src/utils/testData.ts', TEST_DATA),
     file('src/utils/network.ts', NETWORK),
+    file('src/utils/schema-assert.ts', SCHEMA_ASSERT),
     file('src/api/clients/ApiClient.ts', API_CLIENT),
     file('src/config/constants.ts', CONSTANTS),
   ];
@@ -724,6 +725,57 @@ export async function expectJson<T>(page: Page, criteria: ResponseCriteria): Pro
 
 // ---- api --------------------------------------------------------------------
 
+/**
+ * A hand-rolled response-shape check, standing in for what a schema library's
+ * .parse() would give — the api-map's RequestSpecSchema only ever needs object/
+ * array/primitive, so this stays a single small function rather than a dependency.
+ */
+const SCHEMA_ASSERT = `/** The narrow schema shape request-spec.mjs normalizes an OpenAPI/fallback schema into. */
+export type RequestSpecSchema =
+  | { kind: 'object'; properties: { name: string; type: string; required?: boolean; nullable?: boolean }[] }
+  | { kind: 'array'; items: RequestSpecSchema }
+  | { kind: 'primitive'; type: string };
+
+/**
+ * Assert that \`value\` matches \`schema\`, throwing with a path-qualified message on
+ * the first mismatch. 'unknown' typed fields are accepted as-is — the normalizer
+ * already recorded them as dropped in the api-map, so re-flagging them here would
+ * just repeat a known limitation as a test failure.
+ */
+export function assertShape(value: unknown, schema: RequestSpecSchema, path = '$'): void {
+  if (schema.kind === 'array') {
+    if (!Array.isArray(value)) throw new Error(\`\${path}: expected array, got \${typeof value}\`);
+    value.forEach((item, i) => assertShape(item, schema.items, \`\${path}[\${i}]\`));
+    return;
+  }
+  if (schema.kind === 'object') {
+    if (typeof value !== 'object' || value === null) throw new Error(\`\${path}: expected object, got \${typeof value}\`);
+    for (const prop of schema.properties) {
+      const propValue = (value as Record<string, unknown>)[prop.name];
+      if (propValue === undefined) {
+        if (prop.required) throw new Error(\`\${path}.\${prop.name}: missing required property\`);
+        continue;
+      }
+      if (propValue === null) {
+        if (!prop.nullable) throw new Error(\`\${path}.\${prop.name}: null is not allowed\`);
+        continue;
+      }
+      assertPrimitive(propValue, prop.type, \`\${path}.\${prop.name}\`);
+    }
+    return;
+  }
+  assertPrimitive(value, schema.type, path);
+}
+
+function assertPrimitive(value: unknown, type: string, path: string): void {
+  if (type === 'unknown') return;
+  const actual = typeof value;
+  if (type === 'number' && actual !== 'number') throw new Error(\`\${path}: expected number, got \${actual}\`);
+  if (type === 'string' && actual !== 'string') throw new Error(\`\${path}: expected string, got \${actual}\`);
+  if (type === 'boolean' && actual !== 'boolean') throw new Error(\`\${path}: expected boolean, got \${actual}\`);
+}
+`;
+
 const API_CLIENT = `import type { APIRequestContext, APIResponse } from '@playwright/test';
 
 /**
@@ -738,20 +790,25 @@ const API_CLIENT = `import type { APIRequestContext, APIResponse } from '@playwr
 export class ApiClient {
   constructor(private readonly request: APIRequestContext) {}
 
-  async get(path: string): Promise<APIResponse> {
-    return this.request.get(path);
+  async get(path: string, data?: unknown): Promise<APIResponse> {
+    return this.request.get(path, data !== undefined ? { data } : undefined);
   }
 
-  async post(path: string, data: unknown): Promise<APIResponse> {
-    return this.request.post(path, { data });
+  async post(path: string, data?: unknown): Promise<APIResponse> {
+    return this.request.post(path, data !== undefined ? { data } : undefined);
   }
 
-  async put(path: string, data: unknown): Promise<APIResponse> {
-    return this.request.put(path, { data });
+  async put(path: string, data?: unknown): Promise<APIResponse> {
+    return this.request.put(path, data !== undefined ? { data } : undefined);
   }
 
-  async delete(path: string): Promise<APIResponse> {
-    return this.request.delete(path);
+  async patch(path: string, data?: unknown): Promise<APIResponse> {
+    return this.request.patch(path, data !== undefined ? { data } : undefined);
+  }
+
+  /** A body on DELETE is unusual but some APIs require it (e.g. deleting by a list of ids). */
+  async delete(path: string, data?: unknown): Promise<APIResponse> {
+    return this.request.delete(path, data !== undefined ? { data } : undefined);
   }
 
   /** GET the path and fail loudly if it did not succeed, so callers can trust the body. */

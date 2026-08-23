@@ -1,0 +1,175 @@
+resource: Leave/Employee Leave Request
+source: openapi
+operations:
+  - operationId: get-a-leave-request
+    method: GET
+    path: /api/v2/leave/employees/leave-requests/{leaveRequestId}
+    pathParams:
+      - name: leaveRequestId
+        type: number
+    queryParams:
+      - name: model
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-a-leave-request.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-a-leave-request
+    method: PUT
+    path: /api/v2/leave/employees/leave-requests/{leaveRequestId}
+    pathParams:
+      - name: leaveRequestId
+        type: number
+    queryParams:
+      - name: model
+        type: string
+        required: false
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: action
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 400
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: error
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-a-leave-request.responses.200.meta: nested object narrowed to ''unknown'''
+      - 'update-a-leave-request.responses.400.error: nested object narrowed to ''unknown'''
+  - operationId: list-all-leave-requests
+    method: GET
+    path: /api/v2/leave/employees/leave-requests
+    queryParams:
+      - name: fromDate
+        type: string
+        required: false
+      - name: toDate
+        type: string
+        required: false
+      - name: sortField
+        type: string
+        required: false
+      - name: includeEmployees
+        type: string
+        required: false
+      - name: subunitId
+        type: number
+        required: false
+      - name: empNumber
+        type: number
+        required: false
+      - name: statuses
+        type: number
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-leave-requests.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-a-leave-request
+    method: POST
+    path: /api/v2/leave/employees/leave-requests
+    queryParams:
+      - name: model
+        type: string
+        required: false
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: empNumber
+            type: number
+            required: true
+            nullable: false
+          - name: leaveTypeId
+            type: number
+            required: true
+            nullable: false
+          - name: fromDate
+            type: string
+            required: true
+            nullable: false
+          - name: toDate
+            type: string
+            required: true
+            nullable: false
+          - name: comment
+            type: string
+            required: false
+            nullable: false
+          - name: partialOption
+            type: string
+            required: false
+            nullable: false
+          - name: duration
+            type: unknown
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'create-a-leave-request.requestBody.duration: nested object narrowed to ''unknown'''
+      - 'create-a-leave-request.responses.200.meta: nested object narrowed to ''unknown'''

@@ -10,8 +10,12 @@
 //   renderPage  (page, context) => EmittedFile[]|null  — null = not implemented for this language
 //   renderTest  (page, context) => EmittedFile|null
 //
+// Optional — an app with no api-map generates exactly as before if these are absent:
+//   renderApiClient (resource, context) => EmittedFile[]|null
+//   renderApiTest   (resource, context) => EmittedFile[]|null
+//
 // EmittedFile = { path, contents, kind: 'generated' | 'protected' }
-// context     = { config, model }
+// context     = { config, model, apiModel }
 
 import { typescript } from './typescript.mjs';
 import { javascript } from './javascript.mjs';

@@ -1,0 +1,205 @@
+resource: PIM/Employee Language
+source: openapi
+operations:
+  - operationId: list-allowed-languages-for-an-employee
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/languages/allowed
+    pathParams:
+      - name: empNumber
+        type: number
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-allowed-languages-for-an-employee.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-allowed-languages-for-an-employee.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: get-an-employees-language-and-fluency
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/languages/{languageId}/fluencies/{fluencyId}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: languageId
+        type: number
+      - name: fluencyId
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-an-employees-language-and-fluency.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-employees-langauge-and-fluency
+    method: PUT
+    path: /api/v2/pim/employees/{empNumber}/languages/{languageId}/fluencies/{fluencyId}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: languageId
+        type: number
+      - name: fluencyId
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: languageId
+            type: number
+            required: false
+            nullable: false
+          - name: fluencyId
+            type: number
+            required: false
+            nullable: false
+          - name: competencyId
+            type: number
+            required: true
+            nullable: false
+          - name: comment
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-an-employees-langauge-and-fluency.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: list-an-employees-languages
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/languages
+    pathParams:
+      - name: empNumber
+        type: number
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-an-employees-languages.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-an-employees-languages.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: add-a-language-to-an-employee
+    method: POST
+    path: /api/v2/pim/employees/{empNumber}/languages
+    pathParams:
+      - name: empNumber
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: languageId
+            type: number
+            required: true
+            nullable: false
+          - name: fluencyId
+            type: number
+            required: true
+            nullable: false
+          - name: competencyId
+            type: number
+            required: true
+            nullable: false
+          - name: comment
+            type: string
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: empNumber
+              type: number
+              required: false
+              nullable: false
+      - status: 400
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: error
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'add-a-language-to-an-employee.responses.400.error: nested object narrowed to ''unknown'''
+  - operationId: delete-an-employees-languages
+    method: DELETE
+    path: /api/v2/pim/employees/{empNumber}/languages
+    pathParams:
+      - name: empNumber
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties: []
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'delete-an-employees-languages.requestBody: property with an empty name dropped'

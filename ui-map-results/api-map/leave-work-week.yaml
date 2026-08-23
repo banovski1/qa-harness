@@ -1,0 +1,85 @@
+resource: Leave/Work Week
+source: openapi
+operations:
+  - operationId: get-work-week
+    method: GET
+    path: /api/v2/leave/workweek
+    queryParams:
+      - name: model
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-work-week.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-work-week
+    method: PUT
+    path: /api/v2/leave/workweek
+    queryParams:
+      - name: model
+        type: string
+        required: false
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: monday
+            type: number
+            required: true
+            nullable: false
+          - name: tuesday
+            type: number
+            required: true
+            nullable: false
+          - name: wednesday
+            type: number
+            required: true
+            nullable: false
+          - name: thursday
+            type: number
+            required: true
+            nullable: false
+          - name: friday
+            type: number
+            required: true
+            nullable: false
+          - name: saturday
+            type: number
+            required: true
+            nullable: false
+          - name: sunday
+            type: number
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-work-week.responses.200.meta: nested object narrowed to ''unknown'''

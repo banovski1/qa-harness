@@ -1,0 +1,190 @@
+resource: PIM/Employee Salary
+source: openapi
+operations:
+  - operationId: get-an-employees-salary-component
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/salary-components/{id}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-an-employees-salary-component.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-employees-salary-component
+    method: PUT
+    path: /api/v2/pim/employees/{empNumber}/salary-components/{id}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: payGradeId
+            type: unknown
+            required: false
+            nullable: false
+          - name: salaryComponent
+            type: string
+            required: true
+            nullable: false
+          - name: payFrequencyId
+            type: unknown
+            required: false
+            nullable: false
+          - name: currencyId
+            type: string
+            required: true
+            nullable: false
+          - name: salaryAmount
+            type: string
+            required: true
+            nullable: false
+          - name: comment
+            type: unknown
+            required: false
+            nullable: false
+          - name: addDirectDeposit
+            type: boolean
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: empNumber
+              type: number
+              required: false
+              nullable: false
+  - operationId: list-an-employees-salary-components
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/salary-components
+    pathParams:
+      - name: empNumber
+        type: number
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-an-employees-salary-components.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: add-a-salary-component-to-an-employee
+    method: POST
+    path: /api/v2/pim/employees/{empNumber}/salary-components
+    pathParams:
+      - name: empNumber
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: payGradeId
+            type: unknown
+            required: false
+            nullable: false
+          - name: salaryComponent
+            type: string
+            required: true
+            nullable: false
+          - name: payFrequencyId
+            type: unknown
+            required: false
+            nullable: false
+          - name: currencyId
+            type: string
+            required: true
+            nullable: false
+          - name: salaryAmount
+            type: string
+            required: true
+            nullable: false
+          - name: comment
+            type: unknown
+            required: false
+            nullable: false
+          - name: addDirectDeposit
+            type: boolean
+            required: false
+            nullable: false
+          - name: directDepositAccount
+            type: unknown
+            required: false
+            nullable: false
+          - name: directDepositAccountType
+            type: unknown
+            required: false
+            nullable: false
+          - name: directDepositRoutingNumber
+            type: unknown
+            required: false
+            nullable: false
+          - name: directDepositAmount
+            type: unknown
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: empNumber
+              type: number
+              required: false
+              nullable: false
+  - operationId: delete-an-employees-salary-componenets
+    method: DELETE
+    path: /api/v2/pim/employees/{empNumber}/salary-components
+    pathParams:
+      - name: empNumber
+        type: number
+    responses:
+      - status: 200
+        contentType: null
+        schema: null

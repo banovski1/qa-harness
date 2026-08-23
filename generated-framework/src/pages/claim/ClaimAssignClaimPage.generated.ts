@@ -23,6 +23,11 @@ export abstract class ClaimAssignClaimPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
+  /** Configuration (menuItem) */
+  get configurationMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Configuration")'), 'Configuration (menuItem)');
+  }
+
   /** Submit Claim (menuItem) */
   get submitClaimMenuItem(): MenuItemComponent {
     return MenuItemComponent.byLabel(this.page, 'Submit Claim');
@@ -106,5 +111,20 @@ export abstract class ClaimAssignClaimPageGenerated extends BasePage {
   /** Employee Claims (table) */
   get employeeClaimsTable(): TableComponent {
     return new TableComponent(this.page.locator('.oxd-table'), ['Reference Id', 'Employee Name', 'Event Name', 'Description', 'Currency', 'Submitted Date', 'Status', 'Amount', 'Actions'], 'Employee Claims (table)');
+  }
+
+  /** Claim (text) */
+  get claimHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'Claim');
+  }
+
+  /** Assign Claim (button) */
+  get assignClaimButton2(): ButtonComponent {
+    return new ButtonComponent(this.page.locator('button:text-is("Assign Claim")'), 'Assign Claim (button)');
+  }
+
+  /** Records (table) */
+  get recordsTable(): TableComponent {
+    return new TableComponent(this.page.locator('.oxd-table:has(.oxd-table-th:text-is("Reference Id"))'), ['Reference Id', 'Employee Name', 'Event Name', 'Description', 'Currency', 'Submitted Date', 'Status', 'Amount', 'Actions'], 'Records (table)');
   }
 }

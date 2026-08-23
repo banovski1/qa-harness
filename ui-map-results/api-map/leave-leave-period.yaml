@@ -1,0 +1,82 @@
+resource: Leave/Leave Period
+source: openapi
+operations:
+  - operationId: get-current-leave-period
+    method: GET
+    path: /api/v2/leave/leave-period
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-current-leave-period.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-leave-period
+    method: PUT
+    path: /api/v2/leave/leave-period
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: startDay
+            type: number
+            required: false
+            nullable: false
+          - name: startMonth
+            type: number
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-leave-period.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: list-all-leave-periods
+    method: GET
+    path: /api/v2/leave/leave-periods
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'list-all-leave-periods.responses.200.meta: nested object narrowed to ''unknown'''

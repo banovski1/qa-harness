@@ -1,0 +1,66 @@
+resource: Directory/Employees
+source: openapi
+operations:
+  - operationId: get-an-employee-directory-listing
+    method: GET
+    path: /api/v2/directory/employees/{empNumber}
+    pathParams:
+      - name: empNumber
+        type: number
+    queryParams:
+      - name: model
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-an-employee-directory-listing.responses.200.data: nested array narrowed to ''unknown'''
+      - 'get-an-employee-directory-listing.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: get-the-employee-directory
+    method: GET
+    path: /api/v2/directory/employees
+    queryParams:
+      - name: empNumber
+        type: string
+        required: false
+      - name: nameOrId
+        type: string
+        required: false
+      - name: jobTitleId
+        type: string
+        required: false
+      - name: locationId
+        type: string
+        required: false
+      - name: model
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-the-employee-directory.responses.200.data: nested array narrowed to ''unknown'''
+      - 'get-the-employee-directory.responses.200.meta: nested object narrowed to ''unknown'''

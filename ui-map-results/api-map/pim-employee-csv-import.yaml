@@ -1,0 +1,32 @@
+resource: PIM/Employee CSV Import
+source: openapi
+operations:
+  - operationId: import-employee-records
+    method: POST
+    path: /api/v2/pim/csv-import
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: attachment
+            type: unknown
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'import-employee-records.responses.200.data: nested array narrowed to ''unknown'''
+      - 'import-employee-records.responses.200.meta: nested object narrowed to ''unknown'''

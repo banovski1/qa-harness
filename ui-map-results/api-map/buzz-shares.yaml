@@ -1,0 +1,114 @@
+resource: Buzz/Shares
+source: openapi
+operations:
+  - operationId: list-all-shares-of-a-post
+    method: GET
+    path: /api/v2/buzz/posts/{id}/shares
+    pathParams:
+      - name: id
+        type: number
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-shares-of-a-post.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-all-shares-of-a-post.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: share-a-post
+    method: POST
+    path: /api/v2/buzz/shares
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: text
+            type: string
+            required: false
+            nullable: false
+          - name: shareId
+            type: number
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'share-a-post.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: edit-a-share
+    method: PUT
+    path: /api/v2/buzz/shares/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: text
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'edit-a-share.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-a-share
+    method: DELETE
+    path: /api/v2/buzz/shares/{id}
+    pathParams:
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+      - status: 403
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'delete-a-share.responses.200.data: nested object narrowed to ''unknown'''

@@ -6,7 +6,6 @@ import type { Page } from '@playwright/test';
 import { ButtonComponent } from '../ButtonComponent';
 import { InputComponent } from '../InputComponent';
 import { LinkComponent } from '../LinkComponent';
-import { MenuItemComponent } from '../MenuItemComponent';
 import { TextComponent } from '../TextComponent';
 
 export class NavigationBar {
@@ -90,10 +89,5 @@ export class NavigationBar {
   /** Current user (text) */
   get currentUserHeading(): TextComponent {
     return new TextComponent(this.page.locator('.oxd-userdropdown-name'), 'Current user (text)');
-  }
-
-  /** Configuration (menuItem) */
-  get configurationMenuItem(): MenuItemComponent {
-    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Configuration")'), 'Configuration (menuItem)');
   }
 }

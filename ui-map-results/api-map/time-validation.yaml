@@ -1,0 +1,132 @@
+resource: Time/Validation
+source: openapi
+operations:
+  - operationId: validate-project-activity-uniqueness-in-timesheet
+    method: GET
+    path: /api/v2/time/validation/{timesheetId}/project-activity
+    pathParams:
+      - name: timesheetId
+        type: number
+    queryParams:
+      - name: projectId
+        type: number
+        required: true
+      - name: activityId
+        type: number
+        required: true
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'validate-project-activity-uniqueness-in-timesheet.responses.200.data: nested array narrowed to ''unknown'''
+      - 'validate-project-activity-uniqueness-in-timesheet.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: validate-project-name-uniqueness
+    method: GET
+    path: /api/v2/time/validation/project-name
+    queryParams:
+      - name: projectId
+        type: number
+        required: false
+      - name: projectName
+        type: string
+        required: true
+      - name: customerId
+        type: number
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'validate-project-name-uniqueness.responses.200.data: nested object narrowed to ''unknown'''
+      - 'validate-project-name-uniqueness.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: validate-customer-name-uniqueness
+    method: GET
+    path: /api/v2/time/validation/customer-name
+    queryParams:
+      - name: customerId
+        type: number
+        required: false
+      - name: customerName
+        type: string
+        required: true
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'validate-customer-name-uniqueness.responses.200.data: nested object narrowed to ''unknown'''
+      - 'validate-customer-name-uniqueness.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: validate-project-activity-name-uniqueness
+    method: GET
+    path: /api/v2/time/validation/activity-name/{id}
+    pathParams:
+      - name: id
+        type: number
+    queryParams:
+      - name: activityId
+        type: number
+        required: false
+      - name: activityName
+        type: string
+        required: true
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'validate-project-activity-name-uniqueness.responses.200.data: nested object narrowed to ''unknown'''
+      - 'validate-project-activity-name-uniqueness.responses.200.meta: nested object narrowed to ''unknown'''

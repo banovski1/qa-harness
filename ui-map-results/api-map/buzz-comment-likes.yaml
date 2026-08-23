@@ -1,0 +1,90 @@
+resource: Buzz/Comment Likes
+source: openapi
+operations:
+  - operationId: List-likes-on-a-comment
+    method: GET
+    path: /api/v2/buzz/comments/{commentId}/likes
+    pathParams:
+      - name: commentId
+        type: number
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'List-likes-on-a-comment.responses.200.data: nested array narrowed to ''unknown'''
+      - 'List-likes-on-a-comment.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: like-a-comment
+    method: POST
+    path: /api/v2/buzz/comments/{commentId}/likes
+    pathParams:
+      - name: commentId
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 400
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: error
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'like-a-comment.responses.200.meta: nested object narrowed to ''unknown'''
+      - 'like-a-comment.responses.400.error: nested object narrowed to ''unknown'''
+  - operationId: unlike-a-liked-comment
+    method: DELETE
+    path: /api/v2/buzz/comments/{commentId}/likes
+    pathParams:
+      - name: commentId
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+      - status: 400
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: error
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'unlike-a-liked-comment.responses.200.data: nested object narrowed to ''unknown'''
+      - 'unlike-a-liked-comment.responses.400.error: nested object narrowed to ''unknown'''

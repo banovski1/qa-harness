@@ -12,20 +12,25 @@ import type { APIRequestContext, APIResponse } from '@playwright/test';
 export class ApiClient {
   constructor(private readonly request: APIRequestContext) {}
 
-  async get(path: string): Promise<APIResponse> {
-    return this.request.get(path);
+  async get(path: string, data?: unknown): Promise<APIResponse> {
+    return this.request.get(path, data !== undefined ? { data } : undefined);
   }
 
-  async post(path: string, data: unknown): Promise<APIResponse> {
-    return this.request.post(path, { data });
+  async post(path: string, data?: unknown): Promise<APIResponse> {
+    return this.request.post(path, data !== undefined ? { data } : undefined);
   }
 
-  async put(path: string, data: unknown): Promise<APIResponse> {
-    return this.request.put(path, { data });
+  async put(path: string, data?: unknown): Promise<APIResponse> {
+    return this.request.put(path, data !== undefined ? { data } : undefined);
   }
 
-  async delete(path: string): Promise<APIResponse> {
-    return this.request.delete(path);
+  async patch(path: string, data?: unknown): Promise<APIResponse> {
+    return this.request.patch(path, data !== undefined ? { data } : undefined);
+  }
+
+  /** A body on DELETE is unusual but some APIs require it (e.g. deleting by a list of ids). */
+  async delete(path: string, data?: unknown): Promise<APIResponse> {
+    return this.request.delete(path, data !== undefined ? { data } : undefined);
   }
 
   /** GET the path and fail loudly if it did not succeed, so callers can trust the body. */

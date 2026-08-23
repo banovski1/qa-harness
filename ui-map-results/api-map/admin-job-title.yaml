@@ -1,0 +1,155 @@
+resource: Admin/Job Title
+source: openapi
+operations:
+  - operationId: get-a-job-title
+    method: GET
+    path: /api/v2/admin/job-titles/{id}
+    pathParams:
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-a-job-title.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-a-job-title
+    method: PUT
+    path: /api/v2/admin/job-titles/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: title
+            type: string
+            required: true
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+          - name: note
+            type: string
+            required: false
+            nullable: false
+          - name: currentJobSpecification
+            type: string
+            required: false
+            nullable: false
+          - name: specification
+            type: unknown
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-a-job-title.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: list-all-job-titles
+    method: GET
+    path: /api/v2/admin/job-titles
+    queryParams:
+      - name: activeOnly
+        type: boolean
+        required: false
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-job-titles.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-all-job-titles.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-a-job-title
+    method: POST
+    path: /api/v2/admin/job-titles
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: title
+            type: string
+            required: true
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+          - name: note
+            type: string
+            required: false
+            nullable: false
+          - name: specification
+            type: unknown
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'create-a-job-title.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-job-titles
+    method: DELETE
+    path: /api/v2/admin/job-titles
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+      - status: 404
+        contentType: null
+        schema: null

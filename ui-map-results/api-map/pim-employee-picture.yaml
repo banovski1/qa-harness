@@ -1,0 +1,56 @@
+resource: PIM/Employee Picture
+source: openapi
+operations:
+  - operationId: get-an-employees-picture
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/picture
+    pathParams:
+      - name: empNumber
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-an-employees-picture.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-employees-picture
+    method: PUT
+    path: /api/v2/pim/employees/{empNumber}/picture
+    pathParams:
+      - name: empNumber
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: empPicture
+            type: unknown
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null

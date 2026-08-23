@@ -1,0 +1,66 @@
+resource: Leave/Leave Balance
+source: openapi
+operations:
+  - operationId: get-an-employees-leave-balance
+    method: GET
+    path: /api/v2/leave/employees/leave-balances
+    queryParams:
+      - name: empNumber
+        type: string
+        required: false
+      - name: fromDate
+        type: string
+        required: false
+      - name: toDate
+        type: string
+        required: false
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-an-employees-leave-balance.responses.200.data: nested array narrowed to ''unknown'''
+      - 'get-an-employees-leave-balance.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: get-leave-balance-for-a-leave-type
+    method: GET
+    path: /api/v2/leave/leave-balance/leave-type/{leaveTypeId}
+    pathParams:
+      - name: leaveTypeId
+        type: number
+    queryParams:
+      - name: empNumber
+        type: number
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-leave-balance-for-a-leave-type.responses.200.data: nested array narrowed to ''unknown'''
+      - 'get-leave-balance-for-a-leave-type.responses.200.meta: nested object narrowed to ''unknown'''

@@ -24,6 +24,11 @@ export abstract class ContactDetailsPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
+  /** Configuration (menuItem) */
+  get configurationMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Configuration")'), 'Configuration (menuItem)');
+  }
+
   /** Employee List (menuItem) */
   get employeeListMenuItem(): MenuItemComponent {
     return MenuItemComponent.byLabel(this.page, 'Employee List');
@@ -167,5 +172,40 @@ export abstract class ContactDetailsPageGenerated extends BasePage {
   /** Attachments (table) */
   get attachmentsTable(): TableComponent {
     return new TableComponent(this.page.locator('.oxd-table:has(.oxd-table-th:text-is("File Name"))'), ['File Name', 'Description', 'Size', 'Type', 'Date Added', 'Added By', 'Actions'], 'Attachments (table)');
+  }
+
+  /** PIM (text) */
+  get pimHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'PIM');
+  }
+
+  /** Automation QE (text) */
+  get automationQeHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'Automation QE');
+  }
+
+  /** Address (text) */
+  get addressHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'Address');
+  }
+
+  /** Telephone (text) */
+  get telephoneHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'Telephone');
+  }
+
+  /** Email (text) */
+  get emailHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'Email');
+  }
+
+  /** Attachments (text) */
+  get attachmentsHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'Attachments');
+  }
+
+  /** Add (button) */
+  get addButton(): ButtonComponent {
+    return new ButtonComponent(this.page.locator('button:text-is("Add")'), 'Add (button)');
   }
 }

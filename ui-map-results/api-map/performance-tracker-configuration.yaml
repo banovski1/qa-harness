@@ -1,0 +1,178 @@
+resource: Performance/Tracker Configuration
+source: openapi
+operations:
+  - operationId: list-all-performance-trackers
+    method: GET
+    path: /api/v2/performance/config/trackers
+    queryParams:
+      - name: empNumber
+        type: number
+        required: false
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-performance-trackers.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-all-performance-trackers.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-a-performance-tracker
+    method: POST
+    path: /api/v2/performance/config/trackers
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: trackerName
+            type: string
+            required: true
+            nullable: false
+          - name: empNumber
+            type: number
+            required: true
+            nullable: false
+          - name: reviewers
+            type: unknown
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'create-a-performance-tracker.requestBody.reviewers: nested array narrowed to ''unknown'''
+      - 'create-a-performance-tracker.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-performance-trackers
+    method: DELETE
+    path: /api/v2/performance/config/trackers
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+      - status: 404
+        contentType: null
+        schema: null
+  - operationId: get-a-performance-tracker
+    method: GET
+    path: /api/v2/performance/config/trackers/{id}
+    pathParams:
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-a-performance-tracker.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-a-performance-tracker
+    method: PUT
+    path: /api/v2/performance/config/trackers/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: trackerName
+            type: string
+            required: true
+            nullable: false
+          - name: empNumber
+            type: number
+            required: true
+            nullable: false
+          - name: reviewers
+            type: unknown
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-a-performance-tracker.requestBody.reviewers: nested array narrowed to ''unknown'''
+      - 'update-a-performance-tracker.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: list-all-available-employees
+    method: GET
+    path: /api/v2/performance/trackers/reviewers
+    queryParams:
+      - name: empNumber
+        type: string
+        required: false
+      - name: nameOrId
+        type: string
+        required: false
+      - name: includeEmployees
+        type: string
+        required: false
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-available-employees.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-all-available-employees.responses.200.meta: nested object narrowed to ''unknown'''

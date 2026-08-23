@@ -24,6 +24,11 @@ export abstract class ExpensePageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
+  /** Configuration (menuItem) */
+  get configurationMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Configuration")'), 'Configuration (menuItem)');
+  }
+
   /** Submit Claim (menuItem) */
   get submitClaimMenuItem(): MenuItemComponent {
     return MenuItemComponent.byLabel(this.page, 'Submit Claim');
@@ -87,5 +92,20 @@ export abstract class ExpensePageGenerated extends BasePage {
   /** Expense Types (table) */
   get expenseTypesTable(): TableComponent {
     return new TableComponent(this.page.locator('.oxd-table'), ['Name', 'Status', 'Actions'], 'Expense Types (table)');
+  }
+
+  /** Claim (text) */
+  get claimHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'Claim');
+  }
+
+  /** Add (button) */
+  get addButton2(): ButtonComponent {
+    return new ButtonComponent(this.page.locator('button:text-is("Add")'), 'Add (button)');
+  }
+
+  /** Records (table) */
+  get recordsTable(): TableComponent {
+    return new TableComponent(this.page.locator('.oxd-table:has(.oxd-table-th:text-is("Name"))'), ['Name', 'Status', 'Actions'], 'Records (table)');
   }
 }

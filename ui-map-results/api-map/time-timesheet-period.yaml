@@ -1,0 +1,60 @@
+resource: Time/Timesheet Period
+source: openapi
+operations:
+  - operationId: get-the-timesheet-period
+    method: GET
+    path: /api/v2/time/time-sheet-period
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-the-timesheet-period.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-the-timesheet-period
+    method: PUT
+    path: /api/v2/time/time-sheet-period
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: startDay
+            type: number
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 400
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: error
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'update-the-timesheet-period.responses.200.meta: nested object narrowed to ''unknown'''
+      - 'update-the-timesheet-period.responses.400.error: nested object narrowed to ''unknown'''

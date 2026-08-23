@@ -1,0 +1,35 @@
+resource: Admin/I18N Language Import
+source: openapi
+operations:
+  - operationId: import-i18n-language
+    method: POST
+    path: /api/v2/admin/i18n/languages/{languageId}/import
+    pathParams:
+      - name: languageId
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: attachment
+            type: unknown
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'import-i18n-language.responses.200.data: nested array narrowed to ''unknown'''
+      - 'import-i18n-language.responses.200.meta: nested object narrowed to ''unknown'''

@@ -24,6 +24,11 @@ export abstract class EmployeeListPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
+  /** Configuration (menuItem) */
+  get configurationMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Configuration")'), 'Configuration (menuItem)');
+  }
+
   /** Employee List (menuItem) */
   get employeeListMenuItem(): MenuItemComponent {
     return MenuItemComponent.byLabel(this.page, 'Employee List');
@@ -107,5 +112,45 @@ export abstract class EmployeeListPageGenerated extends BasePage {
   /** Employee list (table) */
   get employeeTable(): TableComponent {
     return new TableComponent(this.page.locator('.oxd-table:has(.oxd-table-th:text-is("Employment Status"))'), ['Id', 'First (& Middle) Name', 'Last Name', 'Job Title', 'Employment Status', 'Sub Unit', 'Supervisor', 'Actions'], 'Employee list (table)');
+  }
+
+  /** PIM (text) */
+  get pimHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'PIM');
+  }
+
+  /** Add (button) */
+  get addButton2(): ButtonComponent {
+    return new ButtonComponent(this.page.locator('button:text-is("Add")'), 'Add (button)');
+  }
+
+  /** 1 (button) */
+  get n1Button(): ButtonComponent {
+    return ButtonComponent.byLabel(this.page, '1');
+  }
+
+  /** 2 (button) */
+  get n2Button(): ButtonComponent {
+    return ButtonComponent.byLabel(this.page, '2');
+  }
+
+  /** 3 (button) */
+  get n3Button(): ButtonComponent {
+    return ButtonComponent.byLabel(this.page, '3');
+  }
+
+  /** 4 (button) */
+  get n4Button(): ButtonComponent {
+    return ButtonComponent.byLabel(this.page, '4');
+  }
+
+  /** 5 (button) */
+  get n5Button(): ButtonComponent {
+    return ButtonComponent.byLabel(this.page, '5');
+  }
+
+  /** Records (table) */
+  get recordsTable(): TableComponent {
+    return new TableComponent(this.page.locator('.oxd-table:has(.oxd-table-th:text-is("Id"))'), ['Id', 'First (& Middle) Name', 'Last Name', 'Job Title', 'Employment Status', 'Sub Unit', 'Supervisor', 'Actions'], 'Records (table)');
   }
 }

@@ -1,0 +1,196 @@
+resource: PIM/Employee Immigration
+source: openapi
+operations:
+  - operationId: list-an-employees-immigration-record
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/immigrations
+    pathParams:
+      - name: empNumber
+        type: number
+    queryParams:
+      - name: number
+        type: string
+        required: false
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-an-employees-immigration-record.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: add-an-immigration-record-to-an-employee
+    method: POST
+    path: /api/v2/pim/employees/{empNumber}/immigrations
+    pathParams:
+      - name: empNumber
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: number
+            type: string
+            required: true
+            nullable: false
+          - name: issuedDate
+            type: string
+            required: false
+            nullable: false
+          - name: expiryDate
+            type: string
+            required: false
+            nullable: false
+          - name: type
+            type: number
+            required: true
+            nullable: false
+          - name: status
+            type: string
+            required: false
+            nullable: false
+          - name: reviewDate
+            type: string
+            required: false
+            nullable: false
+          - name: countryCode
+            type: string
+            required: false
+            nullable: false
+          - name: comment
+            type: string
+            required: false
+            nullable: false
+          - name: additionalProperties
+            type: boolean
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: empNumber
+              type: number
+              required: false
+              nullable: false
+  - operationId: delete-an-employees-immigration-records
+    method: DELETE
+    path: /api/v2/pim/employees/{empNumber}/immigrations
+    pathParams:
+      - name: empNumber
+        type: number
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+  - operationId: get-an-employees-immigration-record
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/immigrations/{id}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-an-employees-immigration-record.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-employees-immigration-record
+    method: PUT
+    path: /api/v2/pim/employees/{empNumber}/immigrations/{id}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: number
+            type: string
+            required: false
+            nullable: false
+          - name: issuedDate
+            type: string
+            required: false
+            nullable: false
+          - name: expiryDate
+            type: string
+            required: false
+            nullable: false
+          - name: type
+            type: number
+            required: true
+            nullable: false
+          - name: status
+            type: string
+            required: false
+            nullable: false
+          - name: reviewDate
+            type: string
+            required: false
+            nullable: false
+          - name: countryCode
+            type: string
+            required: false
+            nullable: false
+          - name: comment
+            type: string
+            required: false
+            nullable: false
+          - name: additionalProperties
+            type: boolean
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: empNumber
+              type: number
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null

@@ -1,0 +1,31 @@
+resource: Maintenance/Purge Employee
+source: openapi
+operations:
+  - operationId: purge-employee
+    method: DELETE
+    path: /api/v2/maintenance/purge
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: empNumber
+            type: number
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'purge-employee.responses.200.meta: nested object narrowed to ''unknown'''

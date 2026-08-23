@@ -1,0 +1,64 @@
+resource: PIM/Employee Custom Field
+source: openapi
+operations:
+  - operationId: list-an-employees-custom-fields
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/custom-fields
+    pathParams:
+      - name: empNumber
+        type: number
+    queryParams:
+      - name: screen
+        type: number
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'list-an-employees-custom-fields.responses.200.data: nested object narrowed to ''unknown'''
+      - 'list-an-employees-custom-fields.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-employees-custom-fields
+    method: PUT
+    path: /api/v2/pim/employees/{empNumber}/custom-fields
+    pathParams:
+      - name: empNumber
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties: []
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-an-employees-custom-fields.responses.200.data: nested object narrowed to ''unknown'''
+      - 'update-an-employees-custom-fields.responses.200.meta: nested object narrowed to ''unknown'''

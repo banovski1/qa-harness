@@ -16,7 +16,7 @@ const FORBIDDEN = [
   },
   {
     match: (p) =>
-      /(^|\/)src\/utils\/(env|waitHelpers|testData|network)\.ts$/.test(p) ||
+      /(^|\/)src\/utils\/(env|waitHelpers|testData|network|schema-assert)\.ts$/.test(p) ||
       /(^|\/)src\/api\/clients\/ApiClient\.ts$/.test(p) ||
       /(^|\/)src\/config\/constants\.ts$/.test(p),
     fix: 'Generator-owned runtime helper (languages/typescript-runtime.mjs) — regenerated every run. Change the template there, or put app-specific helpers in a new file such as src/utils/auth.ts.',

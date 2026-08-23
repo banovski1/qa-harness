@@ -54,3 +54,15 @@ locatorTemplates:
   labelledSelect:   '.oxd-input-group:has(label:text-is("{label}")) .oxd-select-text'
   topNavTab:        '.oxd-topbar-body-nav-tab > a:text-is("{label}")'
   tableByColumn:    '.oxd-table:has(.oxd-table-th:text-is("{label}"))'
+
+# Where scripts/framework-generator/smart-api-map.mjs writes the normalized api-map
+# (one YAML file per resource). Absent or empty directory -> no API layer is
+# generated; nothing else changes.
+apiMapDir: ui-map-results/api-map
+
+api:
+  enabled: true
+  include: {}                 # { tags: [Users, Claims] } or { operationIds: [...] } — empty means "all"
+  exclude: {}                 # same shape, subtracted after include
+  generateAssertionSpecs: true  # one status/schema check per api-mapped operation
+  generateFactories: true       # scaffold src/data/factories/<resource>-factory.ts stubs

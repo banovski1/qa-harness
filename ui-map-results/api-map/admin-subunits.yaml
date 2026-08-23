@@ -1,0 +1,159 @@
+resource: Admin/Subunits
+source: openapi
+operations:
+  - operationId: get-a-subunit
+    method: GET
+    path: /api/v2/admin/subunits/{id}
+    pathParams:
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-a-subunit.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-a-subunit
+    method: PUT
+    path: /api/v2/admin/subunits/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+          - name: unitId
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'update-a-subunit.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-subunits
+    method: DELETE
+    path: /api/v2/admin/subunits/{id}
+    pathParams:
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'delete-subunits.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: list-all-subunits
+    method: GET
+    path: /api/v2/admin/subunits
+    queryParams:
+      - name: depth
+        type: string
+        required: false
+      - name: mode
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-subunits.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-all-subunits.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-a-subunit
+    method: POST
+    path: /api/v2/admin/subunits
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+          - name: parentId
+            type: number
+            required: true
+            nullable: false
+          - name: unitId
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'create-a-subunit.responses.200.meta: nested object narrowed to ''unknown'''

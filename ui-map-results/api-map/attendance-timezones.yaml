@@ -1,0 +1,27 @@
+resource: Attendance/Timezones
+source: openapi
+operations:
+  - operationId: list-timezones
+    method: GET
+    path: /api/v2/attendance/timezones
+    queryParams:
+      - name: timezoneName
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-timezones.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-timezones.responses.200.meta: nested object narrowed to ''unknown'''

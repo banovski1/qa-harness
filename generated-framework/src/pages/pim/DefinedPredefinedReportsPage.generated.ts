@@ -23,6 +23,11 @@ export abstract class DefinedPredefinedReportsPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
+  /** Configuration (menuItem) */
+  get configurationMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Configuration")'), 'Configuration (menuItem)');
+  }
+
   /** Employee List (menuItem) */
   get employeeListMenuItem(): MenuItemComponent {
     return MenuItemComponent.byLabel(this.page, 'Employee List');
@@ -76,5 +81,15 @@ export abstract class DefinedPredefinedReportsPageGenerated extends BasePage {
   /** Employee reports (table) */
   get reportsTable(): TableComponent {
     return new TableComponent(this.page.locator('.oxd-table:has(.oxd-table-th:text-is("Name"))'), ['Name', 'Actions'], 'Employee reports (table)');
+  }
+
+  /** PIM (text) */
+  get pimHeading(): TextComponent {
+    return TextComponent.byHeading(this.page, 'PIM');
+  }
+
+  /** Add (button) */
+  get addButton2(): ButtonComponent {
+    return new ButtonComponent(this.page.locator('button:text-is("Add")'), 'Add (button)');
   }
 }

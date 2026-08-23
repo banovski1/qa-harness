@@ -1,0 +1,152 @@
+resource: Claim/Events
+source: openapi
+operations:
+  - operationId: list-all-claim-events
+    method: GET
+    path: /api/v2/claim/events
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+      - name: status
+        type: boolean
+        required: false
+      - name: name
+        type: string
+        required: false
+      - name: eventId
+        type: number
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-claim-events.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-all-claim-events.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-a-clam-event
+    method: POST
+    path: /api/v2/claim/events
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+          - name: status
+            type: boolean
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'create-a-clam-event.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-claim-events
+    method: DELETE
+    path: /api/v2/claim/events
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+      - status: 403
+        contentType: null
+        schema: null
+      - status: 404
+        contentType: null
+        schema: null
+  - operationId: get-a-claim-event
+    method: GET
+    path: /api/v2/claim/events/{id}
+    pathParams:
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-a-claim-event.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-a-claim-event
+    method: PUT
+    path: /api/v2/claim/events/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: false
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+          - name: status
+            type: boolean
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-a-claim-event.responses.200.meta: nested object narrowed to ''unknown'''

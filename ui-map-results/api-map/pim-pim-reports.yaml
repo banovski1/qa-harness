@@ -1,0 +1,57 @@
+resource: PIM/PIM Reports
+source: openapi
+operations:
+  - operationId: get-pim-report-definition
+    method: GET
+    path: /api/v2/pim/reports
+    queryParams:
+      - name: name
+        type: string
+        required: true
+      - name: reportId
+        type: number
+        required: true
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-pim-report-definition.responses.200.data: nested object narrowed to ''unknown'''
+      - 'get-pim-report-definition.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: get-pim-report-data
+    method: GET
+    path: /api/v2/pim/reports/data
+    queryParams:
+      - name: name
+        type: string
+        required: true
+      - name: reportId
+        type: number
+        required: true
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-pim-report-data.responses.200.data: nested array narrowed to ''unknown'''
+      - 'get-pim-report-data.responses.200.meta: nested object narrowed to ''unknown'''

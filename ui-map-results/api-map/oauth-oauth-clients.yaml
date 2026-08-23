@@ -1,0 +1,131 @@
+resource: OAuth/OAuth Clients
+source: openapi
+operations:
+  - operationId: list-all-oauth-clients
+    method: GET
+    path: /api/v2/admin/oauth-clients
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-oauth-clients.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-all-oauth-clients.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-an-oauth-client
+    method: POST
+    path: /api/v2/admin/oauth-clients
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: false
+            nullable: false
+          - name: redirectUri
+            type: string
+            required: false
+            nullable: false
+          - name: enabled
+            type: boolean
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'create-an-oauth-client.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-oauth-clients
+    method: DELETE
+    path: /api/v2/admin/oauth-clients
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+  - operationId: get-an-oauth-client
+    method: GET
+    path: /api/v2/admin/oauth-client/{id}
+    pathParams:
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-an-oauth-client.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-oauth-client
+    method: PUT
+    path: /api/v2/admin/oauth-client/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: false
+            nullable: false
+          - name: redirectUri
+            type: string
+            required: false
+            nullable: false
+          - name: enabled
+            type: boolean
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'update-an-oauth-client.responses.200.meta: nested object narrowed to ''unknown'''

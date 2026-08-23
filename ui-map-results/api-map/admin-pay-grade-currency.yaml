@@ -1,0 +1,173 @@
+resource: Admin/Pay Grade Currency
+source: openapi
+operations:
+  - operationId: list-allowed-currencies-for-pay-grade
+    method: GET
+    path: /api/v2/admin/pay-grades/{payGradeId}/currencies/allowed
+    pathParams:
+      - name: payGradeId
+        type: number
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-allowed-currencies-for-pay-grade.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-allowed-currencies-for-pay-grade.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: get-a-pay-grade-currency
+    method: GET
+    path: /api/v2/admin/pay-grades/{payGradeId}/currencies/{id}
+    pathParams:
+      - name: payGradeId
+        type: number
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-a-pay-grade-currency.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-a-pay-grade-currency
+    method: PUT
+    path: /api/v2/admin/pay-grades/{payGradeId}/currencies/{id}
+    pathParams:
+      - name: payGradeId
+        type: number
+      - name: id
+        type: string
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: maxSalary
+            type: number
+            required: true
+            nullable: false
+          - name: minSalary
+            type: number
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'update-a-pay-grade-currency.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: list-all-pay-grade-currencies
+    method: GET
+    path: /api/v2/admin/pay-grades/{payGradeId}/currencies
+    pathParams:
+      - name: payGradeId
+        type: number
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-pay-grade-currencies.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-all-pay-grade-currencies.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-a-pay-grade-currency
+    method: POST
+    path: /api/v2/admin/pay-grades/{payGradeId}/currencies
+    pathParams:
+      - name: payGradeId
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: currencyId
+            type: string
+            required: true
+            nullable: false
+          - name: maxSalary
+            type: number
+            required: true
+            nullable: false
+          - name: minSalary
+            type: number
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'create-a-pay-grade-currency.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-pay-grade-currencies
+    method: DELETE
+    path: /api/v2/admin/pay-grades/{payGradeId}/currencies
+    pathParams:
+      - name: payGradeId
+        type: number
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+      - status: 404
+        contentType: null
+        schema: null
