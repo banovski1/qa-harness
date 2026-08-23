@@ -15,6 +15,11 @@ Work one module at a time. A module is a normal session; the whole app is not.
 Read `scripts/app-config.yaml` for `baseUrl`, `login.*`, `credentials.*`, `denyClickNames` and
 `idSegmentPattern`.
 
+Also read `locatorTemplates:` in `scripts/framework-generator/generator-config.yaml`. That block, not
+this file, is the authoritative list of the app's label-scoped selector patterns, and rung 3 of the
+locator ladder below writes locators in terms of it. If a pattern you keep re-typing is missing from
+it, say so at the end of the walk rather than adding it yourself — it changes every page object.
+
 If `.playwright-cli/smartmap-auth.json` exists, reuse it:
 
 ```bash
@@ -100,7 +105,8 @@ Anything returning 0 or >1 needs a better locator before it goes in the file.
 2. `getByPlaceholder` / `getByLabel` / `getByTestId` where a real one exists.
 3. **`template` + label** — for the label-scoped patterns this app repeats on every form.
    `locatorTemplates:` in `scripts/framework-generator/generator-config.yaml` holds the selector; the
-   map names the template and the label, and the generator expands one into the other:
+   map names the template and the label, and the generator expands one into the other. The set as it
+   stands (re-read the config, which is the authority — this table is orientation):
 
    | template | expands to | use for |
    |---|---|---|
@@ -164,6 +170,8 @@ actions:
     kind: form
     fields:
       - { label: City, locator: '.oxd-input-group:has(label:text-is("City")) input', type: text }
+      # actions: keeps the real selector — it is prose for test-writer, not parsed. Templates
+      # belong in elements:, which is the half the generator reads.
     submit: 'getByRole("button", { name: "Save" })'
     effect: Saves in place with a success toast. No navigation.
 ```
@@ -207,14 +215,19 @@ Leave out decoration and repetition. Specifically **never** emit:
 ### The chrome rule — the one that bites
 
 The generator lifts elements that appear on ≥80% of map files into a single shared `NavigationBar`,
-keyed on the exact locator. Today that is **20 elements**, and 19 of them appear on 30 of 32 files, so
-**the margin is 4 files**. Verified: altering one nav locator in 5 files drops the shared set to 19 and
-that nav element re-inlines into every page object.
+keyed on the exact locator. Today that is **17 elements across 13 files**, so the threshold is 11 files
+and **the margin is 2 files**: alter one nav locator in 3 of them and that element drops out of the
+shared set and re-inlines into every page object. `check-map.mjs` asserts the 17 for exactly this reason.
 
 **So paste the chrome block verbatim from the file you are replacing, and never re-locate it.** Copy the
 leading nav entries exactly — same `name`, `component`, `locator` and `comment`. Improving a nav locator
 is the specific act that breaks this. For a brand-new screen with no predecessor, copy the block from
 any sibling file in the same module.
+
+"Verbatim" includes the locator *form*: do not convert a chrome entry to a `template` on your own. The
+grouping is keyed on the expanded selector, so converting one would in fact be safe — but it produces a
+diff in every file that still has the old form, for no gain. None of today's chrome entries match a
+template anyway.
 
 ## 5. Close the session
 
