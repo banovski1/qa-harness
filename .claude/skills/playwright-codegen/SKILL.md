@@ -78,7 +78,7 @@ Build it as `<content-slug>-<timestamp>`:
 
 The raw file from step 2 was written under a throwaway slug — rename/copy it
 alongside the shaped file so the pair stays matched: write the shaped file to
-`ui-map-results/codegen-recordings/<content-slug>-<timestamp>.md`, and copy the raw
+`codegen-recordings/<content-slug>-<timestamp>.md`, and copy the raw
 spec to `.playwright-cli/codegen/<content-slug>-<timestamp>-raw.spec.ts` (the
 original `.playwright-cli/codegen/<slug>-raw.spec.ts` is scratch and can stay or be
 left — it's gitignored either way).
@@ -86,7 +86,7 @@ left — it's gitignored either way).
 Create the destination directory first, cross-platform:
 
 ```bash
-node -e "require('fs').mkdirSync('ui-map-results/codegen-recordings', { recursive: true })"
+node -e "require('fs').mkdirSync('codegen-recordings', { recursive: true })"
 ```
 
 Structure:
@@ -141,7 +141,7 @@ Tell the user:
 - That the shaped file is a reference only — if they want it acted on, they can hand it
   to `smart-map` (to verify/add locators to the map) or paste its steps into a
   `test-writer` request. Do not auto-invoke either.
-- `ui-map-results/codegen-recordings/` is a growing library of one file per recording —
+- `codegen-recordings/` is a growing library of one file per recording —
   point them there if they ask "what have I recorded before".
 
 ## Rules
@@ -154,7 +154,7 @@ Tell the user:
 - Never invent or hardcode BASE_URL or credentials; read them from `.env` /
   `app-config.yaml` per step 1.
 - Raw codegen output stays under `.playwright-cli/codegen/` (already gitignored); only
-  the shaped Markdown file is committed, under `ui-map-results/codegen-recordings/`.
+  the shaped Markdown file is committed, under `codegen-recordings/`.
 - Every shaped file gets a unique `<content-slug>-<timestamp>.md` name (step 3) —
   never reuse the launch-time slug as the final filename, so recordings accumulate as
   a library instead of overwriting each other.
