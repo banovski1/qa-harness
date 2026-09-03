@@ -27,21 +27,33 @@ Never hardcode an app URL. If none of the three resolve, stop and ask the user f
 
 ## 2. Run codegen (human-driven, backgrounded)
 
-Pick a short kebab-case `<slug>` for the flow being recorded (ask the user if it isn't
-obvious from their request — e.g. "record login" → `login`).
+Pick a short kebab-case `<slug>` for the flow being recorded: derive it from the
+request when a flow is named or implied (e.g. "record login" → `login`); when no flow
+is named at all (e.g. "record a test", "run codegen now"), don't stop to ask — proceed
+immediately with the fallback slug `recording` and just state that choice, as a fact,
+in the message that reports launch. Either way, launch in the same turn BASE_URL
+resolves — the request to record already is the instruction to start; never send a
+"should I start?" message first.
 
 ```bash
-mkdir -p .playwright-cli/codegen
+node -e "require('fs').mkdirSync('.playwright-cli/codegen', { recursive: true })"
 npx playwright codegen {BASE_URL} \
   --output=.playwright-cli/codegen/<slug>-raw.spec.ts \
   --target=playwright-test
 ```
 
-Launch this with `run_in_background: true` — the codegen window blocks until a human
-closes it, so the skill must poll for the process to exit rather than wait
-synchronously. Tell the user, before launching: *"A browser window will open — click
-through the flow, then close that window (or the codegen inspector) to finish
-recording."* Poll every ~10-15s; don't spin tighter than that.
+(The `node -e mkdirSync` form works identically on macOS/Linux/Windows; `mkdir -p` does
+not, since Windows `cmd.exe` doesn't understand `-p`.)
+
+Launch this with `run_in_background: true`. The process stays alive until the human
+ends the recording — by closing the browser window, closing just the codegen inspector
+panel, or clicking "stop recording" in the inspector's own controls; all three tear
+down the same backgrounded process the same way. Tell the user, before launching: *"A
+browser window and a codegen inspector will open — click through the flow, then close
+either one (or hit stop recording in the inspector) to finish; that's what triggers
+shaping the recording."* Poll every ~10-15s; don't spin tighter than that. The moment
+the process exits, immediately proceed to step 3 — process exit *is* the trigger, not a
+separate confirmation from the user.
 
 Once the process exits, read `.playwright-cli/codegen/<slug>-raw.spec.ts`. If it's
 missing or empty, the human likely closed the window without recording anything — say
@@ -49,14 +61,38 @@ so and stop rather than shaping an empty file.
 
 ## 3. Shape into a context-enriched file
 
-Parse the raw generated spec and write `ui-map-results/codegen-recordings/<slug>.md`
-(create the directory if it doesn't exist yet — this is a new, committed sibling of
-`ui-map-results/application-map/`, not scratch).
+Parse the raw generated spec first, then derive the **output slug** from what was
+actually recorded — this is what keeps successive recordings from colliding or
+overwriting each other, and makes the filename itself a useful index of examples.
+Build it as `<content-slug>-<timestamp>`:
+
+- `<content-slug>`: a short kebab-case summary of the flow, read from the recorded
+  actions — e.g. the page(s)/module(s) visited and the key action taken (`login`,
+  `pim-add-employee`, `leave-apply-request`). Prefer the module name(s) from URLs
+  (`/web/index.php/pim/...` → `pim`) plus the most distinguishing clicked
+  role/label (an "Add Employee" listitem click → `add-employee`). If the request
+  named a flow (e.g. "record login"), that name is still the base — append the
+  timestamp to it rather than inventing a different content-slug.
+- `<timestamp>`: `YYYYMMDD-HHmmss`, taken from when the recording finished (step 2),
+  so two recordings of the same flow on different days/sessions never collide.
+
+The raw file from step 2 was written under a throwaway slug — rename/copy it
+alongside the shaped file so the pair stays matched: write the shaped file to
+`ui-map-results/codegen-recordings/<content-slug>-<timestamp>.md`, and copy the raw
+spec to `.playwright-cli/codegen/<content-slug>-<timestamp>-raw.spec.ts` (the
+original `.playwright-cli/codegen/<slug>-raw.spec.ts` is scratch and can stay or be
+left — it's gitignored either way).
+
+Create the destination directory first, cross-platform:
+
+```bash
+node -e "require('fs').mkdirSync('ui-map-results/codegen-recordings', { recursive: true })"
+```
 
 Structure:
 
 ```markdown
-# Codegen recording: <slug>
+# Codegen recording: <content-slug>
 
 - Source URL: <BASE_URL>
 - Recorded: <ISO timestamp>
@@ -100,11 +136,13 @@ Shaping rules:
 ## 4. Report
 
 Tell the user:
-- Raw file path and shaped file path.
+- Raw file path and shaped file path (both carrying the final `<content-slug>-<timestamp>` name).
 - Step count, and how many were flagged UNSTABLE.
 - That the shaped file is a reference only — if they want it acted on, they can hand it
   to `smart-map` (to verify/add locators to the map) or paste its steps into a
   `test-writer` request. Do not auto-invoke either.
+- `ui-map-results/codegen-recordings/` is a growing library of one file per recording —
+  point them there if they ask "what have I recorded before".
 
 ## Rules
 
@@ -117,5 +155,11 @@ Tell the user:
   `app-config.yaml` per step 1.
 - Raw codegen output stays under `.playwright-cli/codegen/` (already gitignored); only
   the shaped Markdown file is committed, under `ui-map-results/codegen-recordings/`.
+- Every shaped file gets a unique `<content-slug>-<timestamp>.md` name (step 3) —
+  never reuse the launch-time slug as the final filename, so recordings accumulate as
+  a library instead of overwriting each other.
 - This skill does not touch `ui-map-results/application-map/`, the generator, or
   `check-map.mjs` — those stay `smart-map`'s territory.
+- Once BASE_URL resolves and a slug is chosen (from the request, or the `recording`
+  fallback), launch codegen immediately in the same turn — do not ask for confirmation
+  to start.
