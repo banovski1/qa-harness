@@ -1,0 +1,172 @@
+resource: PIM/Employee Subordinates
+source: openapi
+operations:
+  - operationId: list-an-employees-subordinates
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/subordinates
+    pathParams:
+      - name: empNumber
+        type: number
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-an-employees-subordinates.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: add-a-subordinate-to-an-employee
+    method: POST
+    path: /api/v2/pim/employees/{empNumber}/subordinates
+    pathParams:
+      - name: empNumber
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: empNumber
+            type: number
+            required: true
+            nullable: false
+          - name: reportingMethodId
+            type: number
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'add-a-subordinate-to-an-employee.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-an-employees-subordinates
+    method: DELETE
+    path: /api/v2/pim/employees/{empNumber}/subordinates
+    pathParams:
+      - name: empNumber
+        type: number
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+      - status: 404
+        contentType: null
+        schema: null
+  - operationId: get-an-employees-subordinate
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/subordinates/{id}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-an-employees-subordinate.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-employees-subordinate
+    method: PUT
+    path: /api/v2/pim/employees/{empNumber}/subordinates/{id}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: reportingMethodId
+            type: number
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: empNumber
+              type: number
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+  - operationId: update-an-employees-supervisor
+    method: PUT
+    path: /api/v2/pim/employees/{empNumber}/supervisors/{id}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: reportingMethodId
+            type: number
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: empNumber
+              type: number
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null

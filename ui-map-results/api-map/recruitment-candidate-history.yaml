@@ -1,0 +1,89 @@
+resource: Recruitment/Candidate History
+source: openapi
+operations:
+  - operationId: list-a-candidates-history
+    method: GET
+    path: /api/v2/recruitment/candidates/{candidateId}/history
+    pathParams:
+      - name: candidateId
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-a-candidates-history.responses.200.data: nested object narrowed to ''unknown'''
+      - 'list-a-candidates-history.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: get-a-candidates-history-record
+    method: GET
+    path: /api/v2/recruitment/candidates/{candidateId}/history/{historyId}
+    pathParams:
+      - name: candidateId
+        type: number
+      - name: historyId
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-a-candidates-history-record.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-a-candidates-history-record
+    method: PUT
+    path: /api/v2/recruitment/candidates/{candidateId}/history/{historyId}
+    pathParams:
+      - name: candidateId
+        type: number
+      - name: historyId
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: note
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-a-candidates-history-record.responses.200.meta: nested object narrowed to ''unknown'''

@@ -1,0 +1,136 @@
+page: web-index.php-claim-saveEvents
+url: /web/index.php/claim/saveEvents
+title: "OrangeHRM"
+elements:
+  # --- shared chrome: pasted verbatim from the PIM map files, never re-located ---
+  # --- shared chrome: identical in every PIM map file, never re-located ---
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: collapseMenuButton
+    component: button
+    locator: { strategy: css, args: ["button.oxd-main-menu-button"] }
+    comment: "Collapse menu (button)"
+  - name: searchMenuInput
+    component: input
+    locator: { strategy: css, args: [".oxd-main-menu-search input"] }
+    comment: "Search menu (input)"
+  - name: adminMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: buzzMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: currentUserHeading
+    component: text
+    locator: { strategy: css, args: [".oxd-userdropdown-name"] }
+    comment: "Current user (text)"
+  - name: configurationMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Configuration\")"] }
+    comment: "Configuration (menuItem)"
+  # --- this screen ---
+  - name: submitClaimMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Submit Claim" }
+    comment: "Submit Claim (menuItem)"
+  - name: myClaimsMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "My Claims" }
+    comment: "My Claims (menuItem)"
+  - name: employeeClaimsMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee Claims" }
+    comment: "Employee Claims (menuItem)"
+  - name: assignClaimMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Assign Claim" }
+    comment: "Assign Claim (menuItem)"
+  - name: addEventHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Add Event" }
+    comment: "Add Event (text)"
+  - name: eventNameInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Event Name" }
+    comment: "Event Name (input)"
+  - name: descriptionTextArea
+    component: longInput
+    locator: { strategy: template, args: ["labelledTextarea"], name: "Description" }
+    comment: "Description (longInput)"
+  - name: statusSwitch
+    component: switch
+    locator: { strategy: css, args: [".oxd-switch-input"] }
+    comment: "Status (switch)"
+  - name: cancelButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Cancel" }
+    comment: "Cancel (button)"
+  - name: saveButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Save" }
+    comment: "Save (button)"
+  # --- added by the full-app remap ---
+  - name: claimHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Claim" }
+    comment: "Claim (text)"
+actions:
+  - do: Add a claim event
+    kind: form
+    notExercised: true
+    fields:
+      - { label: Event Name, locator: '.oxd-input-group:has(label:text-is("Event Name")) input', type: text, required: true }
+      - { label: Description, locator: '.oxd-input-group:has(label:text-is("Description")) textarea', type: text }
+      - { label: Status, locator: '.oxd-switch-input', type: switch }
+    submit: 'getByRole("button", { name: "Save" })'
+    effect: >-
+      Saves the event and returns to Events (/claim/viewEvents) with a success toast.
+      Not exercised - "save" is a denied click name.
+  - do: Cancel
+    kind: navigation
+    target: 'getByRole("button", { name: "Cancel" })'
+    effect: Discards the form and returns to Events (/claim/viewEvents).

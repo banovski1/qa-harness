@@ -1,0 +1,164 @@
+resource: Buzz/Comments
+source: openapi
+operations:
+  - operationId: get-a-comment-on-a-post
+    method: GET
+    path: /api/v2/buzz/shares/{shareId}/comments/{commentId}
+    pathParams:
+      - name: shareId
+        type: number
+      - name: commentId
+        type: number
+    queryParams:
+      - name: model
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-a-comment-on-a-post.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: edit-a-comment-on-a-post
+    method: PUT
+    path: /api/v2/buzz/shares/{shareId}/comments/{commentId}
+    pathParams:
+      - name: shareId
+        type: number
+      - name: commentId
+        type: number
+    queryParams:
+      - name: model
+        type: string
+        required: false
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: text
+            type: string
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'edit-a-comment-on-a-post.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-a-comment-on-a-post
+    method: DELETE
+    path: /api/v2/buzz/shares/{shareId}/comments/{commentId}
+    pathParams:
+      - name: shareId
+        type: number
+      - name: commentId
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 403
+        contentType: null
+        schema: null
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'delete-a-comment-on-a-post.responses.200.data: nested object narrowed to ''unknown'''
+      - 'delete-a-comment-on-a-post.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: list-all-comments-on-a-post
+    method: GET
+    path: /api/v2/buzz/shares/{shareId}/comments
+    pathParams:
+      - name: shareId
+        type: number
+    queryParams:
+      - name: model
+        type: string
+        required: false
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-comments-on-a-post.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-all-comments-on-a-post.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: comment-on-a-post
+    method: POST
+    path: /api/v2/buzz/shares/{shareId}/comments
+    pathParams:
+      - name: shareId
+        type: number
+    queryParams:
+      - name: model
+        type: string
+        required: false
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: text
+            type: string
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'comment-on-a-post.responses.200.meta: nested object narrowed to ''unknown'''

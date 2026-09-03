@@ -1,0 +1,149 @@
+resource: Claim/Expense Types
+source: openapi
+operations:
+  - operationId: list-all-expense-types
+    method: GET
+    path: /api/v2/claim/expenses/types
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+      - name: expenseTypeId
+        type: number
+        required: false
+      - name: name
+        type: string
+        required: false
+      - name: status
+        type: boolean
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-expense-types.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-all-expense-types.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-an-expense-type
+    method: POST
+    path: /api/v2/claim/expenses/types
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+          - name: status
+            type: boolean
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'create-an-expense-type.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-expense-types
+    method: DELETE
+    path: /api/v2/claim/expenses/types
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+      - status: 404
+        contentType: null
+        schema: null
+  - operationId: get-an-expense-type
+    method: GET
+    path: /api/v2/claim/expenses/types/{id}
+    pathParams:
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-an-expense-type.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-expense-type
+    method: PUT
+    path: /api/v2/claim/expenses/types/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: false
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+          - name: status
+            type: boolean
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-an-expense-type.responses.200.meta: nested object narrowed to ''unknown'''

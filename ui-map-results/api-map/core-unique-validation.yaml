@@ -1,0 +1,47 @@
+resource: Core/Unique Validation
+source: openapi
+operations:
+  - operationId: validate-uniqueness
+    method: GET
+    path: /api/v2/core/validation/unique
+    queryParams:
+      - name: value
+        type: string
+        required: true
+      - name: entityName
+        type: string
+        required: true
+      - name: attributeName
+        type: string
+        required: true
+      - name: entityId
+        type: number
+        required: false
+      - name: matchByField
+        type: string
+        required: false
+      - name: matchByValue
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+      - status: 400
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: error
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'validate-uniqueness.responses.200.data: nested object narrowed to ''unknown'''
+      - 'validate-uniqueness.responses.400.error: nested object narrowed to ''unknown'''

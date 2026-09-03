@@ -1,0 +1,166 @@
+resource: PIM/Employee Dependent
+source: openapi
+operations:
+  - operationId: get-an-employees-dependent
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/dependents/{id}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-an-employees-dependent.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-employees-dependent
+    method: PUT
+    path: /api/v2/pim/employees/{empNumber}/dependents/{id}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: false
+            nullable: false
+          - name: relationshipType
+            type: string
+            required: false
+            nullable: false
+          - name: relationship
+            type: string
+            required: false
+            nullable: false
+          - name: dateOfBirth
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-an-employees-dependent.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: list-an-employees-dependents
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/dependents
+    pathParams:
+      - name: empNumber
+        type: number
+    queryParams:
+      - name: name
+        type: string
+        required: false
+      - name: relationshipType
+        type: string
+        required: false
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-an-employees-dependents.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: add-a-dependent-to-an-employee
+    method: POST
+    path: /api/v2/pim/employees/{empNumber}/dependents
+    pathParams:
+      - name: empNumber
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: relationshipType
+            type: string
+            required: true
+            nullable: false
+          - name: relationship
+            type: string
+            required: false
+            nullable: false
+          - name: dateOfBirth
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'add-a-dependent-to-an-employee.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-an-employees-dependents
+    method: DELETE
+    path: /api/v2/pim/employees/{empNumber}/dependents
+    pathParams:
+      - name: empNumber
+        type: number
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+      - status: 404
+        contentType: null
+        schema: null

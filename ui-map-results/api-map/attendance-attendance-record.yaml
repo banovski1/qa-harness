@@ -1,0 +1,129 @@
+resource: Attendance/Attendance Record
+source: openapi
+operations:
+  - operationId: list-an-attendance-record
+    method: GET
+    path: /api/v2/attendance/records/{id}
+    pathParams:
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'list-an-attendance-record.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-attendance-record
+    method: PUT
+    path: /api/v2/attendance/records/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: punchInDate
+            type: string
+            required: false
+            nullable: false
+          - name: punchInTime
+            type: string
+            required: false
+            nullable: false
+          - name: punchInOffset
+            type: number
+            required: false
+            nullable: false
+          - name: punchInTimezoneName
+            type: string
+            required: false
+            nullable: false
+          - name: punchOutDate
+            type: string
+            required: false
+            nullable: false
+          - name: punchOutTime
+            type: string
+            required: false
+            nullable: false
+          - name: punchOutOffset
+            type: number
+            required: false
+            nullable: false
+          - name: punchOutTimezoneName
+            type: string
+            required: false
+            nullable: false
+          - name: punchOutNote
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 400
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: error
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-an-attendance-record.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: get-the-latest-attendance-record
+    method: GET
+    path: /api/v2/attendance/records/latest
+    queryParams:
+      - name: empNumber
+        type: number
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-the-latest-attendance-record.responses.200.meta: nested object narrowed to ''unknown'''

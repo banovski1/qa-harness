@@ -5,10 +5,8 @@
 import type { Page } from '@playwright/test';
 import { BasePage } from '../base/BasePage';
 import { ButtonComponent } from '../../components/ButtonComponent';
-import { ImageComponent } from '../../components/ImageComponent';
+import { DropdownComponent } from '../../components/DropdownComponent';
 import { InputComponent } from '../../components/InputComponent';
-import { OptionComponent } from '../../components/OptionComponent';
-import { TextComponent } from '../../components/TextComponent';
 import { NavigationBar } from '../../components/navigation/NavigationBar';
 
 /** /web/index.php/directory/viewDirectory */
@@ -22,316 +20,28 @@ export abstract class DirectoryPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
-  /** Claim img (image) */
-  // UNSTABLE: no accessible name; scoped to nearest named ancestor
-  get claimImgImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('link', { name: 'Claim', exact: true }).getByRole('img'), 'Claim img (image)');
+  /** Employee Name (input) */
+  get employeeNameInput(): InputComponent {
+    return InputComponent.byLabel(this.page, 'Employee Name');
   }
 
-  /** Directory (text) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get directoryHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading').nth(0), 'Directory (text)');
+  /** Job Title (dropdown) */
+  get jobTitleDropdown(): DropdownComponent {
+    return DropdownComponent.byLabel(this.page, 'Job Title');
   }
 
-  /** profile picture (image) */
-  get profilePictureImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img', { name: 'profile picture', exact: true }), 'profile picture (image)');
-  }
-
-  /** Directory (text) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get directoryHeading2(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading').nth(1), 'Directory (text)');
-  }
-
-  /**  (button) */
-  get elementButton3(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: '', exact: true }), ' (button)');
-  }
-
-  /** Type for hints... (input) */
-  get typeForHintsInput(): InputComponent {
-    return new InputComponent(this.page.getByRole('textbox', { name: 'Type for hints...', exact: true }), 'Type for hints... (input)');
+  /** Location (dropdown) */
+  get locationDropdown(): DropdownComponent {
+    return DropdownComponent.byLabel(this.page, 'Location');
   }
 
   /** Reset (button) */
   get resetButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Reset', exact: true }), 'Reset (button)');
+    return ButtonComponent.byLabel(this.page, 'Reset');
   }
 
   /** Search (button) */
   get searchButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Search', exact: true }), 'Search (button)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage2(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(3), 'Profile Picture (image)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage3(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(4), 'Profile Picture (image)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage4(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(5), 'Profile Picture (image)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage5(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(6), 'Profile Picture (image)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage6(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(7), 'Profile Picture (image)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage7(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(8), 'Profile Picture (image)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage8(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(9), 'Profile Picture (image)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage9(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(10), 'Profile Picture (image)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage10(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(11), 'Profile Picture (image)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage11(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(12), 'Profile Picture (image)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage12(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(13), 'Profile Picture (image)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage13(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(14), 'Profile Picture (image)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage14(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(15), 'Profile Picture (image)');
-  }
-
-  /** Profile Picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage15(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(16), 'Profile Picture (image)');
-  }
-
-  /** Elements revealed by opening '-- Select --'. Open the trigger first. */
-  readonly selectOpen = new DirectoryPageSelectOpen(this.page);
-
-  /** Elements revealed by opening '-- Select --'. Open the trigger first. */
-  readonly selectOpen2 = new DirectoryPageSelectOpen2(this.page);
-}
-
-/** Only present while '-- Select --' is open. */
-export class DirectoryPageSelectOpen {
-  constructor(private readonly page: Page) {}
-
-  /** -- Select -- (dropdown) */
-  get selectOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: '-- Select --', exact: true }), '-- Select -- (dropdown)');
-  }
-
-  /** Automaton Tester (dropdown) */
-  get automatonTesterOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Automaton Tester', exact: true }), 'Automaton Tester (dropdown)');
-  }
-
-  /** Chief Executive Officer (dropdown) */
-  get chiefExecutiveOfficerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Chief Executive Officer', exact: true }), 'Chief Executive Officer (dropdown)');
-  }
-
-  /** Chief Financial Officer (dropdown) */
-  get chiefFinancialOfficerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Chief Financial Officer', exact: true }), 'Chief Financial Officer (dropdown)');
-  }
-
-  /** Chief Technical Officer (dropdown) */
-  get chiefTechnicalOfficerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Chief Technical Officer', exact: true }), 'Chief Technical Officer (dropdown)');
-  }
-
-  /** Content Specialist (dropdown) */
-  get contentSpecialistOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Content Specialist', exact: true }), 'Content Specialist (dropdown)');
-  }
-
-  /** Customer Success Manager (dropdown) */
-  get customerSuccessManagerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Customer Success Manager', exact: true }), 'Customer Success Manager (dropdown)');
-  }
-
-  /** Database Administrator (dropdown) */
-  get databaseAdministratorOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Database Administrator', exact: true }), 'Database Administrator (dropdown)');
-  }
-
-  /** doctor (dropdown) */
-  get doctorOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'doctor', exact: true }), 'doctor (dropdown)');
-  }
-
-  /** Finance Manager (dropdown) */
-  get financeManagerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Finance Manager', exact: true }), 'Finance Manager (dropdown)');
-  }
-
-  /** Financial Analyst (dropdown) */
-  get financialAnalystOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Financial Analyst', exact: true }), 'Financial Analyst (dropdown)');
-  }
-
-  /** Head of Support (dropdown) */
-  get headOfSupportOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Head of Support', exact: true }), 'Head of Support (dropdown)');
-  }
-
-  /** HR Associate (dropdown) */
-  get hRAssociateOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'HR Associate', exact: true }), 'HR Associate (dropdown)');
-  }
-
-  /** HR Manager (dropdown) */
-  get hRManagerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'HR Manager', exact: true }), 'HR Manager (dropdown)');
-  }
-
-  /** IT Manager (dropdown) */
-  get iTManagerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'IT Manager', exact: true }), 'IT Manager (dropdown)');
-  }
-
-  /** Network Administrator (dropdown) */
-  get networkAdministratorOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Network Administrator', exact: true }), 'Network Administrator (dropdown)');
-  }
-
-  /** Payroll Administrator (dropdown) */
-  get payrollAdministratorOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Payroll Administrator', exact: true }), 'Payroll Administrator (dropdown)');
-  }
-
-  /** Pre-Sales Coordinator (dropdown) */
-  get preSalesCoordinatorOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Pre-Sales Coordinator', exact: true }), 'Pre-Sales Coordinator (dropdown)');
-  }
-
-  /** QA Engineer (dropdown) */
-  get qAEngineerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'QA Engineer', exact: true }), 'QA Engineer (dropdown)');
-  }
-
-  /** QA Lead (dropdown) */
-  get qALeadOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'QA Lead', exact: true }), 'QA Lead (dropdown)');
-  }
-
-  /** qwer (dropdown) */
-  get qwerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'qwer', exact: true }), 'qwer (dropdown)');
-  }
-
-  /** rsjsrii (dropdown) */
-  get rsjsriiOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'rsjsrii', exact: true }), 'rsjsrii (dropdown)');
-  }
-
-  /** Sales Representative (dropdown) */
-  get salesRepresentativeOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Sales Representative', exact: true }), 'Sales Representative (dropdown)');
-  }
-
-  /** Social Media Marketer (dropdown) */
-  get socialMediaMarketerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Social Media Marketer', exact: true }), 'Social Media Marketer (dropdown)');
-  }
-
-  /** Software Architect (dropdown) */
-  get softwareArchitectOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Software Architect', exact: true }), 'Software Architect (dropdown)');
-  }
-
-  /** Software Engineer (dropdown) */
-  get softwareEngineerOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Software Engineer', exact: true }), 'Software Engineer (dropdown)');
-  }
-
-  /** Support Specialist (dropdown) */
-  get supportSpecialistOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Support Specialist', exact: true }), 'Support Specialist (dropdown)');
-  }
-
-  /** VP - Client Services (dropdown) */
-  get vPClientServicesOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'VP - Client Services', exact: true }), 'VP - Client Services (dropdown)');
-  }
-
-  /** VP - Sales & Marketing (dropdown) */
-  get vPSalesMarketingOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'VP - Sales & Marketing', exact: true }), 'VP - Sales & Marketing (dropdown)');
-  }
-}
-
-/** Only present while '-- Select --' is open. */
-export class DirectoryPageSelectOpen2 {
-  constructor(private readonly page: Page) {}
-
-  /** -- Select -- (dropdown) */
-  get selectOption2(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: '-- Select --', exact: true }), '-- Select -- (dropdown)');
-  }
-
-  /** Canadian Regional HQ (dropdown) */
-  get canadianRegionalHQOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Canadian Regional HQ', exact: true }), 'Canadian Regional HQ (dropdown)');
-  }
-
-  /** HQ - CA, USA (dropdown) */
-  get hQCAUSAOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'HQ - CA, USA', exact: true }), 'HQ - CA, USA (dropdown)');
-  }
-
-  /** New York Sales Office (dropdown) */
-  get newYorkSalesOfficeOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'New York Sales Office', exact: true }), 'New York Sales Office (dropdown)');
-  }
-
-  /** Texas R&D (dropdown) */
-  get texasRDOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Texas R&D', exact: true }), 'Texas R&D (dropdown)');
+    return ButtonComponent.byLabel(this.page, 'Search');
   }
 }

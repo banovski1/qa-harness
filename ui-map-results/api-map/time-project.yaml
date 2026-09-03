@@ -1,0 +1,178 @@
+resource: Time/Project
+source: openapi
+operations:
+  - operationId: list-all-projects
+    method: GET
+    path: /api/v2/time/projects
+    queryParams:
+      - name: projectId
+        type: number
+        required: false
+      - name: onlyAllowed
+        type: boolean
+        required: false
+      - name: customerId
+        type: number
+        required: false
+      - name: name
+        type: string
+        required: false
+      - name: empNumber
+        type: number
+        required: false
+      - name: customerOrProjectName
+        type: string
+        required: false
+      - name: excludeProjectIds
+        type: unknown
+        required: false
+      - name: model
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-projects.excludeProjectIds: nested array narrowed to ''unknown'''
+      - 'list-all-projects.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-a-project
+    method: POST
+    path: /api/v2/time/projects
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: customerId
+            type: number
+            required: true
+            nullable: false
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+          - name: projectAdminsEmpNumbers
+            type: unknown
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'create-a-project.requestBody.projectAdminsEmpNumbers: nested array narrowed to ''unknown'''
+      - 'create-a-project.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-projects
+    method: DELETE
+    path: /api/v2/time/projects
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+      - status: 404
+        contentType: null
+        schema: null
+  - operationId: get-a-project
+    method: GET
+    path: /api/v2/time/projects/{id}
+    pathParams:
+      - name: id
+        type: number
+    queryParams:
+      - name: model
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-a-project.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-a-project
+    method: PUT
+    path: /api/v2/time/projects/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: customerId
+            type: number
+            required: true
+            nullable: false
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+          - name: projectAdminsEmpNumbers
+            type: unknown
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-a-project.requestBody.projectAdminsEmpNumbers: nested array narrowed to ''unknown'''
+      - 'update-a-project.responses.200.meta: nested object narrowed to ''unknown'''

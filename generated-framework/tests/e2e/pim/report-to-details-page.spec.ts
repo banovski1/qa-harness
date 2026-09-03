@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('ReportToDetailsPage', () => {
   test('loads', async ({ reportToDetailsPage }) => {
     await reportToDetailsPage.goto();
-    await expect(reportToDetailsPage.pIMHeading.locator).toBeVisible();
+    await expect(reportToDetailsPage.pimHeading.locator).toBeVisible();
   });
 });

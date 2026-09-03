@@ -1,0 +1,82 @@
+resource: Admin/Modules
+source: openapi
+operations:
+  - operationId: list-all-modules
+    method: GET
+    path: /api/v2/admin/modules
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-modules.responses.200.data: nested array narrowed to ''unknown'''
+  - operationId: update-a-module
+    method: PUT
+    path: /api/v2/admin/modules
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: admin
+            type: boolean
+            required: false
+            nullable: false
+          - name: pim
+            type: boolean
+            required: false
+            nullable: false
+          - name: leave
+            type: boolean
+            required: false
+            nullable: false
+          - name: time
+            type: boolean
+            required: false
+            nullable: false
+          - name: recruitment
+            type: boolean
+            required: false
+            nullable: false
+          - name: performance
+            type: boolean
+            required: false
+            nullable: false
+          - name: maintenance
+            type: boolean
+            required: false
+            nullable: false
+          - name: mobile
+            type: boolean
+            required: false
+            nullable: false
+          - name: directory
+            type: boolean
+            required: false
+            nullable: false
+          - name: claim
+            type: boolean
+            required: false
+            nullable: false
+          - name: buzz
+            type: boolean
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'update-a-module.responses.200.data: nested array narrowed to ''unknown'''

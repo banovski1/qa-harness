@@ -1,0 +1,61 @@
+resource: Admin/Email Subscription
+source: openapi
+operations:
+  - operationId: get-all-email-subscriptions
+    method: GET
+    path: /api/v2/admin/email-subscriptions
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-all-email-subscriptions.responses.200.data: nested array narrowed to ''unknown'''
+      - 'get-all-email-subscriptions.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-email-susbcription
+    method: PUT
+    path: /api/v2/admin/email-subscriptions/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: enabled
+            type: boolean
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-email-susbcription.responses.200.meta: nested object narrowed to ''unknown'''

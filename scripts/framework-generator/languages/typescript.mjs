@@ -6,6 +6,7 @@
 // spec per page. Everything static lives in ./typescript-runtime.mjs.
 
 import { CodeWriter, quote } from '../code-writer.mjs';
+import { renderTemplate } from '../locator-spec.mjs';
 import { safeIdentifier, toKebab, toPascal, toCamel } from '../naming.mjs';
 import { runtimeFiles } from './typescript-runtime.mjs';
 
@@ -30,6 +31,30 @@ const COMPONENT_CLASS = {
 
 const IMPORT_PATH = {
   TableComponent: 'components/tables/TableComponent',
+};
+
+/**
+ * Which static factory can stand in for a mapped locator, per component class.
+ *
+ * `role` factories are pure Playwright and always available. `template` factories
+ * read an app pattern from `locatorTemplates:` and exist only when it is configured.
+ * `kind` is the component name the factory bakes into its description, so a factory
+ * is only usable for an element of that exact kind — otherwise the description
+ * would change.
+ */
+const FACTORIES = {
+  LinkComponent: [{ method: 'byLabel', kind: 'link', role: 'link' }],
+  ButtonComponent: [{ method: 'byLabel', kind: 'button', role: 'button' }],
+  RadioComponent: [{ method: 'byLabel', kind: 'radio', role: 'radio' }],
+  TabComponent: [{ method: 'byLabel', kind: 'tab', role: 'tab' }],
+  TextComponent: [{ method: 'byHeading', kind: 'text', role: 'heading' }],
+  InputComponent: [
+    { method: 'byLabel', kind: 'input', template: 'labelledInput' },
+    { method: 'textareaByLabel', kind: 'longInput', template: 'labelledTextarea' },
+  ],
+  DropdownComponent: [{ method: 'byLabel', kind: 'dropdown', template: 'labelledSelect' }],
+  MenuItemComponent: [{ method: 'byLabel', kind: 'menuItem', template: 'topNavTab' }],
+  TableComponent: [{ method: 'byColumn', kind: 'table', template: 'tableByColumn' }],
 };
 
 export const typescript = {
@@ -57,6 +82,53 @@ export const typescript = {
   renderTest(page, context) {
     if (!context.config.tests.generateSmokeSpecs) return null;
     return { path: `tests/e2e/${page.group}/${toKebab(page.className)}.spec.ts`, contents: smokeSpec(page), kind: 'generated' };
+  },
+
+  renderApiClient(resource, context) {
+    const files = [
+      { path: `src/data/testData/${resource.className}.types.generated.ts`, contents: dtoTypes(resource), kind: 'generated' },
+      { path: `src/api/clients/${resource.className}Client.generated.ts`, contents: generatedApiClient(resource), kind: 'generated' },
+      { path: `src/api/clients/${resource.className}Client.ts`, contents: protectedApiClient(resource), kind: 'protected' },
+    ];
+    if (context.config.api.generateFactories) {
+      files.push({ path: `src/data/factories/${toKebab(resource.className)}-factory.ts`, contents: factoryStub(resource), kind: 'protected' });
+    }
+    return files;
+  },
+
+  renderApiTest(resource, context) {
+    if (!context.config.api.generateAssertionSpecs) return null;
+    return resource.operations.map((op) => ({
+      path: `tests/api/${toKebab(resource.className)}/${toKebab(op.operationId)}.spec.ts`,
+      contents: assertionSpec(resource, op),
+      kind: 'generated',
+    }));
+  },
+
+  /**
+   * The same decision the emitter makes, counted for the report. Asking `factoryFor`
+   * rather than re-deriving the rule is the point: the report cannot drift from what
+   * was actually written.
+   */
+  locatorStats(model, config) {
+    const byFactory = new Map();
+    let total = 0;
+    let derived = 0;
+    const elements = [
+      ...model.sharedChrome,
+      ...model.sharedStates.flatMap((s) => s.elements),
+      ...model.pages.flatMap((p) => [...p.elements, ...p.states.flatMap((s) => s.elements)]),
+    ];
+    for (const element of elements) {
+      total += 1;
+      const cls = classFor(element);
+      const call = factoryFor(element, cls, 'root', config);
+      if (!call) continue;
+      derived += 1;
+      const key = call.slice(0, call.indexOf('('));
+      byFactory.set(key, (byFactory.get(key) ?? 0) + 1);
+    }
+    return { total, derived, byFactory: [...byFactory].sort((a, b) => b[1] - a[1]) };
   },
 };
 
@@ -108,7 +180,7 @@ function generatedPage(page, context) {
 
     for (const element of page.elements) {
       b.blank();
-      emitAccessor(b, element, used, 'this.page');
+      emitAccessor(b, element, used, 'this.page', context.config);
     }
 
     for (const { state, className, accessor } of stateClasses) {
@@ -120,25 +192,25 @@ function generatedPage(page, context) {
 
   for (const { state, className } of stateClasses) {
     w.blank();
-    emitStateClass(w, state, className);
+    emitStateClass(w, state, className, context.config);
   }
 
   return w.toString();
 }
 
-function emitStateClass(w, state, className) {
+function emitStateClass(w, state, className, config) {
   const used = new Set();
   w.line(`/** Only present while ${quote(state.triggerLabel)} is open. */`);
   w.block(`export class ${className} {`, (b) => {
     b.line('constructor(private readonly page: Page) {}');
     for (const element of state.elements) {
       b.blank();
-      emitAccessor(b, element, used, 'this.page');
+      emitAccessor(b, element, used, 'this.page', config);
     }
   });
 }
 
-function emitAccessor(w, element, used, root) {
+function emitAccessor(w, element, used, root, config) {
   const name = uniqueAccessor(element.rawName, used);
   const cls = classFor(element);
   const doc = element.label ? `${element.label} (${element.component})` : element.component;
@@ -146,13 +218,15 @@ function emitAccessor(w, element, used, root) {
   w.line(`/** ${doc.replace(/\*\//g, '*\\/')} */`);
   if (element.unstable) w.line(`// UNSTABLE: ${element.unstableReason}`);
 
+  const factory = config ? factoryFor(element, cls, root, config) : null;
   const locator = renderLocator(element.locator, root);
   const args = element.table
     ? `${locator}, [${element.table.columns.map(quote).join(', ')}], ${quote(doc)}`
     : `${locator}, ${quote(doc)}`;
   w.line(`get ${name}(): ${cls} {`);
-  w.indent().line(`return new ${cls}(${args});`).dedent();
+  w.indent().line(factory ? `return ${factory};` : `return new ${cls}(${args});`).dedent();
   w.line('}');
+  return Boolean(factory);
 }
 
 /** The protected half — written once, then left alone forever. */
@@ -201,6 +275,42 @@ function renderLocator(spec, root) {
   }
   if (spec.nth != null) expr += `.nth(${spec.nth})`;
   return expr;
+}
+
+/**
+ * The factory call that reproduces this element's locator exactly, or null.
+ *
+ * Equivalence is *proved*, never assumed: a role factory has to match the role and
+ * the accessible name, and a template factory has to render the byte-identical
+ * selector the map already carries. Anything else — a one-off selector, a label the
+ * template cannot rebuild, a scoped or positional locator — returns null and keeps
+ * the locator the mapper verified. That is what makes this safe to switch on for a
+ * whole map at once: a template that stops matching degrades to the old output
+ * instead of silently addressing a different element.
+ */
+function factoryFor(element, cls, root, config) {
+  const spec = element.locator;
+  if (spec.within || spec.nth != null || spec.unstable) return null;
+
+  const templates = config.locatorTemplates ?? {};
+  for (const factory of FACTORIES[cls] ?? []) {
+    if (factory.kind !== element.component) continue;
+
+    if (factory.role) {
+      if (spec.strategy !== 'getByRole') continue;
+      if (spec.args[0] !== factory.role || spec.name !== element.label) continue;
+    } else {
+      const pattern = templates[factory.template];
+      if (!pattern || spec.strategy !== 'css') continue;
+      if (renderTemplate(pattern, element.label) !== spec.args[0]) continue;
+    }
+
+    const args = element.table
+      ? `${root}, ${quote(element.label)}, [${element.table.columns.map(quote).join(', ')}]`
+      : `${root}, ${quote(element.label)}`;
+    return `${cls}.${factory.method}(${args})`;
+  }
+  return null;
 }
 
 function classFor(element) {
@@ -252,13 +362,13 @@ function navigationComponent(context) {
     b.line('constructor(private readonly page: Page) {}');
     for (const element of sharedChrome) {
       b.blank();
-      emitAccessor(b, element, used, 'this.page');
+      emitAccessor(b, element, used, 'this.page', context.config);
     }
     for (const state of sharedStates) {
       for (const element of state.elements) {
         b.blank();
         b.line(`// revealed by opening ${quote(state.triggerLabel)}`);
-        emitAccessor(b, element, used, 'this.page');
+        emitAccessor(b, element, used, 'this.page', context.config);
       }
     }
   });
@@ -270,23 +380,36 @@ function navigationComponent(context) {
 
 function fixtureFiles(context) {
   const pages = context.model.pages;
+  const resources = context.apiModel.resources;
   const w = new CodeWriter();
 
   w.line('// AUTO-GENERATED by framework-generator. Do not edit — every run overwrites this file.');
   w.line('//');
-  w.line('// One fixture per page object. Playwright builds only the ones a test asks for,');
-  w.line('// so declaring all of them costs nothing at run time.');
+  w.line('// One fixture per page object, plus `api` for the setup, teardown and');
+  w.line('// assertions that do not need a browser, and one typed fixture per api-mapped');
+  w.line('// resource. Playwright builds only the ones a test asks for, so declaring all');
+  w.line('// of them costs nothing at run time.');
   w.blank();
   w.line("import { test as base } from '@playwright/test';");
+  w.line("import { ApiClient } from '../api/clients/ApiClient';");
+  for (const resource of resources) {
+    w.line(`import { ${resource.className}Client } from '../api/clients/${resource.className}Client';`);
+  }
   for (const page of pages) {
     w.line(`import { ${page.className} } from '../pages/${page.group}/${page.fileBase}';`);
   }
   w.blank();
   w.block('export type PageObjects = {', (b) => {
+    b.line('api: ApiClient;');
+    for (const resource of resources) b.line(`${toCamel(resource.className)}Api: ${resource.className}Client;`);
     for (const page of pages) b.line(`${toCamel(page.className)}: ${page.className};`);
   }, '};');
   w.blank();
   w.block('export const test = base.extend<PageObjects>({', (b) => {
+    b.line('api: async ({ request }, use) => { await use(new ApiClient(request)); },');
+    for (const resource of resources) {
+      b.line(`${toCamel(resource.className)}Api: async ({ request }, use) => { await use(new ${resource.className}Client(request)); },`);
+    }
     for (const page of pages) {
       b.line(`${toCamel(page.className)}: async ({ page }, use) => { await use(new ${page.className}(page)); },`);
     }
@@ -298,13 +421,39 @@ function fixtureFiles(context) {
     { path: 'src/fixtures/page-fixtures.ts', contents: w.toString(), kind: 'generated' },
     { path: 'src/fixtures/auth-fixtures.ts', contents: authFixture(context), kind: 'generated' },
     { path: 'src/fixtures/index.ts', contents: FIXTURE_INDEX, kind: 'generated' },
+    { path: 'src/fixtures/extra-fixtures.ts', contents: EXTRA_FIXTURES, kind: 'protected' },
     { path: 'src/fixtures/global-setup.ts', contents: globalSetup(context), kind: 'generated' },
   ];
 }
 
-const FIXTURE_INDEX = `export { test, expect } from './page-fixtures';
+const FIXTURE_INDEX = `// AUTO-GENERATED by framework-generator. Do not edit — every run overwrites this file.
+//
+// Hand-written fixtures go in extra-fixtures.ts, which is written once and never
+// touched again; the test object below is re-exported from there so a spec only
+// ever imports from './fixtures'.
+export { test } from './extra-fixtures';
+export { expect } from '@playwright/test';
 export type { PageObjects } from './page-fixtures';
 export { login, STORAGE_STATE } from './auth-fixtures';
+export { ApiClient } from '../api/clients/ApiClient';
+export { expectResponse, expectJson } from '../utils/network';
+export { uniqueSuffix, uniqueUsername, uniqueEmail, uniqueName } from '../utils/testData';
+`;
+
+/**
+ * The one fixture file the generator writes once and then leaves alone.
+ *
+ * page-fixtures.ts is regenerated from the map on every run, so a hand-added
+ * page object would not survive there. It goes here instead, and index.ts
+ * re-exports this `test` rather than the generated one.
+ */
+const EXTRA_FIXTURES = `import { test as generated } from './page-fixtures';
+
+// Add hand-written fixtures here: one property per fixture, then wire it in the
+// extend() call below. Empty until a scenario needs one.
+export interface ExtraFixtures {}
+
+export const test = generated.extend<ExtraFixtures>({});
 `;
 
 /**
@@ -411,6 +560,211 @@ function escapeRegex(value) {
   return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+// ---- api layer -----------------------------------------------------------------
+
+/** RequestSpecSchema -> a TS type expression. Object schemas get a name so nested types read well. */
+function tsType(schema, name) {
+  if (!schema) return 'unknown';
+  if (schema.kind === 'primitive') return schema.type;
+  if (schema.kind === 'array') return `${tsType(schema.items, name)}[]`;
+  const props = schema.properties.map((p) => `${safeIdentifier(p.name, 'typescript')}${p.required ? '' : '?'}: ${p.nullable ? `${tsPrimitive(p.type)} | null` : tsPrimitive(p.type)};`);
+  return props.length ? `{ ${props.join(' ')} }` : 'Record<string, never>';
+}
+
+function tsPrimitive(type) {
+  return ['string', 'number', 'boolean'].includes(type) ? type : 'unknown';
+}
+
+/** The successful-response schema — the smallest 2xx status, since that is the shape callers care about. */
+function successSchema(op) {
+  const ok = op.responses.filter((r) => r.status >= 200 && r.status < 300 && r.schema).sort((a, b) => a.status - b.status);
+  return ok[0]?.schema ?? null;
+}
+
+function requestTypeName(op) {
+  return `${toPascal(op.operationId)}Request`;
+}
+
+function responseTypeName(op) {
+  return `${toPascal(op.operationId)}Response`;
+}
+
+/** DTOs for a resource: one request/response interface pair per operation that has a body/schema. */
+function dtoTypes(resource) {
+  const w = new CodeWriter();
+  w.line('// AUTO-GENERATED by framework-generator. Do not edit — every run overwrites this file.');
+  w.line(`// Source: ${resource.source} api-map for '${resource.resource}'.`);
+  w.blank();
+
+  for (const op of resource.operations) {
+    if (op.requestBody) {
+      w.line(`export type ${requestTypeName(op)} = ${tsType(op.requestBody.schema, requestTypeName(op))};`);
+      w.blank();
+    }
+    const schema = successSchema(op);
+    if (schema) {
+      w.line(`export type ${responseTypeName(op)} = ${tsType(schema, responseTypeName(op))};`);
+      w.blank();
+    }
+  }
+  return w.toString();
+}
+
+/** `/users/{id}` + pathParams -> a template literal expression, e.g. `\`/users/${id}\`` */
+function pathExpression(op) {
+  let expr = op.path;
+  for (const p of op.pathParams) expr = expr.replace(`{${p.name}}`, `\${${safeIdentifier(p.name, 'typescript')}}`);
+  return `\`${expr}\``;
+}
+
+function methodParams(op) {
+  const parts = [...op.pathParams.map((p) => `${safeIdentifier(p.name, 'typescript')}: ${tsPrimitive(p.type)}`)];
+  if (op.requestBody) parts.push(`body: ${requestTypeName(op)}`);
+  if (op.queryParams.length) {
+    const q = op.queryParams.map((p) => `${safeIdentifier(p.name, 'typescript')}${p.required ? '' : '?'}: ${tsPrimitive(p.type)}`);
+    const allOptional = op.queryParams.every((p) => !p.required);
+    parts.push(`query: { ${q.join('; ')} }${allOptional ? ' = {}' : ''}`);
+  }
+  return parts.join(', ');
+}
+
+function callArgs(op) {
+  const path = op.queryParams.length ? `${pathExpression(op)} + queryString(query)` : pathExpression(op);
+  return op.requestBody ? `${path}, body` : path;
+}
+
+/** Placeholder call args for a generated assertion spec: real path/query values are for you to fill in. */
+function sampleCallArgs(op) {
+  const args = op.pathParams.map(() => `${quote('REPLACE_ME')} as never`);
+  if (op.requestBody) args.push('{} as never');
+  if (op.queryParams.length) args.push(op.queryParams.some((p) => p.required) ? '{} as never' : '{}');
+  return args.join(', ');
+}
+
+/** The generated half of a resource's typed client: one method per api-mapped operation. */
+function generatedApiClient(resource) {
+  const w = new CodeWriter();
+  const hasQuery = resource.operations.some((op) => op.queryParams.length > 0);
+
+  w.line('// AUTO-GENERATED by framework-generator. Do not edit — every run overwrites this file.');
+  w.line(`// Source: ${resource.source} api-map for '${resource.resource}'.`);
+  w.line(`// Your own methods belong in ${resource.className}Client.ts, which the generator never touches.`);
+  w.blank();
+  w.line("import type { APIRequestContext, APIResponse } from '@playwright/test';");
+  w.line("import { ApiClient } from './ApiClient';");
+  const typeNames = resource.operations.flatMap((op) => [
+    op.requestBody ? requestTypeName(op) : null,
+    successSchema(op) ? responseTypeName(op) : null,
+  ]).filter(Boolean);
+  if (typeNames.length) w.line(`import type { ${typeNames.join(', ')} } from '../../data/testData/${resource.className}.types.generated';`);
+  w.blank();
+
+  w.block(`export abstract class ${resource.className}ClientGenerated extends ApiClient {`, (b) => {
+    b.block('constructor(request: APIRequestContext) {', (c) => { c.line('super(request);'); });
+    for (const op of resource.operations) {
+      b.blank();
+      b.line(`/** ${op.method} ${op.path} */`);
+      b.block(`async ${op.safeId}(${methodParams(op)}): Promise<APIResponse> {`, (c) => {
+        c.line(`return this.${op.method.toLowerCase()}(${callArgs(op)});`);
+      });
+    }
+  });
+
+  if (hasQuery) {
+    w.blank();
+    w.block('function queryString(params: Record<string, unknown>): string {', (b) => {
+      b.line('const entries = Object.entries(params).filter(([, v]) => v !== undefined);');
+      b.line("if (entries.length === 0) return '';");
+      b.line("return `?${entries.map(([k, v]) => `${k}=${encodeURIComponent(String(v))}`).join('&')}`;");
+    });
+  }
+  return w.toString();
+}
+
+/** The protected half — written once, then left alone forever. */
+function protectedApiClient(resource) {
+  const w = new CodeWriter();
+  w.line(`import { ${resource.className}ClientGenerated } from './${resource.className}Client.generated';`);
+  w.blank();
+  w.line('/**');
+  w.line(` * ${resource.className}Client — add resource-specific helpers/assertions here.`);
+  w.line(' *');
+  w.line(` * The generator created this file once and will never overwrite it. Mapped`);
+  w.line(` * operations live in ${resource.className}Client.generated.ts, regenerated every run.`);
+  w.line(' */');
+  w.line(`export class ${resource.className}Client extends ${resource.className}ClientGenerated {}`);
+  return w.toString();
+}
+
+/**
+ * A scaffolded stub, not a working factory: the api-map knows the request
+ * shape, not which values make a valid record for this app, so this file is
+ * protected from the start and left for you to fill in.
+ */
+function factoryStub(resource) {
+  const w = new CodeWriter();
+  const creators = resource.operations.filter((op) => op.method === 'POST' && op.requestBody);
+  w.line("import type { APIResponse } from '@playwright/test';");
+  w.line(`import type { ${resource.className}Client } from '../../api/clients/${resource.className}Client';`);
+  if (creators.length) {
+    w.line(`import type { ${creators.map(requestTypeName).join(', ')} } from '../testData/${resource.className}.types.generated';`);
+  }
+  w.blank();
+  w.line('/**');
+  w.line(` * Precondition/setup helpers for ${resource.resource}, backed by the typed API client`);
+  w.line(' * instead of the browser. Fill in real field values per creator below — the');
+  w.line(' * api-map only knows the request shape, not what makes a valid record here.');
+  w.line(' * Written once by the generator; never overwritten.');
+  w.line(' */');
+  w.blank();
+  if (creators.length === 0) {
+    w.line(`// ${resource.resource} has no POST operation in the api-map yet — nothing to scaffold.`);
+    return w.toString();
+  }
+  for (const op of creators) {
+    const pathArgs = op.pathParams.map((p) => `${safeIdentifier(p.name, 'typescript')}: ${tsPrimitive(p.type)}`);
+    const signature = ['client: ' + `${resource.className}Client`, ...pathArgs, `overrides: Partial<${requestTypeName(op)}> = {}`].join(', ');
+    const forwardArgs = [...op.pathParams.map((p) => safeIdentifier(p.name, 'typescript')), 'body'];
+    if (op.queryParams.length) forwardArgs.push(op.queryParams.some((p) => p.required) ? '{} as never' : '{}');
+
+    w.block(`export async function ${op.safeId}(${signature}): Promise<APIResponse> {`, (b) => {
+      b.line('// TODO: fill in required fields with sensible defaults, then spread overrides.');
+      b.line(`const body = { ...overrides } as ${requestTypeName(op)};`);
+      b.line(`return client.${op.safeId}(${forwardArgs.join(', ')});`);
+    });
+    w.blank();
+  }
+  return w.toString();
+}
+
+/** A generated, regenerable status/schema check — one per api-mapped operation. */
+function assertionSpec(resource, op) {
+  const w = new CodeWriter();
+  const fixture = `${toCamel(resource.className)}Api`;
+  const schema = successSchema(op);
+  const expectStatus = op.responses.find((r) => r.status >= 200 && r.status < 300)?.status ?? 200;
+
+  w.line('// AUTO-GENERATED by framework-generator. Do not edit — every run overwrites this file.');
+  w.line('// Add real scenarios in sibling spec files; those are yours to keep.');
+  w.blank();
+  w.line("import { test, expect } from '../../../src/fixtures';");
+  if (schema) w.line("import { assertShape } from '../../../src/utils/schema-assert';");
+  w.blank();
+  w.block(`test.describe(${quote(`${resource.resource} — ${op.operationId}`)}, () => {`, (b) => {
+    b.block(`test('${op.method} ${op.path} responds ${expectStatus}', async ({ ${fixture} }) => {`, (c) => {
+      if (op.requestBody) c.line('// TODO: fill in a valid request body.');
+      const call = `${fixture}.${op.safeId}(${sampleCallArgs(op)})`;
+      c.line(`const response = await ${call};`);
+      c.line(`expect(response.status()).toBe(${expectStatus});`);
+      if (schema) {
+        c.line('const body = await response.json();');
+        c.line(`assertShape(body, ${JSON.stringify(schema)});`);
+      }
+    }, '});');
+  }, '});');
+  return w.toString();
+}
+
 // ---- project files -----------------------------------------------------------
 
 function projectFiles(context) {
@@ -478,13 +832,20 @@ export default defineConfig({
   // look like product bugs. Raise it once you know the app keeps up.
   workers: process.env.CI ? 4 : 2,
   forbidOnly: !!process.env.CI,
+  // Retries reduce noise in CI; they do not fix a flaky test. A test that needs a
+  // second attempt to pass is still broken — fix the wait, not the retry count.
   retries: process.env.CI ? 2 : 0,
   reporter: [['html', { open: 'never' }], ['list']],
   globalSetup: './src/fixtures/global-setup.ts',
+  // Web-first assertions retry until this window elapses, which is what makes
+  // them safe to use in place of an explicit wait.
+  expect: { timeout: 10_000 },
   use: {
     baseURL,
     storageState: '.auth/state.json',
-    trace: 'on-first-retry',
+    // Not 'on-first-retry': retries are CI-only, so that setting records nothing
+    // for the local failure you are actually trying to debug.
+    trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     actionTimeout: 15_000,
     navigationTimeout: 30_000,
@@ -499,8 +860,19 @@ export default defineConfig({
 function envExample(baseUrl) {
   return `# Copy to .env and fill in. Never commit .env.
 BASE_URL=${baseUrl}
+
+# The account globalSetup authenticates as, shared by every test.
 APP_USERNAME=
 APP_PASSWORD=
+
+# Extra accounts, for scenarios that need a second role.
+ADMIN_USERNAME=
+ADMIN_PASSWORD=
+ESS_USERNAME=
+ESS_PASSWORD=
+
+# An existing record the app already holds, for flows that must reference one.
+APP_EMPLOYEE_NAME=
 `;
 }
 

@@ -1,0 +1,169 @@
+resource: PIM/Employee Skill
+source: openapi
+operations:
+  - operationId: list-allowed-skills-for-an-employee
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/skills/allowed
+    pathParams:
+      - name: empNumber
+        type: number
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-allowed-skills-for-an-employee.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-allowed-skills-for-an-employee.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: get-an-employees-skill
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/skills/{id}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-an-employees-skill.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-employees-skill
+    method: PUT
+    path: /api/v2/pim/employees/{empNumber}/skills/{id}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: yearsOfExperience
+            type: number
+            required: false
+            nullable: false
+          - name: comments
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: empNumber
+              type: number
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+  - operationId: list-an-employees-skills
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/skills
+    pathParams:
+      - name: empNumber
+        type: number
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-an-employees-skills.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-an-employees-skills.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: add-a-skill-to-an-employee
+    method: POST
+    path: /api/v2/pim/employees/{empNumber}/skills
+    pathParams:
+      - name: empNumber
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: yearsOfExperience
+            type: number
+            required: false
+            nullable: false
+          - name: comments
+            type: string
+            required: false
+            nullable: false
+          - name: skillId
+            type: number
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: empNumber
+              type: number
+              required: false
+              nullable: false
+  - operationId: delete-an-employees-skills
+    method: DELETE
+    path: /api/v2/pim/employees/{empNumber}/skills
+    pathParams:
+      - name: empNumber
+        type: number
+    responses:
+      - status: 200
+        contentType: null
+        schema: null

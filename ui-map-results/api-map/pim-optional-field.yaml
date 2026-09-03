@@ -1,0 +1,62 @@
+resource: PIM/Optional Field
+source: openapi
+operations:
+  - operationId: get-optional-field-configuration
+    method: GET
+    path: /api/v2/pim/optional-field
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-optional-field-configuration.responses.200.data: nested array narrowed to ''unknown'''
+      - 'get-optional-field-configuration.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-optional-field-configuration
+    method: PUT
+    path: /api/v2/pim/optional-field
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: pimShowDeprecatedFields
+            type: boolean
+            required: true
+            nullable: false
+          - name: showSSN
+            type: boolean
+            required: true
+            nullable: false
+          - name: showSIN
+            type: boolean
+            required: true
+            nullable: false
+          - name: showTaxExemptions
+            type: boolean
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-optional-field-configuration.responses.200.data: nested array narrowed to ''unknown'''

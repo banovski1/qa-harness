@@ -1,0 +1,102 @@
+resource: PIM/Employee Contact Details
+source: openapi
+operations:
+  - operationId: get-an-employees-contact-details
+    method: GET
+    path: /api/v2/pim/employee/{empNumber}/contact-details
+    pathParams:
+      - name: empNumber
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-an-employees-contact-details.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-employees-contact-details
+    method: PUT
+    path: /api/v2/pim/employee/{empNumber}/contact-details
+    pathParams:
+      - name: empNumber
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: street1
+            type: string
+            required: false
+            nullable: false
+          - name: street2
+            type: string
+            required: false
+            nullable: false
+          - name: city
+            type: string
+            required: false
+            nullable: false
+          - name: province
+            type: string
+            required: false
+            nullable: false
+          - name: zipCode
+            type: string
+            required: false
+            nullable: false
+          - name: countryCode
+            type: string
+            required: false
+            nullable: false
+          - name: homeTelephone
+            type: string
+            required: false
+            nullable: false
+          - name: workTelephone
+            type: string
+            required: false
+            nullable: false
+          - name: mobile
+            type: string
+            required: false
+            nullable: false
+          - name: workEmail
+            type: string
+            required: false
+            nullable: false
+          - name: otherEmail
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-an-employees-contact-details.responses.200.meta: nested object narrowed to ''unknown'''

@@ -5,19 +5,16 @@
 import type { Page } from '@playwright/test';
 import { BasePage } from '../base/BasePage';
 import { ButtonComponent } from '../../components/ButtonComponent';
-import { CheckboxComponent } from '../../components/CheckboxComponent';
-import { ImageComponent } from '../../components/ImageComponent';
+import { DropdownComponent } from '../../components/DropdownComponent';
 import { InputComponent } from '../../components/InputComponent';
-import { LinkComponent } from '../../components/LinkComponent';
-import { OptionComponent } from '../../components/OptionComponent';
+import { MenuItemComponent } from '../../components/MenuItemComponent';
 import { TableComponent } from '../../components/tables/TableComponent';
 import { TextComponent } from '../../components/TextComponent';
 import { NavigationBar } from '../../components/navigation/NavigationBar';
 
-/** /web/index.php/leave/viewLeaveList (also reachable at /web/index.php/leave/viewLeaveModule) */
+/** /web/index.php/leave/viewLeaveList */
 export abstract class LeaveListPageGenerated extends BasePage {
   static readonly path = '/web/index.php/leave/viewLeaveList';
-  static readonly aliases = ['/web/index.php/leave/viewLeaveModule'] as const;
 
   constructor(page: Page) {
     super(page, LeaveListPageGenerated.path);
@@ -26,277 +23,93 @@ export abstract class LeaveListPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
-  /** Claim img (image) */
-  // UNSTABLE: no accessible name; scoped to nearest named ancestor
-  get claimImgImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('link', { name: 'Claim', exact: true }).getByRole('img'), 'Claim img (image)');
+  /** Entitlements (menuItem) */
+  get entitlementsMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Entitlements")'), 'Entitlements (menuItem)');
+  }
+
+  /** Reports (menuItem) */
+  get reportsMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Reports")'), 'Reports (menuItem)');
+  }
+
+  /** Configure (menuItem) */
+  get configureMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Configure")'), 'Configure (menuItem)');
+  }
+
+  /** Apply (menuItem) */
+  get applyMenuItem(): MenuItemComponent {
+    return MenuItemComponent.byLabel(this.page, 'Apply');
+  }
+
+  /** My Leave (menuItem) */
+  get myLeaveMenuItem(): MenuItemComponent {
+    return MenuItemComponent.byLabel(this.page, 'My Leave');
+  }
+
+  /** Leave List (menuItem) */
+  get leaveListMenuItem(): MenuItemComponent {
+    return MenuItemComponent.byLabel(this.page, 'Leave List');
+  }
+
+  /** Assign Leave (menuItem) */
+  get assignLeaveMenuItem(): MenuItemComponent {
+    return MenuItemComponent.byLabel(this.page, 'Assign Leave');
   }
 
   /** Leave (text) */
   get leaveHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Leave', exact: true }), 'Leave (text)');
-  }
-
-  /** profile picture (image) */
-  get profilePictureImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img', { name: 'profile picture', exact: true }), 'profile picture (image)');
-  }
-
-  /** Apply (link) */
-  get applyLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Apply', exact: true }), 'Apply (link)');
-  }
-
-  /** My Leave (link) */
-  get myLeaveLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'My Leave', exact: true }), 'My Leave (link)');
-  }
-
-  /** Leave List (link) */
-  get leaveListLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Leave List', exact: true }), 'Leave List (link)');
-  }
-
-  /** Assign Leave (link) */
-  get assignLeaveLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Assign Leave', exact: true }), 'Assign Leave (link)');
+    return TextComponent.byHeading(this.page, 'Leave');
   }
 
   /** Leave List (text) */
   get leaveListHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Leave List', exact: true }), 'Leave List (text)');
+    return TextComponent.byHeading(this.page, 'Leave List');
   }
 
-  /**  (button) */
-  get elementButton3(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: '', exact: true }), ' (button)');
+  /** From Date (input) */
+  get fromDateInput(): InputComponent {
+    return InputComponent.byLabel(this.page, 'From Date');
   }
 
-  /** yyyy-dd-mm (input) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get yyyyDdMmInput(): InputComponent {
-    return new InputComponent(this.page.getByRole('textbox').nth(1), 'yyyy-dd-mm (input)');
+  /** To Date (input) */
+  get toDateInput(): InputComponent {
+    return InputComponent.byLabel(this.page, 'To Date');
   }
 
-  /** yyyy-dd-mm (input) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get yyyyDdMmInput2(): InputComponent {
-    return new InputComponent(this.page.getByRole('textbox').nth(2), 'yyyy-dd-mm (input)');
+  /** Show Leave with Status (dropdown) */
+  get showLeaveWithStatusDropdown(): DropdownComponent {
+    return DropdownComponent.byLabel(this.page, 'Show Leave with Status');
   }
 
-  /** Type for hints... (input) */
-  get typeForHintsInput(): InputComponent {
-    return new InputComponent(this.page.getByRole('textbox', { name: 'Type for hints...', exact: true }), 'Type for hints... (input)');
+  /** Leave Type (dropdown) */
+  get leaveTypeDropdown(): DropdownComponent {
+    return DropdownComponent.byLabel(this.page, 'Leave Type');
   }
 
-  /** (unnamed) (checkbox) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get checkboxCheckbox(): CheckboxComponent {
-    return new CheckboxComponent(this.page.getByRole('checkbox').nth(0), '(unnamed) (checkbox)');
+  /** Employee Name (input) */
+  get employeeNameInput(): InputComponent {
+    return InputComponent.byLabel(this.page, 'Employee Name');
+  }
+
+  /** Sub Unit (dropdown) */
+  get subUnitDropdown(): DropdownComponent {
+    return DropdownComponent.byLabel(this.page, 'Sub Unit');
   }
 
   /** Reset (button) */
   get resetButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Reset', exact: true }), 'Reset (button)');
+    return ButtonComponent.byLabel(this.page, 'Reset');
   }
 
   /** Search (button) */
   get searchButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Search', exact: true }), 'Search (button)');
+    return ButtonComponent.byLabel(this.page, 'Search');
   }
 
-  /** Table (, Date, Employee Name, Leave Type, Leave Balance (Days), Number of Days, Status, Comments, Actions; 1 row(s)) (table) */
-  // UNSTABLE: table has no accessible name; positional index used
-  get tableTable(): TableComponent {
-    return new TableComponent(this.page.getByRole('table').nth(0), ['', 'Date', 'Employee Name', 'Leave Type', 'Leave Balance (Days)', 'Number of Days', 'Status', 'Comments', 'Actions'], 'Table (, Date, Employee Name, Leave Type, Leave Balance (Days), Number of Days, Status, Comments, Actions; 1 row(s)) (table)');
-  }
-
-  /**  (checkbox) */
-  get elementCheckbox(): CheckboxComponent {
-    return new CheckboxComponent(this.page.getByRole('checkbox', { name: '', exact: true }), ' (checkbox)');
-  }
-
-  /** × (button) */
-  get elementButton4(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: '×', exact: true }), '× (button)');
-  }
-
-  /** Elements revealed by opening '-- Select --'. Open the trigger first. */
-  readonly selectOpen = new LeaveListPageSelectOpen(this.page);
-
-  /** Elements revealed by opening '-- Select --'. Open the trigger first. */
-  readonly selectOpen2 = new LeaveListPageSelectOpen2(this.page);
-
-  /** Elements revealed by opening '-- Select --'. Open the trigger first. */
-  readonly selectOpen3 = new LeaveListPageSelectOpen3(this.page);
-}
-
-/** Only present while '-- Select --' is open. */
-export class LeaveListPageSelectOpen {
-  constructor(private readonly page: Page) {}
-
-  /** Rejected (dropdown) */
-  get rejectedOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Rejected', exact: true }), 'Rejected (dropdown)');
-  }
-
-  /** Cancelled (dropdown) */
-  get cancelledOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Cancelled', exact: true }), 'Cancelled (dropdown)');
-  }
-
-  /** Pending Approval (dropdown) */
-  get pendingApprovalOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Pending Approval', exact: true }), 'Pending Approval (dropdown)');
-  }
-
-  /** Scheduled (dropdown) */
-  get scheduledOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Scheduled', exact: true }), 'Scheduled (dropdown)');
-  }
-
-  /** Taken (dropdown) */
-  get takenOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Taken', exact: true }), 'Taken (dropdown)');
-  }
-}
-
-/** Only present while '-- Select --' is open. */
-export class LeaveListPageSelectOpen2 {
-  constructor(private readonly page: Page) {}
-
-  /** -- Select -- (dropdown) */
-  get selectOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: '-- Select --', exact: true }), '-- Select -- (dropdown)');
-  }
-
-  /** CAN - Bereavement (dropdown) */
-  get cANBereavementOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'CAN - Bereavement', exact: true }), 'CAN - Bereavement (dropdown)');
-  }
-
-  /** CAN - FMLA (dropdown) */
-  get cANFMLAOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'CAN - FMLA', exact: true }), 'CAN - FMLA (dropdown)');
-  }
-
-  /** CAN - Matternity (dropdown) */
-  get cANMatternityOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'CAN - Matternity', exact: true }), 'CAN - Matternity (dropdown)');
-  }
-
-  /** CAN - Personal (dropdown) */
-  get cANPersonalOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'CAN - Personal', exact: true }), 'CAN - Personal (dropdown)');
-  }
-
-  /** CAN - Vacation (dropdown) */
-  get cANVacationOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'CAN - Vacation', exact: true }), 'CAN - Vacation (dropdown)');
-  }
-
-  /** US - Bereavement (dropdown) */
-  get uSBereavementOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'US - Bereavement', exact: true }), 'US - Bereavement (dropdown)');
-  }
-
-  /** US - FMLA (dropdown) */
-  get uSFMLAOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'US - FMLA', exact: true }), 'US - FMLA (dropdown)');
-  }
-
-  /** US - Matternity (dropdown) */
-  get uSMatternityOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'US - Matternity', exact: true }), 'US - Matternity (dropdown)');
-  }
-
-  /** US - Personal (dropdown) */
-  get uSPersonalOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'US - Personal', exact: true }), 'US - Personal (dropdown)');
-  }
-
-  /** US - Vacation (dropdown) */
-  get uSVacationOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'US - Vacation', exact: true }), 'US - Vacation (dropdown)');
-  }
-}
-
-/** Only present while '-- Select --' is open. */
-export class LeaveListPageSelectOpen3 {
-  constructor(private readonly page: Page) {}
-
-  /** -- Select -- (dropdown) */
-  get selectOption2(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: '-- Select --', exact: true }), '-- Select -- (dropdown)');
-  }
-
-  /** Administration (dropdown) */
-  get administrationOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Administration', exact: true }), 'Administration (dropdown)');
-  }
-
-  /** Engineering (dropdown) */
-  get engineeringOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Engineering', exact: true }), 'Engineering (dropdown)');
-  }
-
-  /** Development (dropdown) */
-  get developmentOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Development', exact: true }), 'Development (dropdown)');
-  }
-
-  /** Quality Assurance (dropdown) */
-  get qualityAssuranceOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Quality Assurance', exact: true }), 'Quality Assurance (dropdown)');
-  }
-
-  /** TechOps (dropdown) */
-  get techOpsOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'TechOps', exact: true }), 'TechOps (dropdown)');
-  }
-
-  /** Sales & Marketing (dropdown) */
-  get salesMarketingOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Sales & Marketing', exact: true }), 'Sales & Marketing (dropdown)');
-  }
-
-  /** Sales (dropdown) */
-  get salesOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Sales', exact: true }), 'Sales (dropdown)');
-  }
-
-  /** Marketing (dropdown) */
-  get marketingOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Marketing', exact: true }), 'Marketing (dropdown)');
-  }
-
-  /** Client Services (dropdown) */
-  get clientServicesOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Client Services', exact: true }), 'Client Services (dropdown)');
-  }
-
-  /** Technical Support (dropdown) */
-  get technicalSupportOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Technical Support', exact: true }), 'Technical Support (dropdown)');
-  }
-
-  /** Finance (dropdown) */
-  get financeOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Finance', exact: true }), 'Finance (dropdown)');
-  }
-
-  /** Human Resources (dropdown) */
-  get humanResourcesOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Human Resources', exact: true }), 'Human Resources (dropdown)');
-  }
-
-  /** hola (dropdown) */
-  get holaOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'hola', exact: true }), 'hola (dropdown)');
-  }
-
-  /** juan perez (dropdown) */
-  get juanPerezOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'juan perez', exact: true }), 'juan perez (dropdown)');
+  /** Records (table) */
+  get recordsTable(): TableComponent {
+    return new TableComponent(this.page.locator('.oxd-table:has(.oxd-table-th:text-is("Date"))'), ['Date', 'Employee Name', 'Leave Type', 'Leave Balance (Days)', 'Number of Days', 'Status', 'Comments', 'Actions'], 'Records (table)');
   }
 }

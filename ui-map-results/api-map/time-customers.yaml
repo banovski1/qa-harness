@@ -1,0 +1,142 @@
+resource: Time/Customers
+source: openapi
+operations:
+  - operationId: list-all-customers
+    method: GET
+    path: /api/v2/time/customers
+    queryParams:
+      - name: name
+        type: string
+        required: false
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-customers.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-a-customer
+    method: POST
+    path: /api/v2/time/customers
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'create-a-customer.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-customers
+    method: DELETE
+    path: /api/v2/time/customers
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+      - status: 400
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: error
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'delete-customers.responses.400.error: nested object narrowed to ''unknown'''
+  - operationId: get-a-customer
+    method: GET
+    path: /api/v2/time/customers/{id}
+    pathParams:
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-a-customer.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-a-customer
+    method: PUT
+    path: /api/v2/time/customers/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-a-customer.responses.200.meta: nested object narrowed to ''unknown'''

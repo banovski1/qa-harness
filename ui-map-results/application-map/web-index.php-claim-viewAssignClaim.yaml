@@ -1,136 +1,130 @@
 page: web-index.php-claim-viewAssignClaim
 url: /web/index.php/claim/viewAssignClaim
 title: "OrangeHRM"
-verified: 2026-08-09
 elements:
+  # --- shared chrome: pasted verbatim from the PIM map files, never re-located ---
+  # --- shared chrome: identical in every PIM map file, never re-located ---
   - name: clientBrandBannerLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
     comment: "client brand banner (link)"
-  - name: clientBrandBannerImage
-    component: image
-    locator: { strategy: getByRole, args: ["img"], name: "client brand banner" }
-    comment: "client brand banner (image)"
-  - name: searchInput
-    component: input
-    locator: { strategy: getByRole, args: ["textbox"], name: "Search" }
-    comment: "Search (input)"
-  - name: elementButton
+  - name: collapseMenuButton
     component: button
-    locator: { strategy: getByRole, args: ["button"], name: "" }
-    comment: " (button)"
-  - name: adminLink
+    locator: { strategy: css, args: ["button.oxd-main-menu-button"] }
+    comment: "Collapse menu (button)"
+  - name: searchMenuInput
+    component: input
+    locator: { strategy: css, args: [".oxd-main-menu-search input"] }
+    comment: "Search menu (input)"
+  - name: adminMenuLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "Admin" }
     comment: "Admin (link)"
-  - name: pIMLink
+  - name: pimMenuLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "PIM" }
     comment: "PIM (link)"
-  - name: leaveLink
+  - name: leaveMenuLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "Leave" }
     comment: "Leave (link)"
-  - name: timeLink
+  - name: timeMenuLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "Time" }
     comment: "Time (link)"
-  - name: recruitmentLink
+  - name: recruitmentMenuLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
     comment: "Recruitment (link)"
-  - name: myInfoLink
+  - name: myInfoMenuLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "My Info" }
     comment: "My Info (link)"
-  - name: performanceLink
+  - name: performanceMenuLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "Performance" }
     comment: "Performance (link)"
-  - name: dashboardLink
+  - name: dashboardMenuLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
     comment: "Dashboard (link)"
-  - name: directoryLink
+  - name: directoryMenuLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "Directory" }
     comment: "Directory (link)"
-  - name: maintenanceLink
+  - name: maintenanceMenuLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
     comment: "Maintenance (link)"
-  - name: claimLink
+  - name: claimMenuLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "Claim" }
     comment: "Claim (link)"
-  - name: claimImgImage
-    component: image
-    locator: { strategy: getByRole, args: ["img"], within: { strategy: getByRole, args: ["link"], name: "Claim" }, unstable: true, unstableReason: "no accessible name; scoped to nearest named ancestor" }
-    comment: "Claim img (image)"
-  - name: buzzLink
+  - name: buzzMenuLink
     component: link
     locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
     comment: "Buzz (link)"
-  - name: claimHeading
+  - name: currentUserHeading
     component: text
-    locator: { strategy: getByRole, args: ["heading"], name: "Claim" }
-    comment: "Claim (text)"
-  - name: upgradeLink
-    component: link
-    locator: { strategy: getByRole, args: ["link"], name: "Upgrade" }
-    comment: "Upgrade (link)"
-  - name: upgradeButton
-    component: button
-    locator: { strategy: getByRole, args: ["button"], name: "Upgrade" }
-    comment: "Upgrade (button)"
-  - name: profilePictureImage
-    component: image
-    locator: { strategy: getByRole, args: ["img"], name: "profile picture" }
-    comment: "profile picture (image)"
-  - name: submitClaimLink
-    component: link
-    locator: { strategy: getByRole, args: ["link"], name: "Submit Claim" }
-    comment: "Submit Claim (link)"
-  - name: myClaimsLink
-    component: link
-    locator: { strategy: getByRole, args: ["link"], name: "My Claims" }
-    comment: "My Claims (link)"
-  - name: employeeClaimsLink
-    component: link
-    locator: { strategy: getByRole, args: ["link"], name: "Employee Claims" }
-    comment: "Employee Claims (link)"
-  - name: assignClaimLink
-    component: link
-    locator: { strategy: getByRole, args: ["link"], name: "Assign Claim" }
-    comment: "Assign Claim (link)"
-  - name: elementButton2
-    component: button
-    locator: { strategy: getByRole, args: ["button"], name: "" }
-    comment: " (button)"
+    locator: { strategy: css, args: [".oxd-userdropdown-name"] }
+    comment: "Current user (text)"
+  - name: configurationMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Configuration\")"] }
+    comment: "Configuration (menuItem)"
+  # --- this screen ---
+  - name: submitClaimMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Submit Claim" }
+    comment: "Submit Claim (menuItem)"
+  - name: myClaimsMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "My Claims" }
+    comment: "My Claims (menuItem)"
+  - name: employeeClaimsMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee Claims" }
+    comment: "Employee Claims (menuItem)"
+  - name: assignClaimMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Assign Claim" }
+    comment: "Assign Claim (menuItem)"
   - name: employeeClaimsHeading
     component: text
     locator: { strategy: getByRole, args: ["heading"], name: "Employee Claims" }
     comment: "Employee Claims (text)"
-  - name: elementButton3
+  - name: assignClaimButton
     component: button
-    locator: { strategy: getByRole, args: ["button"], name: "" }
-    comment: " (button)"
-  - name: typeForHintsInput
+    locator: { strategy: css, args: [".orangehrm-header-container button:has-text(\"Assign Claim\")"] }
+    comment: "Assign Claim (button)"
+  - name: employeeNameInput
     component: input
-    locator: { strategy: getByRole, args: ["textbox"], nth: 1, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Type for hints... (input)"
-  - name: typeForHintsInput2
+    locator: { strategy: template, args: ["labelledInput"], name: "Employee Name" }
+    comment: "Employee Name (input)"
+  - name: referenceIdInput
     component: input
-    locator: { strategy: getByRole, args: ["textbox"], nth: 2, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "Type for hints... (input)"
-  - name: yyyyDdMmInput
+    locator: { strategy: template, args: ["labelledInput"], name: "Reference Id" }
+    comment: "Reference Id (input)"
+  - name: eventNameDropdown
+    component: dropdown
+    locator: { strategy: template, args: ["labelledSelect"], name: "Event Name" }
+    comment: "Event Name (dropdown)"
+  - name: statusDropdown
+    component: dropdown
+    locator: { strategy: template, args: ["labelledSelect"], name: "Status" }
+    comment: "Status (dropdown)"
+  - name: fromDateInput
     component: input
-    locator: { strategy: getByRole, args: ["textbox"], nth: 3, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "yyyy-dd-mm (input)"
-  - name: yyyyDdMmInput2
+    locator: { strategy: template, args: ["labelledInput"], name: "From Date" }
+    comment: "From Date (input)"
+  - name: toDateInput
     component: input
-    locator: { strategy: getByRole, args: ["textbox"], nth: 4, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "yyyy-dd-mm (input)"
+    locator: { strategy: template, args: ["labelledInput"], name: "To Date" }
+    comment: "To Date (input)"
+  - name: includeDropdown
+    component: dropdown
+    locator: { strategy: template, args: ["labelledSelect"], name: "Include" }
+    comment: "Include (dropdown)"
   - name: resetButton
     component: button
     locator: { strategy: getByRole, args: ["button"], name: "Reset" }
@@ -139,157 +133,72 @@ elements:
     component: button
     locator: { strategy: getByRole, args: ["button"], name: "Search" }
     comment: "Search (button)"
-  - name: assignClaimButton
-    component: button
-    locator: { strategy: getByRole, args: ["button"], name: " Assign Claim" }
-    comment: " Assign Claim (button)"
-  - name: tableTable
+  - name: recordsFoundHeading
+    component: text
+    locator: { strategy: css, args: [".orangehrm-horizontal-padding > .oxd-text:has-text(\"Records Found\")"] }
+    comment: "Records Found (text)"
+  - name: employeeClaimsTable
     component: table
-    locator: { strategy: getByRole, args: ["table"], nth: 0, unstable: true, unstableReason: "table has no accessible name; positional index used" }
-    comment: "Table (Reference Id , Employee Name , Event Name , Description, Currency, Submitted Date , Status , Amount, Actions; 13 row(s)) (table)"
-  - name: viewDetailsButton
+    locator: { strategy: css, args: [".oxd-table"] }
+    columns:
+      - name: "Reference Id"
+      - name: "Employee Name"
+      - name: "Event Name"
+      - name: "Description"
+      - name: "Currency"
+      - name: "Submitted Date"
+      - name: "Status"
+      - name: "Amount"
+      - name: "Actions"
+    rowCount: 15
+    comment: "Employee Claims (table)"
+  # --- added by the full-app remap ---
+  - name: claimHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Claim" }
+    comment: "Claim (text)"
+  - name: assignClaimButton2
     component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 7, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton2
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 8, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton3
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 9, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton4
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 10, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton5
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 11, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton6
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 12, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton7
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 13, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton8
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 14, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton9
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 15, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton10
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 16, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton11
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 17, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: viewDetailsButton12
-    component: button
-    locator: { strategy: getByRole, args: ["button"], nth: 18, unstable: true, unstableReason: "no accessible name or unique ancestor scope; positional index used" }
-    comment: "View Details (button)"
-  - name: orangeHRMIncLink
-    component: link
-    locator: { strategy: getByRole, args: ["link"], name: "OrangeHRM, Inc" }
-    comment: "OrangeHRM, Inc (link)"
-states:
-  - name: gbYasuserOpen
-    trigger: "open trigger \"gb yasuser\""
-    elements:
-      - name: aboutMenuItem
-        component: menuItem
-        locator: { strategy: getByRole, args: ["menuitem"], name: "About" }
-        comment: "About (menuItem)"
-      - name: supportMenuItem
-        component: menuItem
-        locator: { strategy: getByRole, args: ["menuitem"], name: "Support" }
-        comment: "Support (menuItem)"
-      - name: changePasswordMenuItem
-        component: menuItem
-        locator: { strategy: getByRole, args: ["menuitem"], name: "Change Password" }
-        comment: "Change Password (menuItem)"
-      - name: logoutMenuItem
-        component: menuItem
-        locator: { strategy: getByRole, args: ["menuitem"], name: "Logout" }
-        comment: "Logout (menuItem)"
-  - name: selectOpen
-    trigger: "open trigger \"-- Select --\""
-    elements:
-      - name: listboxOptions
-        component: dropdown
-        comment: "(unnamed) (dropdown)"
-      - name: selectOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "-- Select --" }
-        comment: "-- Select -- (dropdown)"
-      - name: accommodationOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Accommodation" }
-        comment: "Accommodation (dropdown)"
-      - name: medicalReimbursementOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Medical Reimbursement" }
-        comment: "Medical Reimbursement (dropdown)"
-      - name: travelAllowanceOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Travel Allowance" }
-        comment: "Travel Allowance (dropdown)"
-  - name: selectOpen2
-    trigger: "open trigger \"-- Select --\""
-    elements:
-      - name: listboxOptions2
-        component: dropdown
-        comment: "(unnamed) (dropdown)"
-      - name: selectOption2
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "-- Select --" }
-        comment: "-- Select -- (dropdown)"
-      - name: initiatedOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Initiated" }
-        comment: "Initiated (dropdown)"
-      - name: submittedOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Submitted" }
-        comment: "Submitted (dropdown)"
-      - name: approvedOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Approved" }
-        comment: "Approved (dropdown)"
-      - name: rejectedOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Rejected" }
-        comment: "Rejected (dropdown)"
-      - name: cancelledOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Cancelled" }
-        comment: "Cancelled (dropdown)"
-      - name: paidOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Paid" }
-        comment: "Paid (dropdown)"
-  - name: currentEmployeesOnlyOpen
-    trigger: "open trigger \"Current Employees Only\""
-    elements:
-      - name: listboxOptions3
-        component: dropdown
-        comment: "(unnamed) (dropdown)"
-      - name: currentEmployeesOnlyOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Current Employees Only" }
-        comment: "Current Employees Only (dropdown)"
-      - name: currentAndPastEmployeesOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Current and Past Employees" }
-        comment: "Current and Past Employees (dropdown)"
-      - name: pastEmployeesOnlyOption
-        component: dropdown
-        locator: { strategy: getByRole, args: ["option"], name: "Past Employees Only" }
-        comment: "Past Employees Only (dropdown)"
+    locator: { strategy: css, args: ["button:text-is(\"Assign Claim\")"] }
+    comment: "Assign Claim (button)"
+  - name: recordsTable
+    component: table
+    locator: { strategy: template, args: ["tableByColumn"], name: "Reference Id" }
+    columns:
+      - name: "Reference Id"
+      - name: "Employee Name"
+      - name: "Event Name"
+      - name: "Description"
+      - name: "Currency"
+      - name: "Submitted Date"
+      - name: "Status"
+      - name: "Amount"
+      - name: "Actions"
+    rowCount: 3
+    comment: "Records (table)"
+actions:
+  - do: Filter employee claims
+    kind: form
+    fields:
+      - { label: Employee Name, locator: '.oxd-input-group:has(label:text-is("Employee Name")) input', type: autocomplete }
+      - { label: Reference Id, locator: '.oxd-input-group:has(label:text-is("Reference Id")) input', type: text }
+      - { label: Event Name, locator: '.oxd-input-group:has(label:text-is("Event Name")) .oxd-select-text', type: dropdown }
+      - { label: Status, locator: '.oxd-input-group:has(label:text-is("Status")) .oxd-select-text', type: dropdown }
+      - { label: From Date, locator: '.oxd-input-group:has(label:text-is("From Date")) input', type: date }
+      - { label: To Date, locator: '.oxd-input-group:has(label:text-is("To Date")) input', type: date }
+      - { label: Include, locator: '.oxd-input-group:has(label:text-is("Include")) .oxd-select-text', type: dropdown }
+    submit: 'getByRole("button", { name: "Search" })'
+    effect: Filters the table in place and updates the "(n) Records Found" line. No navigation.
+  - do: Assign a claim to an employee
+    kind: navigation
+    target: '.orangehrm-header-container button:has-text("Assign Claim")'
+    effect: Navigates to /claim/assignClaim.
+  - do: View an employee claim's details
+    kind: rowAction
+    target: '.oxd-table-card:has-text("<reference id>") button:has-text("View Details")'
+    effect: Opens the claim detail screen at /claim/assignClaim/id/{id}.
+  - do: Reset the filters
+    kind: destructive
+    notExercised: true
+    target: 'getByRole("button", { name: "Reset" })'
+    effect: Clears every filter field. Not exercised — "reset" is a denied click name.

@@ -1,0 +1,120 @@
+resource: PIM/Termination Reason Configuration
+source: openapi
+operations:
+  - operationId: list-all-termination-reasons
+    method: GET
+    path: /api/v2/pim/termination-reasons
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-termination-reasons.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-a-termination-reason
+    method: POST
+    path: /api/v2/pim/termination-reasons
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'create-a-termination-reason.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-termination-reasons
+    method: DELETE
+    path: /api/v2/pim/termination-reasons
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+      - status: 404
+        contentType: null
+        schema: null
+  - operationId: get-a-termination-reason
+    method: GET
+    path: /api/v2/pim/termination-reasons/{id}
+    pathParams:
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-a-termination-reason.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-a-termination-reason
+    method: PUT
+    path: /api/v2/pim/termination-reasons/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'update-a-termination-reason.responses.200.meta: nested object narrowed to ''unknown'''

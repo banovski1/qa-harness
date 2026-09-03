@@ -1,0 +1,35 @@
+resource: Time/Project Admins
+source: openapi
+operations:
+  - operationId: list-available-employees-for-project-admin
+    method: GET
+    path: /api/v2/time/project-admins
+    queryParams:
+      - name: includeEmployees
+        type: number
+        required: false
+      - name: name
+        type: string
+        required: false
+      - name: nameOrId
+        type: string
+        required: false
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-available-employees-for-project-admin.responses.200.meta: nested object narrowed to ''unknown'''

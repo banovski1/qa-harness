@@ -1,0 +1,74 @@
+resource: PIM/Employee Job Details
+source: openapi
+operations:
+  - operationId: get-an-employees-job-details
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/job-details
+    pathParams:
+      - name: empNumber
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-an-employees-job-details.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-employees-job-details
+    method: PUT
+    path: /api/v2/pim/employees/{empNumber}/job-details
+    pathParams:
+      - name: empNumber
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: joinedDate
+            type: string
+            required: false
+            nullable: false
+          - name: jobTitleId
+            type: number
+            required: false
+            nullable: false
+          - name: empStatusId
+            type: number
+            required: false
+            nullable: false
+          - name: jobCategoryId
+            type: number
+            required: false
+            nullable: false
+          - name: subunitId
+            type: number
+            required: false
+            nullable: false
+          - name: locationId
+            type: number
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: empNumber
+              type: number
+              required: false
+              nullable: false

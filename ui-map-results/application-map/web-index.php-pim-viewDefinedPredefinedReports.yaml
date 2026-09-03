@@ -1,0 +1,156 @@
+page: web-index.php-pim-viewDefinedPredefinedReports
+url: /web/index.php/pim/viewDefinedPredefinedReports
+title: "OrangeHRM"
+elements:
+  # --- shared chrome: identical in every PIM map file, never re-located ---
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: collapseMenuButton
+    component: button
+    locator: { strategy: css, args: ["button.oxd-main-menu-button"] }
+    comment: "Collapse menu (button)"
+  - name: searchMenuInput
+    component: input
+    locator: { strategy: css, args: [".oxd-main-menu-search input"] }
+    comment: "Search menu (input)"
+  - name: adminMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: buzzMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: currentUserHeading
+    component: text
+    locator: { strategy: css, args: [".oxd-userdropdown-name"] }
+    comment: "Current user (text)"
+  - name: configurationMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Configuration\")"] }
+    comment: "Configuration (menuItem)"
+  - name: employeeListMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee List" }
+    comment: "Employee List (menuItem)"
+  - name: addEmployeeMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Add Employee" }
+    comment: "Add Employee (menuItem)"
+  - name: reportsMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Reports" }
+    comment: "Reports (menuItem)"
+  # --- this screen ---
+  - name: employeeReportsHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Employee Reports" }
+    comment: "Employee Reports (text)"
+  - name: reportNameInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Report Name" }
+    comment: "Report Name (input)"
+  - name: resetButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Reset" }
+    comment: "Reset (button)"
+  - name: searchButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Search" }
+    comment: "Search (button)"
+  - name: addButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Add" }
+    comment: "Add (button)"
+  - name: recordsFoundHeading
+    component: text
+    locator: { strategy: css, args: [".orangehrm-horizontal-padding .oxd-text--span"] }
+    comment: "Records Found (text)"
+  - name: selectAllCheckbox
+    component: checkbox
+    locator: { strategy: css, args: [".oxd-table-header .oxd-checkbox-input"] }
+    comment: "Select all rows (checkbox)"
+  - name: reportsTable
+    component: table
+    locator: { strategy: template, args: ["tableByColumn"], name: "Name" }
+    columns:
+      - name: ""
+      - name: "Name"
+      - name: "Actions"
+    rowCount: 4
+    comment: "Employee reports (table)"
+  # --- added by the full-app remap ---
+  - name: pimHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "PIM" }
+    comment: "PIM (text)"
+  - name: addButton2
+    component: button
+    locator: { strategy: css, args: ["button:text-is(\"Add\")"] }
+    comment: "Add (button)"
+actions:
+  - do: Search reports by name
+    kind: form
+    fields:
+      - { label: Report Name, locator: '.oxd-input-group:has(label:text-is("Report Name")) input', type: text }
+    submit: 'getByRole("button", { name: "Search" })'
+    effect: Filters the reports table in place, no navigation.
+  - do: Clear the report search
+    kind: click
+    target: 'getByRole("button", { name: "Reset" })'
+    effect: Restores all 4 predefined reports.
+  - do: Define a new report
+    kind: click
+    target: 'getByRole("button", { name: "Add" })'
+    effect: Navigates to the define-report screen (/web/index.php/pim/definePredefinedReport).
+  - do: Edit a report
+    kind: rowAction
+    target: '.oxd-table-card:has-text("<report name>") i.bi-pencil-fill'
+    effect: Opens that report for editing.
+  - do: Delete a report
+    kind: destructive
+    notExercised: true
+    target: '.oxd-table-card:has-text("<report name>") i.bi-trash'
+    effect: Confirmation dialog, then permanent deletion. Never performed while mapping.

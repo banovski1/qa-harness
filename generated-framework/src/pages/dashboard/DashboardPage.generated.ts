@@ -4,8 +4,7 @@
 
 import type { Page } from '@playwright/test';
 import { BasePage } from '../base/BasePage';
-import { ButtonComponent } from '../../components/ButtonComponent';
-import { ImageComponent } from '../../components/ImageComponent';
+import { LinkComponent } from '../../components/LinkComponent';
 import { TextComponent } from '../../components/TextComponent';
 import { NavigationBar } from '../../components/navigation/NavigationBar';
 
@@ -20,108 +19,73 @@ export abstract class DashboardPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
-  /** Claim img (image) */
-  // UNSTABLE: no accessible name; scoped to nearest named ancestor
-  get claimImgImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('link', { name: 'Claim', exact: true }).getByRole('img'), 'Claim img (image)');
-  }
-
   /** Dashboard (text) */
   get dashboardHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Dashboard', exact: true }), 'Dashboard (text)');
+    return TextComponent.byHeading(this.page, 'Dashboard');
   }
 
-  /** profile picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(2), 'profile picture (image)');
+  /** Time at Work (text) */
+  get timeAtWorkHeading(): TextComponent {
+    return new TextComponent(this.page.getByText('Time at Work', { exact: true }), 'Time at Work (text)');
   }
 
-  /** profile picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage2(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(3), 'profile picture (image)');
+  /** My Actions (text) */
+  get myActionsHeading(): TextComponent {
+    return new TextComponent(this.page.getByText('My Actions', { exact: true }), 'My Actions (text)');
   }
 
-  /**  (button) */
-  get elementButton3(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: '', exact: true }), ' (button)');
+  /** Quick Launch (text) */
+  get quickLaunchHeading(): TextComponent {
+    return new TextComponent(this.page.getByText('Quick Launch', { exact: true }), 'Quick Launch (text)');
   }
 
-  /** (unnamed) (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get buttonButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(4), '(unnamed) (button)');
+  /** Buzz Latest Posts (text) */
+  get buzzLatestPostsHeading(): TextComponent {
+    return new TextComponent(this.page.getByText('Buzz Latest Posts', { exact: true }), 'Buzz Latest Posts (text)');
   }
 
-  /** (unnamed) (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get buttonButton2(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(5), '(unnamed) (button)');
+  /** Employees on Leave Today (text) */
+  get employeesOnLeaveTodayHeading(): TextComponent {
+    return new TextComponent(this.page.getByText('Employees on Leave Today', { exact: true }), 'Employees on Leave Today (text)');
   }
 
-  /** Assign Leave (button) */
-  get assignLeaveButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Assign Leave', exact: true }), 'Assign Leave (button)');
+  /** Employee Distribution by Sub Unit (text) */
+  get employeeDistributionBySubUnitHeading(): TextComponent {
+    return new TextComponent(this.page.getByText('Employee Distribution by Sub Unit', { exact: true }), 'Employee Distribution by Sub Unit (text)');
   }
 
-  /** Leave List (button) */
-  get leaveListButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Leave List', exact: true }), 'Leave List (button)');
+  /** Employee Distribution by Location (text) */
+  get employeeDistributionByLocationHeading(): TextComponent {
+    return new TextComponent(this.page.getByText('Employee Distribution by Location', { exact: true }), 'Employee Distribution by Location (text)');
   }
 
-  /** Timesheets (button) */
-  get timesheetsButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Timesheets', exact: true }), 'Timesheets (button)');
+  /** Assign Leave quick launch (link) */
+  get assignLeaveQuickLaunchLink(): LinkComponent {
+    return new LinkComponent(this.page.getByText('Assign Leave', { exact: true }), 'Assign Leave quick launch (link)');
   }
 
-  /** Apply Leave (button) */
-  get applyLeaveButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Apply Leave', exact: true }), 'Apply Leave (button)');
+  /** Leave List quick launch (link) */
+  get leaveListQuickLaunchLink(): LinkComponent {
+    return new LinkComponent(this.page.getByText('Leave List', { exact: true }), 'Leave List quick launch (link)');
   }
 
-  /** My Leave (button) */
-  get myLeaveButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'My Leave', exact: true }), 'My Leave (button)');
+  /** Timesheets quick launch (link) */
+  get timesheetsQuickLaunchLink(): LinkComponent {
+    return new LinkComponent(this.page.getByText('Timesheets', { exact: true }), 'Timesheets quick launch (link)');
   }
 
-  /** My Timesheet (button) */
-  get myTimesheetButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'My Timesheet', exact: true }), 'My Timesheet (button)');
+  /** Apply Leave quick launch (link) */
+  get applyLeaveQuickLaunchLink(): LinkComponent {
+    return new LinkComponent(this.page.getByText('Apply Leave', { exact: true }), 'Apply Leave quick launch (link)');
   }
 
-  /** profile picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage3(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(4), 'profile picture (image)');
+  /** My Leave quick launch (link) */
+  get myLeaveQuickLaunchLink(): LinkComponent {
+    return new LinkComponent(this.page.getByText('My Leave', { exact: true }), 'My Leave quick launch (link)');
   }
 
-  /** profile picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage4(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(5), 'profile picture (image)');
-  }
-
-  /** profile picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage5(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(6), 'profile picture (image)');
-  }
-
-  /** (unnamed) (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get imgImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(7), '(unnamed) (image)');
-  }
-
-  /** profile picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage6(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(8), 'profile picture (image)');
-  }
-
-  /** No Content (image) */
-  get noContentImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img', { name: 'No Content', exact: true }), 'No Content (image)');
+  /** My Timesheet quick launch (link) */
+  get myTimesheetQuickLaunchLink(): LinkComponent {
+    return new LinkComponent(this.page.getByText('My Timesheet', { exact: true }), 'My Timesheet quick launch (link)');
   }
 }

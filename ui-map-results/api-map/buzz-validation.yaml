@@ -1,0 +1,27 @@
+resource: Buzz/Validation
+source: openapi
+operations:
+  - operationId: validate-video-link
+    method: GET
+    path: /api/v2/buzz/validation/links
+    queryParams:
+      - name: link
+        type: string
+        required: true
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'validate-video-link.responses.200.data: nested object narrowed to ''unknown'''
+      - 'validate-video-link.responses.200.meta: nested object narrowed to ''unknown'''

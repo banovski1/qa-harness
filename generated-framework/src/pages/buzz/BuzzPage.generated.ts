@@ -5,8 +5,6 @@
 import type { Page } from '@playwright/test';
 import { BasePage } from '../base/BasePage';
 import { ButtonComponent } from '../../components/ButtonComponent';
-import { ImageComponent } from '../../components/ImageComponent';
-import { InputComponent } from '../../components/InputComponent';
 import { TextComponent } from '../../components/TextComponent';
 import { NavigationBar } from '../../components/navigation/NavigationBar';
 
@@ -21,192 +19,38 @@ export abstract class BuzzPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
-  /** Claim img (image) */
-  // UNSTABLE: no accessible name; scoped to nearest named ancestor
-  get claimImgImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('link', { name: 'Claim', exact: true }).getByRole('img'), 'Claim img (image)');
-  }
-
   /** Buzz (text) */
   get buzzHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Buzz', exact: true }), 'Buzz (text)');
-  }
-
-  /** profile picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(2), 'profile picture (image)');
-  }
-
-  /** profile picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage2(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(3), 'profile picture (image)');
-  }
-
-  /** What's on your mind? (input) */
-  get whatSOnYourMindInput(): InputComponent {
-    return new InputComponent(this.page.getByRole('textbox', { name: 'What\'s on your mind?', exact: true }), 'What\'s on your mind? (input)');
+    return TextComponent.byHeading(this.page, 'Buzz');
   }
 
   /** Post (button) */
   get postButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Post', exact: true }), 'Post (button)');
+    return ButtonComponent.byLabel(this.page, 'Post');
   }
 
   /** Share Photos (button) */
   get sharePhotosButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Share Photos', exact: true }), 'Share Photos (button)');
+    return ButtonComponent.byLabel(this.page, 'Share Photos');
   }
 
   /** Share Video (button) */
   get shareVideoButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Share Video', exact: true }), 'Share Video (button)');
+    return ButtonComponent.byLabel(this.page, 'Share Video');
   }
 
-  /**  Most Recent Posts (button) */
+  /** Most Recent Posts (button) */
   get mostRecentPostsButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: ' Most Recent Posts', exact: true }), ' Most Recent Posts (button)');
+    return new ButtonComponent(this.page.locator('button:text-is("Most Recent Posts")'), 'Most Recent Posts (button)');
   }
 
-  /**  Most Liked Posts (button) */
+  /** Most Liked Posts (button) */
   get mostLikedPostsButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: ' Most Liked Posts', exact: true }), ' Most Liked Posts (button)');
+    return new ButtonComponent(this.page.locator('button:text-is("Most Liked Posts")'), 'Most Liked Posts (button)');
   }
 
-  /**  Most Commented Posts (button) */
+  /** Most Commented Posts (button) */
   get mostCommentedPostsButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: ' Most Commented Posts', exact: true }), ' Most Commented Posts (button)');
-  }
-
-  /** profile picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage3(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(4), 'profile picture (image)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton3(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(9), ' (button)');
-  }
-
-  /** (unnamed) (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get imgImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(5), '(unnamed) (image)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton4(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(10), ' (button)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton5(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(11), ' (button)');
-  }
-
-  /** profile picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage4(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(6), 'profile picture (image)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton6(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(12), ' (button)');
-  }
-
-  /** (unnamed) (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get imgImage2(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(7), '(unnamed) (image)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton7(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(13), ' (button)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton8(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(14), ' (button)');
-  }
-
-  /** profile picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage5(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(8), 'profile picture (image)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton9(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(15), ' (button)');
-  }
-
-  /** (unnamed) (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get imgImage3(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(9), '(unnamed) (image)');
-  }
-
-  /** (unnamed) (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get imgImage4(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(10), '(unnamed) (image)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton10(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(16), ' (button)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton11(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(17), ' (button)');
-  }
-
-  /** profile picture (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get profilePictureImage6(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(11), 'profile picture (image)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton12(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(18), ' (button)');
-  }
-
-  /** (unnamed) (image) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get imgImage5(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img').nth(12), '(unnamed) (image)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton13(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(19), ' (button)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton14(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(20), ' (button)');
-  }
-
-  /** No Content (image) */
-  get noContentImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img', { name: 'No Content', exact: true }), 'No Content (image)');
+    return new ButtonComponent(this.page.locator('button:text-is("Most Commented Posts")'), 'Most Commented Posts (button)');
   }
 }

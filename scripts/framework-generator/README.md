@@ -2,7 +2,7 @@
 
 Application map in, Playwright test framework out.
 
-`ui-mapper-script` crawls an app and writes `ui-map-results/application-map/*.yaml`.
+The `smart-map` skill walks an app and writes `ui-map-results/application-map/*.yaml`.
 This tool reads those files and generates a **component object model** framework:
 a reusable component library, one page object per mapped page, Playwright
 fixtures, a login flow, and smoke specs.
@@ -35,7 +35,7 @@ projectName: orangehrm-e2e
 outputDir: ./generated-framework
 baseUrl: https://opensource-demo.orangehrmlive.com
 mapDir: ui-map-results/application-map
-loginConfig: scripts/ui-mapper-script/app-map-config.yaml   # optional, see below
+loginConfig: scripts/app-config.yaml   # optional, see below
 
 pages:
   folderSegment: auto         # see below; or a 1-based segment number
@@ -52,6 +52,9 @@ waits:
 
 tests:
   generateSmokeSpecs: true
+
+locatorTemplates:             # label -> selector patterns; see below
+  labelledInput: '.oxd-input-group:has(label:text-is("{label}")) input'
 ```
 
 `folderSegment: auto` works out which URL segment names the app's module by
@@ -71,9 +74,49 @@ number instead if you want different grouping.
 default is role-based and works on any accessible app; add your own class if your
 app renders a spinner with no busy state.
 
-`loginConfig` points at the **mapper's** spec file. The login flow is not in the
-application map — the mapper logs in before it starts crawling — so reading the
-locators from there is what lets the generator emit a working login helper
+A map file names a template instead of repeating the selector:
+
+```yaml
+locator: { strategy: template, args: ["labelledInput"], name: "City" }
+```
+
+`fromMap` expands that into the plain `css` spec at read time, so `resolve()`, the
+other language adapters and every other consumer only ever see a selector they
+already understand. An unknown template id or a missing `name:` is a hard error, not
+a silent drop. `to-templates.mjs` converts an existing file:
+
+```bash
+node scripts/framework-generator/to-templates.mjs ui-map-results/application-map/<slug>.yaml [--write]
+```
+
+It only rewrites a locator when a configured template reproduces it exactly, and
+prints what it matched, so a re-generate after `--write` should report zero files
+written — the map says the same thing more briefly.
+
+`locatorTemplates` answers "how does this app connect a visible label to its
+control". Each entry is a selector with a `{label}` placeholder, and the generator
+emits it once into `src/components/locator-templates.generated.ts` — the only file
+in the output that names an app-specific selector. A page-object accessor whose
+mapped locator the template reproduces **exactly** is then emitted as a component
+factory carrying just the label:
+
+```ts
+get employeeNameInput(): InputComponent { return InputComponent.byLabel(this.page, 'Employee Name'); }
+```
+
+The equivalence is checked per element, so a genuine one-off keeps the locator the
+mapper verified rather than being bent to fit a pattern. That makes the block safe
+to add or edit wholesale: a template that stops matching degrades to the previous
+output instead of silently addressing a different element, and
+`GENERATION-REPORT.md` counts how many accessors took each path — a drop there is
+the signal that a template needs updating. Known ids are `labelledInput`,
+`labelledTextarea`, `labelledSelect`, `topNavTab` and `tableByColumn`; an app whose
+labels are properly associated with their controls needs none of them, because
+`getByLabel` already works.
+
+`loginConfig` points at `scripts/app-config.yaml`. The login flow is not in the
+application map — the mapping skill logs in before it starts walking — so reading
+the locators from there is what lets the generator emit a working login helper
 instead of a stub. Credentials are never read from it; they come from
 `APP_USERNAME` / `APP_PASSWORD` in the generated project's `.env`.
 
@@ -96,11 +139,11 @@ the language.
 Every emitted file is either **generated** or **protected**:
 
 - `<Name>Page.generated.ts` holds the mapped elements and is **overwritten on
-  every run**, so a fresh crawl always updates your locators.
+  every run**, so a fresh mapping session always updates your locators.
 - `<Name>Page.ts` holds your actions and assertions and is **written once, then
   never touched again**.
 
-Nothing is ever deleted. Re-run after every crawl.
+Nothing is ever deleted. Re-run after every mapping session.
 
 ## How it works
 
@@ -117,8 +160,8 @@ languages/        one adapter per language, registered in index.mjs
 adapter has to know about them:
 
 - elements with no locator are skipped (synthetic dropdown containers),
-- table columns are parsed out of the prose `comment:` string, which is the only
-  place the mapper records them,
+- table columns come from the structured `columns:`/`rowCount:` keys, with the
+  prose `comment:` form kept as a fallback for older files,
 - chrome repeated on nearly every page is lifted into one `NavigationBar`
   component instead of being regenerated per page,
 - `*Module` URLs that redirect onto a list page are merged into one page object
@@ -130,12 +173,13 @@ adapter has to know about them:
 
 ## Limitations
 
-- Locators are only as good as the map. Roughly a third of a typical map is
-  positional (`nth`) because the element had no accessible name; those are
-  emitted with an `// UNSTABLE` comment and listed in the generated
-  `GENERATION-REPORT.md`. Replace them with stable locators as you touch them.
-- The map is a snapshot. If the app changed since the crawl, re-run the mapper
+- Locators are only as good as the map. Positional (`nth`) locators are emitted
+  with an `// UNSTABLE` comment and listed in the generated `GENERATION-REPORT.md`.
+  They are all left over from the deleted crawler; re-walking a module with the
+  `smart-map` skill replaces them with label-scoped `css` locators.
+- The map is a snapshot. If the app changed since it was walked, re-walk the module
   first — the generator cannot know a locator has gone stale.
-- Per-row table action buttons are flattened positional buttons in the map, so
-  they generate as `nth`-based accessors rather than row-scoped ones.
+- A page whose `url:` contains an `{id}` placeholder gets a smoke spec that cannot
+  navigate, because `goto()` uses the literal path. Those specs fail until the
+  generator learns to skip or parameterise them.
 - No API-client generation: the map describes the UI only.

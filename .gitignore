@@ -1,8 +1,8 @@
 node_modules/
-scripts/ui-mapper-script/node_modules
 scripts/framework-generator/node_modules
 
 *.log
 
 .idea
 .playwright-mcp
+.playwright-cli

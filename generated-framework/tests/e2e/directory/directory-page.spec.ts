@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('DirectoryPage', () => {
   test('loads', async ({ directoryPage }) => {
     await directoryPage.goto();
-    await expect(directoryPage.directoryHeading.locator).toBeVisible();
+    await expect(directoryPage.page).toHaveURL(new RegExp('/web/index\\.php/directory/viewDirectory'));
   });
 });

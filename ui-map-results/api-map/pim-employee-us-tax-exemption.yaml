@@ -1,0 +1,86 @@
+resource: PIM/Employee US Tax Exemption
+source: openapi
+operations:
+  - operationId: get-an-employees-us-tax-expemption-details
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/tax-exemption
+    pathParams:
+      - name: empNumber
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-an-employees-us-tax-expemption-details.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-employees-us-tax-exemption-details
+    method: PUT
+    path: /api/v2/pim/employees/{empNumber}/tax-exemption
+    pathParams:
+      - name: empNumber
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: federalStatus
+            type: string
+            required: false
+            nullable: false
+          - name: federalExemptions
+            type: number
+            required: false
+            nullable: false
+          - name: taxStateCode
+            type: string
+            required: false
+            nullable: false
+          - name: stateStatus
+            type: string
+            required: false
+            nullable: false
+          - name: stateExemptions
+            type: number
+            required: false
+            nullable: false
+          - name: unemploymentStateCode
+            type: string
+            required: false
+            nullable: false
+          - name: workStateCode
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-an-employees-us-tax-exemption-details.responses.200.meta: nested object narrowed to ''unknown'''

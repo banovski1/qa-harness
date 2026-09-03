@@ -1,0 +1,172 @@
+page: web-index.php-claim-viewExpense
+url: /web/index.php/claim/viewExpense
+title: "OrangeHRM"
+elements:
+  # --- shared chrome: pasted verbatim from the PIM map files, never re-located ---
+  # --- shared chrome: identical in every PIM map file, never re-located ---
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: collapseMenuButton
+    component: button
+    locator: { strategy: css, args: ["button.oxd-main-menu-button"] }
+    comment: "Collapse menu (button)"
+  - name: searchMenuInput
+    component: input
+    locator: { strategy: css, args: [".oxd-main-menu-search input"] }
+    comment: "Search menu (input)"
+  - name: adminMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: buzzMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: currentUserHeading
+    component: text
+    locator: { strategy: css, args: [".oxd-userdropdown-name"] }
+    comment: "Current user (text)"
+  - name: configurationMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Configuration\")"] }
+    comment: "Configuration (menuItem)"
+  # --- this screen ---
+  - name: submitClaimMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Submit Claim" }
+    comment: "Submit Claim (menuItem)"
+  - name: myClaimsMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "My Claims" }
+    comment: "My Claims (menuItem)"
+  - name: employeeClaimsMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee Claims" }
+    comment: "Employee Claims (menuItem)"
+  - name: assignClaimMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Assign Claim" }
+    comment: "Assign Claim (menuItem)"
+  - name: expenseTypesHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Expense Types" }
+    comment: "Expense Types (text)"
+  - name: addButton
+    component: button
+    locator: { strategy: css, args: [".orangehrm-header-container button:has-text(\"Add\")"] }
+    comment: "Add (button)"
+  - name: nameInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Name" }
+    comment: "Name (input)"
+  - name: statusDropdown
+    component: dropdown
+    locator: { strategy: template, args: ["labelledSelect"], name: "Status" }
+    comment: "Status (dropdown)"
+  - name: resetButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Reset" }
+    comment: "Reset (button)"
+  - name: searchButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Search" }
+    comment: "Search (button)"
+  - name: recordsFoundHeading
+    component: text
+    locator: { strategy: css, args: [".orangehrm-horizontal-padding > .oxd-text:has-text(\"Records Found\")"] }
+    comment: "Records Found (text)"
+  - name: selectAllCheckbox
+    component: checkbox
+    locator: { strategy: css, args: [".oxd-table-header .oxd-checkbox-input"] }
+    comment: "Select all (checkbox)"
+  - name: expenseTypesTable
+    component: table
+    locator: { strategy: css, args: [".oxd-table"] }
+    columns:
+      - name: "Name"
+      - name: "Status"
+      - name: "Actions"
+    rowCount: 5
+    comment: "Expense Types (table)"
+  # --- added by the full-app remap ---
+  - name: claimHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Claim" }
+    comment: "Claim (text)"
+  - name: addButton2
+    component: button
+    locator: { strategy: css, args: ["button:text-is(\"Add\")"] }
+    comment: "Add (button)"
+  - name: recordsTable
+    component: table
+    locator: { strategy: template, args: ["tableByColumn"], name: "Name" }
+    columns:
+      - name: "Name"
+      - name: "Status"
+      - name: "Actions"
+    rowCount: 4
+    comment: "Records (table)"
+actions:
+  - do: Filter expense types
+    kind: form
+    fields:
+      - { label: Name, locator: '.oxd-input-group:has(label:text-is("Name")) input', type: text }
+      - { label: Status, locator: '.oxd-input-group:has(label:text-is("Status")) .oxd-select-text', type: dropdown }
+    submit: 'getByRole("button", { name: "Search" })'
+    effect: Filters the table in place and updates the "(n) Records Found" line. No navigation.
+  - do: Add an expense type
+    kind: navigation
+    target: '.orangehrm-header-container button:has-text("Add")'
+    effect: Navigates to the Add Expense Type form at /claim/saveExpense.
+  - do: Delete an expense type
+    kind: destructive
+    notExercised: true
+    target: '.oxd-table-card:has-text("<name>") .bi-trash'
+    effect: Opens a confirmation dialog and deletes the expense type. Not exercised - "delete" is a denied click name.
+  - do: Reset the filters
+    kind: destructive
+    notExercised: true
+    target: 'getByRole("button", { name: "Reset" })'
+    effect: Clears every filter field. Not exercised - "reset" is a denied click name.

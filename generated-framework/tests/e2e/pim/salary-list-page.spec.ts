@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('SalaryListPage', () => {
   test('loads', async ({ salaryListPage }) => {
     await salaryListPage.goto();
-    await expect(salaryListPage.pIMHeading.locator).toBeVisible();
+    await expect(salaryListPage.pimHeading.locator).toBeVisible();
   });
 });

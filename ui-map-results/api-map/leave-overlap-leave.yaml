@@ -1,0 +1,53 @@
+resource: Leave/Overlap Leave
+source: openapi
+operations:
+  - operationId: get-overlapping-leaves
+    method: GET
+    path: /api/v2/leave/overlap-leaves
+    queryParams:
+      - name: empNumber
+        type: number
+        required: false
+      - name: fromDate
+        type: string
+        required: true
+      - name: toDate
+        type: string
+        required: true
+      - name: duration[type]
+        type: string
+        required: false
+      - name: duration[fromTime]
+        type: string
+        required: false
+      - name: duration[toTime]
+        type: string
+        required: false
+      - name: endDuration[type]
+        type: string
+        required: false
+      - name: endDuration[fromTime]
+        type: string
+        required: false
+      - name: endDuration[toTime]
+        type: string
+        required: false
+      - name: partialOption
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'get-overlapping-leaves.responses.200.meta: nested object narrowed to ''unknown'''

@@ -1,0 +1,182 @@
+resource: Admin/Work Shift
+source: openapi
+operations:
+  - operationId: list-all-workfshifts
+    method: GET
+    path: /api/v2/admin/work-shifts
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-workfshifts.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-all-workfshifts.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-a-work-shift
+    method: POST
+    path: /api/v2/admin/work-shifts
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: hoursPerDay
+            type: string
+            required: true
+            nullable: false
+          - name: startTime
+            type: string
+            required: true
+            nullable: false
+          - name: endTime
+            type: string
+            required: true
+            nullable: false
+          - name: empNumbers
+            type: unknown
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'create-a-work-shift.requestBody.empNumbers: nested array narrowed to ''unknown'''
+      - 'create-a-work-shift.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-work-shifts
+    method: DELETE
+    path: /api/v2/admin/work-shifts
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+      - status: 404
+        contentType: null
+        schema: null
+  - operationId: get-a-work-shift
+    method: GET
+    path: /api/v2/admin/work-shifts/{id}
+    pathParams:
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-a-work-shift.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-a-work-shift
+    method: PUT
+    path: /api/v2/admin/work-shifts/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: hoursPerDay
+            type: string
+            required: true
+            nullable: false
+          - name: startTime
+            type: string
+            required: true
+            nullable: false
+          - name: endTime
+            type: string
+            required: true
+            nullable: false
+          - name: empNumbers
+            type: unknown
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'update-a-work-shift.requestBody.empNumbers: nested array narrowed to ''unknown'''
+      - 'update-a-work-shift.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: list-employees-unassigned-to-work-shift
+    method: GET
+    path: /api/v2/admin/work-shifts/employees
+    queryParams:
+      - name: nameOrId
+        type: string
+        required: false
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-employees-unassigned-to-work-shift.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-employees-unassigned-to-work-shift.responses.200.meta: nested object narrowed to ''unknown'''

@@ -1,0 +1,36 @@
+resource: Attendance/Employee Attendance Summary
+source: openapi
+operations:
+  - operationId: summarize-employee-attendance
+    method: GET
+    path: /api/v2/attendance/employees/summary
+    queryParams:
+      - name: date
+        type: string
+        required: false
+      - name: fromDate
+        type: string
+        required: false
+      - name: toDate
+        type: string
+        required: false
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'summarize-employee-attendance.responses.200.data: nested array narrowed to ''unknown'''
+      - 'summarize-employee-attendance.responses.200.meta: nested object narrowed to ''unknown'''

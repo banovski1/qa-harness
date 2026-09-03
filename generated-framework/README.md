@@ -23,8 +23,8 @@ npm test
 
 ## What was generated
 
-24 page object(s) from 28 mapped page(s), 3084 element(s) read.
-105 element(s) had no locator and were skipped. 922 locator(s) are
+92 page object(s) from 93 mapped page(s), 2658 element(s) read.
+0 element(s) had no locator and were skipped. 0 locator(s) are
 positional and marked `// UNSTABLE` — see `GENERATION-REPORT.md`.
 
 Re-run the generator after every fresh crawl. Only `.generated.ts` files change.

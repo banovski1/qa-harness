@@ -1,0 +1,183 @@
+resource: PIM/Employee Licenses
+source: openapi
+operations:
+  - operationId: list-allowed-licenses-for-an-employee
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/licenses/allowed
+    pathParams:
+      - name: empNumber
+        type: number
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-allowed-licenses-for-an-employee.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-allowed-licenses-for-an-employee.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: get-an-employees-license
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/licenses/{id}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-an-employees-license.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-an-employees-license
+    method: PUT
+    path: /api/v2/pim/employees/{empNumber}/licenses/{id}
+    pathParams:
+      - name: empNumber
+        type: number
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: licenseId
+            type: number
+            required: false
+            nullable: false
+          - name: licenseNo
+            type: string
+            required: true
+            nullable: false
+          - name: issuedDate
+            type: string
+            required: false
+            nullable: false
+          - name: expiryDate
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-an-employees-license.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: list-an-employees-licenses
+    method: GET
+    path: /api/v2/pim/employees/{empNumber}/licenses
+    pathParams:
+      - name: empNumber
+        type: number
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-an-employees-licenses.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-an-employees-licenses.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: add-a-license-to-an-employee
+    method: POST
+    path: /api/v2/pim/employees/{empNumber}/licenses
+    pathParams:
+      - name: empNumber
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: licenseId
+            type: number
+            required: false
+            nullable: false
+          - name: licenseNo
+            type: string
+            required: true
+            nullable: false
+          - name: issuedDate
+            type: string
+            required: false
+            nullable: false
+          - name: expiryDate
+            type: string
+            required: false
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: empNumber
+              type: number
+              required: false
+              nullable: false
+  - operationId: delete-an-employees-licenses
+    method: DELETE
+    path: /api/v2/pim/employees/{empNumber}/licenses
+    pathParams:
+      - name: empNumber
+        type: number
+    responses:
+      - status: 200
+        contentType: null
+        schema: null

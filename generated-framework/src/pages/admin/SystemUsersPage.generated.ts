@@ -5,11 +5,9 @@
 import type { Page } from '@playwright/test';
 import { BasePage } from '../base/BasePage';
 import { ButtonComponent } from '../../components/ButtonComponent';
-import { CheckboxComponent } from '../../components/CheckboxComponent';
-import { ImageComponent } from '../../components/ImageComponent';
+import { DropdownComponent } from '../../components/DropdownComponent';
 import { InputComponent } from '../../components/InputComponent';
-import { LinkComponent } from '../../components/LinkComponent';
-import { OptionComponent } from '../../components/OptionComponent';
+import { MenuItemComponent } from '../../components/MenuItemComponent';
 import { TableComponent } from '../../components/tables/TableComponent';
 import { TextComponent } from '../../components/TextComponent';
 import { NavigationBar } from '../../components/navigation/NavigationBar';
@@ -25,163 +23,88 @@ export abstract class SystemUsersPageGenerated extends BasePage {
   /** Chrome shared by every page: top bar and side menu. */
   readonly navigation = new NavigationBar(this.page);
 
-  /** Claim img (image) */
-  // UNSTABLE: no accessible name; scoped to nearest named ancestor
-  get claimImgImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('link', { name: 'Claim', exact: true }).getByRole('img'), 'Claim img (image)');
+  /** User Management (menuItem) */
+  get userManagementMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("User Management")'), 'User Management (menuItem)');
+  }
+
+  /** Job (menuItem) */
+  get jobMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Job")'), 'Job (menuItem)');
+  }
+
+  /** Organization (menuItem) */
+  get organizationMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Organization")'), 'Organization (menuItem)');
+  }
+
+  /** Qualifications (menuItem) */
+  get qualificationsMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Qualifications")'), 'Qualifications (menuItem)');
+  }
+
+  /** Configuration (menuItem) */
+  get configurationMenuItem(): MenuItemComponent {
+    return new MenuItemComponent(this.page.locator('.oxd-topbar-body-nav-tab-item:has-text("Configuration")'), 'Configuration (menuItem)');
+  }
+
+  /** Nationalities (menuItem) */
+  get nationalitiesMenuItem(): MenuItemComponent {
+    return MenuItemComponent.byLabel(this.page, 'Nationalities');
+  }
+
+  /** Corporate Branding (menuItem) */
+  get corporateBrandingMenuItem(): MenuItemComponent {
+    return MenuItemComponent.byLabel(this.page, 'Corporate Branding');
   }
 
   /** Admin (text) */
   get adminHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'Admin', exact: true }), 'Admin (text)');
-  }
-
-  /** / User Management (text) */
-  get userManagementHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: '/ User Management', exact: true }), '/ User Management (text)');
-  }
-
-  /** profile picture (image) */
-  get profilePictureImage(): ImageComponent {
-    return new ImageComponent(this.page.getByRole('img', { name: 'profile picture', exact: true }), 'profile picture (image)');
-  }
-
-  /** Nationalities (link) */
-  get nationalitiesLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Nationalities', exact: true }), 'Nationalities (link)');
-  }
-
-  /** Corporate Branding (link) */
-  get corporateBrandingLink(): LinkComponent {
-    return new LinkComponent(this.page.getByRole('link', { name: 'Corporate Branding', exact: true }), 'Corporate Branding (link)');
+    return TextComponent.byHeading(this.page, 'Admin');
   }
 
   /** System Users (text) */
   get systemUsersHeading(): TextComponent {
-    return new TextComponent(this.page.getByRole('heading', { name: 'System Users', exact: true }), 'System Users (text)');
+    return TextComponent.byHeading(this.page, 'System Users');
   }
 
-  /**  (button) */
-  get elementButton3(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: '', exact: true }), ' (button)');
+  /** Username (input) */
+  get usernameInput(): InputComponent {
+    return InputComponent.byLabel(this.page, 'Username');
   }
 
-  /** (unnamed) (input) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get textboxInput(): InputComponent {
-    return new InputComponent(this.page.getByRole('textbox').nth(1), '(unnamed) (input)');
+  /** User Role (dropdown) */
+  get userRoleDropdown(): DropdownComponent {
+    return DropdownComponent.byLabel(this.page, 'User Role');
   }
 
-  /** Type for hints... (input) */
-  get typeForHintsInput(): InputComponent {
-    return new InputComponent(this.page.getByRole('textbox', { name: 'Type for hints...', exact: true }), 'Type for hints... (input)');
+  /** Employee Name (input) */
+  get employeeNameInput(): InputComponent {
+    return InputComponent.byLabel(this.page, 'Employee Name');
+  }
+
+  /** Status (dropdown) */
+  get statusDropdown(): DropdownComponent {
+    return DropdownComponent.byLabel(this.page, 'Status');
   }
 
   /** Reset (button) */
   get resetButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Reset', exact: true }), 'Reset (button)');
+    return ButtonComponent.byLabel(this.page, 'Reset');
   }
 
   /** Search (button) */
   get searchButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: 'Search', exact: true }), 'Search (button)');
+    return ButtonComponent.byLabel(this.page, 'Search');
   }
 
-  /**  Add (button) */
+  /** Add (button) */
   get addButton(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button', { name: ' Add', exact: true }), ' Add (button)');
+    return new ButtonComponent(this.page.locator('button:text-is("Add")'), 'Add (button)');
   }
 
-  /** Table (, Username , User Role , Employee Name , Status , Actions; 3 row(s)) (table) */
-  // UNSTABLE: table has no accessible name; positional index used
-  get tableTable(): TableComponent {
-    return new TableComponent(this.page.getByRole('table').nth(0), ['', 'Username ', 'User Role ', 'Employee Name ', 'Status ', 'Actions'], 'Table (, Username , User Role , Employee Name , Status , Actions; 3 row(s)) (table)');
-  }
-
-  /**  (checkbox) */
-  get elementCheckbox(): CheckboxComponent {
-    return new CheckboxComponent(this.page.getByRole('columnheader', { name: '', exact: true }).getByRole('checkbox', { name: '', exact: true }), ' (checkbox)');
-  }
-
-  /**  (checkbox) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementCheckbox2(): CheckboxComponent {
-    return new CheckboxComponent(this.page.getByRole('checkbox').nth(1), ' (checkbox)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton4(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(7), ' (button)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton5(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(8), ' (button)');
-  }
-
-  /**  (checkbox) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementCheckbox3(): CheckboxComponent {
-    return new CheckboxComponent(this.page.getByRole('checkbox').nth(2), ' (checkbox)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton6(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(9), ' (button)');
-  }
-
-  /**  (button) */
-  // UNSTABLE: no accessible name or unique ancestor scope; positional index used
-  get elementButton7(): ButtonComponent {
-    return new ButtonComponent(this.page.getByRole('button').nth(10), ' (button)');
-  }
-
-  /** Elements revealed by opening '-- Select --'. Open the trigger first. */
-  readonly selectOpen = new SystemUsersPageSelectOpen(this.page);
-
-  /** Elements revealed by opening '-- Select --'. Open the trigger first. */
-  readonly selectOpen2 = new SystemUsersPageSelectOpen2(this.page);
-}
-
-/** Only present while '-- Select --' is open. */
-export class SystemUsersPageSelectOpen {
-  constructor(private readonly page: Page) {}
-
-  /** -- Select -- (dropdown) */
-  get selectOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: '-- Select --', exact: true }), '-- Select -- (dropdown)');
-  }
-
-  /** Admin (dropdown) */
-  get adminOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Admin', exact: true }), 'Admin (dropdown)');
-  }
-
-  /** ESS (dropdown) */
-  get eSSOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'ESS', exact: true }), 'ESS (dropdown)');
-  }
-}
-
-/** Only present while '-- Select --' is open. */
-export class SystemUsersPageSelectOpen2 {
-  constructor(private readonly page: Page) {}
-
-  /** -- Select -- (dropdown) */
-  get selectOption2(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: '-- Select --', exact: true }), '-- Select -- (dropdown)');
-  }
-
-  /** Enabled (dropdown) */
-  get enabledOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Enabled', exact: true }), 'Enabled (dropdown)');
-  }
-
-  /** Disabled (dropdown) */
-  get disabledOption(): OptionComponent {
-    return new OptionComponent(this.page.getByRole('option', { name: 'Disabled', exact: true }), 'Disabled (dropdown)');
+  /** Records (table) */
+  get recordsTable(): TableComponent {
+    return new TableComponent(this.page.locator('.oxd-table:has(.oxd-table-th:text-is("Username"))'), ['Username', 'User Role', 'Employee Name', 'Status', 'Actions'], 'Records (table)');
   }
 }

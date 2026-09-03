@@ -3,7 +3,7 @@
 #   node scripts/framework-generator/generate.mjs [path/to/this-file.yaml] [--dry-run]
 #
 # Run from the repo root so mapDir and outputDir resolve correctly. The generator
-# reads the application map produced by ui-mapper-script and emits a Playwright
+# reads the application map produced by the smart-map skill and emits a Playwright
 # component-object-model framework in the language named below.
 
 language: typescript    # typescript | javascript | java | python | csharp
@@ -12,11 +12,11 @@ outputDir: ./generated-framework
 baseUrl: https://opensource-demo.orangehrmlive.com
 mapDir: ui-map-results/application-map
 
-# Optional. The login flow is not in the application map (the mapper logs in
-# before it crawls), so point this at the mapper's spec to get a working login
+# Optional. The login flow is not in the application map (the mapping skill logs
+# in before it walks), so point this at the app config to get a working login
 # helper instead of a stub. Credentials are NOT read from it — they come from
 # APP_USERNAME / APP_PASSWORD in the generated project's .env.
-loginConfig: scripts/ui-mapper-script/app-map-config.yaml
+loginConfig: scripts/app-config.yaml
 
 pages:
   folderSegment: auto         # URL segment used as the folder group; `auto` strips the
@@ -37,3 +37,32 @@ waits:
 
 tests:
   generateSmokeSpecs: true    # one navigate + assert spec per generated page object
+
+# Label-parameterised locator templates: the app's answer to "how do I find the input
+# belonging to this label". `{label}` is substituted with the element's label, and a page
+# object then reads `InputComponent.byLabel(this.page, 'City')` instead of carrying the
+# selector. This block and the file it renders are the ONLY places an app-specific
+# selector appears — retargeting to another app means replacing these five lines.
+#
+# An element is emitted through a factory only when the template reproduces the map's
+# locator exactly; anything else keeps its own locator, so a one-off never gets bent to
+# fit. Remove a line to turn its factory off; remove the block for an app whose labels
+# are properly associated (`getByLabel` needs no template at all).
+locatorTemplates:
+  labelledInput:    '.oxd-input-group:has(label:text-is("{label}")) input'
+  labelledTextarea: '.oxd-input-group:has(label:text-is("{label}")) textarea'
+  labelledSelect:   '.oxd-input-group:has(label:text-is("{label}")) .oxd-select-text'
+  topNavTab:        '.oxd-topbar-body-nav-tab > a:text-is("{label}")'
+  tableByColumn:    '.oxd-table:has(.oxd-table-th:text-is("{label}"))'
+
+# Where scripts/framework-generator/smart-api-map.mjs writes the normalized api-map
+# (one YAML file per resource). Absent or empty directory -> no API layer is
+# generated; nothing else changes.
+apiMapDir: ui-map-results/api-map
+
+api:
+  enabled: true
+  include: {}                 # { tags: [Users, Claims] } or { operationIds: [...] } — empty means "all"
+  exclude: {}                 # same shape, subtracted after include
+  generateAssertionSpecs: true  # one status/schema check per api-mapped operation
+  generateFactories: true       # scaffold src/data/factories/<resource>-factory.ts stubs

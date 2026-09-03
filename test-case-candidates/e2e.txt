@@ -1,0 +1,65 @@
+# OrangeHRM E2E User Journeys — Test Cases
+
+Multi-role test cases for complex end-to-end automation coverage. Each involves at
+least two roles (ESS employee + Admin/Manager) and crosses multiple modules, exercising
+cross-module side effects and permission boundaries that single-role tests miss.
+
+---
+
+## TC-01: Leave request is approved, correctly blocks timesheet hours, and survives a reject/resubmit cycle
+
+**Type:** UI (multi-role)
+**Priority:** High
+**Actors:** ESS Employee, Admin/Supervisor
+
+**Preconditions:**
+- An active ESS employee account exists with a valid leave entitlement.
+- An Admin/Supervisor account exists with approval rights over the employee.
+
+**Test Steps:**
+
+| # | Step | Expected Result |
+|---|---|---|
+| 1 | Log in as the ESS employee and submit a leave request for a defined date range | Request is created and visible under the employee's own leave list |
+| 2 | Log in as Admin/Supervisor (separate session) and approve the pending leave request | **Leave status changes to `Scheduled`/`Approved`** |
+| 3 | As the ESS employee, open the timesheet covering the approved leave dates | **Leave days are correctly reflected on the timesheet** (auto-populated or blocked from manual entry) |
+| 4 | As the ESS employee, enter hours for the remaining non-leave days and submit the timesheet | Timesheet status changes to `Submitted` |
+| 5 | As Admin/Supervisor, open the submitted timesheet and reject it with a comment | Timesheet status changes to `Rejected`, comment is visible |
+| 6 | As the ESS employee, edit the rejected timesheet and resubmit it | **Timesheet status returns to `Submitted`** |
+| 7 | As Admin/Supervisor, approve the resubmitted timesheet | **Final timesheet status is `Approved`** |
+
+**Notes:** Covers two independent role sessions in one flow, a negative branch
+(reject → resubmit) rather than a single happy path, and a cross-module dependency
+between leave approval and timesheet entry.
+
+---
+
+## TC-02: Candidate is hired, converted to an employee, and job assignment is visible to their own ESS login
+
+**Type:** UI (multi-role)
+**Priority:** High
+**Actors:** Admin/Recruiter, Hiring Manager, ESS Employee (new hire)
+
+**Preconditions:**
+- An open vacancy exists in Recruitment.
+- Admin and Hiring Manager accounts exist with the relevant module permissions.
+
+**Test Steps:**
+
+| # | Step | Expected Result |
+|---|---|---|
+| 1 | Log in as Admin/Recruiter, add a candidate against the vacancy, and move their status through the pipeline up to interview scheduling | Candidate status progresses correctly through each pipeline stage |
+| 2 | Log in as Hiring Manager (separate session), record the interview outcome, and mark the candidate `Hired` | **Candidate status is `Hired`, and the option to add them as an employee is available** |
+| 3 | As Admin, convert the hired candidate into an employee, generating ESS login credentials | **New employee appears in the employee list, and a matching user account exists in user management** |
+| 4 | As the new ESS employee, log in for the first time and update personal/contact details | Personal details are saved under the employee's own profile |
+| 5 | As Admin/Manager, assign the employee's job title, sub-unit, and supervisor | **Employee appears under the correct supervisor's reporting hierarchy, and job title is reflected in the employee list** |
+| 6 | As the ESS employee, log back in and view their own job details | **ESS-visible job title and supervisor match what the admin assigned** |
+
+**Notes:** Crosses three modules (Recruitment → employee records → user management)
+through a real candidate-to-employee conversion step, tests credential provisioning
+via an admin action rather than a fixture, and ends with a permission-boundary check
+confirming admin-set data is correctly visible through the low-privilege ESS view.
+
+---
+
+

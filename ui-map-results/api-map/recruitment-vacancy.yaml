@@ -1,0 +1,187 @@
+resource: Recruitment/Vacancy
+source: openapi
+operations:
+  - operationId: get-a-vacancy
+    method: GET
+    path: /api/v2/recruitment/vacancies/{id}
+    pathParams:
+      - name: id
+        type: number
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'get-a-vacancy.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: update-a-vacancy
+    method: PUT
+    path: /api/v2/recruitment/vacancies/{id}
+    pathParams:
+      - name: id
+        type: number
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: status
+            type: boolean
+            required: true
+            nullable: false
+          - name: jobTitleId
+            type: number
+            required: true
+            nullable: false
+          - name: isPublished
+            type: unknown
+            required: true
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+          - name: numOfPositions
+            type: number
+            required: false
+            nullable: false
+          - name: employeeId
+            type: number
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+      - status: 404
+        contentType: null
+        schema: null
+    droppedFields:
+      - 'update-a-vacancy.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: list-all-vacancies
+    method: GET
+    path: /api/v2/recruitment/vacancies
+    queryParams:
+      - name: sortField
+        type: string
+        required: false
+      - name: jobTitleId
+        type: number
+        required: false
+      - name: hiringManagerId
+        type: number
+        required: false
+      - name: status
+        type: boolean
+        required: false
+      - name: name
+        type: string
+        required: false
+      - name: vacancyId
+        type: number
+        required: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'list-all-vacancies.responses.200.data: nested array narrowed to ''unknown'''
+      - 'list-all-vacancies.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: create-a-vacancy
+    method: POST
+    path: /api/v2/recruitment/vacancies
+    requestBody:
+      contentType: application/json
+      schema:
+        kind: object
+        properties:
+          - name: name
+            type: string
+            required: true
+            nullable: false
+          - name: status
+            type: boolean
+            required: true
+            nullable: false
+          - name: jobTitleId
+            type: number
+            required: true
+            nullable: false
+          - name: isPublished
+            type: boolean
+            required: true
+            nullable: false
+          - name: description
+            type: string
+            required: false
+            nullable: false
+          - name: numOfPositions
+            type: number
+            required: false
+            nullable: false
+          - name: employeeId
+            type: number
+            required: true
+            nullable: false
+    responses:
+      - status: 200
+        contentType: application/json
+        schema:
+          kind: object
+          properties:
+            - name: data
+              type: unknown
+              required: false
+              nullable: false
+            - name: meta
+              type: unknown
+              required: false
+              nullable: false
+    droppedFields:
+      - 'create-a-vacancy.responses.200.meta: nested object narrowed to ''unknown'''
+  - operationId: delete-vacancies
+    method: DELETE
+    path: /api/v2/recruitment/vacancies
+    responses:
+      - status: 200
+        contentType: null
+        schema: null
+      - status: 404
+        contentType: null
+        schema: null

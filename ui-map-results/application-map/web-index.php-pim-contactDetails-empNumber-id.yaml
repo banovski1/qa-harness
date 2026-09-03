@@ -1,0 +1,255 @@
+page: web-index.php-pim-contactDetails-empNumber-id
+url: /web/index.php/pim/contactDetails/empNumber/{id}
+title: "OrangeHRM"
+elements:
+  # --- shared chrome: identical in every PIM map file, never re-located ---
+  - name: clientBrandBannerLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "client brand banner" }
+    comment: "client brand banner (link)"
+  - name: collapseMenuButton
+    component: button
+    locator: { strategy: css, args: ["button.oxd-main-menu-button"] }
+    comment: "Collapse menu (button)"
+  - name: searchMenuInput
+    component: input
+    locator: { strategy: css, args: [".oxd-main-menu-search input"] }
+    comment: "Search menu (input)"
+  - name: adminMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Admin" }
+    comment: "Admin (link)"
+  - name: pimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "PIM" }
+    comment: "PIM (link)"
+  - name: leaveMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Leave" }
+    comment: "Leave (link)"
+  - name: timeMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Time" }
+    comment: "Time (link)"
+  - name: recruitmentMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Recruitment" }
+    comment: "Recruitment (link)"
+  - name: myInfoMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "My Info" }
+    comment: "My Info (link)"
+  - name: performanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Performance" }
+    comment: "Performance (link)"
+  - name: dashboardMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Dashboard" }
+    comment: "Dashboard (link)"
+  - name: directoryMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Directory" }
+    comment: "Directory (link)"
+  - name: maintenanceMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Maintenance" }
+    comment: "Maintenance (link)"
+  - name: claimMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Claim" }
+    comment: "Claim (link)"
+  - name: buzzMenuLink
+    component: link
+    locator: { strategy: getByRole, args: ["link"], name: "Buzz" }
+    comment: "Buzz (link)"
+  - name: currentUserHeading
+    component: text
+    locator: { strategy: css, args: [".oxd-userdropdown-name"] }
+    comment: "Current user (text)"
+  - name: configurationMenuItem
+    component: menuItem
+    locator: { strategy: css, args: [".oxd-topbar-body-nav-tab-item:has-text(\"Configuration\")"] }
+    comment: "Configuration (menuItem)"
+  - name: employeeListMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Employee List" }
+    comment: "Employee List (menuItem)"
+  - name: addEmployeeMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Add Employee" }
+    comment: "Add Employee (menuItem)"
+  - name: reportsMenuItem
+    component: menuItem
+    locator: { strategy: template, args: ["topNavTab"], name: "Reports" }
+    comment: "Reports (menuItem)"
+  - name: personalDetailsTab
+    component: tab
+    locator: { strategy: getByRole, args: ["link"], name: "Personal Details" }
+    comment: "Personal Details (tab)"
+  - name: contactDetailsTab
+    component: tab
+    locator: { strategy: getByRole, args: ["link"], name: "Contact Details" }
+    comment: "Contact Details (tab)"
+  - name: emergencyContactsTab
+    component: tab
+    locator: { strategy: getByRole, args: ["link"], name: "Emergency Contacts" }
+    comment: "Emergency Contacts (tab)"
+  - name: dependentsTab
+    component: tab
+    locator: { strategy: getByRole, args: ["link"], name: "Dependents" }
+    comment: "Dependents (tab)"
+  - name: immigrationTab
+    component: tab
+    locator: { strategy: getByRole, args: ["link"], name: "Immigration" }
+    comment: "Immigration (tab)"
+  - name: jobTab
+    component: tab
+    locator: { strategy: getByRole, args: ["link"], name: "Job" }
+    comment: "Job (tab)"
+  - name: salaryTab
+    component: tab
+    locator: { strategy: getByRole, args: ["link"], name: "Salary" }
+    comment: "Salary (tab)"
+  - name: reportToTab
+    component: tab
+    locator: { strategy: getByRole, args: ["link"], name: "Report-to" }
+    comment: "Report-to (tab)"
+  - name: qualificationsTab
+    component: tab
+    locator: { strategy: getByRole, args: ["link"], name: "Qualifications" }
+    comment: "Qualifications (tab)"
+  - name: membershipsTab
+    component: tab
+    locator: { strategy: getByRole, args: ["link"], name: "Memberships" }
+    comment: "Memberships (tab)"
+  - name: employeeNameHeading
+    component: text
+    locator: { strategy: css, args: [".orangehrm-edit-employee-name h6"] }
+    comment: "Employee name (text)"
+  # --- this screen ---
+  - name: contactDetailsHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Contact Details" }
+    comment: "Contact Details (text)"
+  - name: street1Input
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Street 1" }
+    comment: "Street 1 (input)"
+  - name: street2Input
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Street 2" }
+    comment: "Street 2 (input)"
+  - name: cityInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "City" }
+    comment: "City (input)"
+  - name: stateProvinceInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "State/Province" }
+    comment: "State/Province (input)"
+  - name: zipPostalCodeInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Zip/Postal Code" }
+    comment: "Zip/Postal Code (input)"
+  - name: countryDropdown
+    component: dropdown
+    locator: { strategy: template, args: ["labelledSelect"], name: "Country" }
+    comment: "Country (dropdown)"
+  - name: homeInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Home" }
+    comment: "Home (input)"
+  - name: mobileInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Mobile" }
+    comment: "Mobile (input)"
+  - name: workInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Work" }
+    comment: "Work (input)"
+  - name: workEmailInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Work Email" }
+    comment: "Work Email (input)"
+  - name: otherEmailInput
+    component: input
+    locator: { strategy: template, args: ["labelledInput"], name: "Other Email" }
+    comment: "Other Email (input)"
+  - name: saveButton
+    component: button
+    locator: { strategy: getByRole, args: ["button"], name: "Save" }
+    comment: "Save (button)"
+  - name: addAttachmentButton
+    component: button
+    locator: { strategy: css, args: [".orangehrm-horizontal-padding:has(h6:text-is(\"Attachments\")) button"] }
+    comment: "Add attachment (button)"
+  - name: attachmentsTable
+    component: table
+    locator: { strategy: template, args: ["tableByColumn"], name: "File Name" }
+    columns:
+      - name: ""
+      - name: "File Name"
+      - name: "Description"
+      - name: "Size"
+      - name: "Type"
+      - name: "Date Added"
+      - name: "Added By"
+      - name: "Actions"
+    rowCount: 1
+    comment: "Attachments (table)"
+  # --- added by the full-app remap ---
+  - name: pimHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "PIM" }
+    comment: "PIM (text)"
+  - name: automationQeHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Automation QE" }
+    comment: "Automation QE (text)"
+  - name: addressHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Address" }
+    comment: "Address (text)"
+  - name: telephoneHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Telephone" }
+    comment: "Telephone (text)"
+  - name: emailHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Email" }
+    comment: "Email (text)"
+  - name: attachmentsHeading
+    component: text
+    locator: { strategy: getByRole, args: ["heading"], name: "Attachments" }
+    comment: "Attachments (text)"
+  - name: addButton
+    component: button
+    locator: { strategy: css, args: ["button:text-is(\"Add\")"] }
+    comment: "Add (button)"
+actions:
+  - do: Edit contact details
+    kind: form
+    fields:
+      - { label: Street 1, locator: '.oxd-input-group:has(label:text-is("Street 1")) input', type: text }
+      - { label: Street 2, locator: '.oxd-input-group:has(label:text-is("Street 2")) input', type: text }
+      - { label: City, locator: '.oxd-input-group:has(label:text-is("City")) input', type: text }
+      - { label: State/Province, locator: '.oxd-input-group:has(label:text-is("State/Province")) input', type: text }
+      - { label: Zip/Postal Code, locator: '.oxd-input-group:has(label:text-is("Zip/Postal Code")) input', type: text }
+      - { label: Country, locator: '.oxd-input-group:has(label:text-is("Country")) .oxd-select-text', type: dropdown }
+      - { label: Home, locator: '.oxd-input-group:has(label:text-is("Home")) input', type: text }
+      - { label: Mobile, locator: '.oxd-input-group:has(label:text-is("Mobile")) input', type: text }
+      - { label: Work, locator: '.oxd-input-group:has(label:text-is("Work")) input', type: text }
+      - { label: Work Email, locator: '.oxd-input-group:has(label:text-is("Work Email")) input', type: text }
+      - { label: Other Email, locator: '.oxd-input-group:has(label:text-is("Other Email")) input', type: text }
+    submit: 'getByRole("button", { name: "Save" })'
+    notExercised: true
+    effect: Saves in place with a success toast, no navigation. Not submitted while mapping — Save is a denied action.
+  - do: Attach a file to the employee record
+    kind: click
+    target: '.orangehrm-horizontal-padding:has(h6:text-is("Attachments")) button'
+    effect: Reveals a file chooser plus a Comment field, with Cancel and Save buttons under the Attachments section.
+  - do: Switch to another employee tab
+    kind: click
+    target: 'getByRole("link", { name: "Personal Details" })'
+    effect: Navigates to /web/index.php/pim/viewPersonalDetails/empNumber/{id}. The same tab strip covers every other employee sub-screen.
