@@ -1,0 +1,4540 @@
+{
+  "app": "/Users/banovski/Projects/orangehrm",
+  "framework": "vue",
+  "components": [
+    {
+      "name": "SubmitButton",
+      "file": "src/client/src/core/components/buttons/SubmitButton.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "UpgradeButton",
+      "file": "src/client/src/core/components/buttons/UpgradeButton.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ConfirmationDialog",
+      "file": "src/client/src/core/components/dialogs/ConfirmationDialog.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "title",
+        "subtitle",
+        "cancelLabel",
+        "confirmLabel",
+        "icon",
+        "confirmButtonType",
+        "cancelButtonType"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "DeleteConfirmationDialog",
+      "file": "src/client/src/core/components/dialogs/DeleteConfirmationDialog.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "message"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "IncludeEmployeeDropdown",
+      "file": "src/client/src/core/components/dropdown/IncludeEmployeeDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "DateInput",
+      "file": "src/client/src/core/components/inputs/DateInput.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeAutocomplete",
+      "file": "src/client/src/core/components/inputs/EmployeeAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "params",
+        "apiPath"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "FileUploadInput",
+      "file": "src/client/src/core/components/inputs/FileUploadInput.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "label",
+        "hint",
+        "url",
+        "method",
+        "file",
+        "newFile",
+        "disabled",
+        "deletable"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PasswordInput",
+      "file": "src/client/src/core/components/inputs/PasswordInput.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "password",
+        "passwordConfirm",
+        "isPasswordRequired"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "TimeInput",
+      "file": "src/client/src/core/components/inputs/TimeInput.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "PasswordStrengthIndicator",
+      "file": "src/client/src/core/components/labels/PasswordStrengthIndicator.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "passwordStrength"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "RequiredText",
+      "file": "src/client/src/core/components/labels/RequiredText.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "Layout",
+      "file": "src/client/src/core/components/layout/Layout.vue",
+      "kind": "layout",
+      "framework": "Vue",
+      "props": [
+        "permissions",
+        "logoutUrl",
+        "supportUrl",
+        "updatePasswordUrl",
+        "dateFormat",
+        "helpUrl",
+        "showUpgrade"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReportsTable",
+      "file": "src/client/src/core/components/table/ReportsTable.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "name",
+        "module",
+        "prefetch",
+        "filters",
+        "columnCount",
+        "canFocus",
+        "range"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "TableHeader",
+      "file": "src/client/src/core/components/table/TableHeader.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "loading",
+        "selected",
+        "total",
+        "showDivider",
+        "recordsFoundLangString"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "About",
+      "file": "src/client/src/core/pages/About.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "BadRequest",
+      "file": "src/client/src/core/pages/BadRequest.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "Disabled",
+      "file": "src/client/src/core/pages/Disabled.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ModuleUnderDevelopment",
+      "file": "src/client/src/core/pages/ModuleUnderDevelopment.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "NoRecordsFound",
+      "file": "src/client/src/core/pages/NoRecordsFound.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "TimeSheetPeriodNotDefined",
+      "file": "src/client/src/core/pages/TimeSheetPeriodNotDefined.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "AddLanguageModal",
+      "file": "src/client/src/orangehrmAdminPlugin/components/AddLanguageModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditTranslationTable",
+      "file": "src/client/src/orangehrmAdminPlugin/components/EditTranslationTable.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "langstrings"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "FixLanguageStringErrorTable",
+      "file": "src/client/src/orangehrmAdminPlugin/components/FixLanguageStringErrorTable.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "langstrings"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "InlineActionButton",
+      "file": "src/client/src/orangehrmAdminPlugin/components/InlineActionButton.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "InlineColorInput",
+      "file": "src/client/src/orangehrmAdminPlugin/components/InlineColorInput.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "label",
+        "rules",
+        "required",
+        "modelValue",
+        "disabled"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LangStringTargetInput",
+      "file": "src/client/src/orangehrmAdminPlugin/components/LangStringTargetInput.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "langStringId",
+        "required"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LanguageGroupListDropdown",
+      "file": "src/client/src/orangehrmAdminPlugin/components/LanguageGroupListDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "LanguageStringsImportModal",
+      "file": "src/client/src/orangehrmAdminPlugin/components/LanguageStringsImportModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data",
+        "languageId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LanguagesDropdown",
+      "file": "src/client/src/orangehrmAdminPlugin/components/LanguagesDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "LdapSyncConnection",
+      "file": "src/client/src/orangehrmAdminPlugin/components/LdapSyncConnection.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "LdapTestConnectionModal",
+      "file": "src/client/src/orangehrmAdminPlugin/components/LdapTestConnectionModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "WorkShiftEmployeeAutocomplete",
+      "file": "src/client/src/orangehrmAdminPlugin/components/WorkShiftEmployeeAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "CorporateBranding",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/corporateBranding/CorporateBranding.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "allowedImageTypes",
+        "aspectRatios",
+        "aspectRatioTolerance",
+        "maxFileSize"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ViewEmailConfiguration",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/emailConfiguration/ViewEmailConfiguration.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "pathToSendmail"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditEmailSubscription",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/emailSubscription/EditEmailSubscription.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "subscriptionId",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditSubscriber",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/emailSubscription/EditSubscriber.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmailSubscription",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/emailSubscription/EmailSubscription.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name",
+        "onClick",
+        "modelValue",
+        "onUpdate:modelValue",
+        "style",
+        "withContainer",
+        "header"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveSubscriber",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/emailSubscription/SaveSubscriber.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditEmploymentStatus",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/employmentStatus/EditEmploymentStatus.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "employmentStatusId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmploymentStatus",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/employmentStatus/EmploymentStatus.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveEmploymentStatus",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/employmentStatus/SaveEmploymentStatus.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditJobCategory",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/jobCategory/EditJobCategory.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "jobCategoryId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "JobCategory",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/jobCategory/JobCategory.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveJobCategory",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/jobCategory/SaveJobCategory.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditJobTitle",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/jobTitle/EditJobTitle.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "jobTitleId",
+        "allowedFileTypes",
+        "maxFileSize"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "JobTitle",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/jobTitle/JobTitle.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveJobTitle",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/jobTitle/SaveJobTitle.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "allowedFileTypes",
+        "maxFileSize"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "FixLanguageStringErrors",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/languageImport/FixLanguageStringErrors.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "languageId",
+        "empNumber",
+        "languagePackage",
+        "sourceLanguage"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LanguageImport",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/languageImport/LanguageImport.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "languageId",
+        "languageName",
+        "allowedFileTypes",
+        "maxFileSize"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LanguagePackage",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/languagePackage/LanguagePackage.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "languageTranslation",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/languageTranslation/languageTranslation.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "languageId",
+        "languagePackage",
+        "sourceLanguage"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LdapConfiguration",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/ldap/LdapConfiguration.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "showSync"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LocalizationConfiguration",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/localization/LocalizationConfiguration.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "dateFormatList",
+        "languageList"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditLocation",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/location/EditLocation.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "locationId",
+        "countries"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LocationList",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/location/LocationList.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "countries",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveLocation",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/location/SaveLocation.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "countries"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditModuleConfiguration",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/moduleConfiguration/EditModuleConfiguration.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditNationality",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/nationality/EditNationality.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "nationalityId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "Nationality",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/nationality/Nationality.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveNationality",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/nationality/SaveNationality.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditOrgUnit",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/orgStructure/EditOrgUnit.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "OrgStructure",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/orgStructure/OrgStructure.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "SaveOrgUnit",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/orgStructure/SaveOrgUnit.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ViewOrganizationGeneralInformation",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/organizationGeneralInformation/ViewOrganizationGeneralInformation.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "numberOfEmployees",
+        "countryList"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "AddPayGrade",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/payGrade/AddPayGrade.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditPayCurrency",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/payGrade/EditPayCurrency.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "payGradeId",
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditPayGrade",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/payGrade/EditPayGrade.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "payGradeId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PayGrade",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/payGrade/PayGrade.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PayGradeCurrency",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/payGrade/PayGradeCurrency.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "payGradeId",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SavePayCurrency",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/payGrade/SavePayCurrency.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "payGradeId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditQualificationEducation",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationEducation/EditQualificationEducation.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "educationId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "QualificationEducation",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationEducation/QualificationEducation.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveQualificationEducation",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationEducation/SaveQualificationEducation.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditQualificationLanguage",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationLanguage/EditQualificationLanguage.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "qualificationLanguageId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "QualificationLanguage",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationLanguage/QualificationLanguage.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveQualificationLanguage",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationLanguage/SaveQualificationLanguage.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditLicense",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationLicense/EditLicense.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "licenseId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "License",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationLicense/License.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveLicense",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationLicense/SaveLicense.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditQualificationMembership",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationMembership/EditQualificationMembership.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "qualificationMembershipId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "QualificationMembership",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationMembership/QualificationMembership.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveQualificationMembership",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationMembership/SaveQualificationMembership.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditQualificationSkill",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationSkill/EditQualificationSkill.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "qualificationSkillId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "QualificationSkill",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationSkill/QualificationSkill.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveQualificationSkill",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/qualificationSkill/SaveQualificationSkill.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "AddProvider",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/socialMediaAuth/AddProvider.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditProvider",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/socialMediaAuth/EditProvider.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "id"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ProviderList",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/socialMediaAuth/ProviderList.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditSystemUser",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/systemUser/EditSystemUser.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "systemUserId",
+        "isPasswordRequired"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveSystemUser",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/systemUser/SaveSystemUser.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "isPasswordRequired"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SystemUser",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/systemUser/SystemUser.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "unselectableIds",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditWorkShift",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/workShift/EditWorkShift.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "workShiftId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveWorkShift",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/workShift/SaveWorkShift.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "workShiftConfig"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "WorkShift",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/workShift/WorkShift.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "WorkspaceNotificationConfiguration",
+      "file": "src/client/src/orangehrmAdminPlugin/pages/workspaceNotification/WorkspaceNotificationConfiguration.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "header",
+        "withContainer",
+        "modelValue",
+        "onUpdate:modelValue",
+        "name",
+        "title"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "RecordAttendance",
+      "file": "src/client/src/orangehrmAttendancePlugin/components/RecordAttendance.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "isEditable",
+        "isTimezoneEditable",
+        "attendanceRecordId",
+        "employeeId",
+        "date"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "RecordCell",
+      "file": "src/client/src/orangehrmAttendancePlugin/components/RecordCell.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "header",
+        "date",
+        "time",
+        "offset"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "TimezoneAutocomplete",
+      "file": "src/client/src/orangehrmAttendancePlugin/components/TimezoneAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "TimezoneDropdown",
+      "file": "src/client/src/orangehrmAttendancePlugin/components/TimezoneDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "AttendanceConfiguration",
+      "file": "src/client/src/orangehrmAttendancePlugin/pages/AttendanceConfiguration.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "AttendanceSummaryReport",
+      "file": "src/client/src/orangehrmAttendancePlugin/pages/AttendanceSummaryReport.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "subunits"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditAttendance",
+      "file": "src/client/src/orangehrmAttendancePlugin/pages/EditAttendance.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "attendanceId",
+        "isEmployeeEdit",
+        "isTimezoneEditable"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PunchIn",
+      "file": "src/client/src/orangehrmAttendancePlugin/pages/PunchIn.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "PunchOut",
+      "file": "src/client/src/orangehrmAttendancePlugin/pages/PunchOut.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ViewEmployeeAttendanceDetailed",
+      "file": "src/client/src/orangehrmAttendancePlugin/pages/ViewEmployeeAttendanceDetailed.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "date",
+        "employee",
+        "isEditable",
+        "name",
+        "time",
+        "offset"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ViewEmployeeAttendanceSummary",
+      "file": "src/client/src/orangehrmAttendancePlugin/pages/ViewEmployeeAttendanceSummary.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "date",
+        "label",
+        "displayType",
+        "size"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ViewMyAttendance",
+      "file": "src/client/src/orangehrmAttendancePlugin/pages/ViewMyAttendance.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "date",
+        "isEditable",
+        "name",
+        "time",
+        "offset"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "AuthButton",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/components/AuthButton.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "label"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "CardNote",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/components/CardNote.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "noteText",
+        "hasNote",
+        "hasNoteIcon"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LoginBranding",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/components/LoginBranding.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "imgSrc"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LoginLayout",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/components/LoginLayout.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "loginLogoSrc",
+        "loginBannerSrc"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LoginSocial",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/components/LoginSocial.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "SocialMediaAuth",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/components/SocialMediaAuth.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "authenticators"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "AdministratorAccess",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/pages/AdministratorAccess.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "username",
+        "error",
+        "token",
+        "backUrl"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmailConfigurationWarning",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/pages/EmailConfigurationWarning.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "Forbidden",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/pages/Forbidden.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "Login",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/pages/Login.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "error",
+        "token",
+        "showSocialMedia",
+        "isDemoMode",
+        "authenticators"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "RequestResetPassword",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/pages/RequestResetPassword.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "token"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ResetPassword",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/pages/ResetPassword.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "username",
+        "token",
+        "code"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ResetPasswordError",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/pages/ResetPasswordError.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ResetPasswordFailure",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/pages/ResetPasswordFailure.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ResetPasswordSuccess",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/pages/ResetPasswordSuccess.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ResetWeakPassword",
+      "file": "src/client/src/orangehrmAuthenticationPlugin/pages/ResetWeakPassword.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "username",
+        "code",
+        "token",
+        "error",
+        "invalidCode"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "CreatePost",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/CreatePost.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employee"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditPostModal",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/EditPostModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "NewsFeed",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/NewsFeed.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employee",
+        "sortField",
+        "mobile"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PhotoCarousel",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PhotoCarousel.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "post",
+        "mobile",
+        "photoIndex"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PhotoFrame",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PhotoFrame.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "media"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PhotoInput",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PhotoInput.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "modelValue"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PhotoUploadArea",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PhotoUploadArea.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "PhotoViewer",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PhotoViewer.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "post",
+        "photoIndex"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PostActions",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostActions.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "post"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PostActionsPill",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostActionsPill.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "post"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PostBody",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostBody.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "post"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PostComment",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostComment.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "postId",
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PostCommentButton",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostCommentButton.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "PostCommentContainer",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostCommentContainer.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "postId",
+        "employee"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PostContainer",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostContainer.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "post"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PostDetails",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostDetails.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "post",
+        "mobile"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PostFilters",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostFilters.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "filter",
+        "mobile"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PostLikeButton",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostLikeButton.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "like"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PostModal",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "title",
+        "employee",
+        "loading",
+        "disabled",
+        "actionLabel"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PostShareButton",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostShareButton.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "PostStats",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostStats.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "post",
+        "mobile"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PostStatsModal",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/PostStatsModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "postId",
+        "type",
+        "icon",
+        "mobile"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ProfileImage",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/ProfileImage.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employee"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SharePhotoModal",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/SharePhotoModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "text"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SharePostModal",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/SharePostModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ShareVideoModal",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/ShareVideoModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "text"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "UpcomingAnniversaries",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/UpcomingAnniversaries.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "VideoFrame",
+      "file": "src/client/src/orangehrmBuzzPlugin/components/VideoFrame.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "videoSrc"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ViewBuzz",
+      "file": "src/client/src/orangehrmBuzzPlugin/pages/ViewBuzz.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "employee"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "AddAttachmentModal",
+      "file": "src/client/src/orangehrmClaimPlugin/components/AddAttachmentModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "requestId",
+        "allowedFileTypes",
+        "maxFileSize"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "AddExpenseModal",
+      "file": "src/client/src/orangehrmClaimPlugin/components/AddExpenseModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "requestId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ClaimActionButtons",
+      "file": "src/client/src/orangehrmClaimPlugin/components/ClaimActionButtons.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "requestId",
+        "allowedActions",
+        "isAssigned"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ClaimAttachment",
+      "file": "src/client/src/orangehrmClaimPlugin/components/ClaimAttachment.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "requestId",
+        "canEdit",
+        "allowedFileTypes",
+        "maxFileSize",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ClaimEmployeeAutocomplete",
+      "file": "src/client/src/orangehrmClaimPlugin/components/ClaimEmployeeAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "params",
+        "apiPath",
+        "authEmployeeNumber"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ClaimEventDropdown",
+      "file": "src/client/src/orangehrmClaimPlugin/components/ClaimEventDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ClaimExpenseTypeDropdown",
+      "file": "src/client/src/orangehrmClaimPlugin/components/ClaimExpenseTypeDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ClaimExpenses",
+      "file": "src/client/src/orangehrmClaimPlugin/components/ClaimExpenses.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "requestId",
+        "currency",
+        "canEdit",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditAttachmentModal",
+      "file": "src/client/src/orangehrmClaimPlugin/components/EditAttachmentModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data",
+        "requestId",
+        "allowedFileTypes",
+        "maxFileSize"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditExpenseModal",
+      "file": "src/client/src/orangehrmClaimPlugin/components/EditExpenseModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data",
+        "requestId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EventAutocomplete",
+      "file": "src/client/src/orangehrmClaimPlugin/components/EventAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ExpenseTypeAutocomplete",
+      "file": "src/client/src/orangehrmClaimPlugin/components/ExpenseTypeAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ReferenceIdAutocomplete",
+      "file": "src/client/src/orangehrmClaimPlugin/components/ReferenceIdAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "isAssigned"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "StatusDropdown",
+      "file": "src/client/src/orangehrmClaimPlugin/components/StatusDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ClaimEvent",
+      "file": "src/client/src/orangehrmClaimPlugin/pages/ClaimEvent.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditClaimEvent",
+      "file": "src/client/src/orangehrmClaimPlugin/pages/EditClaimEvent.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "id"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveClaimEvent",
+      "file": "src/client/src/orangehrmClaimPlugin/pages/SaveClaimEvent.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "AssignClaim",
+      "file": "src/client/src/orangehrmClaimPlugin/pages/assignClaim/AssignClaim.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "id",
+        "allowedFileTypes",
+        "maxFileSize",
+        "empNumber"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "AssignClaimRequest",
+      "file": "src/client/src/orangehrmClaimPlugin/pages/assignClaim/AssignClaimRequest.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "currencies",
+        "authEmployeeNumber"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ClaimExpenseType",
+      "file": "src/client/src/orangehrmClaimPlugin/pages/claimExpenseTypes/ClaimExpenseType.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditClaimExpenseType",
+      "file": "src/client/src/orangehrmClaimPlugin/pages/claimExpenseTypes/EditClaimExpenseType.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "id"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveClaimExpenseType",
+      "file": "src/client/src/orangehrmClaimPlugin/pages/claimExpenseTypes/SaveClaimExpenseType.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeClaims",
+      "file": "src/client/src/orangehrmClaimPlugin/pages/employeeClaims/EmployeeClaims.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "label",
+        "displayType",
+        "size"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "MyClaims",
+      "file": "src/client/src/orangehrmClaimPlugin/pages/myClaims/MyClaims.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "label",
+        "displayType",
+        "size"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SubmitClaim",
+      "file": "src/client/src/orangehrmClaimPlugin/pages/submitClaim/SubmitClaim.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "id",
+        "allowedFileTypes",
+        "maxFileSize"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SubmitClaimRequest",
+      "file": "src/client/src/orangehrmClaimPlugin/pages/submitClaim/SubmitClaimRequest.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "currencies"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "OAuthAuthorize",
+      "file": "src/client/src/orangehrmCoreOAuthPlugin/pages/oauth/OAuthAuthorize.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "params",
+        "clientName",
+        "errorType",
+        "loginBannerSrc"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "OAuthClient",
+      "file": "src/client/src/orangehrmCoreOAuthPlugin/pages/registerOAuthClient/OAuthClient.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "unselectableClientIds",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveOAuthClient",
+      "file": "src/client/src/orangehrmCoreOAuthPlugin/pages/registerOAuthClient/SaveOAuthClient.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "id"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeDetails",
+      "file": "src/client/src/orangehrmCorporateDirectoryPlugin/components/EmployeeDetails.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employeeId",
+        "isMobile"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ProfilePicture",
+      "file": "src/client/src/orangehrmCorporateDirectoryPlugin/components/ProfilePicture.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "id"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "QRCode",
+      "file": "src/client/src/orangehrmCorporateDirectoryPlugin/components/QRCode.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "value"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SummaryCard",
+      "file": "src/client/src/orangehrmCorporateDirectoryPlugin/components/SummaryCard.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employeeId",
+        "employeeName",
+        "employeeDesignation",
+        "employeeSubUnit",
+        "employeeLocation",
+        "showBackButton"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SummaryCardDetails",
+      "file": "src/client/src/orangehrmCorporateDirectoryPlugin/components/SummaryCardDetails.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employeeId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "CorporateDirectory",
+      "file": "src/client/src/orangehrmCorporateDirectoryPlugin/pages/CorporateDirectory.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "jobTitles",
+        "locations"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ActionButton",
+      "file": "src/client/src/orangehrmDashboardPlugin/components/ActionButton.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "icon"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "BaseWidget",
+      "file": "src/client/src/orangehrmDashboardPlugin/components/BaseWidget.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "icon",
+        "title",
+        "loading",
+        "empty",
+        "emptyText",
+        "iconType"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "BuzzLatestPostWidget",
+      "file": "src/client/src/orangehrmDashboardPlugin/components/BuzzLatestPostWidget.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeAttendanceWidget",
+      "file": "src/client/src/orangehrmDashboardPlugin/components/EmployeeAttendanceWidget.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeLocationWidget",
+      "file": "src/client/src/orangehrmDashboardPlugin/components/EmployeeLocationWidget.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeSubunitWidget",
+      "file": "src/client/src/orangehrmDashboardPlugin/components/EmployeeSubunitWidget.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EmployeesOnLeaveConfigModal",
+      "file": "src/client/src/orangehrmDashboardPlugin/components/EmployeesOnLeaveConfigModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EmployeesOnLeaveWidget",
+      "file": "src/client/src/orangehrmDashboardPlugin/components/EmployeesOnLeaveWidget.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "MyActionSummaryWidget",
+      "file": "src/client/src/orangehrmDashboardPlugin/components/MyActionSummaryWidget.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "QuickLaunchWidget",
+      "file": "src/client/src/orangehrmDashboardPlugin/components/QuickLaunchWidget.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ViewDashboard",
+      "file": "src/client/src/orangehrmDashboardPlugin/pages/ViewDashboard.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "RemainingDays",
+      "file": "src/client/src/orangehrmFreeTrialPlugin/components/RemainingDays.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "remainingDays",
+        "showRemainingDays"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SubscribeFreeHosting",
+      "file": "src/client/src/orangehrmFreeTrialPlugin/pages/SubscribeFreeHosting.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "url",
+        "companyName",
+        "contactNumber",
+        "email",
+        "contactPersonName",
+        "country",
+        "isSubscribed",
+        "countries"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ViewSupport",
+      "file": "src/client/src/orangehrmHelpPlugin/pages/ViewSupport.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EntitlementBulkUpdateModal",
+      "file": "src/client/src/orangehrmLeavePlugin/components/EntitlementBulkUpdateModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EntitlementNoMatchModal",
+      "file": "src/client/src/orangehrmLeavePlugin/components/EntitlementNoMatchModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EntitlementSituationalModal",
+      "file": "src/client/src/orangehrmLeavePlugin/components/EntitlementSituationalModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EntitlementUpdateModal",
+      "file": "src/client/src/orangehrmLeavePlugin/components/EntitlementUpdateModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveAssignConfirmModal",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeaveAssignConfirmModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "LeaveBalance",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeaveBalance.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "leaveData"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveBalanceInsufficientModal",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeaveBalanceInsufficientModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data",
+        "meta"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveBalanceModal",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeaveBalanceModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data",
+        "meta"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveBulkActionModal",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeaveBulkActionModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveComment",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeaveComment.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveCommentsModal",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeaveCommentsModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "id",
+        "leaveRequest"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveConflict",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeaveConflict.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "workshiftExceeded",
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveDurationInput",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeaveDurationInput.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "duration",
+        "fromTime",
+        "toTime",
+        "partial",
+        "workShift"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveEntitlementTable",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeaveEntitlementTable.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "prefetch",
+        "employee",
+        "leaveType",
+        "leavePeriod",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveListTable",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeaveListTable.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "myLeaveList",
+        "leaveStatuses",
+        "employee",
+        "leaveType",
+        "fromDate",
+        "toDate",
+        "leaveStatus",
+        "header"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveListTableHeader",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeaveListTableHeader.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "loading",
+        "selected",
+        "total",
+        "bulkActions"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeavePeriodDropdown",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeavePeriodDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "modelValue"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveTypeDropdown",
+      "file": "src/client/src/orangehrmLeavePlugin/components/LeaveTypeDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "eligibleOnly",
+        "employeeId",
+        "showEmptySelector",
+        "includeAllocated"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "TimeRange",
+      "file": "src/client/src/orangehrmLeavePlugin/components/TimeRange.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "fromTime",
+        "toTime",
+        "rules",
+        "workShift"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveApply",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/LeaveApply.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "workShift"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveAssign",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/LeaveAssign.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "LeaveList",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/LeaveList.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "subunits",
+        "leaveStatuses"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveRequest",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/LeaveRequest.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "leaveRequestId",
+        "myLeaveRequest",
+        "header"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "MyLeaveList",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/MyLeaveList.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "leaveStatuses"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeavePeriod",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/configure/LeavePeriod.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "monthDates"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "WorkWeek",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/configure/WorkWeek.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "dayTypes"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditHoliday",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/configure/holiday/EditHoliday.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "holidayId",
+        "holidayLengthList"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "Holiday",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/configure/holiday/Holiday.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "leavePeriod",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveHoliday",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/configure/holiday/SaveHoliday.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "holidayLengthList"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "AddEntitlement",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/entitlements/AddEntitlement.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "locations",
+        "subunits",
+        "leavePeriod"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditEntitlement",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/entitlements/EditEntitlement.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "entitlementId",
+        "employee"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveEntitlements",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/entitlements/LeaveEntitlements.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "MyLeaveEntitlements",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/entitlements/MyLeaveEntitlements.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditLeaveType",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/leaveType/EditLeaveType.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "leaveTypeId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "LeaveType",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/leaveType/LeaveType.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveLeaveType",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/leaveType/SaveLeaveType.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "LeaveEntitlementReport",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/reports/LeaveEntitlementReport.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "locations",
+        "subunits",
+        "leavePeriod"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "MyLeaveEntitlementReport",
+      "file": "src/client/src/orangehrmLeavePlugin/pages/reports/MyLeaveEntitlementReport.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "leavePeriod"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "CandidateRecords",
+      "file": "src/client/src/orangehrmMaintenancePlugin/components/CandidateRecords.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeRecords",
+      "file": "src/client/src/orangehrmMaintenancePlugin/components/EmployeeRecords.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "includeEmployeesParam",
+        "titleLabel",
+        "autocompleteLabel"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "MaintenanceNote",
+      "file": "src/client/src/orangehrmMaintenancePlugin/components/MaintenanceNote.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "instanceIdentifier"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SelectedCandidates",
+      "file": "src/client/src/orangehrmMaintenancePlugin/components/SelectedCandidates.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "loading"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SelectedEmployee",
+      "file": "src/client/src/orangehrmMaintenancePlugin/components/SelectedEmployee.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "selectedEmployee",
+        "buttonLabel",
+        "loading"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "VacancyAutocomplete",
+      "file": "src/client/src/orangehrmMaintenancePlugin/components/VacancyAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "PurgeCandidate",
+      "file": "src/client/src/orangehrmMaintenancePlugin/pages/PurgeCandidate.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "instanceIdentifier"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PurgeEmployee",
+      "file": "src/client/src/orangehrmMaintenancePlugin/pages/PurgeEmployee.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "instanceIdentifier"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "AccessEmployeeSearchScreen",
+      "file": "src/client/src/orangehrmMaintenancePlugin/pages/accessEmployee/AccessEmployeeSearchScreen.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "instanceIdentifier"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "AddTrackerLogModal",
+      "file": "src/client/src/orangehrmPerformancePlugin/components/AddTrackerLogModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "trackerId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditTrackerLogModal",
+      "file": "src/client/src/orangehrmPerformancePlugin/components/EditTrackerLogModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "trackerId",
+        "trackerLogId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeTrackerLogCard",
+      "file": "src/client/src/orangehrmPerformancePlugin/components/EmployeeTrackerLogCard.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "trackerLog"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EvaluationForm",
+      "file": "src/client/src/orangehrmPerformancePlugin/components/EvaluationForm.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "kpis",
+        "title",
+        "editable",
+        "collapsible",
+        "employee",
+        "jobTitle",
+        "rules",
+        "modelValue",
+        "collapsed",
+        "status"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "FinalEvaluation",
+      "file": "src/client/src/orangehrmPerformancePlugin/components/FinalEvaluation.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "completedDate",
+        "finalRating",
+        "finalComment",
+        "status",
+        "isRequired"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReviewConfirmModal",
+      "file": "src/client/src/orangehrmPerformancePlugin/components/ReviewConfirmModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ReviewPeriodCell",
+      "file": "src/client/src/orangehrmPerformancePlugin/components/ReviewPeriodCell.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "header",
+        "reviewPeriodStart",
+        "reviewPeriodEnd"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReviewStatusDropdown",
+      "file": "src/client/src/orangehrmPerformancePlugin/components/ReviewStatusDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ReviewSummary",
+      "file": "src/client/src/orangehrmPerformancePlugin/components/ReviewSummary.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employee",
+        "jobTitle",
+        "status",
+        "reviewPeriodStart",
+        "reviewPeriodEnd",
+        "dueDate",
+        "loading",
+        "finalRating"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReviewerAutoComplete",
+      "file": "src/client/src/orangehrmPerformancePlugin/components/ReviewerAutoComplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "includeEmployees",
+        "excludeEmployee"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SupervisorAutoComplete",
+      "file": "src/client/src/orangehrmPerformancePlugin/components/SupervisorAutoComplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "subordinate"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "TrackerLogRatingButton",
+      "file": "src/client/src/orangehrmPerformancePlugin/components/TrackerLogRatingButton.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "label",
+        "selected",
+        "type"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "AddReview",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/AddReview.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "AdminEvaluation",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/AdminEvaluation.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "reviewId",
+        "status",
+        "reviewPeriodStart",
+        "reviewPeriodEnd",
+        "dueDate",
+        "isReviewer"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditPerformanceTracker",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/EditPerformanceTracker.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "performanceTrackerId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditReview",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/EditReview.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "reviewId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeTrackerLogs",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/EmployeeTrackerLogs.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "trackerId",
+        "empNumber"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeTrackers",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/EmployeeTrackers.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name",
+        "label",
+        "class",
+        "displayType"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "KpiEdit",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/KpiEdit.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "kpiId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "KpiSave",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/KpiSave.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "defaultMinRating",
+        "defaultMaxRating"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "KpiSearch",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/KpiSearch.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name",
+        "header"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "MyReviews",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/MyReviews.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "header",
+        "reviewPeriodStart",
+        "reviewPeriodEnd"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "MyTracker",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/MyTracker.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name",
+        "label",
+        "displayType"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "PerformanceTrackers",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/PerformanceTrackers.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "unselectableIds",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReviewList",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/ReviewList.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "fromDate",
+        "toDate",
+        "header",
+        "reviewPeriodStart",
+        "reviewPeriodEnd"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReviewSearch",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/ReviewSearch.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "fromDate",
+        "toDate",
+        "name",
+        "header",
+        "reviewPeriodStart",
+        "reviewPeriodEnd"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SavePerformanceTracker",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/SavePerformanceTracker.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "SelfEvaluation",
+      "file": "src/client/src/orangehrmPerformancePlugin/pages/SelfEvaluation.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "reviewId",
+        "status",
+        "reviewPeriodStart",
+        "reviewPeriodEnd",
+        "dueDate"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditAttachment",
+      "file": "src/client/src/orangehrmPimPlugin/components/EditAttachment.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "data",
+        "allowedFileTypes",
+        "maxFileSize"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditDependent",
+      "file": "src/client/src/orangehrmPimPlugin/components/EditDependent.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditEducation",
+      "file": "src/client/src/orangehrmPimPlugin/components/EditEducation.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditEmergencyContact",
+      "file": "src/client/src/orangehrmPimPlugin/components/EditEmergencyContact.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditEmployeeLayout",
+      "file": "src/client/src/orangehrmPimPlugin/components/EditEmployeeLayout.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employeeId",
+        "tabs",
+        "allowedFileTypes",
+        "maxFileSize",
+        "screen"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditEmployeeReportTo",
+      "file": "src/client/src/orangehrmPimPlugin/components/EditEmployeeReportTo.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "data",
+        "reportingMethods",
+        "type",
+        "empNumber",
+        "api"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditImmigration",
+      "file": "src/client/src/orangehrmPimPlugin/components/EditImmigration.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "data",
+        "countries"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditLanguage",
+      "file": "src/client/src/orangehrmPimPlugin/components/EditLanguage.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "employeeId",
+        "data",
+        "competencies"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditLicense",
+      "file": "src/client/src/orangehrmPimPlugin/components/EditLicense.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditMembership",
+      "file": "src/client/src/orangehrmPimPlugin/components/EditMembership.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "data",
+        "currencies",
+        "paidBy",
+        "memberships"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditSalaryComponent",
+      "file": "src/client/src/orangehrmPimPlugin/components/EditSalaryComponent.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "data",
+        "paygrades",
+        "payFrequencies",
+        "currencies",
+        "accountTypes"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditSkill",
+      "file": "src/client/src/orangehrmPimPlugin/components/EditSkill.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditWorkExperience",
+      "file": "src/client/src/orangehrmPimPlugin/components/EditWorkExperience.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeDataImportModal",
+      "file": "src/client/src/orangehrmPimPlugin/components/EmployeeDataImportModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeEducation",
+      "file": "src/client/src/orangehrmPimPlugin/components/EmployeeEducation.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employeeId",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeLanguages",
+      "file": "src/client/src/orangehrmPimPlugin/components/EmployeeLanguages.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employeeId",
+        "fluencies",
+        "competencies",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeLicense",
+      "file": "src/client/src/orangehrmPimPlugin/components/EmployeeLicense.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employeeId",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeSkills",
+      "file": "src/client/src/orangehrmPimPlugin/components/EmployeeSkills.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employeeId",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeSubordinates",
+      "file": "src/client/src/orangehrmPimPlugin/components/EmployeeSubordinates.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "reportingMethods",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeSupervisors",
+      "file": "src/client/src/orangehrmPimPlugin/components/EmployeeSupervisors.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "reportingMethods",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeWorkExperience",
+      "file": "src/client/src/orangehrmPimPlugin/components/EmployeeWorkExperience.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employeeId",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmploymentStatusDropdown",
+      "file": "src/client/src/orangehrmPimPlugin/components/EmploymentStatusDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "FullNameInput",
+      "file": "src/client/src/orangehrmPimPlugin/components/FullNameInput.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "firstName",
+        "middleName",
+        "lastName",
+        "rules",
+        "disabled",
+        "showMiddleNamePlaceholder",
+        "label"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "JobSpecDownload",
+      "file": "src/client/src/orangehrmPimPlugin/components/JobSpecDownload.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "resourceId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "JobtitleDropdown",
+      "file": "src/client/src/orangehrmPimPlugin/components/JobtitleDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ProfileActionHeader",
+      "file": "src/client/src/orangehrmPimPlugin/components/ProfileActionHeader.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "actionButtonShown"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ProfileAttachments",
+      "file": "src/client/src/orangehrmPimPlugin/components/ProfileAttachments.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employeeId",
+        "allowedFileTypes",
+        "maxFileSize",
+        "screen",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ProfileCustomFields",
+      "file": "src/client/src/orangehrmPimPlugin/components/ProfileCustomFields.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employeeId",
+        "screen"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ProfileImageInput",
+      "file": "src/client/src/orangehrmPimPlugin/components/ProfileImageInput.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "imgSrc"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "QualificationDropdown",
+      "file": "src/client/src/orangehrmPimPlugin/components/QualificationDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "api"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReportAutocomplete",
+      "file": "src/client/src/orangehrmPimPlugin/components/ReportAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ReportCriterion",
+      "file": "src/client/src/orangehrmPimPlugin/components/ReportCriterion.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "criterion"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReportCriterionAutocomplete",
+      "file": "src/client/src/orangehrmPimPlugin/components/ReportCriterionAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "operator",
+        "valueX"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReportCriterionDateRange",
+      "file": "src/client/src/orangehrmPimPlugin/components/ReportCriterionDateRange.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "operator",
+        "valueX",
+        "valueY"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReportCriterionRange",
+      "file": "src/client/src/orangehrmPimPlugin/components/ReportCriterionRange.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "operator",
+        "valueX",
+        "valueY"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReportCriterionSelect",
+      "file": "src/client/src/orangehrmPimPlugin/components/ReportCriterionSelect.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "api",
+        "options",
+        "valueX"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReportDisplayField",
+      "file": "src/client/src/orangehrmPimPlugin/components/ReportDisplayField.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "fieldGroup",
+        "selectedFields",
+        "includeHeader"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReportToEmployeeAutocomplete",
+      "file": "src/client/src/orangehrmPimPlugin/components/ReportToEmployeeAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "api",
+        "params"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveAttachment",
+      "file": "src/client/src/orangehrmPimPlugin/components/SaveAttachment.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "allowedFileTypes",
+        "maxFileSize"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveDependent",
+      "file": "src/client/src/orangehrmPimPlugin/components/SaveDependent.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveEducation",
+      "file": "src/client/src/orangehrmPimPlugin/components/SaveEducation.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "api"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveEmergencyContact",
+      "file": "src/client/src/orangehrmPimPlugin/components/SaveEmergencyContact.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveEmployeeReportTo",
+      "file": "src/client/src/orangehrmPimPlugin/components/SaveEmployeeReportTo.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "reportingMethods",
+        "type",
+        "empNumber"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveImmigration",
+      "file": "src/client/src/orangehrmPimPlugin/components/SaveImmigration.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "countries"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveLanguage",
+      "file": "src/client/src/orangehrmPimPlugin/components/SaveLanguage.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "fluencies",
+        "competencies",
+        "api"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveLicense",
+      "file": "src/client/src/orangehrmPimPlugin/components/SaveLicense.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "api"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveMembership",
+      "file": "src/client/src/orangehrmPimPlugin/components/SaveMembership.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "currencies",
+        "paidBy",
+        "memberships"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveSalaryComponent",
+      "file": "src/client/src/orangehrmPimPlugin/components/SaveSalaryComponent.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "paygrades",
+        "payFrequencies",
+        "currencies",
+        "accountTypes"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveSkill",
+      "file": "src/client/src/orangehrmPimPlugin/components/SaveSkill.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "api"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveWorkExperience",
+      "file": "src/client/src/orangehrmPimPlugin/components/SaveWorkExperience.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SubunitDropdown",
+      "file": "src/client/src/orangehrmPimPlugin/components/SubunitDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "TabsNavigation",
+      "file": "src/client/src/orangehrmPimPlugin/components/TabsNavigation.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "tabs"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "TerminateModal",
+      "file": "src/client/src/orangehrmPimPlugin/components/TerminateModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employeeId",
+        "terminationReasons",
+        "terminationId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "CustomField",
+      "file": "src/client/src/orangehrmPimPlugin/pages/customField/CustomField.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "customFieldLimit",
+        "screenList",
+        "fieldTypeList",
+        "unselectableIds",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditCustomField",
+      "file": "src/client/src/orangehrmPimPlugin/pages/customField/EditCustomField.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "customFieldId",
+        "screenList",
+        "fieldTypeList",
+        "fieldInUse"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveCustomField",
+      "file": "src/client/src/orangehrmPimPlugin/pages/customField/SaveCustomField.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "screenList",
+        "fieldTypeList"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeDataImport",
+      "file": "src/client/src/orangehrmPimPlugin/pages/dataImport/EmployeeDataImport.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "allowedFileTypes",
+        "maxFileSize"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "Employee",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/Employee.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "unselectableEmpNumbers",
+        "name",
+        "header"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeContactDetails",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeContactDetails.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "countries"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeDependents",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeDependents.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "countries",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeEmergencyContacts",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeEmergencyContacts.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "countries",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeImmigration",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeImmigration.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "countries",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeJob",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeJob.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "locations",
+        "jobTitles",
+        "jobCategories",
+        "subunits",
+        "employmentStatuses",
+        "terminationReasons",
+        "allowedFileTypes",
+        "maxFileSize"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeMembership",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeMembership.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "currencies",
+        "paidBy",
+        "memberships",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeePersonalDetails",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeePersonalDetails.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "nationalities",
+        "showDeprecatedFields",
+        "showSsnField",
+        "showSinField"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeProfilePicture",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeProfilePicture.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "allowedImageTypes"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeQualifications",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeQualifications.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "fluencies",
+        "competencies"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeReportTo",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeReportTo.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "reportingMethods"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeSalary",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeSalary.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "paygrades",
+        "payFrequencies",
+        "currencies",
+        "accountTypes",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeTaxExemption",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeTaxExemption.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empNumber",
+        "provinces",
+        "statuses"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveEmployee",
+      "file": "src/client/src/orangehrmPimPlugin/pages/employee/SaveEmployee.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "empId",
+        "allowedImageTypes",
+        "isPasswordRequired"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "OptionalField",
+      "file": "src/client/src/orangehrmPimPlugin/pages/optionalField/OptionalField.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditReportingMethod",
+      "file": "src/client/src/orangehrmPimPlugin/pages/reportingMethod/EditReportingMethod.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "reportingMethodId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ReportingMethod",
+      "file": "src/client/src/orangehrmPimPlugin/pages/reportingMethod/ReportingMethod.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "unselectableIds",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveReportingMethod",
+      "file": "src/client/src/orangehrmPimPlugin/pages/reportingMethod/SaveReportingMethod.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditEmployeeReport",
+      "file": "src/client/src/orangehrmPimPlugin/pages/reports/EditEmployeeReport.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "selectionCriteria",
+        "displayFieldGroups",
+        "displayFields",
+        "reportId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeReport",
+      "file": "src/client/src/orangehrmPimPlugin/pages/reports/EmployeeReport.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveEmployeeReport",
+      "file": "src/client/src/orangehrmPimPlugin/pages/reports/SaveEmployeeReport.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "selectionCriteria",
+        "displayFieldGroups",
+        "displayFields"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ViewEmployeeReport",
+      "file": "src/client/src/orangehrmPimPlugin/pages/reports/ViewEmployeeReport.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "reportId",
+        "reportName"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditTerminationReason",
+      "file": "src/client/src/orangehrmPimPlugin/pages/terminationReason/EditTerminationReason.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "terminationReasonId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveTerminationReason",
+      "file": "src/client/src/orangehrmPimPlugin/pages/terminationReason/SaveTerminationReason.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "TerminationReason",
+      "file": "src/client/src/orangehrmPimPlugin/pages/terminationReason/TerminationReason.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "unselectableIds",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "UpdatePassword",
+      "file": "src/client/src/orangehrmPimPlugin/pages/updatePassword/UpdatePassword.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "userName"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "CandidateActionLayout",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/CandidateActionLayout.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "candidateId",
+        "title",
+        "loading"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "CandidateAutocomplete",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/CandidateAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "params"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "CandidateProfile",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/CandidateProfile.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "candidate",
+        "allowedFileTypes",
+        "maxFileSize",
+        "updatable"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "CandidateStatusDropdown",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/CandidateStatusDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditInterviewAttachment",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/EditInterviewAttachment.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "data",
+        "maxFileSize",
+        "allowedFileTypes"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "HiringManagerDropdown",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/HiringManagerDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "HistoryTable",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/HistoryTable.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "candidate",
+        "name",
+        "header"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "InterviewerAutocomplete",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/InterviewerAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "showDelete",
+        "includeEmployee",
+        "disabled"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "RecruitmentStatus",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/RecruitmentStatus.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "candidate"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveInterviewAttachment",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/SaveInterviewAttachment.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "http",
+        "maxFileSize",
+        "allowedFileTypes"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SuccessDialog",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/SuccessDialog.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "VacancyCard",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/VacancyCard.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "vacancyId",
+        "vacancyTitle",
+        "vacancyDescription"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "VacancyDropdown",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/VacancyDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "status",
+        "excludeInterviewers"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "VacancyLinkCard",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/components/VacancyLinkCard.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "label",
+        "url"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "AddJobVacancy",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/AddJobVacancy.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ApplyJobVacancy",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/ApplyJobVacancy.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "allowedFileTypes",
+        "maxFileSize",
+        "vacancyId",
+        "success",
+        "bannerSrc",
+        "token"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "DeclineOfferAction",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/DeclineOfferAction.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "candidateId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditJobVacancy",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/EditJobVacancy.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "vacancyId",
+        "allowedFileTypes",
+        "maxFileSize",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "HireAction",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/HireAction.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "candidateId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "InterviewFailAction",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/InterviewFailAction.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "candidateId",
+        "interviewId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "InterviewPassedAction",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/InterviewPassedAction.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "candidateId",
+        "interviewId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "InterviewScheduleAction",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/InterviewScheduleAction.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "candidateId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "OfferJobAction",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/OfferJobAction.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "candidateId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "RejectAction",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/RejectAction.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "candidateId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveCandidate",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/SaveCandidate.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "maxFileSize",
+        "allowedFileTypes"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ShortlistAction",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/ShortlistAction.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "candidateId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "VacancyList",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/VacancyList.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ViewActionHistory",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/ViewActionHistory.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "candidateId",
+        "historyId",
+        "editable"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ViewCandidateProfile",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/ViewCandidateProfile.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "candidateId",
+        "maxFileSize",
+        "allowedFileTypes",
+        "updatable"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ViewCandidatesList",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/ViewCandidatesList.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "status",
+        "name",
+        "header"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ViewInterviewAttachments",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/ViewInterviewAttachments.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "interviewId",
+        "maxFileSize",
+        "allowedFileTypes",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ViewJobVacancy",
+      "file": "src/client/src/orangehrmRecruitmentPlugin/pages/ViewJobVacancy.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "FlexTable",
+      "file": "src/client/src/orangehrmSystemCheckPlugin/components/FlexTable.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "titleName",
+        "items"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SystemCheckScreen",
+      "file": "src/client/src/orangehrmSystemCheckPlugin/pages/SystemCheckScreen.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "Activities",
+      "file": "src/client/src/orangehrmTimePlugin/components/Activities.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "projectId",
+        "unselectableIds",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ActivityDropdown",
+      "file": "src/client/src/orangehrmTimePlugin/components/ActivityDropdown.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "projectId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "AddCustomerModal",
+      "file": "src/client/src/orangehrmTimePlugin/components/AddCustomerModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "AddTimesheetModal",
+      "file": "src/client/src/orangehrmTimePlugin/components/AddTimesheetModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "employeeId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "CopyActivityModal",
+      "file": "src/client/src/orangehrmTimePlugin/components/CopyActivityModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "projectId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "CustomerAutocomplete",
+      "file": "src/client/src/orangehrmTimePlugin/components/CustomerAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "EditActivityModal",
+      "file": "src/client/src/orangehrmTimePlugin/components/EditActivityModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "projectId",
+        "activityId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ProjectAdminAutocomplete",
+      "file": "src/client/src/orangehrmTimePlugin/components/ProjectAdminAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "showDelete",
+        "includeEmployees"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ProjectAutocomplete",
+      "file": "src/client/src/orangehrmTimePlugin/components/ProjectAutocomplete.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "onlyAllowed",
+        "excludeProjectIds",
+        "excludeCustomerName"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveActivityModal",
+      "file": "src/client/src/orangehrmTimePlugin/components/SaveActivityModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "projectId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveTimesheetAction",
+      "file": "src/client/src/orangehrmTimePlugin/components/SaveTimesheetAction.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "isLoading",
+        "rejectTimesheet",
+        "approveTimesheet",
+        "canRejectTimesheet",
+        "canApproveTimesheet"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "Timesheet",
+      "file": "src/client/src/orangehrmTimePlugin/components/Timesheet.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "records",
+        "columns",
+        "subtotal",
+        "editable",
+        "loading",
+        "timesheetId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "TimesheetActions",
+      "file": "src/client/src/orangehrmTimePlugin/components/TimesheetActions.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "timesheetId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "TimesheetCommentModal",
+      "file": "src/client/src/orangehrmTimePlugin/components/TimesheetCommentModal.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "data",
+        "editable",
+        "timesheetId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "TimesheetPendingActions",
+      "file": "src/client/src/orangehrmTimePlugin/components/TimesheetPendingActions.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [
+        "label",
+        "displayType",
+        "size"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "TimesheetPeriod",
+      "file": "src/client/src/orangehrmTimePlugin/components/TimesheetPeriod.vue",
+      "kind": "component",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "TimeSheetPeriod",
+      "file": "src/client/src/orangehrmTimePlugin/pages/configure/TimeSheetPeriod.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "Customer",
+      "file": "src/client/src/orangehrmTimePlugin/pages/customer/Customer.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "unselectableIds",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditCustomer",
+      "file": "src/client/src/orangehrmTimePlugin/pages/customer/EditCustomer.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "customerId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "SaveCustomer",
+      "file": "src/client/src/orangehrmTimePlugin/pages/customer/SaveCustomer.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "Project",
+      "file": "src/client/src/orangehrmTimePlugin/pages/project/Project.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "unselectableIds",
+        "name"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ProjectEdit",
+      "file": "src/client/src/orangehrmTimePlugin/pages/project/ProjectEdit.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "projectId",
+        "unselectableIds"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ProjectSave",
+      "file": "src/client/src/orangehrmTimePlugin/pages/project/ProjectSave.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ActivityDetailsReport",
+      "file": "src/client/src/orangehrmTimePlugin/pages/reports/ActivityDetailsReport.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "project",
+        "activity",
+        "fromDate",
+        "toDate",
+        "includeTimesheet"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeTimeReport",
+      "file": "src/client/src/orangehrmTimePlugin/pages/reports/EmployeeTimeReport.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "ProjectActivityReport",
+      "file": "src/client/src/orangehrmTimePlugin/pages/reports/ProjectActivityReport.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "project",
+        "fromDate",
+        "toDate",
+        "includeTimesheet"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EditTimeSheet",
+      "file": "src/client/src/orangehrmTimePlugin/pages/timesheets/EditTimeSheet.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "myTimesheet",
+        "timesheetId"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "EmployeeTimesheet",
+      "file": "src/client/src/orangehrmTimePlugin/pages/timesheets/EmployeeTimesheet.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [],
+      "testIds": []
+    },
+    {
+      "name": "MyTimesheet",
+      "file": "src/client/src/orangehrmTimePlugin/pages/timesheets/MyTimesheet.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "startDate"
+      ],
+      "testIds": []
+    },
+    {
+      "name": "ViewEmployeeTimesheet",
+      "file": "src/client/src/orangehrmTimePlugin/pages/timesheets/ViewEmployeeTimesheet.vue",
+      "kind": "page",
+      "framework": "Vue",
+      "props": [
+        "employee",
+        "startDate"
+      ],
+      "testIds": []
+    }
+  ]
+}

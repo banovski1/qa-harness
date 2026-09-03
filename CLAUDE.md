@@ -8,10 +8,18 @@ A pipeline that turns a running web app into a Playwright test framework. The ma
 driving a real browser; everything downstream of the map is deterministic.
 
 ```
+                            ┌─ scripts/repo-analyzer ──► analysis/   (static: components, routes, URLs, API)
+a local clone of the app ───┤   (four skills, no browser)      │
+                            └──────────────────────────────────┼── informs ─┐
+                                                                            ▼
 scripts/app-config.yaml ──► smart-map skill ──► ui-map-results/ ──► scripts/framework-generator ──► generated-framework/
    (login + conventions)     (walks the app,     (the application map)   (renders page objects)      (a real Playwright project)
                               module by module)
 ```
+
+The analyzer branch is optional and read-only: it needs a **local clone** of the app under test, and it
+tells the browser-driven half what exists before it opens a browser. `analysis/` never feeds the
+generator directly — nothing enters the map without a live pass.
 
 `scripts/` holds the config and the generator, `ui-map-results/` holds the map, `generated-framework/`
 holds the committed output. Every path in the configs is relative to the **repo root**, so always run
@@ -23,6 +31,15 @@ is a config edit plus a re-walk.
 ## Commands
 
 ```bash
+# Stage 0 (optional) — static analysis of a local clone of the app under test
+cd scripts/repo-analyzer && npm install
+node scripts/repo-analyzer/detect.mjs     --app ../orangehrm   # what framework, and why
+node scripts/repo-analyzer/components.mjs --app ../orangehrm   # analysis/frontend-components.md
+node scripts/repo-analyzer/routes.mjs     --app ../orangehrm   # analysis/pages-and-routes.md
+node scripts/repo-analyzer/api-docs.mjs   --app ../orangehrm --cross-check openapi-spec.json
+node scripts/repo-analyzer/live-urls.mjs  --path-prefix /web/index.php   # needs routes.mjs first
+node scripts/repo-analyzer/__fixtures__/run.mjs                 # the registry's test suite
+
 # Stage 1 — build or refresh the map: invoke the `smart-map` skill ("map the PIM module").
 #           There is no crawler script; the skill drives playwright-cli itself.
 node scripts/framework-generator/check-map.mjs    # gate: schema + shared-nav invariants
@@ -83,6 +100,24 @@ and `within:` scoping working.
 **The login flow is not in the map** — the mapping skill logs in before it walks. The generator reads the login locators from `scripts/app-config.yaml` (`loginConfig:` in `generator-config.yaml`) to emit a working login helper. Credentials never flow through: they come from `APP_USERNAME`/`APP_PASSWORD` in the generated project's `.env`.
 
 **`.gitattributes` pins `eol=lf`** because the generator writes LF and `generated-framework/` is committed. Do not relax it — under Windows `core.autocrlf` every generated file would show as modified with no content change.
+
+**The repo analyzer never branches on the app.** `scripts/repo-analyzer/` reads a local clone of the
+application under test and writes the four files in `analysis/`. Framework support lives entirely in
+`registry-frontend.mjs` and `registry-backend.mjs` — `{ id, match, parse, routes }` rows — and
+`detect.mjs` picks the frontend and backend roots by scoring candidate manifests, so a monorepo with an
+installer bundled beside the product resolves to the product. Adding a framework is one registry row
+plus a fixture app under `__fixtures__/`; the four analyzers are framework-blind and must stay that way.
+A parser that silently finds nothing is indistinguishable from an app with nothing to find, which is why
+`__fixtures__/run.mjs` asserts a positive hit per framework and is the suite to run after touching a row.
+
+**`analysis/` is upstream context, never map input.** A `data-testid` found in source is a *candidate*:
+static analysis cannot prove it resolves to exactly one element on a rendered page, and that proof is
+the map's whole contract. Suggested locators are emitted UNVERIFIED and may only enter
+`ui-map-results/` after `smart-map` confirms them live. Similarly `api-documentation.md` is a
+precondition reference for `test-preconditions`, not a promise that an endpoint exists — Tier C records
+what static analysis cannot reach rather than omitting it. Every analysis file carries a provenance
+header (app path, commit, framework, timestamp) so a stale one is visible; re-run the analyzer rather
+than hand-editing.
 
 ## Browser automation rule
 

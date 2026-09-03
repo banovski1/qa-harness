@@ -1,0 +1,1314 @@
+{
+  "app": "/Users/banovski/Projects/orangehrm",
+  "baseUrl": "https://opensource-demo.orangehrmlive.com",
+  "pathPrefix": "/web/index.php",
+  "urls": [
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/addAuthProvider",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/socialMediaAuth/AddProvider.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/addTheme",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/corporateBranding/CorporateBranding.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/editAuthProvider/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/socialMediaAuth/EditProvider.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/editOAuthClient",
+      "params": [],
+      "component": "src/client/src/orangehrmCoreOAuthPlugin/pages/registerOAuthClient/SaveOAuthClient.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/employmentStatus",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/employmentStatus/EmploymentStatus.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/fixLanguageStringErrors/{languageId}",
+      "params": [
+        "languageId"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/languageImport/FixLanguageStringErrors.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/jobCategory",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/jobCategory/JobCategory.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/languageCustomization/{languageId}",
+      "params": [
+        "languageId"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/languageTranslation/languageTranslation.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/languageImport/{languageId}",
+      "params": [
+        "languageId"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/languageImport/LanguageImport.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/languagePackage",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/languagePackage/LanguagePackage.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/ldapConfiguration",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/ldap/LdapConfiguration.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/listMailConfiguration",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/emailConfiguration/ViewEmailConfiguration.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/localization",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/localization/LocalizationConfiguration.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/membership",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationMembership/QualificationMembership.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/nationality",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/nationality/Nationality.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/openIdProvider",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/socialMediaAuth/ProviderList.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/payGrade",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/payGrade/EditPayGrade.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/payGrade/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/payGrade/EditPayGrade.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/registerOAuthClient",
+      "params": [],
+      "component": "src/client/src/orangehrmCoreOAuthPlugin/pages/registerOAuthClient/OAuthClient.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveEducation",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationEducation/EditQualificationEducation.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveEducation/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationEducation/EditQualificationEducation.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveEmploymentStatus",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/employmentStatus/EditEmploymentStatus.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveEmploymentStatus/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/employmentStatus/EditEmploymentStatus.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveJobCategory",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/jobCategory/EditJobCategory.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveJobCategory/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/jobCategory/EditJobCategory.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveJobTitle",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/jobTitle/EditJobTitle.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveJobTitle/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/jobTitle/EditJobTitle.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveLanguages",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationLanguage/EditQualificationLanguage.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveLanguages/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationLanguage/EditQualificationLanguage.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveLicenses",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationLicense/EditLicense.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveLicenses/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationLicense/EditLicense.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveLocation",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/location/EditLocation.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveLocation/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/location/EditLocation.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveMemberships",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationMembership/EditQualificationMembership.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveMemberships/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationMembership/EditQualificationMembership.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveNationality",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/nationality/EditNationality.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveNationality/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/nationality/EditNationality.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveOAuthClient",
+      "params": [],
+      "component": "src/client/src/orangehrmCoreOAuthPlugin/pages/registerOAuthClient/SaveOAuthClient.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveSkills",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationSkill/EditQualificationSkill.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveSkills/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationSkill/EditQualificationSkill.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveSubscriber/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/emailSubscription/EditEmailSubscription.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveSystemUser",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/systemUser/EditSystemUser.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveSystemUser/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/systemUser/EditSystemUser.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveWorkShifts",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/workShift/EditWorkShift.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveWorkShifts/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/workShift/EditWorkShift.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/theme/attachments/image/{imageName}",
+      "params": [
+        "imageName"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/theme/image/{imageName}",
+      "params": [
+        "imageName"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewAdminModule",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewCompanyStructure",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/orgStructure/OrgStructure.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewEducation",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationEducation/QualificationEducation.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewEmailNotification",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/emailSubscription/EmailSubscription.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewJobSpecification/attachId/{attachId}",
+      "params": [
+        "attachId"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewJobTitleList",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/jobTitle/JobTitle.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewLanguagePackage/languageId/{languageId}",
+      "params": [
+        "languageId"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewLanguages",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationLanguage/QualificationLanguage.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewLicenses",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationLicense/License.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewLocations",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/location/LocationList.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewModules",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/moduleConfiguration/EditModuleConfiguration.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewOrganizationGeneralInformation",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/organizationGeneralInformation/ViewOrganizationGeneralInformation.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewPayGrades",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/payGrade/PayGrade.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSkills",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/qualificationSkill/QualificationSkill.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/systemUser/SystemUser.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/workShift",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/workShift/WorkShift.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/workspaceNotificationConfiguration",
+      "params": [],
+      "component": "src/client/src/orangehrmAdminPlugin/pages/workspaceNotification/WorkspaceNotificationConfiguration.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/performance/trackers/{trackerId}/logs/{id}",
+      "params": [
+        "trackerId",
+        "id"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/configure",
+      "params": [],
+      "component": "src/client/src/orangehrmAttendancePlugin/pages/AttendanceConfiguration.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/editAttendanceRecord/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAttendancePlugin/pages/EditAttendance.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/editEmployeeAttendanceRecord/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmAttendancePlugin/pages/EditAttendance.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/proxyPunchInPunchOut",
+      "params": [],
+      "component": "src/client/src/orangehrmAttendancePlugin/pages/PunchIn.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/punchIn",
+      "params": [],
+      "component": "src/client/src/orangehrmAttendancePlugin/pages/PunchIn.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/punchOut",
+      "params": [],
+      "component": "src/client/src/orangehrmAttendancePlugin/pages/PunchOut.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/viewAttendanceRecord",
+      "params": [],
+      "component": "src/client/src/orangehrmAttendancePlugin/pages/ViewEmployeeAttendanceDetailed.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/viewMyAttendanceRecord",
+      "params": [],
+      "component": "src/client/src/orangehrmAttendancePlugin/pages/ViewMyAttendance.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/adminVerify",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/changeWeakPassword/resetCode/{resetCode}",
+      "params": [
+        "resetCode"
+      ],
+      "component": "src/client/src/orangehrmAuthenticationPlugin/pages/ResetWeakPassword.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+      "params": [],
+      "component": "src/client/src/orangehrmAuthenticationPlugin/pages/Login.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/logout",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode",
+      "params": [],
+      "component": "src/client/src/orangehrmAuthenticationPlugin/pages/RequestResetPassword.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestResetPassword",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/resetPassword",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/resetPassword/resetCode/{resetCode}",
+      "params": [
+        "resetCode"
+      ],
+      "component": "src/client/src/orangehrmAuthenticationPlugin/pages/ResetPassword.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/resetWeakPassword",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset",
+      "params": [],
+      "component": "src/client/src/orangehrmAuthenticationPlugin/pages/ResetPasswordSuccess.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordResetFailure",
+      "params": [],
+      "component": "src/client/src/orangehrmAuthenticationPlugin/pages/ResetPasswordFailure.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/validate",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/buzz/photo/{id}",
+      "params": [
+        "id"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz",
+      "params": [],
+      "component": "src/client/src/orangehrmBuzzPlugin/pages/ViewBuzz.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/assignClaim",
+      "params": [],
+      "component": "src/client/src/orangehrmClaimPlugin/pages/assignClaim/AssignClaimRequest.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/assignClaim/id/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmClaimPlugin/pages/assignClaim/AssignClaim.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/requests/{requestId}/attachId/{attachId}",
+      "params": [
+        "requestId",
+        "attachId"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/saveEvents",
+      "params": [],
+      "component": "src/client/src/orangehrmClaimPlugin/pages/EditClaimEvent.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/saveEvents/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmClaimPlugin/pages/EditClaimEvent.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/saveExpense",
+      "params": [],
+      "component": "src/client/src/orangehrmClaimPlugin/pages/claimExpenseTypes/EditClaimExpenseType.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/saveExpense/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmClaimPlugin/pages/claimExpenseTypes/EditClaimExpenseType.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/submitClaim",
+      "params": [],
+      "component": "src/client/src/orangehrmClaimPlugin/pages/submitClaim/SubmitClaimRequest.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/submitClaim/id/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmClaimPlugin/pages/submitClaim/SubmitClaim.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewAssignClaim",
+      "params": [],
+      "component": "src/client/src/orangehrmClaimPlugin/pages/employeeClaims/EmployeeClaims.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewClaim",
+      "params": [],
+      "component": "src/client/src/orangehrmClaimPlugin/pages/myClaims/MyClaims.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewClaimModule",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewEvents",
+      "params": [],
+      "component": "src/client/src/orangehrmClaimPlugin/pages/ClaimEvent.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewExpense",
+      "params": [],
+      "component": "src/client/src/orangehrmClaimPlugin/pages/claimExpenseTypes/ClaimExpenseType.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/core/i18n/messages",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/core/system-check",
+      "params": [],
+      "component": "src/client/src/orangehrmSystemCheckPlugin/pages/SystemCheckScreen.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index",
+      "params": [],
+      "component": "src/client/src/orangehrmDashboardPlugin/pages/ViewDashboard.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory",
+      "params": [],
+      "component": "src/client/src/orangehrmCorporateDirectoryPlugin/pages/CorporateDirectory.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/events/push",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/functional-testing/auth/validate",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/functional-testing/database/create-savepoint",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/functional-testing/database/delete-savepoints",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/functional-testing/database/reset",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/functional-testing/database/restore-to-savepoint",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/functional-testing/truncate-table",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/help/help",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/help/support",
+      "params": [],
+      "component": "src/client/src/orangehrmHelpPlugin/pages/ViewSupport.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/addLeaveEntitlement",
+      "params": [],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/entitlements/EditEntitlement.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/applyLeave",
+      "params": [],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/LeaveApply.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/assignLeave",
+      "params": [],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/LeaveAssign.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/defineLeavePeriod",
+      "params": [],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/configure/LeavePeriod.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/defineLeaveType",
+      "params": [],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/leaveType/EditLeaveType.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/defineLeaveType/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/leaveType/EditLeaveType.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/defineWorkWeek",
+      "params": [],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/configure/WorkWeek.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/editLeaveEntitlement/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/entitlements/EditEntitlement.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/leaveTypeList",
+      "params": [],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/leaveType/LeaveType.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/saveHolidays",
+      "params": [],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/configure/holiday/EditHoliday.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/saveHolidays/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/configure/holiday/EditHoliday.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewHolidayList",
+      "params": [],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/configure/holiday/Holiday.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveBalanceReport",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveEntitlements",
+      "params": [],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/entitlements/LeaveEntitlements.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList",
+      "params": [],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/LeaveList.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveModule",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveRequest/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/LeaveRequest.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewMyLeaveBalanceReport",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewMyLeaveEntitlements",
+      "params": [],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/entitlements/MyLeaveEntitlements.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewMyLeaveList",
+      "params": [],
+      "component": "src/client/src/orangehrmLeavePlugin/pages/MyLeaveList.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/accessEmployeeData",
+      "params": [],
+      "component": "src/client/src/orangehrmMaintenancePlugin/pages/accessEmployee/AccessEmployeeSearchScreen.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/accessEmployeeData/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/purgeCandidateData",
+      "params": [],
+      "component": "src/client/src/orangehrmMaintenancePlugin/pages/PurgeCandidate.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/purgeEmployee",
+      "params": [],
+      "component": "src/client/src/orangehrmMaintenancePlugin/pages/PurgeEmployee.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/viewMaintenanceModule",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/oauth2/authorize",
+      "params": [],
+      "component": "src/client/src/orangehrmCoreOAuthPlugin/pages/oauth/OAuthAuthorize.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/oauth2/authorize/consent",
+      "params": [],
+      "component": "src/client/src/orangehrmCoreOAuthPlugin/pages/oauth/OAuthAuthorize.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/oauth2/token",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/openidauth/openIdCredentials",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/openidauth/openIdCredentials/{providerId}",
+      "params": [
+        "providerId"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/addPerformanceTracker",
+      "params": [],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/EditPerformanceTracker.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/addPerformanceTracker/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/EditPerformanceTracker.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/addPerformanceTrackerLog/trackId/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/EmployeeTrackerLogs.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/myPerformanceReview",
+      "params": [],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/MyReviews.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/reviewEvaluate/id/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/SelfEvaluation.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/reviewEvaluateByAdmin/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/AdminEvaluation.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/saveKpi",
+      "params": [],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/KpiEdit.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/saveKpi/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/KpiEdit.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/saveReview",
+      "params": [],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/EditReview.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/saveReview/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/EditReview.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview",
+      "params": [],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/ReviewList.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchKpi",
+      "params": [],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/KpiSearch.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchPerformanceReview",
+      "params": [],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/ReviewSearch.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/viewEmployeePerformanceTrackerList",
+      "params": [],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/EmployeeTrackers.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/viewMyPerformanceTrackerList",
+      "params": [],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/MyTracker.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/viewPerformanceModule",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/viewPerformanceTracker",
+      "params": [],
+      "component": "src/client/src/orangehrmPerformancePlugin/pages/PerformanceTrackers.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee",
+      "params": [],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/SaveEmployee.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/configurePim",
+      "params": [],
+      "component": "src/client/src/orangehrmPimPlugin/pages/optionalField/OptionalField.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/contactDetails/empNumber/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeContactDetails.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/definePredefinedReport",
+      "params": [],
+      "component": "src/client/src/orangehrmPimPlugin/pages/reports/EditEmployeeReport.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/definePredefinedReport/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/reports/EditEmployeeReport.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/displayPredefinedReport/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/reports/ViewEmployeeReport.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/listCustomFields",
+      "params": [],
+      "component": "src/client/src/orangehrmPimPlugin/pages/customField/CustomField.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/pimCsvImport",
+      "params": [],
+      "component": "src/client/src/orangehrmPimPlugin/pages/dataImport/EmployeeDataImport.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/sampleCsvDownload",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/saveCustomFields",
+      "params": [],
+      "component": "src/client/src/orangehrmPimPlugin/pages/customField/EditCustomField.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/saveCustomFields/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/customField/EditCustomField.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/saveReportingMethod",
+      "params": [],
+      "component": "src/client/src/orangehrmPimPlugin/pages/reportingMethod/EditReportingMethod.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/saveReportingMethod/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/reportingMethod/EditReportingMethod.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/saveTerminationReasons",
+      "params": [],
+      "component": "src/client/src/orangehrmPimPlugin/pages/terminationReason/EditTerminationReason.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/saveTerminationReasons/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/terminationReason/EditTerminationReason.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/updatePassword",
+      "params": [],
+      "component": "src/client/src/orangehrmPimPlugin/pages/updatePassword/UpdatePassword.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewAttachment/empNumber/{empNumber}/attachId/{attachId}",
+      "params": [
+        "empNumber",
+        "attachId"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewDefinedPredefinedReports",
+      "params": [],
+      "component": "src/client/src/orangehrmPimPlugin/pages/reports/ViewEmployeeReport.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewDependents/empNumber/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeDependents.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmergencyContacts/empNumber/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeEmergencyContacts.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList",
+      "params": [],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/Employee.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewImmigration/empNumber/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeImmigration.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewJobDetails/empNumber/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeJob.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewMemberships/empNumber/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeMembership.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewMyDetails",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeePersonalDetails.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPhoto/empNumber/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPhotograph/empNumber/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeProfilePicture.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPimModule",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewQualifications/empNumber/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeQualifications.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewReportingMethods",
+      "params": [],
+      "component": "src/client/src/orangehrmPimPlugin/pages/reportingMethod/ReportingMethod.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewReportToDetails/empNumber/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeReportTo.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewSalaryList/empNumber/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeSalary.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewTerminationReasons",
+      "params": [],
+      "component": "src/client/src/orangehrmPimPlugin/pages/terminationReason/TerminationReason.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewUsTaxExemptions/empNumber/{empNumber}",
+      "params": [
+        "empNumber"
+      ],
+      "component": "src/client/src/orangehrmPimPlugin/pages/employee/EmployeeTaxExemption.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/addCandidate",
+      "params": [],
+      "component": "src/client/src/orangehrmRecruitmentPlugin/pages/ViewCandidateProfile.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/addCandidate/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmRecruitmentPlugin/pages/ViewCandidateProfile.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/addJobVacancy",
+      "params": [],
+      "component": "src/client/src/orangehrmRecruitmentPlugin/pages/AddJobVacancy.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/addJobVacancy/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmRecruitmentPlugin/pages/EditJobVacancy.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/candidateHistory/{candidateId}/{historyId}",
+      "params": [
+        "candidateId",
+        "historyId"
+      ],
+      "component": "src/client/src/orangehrmRecruitmentPlugin/pages/ViewActionHistory.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/changeCandidateVacancyStatus",
+      "params": [],
+      "component": "src/client/src/orangehrmRecruitmentPlugin/pages/ShortlistAction.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/interviewAttachments/{interviewId}",
+      "params": [
+        "interviewId"
+      ],
+      "component": "src/client/src/orangehrmRecruitmentPlugin/pages/ViewInterviewAttachments.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/public/applicants",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidateAttachment/candidateId/{candidateId}",
+      "params": [
+        "candidateId"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates",
+      "params": [],
+      "component": "src/client/src/orangehrmRecruitmentPlugin/pages/ViewCandidatesList.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewInterviewAttachment/interview/{interviewId}/attachment/{attachmentId}",
+      "params": [
+        "interviewId",
+        "attachmentId"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewJobVacancy",
+      "params": [],
+      "component": "src/client/src/orangehrmRecruitmentPlugin/pages/ViewJobVacancy.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewRecruitmentModule",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewVacancyAttachment/attachId/{attachId}",
+      "params": [
+        "attachId"
+      ],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitmentApply/applyVacancy/id/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmRecruitmentPlugin/pages/ApplyJobVacancy.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitmentApply/jobs.html",
+      "params": [],
+      "component": "src/client/src/orangehrmRecruitmentPlugin/pages/VacancyList.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitmentApply/jobs.rss",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/addCustomer",
+      "params": [],
+      "component": "src/client/src/orangehrmTimePlugin/pages/customer/EditCustomer.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/addCustomer/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmTimePlugin/pages/customer/EditCustomer.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/defineTimesheetPeriod",
+      "params": [],
+      "component": "src/client/src/orangehrmTimePlugin/pages/configure/TimeSheetPeriod.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/displayAttendanceSummaryReportCriteria",
+      "params": [],
+      "component": "src/client/src/orangehrmAttendancePlugin/pages/AttendanceSummaryReport.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/displayEmployeeReportCriteria",
+      "params": [],
+      "component": "src/client/src/orangehrmTimePlugin/pages/reports/EmployeeTimeReport.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/displayProjectActivityDetailsReport",
+      "params": [],
+      "component": "src/client/src/orangehrmTimePlugin/pages/reports/ActivityDetailsReport.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/displayProjectReportCriteria",
+      "params": [],
+      "component": "src/client/src/orangehrmTimePlugin/pages/reports/ProjectActivityReport.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/editTimesheet/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmTimePlugin/pages/timesheets/EditTimeSheet.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/saveProject",
+      "params": [],
+      "component": "src/client/src/orangehrmTimePlugin/pages/project/ProjectEdit.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/saveProject/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmTimePlugin/pages/project/ProjectEdit.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewCustomers",
+      "params": [],
+      "component": "src/client/src/orangehrmTimePlugin/pages/customer/Customer.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet",
+      "params": [],
+      "component": "src/client/src/orangehrmTimePlugin/pages/timesheets/ViewEmployeeTimesheet.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewMyTimesheet",
+      "params": [],
+      "component": "src/client/src/orangehrmTimePlugin/pages/timesheets/MyTimesheet.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewProjects",
+      "params": [],
+      "component": "src/client/src/orangehrmTimePlugin/pages/project/Project.vue"
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewTimeModule",
+      "params": [],
+      "component": null
+    },
+    {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewTimesheet/employeeId/{id}",
+      "params": [
+        "id"
+      ],
+      "component": "src/client/src/orangehrmTimePlugin/pages/timesheets/ViewEmployeeTimesheet.vue"
+    }
+  ]
+}

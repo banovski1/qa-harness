@@ -1,0 +1,20 @@
+{
+  "name": "repo-analyzer",
+  "version": "1.0.0",
+  "description": "Static analysis of a local application repo. Detects the frontend and backend frameworks, then writes the component, route, URL and API reference files under analysis/.",
+  "type": "module",
+  "scripts": {
+    "detect": "cd ../.. && node scripts/repo-analyzer/detect.mjs",
+    "fixtures": "node __fixtures__/run.mjs"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.24.0",
+    "@babel/traverse": "^7.24.0",
+    "@vue/compiler-sfc": "^3.4.0",
+    "js-yaml": "^4.1.0",
+    "svelte": "^4.2.0"
+  },
+  "optionalDependencies": {
+    "@angular/compiler": "^17.3.0"
+  }
+}

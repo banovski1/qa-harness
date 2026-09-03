@@ -1,0 +1,3137 @@
+{
+  "app": "/Users/banovski/Projects/orangehrm",
+  "tier": "B",
+  "how": "Symfony — config/routes*.yaml + #[Route] attributes",
+  "endpoints": [
+    {
+      "path": "/api/v2/admin/educations",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EducationAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/educations/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EducationAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/email-configuration",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmailConfigurationAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/email-subscriptions",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmailSubscriptionAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/email-subscriptions/{emailSubscriptionId}/subscribers",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmailSubscriberAPI",
+      "params": [
+        "emailSubscriptionId"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/email-subscriptions/{emailSubscriptionId}/subscribers/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmailSubscriberAPI",
+      "params": [
+        "emailSubscriptionId",
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/email-subscriptions/{id}",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "EmailSubscriptionAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/employment-statuses",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmploymentStatusAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/employment-statuses/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmploymentStatusAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/i18n/groups",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "I18NGroupAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/i18n/languages",
+      "methods": [
+        "DELETE",
+        "GET"
+      ],
+      "purpose": "I18NLanguageAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/i18n/languages/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "I18NLanguageAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/i18n/languages/{languageId}/import",
+      "methods": [
+        "POST"
+      ],
+      "purpose": "I18NTranslationImportAPI",
+      "params": [
+        "languageId"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/i18n/languages/{languageId}/translations",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "I18NTranslationAPI",
+      "params": [
+        "languageId"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/i18n/languages/{languageId}/translations/bulk",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "I18NTranslationBulkAPI",
+      "params": [
+        "languageId"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/i18n/languages/{languageId}/translations/errors",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "I18NImportErrorAPI",
+      "params": [
+        "languageId"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/i18n/translation/{langStringId}/validate",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "I18NTranslationValidationAPI",
+      "params": [
+        "langStringId"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/job-categories",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "JobCategoryAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/job-categories/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "JobCategoryAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/job-titles",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "JobTitleAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/job-titles/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "JobTitleAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/job-titles/{jobTitleId}/specification",
+      "methods": [
+        "DELETE",
+        "GET",
+        "PUT"
+      ],
+      "purpose": "JobSpecificationAPI",
+      "params": [
+        "jobTitleId"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/languages",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "LanguageAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/languages/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "LanguageAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/ldap-config",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "LDAPConfigAPI",
+      "params": [],
+      "source": "plugins/orangehrmLDAPAuthenticationPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/ldap-test-connection",
+      "methods": [
+        "POST"
+      ],
+      "purpose": "LDAPTestConnectionAPI",
+      "params": [],
+      "source": "plugins/orangehrmLDAPAuthenticationPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/ldap/user-sync",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "purpose": "LDAPUserSyncAPI",
+      "params": [],
+      "source": "plugins/orangehrmLDAPAuthenticationPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/licenses",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "LicenseAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/licenses/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "LicenseAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/localization",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "LocalizationAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/locations",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "LocationAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/locations/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "LocationAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/memberships",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "MembershipAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/memberships/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "MembershipAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/modules",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "ModulesAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/nationalities",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "NationalityAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/nationalities/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "NationalityAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/oauth-clients",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "OAuthClientAPI",
+      "params": [],
+      "source": "plugins/orangehrmCoreOAuthPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/oauth-clients/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "OAuthClientAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmCoreOAuthPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/organization",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "OrganizationAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/pay-grades",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "PayGradeAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/pay-grades/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "PayGradeAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/pay-grades/{payGradeId}/currencies",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "PayGradeCurrencyAPI",
+      "params": [
+        "payGradeId"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/pay-grades/{payGradeId}/currencies/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "PayGradeCurrencyAPI",
+      "params": [
+        "payGradeId",
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/pay-grades/{payGradeId}/currencies/allowed",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "PayGradeAllowedCurrencyAPI",
+      "params": [
+        "payGradeId"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/skills",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "SkillAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/skills/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "SkillAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/subunits",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "purpose": "SubunitAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/subunits/{id}",
+      "methods": [
+        "DELETE",
+        "GET",
+        "PUT"
+      ],
+      "purpose": "SubunitAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/theme",
+      "methods": [
+        "DELETE",
+        "GET",
+        "PUT"
+      ],
+      "purpose": "ThemeAPI",
+      "params": [],
+      "source": "plugins/orangehrmCorporateBrandingPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/theme/preview",
+      "methods": [
+        "POST"
+      ],
+      "purpose": "PreviewThemeAPI",
+      "params": [],
+      "source": "plugins/orangehrmCorporateBrandingPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/users",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "UserAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/users/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "UserAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/validation/user-name",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "ValidationUserNameAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/work-shifts",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "WorkShiftAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/work-shifts/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "WorkShiftAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/work-shifts/employees",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "WorkShiftEmployeeAPI",
+      "params": [],
+      "source": "plugins/orangehrmAdminPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/workspace-notification/config",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "WorkspaceNotificationConfigAPI",
+      "params": [],
+      "source": "plugins/orangehrmWorkspaceNotificationsPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/workspace-notification/registrations",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "WorkspaceNotificationRegistrationAPI",
+      "params": [],
+      "source": "plugins/orangehrmWorkspaceNotificationsPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/workspace-notification/registrations/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "WorkspaceNotificationRegistrationAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmWorkspaceNotificationsPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/workspace-notification/registrations/{id}/test",
+      "methods": [
+        "POST"
+      ],
+      "purpose": "WorkspaceNotificationTestWebhookAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmWorkspaceNotificationsPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/admin/workspace-notification/registrations/test",
+      "methods": [
+        "POST"
+      ],
+      "purpose": "WorkspaceNotificationTestWebhookAPI",
+      "params": [],
+      "source": "plugins/orangehrmWorkspaceNotificationsPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/attendance/configs",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "AttendanceConfigurationAPI",
+      "params": [],
+      "source": "plugins/orangehrmAttendancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/attendance/current-datetime",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "CurrentDateTimeAPI",
+      "params": [],
+      "source": "plugins/orangehrmAttendancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/attendance/employees/{empNumber}/records",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST",
+        "PUT"
+      ],
+      "purpose": "EmployeeAttendanceRecordAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmAttendancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/attendance/employees/summary",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeAttendanceSummaryAPI",
+      "params": [],
+      "source": "plugins/orangehrmAttendancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/attendance/punch-in/overlaps",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "AttendancePunchInRecordOverlapAPI",
+      "params": [],
+      "source": "plugins/orangehrmAttendancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/attendance/punch-out/overlaps",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "AttendancePunchOutRecordOverlapAPI",
+      "params": [],
+      "source": "plugins/orangehrmAttendancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/attendance/records",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST",
+        "PUT"
+      ],
+      "purpose": "MyAttendanceRecordAPI",
+      "params": [],
+      "source": "plugins/orangehrmAttendancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/attendance/records/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "AttendanceRecordAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmAttendancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/attendance/records/latest",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeLatestAttendanceRecordAPI",
+      "params": [],
+      "source": "plugins/orangehrmAttendancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/attendance/records/punch-in-overlaps",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "AttendanceEditPunchInRecordOverlapAPI",
+      "params": [],
+      "source": "plugins/orangehrmAttendancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/attendance/records/punch-out-overlaps",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "AttendanceEditPunchOutRecordOverlapAPI",
+      "params": [],
+      "source": "plugins/orangehrmAttendancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/attendance/timezones",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "TimezonesAPI",
+      "params": [],
+      "source": "plugins/orangehrmAttendancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/auth/openid-providers",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "ProviderAPI",
+      "params": [],
+      "source": "plugins/orangehrmOpenidAuthenticationPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/auth/openid-providers/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "ProviderAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmOpenidAuthenticationPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/auth/public/validation/password",
+      "methods": [
+        "POST"
+      ],
+      "purpose": "PasswordStrengthValidationAPI",
+      "params": [],
+      "source": "plugins/orangehrmAuthenticationPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/buzz/anniversaries",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeAnniversaryAPI",
+      "params": [],
+      "source": "plugins/orangehrmBuzzPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/buzz/comments/{commentId}/likes",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "BuzzLikeOnCommentAPI",
+      "params": [
+        "commentId"
+      ],
+      "source": "plugins/orangehrmBuzzPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/buzz/feed",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "BuzzFeedAPI",
+      "params": [],
+      "source": "plugins/orangehrmBuzzPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/buzz/posts",
+      "methods": [
+        "POST"
+      ],
+      "purpose": "BuzzPostAPI",
+      "params": [],
+      "source": "plugins/orangehrmBuzzPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/buzz/posts/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "BuzzPostAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmBuzzPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/buzz/posts/{postId}/shares",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "BuzzPostShareAPI",
+      "params": [
+        "postId"
+      ],
+      "source": "plugins/orangehrmBuzzPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/buzz/shares",
+      "methods": [
+        "POST"
+      ],
+      "purpose": "BuzzShareAPI",
+      "params": [],
+      "source": "plugins/orangehrmBuzzPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/buzz/shares/{id}",
+      "methods": [
+        "DELETE",
+        "PUT"
+      ],
+      "purpose": "BuzzShareAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmBuzzPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/buzz/shares/{shareId}/comments",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "purpose": "BuzzCommentAPI",
+      "params": [
+        "shareId"
+      ],
+      "source": "plugins/orangehrmBuzzPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/buzz/shares/{shareId}/comments/{commentId}",
+      "methods": [
+        "DELETE",
+        "GET",
+        "PUT"
+      ],
+      "purpose": "BuzzCommentAPI",
+      "params": [
+        "shareId",
+        "commentId"
+      ],
+      "source": "plugins/orangehrmBuzzPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/buzz/shares/{shareId}/likes",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "BuzzLikeOnShareAPI",
+      "params": [
+        "shareId"
+      ],
+      "source": "plugins/orangehrmBuzzPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/buzz/validation/links",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "BuzzVideoURLValidationAPI",
+      "params": [],
+      "source": "plugins/orangehrmBuzzPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/employees/{empNumber}/requests",
+      "methods": [
+        "POST"
+      ],
+      "purpose": "EmployeeClaimRequestAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/employees/{empNumber}/requests/{id}",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeClaimRequestAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/employees/requests",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeClaimRequestAPI",
+      "params": [],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/events",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "ClaimEventAPI",
+      "params": [],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/events/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "ClaimEventAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/expenses/types",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "ClaimExpenseTypeAPI",
+      "params": [],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/expenses/types/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "ClaimExpenseTypeAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/requests",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "purpose": "MyClaimRequestAPI",
+      "params": [],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/requests/{id}",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "MyClaimRequestAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/requests/{requestId}/action",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "ClaimRequestActionAPI",
+      "params": [
+        "requestId"
+      ],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/requests/{requestId}/attachments",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "ClaimAttachmentAPI",
+      "params": [
+        "requestId"
+      ],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/requests/{requestId}/attachments/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "ClaimAttachmentAPI",
+      "params": [
+        "requestId",
+        "id"
+      ],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/requests/{requestId}/expenses",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "ClaimExpenseAPI",
+      "params": [
+        "requestId"
+      ],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/claim/requests/{requestId}/expenses/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "ClaimExpenseAPI",
+      "params": [
+        "requestId",
+        "id"
+      ],
+      "source": "plugins/orangehrmClaimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/core/about",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "AboutOrganizationAPI",
+      "params": [],
+      "source": "plugins/orangehrmCorePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/core/data-groups",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "DataGroupAPI",
+      "params": [],
+      "source": "plugins/orangehrmCorePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/core/public/version",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "VersionAPI",
+      "params": [],
+      "source": "plugins/orangehrmCorePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/core/system-check",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "SystemCheckAPI",
+      "params": [],
+      "source": "plugins/orangehrmSystemCheckPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/core/validation/unique",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "ValidationUniqueAPI",
+      "params": [],
+      "source": "plugins/orangehrmCorePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/dashboard/config/employee-on-leave-today",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeOnLeaveTodayConfigAPI",
+      "params": [],
+      "source": "plugins/orangehrmDashboardPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/dashboard/employees/action-summary",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeActionSummaryAPI",
+      "params": [],
+      "source": "plugins/orangehrmDashboardPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/dashboard/employees/leaves",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeOnLeaveAPI",
+      "params": [],
+      "source": "plugins/orangehrmDashboardPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/dashboard/employees/locations",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeDistributionByLocationAPI",
+      "params": [],
+      "source": "plugins/orangehrmDashboardPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/dashboard/employees/subunit",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeDistributionBySubunitAPI",
+      "params": [],
+      "source": "plugins/orangehrmDashboardPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/dashboard/employees/time-at-work",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeTimeAtWorkAPI",
+      "params": [],
+      "source": "plugins/orangehrmDashboardPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/dashboard/shortcuts",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "QuickLaunchAPI",
+      "params": [],
+      "source": "plugins/orangehrmDashboardPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/directory/employees",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeDirectoryAPI",
+      "params": [],
+      "source": "plugins/orangehrmCorporateDirectoryPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/directory/employees/{empNumber}",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeDirectoryAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmCorporateDirectoryPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/employees/{empNumber}/leave-entitlements",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeLeaveEntitlementAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/employees/leave-balances",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeLeaveBalanceAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/employees/leave-entitlements",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeLeaveEntitlementAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/employees/leave-requests",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeLeaveRequestAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/employees/leave-requests/{leaveRequestId}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeLeaveRequestAPI",
+      "params": [
+        "leaveRequestId"
+      ],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/employees/leave-requests/bulk",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "EmployeeBulkLeaveRequestAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/employees/leaves",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeLeaveAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/holidays",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "HolidayAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/holidays/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "HolidayAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leave-balance/leave-type/{leaveTypeId}",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "LeaveBalanceAPI",
+      "params": [
+        "leaveTypeId"
+      ],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leave-entitlements",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "LeaveEntitlementAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leave-entitlements/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "LeaveEntitlementAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leave-entitlements/{id}/validation/entitlements",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "ValidationLeaveEntitlementValueAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leave-period",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "LeavePeriodAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leave-periods",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "LeavePeriodAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leave-requests",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "MyLeaveRequestAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leave-requests/{leaveRequestId}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "MyLeaveRequestAPI",
+      "params": [
+        "leaveRequestId"
+      ],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leave-requests/{leaveRequestId}/leave-comments",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "purpose": "LeaveRequestCommentAPI",
+      "params": [
+        "leaveRequestId"
+      ],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leave-requests/{leaveRequestId}/leaves",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "LeaveAPI",
+      "params": [
+        "leaveRequestId"
+      ],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leave-types",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "LeaveTypeAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leave-types/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "LeaveTypeAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leave-types/eligible",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EligibleLeaveTypeAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leaves/{leaveId}",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "LeaveAPI",
+      "params": [
+        "leaveId"
+      ],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leaves/{leaveId}/leave-comments",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "purpose": "LeaveCommentAPI",
+      "params": [
+        "leaveId"
+      ],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/leaves/bulk",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "BulkLeaveAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/overlap-leaves",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "LeaveOverlapAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/reports",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "LeaveReportAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/reports/data",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "LeaveReportDataAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/leave/workweek",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "WorkWeekAPI",
+      "params": [],
+      "source": "plugins/orangehrmLeavePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/maintenance/candidates",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "PurgeCandidateAPI",
+      "params": [],
+      "source": "plugins/orangehrmMaintenancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/maintenance/candidates/purge",
+      "methods": [
+        "DELETE"
+      ],
+      "purpose": "PurgeCandidateAPI",
+      "params": [],
+      "source": "plugins/orangehrmMaintenancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/maintenance/purge",
+      "methods": [
+        "DELETE"
+      ],
+      "purpose": "PurgeEmployeeAPI",
+      "params": [],
+      "source": "plugins/orangehrmMaintenancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/mobile/menus",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "MenuItemAPI",
+      "params": [],
+      "source": "plugins/orangehrmMobilePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/config/trackers",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "PerformanceTrackerAPI",
+      "params": [],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/config/trackers/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "PerformanceTrackerAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/employees/reviews",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "ReviewListAPI",
+      "params": [],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/employees/trackers",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeTrackerAPI",
+      "params": [],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/employees/trackers/{id}",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeTrackerAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/kpis",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "KpiAPI",
+      "params": [],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/kpis/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "KpiAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/manage/reviews",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "PerformanceReviewAPI",
+      "params": [],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/manage/reviews/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "PerformanceReviewAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/reviews",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "MyReviewAPI",
+      "params": [],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/reviews/{reviewId}/actions/allowed",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "PerformanceReviewAllowedActionsAPI",
+      "params": [
+        "reviewId"
+      ],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/reviews/{reviewId}/evaluation/employee",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeEvaluationAPI",
+      "params": [
+        "reviewId"
+      ],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/reviews/{reviewId}/evaluation/final",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "PerformanceReviewFinalEvaluationAPI",
+      "params": [
+        "reviewId"
+      ],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/reviews/{reviewId}/evaluation/supervisor",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "SupervisorEvaluationAPI",
+      "params": [
+        "reviewId"
+      ],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/reviews/{reviewId}/kpis",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "ReviewKpiAPI",
+      "params": [
+        "reviewId"
+      ],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/supervisors",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "ReviewEmployeeSupervisorAPI",
+      "params": [],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/trackers",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "MyTrackerAPI",
+      "params": [],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/trackers/{trackerId}/logs",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "PerformanceTrackerLogAPI",
+      "params": [
+        "trackerId"
+      ],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/performance/trackers/reviewers",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "PerformanceTrackerReviewerAPI",
+      "params": [],
+      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/csv-import",
+      "methods": [
+        "POST"
+      ],
+      "purpose": "EmployeeCSVImportAPI",
+      "params": [],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/custom-fields",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "CustomFieldAPI",
+      "params": [],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/custom-fields/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "CustomFieldAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employee/{empNumber}/contact-details",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeContactDetailsAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeAPI",
+      "params": [],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/contact-details/validation/other-emails",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "ValidationEmployeeOtherEmailAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/contact-details/validation/work-emails",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "ValidationEmployeeEmailAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/custom-fields",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeCustomFieldAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/dependents",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeDependentAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/dependents/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeDependentAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/educations",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeEducationAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/educations/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeEducationAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/emergency-contacts",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmpEmergencyContactAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/emergency-contacts/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmpEmergencyContactAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/employment-contract",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmploymentContractAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/immigrations",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeImmigrationRecordAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/immigrations/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeImmigrationRecordAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/job-details",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeJobDetailAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/languages",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeLanguageAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/languages/{languageId}/fluencies/{fluencyId}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeLanguageAPI",
+      "params": [
+        "empNumber",
+        "languageId",
+        "fluencyId"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/languages/allowed",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeAllowedLanguageAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/licenses",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeLicenseAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/licenses/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeLicenseAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/licenses/allowed",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeAllowedLicenseAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/memberships",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeMembershipAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/memberships/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeMembershipAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/personal-details",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeePersonalDetailAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/picture",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeePictureAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/report-to/allowed",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeAllowedReportToEmployeeAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/salary-components",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeSalaryComponentAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/salary-components/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeSalaryComponentAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/screen/{screen}/attachments",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeAttachmentAPI",
+      "params": [
+        "empNumber",
+        "screen"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/screen/{screen}/attachments/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeAttachmentAPI",
+      "params": [
+        "empNumber",
+        "screen",
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/skills",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeSkillAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/skills/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeSkillAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/skills/allowed",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeAllowedSkillAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/subordinates",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeSubordinateAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/subordinates/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeSubordinateAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/supervisors",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeSupervisorAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/supervisors/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeSupervisorAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/tax-exemption",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmpUsTaxExemptionAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/terminations",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeTerminationAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/terminations/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeTerminationAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/work-experiences",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeWorkExperienceAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/work-experiences/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeWorkExperienceAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/{empNumber}/work-shift",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeWorkShiftAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/employees/count",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeCountAPI",
+      "params": [],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/myself",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "MyInfoAPI",
+      "params": [],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/optional-field",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "OptionalFieldAPI",
+      "params": [],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/reporting-methods",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "ReportingMethodConfigurationAPI",
+      "params": [],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/reporting-methods/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "ReportingMethodConfigurationAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/reports",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "PimReportAPI",
+      "params": [],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/reports/data",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "PimReportDataAPI",
+      "params": [],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/reports/defined",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "PimDefinedReportAPI",
+      "params": [],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/reports/defined/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "PimDefinedReportAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/termination-reasons",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "TerminationReasonConfigurationAPI",
+      "params": [],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/termination-reasons/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "TerminationReasonConfigurationAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/pim/update-password",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "UpdatePasswordAPI",
+      "params": [],
+      "source": "plugins/orangehrmPimPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidate/{candidateId}/attachment",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "CandidateAttachmentAPI",
+      "params": [
+        "candidateId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidate/attachments",
+      "methods": [
+        "POST"
+      ],
+      "purpose": "CandidateAttachmentAPI",
+      "params": [],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "CandidateAPI",
+      "params": [],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/{candidateId}/actions/allowed",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "CandidateAllowedActionAPI",
+      "params": [
+        "candidateId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/{candidateId}/hire",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "CandidateHiringAPI",
+      "params": [
+        "candidateId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/{candidateId}/history",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "CandidateHistoryAPI",
+      "params": [
+        "candidateId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/{candidateId}/history/{historyId}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "CandidateHistoryAPI",
+      "params": [
+        "candidateId",
+        "historyId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/{candidateId}/interviews/{interviewId}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "CandidateInterviewSchedulingAPI",
+      "params": [
+        "candidateId",
+        "interviewId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/{candidateId}/interviews/{interviewId}/fail",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "CandidateMarkingInterviewFailAPI",
+      "params": [
+        "candidateId",
+        "interviewId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/{candidateId}/interviews/{interviewId}/pass",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "CandidateMarkingInterviewPassAPI",
+      "params": [
+        "candidateId",
+        "interviewId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/{candidateId}/job/decline",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "CandidateOfferDecliningAPI",
+      "params": [
+        "candidateId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/{candidateId}/job/offer",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "CandidateJobOfferingAPI",
+      "params": [
+        "candidateId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/{candidateId}/reject",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "CandidateRejectionAPI",
+      "params": [
+        "candidateId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/{candidateId}/shedule-interview",
+      "methods": [
+        "POST"
+      ],
+      "purpose": "CandidateInterviewSchedulingAPI",
+      "params": [
+        "candidateId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/{candidateId}/shortlist",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "CandidateShortlistingAPI",
+      "params": [
+        "candidateId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "CandidateAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/candidates/statuses",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "CandidateStatusAPI",
+      "params": [],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/hiring-managers",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "HiringManagerAPI",
+      "params": [],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/interviewers",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeListAPI",
+      "params": [],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/interviews/{interviewId}/attachments",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "InterviewAttachmentAPI",
+      "params": [
+        "interviewId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/interviews/{interviewId}/attachments/{attachmentId}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "InterviewAttachmentAPI",
+      "params": [
+        "interviewId",
+        "attachmentId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/public/vacancies",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "VacancyListRestController::handle",
+      "params": [],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/public/vacancies/{id}",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "VacancyRestController::handle",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/vacancies",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "VacancyAPI",
+      "params": [],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/vacancies/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "VacancyAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/vacancies/{vacancyId}/attachments",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "VacancyAttachmentAPI",
+      "params": [
+        "vacancyId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/vacancies/{vacancyId}/attachments/{attachmentId}",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "VacancyAttachmentAPI",
+      "params": [
+        "vacancyId",
+        "attachmentId"
+      ],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/recruitment/vacancy/attachments",
+      "methods": [
+        "DELETE",
+        "POST"
+      ],
+      "purpose": "VacancyAttachmentAPI",
+      "params": [],
+      "source": "plugins/orangehrmRecruitmentPlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/config/time-format",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "TimesheetTimeFormatAPI",
+      "params": [],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/customers",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "CustomerAPI",
+      "params": [],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/customers/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "CustomerAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/employees/{empNumber}/timesheets",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "purpose": "EmployeeTimesheetAPI",
+      "params": [
+        "empNumber"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/employees/{empNumber}/timesheets/{id}",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "EmployeeTimesheetAPI",
+      "params": [
+        "empNumber",
+        "id"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/employees/timesheets/{timesheetId}/entries",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "EmployeeTimesheetItemAPI",
+      "params": [
+        "timesheetId"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/employees/timesheets/list",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "EmployeeTimesheetListAPI",
+      "params": [],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/project-admins",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "ProjectAdminAPI",
+      "params": [],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/project/{projectId}/activities",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "ProjectActivityAPI",
+      "params": [
+        "projectId"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/project/{projectId}/activities/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "ProjectActivityAPI",
+      "params": [
+        "projectId",
+        "id"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/projects",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "purpose": "ProjectAPI",
+      "params": [],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/projects/{id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "ProjectAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/projects/{toProjectId}/activities/copy/{fromProjectId}",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "purpose": "CopyProjectActivityAPI",
+      "params": [
+        "toProjectId",
+        "fromProjectId"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/reports",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "TimeReportAPI",
+      "params": [],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/reports/data",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "TimeReportDataAPI",
+      "params": [],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/time-sheet-period",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "TimeConfigPeriodAPI",
+      "params": [],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/timesheets",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "purpose": "MyTimesheetAPI",
+      "params": [],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/timesheets/{id}",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "MyTimesheetAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/timesheets/{timesheetId}/action-logs",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "TimesheetActionLogAPI",
+      "params": [
+        "timesheetId"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/timesheets/{timesheetId}/entries",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "purpose": "MyTimesheetItemAPI",
+      "params": [
+        "timesheetId"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/timesheets/{timesheetId}/entries/{id}/comment",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "TimesheetCommentAPI",
+      "params": [
+        "timesheetId",
+        "id"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/timesheets/{timesheetId}/entries/comment",
+      "methods": [
+        "PUT"
+      ],
+      "purpose": "TimesheetCommentAPI",
+      "params": [
+        "timesheetId"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/timesheets/default",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "DefaultTimesheetAPI",
+      "params": [],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/validation/{timesheetId}/project-activity",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "TimesheetProjectActivityUniqueValidationAPI",
+      "params": [
+        "timesheetId"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/validation/activity-name/{id}",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "ValidationProjectActivityNameAPI",
+      "params": [
+        "id"
+      ],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/validation/customer-name",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "ValidationCustomerNameAPI",
+      "params": [],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    },
+    {
+      "path": "/api/v2/time/validation/project-name",
+      "methods": [
+        "GET"
+      ],
+      "purpose": "ValidateProjectNameAPI",
+      "params": [],
+      "source": "plugins/orangehrmTimePlugin/config/routes.yaml"
+    }
+  ]
+}
