@@ -15,4 +15,4 @@ _No rows._
 
 ## Not statically resolvable
 
-No routing convention matched this app. Routes registered at runtime cannot be recovered from source; walk the app with the `smart-map` skill instead.
+No routing convention matched this app. Routes registered at runtime cannot be recovered from source; record the flows you need with the `playwright-codegen` skill instead.

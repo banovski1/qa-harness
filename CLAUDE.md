@@ -4,34 +4,39 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A pipeline that turns a running web app into a Playwright test framework. The map is built by a skill
-driving a real browser; everything downstream of the map is deterministic.
+A pipeline that turns a local clone of a web app into a Playwright test framework. **No browser runs
+anywhere in the generation path** — the same clone always produces the same framework.
 
 ```
-                            ┌─ scripts/repo-analyzer ──► analysis/   (static: components, routes, URLs, API)
-a local clone of the app ───┤   (four skills, no browser)      │
-                            └──────────────────────────────────┼── informs ─┐
-                                                                            ▼
-scripts/app-config.yaml ──► smart-map skill ──► ui-map-results/ ──► scripts/framework-generator ──► generated-framework/
-   (login + conventions)     (walks the app,     (the application map)   (renders page objects)      (a real Playwright project)
-                              module by module)
+a local clone of the app ──► scripts/repo-analyzer ──► analysis/ ──► scripts/framework-generator ──► generated-framework/
+                              (four skills, no browser)     │          (renders page objects)        (a real Playwright project)
+                                                            │
+                              codegen-recordings/ ──────────┴──► test-writer ──► specs
+                              (a human's flow, recorded once)
 ```
 
-The analyzer branch is optional and read-only: it needs a **local clone** of the app under test, and it
-tells the browser-driven half what exists before it opens a browser. `analysis/` never feeds the
-generator directly — nothing enters the map without a live pass.
+The two inputs answer different questions, and tests need both:
 
-`scripts/` holds the config and the generator, `ui-map-results/` holds the map, `generated-framework/`
-holds the committed output. Every path in the configs is relative to the **repo root**, so always run
-from there.
+- **`analysis/` — what the app has.** Every route, the component that renders it, the elements in that
+  component and the label of each. Deterministic, free to re-run, cannot drift from the code.
+- **`codegen-recordings/` — what the app does.** The order of steps in a real flow, what a click leads
+  to, what the app accepts. Recorded once by a human through `playwright-codegen`.
+
+They compose: a recording proves a step happens; the analysis names the control it touched, which is
+how an unstable recorded locator gets repaired without opening a browser.
+
+`scripts/` holds the config, the analyzer and the generator; `analysis/` holds the machine-readable
+reports and the api-map; `generated-framework/` holds the committed output. Every path in the configs
+is relative to the **repo root**, so always run from there.
 
 The demo target is OrangeHRM's public demo, but nothing here contains app-specific code — retargeting
-is a config edit plus a re-walk.
+is a config edit plus a re-run.
 
 ## Commands
 
 ```bash
-# Stage 0 (optional) — static analysis of a local clone of the app under test
+# Stage 0 — static analysis of a local clone of the app under test. This is the spine, not an extra:
+#           routes.mjs first (components.mjs joins onto its output to build the label dictionary).
 cd scripts/repo-analyzer && npm install
 node scripts/repo-analyzer/detect.mjs     --app ../orangehrm   # what framework, and why
 node scripts/repo-analyzer/components.mjs --app ../orangehrm   # analysis/frontend-components.md
@@ -41,12 +46,11 @@ node scripts/repo-analyzer/live-urls.mjs  --path-prefix /web/index.php   # needs
 node scripts/repo-analyzer/__fixtures__/run.mjs                 # the analyzer's test suite
 cd scripts/repo-analyzer && npm test                            # the same suite, with test names
 
-# Stage 1 — build or refresh the map: invoke the `smart-map` skill ("map the PIM module").
-#           There is no crawler script; the skill drives playwright-cli itself.
-node scripts/framework-generator/check-map.mjs    # gate: schema + shared-nav invariants
-node scripts/framework-generator/inventory.mjs    # rebuild ui-map-results/component-inventory.md
+# Stage 1 — gate the analysis before generating from it
+node scripts/framework-generator/check-analysis.mjs             # freshness + schema + model builds
+node scripts/framework-generator/check-analysis.mjs --strict /pim/addEmployee
 
-# Stage 2 — regenerate the framework from the map (no network access)
+# Stage 2 — regenerate the framework from the analysis (no network access)
 cd scripts/framework-generator && npm install
 node scripts/framework-generator/generate.mjs              # from repo root
 node scripts/framework-generator/generate.mjs --dry-run    # print the file plan, write nothing
@@ -64,15 +68,33 @@ npx playwright test -g "some test title"                   # a single test
 
 Prefer `--dry-run` when changing the generator: it exercises the whole pipeline and reports create/overwrite/preserve/unchanged per file without touching disk.
 
-There is no test suite for the generator itself; `check-map.mjs`, `--dry-run` and a `git diff` of `generated-framework/` are the verification loop.
+There is no test suite for the generator itself; `check-analysis.mjs`, `--dry-run` and a `git diff` of `generated-framework/` are the verification loop.
 
 ## Architecture notes that span files
 
-**Never hand-edit `generated-framework/**/*.generated.ts`** — the generator overwrites it on the next run. `ui-map-results/application-map/*.yaml` is owned by the `smart-map` skill; hand-edit it only through that skill's rules, and run `check-map.mjs` afterwards.
+**Never hand-edit `generated-framework/**/*.generated.ts`** — the generator overwrites it on the next run. Nothing under `analysis/` is hand-editable either: it is a report, and the fix for a wrong one is to re-run the analyzer that wrote it, then `check-analysis.mjs`.
 
 **The generated/protected write policy** (`framework-generator/file-writer.mjs`) is the core contract. Every emitted file is tagged `generated` (overwritten every run) or `protected` (written once, then never touched). So `<Name>Page.generated.ts` carries the mapped locators and `<Name>Page.ts` — its subclass — carries your actions and assertions. Nothing is ever deleted. Put real test logic only in protected files.
 
-**The locator vocabulary is closed and shared.** `framework-generator/locator-spec.mjs` defines the `{ strategy, args, name, within, nth }` shape used by the login config (input), the map (output), and the generator (consumer). Adding a strategy means touching that one module. The `smart-map` skill must verify every candidate resolves to exactly one element before writing it; ambiguous elements are left out rather than guessed.
+**The locator vocabulary is closed and shared.** `framework-generator/locator-spec.mjs` defines the `{ strategy, args, name, within, nth }` shape used by the login config (input), the analyzer (producer) and the generator (consumer). Adding a strategy means touching that one module.
+
+**`locator-ladder.mjs` ranks that vocabulary, and four things share the ranking.** Rungs, best to
+worst: `getByTestId`, named `getByRole`, `getByLabel`, a label `template`, `getByPlaceholder`, an
+`id`/`name` attribute selector, `getByText`, a raw CSS path. `bestLocatorFor(signals)` is how the
+extractor chooses — it gathers signals and lets the ladder pick, so no call site quietly prefers CSS
+over a role. `classify(expression)` judges a locator recorded by codegen, and `rankOf(spec)` one that
+already exists. The analyzer, the `playwright-codegen` shaping step, `test-writer` and
+`.claude/hooks/rules/locators.mjs` all import it, so a change to the ranking reaches all four at once.
+
+Rung 4 is the one that needs explaining: a `template` expands to CSS, but it is *anchored to a label*
+(`.oxd-input-group:has(label:text-is("{label}")) input`), so it breaks only when the label does. It is
+the fallback for an app whose labels carry no `for` association, and it is never tagged unstable.
+
+**Uniqueness is no longer proved, and that is the deliberate trade.** Static analysis cannot show that
+a locator resolves to exactly one element on a rendered page. Where two controls on a page share a
+label, the extractor emits both and marks them `unstable` with the reason, rather than picking one —
+they surface as `// UNSTABLE` getters and a tally in `GENERATION-REPORT.md`. Pinning one down means
+recording the flow and adding a scoped accessor in the protected page object.
 
 **`locatorTemplates:` keeps app selectors out of both the page objects and the map.** The block in
 `generator-config.yaml` maps a label to a selector (`{label}` is the placeholder), and the generator
@@ -82,7 +104,7 @@ app-specific selector. A map file names the template rather than repeating it �
 `css` spec at read time, which is what keeps `resolve()` and the other language adapters ignorant of
 templates. `renderTemplate` in `locator-spec.mjs` is the single substitution rule, shared by that
 expansion and the emitter's equivalence check so the two cannot disagree.
-`to-templates.mjs <map file> [--write]` converts existing files, rewriting only exact matches. Where a template reproduces a mapped locator *exactly*, `factoryFor` in
+The analyzer emits these directly, so nothing has to convert them after the fact. Where a template reproduces an element's locator *exactly*, `factoryFor` in
 `languages/typescript.mjs` emits `InputComponent.byLabel(this.page, 'City')` instead of the selector;
 anything else keeps the locator the mapper verified. Equivalence is proved per element, never assumed,
 so editing the block cannot silently re-point an accessor — it can only fall back. The
@@ -90,15 +112,33 @@ so editing the block cannot silently re-point an accessor — it can only fall b
 `(locator, description)`: the factories are statics taking a root, which is what keeps `BaseComponent.nth()`
 and `within:` scoping working.
 
-**`map-reader.mjs` absorbs every quirk of the map format** so no language adapter has to know about them: skipping locator-less synthetic nodes, parsing table columns out of the prose `comment:` string, lifting chrome present on ≥`sharedChromeThreshold` of pages into one `NavigationBar`, merging `*Module` redirect pages onto their list-page twin, keeping identifiers safe per target language, and detecting the URL segment used for folder grouping. It reads only `url`, `page`, `elements` and `states` from a map file, so a map file's `actions:` block rides along untouched.
+**`analysis-reader.mjs` joins the reports into the model, and `page-model.mjs` holds the rules that
+outlived the map.** The reader joins `pages-and-routes.json` (the page list) with
+`frontend-components.json` (elements, matched on `route.component === component.file`) and takes the
+mount prefix from `live-urls.json` — OrangeHRM serves every route under `/web/index.php`, which the
+framework's own route table does not record. It drops API-prefixed routes, roots a path that lost its
+leading slash, and expands `template` locators through `fromMap` so no adapter ever sees one. A route
+with no component still becomes a page object, carrying a URL and nothing else.
 
-**`check-map.mjs` guards the invariants that fail silently.** A map element missing `name`, `component` or `locator` is dropped without an error, and the shared-`NavigationBar` group collapses quietly if a nav locator changes on a handful of pages. Run it after any change to `ui-map-results/`, with `--strict <slug>` for the files you just wrote.
+`page-model.mjs` carries the URL-to-page rules unchanged from the map era — folder grouping, unique
+class names, merging duplicate pages onto one class with `aliases`. They are about how URLs become
+page objects, not about where elements came from, which is why the folder layout and class names did
+not shift when the input format did. The one rule that *did* change: when the mount prefix is known,
+the module segment is taken as the one straight after it rather than inferred, because a single short
+route (`/` reduces to just the prefix) would otherwise drag the detected segment onto the prefix.
+
+The contract it returns — `{ pages, sharedChrome, sharedStates, stats }` — is the same one the map
+reader returned, which is what let `languages/typescript.mjs` stay untouched through the switch.
+`sharedStates` is always empty now: states were a live-walk product, since a menu had to be opened
+before its options existed.
+
+**`check-analysis.mjs` guards the failures that are silent.** A stale analysis still parses and still generates a framework — one that describes an app which has moved on — so the gate compares the commit in each report's provenance header against the clone's current `HEAD` and fails on a mismatch. It also catches a route path that lost its leading slash, a duplicate element name, a locator no template can expand, and a `navigation:` entry that does not resolve. Run it after re-running the analyzer, with `--strict <route>` for the routes you care about.
 
 **`generate.mjs` never branches on language.** Languages are adapters in `languages/`, registered in `languages/index.mjs`, satisfying `{ id, extension, emptyDirs, staticFiles, renderPage, renderTest }`; `renderPage` returning `null` means "scaffold only". Only TypeScript renders page objects today — adding another language means implementing `renderPage` in its adapter and nothing else.
 
-**Unstable locators are legacy, not the target.** Positional `nth:` locators are emitted with an `// UNSTABLE` comment and tabulated in `generated-framework/GENERATION-REPORT.md`. They are all left over from the deleted crawler; the `smart-map` skill uses a label-scoped `css` locator instead and should leave a module with none. Walking a module is the way to clear them.
+**The navigation bar is declared, not derived.** It is the one part of a rendered page static analysis cannot reach: OrangeHRM's sidebar is rendered by the external `@ohrm/oxd` package and filled from a server menu payload, so it appears in no template in the app's own source. `navigation:` in `generator-config.yaml` lists those elements by hand, and they become the single `NavigationBar` component instead of repeating on every page object. With `locatorTemplates:` it is one of exactly two places an app-specific selector appears. Leave it empty for an app whose navigation is in its own markup — the extractor will find it.
 
-**The login flow is not in the map** — the mapping skill logs in before it walks. The generator reads the login locators from `scripts/app-config.yaml` (`loginConfig:` in `generator-config.yaml`) to emit a working login helper. Credentials never flow through: they come from `APP_USERNAME`/`APP_PASSWORD` in the generated project's `.env`.
+**The login flow is not in the analysis** — static analysis describes screens, never flows. The generator reads the login locators from `scripts/app-config.yaml` (`loginConfig:` in `generator-config.yaml`) to emit a working login helper. Credentials never flow through: they come from `APP_USERNAME`/`APP_PASSWORD` in the generated project's `.env`.
 
 **`.gitattributes` pins `eol=lf`** because the generator writes LF and `generated-framework/` is committed. Do not relax it — under Windows `core.autocrlf` every generated file would show as modified with no content change.
 
@@ -123,10 +163,11 @@ timestamp and commit lines are scrubbed before comparing. Accept an intentional 
 than a hand edit. Rails and Spring have no fixture app: their extractors are a known gap, stated in
 `cases.mjs` rather than papered over.
 
-**`analysis/` is upstream context, never map input.** A `data-testid` found in source is a *candidate*:
-static analysis cannot prove it resolves to exactly one element on a rendered page, and that proof is
-the map's whole contract. Suggested locators are emitted UNVERIFIED and may only enter
-`ui-map-results/` after `smart-map` confirms them live. Similarly `api-documentation.md` is a
+**`analysis/` is the generator's input, and everything in it is a candidate.** A label or a
+`data-testid` found in source cannot be shown to resolve to exactly one element on a rendered page, so
+a spec built from one carries `// UNVERIFIED` until a recording exercises it. That is the cost of
+removing the browser, and it is paid openly: ambiguous elements are marked rather than dropped or
+guessed at. `api-documentation.md` is a
 precondition reference for `test-preconditions`, not a promise that an endpoint exists — Tier C records
 what static analysis cannot reach rather than omitting it. Every analysis file carries a provenance
 header (app path, commit, framework, timestamp) so a stale one is visible; re-run the analyzer rather
@@ -136,7 +177,9 @@ than hand-editing.
 
 `playwright-cli` (the Playwright Agent CLI, installed globally; skill at `.claude/skills/playwright-cli/`) is the only thing that drives a browser here. Never use the Playwright MCP (`mcp__playwright__*`) tools — `playwright-cli` replaces them and is far more token-efficient. Its scratch output lands in `.playwright-cli/` (gitignored).
 
-The `smart-map` skill (`.claude/skills/smart-map/SKILL.md`) is the entry point for every "map the app" / "map the `<module>` module" / "regenerate ui-map-results" request. It walks one module at a time and writes `ui-map-results/application-map/<slug>.yaml` — one file per screen, carrying both `elements:` (the strict schema the generator reads) and `actions:` (what each control does, which `test-writer` reads). There is no crawler to fall back on: if the map is wrong, walk the module again.
+The `playwright-codegen` skill (`.claude/skills/playwright-codegen/SKILL.md`) is the entry point for every "record a flow" / "capture a codegen session" request. It is the one deliberate exception to the rule above: `npx playwright codegen` opens a browser a **human** drives, and the skill shapes the result into `codegen-recordings/<flow>-<timestamp>.md` — the numbered steps, each ranked on the locator ladder, with every unstable step repaired against `analysis/label-dictionary.json` and credentials redacted. Recordings accumulate as a library; they are never edited afterwards, because a recording is evidence of what happened.
+
+Nothing walks the app to build an inventory any more. If a screen's elements are missing, the answer is to re-run the analyzer; if a *flow* is unknown, the answer is to record it.
 
 ## Test authoring rule
 

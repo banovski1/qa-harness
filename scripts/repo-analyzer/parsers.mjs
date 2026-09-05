@@ -5,15 +5,12 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import {tryImport, unique} from './util.mjs';
+import {isTestIdAttr, TEST_ID_ATTRS, tryImport, unique} from './util.mjs';
+import {collectVueElements, dedupeNames, headersFromScript, relabel} from './elements-vue.mjs';
 
-// The conventions a project might use. Whichever one a repo actually uses is reported back
-// rather than assumed, since the suggestion is only useful if it names the real attribute.
-export const TEST_ID_ATTRS = ['data-testid', 'data-test-id', 'data-test', 'data-cy', 'data-qa'];
-
-export function isTestIdAttr(name) {
-  return TEST_ID_ATTRS.includes(String(name).toLowerCase());
-}
+// Re-exported from util.mjs, which owns the vocabulary so the element extractor can read it
+// without importing this module back.
+export {TEST_ID_ATTRS, isTestIdAttr};
 
 export function componentNameFromFile(file) {
   const base = path.basename(file, path.extname(file));
@@ -205,23 +202,106 @@ function sveltePropsFromInstance(instance) {
 
 // --- the parsers themselves -----------------------------------------------------------
 
-export async function parseVue(file, source) {
+export async function parseVue(file, source, ctx = {}) {
   const sfc = await tryImport('@vue/compiler-sfc');
-  if (!sfc) return {name: componentNameFromFile(file), props: [], testIds: [], error: '@vue/compiler-sfc not installed'};
+  if (!sfc) return {name: componentNameFromFile(file), props: [], testIds: [], elements: [], skippedElements: 0, error: '@vue/compiler-sfc not installed'};
   let descriptor;
   try {
     ({descriptor} = sfc.parse(source, {filename: file}));
   } catch (error) {
-    return {name: componentNameFromFile(file), props: [], testIds: [], error: error.message};
+    return {name: componentNameFromFile(file), props: [], testIds: [], elements: [], skippedElements: 0, error: error.message};
   }
   const scriptSource = [descriptor.script?.content, descriptor.scriptSetup?.content].filter(Boolean).join('\n');
   const scriptAst = scriptSource ? await babelParse(scriptSource) : null;
+  const catalogue = ctx.catalogue ?? {};
+
+  let elements = [];
+  let skipped = 0;
+  if (descriptor.template?.ast) {
+    const headers = headersFromScript(scriptAst, catalogue, walkAst);
+    const collected = collectVueElements(descriptor.template.ast, {
+      catalogue, headers, inheritedLabel: ctx.inheritedLabel ?? null,
+    });
+    elements = collected.elements;
+    skipped = collected.skipped;
+    // One hop only: a wrapper's own buttons belong to the page that renders it, but following
+    // the whole component graph would drag half the design system onto every screen.
+    if ((ctx.depth ?? 0) === 0 && ctx.componentIndex) {
+      elements = elements.concat(await inlineChildren(collected.childRefs, scriptAst, file, ctx));
+    }
+  }
+
   return {
     name: componentNameFromFile(file),
     props: scriptAst ? vuePropsFromAst(scriptAst) : [],
     testIds: descriptor.template?.ast ? collectVueTemplateTestIds(descriptor.template.ast) : [],
+    elements: dedupeNames(elements),
+    // Controls the walk recognised but could not name. A number that climbs after an app
+    // upgrade is the signal that a convention changed, not that the app lost its fields.
+    skippedElements: skipped,
     error: null,
   };
+}
+
+/**
+ * Resolve each child component tag to a file and take the elements it renders.
+ *
+ * Tags resolve two ways because Vue registers components two ways: `<submit-button />` is
+ * global, matched on the kebab-cased filename, while `<delete-confirmation>` is a local alias
+ * declared in `components: {}` and matched on the class it points at.
+ */
+async function inlineChildren(childRefs, scriptAst, file, ctx) {
+  const aliases = componentAliases(scriptAst);
+  const inlined = [];
+  for (const ref of childRefs) {
+    const target = ctx.componentIndex.resolve(ref.tag, aliases[ref.tag]);
+    // A component that renders the page that renders it would recurse forever.
+    if (!target || target === file) continue;
+    const childSource = fs.readFileSync(target, 'utf8');
+    inlined.push(...await elementsOfChild(target, childSource, ref.label, ctx));
+  }
+  return inlined;
+}
+
+/**
+ * Take a child component's elements, deciding what the call-site label refers to.
+ *
+ * A label on a component tag names whatever that component renders — but only when it renders
+ * one thing. `<date-input :label="From Date" />` wraps a single field that carries no label of
+ * its own, and `<submit-button :label="Apply" />` wraps one that carries the wrong one. But
+ * `<file-upload-input :label="Client Logo" />` renders a radio group *and* a file field, and
+ * there the label names the group; applying it would stamp "Client Logo" on whichever control
+ * happened to be first in the markup. So the count decides, and an ambiguous label is dropped
+ * rather than attached to a guess.
+ */
+async function elementsOfChild(target, source, label, ctx) {
+  const childCtx = {...ctx, depth: (ctx.depth ?? 0) + 1};
+  const plain = await parseVue(target, source, childCtx);
+  const own = plain.elements ?? [];
+
+  if (!label) return own;
+  if (own.length === 1) return [relabel(own[0], label)];
+  if (own.length > 1) return own;
+
+  // Nothing was labelable on its own: the wrapper exists precisely to be named from outside.
+  const labelled = await parseVue(target, source, {...childCtx, inheritedLabel: label});
+  return (labelled.elements ?? []).length === 1 ? labelled.elements : [];
+}
+
+/** `components: { 'delete-confirmation': DeleteConfirmationDialog }` → { 'delete-confirmation': 'DeleteConfirmationDialog' } */
+function componentAliases(ast) {
+  const aliases = {};
+  if (!ast) return aliases;
+  walkAst(ast, (node) => {
+    if (node.type !== 'ObjectProperty' || keyName(node) !== 'components') return;
+    if (node.value?.type !== 'ObjectExpression') return;
+    for (const prop of node.value.properties ?? []) {
+      const tag = keyName(prop);
+      const target = prop.value?.type === 'Identifier' ? prop.value.name : null;
+      if (tag && target) aliases[tag] = target;
+    }
+  });
+  return aliases;
 }
 
 export async function parseJsx(file, source) {

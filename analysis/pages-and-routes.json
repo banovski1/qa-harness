@@ -1282,7 +1282,7 @@
       "source": "plugins/orangehrmMaintenancePlugin/config/routes.yaml (Symfony)"
     },
     {
-      "path": "admin/addAuthProvider",
+      "path": "/admin/addAuthProvider",
       "name": "admin_add_auth_provider",
       "component": "src/client/src/orangehrmAdminPlugin/pages/socialMediaAuth/AddProvider.vue",
       "componentName": "add-auth-provider",
@@ -1291,7 +1291,7 @@
       "source": "plugins/orangehrmOpenidAuthenticationPlugin/config/routes.yaml (Symfony)"
     },
     {
-      "path": "admin/editAuthProvider/{id}",
+      "path": "/admin/editAuthProvider/{id}",
       "name": "admin_edit_auth_provider",
       "component": "src/client/src/orangehrmAdminPlugin/pages/socialMediaAuth/EditProvider.vue",
       "componentName": "edit-auth-provider",
@@ -1320,18 +1320,6 @@
       ],
       "requirements": null,
       "source": "plugins/orangehrmOpenidAuthenticationPlugin/config/routes.yaml (Symfony)"
-    },
-    {
-      "path": "api/v2/performance/trackers/{trackerId}/logs/{id}",
-      "name": "apiv2_performance_tracker_log",
-      "component": null,
-      "componentName": null,
-      "params": [
-        "trackerId",
-        "id"
-      ],
-      "requirements": null,
-      "source": "plugins/orangehrmPerformancePlugin/config/routes.yaml (Symfony)"
     },
     {
       "path": "/performance/viewPerformanceModule",

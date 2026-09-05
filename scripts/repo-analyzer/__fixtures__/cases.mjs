@@ -12,6 +12,9 @@
 //   routes              route paths that must be present
 //   components/props    component names and the props their parser must expose
 //   testIds             test-id values that must be found in the markup
+//   elements            extracted elements, each `{name, component, rung, locator?}` — pins the
+//                       locator ladder per rung, so a regression that quietly drops every
+//                       element to CSS fails here rather than in a generated framework
 //   endpoints           paths the backend registry row's own routes() must return
 //   tier / apiPaths     the api-docs tier letter and the endpoints it must report
 
@@ -22,7 +25,18 @@ export const CASES = [
     routes: ['/login', '/orders/{orderId}'],
     components: ['LoginForm'],
     props: {LoginForm: ['redirectTo', 'compact']},
-    testIds: ['username', 'submit'],
+    testIds: ['username', 'submit', 'order-id'],
+    // One element per rung the extractor can reach, so a change to the ladder shows up as a
+    // rung moving rather than as a silently different selector.
+    elements: [
+      {name: 'orderIdInput', component: 'input', rung: 1, locator: {strategy: 'getByTestId', args: ['order-id']}},
+      {name: 'placeOrderButton', component: 'button', rung: 2, locator: {strategy: 'getByRole', args: ['button'], name: 'Place Order'}},
+      {name: 'orderNameInput', component: 'input', rung: 4, locator: {strategy: 'template', args: ['labelledInput'], name: 'Order Name'}},
+      {name: 'notesLongInput', component: 'longInput', rung: 4, locator: {strategy: 'template', args: ['labelledTextarea'], name: 'Notes'}},
+      {name: 'quantityTable', component: 'table', rung: 4, locator: {strategy: 'template', args: ['tableByColumn'], name: 'Quantity'}},
+      {name: 'searchOrdersInput', component: 'input', rung: 5, locator: {strategy: 'getByPlaceholder', args: ['Search orders']}},
+      {name: 'quantityInput', component: 'input', rung: 6, locator: {strategy: 'css', args: ['[name="quantity"]']}},
+    ],
   },
   {
     app: 'react-router', frontend: 'react', backend: null,

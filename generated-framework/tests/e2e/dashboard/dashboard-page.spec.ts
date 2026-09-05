@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('DashboardPage', () => {
   test('loads', async ({ dashboardPage }) => {
     await dashboardPage.goto();
-    await expect(dashboardPage.dashboardHeading.locator).toBeVisible();
+    await expect(dashboardPage.page).toHaveURL(new RegExp('/web/index\\.php/dashboard/index'));
   });
 });

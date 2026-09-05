@@ -150,98 +150,159 @@ import { TimeTimesheetPeriodClient } from '../api/clients/TimeTimesheetPeriodCli
 import { TimeTimesheetReportClient } from '../api/clients/TimeTimesheetReportClient';
 import { TimeTimesheetTimeFormatClient } from '../api/clients/TimeTimesheetTimeFormatClient';
 import { TimeValidationClient } from '../api/clients/TimeValidationClient';
+import { SaveHolidaysPage } from '../pages/leave/SaveHolidaysPage';
+import { PayGradePage } from '../pages/admin/PayGradePage';
+import { AddAuthProviderPage } from '../pages/admin/AddAuthProviderPage';
 import { AddThemePage } from '../pages/admin/AddThemePage';
-import { EmploymentStatusPage } from '../pages/admin/EmploymentStatusPage';
-import { JobCategoryPage } from '../pages/admin/JobCategoryPage';
+import { EditOauthClientPage } from '../pages/admin/EditOauthClientPage';
+import { JobSpecificationPage } from '../pages/admin/JobSpecificationPage';
 import { LanguagePackagePage } from '../pages/admin/LanguagePackagePage';
+import { FixLanguageStringErrorsPage } from '../pages/admin/FixLanguageStringErrorsPage';
+import { LanguageImportPage } from '../pages/admin/LanguageImportPage';
+import { LanguageCustomizationPage } from '../pages/admin/LanguageCustomizationPage';
 import { LdapConfigurationPage } from '../pages/admin/LdapConfigurationPage';
-import { ListMailConfigurationPage } from '../pages/admin/ListMailConfigurationPage';
 import { LocalizationPage } from '../pages/admin/LocalizationPage';
-import { MembershipPage } from '../pages/admin/MembershipPage';
-import { NationalityPage } from '../pages/admin/NationalityPage';
 import { OpenIdProviderPage } from '../pages/admin/OpenIdProviderPage';
 import { RegisterOauthClientPage } from '../pages/admin/RegisterOauthClientPage';
-import { SaveJobTitlePage } from '../pages/admin/SaveJobTitlePage';
-import { SaveLocationPage } from '../pages/admin/SaveLocationPage';
-import { SaveSystemUserPage } from '../pages/admin/SaveSystemUserPage';
-import { CompanyStructurePage } from '../pages/admin/CompanyStructurePage';
-import { EducationPage } from '../pages/admin/EducationPage';
-import { EmailNotificationPage } from '../pages/admin/EmailNotificationPage';
-import { JobTitleListPage } from '../pages/admin/JobTitleListPage';
-import { LanguagesPage } from '../pages/admin/LanguagesPage';
-import { LicensesPage } from '../pages/admin/LicensesPage';
-import { LocationsPage } from '../pages/admin/LocationsPage';
-import { ModulesPage } from '../pages/admin/ModulesPage';
-import { OrganizationGeneralInformationPage } from '../pages/admin/OrganizationGeneralInformationPage';
-import { PayGradesPage } from '../pages/admin/PayGradesPage';
-import { SkillsPage } from '../pages/admin/SkillsPage';
-import { SystemUsersPage } from '../pages/admin/SystemUsersPage';
-import { WorkShiftPage } from '../pages/admin/WorkShiftPage';
+import { WorkspaceNotificationConfigurationPage } from '../pages/admin/WorkspaceNotificationConfigurationPage';
 import { ConfigurePage } from '../pages/attendance/ConfigurePage';
-import { PunchInPage } from '../pages/attendance/PunchInPage';
+import { EditAttendanceRecordPage } from '../pages/attendance/EditAttendanceRecordPage';
+import { ProxyPunchInPunchOutPage } from '../pages/attendance/ProxyPunchInPunchOutPage';
+import { DisplayAttendanceSummaryReportCriteriaPage } from '../pages/time/DisplayAttendanceSummaryReportCriteriaPage';
 import { AttendanceRecordPage } from '../pages/attendance/AttendanceRecordPage';
 import { MyAttendanceRecordPage } from '../pages/attendance/MyAttendanceRecordPage';
+import { AdminVerifyPage } from '../pages/auth/AdminVerifyPage';
+import { RequestPasswordResetCodePage } from '../pages/auth/RequestPasswordResetCodePage';
+import { LoginPage } from '../pages/auth/LoginPage';
+import { AuthorizePage } from '../pages/oauth2/AuthorizePage';
+import { TokenPage } from '../pages/oauth2/TokenPage';
+import { OpenIdCredentialsPage } from '../pages/openidauth/OpenIdCredentialsPage';
+import { ResetPasswordPage } from '../pages/auth/ResetPasswordPage';
+import { ChangeWeakPasswordPage } from '../pages/auth/ChangeWeakPasswordPage';
 import { BuzzPage } from '../pages/buzz/BuzzPage';
 import { AssignClaimPage } from '../pages/claim/AssignClaimPage';
+import { ClaimAssignClaimPage } from '../pages/claim/ClaimAssignClaimPage';
+import { RequestsPage } from '../pages/claim/RequestsPage';
+import { ExpensePage } from '../pages/claim/ExpensePage';
 import { SaveEventsPage } from '../pages/claim/SaveEventsPage';
 import { SaveExpensePage } from '../pages/claim/SaveExpensePage';
-import { SubmitClaimPage } from '../pages/claim/SubmitClaimPage';
-import { ClaimAssignClaimPage } from '../pages/claim/ClaimAssignClaimPage';
-import { ClaimPage } from '../pages/claim/ClaimPage';
+import { ClaimAssignClaimPage2 } from '../pages/claim/ClaimAssignClaimPage2';
 import { EventsPage } from '../pages/claim/EventsPage';
-import { ExpensePage } from '../pages/claim/ExpensePage';
-import { DashboardPage } from '../pages/dashboard/DashboardPage';
+import { SubmitClaimPage } from '../pages/claim/SubmitClaimPage';
+import { ClaimSubmitClaimPage } from '../pages/claim/ClaimSubmitClaimPage';
+import { ClaimPage } from '../pages/claim/ClaimPage';
+import { I18nPage } from '../pages/core/I18nPage';
+import { SystemCheckPage } from '../pages/core/SystemCheckPage';
 import { DirectoryPage } from '../pages/directory/DirectoryPage';
+import { DashboardPage } from '../pages/dashboard/DashboardPage';
+import { SaveCustomFieldsPage } from '../pages/pim/SaveCustomFieldsPage';
+import { AddCustomerPage } from '../pages/time/AddCustomerPage';
+import { SaveEducationPage } from '../pages/admin/SaveEducationPage';
+import { SaveSubscriberPage } from '../pages/admin/SaveSubscriberPage';
+import { SaveEmploymentStatusPage } from '../pages/admin/SaveEmploymentStatusPage';
+import { SaveJobTitlePage } from '../pages/admin/SaveJobTitlePage';
+import { DefineLeaveTypePage } from '../pages/leave/DefineLeaveTypePage';
+import { SaveLocationPage } from '../pages/admin/SaveLocationPage';
+import { ModulesPage } from '../pages/admin/ModulesPage';
+import { SaveSkillsPage } from '../pages/admin/SaveSkillsPage';
+import { SaveReportingMethodPage } from '../pages/pim/SaveReportingMethodPage';
+import { SaveSystemUserPage } from '../pages/admin/SaveSystemUserPage';
+import { SaveWorkShiftsPage } from '../pages/admin/SaveWorkShiftsPage';
+import { AuthPage } from '../pages/functional-testing/AuthPage';
+import { HelpPage } from '../pages/help/HelpPage';
 import { AddLeaveEntitlementPage } from '../pages/leave/AddLeaveEntitlementPage';
 import { ApplyLeavePage } from '../pages/leave/ApplyLeavePage';
 import { AssignLeavePage } from '../pages/leave/AssignLeavePage';
 import { DefineLeavePeriodPage } from '../pages/leave/DefineLeavePeriodPage';
-import { DefineWorkWeekPage } from '../pages/leave/DefineWorkWeekPage';
-import { LeaveTypeListPage } from '../pages/leave/LeaveTypeListPage';
-import { HolidayListPage } from '../pages/leave/HolidayListPage';
-import { LeaveBalanceReportPage } from '../pages/leave/LeaveBalanceReportPage';
-import { LeaveEntitlementsPage } from '../pages/leave/LeaveEntitlementsPage';
 import { LeaveListPage } from '../pages/leave/LeaveListPage';
-import { MyLeaveBalanceReportPage } from '../pages/leave/MyLeaveBalanceReportPage';
-import { MyLeaveEntitlementsPage } from '../pages/leave/MyLeaveEntitlementsPage';
+import { LeavePage } from '../pages/leave/LeavePage';
 import { MyLeaveListPage } from '../pages/leave/MyLeaveListPage';
-import { PurgeEmployeePage } from '../pages/maintenance/PurgeEmployeePage';
-import { MyPerformanceReviewPage } from '../pages/performance/MyPerformanceReviewPage';
-import { SearchEvaluatePerformanceReviewPage } from '../pages/performance/SearchEvaluatePerformanceReviewPage';
-import { SearchKpiPage } from '../pages/performance/SearchKpiPage';
-import { SearchPerformanceReviewPage } from '../pages/performance/SearchPerformanceReviewPage';
+import { LeaveEntitlementsPage } from '../pages/leave/LeaveEntitlementsPage';
+import { LeaveRequestPage } from '../pages/leave/LeaveRequestPage';
+import { MyLeaveEntitlementsPage } from '../pages/leave/MyLeaveEntitlementsPage';
+import { DefineWorkWeekPage } from '../pages/leave/DefineWorkWeekPage';
+import { HolidayListPage } from '../pages/leave/HolidayListPage';
+import { AccessEmployeeDataPage } from '../pages/maintenance/AccessEmployeeDataPage';
+import { PurgeCandidateDataPage } from '../pages/maintenance/PurgeCandidateDataPage';
+import { MaintenanceAccessEmployeeDataPage } from '../pages/maintenance/MaintenanceAccessEmployeeDataPage';
+import { AddPerformanceTrackerPage } from '../pages/performance/AddPerformanceTrackerPage';
+import { ReviewEvaluateByAdminPage } from '../pages/performance/ReviewEvaluateByAdminPage';
 import { EmployeePerformanceTrackerListPage } from '../pages/performance/EmployeePerformanceTrackerListPage';
+import { AddPerformanceTrackerLogPage } from '../pages/performance/AddPerformanceTrackerLogPage';
+import { SaveKpiPage } from '../pages/performance/SaveKpiPage';
+import { SearchKpiPage } from '../pages/performance/SearchKpiPage';
+import { PerformancePage } from '../pages/performance/PerformancePage';
+import { MyPerformanceReviewPage } from '../pages/performance/MyPerformanceReviewPage';
 import { MyPerformanceTrackerListPage } from '../pages/performance/MyPerformanceTrackerListPage';
+import { SaveReviewPage } from '../pages/performance/SaveReviewPage';
+import { ReviewEvaluatePage } from '../pages/performance/ReviewEvaluatePage';
+import { SearchEvaluatePerformanceReviewPage } from '../pages/performance/SearchEvaluatePerformanceReviewPage';
+import { SearchPerformanceReviewPage } from '../pages/performance/SearchPerformanceReviewPage';
 import { PerformanceTrackerPage } from '../pages/performance/PerformanceTrackerPage';
 import { AddEmployeePage } from '../pages/pim/AddEmployeePage';
-import { ConfigurePimPage } from '../pages/pim/ConfigurePimPage';
+import { DisplayPredefinedReportPage } from '../pages/pim/DisplayPredefinedReportPage';
+import { DefinePredefinedReportPage } from '../pages/pim/DefinePredefinedReportPage';
 import { ContactDetailsPage } from '../pages/pim/ContactDetailsPage';
-import { ListCustomFieldsPage } from '../pages/pim/ListCustomFieldsPage';
 import { PimCsvImportPage } from '../pages/pim/PimCsvImportPage';
-import { DefinedPredefinedReportsPage } from '../pages/pim/DefinedPredefinedReportsPage';
 import { DependentsPage } from '../pages/pim/DependentsPage';
 import { EmergencyContactsPage } from '../pages/pim/EmergencyContactsPage';
-import { EmployeeListPage } from '../pages/pim/EmployeeListPage';
 import { ImmigrationPage } from '../pages/pim/ImmigrationPage';
 import { JobDetailsPage } from '../pages/pim/JobDetailsPage';
 import { MembershipsPage } from '../pages/pim/MembershipsPage';
 import { PersonalDetailsPage } from '../pages/pim/PersonalDetailsPage';
 import { PhotographPage } from '../pages/pim/PhotographPage';
 import { QualificationsPage } from '../pages/pim/QualificationsPage';
-import { ReportingMethodsPage } from '../pages/pim/ReportingMethodsPage';
-import { ReportToDetailsPage } from '../pages/pim/ReportToDetailsPage';
 import { SalaryListPage } from '../pages/pim/SalaryListPage';
-import { AddCandidatePage } from '../pages/recruitment/AddCandidatePage';
+import { UsTaxExemptionsPage } from '../pages/pim/UsTaxExemptionsPage';
+import { EmployeeListPage } from '../pages/pim/EmployeeListPage';
+import { PushPage } from '../pages/events/PushPage';
 import { AddJobVacancyPage } from '../pages/recruitment/AddJobVacancyPage';
+import { ApplyVacancyPage } from '../pages/recruitment-apply/ApplyVacancyPage';
+import { ChangeCandidateVacancyStatusPage } from '../pages/recruitment/ChangeCandidateVacancyStatusPage';
+import { CandidateAttachmentPage } from '../pages/recruitment/CandidateAttachmentPage';
+import { RecruitmentAddJobVacancyPage } from '../pages/recruitment/RecruitmentAddJobVacancyPage';
+import { JobsRssPage } from '../pages/recruitment-apply/JobsRssPage';
+import { AddCandidatePage } from '../pages/recruitment/AddCandidatePage';
+import { CandidateHistoryPage } from '../pages/recruitment/CandidateHistoryPage';
 import { CandidatesPage } from '../pages/recruitment/CandidatesPage';
+import { InterviewAttachmentsPage } from '../pages/recruitment/InterviewAttachmentsPage';
 import { JobVacancyPage } from '../pages/recruitment/JobVacancyPage';
-import { DisplayAttendanceSummaryReportCriteriaPage } from '../pages/time/DisplayAttendanceSummaryReportCriteriaPage';
+import { JobsHtmlPage } from '../pages/recruitment-apply/JobsHtmlPage';
+import { AppPage } from '../pages/app/AppPage';
+import { DisplayProjectActivityDetailsReportPage } from '../pages/time/DisplayProjectActivityDetailsReportPage';
+import { SaveProjectPage } from '../pages/time/SaveProjectPage';
+import { EditTimesheetPage } from '../pages/time/EditTimesheetPage';
 import { DisplayEmployeeReportCriteriaPage } from '../pages/time/DisplayEmployeeReportCriteriaPage';
-import { DisplayProjectReportCriteriaPage } from '../pages/time/DisplayProjectReportCriteriaPage';
-import { CustomersPage } from '../pages/time/CustomersPage';
 import { EmployeeTimesheetPage } from '../pages/time/EmployeeTimesheetPage';
+import { TimePage } from '../pages/time/TimePage';
 import { MyTimesheetPage } from '../pages/time/MyTimesheetPage';
+import { DisplayProjectReportCriteriaPage } from '../pages/time/DisplayProjectReportCriteriaPage';
 import { ProjectsPage } from '../pages/time/ProjectsPage';
+import { UpdatePasswordPage } from '../pages/pim/UpdatePasswordPage';
+import { ListCustomFieldsPage } from '../pages/pim/ListCustomFieldsPage';
+import { CustomersPage } from '../pages/time/CustomersPage';
+import { EducationPage } from '../pages/admin/EducationPage';
+import { ListMailConfigurationPage } from '../pages/admin/ListMailConfigurationPage';
+import { EmailNotificationPage } from '../pages/admin/EmailNotificationPage';
+import { EmploymentStatusPage } from '../pages/admin/EmploymentStatusPage';
+import { SupportPage } from '../pages/help/SupportPage';
+import { JobCategoryPage } from '../pages/admin/JobCategoryPage';
+import { JobTitleListPage } from '../pages/admin/JobTitleListPage';
+import { LeaveTypeListPage } from '../pages/leave/LeaveTypeListPage';
+import { LicensesPage } from '../pages/admin/LicensesPage';
+import { LocationsPage } from '../pages/admin/LocationsPage';
+import { NationalityPage } from '../pages/admin/NationalityPage';
+import { OrganizationGeneralInformationPage } from '../pages/admin/OrganizationGeneralInformationPage';
+import { CompanyStructurePage } from '../pages/admin/CompanyStructurePage';
+import { PayGradesPage } from '../pages/admin/PayGradesPage';
+import { LanguagesPage } from '../pages/admin/LanguagesPage';
+import { MembershipPage } from '../pages/admin/MembershipPage';
+import { SkillsPage } from '../pages/admin/SkillsPage';
+import { ReportingMethodsPage } from '../pages/pim/ReportingMethodsPage';
+import { SystemUsersPage } from '../pages/admin/SystemUsersPage';
+import { TerminationReasonsPage } from '../pages/pim/TerminationReasonsPage';
+import { DefineTimesheetPeriodPage } from '../pages/time/DefineTimesheetPeriodPage';
+import { WorkShiftPage } from '../pages/admin/WorkShiftPage';
 
 export type PageObjects = {
   api: ApiClient;
@@ -388,98 +449,159 @@ export type PageObjects = {
   timeTimesheetReportApi: TimeTimesheetReportClient;
   timeTimesheetTimeFormatApi: TimeTimesheetTimeFormatClient;
   timeValidationApi: TimeValidationClient;
+  saveHolidaysPage: SaveHolidaysPage;
+  payGradePage: PayGradePage;
+  addAuthProviderPage: AddAuthProviderPage;
   addThemePage: AddThemePage;
-  employmentStatusPage: EmploymentStatusPage;
-  jobCategoryPage: JobCategoryPage;
+  editOauthClientPage: EditOauthClientPage;
+  jobSpecificationPage: JobSpecificationPage;
   languagePackagePage: LanguagePackagePage;
+  fixLanguageStringErrorsPage: FixLanguageStringErrorsPage;
+  languageImportPage: LanguageImportPage;
+  languageCustomizationPage: LanguageCustomizationPage;
   ldapConfigurationPage: LdapConfigurationPage;
-  listMailConfigurationPage: ListMailConfigurationPage;
   localizationPage: LocalizationPage;
-  membershipPage: MembershipPage;
-  nationalityPage: NationalityPage;
   openIdProviderPage: OpenIdProviderPage;
   registerOauthClientPage: RegisterOauthClientPage;
-  saveJobTitlePage: SaveJobTitlePage;
-  saveLocationPage: SaveLocationPage;
-  saveSystemUserPage: SaveSystemUserPage;
-  companyStructurePage: CompanyStructurePage;
-  educationPage: EducationPage;
-  emailNotificationPage: EmailNotificationPage;
-  jobTitleListPage: JobTitleListPage;
-  languagesPage: LanguagesPage;
-  licensesPage: LicensesPage;
-  locationsPage: LocationsPage;
-  modulesPage: ModulesPage;
-  organizationGeneralInformationPage: OrganizationGeneralInformationPage;
-  payGradesPage: PayGradesPage;
-  skillsPage: SkillsPage;
-  systemUsersPage: SystemUsersPage;
-  workShiftPage: WorkShiftPage;
+  workspaceNotificationConfigurationPage: WorkspaceNotificationConfigurationPage;
   configurePage: ConfigurePage;
-  punchInPage: PunchInPage;
+  editAttendanceRecordPage: EditAttendanceRecordPage;
+  proxyPunchInPunchOutPage: ProxyPunchInPunchOutPage;
+  displayAttendanceSummaryReportCriteriaPage: DisplayAttendanceSummaryReportCriteriaPage;
   attendanceRecordPage: AttendanceRecordPage;
   myAttendanceRecordPage: MyAttendanceRecordPage;
+  adminVerifyPage: AdminVerifyPage;
+  requestPasswordResetCodePage: RequestPasswordResetCodePage;
+  loginPage: LoginPage;
+  authorizePage: AuthorizePage;
+  tokenPage: TokenPage;
+  openIdCredentialsPage: OpenIdCredentialsPage;
+  resetPasswordPage: ResetPasswordPage;
+  changeWeakPasswordPage: ChangeWeakPasswordPage;
   buzzPage: BuzzPage;
   assignClaimPage: AssignClaimPage;
+  claimAssignClaimPage: ClaimAssignClaimPage;
+  requestsPage: RequestsPage;
+  expensePage: ExpensePage;
   saveEventsPage: SaveEventsPage;
   saveExpensePage: SaveExpensePage;
-  submitClaimPage: SubmitClaimPage;
-  claimAssignClaimPage: ClaimAssignClaimPage;
-  claimPage: ClaimPage;
+  claimAssignClaimPage2: ClaimAssignClaimPage2;
   eventsPage: EventsPage;
-  expensePage: ExpensePage;
-  dashboardPage: DashboardPage;
+  submitClaimPage: SubmitClaimPage;
+  claimSubmitClaimPage: ClaimSubmitClaimPage;
+  claimPage: ClaimPage;
+  i18nPage: I18nPage;
+  systemCheckPage: SystemCheckPage;
   directoryPage: DirectoryPage;
+  dashboardPage: DashboardPage;
+  saveCustomFieldsPage: SaveCustomFieldsPage;
+  addCustomerPage: AddCustomerPage;
+  saveEducationPage: SaveEducationPage;
+  saveSubscriberPage: SaveSubscriberPage;
+  saveEmploymentStatusPage: SaveEmploymentStatusPage;
+  saveJobTitlePage: SaveJobTitlePage;
+  defineLeaveTypePage: DefineLeaveTypePage;
+  saveLocationPage: SaveLocationPage;
+  modulesPage: ModulesPage;
+  saveSkillsPage: SaveSkillsPage;
+  saveReportingMethodPage: SaveReportingMethodPage;
+  saveSystemUserPage: SaveSystemUserPage;
+  saveWorkShiftsPage: SaveWorkShiftsPage;
+  authPage: AuthPage;
+  helpPage: HelpPage;
   addLeaveEntitlementPage: AddLeaveEntitlementPage;
   applyLeavePage: ApplyLeavePage;
   assignLeavePage: AssignLeavePage;
   defineLeavePeriodPage: DefineLeavePeriodPage;
-  defineWorkWeekPage: DefineWorkWeekPage;
-  leaveTypeListPage: LeaveTypeListPage;
-  holidayListPage: HolidayListPage;
-  leaveBalanceReportPage: LeaveBalanceReportPage;
-  leaveEntitlementsPage: LeaveEntitlementsPage;
   leaveListPage: LeaveListPage;
-  myLeaveBalanceReportPage: MyLeaveBalanceReportPage;
-  myLeaveEntitlementsPage: MyLeaveEntitlementsPage;
+  leavePage: LeavePage;
   myLeaveListPage: MyLeaveListPage;
-  purgeEmployeePage: PurgeEmployeePage;
-  myPerformanceReviewPage: MyPerformanceReviewPage;
-  searchEvaluatePerformanceReviewPage: SearchEvaluatePerformanceReviewPage;
-  searchKpiPage: SearchKpiPage;
-  searchPerformanceReviewPage: SearchPerformanceReviewPage;
+  leaveEntitlementsPage: LeaveEntitlementsPage;
+  leaveRequestPage: LeaveRequestPage;
+  myLeaveEntitlementsPage: MyLeaveEntitlementsPage;
+  defineWorkWeekPage: DefineWorkWeekPage;
+  holidayListPage: HolidayListPage;
+  accessEmployeeDataPage: AccessEmployeeDataPage;
+  purgeCandidateDataPage: PurgeCandidateDataPage;
+  maintenanceAccessEmployeeDataPage: MaintenanceAccessEmployeeDataPage;
+  addPerformanceTrackerPage: AddPerformanceTrackerPage;
+  reviewEvaluateByAdminPage: ReviewEvaluateByAdminPage;
   employeePerformanceTrackerListPage: EmployeePerformanceTrackerListPage;
+  addPerformanceTrackerLogPage: AddPerformanceTrackerLogPage;
+  saveKpiPage: SaveKpiPage;
+  searchKpiPage: SearchKpiPage;
+  performancePage: PerformancePage;
+  myPerformanceReviewPage: MyPerformanceReviewPage;
   myPerformanceTrackerListPage: MyPerformanceTrackerListPage;
+  saveReviewPage: SaveReviewPage;
+  reviewEvaluatePage: ReviewEvaluatePage;
+  searchEvaluatePerformanceReviewPage: SearchEvaluatePerformanceReviewPage;
+  searchPerformanceReviewPage: SearchPerformanceReviewPage;
   performanceTrackerPage: PerformanceTrackerPage;
   addEmployeePage: AddEmployeePage;
-  configurePimPage: ConfigurePimPage;
+  displayPredefinedReportPage: DisplayPredefinedReportPage;
+  definePredefinedReportPage: DefinePredefinedReportPage;
   contactDetailsPage: ContactDetailsPage;
-  listCustomFieldsPage: ListCustomFieldsPage;
   pimCsvImportPage: PimCsvImportPage;
-  definedPredefinedReportsPage: DefinedPredefinedReportsPage;
   dependentsPage: DependentsPage;
   emergencyContactsPage: EmergencyContactsPage;
-  employeeListPage: EmployeeListPage;
   immigrationPage: ImmigrationPage;
   jobDetailsPage: JobDetailsPage;
   membershipsPage: MembershipsPage;
   personalDetailsPage: PersonalDetailsPage;
   photographPage: PhotographPage;
   qualificationsPage: QualificationsPage;
-  reportingMethodsPage: ReportingMethodsPage;
-  reportToDetailsPage: ReportToDetailsPage;
   salaryListPage: SalaryListPage;
-  addCandidatePage: AddCandidatePage;
+  usTaxExemptionsPage: UsTaxExemptionsPage;
+  employeeListPage: EmployeeListPage;
+  pushPage: PushPage;
   addJobVacancyPage: AddJobVacancyPage;
+  applyVacancyPage: ApplyVacancyPage;
+  changeCandidateVacancyStatusPage: ChangeCandidateVacancyStatusPage;
+  candidateAttachmentPage: CandidateAttachmentPage;
+  recruitmentAddJobVacancyPage: RecruitmentAddJobVacancyPage;
+  jobsRssPage: JobsRssPage;
+  addCandidatePage: AddCandidatePage;
+  candidateHistoryPage: CandidateHistoryPage;
   candidatesPage: CandidatesPage;
+  interviewAttachmentsPage: InterviewAttachmentsPage;
   jobVacancyPage: JobVacancyPage;
-  displayAttendanceSummaryReportCriteriaPage: DisplayAttendanceSummaryReportCriteriaPage;
+  jobsHtmlPage: JobsHtmlPage;
+  appPage: AppPage;
+  displayProjectActivityDetailsReportPage: DisplayProjectActivityDetailsReportPage;
+  saveProjectPage: SaveProjectPage;
+  editTimesheetPage: EditTimesheetPage;
   displayEmployeeReportCriteriaPage: DisplayEmployeeReportCriteriaPage;
-  displayProjectReportCriteriaPage: DisplayProjectReportCriteriaPage;
-  customersPage: CustomersPage;
   employeeTimesheetPage: EmployeeTimesheetPage;
+  timePage: TimePage;
   myTimesheetPage: MyTimesheetPage;
+  displayProjectReportCriteriaPage: DisplayProjectReportCriteriaPage;
   projectsPage: ProjectsPage;
+  updatePasswordPage: UpdatePasswordPage;
+  listCustomFieldsPage: ListCustomFieldsPage;
+  customersPage: CustomersPage;
+  educationPage: EducationPage;
+  listMailConfigurationPage: ListMailConfigurationPage;
+  emailNotificationPage: EmailNotificationPage;
+  employmentStatusPage: EmploymentStatusPage;
+  supportPage: SupportPage;
+  jobCategoryPage: JobCategoryPage;
+  jobTitleListPage: JobTitleListPage;
+  leaveTypeListPage: LeaveTypeListPage;
+  licensesPage: LicensesPage;
+  locationsPage: LocationsPage;
+  nationalityPage: NationalityPage;
+  organizationGeneralInformationPage: OrganizationGeneralInformationPage;
+  companyStructurePage: CompanyStructurePage;
+  payGradesPage: PayGradesPage;
+  languagesPage: LanguagesPage;
+  membershipPage: MembershipPage;
+  skillsPage: SkillsPage;
+  reportingMethodsPage: ReportingMethodsPage;
+  systemUsersPage: SystemUsersPage;
+  terminationReasonsPage: TerminationReasonsPage;
+  defineTimesheetPeriodPage: DefineTimesheetPeriodPage;
+  workShiftPage: WorkShiftPage;
 };
 
 export const test = base.extend<PageObjects>({
@@ -627,98 +749,159 @@ export const test = base.extend<PageObjects>({
   timeTimesheetReportApi: async ({ request }, use) => { await use(new TimeTimesheetReportClient(request)); },
   timeTimesheetTimeFormatApi: async ({ request }, use) => { await use(new TimeTimesheetTimeFormatClient(request)); },
   timeValidationApi: async ({ request }, use) => { await use(new TimeValidationClient(request)); },
+  saveHolidaysPage: async ({ page }, use) => { await use(new SaveHolidaysPage(page)); },
+  payGradePage: async ({ page }, use) => { await use(new PayGradePage(page)); },
+  addAuthProviderPage: async ({ page }, use) => { await use(new AddAuthProviderPage(page)); },
   addThemePage: async ({ page }, use) => { await use(new AddThemePage(page)); },
-  employmentStatusPage: async ({ page }, use) => { await use(new EmploymentStatusPage(page)); },
-  jobCategoryPage: async ({ page }, use) => { await use(new JobCategoryPage(page)); },
+  editOauthClientPage: async ({ page }, use) => { await use(new EditOauthClientPage(page)); },
+  jobSpecificationPage: async ({ page }, use) => { await use(new JobSpecificationPage(page)); },
   languagePackagePage: async ({ page }, use) => { await use(new LanguagePackagePage(page)); },
+  fixLanguageStringErrorsPage: async ({ page }, use) => { await use(new FixLanguageStringErrorsPage(page)); },
+  languageImportPage: async ({ page }, use) => { await use(new LanguageImportPage(page)); },
+  languageCustomizationPage: async ({ page }, use) => { await use(new LanguageCustomizationPage(page)); },
   ldapConfigurationPage: async ({ page }, use) => { await use(new LdapConfigurationPage(page)); },
-  listMailConfigurationPage: async ({ page }, use) => { await use(new ListMailConfigurationPage(page)); },
   localizationPage: async ({ page }, use) => { await use(new LocalizationPage(page)); },
-  membershipPage: async ({ page }, use) => { await use(new MembershipPage(page)); },
-  nationalityPage: async ({ page }, use) => { await use(new NationalityPage(page)); },
   openIdProviderPage: async ({ page }, use) => { await use(new OpenIdProviderPage(page)); },
   registerOauthClientPage: async ({ page }, use) => { await use(new RegisterOauthClientPage(page)); },
-  saveJobTitlePage: async ({ page }, use) => { await use(new SaveJobTitlePage(page)); },
-  saveLocationPage: async ({ page }, use) => { await use(new SaveLocationPage(page)); },
-  saveSystemUserPage: async ({ page }, use) => { await use(new SaveSystemUserPage(page)); },
-  companyStructurePage: async ({ page }, use) => { await use(new CompanyStructurePage(page)); },
-  educationPage: async ({ page }, use) => { await use(new EducationPage(page)); },
-  emailNotificationPage: async ({ page }, use) => { await use(new EmailNotificationPage(page)); },
-  jobTitleListPage: async ({ page }, use) => { await use(new JobTitleListPage(page)); },
-  languagesPage: async ({ page }, use) => { await use(new LanguagesPage(page)); },
-  licensesPage: async ({ page }, use) => { await use(new LicensesPage(page)); },
-  locationsPage: async ({ page }, use) => { await use(new LocationsPage(page)); },
-  modulesPage: async ({ page }, use) => { await use(new ModulesPage(page)); },
-  organizationGeneralInformationPage: async ({ page }, use) => { await use(new OrganizationGeneralInformationPage(page)); },
-  payGradesPage: async ({ page }, use) => { await use(new PayGradesPage(page)); },
-  skillsPage: async ({ page }, use) => { await use(new SkillsPage(page)); },
-  systemUsersPage: async ({ page }, use) => { await use(new SystemUsersPage(page)); },
-  workShiftPage: async ({ page }, use) => { await use(new WorkShiftPage(page)); },
+  workspaceNotificationConfigurationPage: async ({ page }, use) => { await use(new WorkspaceNotificationConfigurationPage(page)); },
   configurePage: async ({ page }, use) => { await use(new ConfigurePage(page)); },
-  punchInPage: async ({ page }, use) => { await use(new PunchInPage(page)); },
+  editAttendanceRecordPage: async ({ page }, use) => { await use(new EditAttendanceRecordPage(page)); },
+  proxyPunchInPunchOutPage: async ({ page }, use) => { await use(new ProxyPunchInPunchOutPage(page)); },
+  displayAttendanceSummaryReportCriteriaPage: async ({ page }, use) => { await use(new DisplayAttendanceSummaryReportCriteriaPage(page)); },
   attendanceRecordPage: async ({ page }, use) => { await use(new AttendanceRecordPage(page)); },
   myAttendanceRecordPage: async ({ page }, use) => { await use(new MyAttendanceRecordPage(page)); },
+  adminVerifyPage: async ({ page }, use) => { await use(new AdminVerifyPage(page)); },
+  requestPasswordResetCodePage: async ({ page }, use) => { await use(new RequestPasswordResetCodePage(page)); },
+  loginPage: async ({ page }, use) => { await use(new LoginPage(page)); },
+  authorizePage: async ({ page }, use) => { await use(new AuthorizePage(page)); },
+  tokenPage: async ({ page }, use) => { await use(new TokenPage(page)); },
+  openIdCredentialsPage: async ({ page }, use) => { await use(new OpenIdCredentialsPage(page)); },
+  resetPasswordPage: async ({ page }, use) => { await use(new ResetPasswordPage(page)); },
+  changeWeakPasswordPage: async ({ page }, use) => { await use(new ChangeWeakPasswordPage(page)); },
   buzzPage: async ({ page }, use) => { await use(new BuzzPage(page)); },
   assignClaimPage: async ({ page }, use) => { await use(new AssignClaimPage(page)); },
+  claimAssignClaimPage: async ({ page }, use) => { await use(new ClaimAssignClaimPage(page)); },
+  requestsPage: async ({ page }, use) => { await use(new RequestsPage(page)); },
+  expensePage: async ({ page }, use) => { await use(new ExpensePage(page)); },
   saveEventsPage: async ({ page }, use) => { await use(new SaveEventsPage(page)); },
   saveExpensePage: async ({ page }, use) => { await use(new SaveExpensePage(page)); },
-  submitClaimPage: async ({ page }, use) => { await use(new SubmitClaimPage(page)); },
-  claimAssignClaimPage: async ({ page }, use) => { await use(new ClaimAssignClaimPage(page)); },
-  claimPage: async ({ page }, use) => { await use(new ClaimPage(page)); },
+  claimAssignClaimPage2: async ({ page }, use) => { await use(new ClaimAssignClaimPage2(page)); },
   eventsPage: async ({ page }, use) => { await use(new EventsPage(page)); },
-  expensePage: async ({ page }, use) => { await use(new ExpensePage(page)); },
-  dashboardPage: async ({ page }, use) => { await use(new DashboardPage(page)); },
+  submitClaimPage: async ({ page }, use) => { await use(new SubmitClaimPage(page)); },
+  claimSubmitClaimPage: async ({ page }, use) => { await use(new ClaimSubmitClaimPage(page)); },
+  claimPage: async ({ page }, use) => { await use(new ClaimPage(page)); },
+  i18nPage: async ({ page }, use) => { await use(new I18nPage(page)); },
+  systemCheckPage: async ({ page }, use) => { await use(new SystemCheckPage(page)); },
   directoryPage: async ({ page }, use) => { await use(new DirectoryPage(page)); },
+  dashboardPage: async ({ page }, use) => { await use(new DashboardPage(page)); },
+  saveCustomFieldsPage: async ({ page }, use) => { await use(new SaveCustomFieldsPage(page)); },
+  addCustomerPage: async ({ page }, use) => { await use(new AddCustomerPage(page)); },
+  saveEducationPage: async ({ page }, use) => { await use(new SaveEducationPage(page)); },
+  saveSubscriberPage: async ({ page }, use) => { await use(new SaveSubscriberPage(page)); },
+  saveEmploymentStatusPage: async ({ page }, use) => { await use(new SaveEmploymentStatusPage(page)); },
+  saveJobTitlePage: async ({ page }, use) => { await use(new SaveJobTitlePage(page)); },
+  defineLeaveTypePage: async ({ page }, use) => { await use(new DefineLeaveTypePage(page)); },
+  saveLocationPage: async ({ page }, use) => { await use(new SaveLocationPage(page)); },
+  modulesPage: async ({ page }, use) => { await use(new ModulesPage(page)); },
+  saveSkillsPage: async ({ page }, use) => { await use(new SaveSkillsPage(page)); },
+  saveReportingMethodPage: async ({ page }, use) => { await use(new SaveReportingMethodPage(page)); },
+  saveSystemUserPage: async ({ page }, use) => { await use(new SaveSystemUserPage(page)); },
+  saveWorkShiftsPage: async ({ page }, use) => { await use(new SaveWorkShiftsPage(page)); },
+  authPage: async ({ page }, use) => { await use(new AuthPage(page)); },
+  helpPage: async ({ page }, use) => { await use(new HelpPage(page)); },
   addLeaveEntitlementPage: async ({ page }, use) => { await use(new AddLeaveEntitlementPage(page)); },
   applyLeavePage: async ({ page }, use) => { await use(new ApplyLeavePage(page)); },
   assignLeavePage: async ({ page }, use) => { await use(new AssignLeavePage(page)); },
   defineLeavePeriodPage: async ({ page }, use) => { await use(new DefineLeavePeriodPage(page)); },
-  defineWorkWeekPage: async ({ page }, use) => { await use(new DefineWorkWeekPage(page)); },
-  leaveTypeListPage: async ({ page }, use) => { await use(new LeaveTypeListPage(page)); },
-  holidayListPage: async ({ page }, use) => { await use(new HolidayListPage(page)); },
-  leaveBalanceReportPage: async ({ page }, use) => { await use(new LeaveBalanceReportPage(page)); },
-  leaveEntitlementsPage: async ({ page }, use) => { await use(new LeaveEntitlementsPage(page)); },
   leaveListPage: async ({ page }, use) => { await use(new LeaveListPage(page)); },
-  myLeaveBalanceReportPage: async ({ page }, use) => { await use(new MyLeaveBalanceReportPage(page)); },
-  myLeaveEntitlementsPage: async ({ page }, use) => { await use(new MyLeaveEntitlementsPage(page)); },
+  leavePage: async ({ page }, use) => { await use(new LeavePage(page)); },
   myLeaveListPage: async ({ page }, use) => { await use(new MyLeaveListPage(page)); },
-  purgeEmployeePage: async ({ page }, use) => { await use(new PurgeEmployeePage(page)); },
-  myPerformanceReviewPage: async ({ page }, use) => { await use(new MyPerformanceReviewPage(page)); },
-  searchEvaluatePerformanceReviewPage: async ({ page }, use) => { await use(new SearchEvaluatePerformanceReviewPage(page)); },
-  searchKpiPage: async ({ page }, use) => { await use(new SearchKpiPage(page)); },
-  searchPerformanceReviewPage: async ({ page }, use) => { await use(new SearchPerformanceReviewPage(page)); },
+  leaveEntitlementsPage: async ({ page }, use) => { await use(new LeaveEntitlementsPage(page)); },
+  leaveRequestPage: async ({ page }, use) => { await use(new LeaveRequestPage(page)); },
+  myLeaveEntitlementsPage: async ({ page }, use) => { await use(new MyLeaveEntitlementsPage(page)); },
+  defineWorkWeekPage: async ({ page }, use) => { await use(new DefineWorkWeekPage(page)); },
+  holidayListPage: async ({ page }, use) => { await use(new HolidayListPage(page)); },
+  accessEmployeeDataPage: async ({ page }, use) => { await use(new AccessEmployeeDataPage(page)); },
+  purgeCandidateDataPage: async ({ page }, use) => { await use(new PurgeCandidateDataPage(page)); },
+  maintenanceAccessEmployeeDataPage: async ({ page }, use) => { await use(new MaintenanceAccessEmployeeDataPage(page)); },
+  addPerformanceTrackerPage: async ({ page }, use) => { await use(new AddPerformanceTrackerPage(page)); },
+  reviewEvaluateByAdminPage: async ({ page }, use) => { await use(new ReviewEvaluateByAdminPage(page)); },
   employeePerformanceTrackerListPage: async ({ page }, use) => { await use(new EmployeePerformanceTrackerListPage(page)); },
+  addPerformanceTrackerLogPage: async ({ page }, use) => { await use(new AddPerformanceTrackerLogPage(page)); },
+  saveKpiPage: async ({ page }, use) => { await use(new SaveKpiPage(page)); },
+  searchKpiPage: async ({ page }, use) => { await use(new SearchKpiPage(page)); },
+  performancePage: async ({ page }, use) => { await use(new PerformancePage(page)); },
+  myPerformanceReviewPage: async ({ page }, use) => { await use(new MyPerformanceReviewPage(page)); },
   myPerformanceTrackerListPage: async ({ page }, use) => { await use(new MyPerformanceTrackerListPage(page)); },
+  saveReviewPage: async ({ page }, use) => { await use(new SaveReviewPage(page)); },
+  reviewEvaluatePage: async ({ page }, use) => { await use(new ReviewEvaluatePage(page)); },
+  searchEvaluatePerformanceReviewPage: async ({ page }, use) => { await use(new SearchEvaluatePerformanceReviewPage(page)); },
+  searchPerformanceReviewPage: async ({ page }, use) => { await use(new SearchPerformanceReviewPage(page)); },
   performanceTrackerPage: async ({ page }, use) => { await use(new PerformanceTrackerPage(page)); },
   addEmployeePage: async ({ page }, use) => { await use(new AddEmployeePage(page)); },
-  configurePimPage: async ({ page }, use) => { await use(new ConfigurePimPage(page)); },
+  displayPredefinedReportPage: async ({ page }, use) => { await use(new DisplayPredefinedReportPage(page)); },
+  definePredefinedReportPage: async ({ page }, use) => { await use(new DefinePredefinedReportPage(page)); },
   contactDetailsPage: async ({ page }, use) => { await use(new ContactDetailsPage(page)); },
-  listCustomFieldsPage: async ({ page }, use) => { await use(new ListCustomFieldsPage(page)); },
   pimCsvImportPage: async ({ page }, use) => { await use(new PimCsvImportPage(page)); },
-  definedPredefinedReportsPage: async ({ page }, use) => { await use(new DefinedPredefinedReportsPage(page)); },
   dependentsPage: async ({ page }, use) => { await use(new DependentsPage(page)); },
   emergencyContactsPage: async ({ page }, use) => { await use(new EmergencyContactsPage(page)); },
-  employeeListPage: async ({ page }, use) => { await use(new EmployeeListPage(page)); },
   immigrationPage: async ({ page }, use) => { await use(new ImmigrationPage(page)); },
   jobDetailsPage: async ({ page }, use) => { await use(new JobDetailsPage(page)); },
   membershipsPage: async ({ page }, use) => { await use(new MembershipsPage(page)); },
   personalDetailsPage: async ({ page }, use) => { await use(new PersonalDetailsPage(page)); },
   photographPage: async ({ page }, use) => { await use(new PhotographPage(page)); },
   qualificationsPage: async ({ page }, use) => { await use(new QualificationsPage(page)); },
-  reportingMethodsPage: async ({ page }, use) => { await use(new ReportingMethodsPage(page)); },
-  reportToDetailsPage: async ({ page }, use) => { await use(new ReportToDetailsPage(page)); },
   salaryListPage: async ({ page }, use) => { await use(new SalaryListPage(page)); },
-  addCandidatePage: async ({ page }, use) => { await use(new AddCandidatePage(page)); },
+  usTaxExemptionsPage: async ({ page }, use) => { await use(new UsTaxExemptionsPage(page)); },
+  employeeListPage: async ({ page }, use) => { await use(new EmployeeListPage(page)); },
+  pushPage: async ({ page }, use) => { await use(new PushPage(page)); },
   addJobVacancyPage: async ({ page }, use) => { await use(new AddJobVacancyPage(page)); },
+  applyVacancyPage: async ({ page }, use) => { await use(new ApplyVacancyPage(page)); },
+  changeCandidateVacancyStatusPage: async ({ page }, use) => { await use(new ChangeCandidateVacancyStatusPage(page)); },
+  candidateAttachmentPage: async ({ page }, use) => { await use(new CandidateAttachmentPage(page)); },
+  recruitmentAddJobVacancyPage: async ({ page }, use) => { await use(new RecruitmentAddJobVacancyPage(page)); },
+  jobsRssPage: async ({ page }, use) => { await use(new JobsRssPage(page)); },
+  addCandidatePage: async ({ page }, use) => { await use(new AddCandidatePage(page)); },
+  candidateHistoryPage: async ({ page }, use) => { await use(new CandidateHistoryPage(page)); },
   candidatesPage: async ({ page }, use) => { await use(new CandidatesPage(page)); },
+  interviewAttachmentsPage: async ({ page }, use) => { await use(new InterviewAttachmentsPage(page)); },
   jobVacancyPage: async ({ page }, use) => { await use(new JobVacancyPage(page)); },
-  displayAttendanceSummaryReportCriteriaPage: async ({ page }, use) => { await use(new DisplayAttendanceSummaryReportCriteriaPage(page)); },
+  jobsHtmlPage: async ({ page }, use) => { await use(new JobsHtmlPage(page)); },
+  appPage: async ({ page }, use) => { await use(new AppPage(page)); },
+  displayProjectActivityDetailsReportPage: async ({ page }, use) => { await use(new DisplayProjectActivityDetailsReportPage(page)); },
+  saveProjectPage: async ({ page }, use) => { await use(new SaveProjectPage(page)); },
+  editTimesheetPage: async ({ page }, use) => { await use(new EditTimesheetPage(page)); },
   displayEmployeeReportCriteriaPage: async ({ page }, use) => { await use(new DisplayEmployeeReportCriteriaPage(page)); },
-  displayProjectReportCriteriaPage: async ({ page }, use) => { await use(new DisplayProjectReportCriteriaPage(page)); },
-  customersPage: async ({ page }, use) => { await use(new CustomersPage(page)); },
   employeeTimesheetPage: async ({ page }, use) => { await use(new EmployeeTimesheetPage(page)); },
+  timePage: async ({ page }, use) => { await use(new TimePage(page)); },
   myTimesheetPage: async ({ page }, use) => { await use(new MyTimesheetPage(page)); },
+  displayProjectReportCriteriaPage: async ({ page }, use) => { await use(new DisplayProjectReportCriteriaPage(page)); },
   projectsPage: async ({ page }, use) => { await use(new ProjectsPage(page)); },
+  updatePasswordPage: async ({ page }, use) => { await use(new UpdatePasswordPage(page)); },
+  listCustomFieldsPage: async ({ page }, use) => { await use(new ListCustomFieldsPage(page)); },
+  customersPage: async ({ page }, use) => { await use(new CustomersPage(page)); },
+  educationPage: async ({ page }, use) => { await use(new EducationPage(page)); },
+  listMailConfigurationPage: async ({ page }, use) => { await use(new ListMailConfigurationPage(page)); },
+  emailNotificationPage: async ({ page }, use) => { await use(new EmailNotificationPage(page)); },
+  employmentStatusPage: async ({ page }, use) => { await use(new EmploymentStatusPage(page)); },
+  supportPage: async ({ page }, use) => { await use(new SupportPage(page)); },
+  jobCategoryPage: async ({ page }, use) => { await use(new JobCategoryPage(page)); },
+  jobTitleListPage: async ({ page }, use) => { await use(new JobTitleListPage(page)); },
+  leaveTypeListPage: async ({ page }, use) => { await use(new LeaveTypeListPage(page)); },
+  licensesPage: async ({ page }, use) => { await use(new LicensesPage(page)); },
+  locationsPage: async ({ page }, use) => { await use(new LocationsPage(page)); },
+  nationalityPage: async ({ page }, use) => { await use(new NationalityPage(page)); },
+  organizationGeneralInformationPage: async ({ page }, use) => { await use(new OrganizationGeneralInformationPage(page)); },
+  companyStructurePage: async ({ page }, use) => { await use(new CompanyStructurePage(page)); },
+  payGradesPage: async ({ page }, use) => { await use(new PayGradesPage(page)); },
+  languagesPage: async ({ page }, use) => { await use(new LanguagesPage(page)); },
+  membershipPage: async ({ page }, use) => { await use(new MembershipPage(page)); },
+  skillsPage: async ({ page }, use) => { await use(new SkillsPage(page)); },
+  reportingMethodsPage: async ({ page }, use) => { await use(new ReportingMethodsPage(page)); },
+  systemUsersPage: async ({ page }, use) => { await use(new SystemUsersPage(page)); },
+  terminationReasonsPage: async ({ page }, use) => { await use(new TerminationReasonsPage(page)); },
+  defineTimesheetPeriodPage: async ({ page }, use) => { await use(new DefineTimesheetPeriodPage(page)); },
+  workShiftPage: async ({ page }, use) => { await use(new WorkShiftPage(page)); },
 });
 
 export { expect } from '@playwright/test';

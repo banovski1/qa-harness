@@ -18,6 +18,12 @@ import {findFiles, readText, rel, unique} from './util.mjs';
 const HTTP_METHODS = ['get', 'post', 'put', 'patch', 'delete', 'head', 'options'];
 
 /** `/api/v2/pim/employees/{empNumber}` -> ['empNumber']; also handles :id and <int:id>. */
+/** A route path is an absolute path; a framework config is not obliged to write it as one. */
+function rooted(path) {
+  const value = String(path).trim();
+  return value.startsWith('/') ? value : `/${value}`;
+}
+
 export function paramsOf(routePath) {
   return unique([
     ...String(routePath).matchAll(/\{([^}/]+)\}|:([A-Za-z_][\w]*)|<(?:[^:>]+:)?([^>]+)>/g),
@@ -41,7 +47,7 @@ function symfonyYamlRoutes(root) {
       if (!entry || typeof entry !== 'object' || typeof entry.path !== 'string') continue;
       routes.push({
         name,
-        path: entry.path,
+        path: rooted(entry.path),
         methods: (entry.methods ?? ['GET']).map((m) => String(m).toUpperCase()),
         purpose: entry.defaults?._api ?? entry.controller ?? null,
         controller: typeof entry.controller === 'string' ? entry.controller : null,
@@ -63,7 +69,7 @@ function symfonyAttributeRoutes(root) {
       const methods = [...(match[2] ?? '').matchAll(/['"](GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS)['"]/g)].map((m) => m[1]);
       routes.push({
         name: null,
-        path: match[1],
+        path: rooted(match[1]),
         methods: methods.length > 0 ? methods : ['GET'],
         purpose: path.basename(file, '.php'),
         controller: path.basename(file, '.php'),

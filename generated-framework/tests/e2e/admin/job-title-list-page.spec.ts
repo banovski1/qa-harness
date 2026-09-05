@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('JobTitleListPage', () => {
   test('loads', async ({ jobTitleListPage }) => {
     await jobTitleListPage.goto();
-    await expect(jobTitleListPage.adminHeading.locator).toBeVisible();
+    await expect(jobTitleListPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/viewJobTitleList'));
   });
 });

@@ -1,4 +1,6 @@
 import { AddEmployeePageGenerated } from './AddEmployeePage.generated';
+import { CheckboxComponent } from '../../components/CheckboxComponent';
+import { MenuItemComponent } from '../../components/MenuItemComponent';
 import { expectResponse } from '../../utils/network';
 
 export interface EmployeeLoginDetails {
@@ -9,6 +11,24 @@ export interface EmployeeLoginDetails {
 }
 
 export class AddEmployeePage extends AddEmployeePageGenerated {
+  // Two elements the generator cannot supply from static analysis, kept here because a
+  // protected file is where a locator the extractor cannot reach belongs.
+  //
+  // The tab is part of the server-driven menu, so it appears in no template in the app's
+  // source; the toggle carries no label of its own and is named only by the copy beside it,
+  // which leaves nothing to anchor a locator to. Both selectors are the ones a live walk of
+  // this screen confirmed.
+
+  /** Top-bar tab. Rendered from the menu payload, so it is not in the app's own markup. */
+  get addEmployeeMenuItem(): MenuItemComponent {
+    return MenuItemComponent.byLabel(this.page, 'Add Employee');
+  }
+
+  /** "Create Login Details" toggle. // UNSTABLE — the only switch on the screen, matched by class alone. */
+  get createLoginDetailsSwitch(): CheckboxComponent {
+    return new CheckboxComponent(this.page.locator('.oxd-switch-input'), 'Create Login Details (switch)');
+  }
+
   async createEmployeeWithLogin(details: EmployeeLoginDetails): Promise<void> {
     await this.firstNameInput.fill(details.firstName);
     await this.lastNameInput.fill(details.lastName);

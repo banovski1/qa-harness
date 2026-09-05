@@ -31,7 +31,7 @@ The header names it, and that is the first thing to check. In order of preferenc
 3. **server-side routing** — the backend declares the pages, and where it hands a component name
    to the frontend the bridge is followed to the actual file;
 4. **nothing matched** — the report says so and lists no routes. That is the honest outcome; do
-   not fill it in by hand. Walk the app with `smart-map` instead.
+   not fill it in by hand. Record the flows you need with `playwright-codegen` instead.
 
 Params are normalised to `{name}` whichever convention declared them.
 
@@ -42,5 +42,5 @@ download endpoint, sometimes a component chosen at runtime. It is listed unresol
 guessed. Routes registered only at boot cannot appear at all; the *Not statically resolvable*
 section says so explicitly.
 
-This list is the coverage baseline for `smart-map`: any route here with no
-`ui-map-results/application-map/*.yaml` file is an unmapped screen.
+This list is the generator's page inventory: every route here becomes a page object, and a
+route whose `component` could not be resolved becomes one carrying a URL and nothing else.

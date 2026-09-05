@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('OrganizationGeneralInformationPage', () => {
   test('loads', async ({ organizationGeneralInformationPage }) => {
     await organizationGeneralInformationPage.goto();
-    await expect(organizationGeneralInformationPage.adminHeading.locator).toBeVisible();
+    await expect(organizationGeneralInformationPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/viewOrganizationGeneralInformation'));
   });
 });

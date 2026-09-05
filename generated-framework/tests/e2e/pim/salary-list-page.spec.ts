@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('SalaryListPage', () => {
   test('loads', async ({ salaryListPage }) => {
     await salaryListPage.goto();
-    await expect(salaryListPage.pimHeading.locator).toBeVisible();
+    await expect(salaryListPage.page).toHaveURL(new RegExp('/web/index\\.php/pim/viewSalaryList/empNumber/\\{empNumber\\}'));
   });
 });

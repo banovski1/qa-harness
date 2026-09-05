@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('SaveEventsPage', () => {
   test('loads', async ({ saveEventsPage }) => {
     await saveEventsPage.goto();
-    await expect(saveEventsPage.addEventHeading.locator).toBeVisible();
+    await expect(saveEventsPage.page).toHaveURL(new RegExp('/web/index\\.php/claim/saveEvents/\\{id\\}'));
   });
 });

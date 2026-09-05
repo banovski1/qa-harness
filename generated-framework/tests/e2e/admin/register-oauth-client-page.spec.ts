@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('RegisterOauthClientPage', () => {
   test('loads', async ({ registerOauthClientPage }) => {
     await registerOauthClientPage.goto();
-    await expect(registerOauthClientPage.adminHeading.locator).toBeVisible();
+    await expect(registerOauthClientPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/registerOAuthClient'));
   });
 });

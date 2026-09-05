@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('LicensesPage', () => {
   test('loads', async ({ licensesPage }) => {
     await licensesPage.goto();
-    await expect(licensesPage.adminHeading.locator).toBeVisible();
+    await expect(licensesPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/viewLicenses'));
   });
 });

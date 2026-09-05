@@ -1,0 +1,10 @@
+langStrings:
+  -
+    value: 'Order Name'
+    unitId: order_name
+  -
+    value: 'Place Order'
+    unitId: place_order
+  -
+    value: 'Quantity'
+    unitId: quantity_column

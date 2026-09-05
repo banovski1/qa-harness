@@ -2,7 +2,7 @@
 # mapping skill needs. Point this at ANY web app.
 #
 # Read by:
-#   - the `smart-map` skill, which drives playwright-cli and writes ui-map-results/application-map/
+#   - the `playwright-codegen` skill, which records a human-driven flow into codegen-recordings/
 #   - scripts/framework-generator (via `loginConfig:` in generator-config.yaml), which reads ONLY the
 #     `login:` block to emit a working login helper. Credentials are NOT read from here — they come
 #     from APP_USERNAME / APP_PASSWORD in the generated project's .env.

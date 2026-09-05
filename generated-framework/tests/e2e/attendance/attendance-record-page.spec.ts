@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('AttendanceRecordPage', () => {
   test('loads', async ({ attendanceRecordPage }) => {
     await attendanceRecordPage.goto();
-    await expect(attendanceRecordPage.attendanceHeading.locator).toBeVisible();
+    await expect(attendanceRecordPage.page).toHaveURL(new RegExp('/web/index\\.php/attendance/viewAttendanceRecord'));
   });
 });

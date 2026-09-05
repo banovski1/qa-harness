@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('MembershipPage', () => {
   test('loads', async ({ membershipPage }) => {
     await membershipPage.goto();
-    await expect(membershipPage.adminHeading.locator).toBeVisible();
+    await expect(membershipPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/membership'));
   });
 });

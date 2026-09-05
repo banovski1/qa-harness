@@ -5,8 +5,8 @@
 - **App**: `/Users/banovski/Projects/orangehrm`
 - **Base URL**: https://opensource-demo.orangehrmlive.com
 - **Path prefix**: `/web/index.php`
-- **Routes**: 230 (from `analysis/pages-and-routes.json`, strategy: Symfony server routing)
-- **Generated**: 2026-09-03T18:13:53.557Z
+- **Routes**: 229 (from `analysis/pages-and-routes.json`, strategy: Symfony server routing)
+- **Generated**: 2026-09-05T21:26:47.463Z
 
 | URL | Placeholders | Renders |
 | --- | --- | --- |
@@ -75,7 +75,6 @@
 | [https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers](https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers) | — | `src/client/src/orangehrmAdminPlugin/pages/systemUser/SystemUser.vue` |
 | [https://opensource-demo.orangehrmlive.com/web/index.php/admin/workShift](https://opensource-demo.orangehrmlive.com/web/index.php/admin/workShift) | — | `src/client/src/orangehrmAdminPlugin/pages/workShift/WorkShift.vue` |
 | [https://opensource-demo.orangehrmlive.com/web/index.php/admin/workspaceNotificationConfiguration](https://opensource-demo.orangehrmlive.com/web/index.php/admin/workspaceNotificationConfiguration) | — | `src/client/src/orangehrmAdminPlugin/pages/workspaceNotification/WorkspaceNotificationConfiguration.vue` |
-| https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/performance/trackers/{trackerId}/logs/{id} | `{trackerId}`, `{id}` | — |
 | [https://opensource-demo.orangehrmlive.com/web/index.php/attendance/configure](https://opensource-demo.orangehrmlive.com/web/index.php/attendance/configure) | — | `src/client/src/orangehrmAttendancePlugin/pages/AttendanceConfiguration.vue` |
 | https://opensource-demo.orangehrmlive.com/web/index.php/attendance/editAttendanceRecord/{id} | `{id}` | `src/client/src/orangehrmAttendancePlugin/pages/EditAttendance.vue` |
 | https://opensource-demo.orangehrmlive.com/web/index.php/attendance/editEmployeeAttendanceRecord/{id} | `{id}` | `src/client/src/orangehrmAttendancePlugin/pages/EditAttendance.vue` |
@@ -244,4 +243,4 @@
 
 ## Placeholders
 
-76 URL(s) carry a dynamic segment. The placeholder is left intact: no sample id is invented here, because a wrong one reads as a real URL and fails confusingly. Fill them from a precondition step (see `analysis/api-documentation.md`).
+75 URL(s) carry a dynamic segment. The placeholder is left intact: no sample id is invented here, because a wrong one reads as a real URL and fails confusingly. Fill them from a precondition step (see `analysis/api-documentation.md`).

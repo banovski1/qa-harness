@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('MyTimesheetPage', () => {
   test('loads', async ({ myTimesheetPage }) => {
     await myTimesheetPage.goto();
-    await expect(myTimesheetPage.timeHeading.locator).toBeVisible();
+    await expect(myTimesheetPage.page).toHaveURL(new RegExp('/web/index\\.php/time/viewMyTimesheet'));
   });
 });

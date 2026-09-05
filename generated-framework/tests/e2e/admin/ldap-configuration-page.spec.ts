@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('LdapConfigurationPage', () => {
   test('loads', async ({ ldapConfigurationPage }) => {
     await ldapConfigurationPage.goto();
-    await expect(ldapConfigurationPage.adminHeading.locator).toBeVisible();
+    await expect(ldapConfigurationPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/ldapConfiguration'));
   });
 });

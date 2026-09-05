@@ -9,6 +9,7 @@ export const LOCATOR_TEMPLATES = {
   labelledInput: (label: string) => `.oxd-input-group:has(label:text-is("${quoted(label)}")) input`,
   labelledTextarea: (label: string) => `.oxd-input-group:has(label:text-is("${quoted(label)}")) textarea`,
   labelledSelect: (label: string) => `.oxd-input-group:has(label:text-is("${quoted(label)}")) .oxd-select-text`,
+  labelledRadio: (label: string) => `.oxd-radio-wrapper:has(label:text-is("${quoted(label)}")) input`,
   topNavTab: (label: string) => `.oxd-topbar-body-nav-tab > a:text-is("${quoted(label)}")`,
   tableByColumn: (label: string) => `.oxd-table:has(.oxd-table-th:text-is("${quoted(label)}"))`,
 } satisfies Record<string, (label: string) => string>;

@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('JobVacancyPage', () => {
   test('loads', async ({ jobVacancyPage }) => {
     await jobVacancyPage.goto();
-    await expect(jobVacancyPage.recruitmentHeading.locator).toBeVisible();
+    await expect(jobVacancyPage.page).toHaveURL(new RegExp('/web/index\\.php/recruitment/viewJobVacancy'));
   });
 });

@@ -373,14 +373,6 @@
       "component": "src/client/src/orangehrmAdminPlugin/pages/workspaceNotification/WorkspaceNotificationConfiguration.vue"
     },
     {
-      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/performance/trackers/{trackerId}/logs/{id}",
-      "params": [
-        "trackerId",
-        "id"
-      ],
-      "component": null
-    },
-    {
       "url": "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/configure",
       "params": [],
       "component": "src/client/src/orangehrmAttendancePlugin/pages/AttendanceConfiguration.vue"

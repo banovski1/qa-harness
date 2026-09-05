@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('DefineWorkWeekPage', () => {
   test('loads', async ({ defineWorkWeekPage }) => {
     await defineWorkWeekPage.goto();
-    await expect(defineWorkWeekPage.leaveHeading.locator).toBeVisible();
+    await expect(defineWorkWeekPage.page).toHaveURL(new RegExp('/web/index\\.php/leave/defineWorkWeek'));
   });
 });

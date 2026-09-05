@@ -1,14 +1,14 @@
 # framework-generator
 
-Application map in, Playwright test framework out.
+Static analysis in, Playwright test framework out.
 
-The `smart-map` skill walks an app and writes `ui-map-results/application-map/*.yaml`.
-This tool reads those files and generates a **component object model** framework:
-a reusable component library, one page object per mapped page, Playwright
-fixtures, a login flow, and smoke specs.
+`scripts/repo-analyzer/` reads a local clone of the app under test and writes `analysis/`.
+This tool reads those reports and generates a **component object model** framework:
+a reusable component library, one page object per route, Playwright fixtures, a login
+flow, and smoke specs.
 
-Everything is deterministic — no model in the loop, no network access at
-generation time. The same map always produces the same framework.
+Everything is deterministic — no model in the loop, no browser, no network access at
+generation time. The same analysis always produces the same framework.
 
 ## Install (one-time)
 
@@ -19,7 +19,7 @@ npm install
 
 ## Run
 
-From the **repo root** (so `mapDir` and `outputDir` resolve):
+From the **repo root** (so `analysisDir` and `outputDir` resolve):
 
 ```bash
 node scripts/framework-generator/generate.mjs                     # generate
@@ -34,7 +34,7 @@ language: typescript          # typescript | javascript | java | python | csharp
 projectName: orangehrm-e2e
 outputDir: ./generated-framework
 baseUrl: https://opensource-demo.orangehrmlive.com
-mapDir: ui-map-results/application-map
+analysisDir: analysis
 loginConfig: scripts/app-config.yaml   # optional, see below
 
 pages:
@@ -83,15 +83,12 @@ locator: { strategy: template, args: ["labelledInput"], name: "City" }
 `fromMap` expands that into the plain `css` spec at read time, so `resolve()`, the
 other language adapters and every other consumer only ever see a selector they
 already understand. An unknown template id or a missing `name:` is a hard error, not
-a silent drop. `to-templates.mjs` converts an existing file:
+a silent drop.
 
-```bash
-node scripts/framework-generator/to-templates.mjs ui-map-results/application-map/<slug>.yaml [--write]
-```
-
-It only rewrites a locator when a configured template reproduces it exactly, and
-prints what it matched, so a re-generate after `--write` should report zero files
-written — the map says the same thing more briefly.
+The analyzer emits these directly: an element whose label it resolved but whose markup
+associates no `<label for>` lands on rung 4 of the locator ladder
+(`locator-ladder.mjs`), which is exactly a `template` locator. Nothing has to convert
+them after the fact.
 
 `locatorTemplates` answers "how does this app connect a visible label to its
 control". Each entry is a selector with a `{label}` placeholder, and the generator
@@ -173,12 +170,18 @@ adapter has to know about them:
 
 ## Limitations
 
-- Locators are only as good as the map. Positional (`nth`) locators are emitted
-  with an `// UNSTABLE` comment and listed in the generated `GENERATION-REPORT.md`.
-  They are all left over from the deleted crawler; re-walking a module with the
-  `smart-map` skill replaces them with label-scoped `css` locators.
-- The map is a snapshot. If the app changed since it was walked, re-walk the module
-  first — the generator cannot know a locator has gone stale.
+- **Nothing here proves a locator resolves to exactly one element.** That is the cost of
+  dropping the browser from this half of the pipeline. Where two controls on a page share
+  a label, both getters are emitted with an `// UNSTABLE` comment and tallied in
+  `GENERATION-REPORT.md`; the fix is a scoped accessor in the protected page object, and a
+  `playwright-codegen` recording is how you see which control is which.
+- The analysis is a snapshot of a commit. `check-analysis.mjs` fails when it no longer
+  matches the clone's `HEAD`, because a stale analysis generates a framework for an app
+  that has moved on.
+- Elements no template describes are invisible here: a control labelled only by adjacent
+  copy, or rendered by an external design-system package, appears in no page object. The
+  navigation bar is the standing example — it is declared in `navigation:` rather than
+  derived.
 - A page whose `url:` contains an `{id}` placeholder gets a smoke spec that cannot
   navigate, because `goto()` uses the literal path. Those specs fail until the
   generator learns to skip or parameterise them.

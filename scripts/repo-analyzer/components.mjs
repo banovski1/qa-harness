@@ -4,12 +4,15 @@
 //
 //   node scripts/repo-analyzer/components.mjs --app ../orangehrm [--dry-run]
 
+import fs from 'node:fs';
 import path from 'node:path';
 import {STRATEGIES} from '../framework-generator/locator-spec.mjs';
 import {detect} from './detect.mjs';
+import {buildComponentIndex} from './elements-vue.mjs';
+import {loadCatalogue} from './i18n.mjs';
 import {TEST_ID_ATTRS} from './parsers.mjs';
-import {header, outPath, reportWritten, table, writeReport} from './report.mjs';
-import {findFiles, parseArgs, readText, rel, resolveAppPath, unique} from './util.mjs';
+import {ANALYSIS_DIR, header, outPath, reportWritten, table, writeReport} from './report.mjs';
+import {findFiles, parseArgs, readJson, readText, rel, REPO_ROOT, resolveAppPath, unique} from './util.mjs';
 
 // A parser-less framework gets a naive listing, and a naive listing must stay conservative:
 // only files that look like components by convention, never every source file in the tree.
@@ -25,6 +28,9 @@ function classify(relPath) {
 
 export async function collectComponents(detection) {
   const entry = detection.frontend.entry;
+  // Both are built once and shared by every parse: the catalogue is what turns a `$t()` key
+  // into a label, and the index is what lets a parse follow a child component tag to its file.
+  const catalogue = await loadCatalogue(detection.appPath);
   const naive = Boolean(entry.naive) || entry.id === 'lit';
   const files = findFiles(detection.frontend.sourceRoot, (file) => {
     if (!entry.extensions.some((ext) => file.endsWith(ext))) return false;
@@ -34,11 +40,13 @@ export async function collectComponents(detection) {
     return NAIVE_PATH.test(relPath) || PASCAL_CASE.test(path.basename(file, path.extname(file)));
   }, {maxDepth: 10});
 
+  const componentIndex = buildComponentIndex(files, (file) => path.basename(file, path.extname(file)));
+
   const components = [];
   const errors = [];
   for (const file of files) {
     const source = readText(file) ?? '';
-    const parsed = await entry.parse(file, source);
+    const parsed = await entry.parse(file, source, {catalogue: catalogue.entries, componentIndex});
     const relPath = rel(detection.appPath, file);
     if (parsed.error) errors.push({file: relPath, error: parsed.error});
     components.push({
@@ -48,9 +56,34 @@ export async function collectComponents(detection) {
       framework: entry.label,
       props: parsed.props ?? [],
       testIds: parsed.testIds ?? [],
+      elements: parsed.elements ?? [],
+      skippedElements: parsed.skippedElements ?? 0,
     });
   }
-  return {components, errors, naive};
+  return {components, errors, naive, catalogue};
+}
+
+/**
+ * Join the extracted elements onto the routes that render them, keyed by route path.
+ *
+ * This is the file a recording is repaired against: a codegen step carries a URL, the URL
+ * gives a route, and the route gives the labels its fields actually have. A route whose
+ * component could not be resolved is left out entirely rather than written empty — "no
+ * elements" and "unknown" have to stay distinguishable.
+ */
+export function buildLabelDictionary(components, routes) {
+  const byFile = new Map(components.map((component) => [component.file, component]));
+  const dictionary = {};
+  for (const route of routes) {
+    if (!route.component) continue;
+    const component = byFile.get(route.component);
+    if (!component || component.elements.length === 0) continue;
+    dictionary[route.path] = {
+      component: route.component,
+      elements: component.elements,
+    };
+  }
+  return dictionary;
 }
 
 /**
@@ -66,7 +99,7 @@ function locatorSpecFor(value) {
   return spec;
 }
 
-function render(detection, {components, errors, naive}) {
+function render(detection, {components, errors, naive, catalogue}) {
   const sorted = [...components].sort((a, b) => a.file.localeCompare(b.file));
   const testIdRows = [];
   for (const component of sorted) {
@@ -80,11 +113,26 @@ function render(detection, {components, errors, naive}) {
     }
   }
   const conventions = unique(sorted.flatMap((c) => c.testIds.map((t) => t.attr)));
+  const elementRows = [];
+  for (const component of sorted) {
+    for (const element of component.elements ?? []) {
+      elementRows.push([
+        `\`${component.file}\``,
+        `\`${element.name}\``,
+        element.component,
+        element.label,
+        element.rung,
+        `\`${JSON.stringify(element.locator)}\``,
+      ]);
+    }
+  }
 
   return [
     header('Frontend components', detection, [
       `**Components found**: ${sorted.length}${naive ? ' (naive listing — no parser for this framework)' : ''}`,
       `**Test-id convention**: ${conventions.length > 0 ? conventions.map((c) => `\`${c}\``).join(', ') : 'none found — this app tags no element with any of ' + TEST_ID_ATTRS.map((a) => `\`${a}\``).join(', ')}`,
+      `**Elements extracted**: ${elementRows.length} (${sorted.reduce((n, c) => n + (c.skippedElements ?? 0), 0)} skipped — recognised controls with no resolvable label)`,
+      `**Label catalogue**: ${catalogue.label}${catalogue.size > 0 ? ` — ${catalogue.size} key(s)` : ''}`,
       `**Parse errors**: ${errors.length}`,
     ]),
     table(['Component', 'File', 'Kind', 'Framework', 'Props'], sorted.map((component) => [
@@ -98,10 +146,21 @@ function render(detection, {components, errors, naive}) {
     '## Suggested test-id locators — UNVERIFIED',
     '',
     testIdRows.length === 0
-      ? 'No test-id attribute of any convention appears in this app\'s markup, so there is nothing to suggest. Locators for this app have to come from a live pass (`smart-map` or a codegen recording).'
-      : 'Each row is a **candidate**, not a locator. Static source cannot show that a value resolves to exactly one element on a rendered page, so none of these may enter `ui-map-results/` until a live pass confirms it.',
+      ? 'No test-id attribute of any convention appears in this app\'s markup, so there is nothing to suggest here — see the extracted elements below, which reach the ladder by label instead.'
+      : 'Each row is a **candidate**, not a locator. Static source cannot show that a value resolves to exactly one element on a rendered page, so a spec built from one stays `// UNVERIFIED` until a recording confirms it.',
     '',
     testIdRows.length > 0 ? table(['File', 'Attribute', 'Value', 'Suggested locator spec'], testIdRows) : '',
+    '',
+    '## Extracted elements — UNVERIFIED',
+    '',
+    elementRows.length === 0
+      ? 'No element carried a label, test id or named attribute this extractor could resolve.'
+      : 'One row per element the markup describes well enough to locate. **Rung** is its place on the'
+        + ' locator ladder (`scripts/framework-generator/locator-ladder.mjs`), 1 best. These are'
+        + ' *candidates*: static source cannot prove a locator resolves to exactly one element on a'
+        + ' rendered page, so a spec built from one carries `// UNVERIFIED` until a recording confirms it.',
+    '',
+    elementRows.length > 0 ? table(['File', 'Name', 'Kind', 'Label', 'Rung', 'Locator spec'], elementRows) : '',
     errors.length > 0 ? `\n## Parse errors\n\n${table(['File', 'Error'], errors.map((e) => [`\`${e.file}\``, e.error]))}` : '',
   ].join('\n');
 }
@@ -116,9 +175,33 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     data: {app: detection.appPath, framework: detection.frontend.framework, components: result.components},
     dryRun: Boolean(args.dryRun),
   });
-  reportWritten(written, [
-    `${result.components.length} component(s), ${result.components.reduce((n, c) => n + c.testIds.length, 0)} test-id(s), ${result.errors.length} parse error(s)`,
-  ]);
+  const elementCount = result.components.reduce((n, c) => n + c.elements.length, 0);
+  const skipped = result.components.reduce((n, c) => n + c.skippedElements, 0);
+  const summary = [
+    `${result.components.length} component(s), ${elementCount} element(s) (${skipped} skipped — no resolvable label), `
+    + `${result.components.reduce((n, c) => n + c.testIds.length, 0)} test-id(s), ${result.errors.length} parse error(s)`,
+  ];
+
+  // The dictionary needs the route table to key on, so it is written only once routes.mjs has
+  // run. Skipping it is a normal first-run outcome, not a failure — say so and carry on.
+  const routesFile = path.join(ANALYSIS_DIR, 'pages-and-routes.json');
+  const routeData = readJson(routesFile);
+  if (!args.dryRun && routeData?.routes) {
+    const dictionary = buildLabelDictionary(result.components, routeData.routes);
+    const outFile = path.join(ANALYSIS_DIR, 'label-dictionary.json');
+    fs.writeFileSync(outFile, `${JSON.stringify({
+      app: detection.appPath,
+      framework: detection.frontend.framework,
+      catalogue: result.catalogue.id,
+      routes: dictionary,
+    }, null, 2)}\n`, 'utf8');
+    written.written.push(rel(REPO_ROOT, outFile));
+    summary.push(`${Object.keys(dictionary).length} route(s) carry elements`);
+  } else if (!args.dryRun) {
+    summary.push('no analysis/pages-and-routes.json yet — run routes.mjs, then re-run this to write label-dictionary.json');
+  }
+
+  reportWritten(written, summary);
 }
 
 export {render as renderComponents};

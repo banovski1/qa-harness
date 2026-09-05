@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('ContactDetailsPage', () => {
   test('loads', async ({ contactDetailsPage }) => {
     await contactDetailsPage.goto();
-    await expect(contactDetailsPage.employeeNameHeading.locator).toBeVisible();
+    await expect(contactDetailsPage.page).toHaveURL(new RegExp('/web/index\\.php/pim/contactDetails/empNumber/\\{empNumber\\}'));
   });
 });

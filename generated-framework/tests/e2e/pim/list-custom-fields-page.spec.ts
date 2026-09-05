@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('ListCustomFieldsPage', () => {
   test('loads', async ({ listCustomFieldsPage }) => {
     await listCustomFieldsPage.goto();
-    await expect(listCustomFieldsPage.pimHeading.locator).toBeVisible();
+    await expect(listCustomFieldsPage.page).toHaveURL(new RegExp('/web/index\\.php/pim/listCustomFields'));
   });
 });

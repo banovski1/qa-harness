@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 // Pulls (or loads) the target app's API spec and normalizes it into this
 // repo's own request vocabulary, one YAML file per resource under
-// ui-map-results/api-map/. Deterministic — no browser, no AI judgment is
-// needed to parse a self-describing JSON document, unlike the smart-map
-// skill's DOM walk.
+// analysis/api-map/. Deterministic — no browser, no AI judgment is
+// needed to parse a self-describing JSON document.
 //
 //   node scripts/framework-generator/smart-api-map.mjs [scripts/app-config.yaml] [--strict]
 //
@@ -17,7 +16,7 @@ import yaml from 'js-yaml';
 import { fromOpenApi, fromFallback, toYamlObject } from './request-spec.mjs';
 
 const DEFAULT_APP_CONFIG = join('scripts', 'app-config.yaml');
-const DEFAULT_API_MAP_DIR = join('ui-map-results', 'api-map');
+const DEFAULT_API_MAP_DIR = join('analysis', 'api-map');
 
 async function main() {
   const args = process.argv.slice(2);

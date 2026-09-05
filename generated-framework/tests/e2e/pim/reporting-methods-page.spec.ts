@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('ReportingMethodsPage', () => {
   test('loads', async ({ reportingMethodsPage }) => {
     await reportingMethodsPage.goto();
-    await expect(reportingMethodsPage.pimHeading.locator).toBeVisible();
+    await expect(reportingMethodsPage.page).toHaveURL(new RegExp('/web/index\\.php/pim/viewReportingMethods'));
   });
 });

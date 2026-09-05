@@ -11,21 +11,6 @@ import { TextComponent } from '../TextComponent';
 export class NavigationBar {
   constructor(private readonly page: Page) {}
 
-  /** client brand banner (link) */
-  get clientBrandBannerLink(): LinkComponent {
-    return LinkComponent.byLabel(this.page, 'client brand banner');
-  }
-
-  /** Collapse menu (button) */
-  get collapseMenuButton(): ButtonComponent {
-    return new ButtonComponent(this.page.locator('button.oxd-main-menu-button'), 'Collapse menu (button)');
-  }
-
-  /** Search menu (input) */
-  get searchMenuInput(): InputComponent {
-    return new InputComponent(this.page.locator('.oxd-main-menu-search input'), 'Search menu (input)');
-  }
-
   /** Admin (link) */
   get adminMenuLink(): LinkComponent {
     return LinkComponent.byLabel(this.page, 'Admin');
@@ -86,8 +71,18 @@ export class NavigationBar {
     return LinkComponent.byLabel(this.page, 'Buzz');
   }
 
-  /** Current user (text) */
+  /** searchMenuInput (input) */
+  get searchMenuInput(): InputComponent {
+    return new InputComponent(this.page.locator('.oxd-main-menu-search input'), 'searchMenuInput (input)');
+  }
+
+  /** collapseMenuButton (button) */
+  get collapseMenuButton(): ButtonComponent {
+    return new ButtonComponent(this.page.locator('button.oxd-main-menu-button'), 'collapseMenuButton (button)');
+  }
+
+  /** currentUserHeading (text) */
   get currentUserHeading(): TextComponent {
-    return new TextComponent(this.page.locator('.oxd-userdropdown-name'), 'Current user (text)');
+    return new TextComponent(this.page.locator('.oxd-userdropdown-name'), 'currentUserHeading (text)');
   }
 }

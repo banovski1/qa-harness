@@ -8,7 +8,7 @@ import { existsSync, readFileSync } from 'node:fs';
 const FORBIDDEN = [
   {
     match: (p) => p.endsWith('.generated.ts'),
-    fix: 'Generated file — the next generate.mjs run overwrites it. Put the change in the protected subclass without the .generated suffix, or fix the map and re-run smart-map.',
+    fix: 'Generated file — the next generate.mjs run overwrites it. Put the change in the protected subclass without the .generated suffix, or fix the analysis and re-run the repo analyzer.',
   },
   {
     match: (p) => /(^|\/)src\/components\//.test(p),

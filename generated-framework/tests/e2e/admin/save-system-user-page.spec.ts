@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('SaveSystemUserPage', () => {
   test('loads', async ({ saveSystemUserPage }) => {
     await saveSystemUserPage.goto();
-    await expect(saveSystemUserPage.adminHeading.locator).toBeVisible();
+    await expect(saveSystemUserPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/saveSystemUser/\\{id\\}'));
   });
 });

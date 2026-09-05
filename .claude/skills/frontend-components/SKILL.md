@@ -35,9 +35,9 @@ when a monorepo defeats it; `detect.mjs --app <app-path>` shows what was detecte
 
 Every row under *Suggested test-id locators* is marked UNVERIFIED for a reason: static source
 cannot show that a value resolves to exactly one element on a rendered page, and the map's
-contract is that it does. Nothing here may be written into `ui-map-results/application-map/`
-until a live pass — `smart-map`, or a `playwright-codegen` recording — confirms uniqueness.
-Hand them to `smart-map` as a starting ladder rung, never as a result.
+contract is that it does. A locator built from one is emitted `// UNVERIFIED` and stays that
+way until a `playwright-codegen` recording exercises the control and shows it resolves. Where
+two elements on a page share a label, the extractor says so rather than picking one.
 
 ## Adding a framework
 

@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('MyLeaveEntitlementsPage', () => {
   test('loads', async ({ myLeaveEntitlementsPage }) => {
     await myLeaveEntitlementsPage.goto();
-    await expect(myLeaveEntitlementsPage.leaveHeading.locator).toBeVisible();
+    await expect(myLeaveEntitlementsPage.page).toHaveURL(new RegExp('/web/index\\.php/leave/viewMyLeaveEntitlements'));
   });
 });

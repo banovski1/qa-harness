@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('AddThemePage', () => {
   test('loads', async ({ addThemePage }) => {
     await addThemePage.goto();
-    await expect(addThemePage.adminHeading.locator).toBeVisible();
+    await expect(addThemePage.page).toHaveURL(new RegExp('/web/index\\.php/admin/addTheme'));
   });
 });

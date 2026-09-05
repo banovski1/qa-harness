@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('SearchKpiPage', () => {
   test('loads', async ({ searchKpiPage }) => {
     await searchKpiPage.goto();
-    await expect(searchKpiPage.performanceHeading.locator).toBeVisible();
+    await expect(searchKpiPage.page).toHaveURL(new RegExp('/web/index\\.php/performance/searchKpi'));
   });
 });

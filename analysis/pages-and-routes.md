@@ -5,15 +5,17 @@
 - **App**: `/Users/banovski/Projects/orangehrm` @ `56e23b3`
 - **Frontend**: Vue ^3.4.18 — `src/client/src`
 - **Backend**: Symfony (config/routes*.yaml + #[Route] attributes)
-- **Generated**: 2026-09-03T18:13:53.404Z
+- **Generated**: 2026-09-05T21:26:46.590Z
 - **Route source**: Symfony server routing
-- **Routes found**: 230
+- **Routes found**: 229
 - **API prefix excluded**: `/api` (see `analysis/api-documentation.md`)
 
 | Route | Renders | Params | Source |
 | --- | --- | --- | --- |
 | `/` | — | — | plugins/orangehrmAuthenticationPlugin/config/routes.yaml (Symfony) |
+| `/admin/addAuthProvider` | `src/client/src/orangehrmAdminPlugin/pages/socialMediaAuth/AddProvider.vue` | — | plugins/orangehrmOpenidAuthenticationPlugin/config/routes.yaml (Symfony) |
 | `/admin/addTheme` | `src/client/src/orangehrmAdminPlugin/pages/corporateBranding/CorporateBranding.vue` | — | plugins/orangehrmCorporateBrandingPlugin/config/routes.yaml (Symfony) |
+| `/admin/editAuthProvider/{id}` | `src/client/src/orangehrmAdminPlugin/pages/socialMediaAuth/EditProvider.vue` | `{id}` | plugins/orangehrmOpenidAuthenticationPlugin/config/routes.yaml (Symfony) |
 | `/admin/editOAuthClient` | `src/client/src/orangehrmCoreOAuthPlugin/pages/registerOAuthClient/SaveOAuthClient.vue` | — | plugins/orangehrmCoreOAuthPlugin/config/routes.yaml (Symfony) |
 | `/admin/employmentStatus` | `src/client/src/orangehrmAdminPlugin/pages/employmentStatus/EmploymentStatus.vue` | — | plugins/orangehrmAdminPlugin/config/routes.yaml (Symfony) |
 | `/admin/fixLanguageStringErrors/{languageId}` | `src/client/src/orangehrmAdminPlugin/pages/languageImport/FixLanguageStringErrors.vue` | `{languageId}` | plugins/orangehrmAdminPlugin/config/routes.yaml (Symfony) |
@@ -239,11 +241,8 @@
 | `/time/viewProjects` | `src/client/src/orangehrmTimePlugin/pages/project/Project.vue` | — | plugins/orangehrmTimePlugin/config/routes.yaml (Symfony) |
 | `/time/viewTimeModule` | — | — | plugins/orangehrmTimePlugin/config/routes.yaml (Symfony) |
 | `/time/viewTimesheet/employeeId/{id}` | `src/client/src/orangehrmTimePlugin/pages/timesheets/ViewEmployeeTimesheet.vue` | `{id}` | plugins/orangehrmTimePlugin/config/routes.yaml (Symfony) |
-| `admin/addAuthProvider` | `src/client/src/orangehrmAdminPlugin/pages/socialMediaAuth/AddProvider.vue` | — | plugins/orangehrmOpenidAuthenticationPlugin/config/routes.yaml (Symfony) |
-| `admin/editAuthProvider/{id}` | `src/client/src/orangehrmAdminPlugin/pages/socialMediaAuth/EditProvider.vue` | `{id}` | plugins/orangehrmOpenidAuthenticationPlugin/config/routes.yaml (Symfony) |
-| `api/v2/performance/trackers/{trackerId}/logs/{id}` | — | `{trackerId}`, `{id}` | plugins/orangehrmPerformancePlugin/config/routes.yaml (Symfony) |
 
 
 ## Not statically resolvable
 
-46 route(s) above resolve to no component file — either the route is a redirect or download endpoint, or the component is chosen at runtime. They are listed with an empty **Renders** cell rather than guessed at.
+45 route(s) above resolve to no component file — either the route is a redirect or download endpoint, or the component is chosen at runtime. They are listed with an empty **Renders** cell rather than guessed at.

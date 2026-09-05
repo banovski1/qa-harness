@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('EmployeePerformanceTrackerListPage', () => {
   test('loads', async ({ employeePerformanceTrackerListPage }) => {
     await employeePerformanceTrackerListPage.goto();
-    await expect(employeePerformanceTrackerListPage.performanceHeading.locator).toBeVisible();
+    await expect(employeePerformanceTrackerListPage.page).toHaveURL(new RegExp('/web/index\\.php/performance/viewEmployeePerformanceTrackerList'));
   });
 });

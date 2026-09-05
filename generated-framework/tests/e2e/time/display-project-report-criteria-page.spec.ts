@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('DisplayProjectReportCriteriaPage', () => {
   test('loads', async ({ displayProjectReportCriteriaPage }) => {
     await displayProjectReportCriteriaPage.goto();
-    await expect(displayProjectReportCriteriaPage.timeHeading.locator).toBeVisible();
+    await expect(displayProjectReportCriteriaPage.page).toHaveURL(new RegExp('/web/index\\.php/time/displayProjectReportCriteria'));
   });
 });

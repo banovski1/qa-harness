@@ -124,6 +124,16 @@ export async function tryImport(specifier) {
   }
 }
 
+// The test-id conventions a project might use. Whichever one a repo actually uses is
+// reported back rather than assumed, since a suggestion is only useful if it names the
+// real attribute. It lives here rather than in parsers.mjs so the element extractor can
+// read it without importing the parsers that import the extractor.
+export const TEST_ID_ATTRS = ['data-testid', 'data-test-id', 'data-test', 'data-cy', 'data-qa'];
+
+export function isTestIdAttr(name) {
+  return TEST_ID_ATTRS.includes(String(name).toLowerCase());
+}
+
 export function unique(values) {
   return [...new Set(values)];
 }

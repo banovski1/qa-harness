@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('ListMailConfigurationPage', () => {
   test('loads', async ({ listMailConfigurationPage }) => {
     await listMailConfigurationPage.goto();
-    await expect(listMailConfigurationPage.adminHeading.locator).toBeVisible();
+    await expect(listMailConfigurationPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/listMailConfiguration'));
   });
 });

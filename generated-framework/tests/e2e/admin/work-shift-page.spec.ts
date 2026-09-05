@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('WorkShiftPage', () => {
   test('loads', async ({ workShiftPage }) => {
     await workShiftPage.goto();
-    await expect(workShiftPage.adminHeading.locator).toBeVisible();
+    await expect(workShiftPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/workShift'));
   });
 });

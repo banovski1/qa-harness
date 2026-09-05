@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('DefineLeavePeriodPage', () => {
   test('loads', async ({ defineLeavePeriodPage }) => {
     await defineLeavePeriodPage.goto();
-    await expect(defineLeavePeriodPage.leaveHeading.locator).toBeVisible();
+    await expect(defineLeavePeriodPage.page).toHaveURL(new RegExp('/web/index\\.php/leave/defineLeavePeriod'));
   });
 });

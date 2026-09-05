@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('EmailNotificationPage', () => {
   test('loads', async ({ emailNotificationPage }) => {
     await emailNotificationPage.goto();
-    await expect(emailNotificationPage.adminHeading.locator).toBeVisible();
+    await expect(emailNotificationPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/viewEmailNotification'));
   });
 });

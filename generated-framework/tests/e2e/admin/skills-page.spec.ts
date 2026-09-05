@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('SkillsPage', () => {
   test('loads', async ({ skillsPage }) => {
     await skillsPage.goto();
-    await expect(skillsPage.adminHeading.locator).toBeVisible();
+    await expect(skillsPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/viewSkills'));
   });
 });

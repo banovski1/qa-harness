@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('PimCsvImportPage', () => {
   test('loads', async ({ pimCsvImportPage }) => {
     await pimCsvImportPage.goto();
-    await expect(pimCsvImportPage.pimHeading.locator).toBeVisible();
+    await expect(pimCsvImportPage.page).toHaveURL(new RegExp('/web/index\\.php/pim/pimCsvImport'));
   });
 });

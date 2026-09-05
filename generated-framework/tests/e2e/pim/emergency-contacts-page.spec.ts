@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('EmergencyContactsPage', () => {
   test('loads', async ({ emergencyContactsPage }) => {
     await emergencyContactsPage.goto();
-    await expect(emergencyContactsPage.pimHeading.locator).toBeVisible();
+    await expect(emergencyContactsPage.page).toHaveURL(new RegExp('/web/index\\.php/pim/viewEmergencyContacts/empNumber/\\{empNumber\\}'));
   });
 });

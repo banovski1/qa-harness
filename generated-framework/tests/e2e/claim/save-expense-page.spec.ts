@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('SaveExpensePage', () => {
   test('loads', async ({ saveExpensePage }) => {
     await saveExpensePage.goto();
-    await expect(saveExpensePage.addExpenseTypeHeading.locator).toBeVisible();
+    await expect(saveExpensePage.page).toHaveURL(new RegExp('/web/index\\.php/claim/saveExpense/\\{id\\}'));
   });
 });

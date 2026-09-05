@@ -1,4 +1,4 @@
-// Api-map (YAML) -> normalized domain model. Parallel to map-reader.mjs, but
+// Api-map (YAML) -> normalized domain model. Parallel to analysis-reader.mjs, but
 // additive: an app with no api-map yet must generate exactly as it did before
 // this feature existed, so a missing/empty apiMapDir yields an empty model
 // instead of throwing.

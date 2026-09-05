@@ -8,6 +8,8 @@
 - **Generated**: <timestamp>
 - **Components found**: 2
 - **Test-id convention**: `data-testid`
+- **Elements extracted**: 0 (0 skipped — recognised controls with no resolvable label)
+- **Label catalogue**: none found — `$t()` labels cannot be resolved
 - **Parse errors**: 0
 
 | Component | File | Kind | Framework | Props |
@@ -18,9 +20,15 @@
 
 ## Suggested test-id locators — UNVERIFIED
 
-Each row is a **candidate**, not a locator. Static source cannot show that a value resolves to exactly one element on a rendered page, so none of these may enter `ui-map-results/` until a live pass confirms it.
+Each row is a **candidate**, not a locator. Static source cannot show that a value resolves to exactly one element on a rendered page, so a spec built from one stays `// UNVERIFIED` until a recording confirms it.
 
 | File | Attribute | Value | Suggested locator spec |
 | --- | --- | --- | --- |
 | `src/app/page.tsx` | `data-testid` | `home` | `{"strategy":"getByTestId","args":["home"]}` |
+
+
+## Extracted elements — UNVERIFIED
+
+No element carried a label, test id or named attribute this extractor could resolve.
+
 

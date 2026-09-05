@@ -206,7 +206,7 @@ function render(detection, result, apiPrefix) {
     '## Not statically resolvable',
     '',
     result.strategy === null
-      ? 'No routing convention matched this app. Routes registered at runtime cannot be recovered from source; walk the app with the `smart-map` skill instead.'
+      ? 'No routing convention matched this app. Routes registered at runtime cannot be recovered from source; record the flows you need with the `playwright-codegen` skill instead.'
       : `${unresolved.length} route(s) above resolve to no component file — either the route is a redirect or download endpoint, or the component is chosen at runtime. They are listed with an empty **Renders** cell rather than guessed at.`,
     '',
   ].join('\n');

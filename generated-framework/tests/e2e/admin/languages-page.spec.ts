@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('LanguagesPage', () => {
   test('loads', async ({ languagesPage }) => {
     await languagesPage.goto();
-    await expect(languagesPage.adminHeading.locator).toBeVisible();
+    await expect(languagesPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/viewLanguages'));
   });
 });

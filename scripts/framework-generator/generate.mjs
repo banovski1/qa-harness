@@ -1,20 +1,21 @@
 #!/usr/bin/env node
-// Application map in, Playwright test framework out.
+// Static analysis in, Playwright test framework out.
 //
-// Reads the map produced by the smart-map skill and generates a component-object-model
-// framework in the language named in the config. This file is orchestration only:
-// it validates the config, builds the model, hands it to a language adapter, and
-// applies the write policy. It never branches on the language.
+// Reads the reports the repo analyzer writes from a local clone of the app under test and
+// generates a component-object-model framework in the language named in the config. This file
+// is orchestration only: it validates the config, builds the model, hands it to a language
+// adapter, and applies the write policy. It never branches on the language.
 //
 //   node scripts/framework-generator/generate.mjs [path/to/generator-config.yaml] [--dry-run]
 //
-// Run from the repo root so mapDir and outputDir resolve correctly.
+// Run from the repo root so analysisDir and outputDir resolve correctly.
 
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import yaml from 'js-yaml';
 import { fromMap } from './locator-spec.mjs';
-import { readApplicationMap } from './map-reader.mjs';
+import { RUNGS } from './locator-ladder.mjs';
+import { readApplicationModel } from './analysis-reader.mjs';
 import { readApiMap } from './api-map-reader.mjs';
 import { adapterFor, SUPPORTED_LANGUAGES } from './languages/index.mjs';
 import { FileWriter } from './file-writer.mjs';
@@ -26,20 +27,21 @@ const DEFAULTS = {
   projectName: 'playwright-framework',
   outputDir: './generated-framework',
   baseUrl: '',
-  mapDir: join('ui-map-results', 'application-map'),
+  analysisDir: 'analysis',
   loginConfig: null,
   pages: { folderSegment: 'auto', dropParamSegments: true, mergeDuplicates: true },
-  elements: { sharedChromeThreshold: 0.8, includeUnstable: true, includeStates: true },
+  elements: { sharedChromeThreshold: 0.8, includeUnstable: true },
+  navigation: [],
   waits: { spinnerSelector: '[role="progressbar"], [aria-busy="true"]' },
   tests: { generateSmokeSpecs: true },
   locatorTemplates: {},
-  apiMapDir: join('ui-map-results', 'api-map'),
+  apiMapDir: join('analysis', 'api-map'),
   api: { enabled: false, include: {}, exclude: {}, generateAssertionSpecs: true, generateFactories: true },
 };
 
 // Every template id the generator knows how to emit a factory for, and the component
 // kinds that use it. An id absent from the config simply has no factory.
-export const TEMPLATE_IDS = ['labelledInput', 'labelledTextarea', 'labelledSelect', 'topNavTab', 'tableByColumn'];
+export const TEMPLATE_IDS = ['labelledInput', 'labelledTextarea', 'labelledSelect', 'labelledRadio', 'topNavTab', 'tableByColumn'];
 
 // ---- entry point -------------------------------------------------------------
 
@@ -52,13 +54,17 @@ async function main() {
   const adapter = adapterFor(config.language);
   console.log(`[framework-gen] ${config.language} -> ${config.outputDir}${dryRun ? ' (dry run)' : ''}`);
 
-  const model = readApplicationMap(config);
+  const model = readApplicationModel(config);
   if (model.stats.folderSegmentDetected) {
     console.log(`[framework-gen] grouping pages by URL segment ${model.stats.folderSegment} (auto-detected): ` +
       `${[...new Set(model.pages.map((p) => p.group))].sort().join(', ')}`);
   }
-  console.log(`[framework-gen] read ${model.stats.files} map file(s): ${model.pages.length} page object(s), ` +
-    `${model.stats.elementsRead} element(s), ${model.stats.sharedChrome} shared in navigation`);
+  console.log(`[framework-gen] read ${config.analysisDir}: ${model.stats.routes} route(s) -> ${model.pages.length} page object(s), ` +
+    `${model.stats.elementsRead} element(s), ${model.stats.sharedChrome} declared in navigation`);
+  if (model.stats.routesWithoutComponent > 0) {
+    console.warn(`[framework-gen] ${model.stats.routesWithoutComponent} route(s) have no component in the analysis — `
+      + 'those page objects carry a URL and nothing else');
+  }
 
   const apiModel = readApiMap(config);
   if (apiModel.resources.length > 0) {
@@ -101,6 +107,27 @@ main().catch((err) => {
   console.error('[framework-gen] ERROR', err.message);
   process.exit(1);
 });
+
+/**
+ * How the elements are distributed across the locator ladder.
+ *
+ * This is the quality number for a generated framework: element counts say how much was
+ * found, the ladder says how well it will hold up. A run that shifts elements down a rung is
+ * a regression even when it finds more of them.
+ */
+function rungTable(model) {
+  const counts = model.stats.rungs ?? {};
+  const rungs = Object.keys(counts).map(Number).sort((a, b) => a - b);
+  if (rungs.length === 0) return '';
+
+  let md = '## Locator ladder\n\n';
+  md += 'Where each element landed, best first. See `scripts/framework-generator/locator-ladder.mjs`.\n\n';
+  md += '| Rung | Signal | Elements |\n|---|---|---|\n';
+  for (const rung of rungs) {
+    md += `| ${rung} | ${RUNGS.find((r) => r.rung === rung)?.signal ?? '—'} | ${counts[rung]} |\n`;
+  }
+  return `${md}\n`;
+}
 
 // ---- config ------------------------------------------------------------------
 
@@ -185,7 +212,8 @@ function loadLoginFlow(path) {
 /**
  * Every positional locator in the map, in one file. Burying that in code comments
  * alone would let a locator look stable when it is not. These are all legacy from
- * the deleted crawler — walking a module with the smart-map skill clears them.
+ * an element whose label the extractor could not resolve, or one of several elements
+ * sharing a label — recording the flow with playwright-codegen is what pins them down.
  */
 function report(context) {
   const { model, config } = context;
@@ -197,10 +225,12 @@ function report(context) {
   }
 
   let md = '# Generation report\n\n';
-  md += `Generated from \`${config.mapDir}\` for \`${config.language}\`.\n\n`;
+  md += `Generated from \`${config.analysisDir}\` for \`${config.language}\`.\n\n`;
   md += '| | |\n|---|---|\n';
-  md += `| Map files read | ${model.stats.files} |\n`;
+  md += `| Routes read | ${model.stats.routes} |\n`;
   md += `| Page objects | ${model.pages.length} |\n`;
+  md += `| Routes without a component | ${model.stats.routesWithoutComponent} |\n`;
+  md += `| API routes skipped | ${model.stats.apiRoutesSkipped} |\n`;
   md += `| Elements read | ${model.stats.elementsRead} |\n`;
   md += `| Skipped (no locator) | ${model.stats.skippedNoLocator} |\n`;
   md += `| Shared navigation elements | ${model.stats.sharedChrome} |\n`;
@@ -214,6 +244,8 @@ function report(context) {
   const locators = context.adapter.locatorStats?.(model, config);
   if (locators) md += `| Accessors via component factory | ${locators.derived} of ${locators.total} |\n`;
   md += '\n';
+
+  md += rungTable(model);
 
   if (context.apiModel.resources.length > 0) {
     md += '## API layer\n\n';

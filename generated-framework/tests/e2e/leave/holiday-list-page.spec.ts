@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('HolidayListPage', () => {
   test('loads', async ({ holidayListPage }) => {
     await holidayListPage.goto();
-    await expect(holidayListPage.leaveHeading.locator).toBeVisible();
+    await expect(holidayListPage.page).toHaveURL(new RegExp('/web/index\\.php/leave/viewHolidayList'));
   });
 });

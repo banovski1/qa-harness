@@ -17,7 +17,7 @@ Use the same judgment call `test-writer.md` §6c already documents: validation r
 
 ## 2. Check for an existing API path
 
-Look at `ui-map-results/api-map/` and `generated-framework/src/api/clients/` for a typed client or factory (`src/data/factories/<resource>-factory.ts`) covering the setup steps. If one exists, name it. If not, say plainly "no API map for this resource yet" — never invent a client or factory that doesn't exist.
+Look at `analysis/api-map/` and `generated-framework/src/api/clients/` for a typed client or factory (`src/data/factories/<resource>-factory.ts`) covering the setup steps. If one exists, name it. If not, say plainly "no API map for this resource yet" — never invent a client or factory that doesn't exist.
 
 ## 3. Return the enhanced prompt
 
@@ -41,5 +41,5 @@ Always include the original steps verbatim at the end — nothing gets lost even
 
 - No file writes, no reads beyond the api-map/client check above, no code changes.
 - Never call `test-writer` or any other agent yourself — you only return text; the orchestrator passes it on.
-- Never edit or read deeply into `ui-map-results/application-map/` — that's `test-writer`'s job once it has your analysis.
+- Never read deeply into `codegen-recordings/` or `analysis/label-dictionary.json` — that's `test-writer`'s job once it has your analysis.
 - If every step is UI journey with nothing to extract, say so briefly and still pass the steps through unchanged.

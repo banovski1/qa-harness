@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('DisplayAttendanceSummaryReportCriteriaPage', () => {
   test('loads', async ({ displayAttendanceSummaryReportCriteriaPage }) => {
     await displayAttendanceSummaryReportCriteriaPage.goto();
-    await expect(displayAttendanceSummaryReportCriteriaPage.timeHeading.locator).toBeVisible();
+    await expect(displayAttendanceSummaryReportCriteriaPage.page).toHaveURL(new RegExp('/web/index\\.php/time/displayAttendanceSummaryReportCriteria'));
   });
 });

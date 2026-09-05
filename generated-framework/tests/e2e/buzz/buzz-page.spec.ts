@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('BuzzPage', () => {
   test('loads', async ({ buzzPage }) => {
     await buzzPage.goto();
-    await expect(buzzPage.buzzHeading.locator).toBeVisible();
+    await expect(buzzPage.page).toHaveURL(new RegExp('/web/index\\.php/buzz/viewBuzz'));
   });
 });

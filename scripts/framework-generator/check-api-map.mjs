@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Gate for the api-map. Purely static — this never calls the real API, only
-// the YAML files under apiMapDir. Parallel to check-map.mjs.
+// the YAML files under apiMapDir. Parallel to check-analysis.mjs.
 //
 //   node scripts/framework-generator/check-api-map.mjs [--strict <resource>...]
 //
@@ -20,7 +20,7 @@ const strictTargets = new Set(
 
 const rawConfig = yaml.load(readFileSync(join('scripts', 'framework-generator', 'generator-config.yaml'), 'utf8'));
 const config = {
-  apiMapDir: process.env.API_MAP_DIR ?? rawConfig.apiMapDir ?? join('ui-map-results', 'api-map'),
+  apiMapDir: process.env.API_MAP_DIR ?? rawConfig.apiMapDir ?? join('analysis', 'api-map'),
   // This gate checks whatever files are on disk regardless of whether generation
   // is toggled on, so `enabled` is forced true here rather than read from config.
   api: { include: {}, exclude: {}, ...(rawConfig.api ?? {}), enabled: true },

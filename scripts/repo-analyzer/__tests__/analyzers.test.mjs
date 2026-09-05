@@ -53,7 +53,7 @@ for (const testCase of CASES) {
       }
     });
 
-    if (testCase.components || testCase.testIds || testCase.props) {
+    if (testCase.components || testCase.testIds || testCase.props || testCase.elements) {
       await t.test('parses components', async () => {
         const {components, errors} = await collectComponents(detection);
         assert.deepEqual(errors, [], 'a parser that throws degrades quietly into this list');
@@ -68,6 +68,19 @@ for (const testCase of CASES) {
         const values = components.flatMap((component) => component.testIds.map((hit) => hit.value));
         for (const value of testCase.testIds ?? []) {
           assert.ok(values.includes(value), `missing test-id ${value} (got ${values.join(', ')})`);
+        }
+
+        const extracted = components.flatMap((component) => component.elements ?? []);
+        for (const expected of testCase.elements ?? []) {
+          const found = extracted.find((element) => element.name === expected.name);
+          assert.ok(found, `missing element ${expected.name} (got ${extracted.map((e) => e.name).join(', ')})`);
+          assert.equal(found.component, expected.component, `${expected.name} kind`);
+          assert.equal(found.rung, expected.rung, `${expected.name} landed on the wrong ladder rung`);
+          if (expected.locator) {
+            assert.equal(found.locator.strategy, expected.locator.strategy, `${expected.name} strategy`);
+            assert.deepEqual(found.locator.args, expected.locator.args, `${expected.name} args`);
+            if (expected.locator.name) assert.equal(found.locator.name, expected.locator.name, `${expected.name} locator name`);
+          }
         }
       });
     }

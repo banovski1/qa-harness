@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('SaveLocationPage', () => {
   test('loads', async ({ saveLocationPage }) => {
     await saveLocationPage.goto();
-    await expect(saveLocationPage.adminHeading.locator).toBeVisible();
+    await expect(saveLocationPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/saveLocation/\\{id\\}'));
   });
 });

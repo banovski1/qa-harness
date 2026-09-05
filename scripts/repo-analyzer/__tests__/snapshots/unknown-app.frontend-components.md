@@ -8,6 +8,8 @@
 - **Generated**: <timestamp>
 - **Components found**: 0 (naive listing — no parser for this framework)
 - **Test-id convention**: none found — this app tags no element with any of `data-testid`, `data-test-id`, `data-test`, `data-cy`, `data-qa`
+- **Elements extracted**: 0 (0 skipped — recognised controls with no resolvable label)
+- **Label catalogue**: none found — `$t()` labels cannot be resolved
 - **Parse errors**: 0
 
 _No rows._
@@ -15,6 +17,12 @@ _No rows._
 
 ## Suggested test-id locators — UNVERIFIED
 
-No test-id attribute of any convention appears in this app's markup, so there is nothing to suggest. Locators for this app have to come from a live pass (`smart-map` or a codegen recording).
+No test-id attribute of any convention appears in this app's markup, so there is nothing to suggest here — see the extracted elements below, which reach the ladder by label instead.
+
+
+
+## Extracted elements — UNVERIFIED
+
+No element carried a label, test id or named attribute this extractor could resolve.
 
 

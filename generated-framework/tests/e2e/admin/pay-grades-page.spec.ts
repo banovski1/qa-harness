@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('PayGradesPage', () => {
   test('loads', async ({ payGradesPage }) => {
     await payGradesPage.goto();
-    await expect(payGradesPage.adminHeading.locator).toBeVisible();
+    await expect(payGradesPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/viewPayGrades'));
   });
 });

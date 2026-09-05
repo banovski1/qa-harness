@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('ClaimAssignClaimPage', () => {
   test('loads', async ({ claimAssignClaimPage }) => {
     await claimAssignClaimPage.goto();
-    await expect(claimAssignClaimPage.employeeClaimsHeading.locator).toBeVisible();
+    await expect(claimAssignClaimPage.page).toHaveURL(new RegExp('/web/index\\.php/claim/assignClaim/id/\\{id\\}'));
   });
 });

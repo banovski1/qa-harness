@@ -15,7 +15,7 @@ const BARE_SELECTOR = /(['"`])\s*(?:\/\/|[.#[][\w-]|[a-z]+\s*[>[])/;
 const POSITIONAL = /nth-child|nth-of-type|nth-last-child|\.nth\s*\(|\btext=|\.(first|last)\s*\(\s*\)/;
 const CLASSY = /(['"`])[^'"`]*\.(btn|oxd|col|row|form)-[\w-]/;
 const RAW_LOCATOR_GETTER = /\bget\s+\w+\s*\(\s*\)\s*:\s*Locator\b/;
-const LOW_PRIORITY = /\.(getByTestId|locator)\s*\(/;
+const LOW_PRIORITY = /\.locator\s*\(/;
 const PROVENANCE = /\/\/\s*(UNVERIFIED|UNSTABLE|map:)/;
 const UNNAMED_ROLE = /\.getByRole\s*\(\s*(['"`])[^'"`]+\1\s*\)/;
 const UNSCOPED_TEXT = /\.getByText\s*\(/;
@@ -23,7 +23,7 @@ const UNSCOPED_TEXT = /\.getByText\s*\(/;
 const FIX_SPEC =
   'Locators live in src/pages/** wrapped in a component. Add a getter to the protected page object and call it from the spec.';
 const FIX_POSITIONAL =
-  'Positional selectors break on any layout change. Use a named role or label locator; if the element is not in the map, walk the screen with the smart-map skill.';
+  'Positional selectors break on any layout change. Use a named role or label locator; if the element has no accessor, record the flow with the playwright-codegen skill and add one to the page object.';
 
 function unstableGetters(root) {
   const found = new Map();
@@ -81,7 +81,7 @@ export function locatorRules(ctx) {
               rule: 'unstable-getter',
               line: no,
               found: `${getter} (${owner}) is marked // UNSTABLE`,
-              fix: 'This getter is a positional leftover and will break. Re-walk the screen with the smart-map skill so it gets a semantic locator, then use it.',
+              fix: 'This getter resolves to more than one element, or has no stable anchor. Record the flow with the playwright-codegen skill and give the page object a scoped accessor, then use that.',
             });
           }
         }

@@ -18,13 +18,13 @@ Don't diagnose from the stack trace alone. Use `playwright-cli` to replay the st
 
 ## 3. Classify against known-issues.md
 
-Read `.claude/agents/test-runner-known-issues.md`. Match the observed symptom against its `Symptom` column. Each row names the fix's owned location: a stale map → re-run the `smart-map` skill for that module; a missing wait → `generated-framework/src/utils/waitHelpers.ts` or the protected `<Name>Page.ts`; bad test data → the spec's own generated test data.
+Read `.claude/agents/test-runner-known-issues.md`. Match the observed symptom against its `Symptom` column. Each row names the fix's owned location: a stale analysis → re-run the repo analyzer and regenerate; an ambiguous locator → a scoped accessor in the protected `<Name>Page.ts`; a missing wait → `generated-framework/src/utils/waitHelpers.ts` or that same file; bad test data → the spec's own generated test data.
 
 No row matches → stop now and hand back to a human with the playwright-cli evidence. Do not invent a fix outside the library.
 
 ## 4. Apply the one documented fix, in its owned file
 
-Same generated/protected boundary as `test-writer`: never edit `*.generated.ts` or anything under `ui-map-results/` by hand — a map problem is fixed by invoking `smart-map`, not by editing the yaml.
+Same generated/protected boundary as `test-writer`: never edit `*.generated.ts` or anything under `analysis/` by hand — an analysis problem is fixed by re-running the repo analyzer, not by editing its output.
 
 ## 5. Rerun once
 
@@ -38,7 +38,7 @@ Only after step 5 actually passes, append the new symptom → fix mapping as a n
 
 - Every hard rule in `test-writer.md` applies to your fixes too, and `.claude/hooks/guard-write.mjs` enforces them on your writes the same way. A documented fix that would trip a hook is re-shaped to satisfy it, not forced through: no `waitForTimeout`, no `force: true`, no locator in a spec, no `Date.now()` for uniqueness, no narration comments.
 - A rejected write is information. Read the rule id and the suggested fix rather than retrying the same content.
-- Never hand-edit `ui-map-results/` — a map fix is always a `smart-map` re-walk.
+- Never hand-edit `analysis/` — it is a report, and the fix is always a re-run of the analyzer that wrote it.
 - Only apply a fix that has a row in `known-issues.md`. An unmatched failure is a handoff, never an improvisation.
 - One fix attempt, one rerun. No retry loops.
 - Do not add explanatory comments to any code touched, except `// UNVERIFIED` markers already established by test-writer.

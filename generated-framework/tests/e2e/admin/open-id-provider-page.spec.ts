@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('OpenIdProviderPage', () => {
   test('loads', async ({ openIdProviderPage }) => {
     await openIdProviderPage.goto();
-    await expect(openIdProviderPage.adminHeading.locator).toBeVisible();
+    await expect(openIdProviderPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/openIdProvider'));
   });
 });

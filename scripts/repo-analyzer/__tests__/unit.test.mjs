@@ -8,7 +8,10 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
+import {bestLocatorFor, classify, rankOf, RUNGS} from '../../framework-generator/locator-ladder.mjs';
 import {crossCheck, mergeByPath} from '../api-docs.mjs';
+import {dedupeNames} from '../elements-vue.mjs';
+import {resolveLabelExpression} from '../i18n.mjs';
 import {joinUrl} from '../live-urls.mjs';
 import {componentNameFromFile, isTestIdAttr, walkAny, walkAst} from '../parsers.mjs';
 import {paramsOf} from '../registry-backend.mjs';
@@ -146,4 +149,121 @@ test('crossCheck reports the delta in both directions', (t) => {
   const empty = crossCheck([], specFile);
   assert.equal(empty.foundCount, 0);
   assert.deepEqual(empty.missing, ['/api/a', '/api/b']);
+});
+
+// --- the locator ladder ---------------------------------------------------------------
+
+test('the ladder is ordered, contiguous and self-consistent', () => {
+  const rungs = RUNGS.map((r) => r.rung);
+  assert.deepEqual(rungs, [...rungs].sort((a, b) => a - b), 'RUNGS must read best to worst');
+  assert.deepEqual(rungs, rungs.map((_, i) => i + 1), 'rung numbers must be contiguous from 1');
+  // Only the bottom two rungs are unstable; promoting one silently would let a positional
+  // locator through every check that asks "is this stable?".
+  assert.deepEqual(RUNGS.filter((r) => !r.stable).map((r) => r.id), ['text', 'cssPath']);
+});
+
+test('bestLocatorFor picks the highest rung the signals support', () => {
+  // Every signal at once: the test id must win, not merely appear.
+  const all = bestLocatorFor({
+    testId: 'submit', role: 'button', name: 'Save', label: 'Save',
+    templateId: 'labelledInput', placeholder: 'Save', nameAttr: 'save', text: 'Save', cssPath: '.save',
+  });
+  assert.equal(all.rung, 1);
+  assert.equal(all.strategy, 'getByTestId');
+
+  // A role with no accessible name matches every button on the page, so it is not rung 2.
+  assert.equal(bestLocatorFor({role: 'button'}), null);
+  assert.equal(bestLocatorFor({role: 'button', name: 'Save'}).rung, 2);
+
+  // An associated label beats the template; without the association the template is the fallback.
+  assert.equal(bestLocatorFor({label: 'City', labelFor: true}).strategy, 'getByLabel');
+  assert.equal(bestLocatorFor({label: 'City', templateId: 'labelledInput'}).rung, 4);
+  // A label with neither association nor a template for its kind cannot be used at all.
+  assert.equal(bestLocatorFor({label: 'City'}), null);
+
+  assert.equal(bestLocatorFor({placeholder: 'Search'}).rung, 5);
+  assert.equal(bestLocatorFor({nameAttr: 'city'}).rung, 6);
+  assert.equal(bestLocatorFor({text: 'Save'}).rung, 7);
+  assert.equal(bestLocatorFor({}), null, 'no signal must yield no locator, never a guess');
+});
+
+test('only the bottom rung is marked unstable, and it says why', () => {
+  const css = bestLocatorFor({cssPath: '.oxd-icon.bi-caret-down'});
+  assert.equal(css.rung, 8);
+  assert.equal(css.unstable, true);
+  assert.match(css.unstableReason, /raw CSS/);
+  // A template expands to CSS but is anchored to a label, so it must not be tagged unstable.
+  assert.equal(bestLocatorFor({label: 'City', templateId: 'labelledInput'}).unstable, false);
+});
+
+test('a quote in a label cannot break out of an attribute selector', () => {
+  const spec = bestLocatorFor({nameAttr: 'a"b'});
+  assert.equal(spec.args[0], '[name="a\\"b"]');
+});
+
+test('rankOf reads an expanded template back as rung 4, not as a CSS path', () => {
+  // fromMap() rewrites a template into css and leaves the id behind; without that check every
+  // expanded template would be reported as the worst rung on the ladder.
+  assert.equal(rankOf({strategy: 'css', args: ['.g:has(label:text-is("City")) input'], template: 'labelledInput'}), 4);
+  assert.equal(rankOf({strategy: 'css', args: ['[name="city"]']}), 6);
+  assert.equal(rankOf({strategy: 'css', args: ['.a .b > input']}), 8);
+  assert.equal(rankOf({strategy: 'getByRole', args: ['button'], name: 'Save'}), 2);
+  assert.equal(rankOf({strategy: 'getByRole', args: ['button']}), 7, 'an unnamed role is not rung 2');
+});
+
+test('classify judges a recorded locator, positional indexing first', () => {
+  assert.equal(classify("page.getByRole('textbox', { name: 'Username' })").rung, 2);
+  // The recording that motivated this: a named role made positional is broken by the .first().
+  const positional = classify("page.getByRole('textbox', { name: 'yyyy-dd-mm' }).first()");
+  assert.equal(positional.rung, 8);
+  assert.equal(positional.stable, false);
+  assert.match(positional.reason, /positional/);
+
+  assert.equal(classify("page.locator('textarea')").rung, 8);
+  assert.equal(classify("page.getByText('1', { exact: true })").rung, 7);
+  assert.equal(classify("page.getByTestId('submit')").rung, 1);
+  assert.equal(classify("page.getByRole('button')").stable, false, 'an unnamed role is not stable');
+});
+
+// --- label resolution -----------------------------------------------------------------
+
+test('resolveLabelExpression resolves only an unambiguous $t key', () => {
+  const catalogue = {'general.from_date': 'From Date'};
+  assert.equal(resolveLabelExpression("$t('general.from_date')", catalogue), 'From Date');
+  assert.equal(resolveLabelExpression('$t("general.from_date")', catalogue), 'From Date');
+  // A key the catalogue does not carry must not fall back to the key itself.
+  assert.equal(resolveLabelExpression("$t('general.missing')", catalogue), null);
+  // Interpolation and plain expressions are dynamic; a guess here matches nothing at runtime.
+  assert.equal(resolveLabelExpression("$t('general.n_mb', {count: size})", catalogue), null);
+  assert.equal(resolveLabelExpression('someComputed', catalogue), null);
+  assert.equal(resolveLabelExpression(null, catalogue), null);
+});
+
+test('dedupeNames keeps identifiers unique without renaming the first', () => {
+  const at = (name, label) => ({name, locator: {strategy: 'template', args: ['labelledSelect'], name: label}});
+  const deduped = dedupeNames([at('durationDropdown', 'A'), at('durationDropdown', 'B'), at('other', 'C'), at('durationDropdown', 'D')]);
+  assert.deepEqual(deduped.map((e) => e.name), ['durationDropdown', 'durationDropdown2', 'other', 'durationDropdown3']);
+});
+
+test('dedupeNames does not hand out a suffix another element already took', () => {
+  // Elements inlined from a child arrive already deduped, so the name this page would have
+  // generated for its own second `amount` field can already be in use.
+  const at = (name, label) => ({name, locator: {strategy: 'template', args: ['labelledInput'], name: label}});
+  const deduped = dedupeNames([at('amountInput', 'A'), at('amountInput2', 'B'), at('amountInput', 'C')]);
+  assert.deepEqual(deduped.map((e) => e.name), ['amountInput', 'amountInput2', 'amountInput3']);
+  assert.equal(new Set(deduped.map((e) => e.name)).size, 3);
+});
+
+test('dedupeNames flags elements that share one locator', () => {
+  const same = () => ({name: 'durationDropdown', locator: {strategy: 'template', args: ['labelledSelect'], name: 'Duration'}});
+  const other = {name: 'startDayDropdown', locator: {strategy: 'template', args: ['labelledSelect'], name: 'Start Day'}};
+  const deduped = dedupeNames([same(), same(), other]);
+
+  // Unique names are not the same thing as unique locators: both getters still resolve to
+  // both fields, which is the failure the ladder exists to make visible.
+  assert.deepEqual(deduped.map((e) => e.name), ['durationDropdown', 'durationDropdown2', 'startDayDropdown']);
+  assert.equal(deduped[0].locator.unstable, true);
+  assert.equal(deduped[1].locator.unstable, true);
+  assert.match(deduped[0].locator.unstableReason, /2 elements .* same locator/);
+  assert.equal(deduped[2].locator.unstable, undefined, 'an element with its own locator stays untouched');
 });

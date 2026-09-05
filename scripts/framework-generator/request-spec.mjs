@@ -162,7 +162,7 @@ function normalizeSchema(schema) {
   return { kind: 'object', properties: (schema.properties ?? []).map((p) => ({ ...normalizeParam(p), required: Boolean(p.required), nullable: Boolean(p.nullable) })) };
 }
 
-/** Emit one Operation as the YAML shape written under ui-map-results/api-map/. */
+/** Emit one Operation as the YAML shape written under analysis/api-map/. */
 export function toYamlObject(op) {
   return {
     operationId: op.operationId,

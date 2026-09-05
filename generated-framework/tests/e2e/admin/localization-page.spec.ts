@@ -6,6 +6,6 @@ import { test, expect } from '../../../src/fixtures';
 test.describe('LocalizationPage', () => {
   test('loads', async ({ localizationPage }) => {
     await localizationPage.goto();
-    await expect(localizationPage.adminHeading.locator).toBeVisible();
+    await expect(localizationPage.page).toHaveURL(new RegExp('/web/index\\.php/admin/localization'));
   });
 });

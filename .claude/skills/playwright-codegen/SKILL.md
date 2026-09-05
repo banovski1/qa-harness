@@ -9,10 +9,15 @@ allowed-tools: Bash(npx:*) Bash(node:*)
 Wraps https://playwright.dev/docs/codegen for the one case `playwright-cli` can't
 cover: a **human** clicking through a live browser window while Playwright records
 TypeScript. `playwright-cli` stays the tool for every agent-driven browser task in this
-repo (`smart-map`, test authoring, ad-hoc automation) — this skill exists only to
-capture a human-driven recording and shape its output into something reusable. It does
-not join the map → generator → framework pipeline: it produces a standalone reference
-file, nothing under `generated-framework/` or `ui-map-results/application-map/`.
+repo — this skill exists only to capture a human-driven recording and shape its output
+into something reusable.
+
+A recording is one of the two inputs `test-writer` reads. `analysis/` says what is on each
+screen; a recording is the only record of what the app *does* — the order of steps, what a
+click leads to, what the app accepts. The two compose, and shaping (step 3) is where they
+meet: an unstable recorded locator is repaired against the label dictionary rather than left
+for a human to puzzle over. This skill writes only to `codegen-recordings/`; never to
+`generated-framework/` or `analysis/`.
 
 ## 1. Resolve BASE_URL
 
@@ -102,7 +107,8 @@ Structure:
 1. **goto** `<url>` 
 2. **fill** `getByRole('textbox', { name: 'Username' })` = `"Admin"` — stable
 3. **click** `locator('.oxd-table tr:nth-child(3) button')` — ⚠ UNSTABLE (positional CSS)
-   → candidate template: `tableByColumn` (scripts/framework-generator/generator-config.yaml)
+   → resolves to `recordsTable` — "Username" (table, rung 4) via `tableByColumn`
+     [analysis/label-dictionary.json → /admin/viewSystemUsers]
 ...
 
 ## Raw generated code
@@ -120,16 +126,30 @@ Structure:
 Shaping rules:
 - One numbered step per recorded action, in order, preserving the raw locator
   Playwright emitted and any typed/selected value.
-- Flag a step **UNSTABLE** when its locator is raw CSS, uses `nth()`/positional
-  indexing, or matches on visible text alone. Leave stable role/label/testid locators
-  unflagged — mirrors the stable-vs-`// UNSTABLE` distinction `smart-map` already uses
-  for the application map, so a reader recognizes the convention.
-- For any flagged step, check whether the target's label matches a
-  `locatorTemplates:` entry in `scripts/framework-generator/generator-config.yaml`
-  (`labelledInput`, `labelledTextarea`, `labelledSelect`, `topNavTab`, `tableByColumn`)
-  and note the template name as a candidate substitute. This is a note for a human or
-  `smart-map` to verify and apply — this skill never edits the map or the templates
-  block itself.
+- Rank every step's locator with `classify()` from
+  `scripts/framework-generator/locator-ladder.mjs`, and record the rung. That module is the
+  single ranking the whole repo shares, so a step flagged here reads the same way it would to
+  the write-hook or the generator. Rungs 1-6 are stable; 7 and 8 are flagged **UNSTABLE**
+  with the reason `classify` gives (positional, unnamed role, raw CSS, text-only).
+- **Repair each flagged step against the label dictionary.** Take the route from the most
+  recent `goto` (or the URL the step ran against), strip the `/web/index.php` prefix, and look
+  it up in `analysis/label-dictionary.json`. Match the flagged element to a dictionary entry by
+  position in the form and by kind, and record the resolved element — its `name`, `label` and
+  rung — as the substitute. Write what it *is*, not what it might be:
+
+  ```
+  9. **click** `locator('.oxd-icon.bi-caret-down-fill.oxd-select-text--arrow')` — ⚠ UNSTABLE (raw CSS)
+     → resolves to `leaveTypeDropdown` — "Leave Type" (dropdown, rung 4) via `labelledSelect`
+       [analysis/label-dictionary.json → /leave/applyLeave]
+  ```
+
+  When the route is absent from the dictionary, or no entry plausibly matches, say so
+  explicitly — `→ no dictionary entry for this control` — rather than guessing. An unrepaired
+  step is a fact worth recording; a wrong repair is worse than none.
+- **Redact credentials.** A login flow records `fill('Admin')` and `fill('admin123')` in
+  clear. Replace the value with `«APP_USERNAME»` / `«APP_PASSWORD»` in the numbered steps
+  **and** in the raw appendix, and note the redaction under the heading. These files are
+  committed; a recording is not a place to keep a password.
 - Keep the full raw codegen output verbatim in a collapsed appendix so nothing is lost
   in the shaping pass.
 
@@ -138,9 +158,9 @@ Shaping rules:
 Tell the user:
 - Raw file path and shaped file path (both carrying the final `<content-slug>-<timestamp>` name).
 - Step count, and how many were flagged UNSTABLE.
-- That the shaped file is a reference only — if they want it acted on, they can hand it
-  to `smart-map` (to verify/add locators to the map) or paste its steps into a
-  `test-writer` request. Do not auto-invoke either.
+- How many flagged steps were repaired from the label dictionary, and how many could not be.
+- That the shaped file is a reference — if they want it acted on, they can paste its steps
+  into a `test-writer` request. Do not auto-invoke it.
 - `codegen-recordings/` is a growing library of one file per recording —
   point them there if they ask "what have I recorded before".
 
@@ -158,8 +178,9 @@ Tell the user:
 - Every shaped file gets a unique `<content-slug>-<timestamp>.md` name (step 3) —
   never reuse the launch-time slug as the final filename, so recordings accumulate as
   a library instead of overwriting each other.
-- This skill does not touch `ui-map-results/application-map/`, the generator, or
-  `check-map.mjs` — those stay `smart-map`'s territory.
+- This skill reads `analysis/label-dictionary.json` and never writes to it. The analysis is
+  the repo analyzer's output; a recording that disagrees with it is a reason to re-run the
+  analyzer, not to edit its report.
 - Once BASE_URL resolves and a slug is chosen (from the request, or the `recording`
   fallback), launch codegen immediately in the same turn — do not ask for confirmation
   to start.

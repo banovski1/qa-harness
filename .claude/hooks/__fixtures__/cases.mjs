@@ -76,7 +76,7 @@ export class FixturePage extends FixturePageGenerated {
     path: SPEC,
     expect: ['network-before-action'],
     content: `test('x', async ({ page, addSystemUserPage }) => {
-  await addSystemUserPage.saveButton.click();
+  await addSystemUserPage.publishButton.click();
   await page.waitForResponse('**/users');
 });
 `,
