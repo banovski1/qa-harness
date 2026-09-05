@@ -14,7 +14,7 @@ instead of inferring an endpoint from prose.
 
 ```bash
 cd scripts/repo-analyzer && npm install     # first time only
-node scripts/repo-analyzer/api-docs.mjs --app <app-path> [--cross-check openapi-spec.json]
+node scripts/repo-analyzer/api-docs.mjs --app <app-path> [--cross-check <a known-good spec>]
 node scripts/repo-analyzer/api-docs.mjs --app <app-path> --dry-run
 ```
 

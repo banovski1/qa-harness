@@ -1,0 +1,13 @@
+openapi: 3.0.0
+info:
+  title: Spec App
+  version: 1.0.0
+paths:
+  /api/tickets:
+    get:
+      summary: List tickets
+    post:
+      summary: Create a ticket
+  /api/tickets/{ticketId}:
+    get:
+      summary: Read one ticket

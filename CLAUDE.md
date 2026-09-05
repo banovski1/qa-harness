@@ -36,9 +36,10 @@ cd scripts/repo-analyzer && npm install
 node scripts/repo-analyzer/detect.mjs     --app ../orangehrm   # what framework, and why
 node scripts/repo-analyzer/components.mjs --app ../orangehrm   # analysis/frontend-components.md
 node scripts/repo-analyzer/routes.mjs     --app ../orangehrm   # analysis/pages-and-routes.md
-node scripts/repo-analyzer/api-docs.mjs   --app ../orangehrm --cross-check openapi-spec.json
+node scripts/repo-analyzer/api-docs.mjs   --app ../orangehrm   # add --cross-check <spec> if the app ships one
 node scripts/repo-analyzer/live-urls.mjs  --path-prefix /web/index.php   # needs routes.mjs first
-node scripts/repo-analyzer/__fixtures__/run.mjs                 # the registry's test suite
+node scripts/repo-analyzer/__fixtures__/run.mjs                 # the analyzer's test suite
+cd scripts/repo-analyzer && npm test                            # the same suite, with test names
 
 # Stage 1 — build or refresh the map: invoke the `smart-map` skill ("map the PIM module").
 #           There is no crawler script; the skill drives playwright-cli itself.
@@ -108,7 +109,19 @@ application under test and writes the four files in `analysis/`. Framework suppo
 installer bundled beside the product resolves to the product. Adding a framework is one registry row
 plus a fixture app under `__fixtures__/`; the four analyzers are framework-blind and must stay that way.
 A parser that silently finds nothing is indistinguishable from an app with nothing to find, which is why
-`__fixtures__/run.mjs` asserts a positive hit per framework and is the suite to run after touching a row.
+every fixture row asserts a *positive* hit — a route, a component, a test-id, an endpoint — and never
+just an absence.
+
+**The analyzer's tests are three layers, and the third is the point.** `__tests__/unit.test.mjs` covers
+the pure functions each report is built from; `__tests__/analyzers.test.mjs` runs `detect`,
+`collectRoutes`, `collectComponents` and the api-docs tier ladder against every app in `__fixtures__/`,
+with the expectations in `__fixtures__/cases.mjs` (one row per registry row it pins); and
+`__tests__/reports.test.mjs` compares the **rendered markdown** against committed snapshots, because a
+refactor can preserve every return value while quietly changing what lands in `analysis/`. Only the
+timestamp and commit lines are scrubbed before comparing. Accept an intentional format change with
+`UPDATE_SNAPSHOTS=1 npm test` so it arrives as a reviewable diff of `__tests__/snapshots/*.md` rather
+than a hand edit. Rails and Spring have no fixture app: their extractors are a known gap, stated in
+`cases.mjs` rather than papered over.
 
 **`analysis/` is upstream context, never map input.** A `data-testid` found in source is a *candidate*:
 static analysis cannot prove it resolves to exactly one element on a rendered page, and that proof is

@@ -1,0 +1,4 @@
+{
+  "name": "acme/symfony-app",
+  "require": {"symfony/framework-bundle": "^6.4"}
+}

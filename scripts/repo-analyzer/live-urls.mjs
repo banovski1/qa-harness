@@ -81,3 +81,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   });
   reportWritten(written, [`${rows.length} URL(s) from ${baseUrl}${prefix}`]);
 }
+
+export {render as renderLiveUrls};

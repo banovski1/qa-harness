@@ -15,9 +15,10 @@ import {findFiles, parseArgs, readText, rel, resolveAppPath} from './util.mjs';
 // mark a placeholder without knowing which router produced the route. API endpoints keep their
 // framework's own spelling — those are matched against a spec, where the native form is correct.
 function normalisePath(routePath) {
+  // `<int:pk>` first: rewriting `:pk` ahead of it would leave the converter behind as `{int{pk}}`.
   return String(routePath)
-    .replace(/:([A-Za-z_]\w*)\??/g, '{$1}')
-    .replace(/<(?:[^:>]+:)?([^>]+)>/g, '{$1}');
+    .replace(/<(?:[^:>]+:)?([^>]+)>/g, '{$1}')
+    .replace(/:([A-Za-z_]\w*)\??/g, '{$1}');
 }
 
 // --- strategy 1: a file-based router ----------------------------------------------------
@@ -227,4 +228,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   reportWritten(written, [`${result.routes.length} route(s) via ${result.strategy ?? 'no strategy'}`]);
 }
 
-export {fileRouteFor};
+export {fileRouteFor, normalisePath, render as renderRoutes};

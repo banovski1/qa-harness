@@ -4,7 +4,7 @@
 //   B  the backend framework's own route convention (via the backend registry)
 //   C  anything only resolvable once the app boots  (recorded, never guessed)
 //
-//   node scripts/repo-analyzer/api-docs.mjs --app ../orangehrm [--cross-check openapi-spec.json]
+//   node scripts/repo-analyzer/api-docs.mjs --app ../orangehrm [--cross-check <a known-good spec>]
 
 import path from 'node:path';
 import yaml from 'js-yaml';
@@ -152,3 +152,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   });
   reportWritten(written, [`tier ${result?.tier ?? 'C'}: ${mergeByPath(result?.endpoints ?? []).length} endpoint(s)`]);
 }
+
+export {tierA, tierB, mergeByPath, crossCheck, render as renderApiDocs};

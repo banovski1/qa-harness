@@ -1,0 +1,17 @@
+thing_list:
+  path: /thing/viewThingList
+  methods: [GET]
+  controller: Acme\Controller\ThingController::list
+
+thing_detail:
+  path: /thing/viewThing/id/{id}
+  methods: [GET]
+  controller: Acme\Controller\ThingController::view
+  requirements:
+    id: '\d+'
+
+api_things:
+  path: /api/v2/things
+  methods: [GET, POST]
+  defaults:
+    _api: Acme\Api\ThingAPI

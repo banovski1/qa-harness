@@ -120,3 +120,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     `${result.components.length} component(s), ${result.components.reduce((n, c) => n + c.testIds.length, 0)} test-id(s), ${result.errors.length} parse error(s)`,
   ]);
 }
+
+export {render as renderComponents};

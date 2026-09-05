@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "detect": "cd ../.. && node scripts/repo-analyzer/detect.mjs",
+    "test": "node --test __tests__/*.test.mjs",
     "fixtures": "node __fixtures__/run.mjs"
   },
   "dependencies": {

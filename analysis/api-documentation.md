@@ -5,7 +5,7 @@
 - **App**: `/Users/banovski/Projects/orangehrm` @ `56e23b3`
 - **Frontend**: Vue ^3.4.18 — `src/client/src`
 - **Backend**: Symfony (config/routes*.yaml + #[Route] attributes)
-- **Generated**: 2026-09-03T18:13:53.521Z
+- **Generated**: 2026-09-05T16:54:20.575Z
 - **Tier**: B — Symfony — config/routes*.yaml + #[Route] attributes
 - **Endpoints found**: 283
 - **API prefix**: `/api`
@@ -300,13 +300,3 @@
 ## Tier C — requires running the app
 
 Endpoints composed by middleware or registered at boot do not appear in source and are not listed above. Anything a test needs that is missing here has to be confirmed against a running instance — it is absent, not disproven.
-
-## Cross-check
-
-Compared against `openapi-spec.json`: 283 extracted vs 276 in the spec.
-
-| Delta | Count | Examples |
-| --- | --- | --- |
-| In the spec, not extracted | 10 | `/api/v2/admin/job-titles/{id}/specification`, `/api/v2/admin/localization}`, `/api/v2/admin/oauth-client/{id}`, `/api/v2/buzz/posts/{id}/shares`, `/api/v2/performance/trackers/{trackerId}/logs/{id}` |
-| Extracted, not in the spec | 17 | `/api/v2/admin/job-titles/{jobTitleId}/specification`, `/api/v2/admin/oauth-clients/{id}`, `/api/v2/admin/workspace-notification/config`, `/api/v2/admin/workspace-notification/registrations`, `/api/v2/admin/workspace-notification/registrations/test` |
-

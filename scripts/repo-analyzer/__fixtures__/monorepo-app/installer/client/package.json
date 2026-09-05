@@ -1,0 +1,4 @@
+{
+  "name": "installer-client",
+  "dependencies": {"vue": "^3.4.0"}
+}

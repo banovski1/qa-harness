@@ -7,7 +7,7 @@ import {REPO_ROOT, gitSha, rel} from './util.mjs';
 
 export const ANALYSIS_DIR = path.join(REPO_ROOT, 'analysis');
 
-function escapeCell(value) {
+export function escapeCell(value) {
   if (value === null || value === undefined || value === '') return '—';
   return String(value).replace(/\|/g, '\\|').replace(/\r?\n/g, ' ');
 }
