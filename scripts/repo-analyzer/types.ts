@@ -157,7 +157,7 @@ export interface LabelDictionaryReport {
 }
 
 // Parser packages expose incompatible AST dialects. Keep their dynamic fields at this boundary.
-export type AstNode = Record<string, any> & {type?: string | number};
+export type AstNode = Record<string, unknown> & {type?: string | number};
 export type AstVisitor = (node: AstNode) => void;
 export type CatalogueEntries = Record<string, string>;
 export type TemplateMap = Record<string, string>;

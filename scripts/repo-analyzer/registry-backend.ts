@@ -12,9 +12,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
+import {astNode, astNodes, astString} from './ast.js';
 import {babelParse, keyName, walkAst} from './parsers.js';
 import {findFiles, readJson, readText, rel, unique} from './util.js';
-import type {AstNode, BackendRegistryEntry, BackendRoute} from './types.js';
+import type {BackendRegistryEntry, BackendRoute} from './types.js';
 
 interface SymfonyRouteEntry {
   path?: string;
@@ -122,14 +123,15 @@ async function expressRoutes(root: string): Promise<BackendRoute[]> {
     const ast = await babelParse(source);
     if (!ast) continue;
     walkAst(ast, (node) => {
-      if (node.type !== 'CallExpression' || node.callee?.type !== 'MemberExpression') return;
-      const method = node.callee.property?.name;
-      if (!HTTP_METHODS.includes(method)) return;
-      const arg = node.arguments?.[0];
-      if (arg?.type !== 'StringLiteral' || !arg.value.startsWith('/')) return;
+      if (node.type !== 'CallExpression' || astNode(node, 'callee')?.type !== 'MemberExpression') return;
+      const method = astString(node, 'callee', 'property', 'name');
+      if (!method || !HTTP_METHODS.includes(method)) return;
+      const arg = astNode(node, 'arguments', 0);
+      const routePath = astString(arg, 'value');
+      if (arg?.type !== 'StringLiteral' || !routePath?.startsWith('/')) return;
       routes.push({
-        name: null, path: arg.value, methods: [method.toUpperCase()],
-        purpose: node.callee.object?.name ?? null, controller: null, requirements: null,
+        name: null, path: routePath, methods: [method.toUpperCase()],
+        purpose: astString(node, 'callee', 'object', 'name') ?? null, controller: null, requirements: null,
         source: rel(root, file),
       });
     });
@@ -146,20 +148,20 @@ async function nestRoutes(root: string): Promise<BackendRoute[]> {
     if (!ast) continue;
     walkAst(ast, (node) => {
       if (node.type !== 'ClassDeclaration') return;
-      const controllerDecorator = (node.decorators ?? [])
-        .find((d: AstNode) => d.expression?.callee?.name === 'Controller');
-      const base = controllerDecorator?.expression?.arguments?.[0]?.value ?? '';
-      for (const member of node.body?.body ?? []) {
-        for (const decorator of member.decorators ?? []) {
-          const method = decorator.expression?.callee?.name ?? decorator.expression?.name;
+      const controllerDecorator = astNodes(node, 'decorators')
+        .find((d) => astString(d, 'expression', 'callee', 'name') === 'Controller');
+      const base = astString(controllerDecorator, 'expression', 'arguments', 0, 'value') ?? '';
+      for (const member of astNodes(node, 'body', 'body')) {
+        for (const decorator of astNodes(member, 'decorators')) {
+          const method = astString(decorator, 'expression', 'callee', 'name') ?? astString(decorator, 'expression', 'name');
           if (!method || !HTTP_METHODS.includes(method.toLowerCase())) continue;
-          const suffix = decorator.expression?.arguments?.[0]?.value ?? '';
+          const suffix = astString(decorator, 'expression', 'arguments', 0, 'value') ?? '';
           routes.push({
-            name: member.key?.name ?? null,
+            name: astString(member, 'key', 'name') ?? null,
             path: `/${[base, suffix].filter(Boolean).join('/')}`.replace(/\/+/g, '/'),
             methods: [method.toUpperCase()],
-            purpose: `${node.id?.name ?? ''}.${member.key?.name ?? ''}`,
-            controller: node.id?.name ?? null, requirements: null,
+            purpose: `${astString(node, 'id', 'name') ?? ''}.${astString(member, 'key', 'name') ?? ''}`,
+            controller: astString(node, 'id', 'name') ?? null, requirements: null,
             source: rel(root, file),
           });
         }

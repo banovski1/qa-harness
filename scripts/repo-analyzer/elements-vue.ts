@@ -12,6 +12,7 @@ import {bestLocatorFor} from '../framework-generator/locator-ladder.mjs';
 import {toCamel} from '../framework-generator/naming.mjs';
 import {isTestIdAttr} from './util.js';
 import {resolveLabelExpression} from './i18n.js';
+import {astNode, astNodes, astString} from './ast.js';
 import type {AstNode, AstVisitor, CatalogueEntries, ComponentIndex, ExtractedElement, LocatorRecord, ParserContext, TemplateMap} from './types.js';
 
 interface Attributes {statics: Record<string, string>; bound: Record<string, string>}
@@ -96,13 +97,17 @@ function looksLikeComponent(tag: string) {
 function attributesOf(node: AstNode): Attributes {
   const statics: Record<string, string> = {};
   const bound: Record<string, string> = {};
-  for (const prop of node.props ?? []) {
-    if (prop.type === ATTR_STATIC && prop.value?.content != null) {
-      statics[prop.name] = prop.value.content;
+  for (const prop of astNodes(node, 'props')) {
+    const name = astString(prop, 'name');
+    const content = astString(prop, 'value', 'content');
+    if (prop.type === ATTR_STATIC && name !== undefined && content !== undefined) {
+      statics[name] = content;
       continue;
     }
-    if (prop.type === ATTR_DIRECTIVE && prop.name === 'bind' && prop.arg?.content && prop.exp?.content) {
-      bound[prop.arg.content] = prop.exp.content;
+    const argument = astString(prop, 'arg', 'content');
+    const expression = astString(prop, 'exp', 'content');
+    if (prop.type === ATTR_DIRECTIVE && name === 'bind' && argument && expression) {
+      bound[argument] = expression;
     }
   }
   return {statics, bound};
@@ -137,15 +142,16 @@ function innerText(node: AstNode, catalogue: CatalogueEntries): string | null {
   let found: string | null = null;
   const visit = (current: AstNode) => {
     if (found || !current) return;
-    if (current.type === NODE_TEXT && current.content?.trim()) {
-      found = current.content.trim();
+    const content = astString(current, 'content');
+    if (current.type === NODE_TEXT && content?.trim()) {
+      found = content.trim();
       return;
     }
     if (current.type === NODE_INTERPOLATION) {
-      found = resolveLabelExpression(current.content?.content, catalogue);
+      found = resolveLabelExpression(astString(current, 'content', 'content'), catalogue);
       return;
     }
-    for (const child of current.children ?? []) visit(child);
+    for (const child of astNodes(current, 'children')) visit(child);
   };
   visit(node);
   return found;
@@ -220,8 +226,8 @@ export function collectVueElements(root: AstNode, {catalogue = {}, templateFor =
 
     // Text seen among these children labels a later sibling, never an earlier one.
     let siblingText: string | null = null;
-    for (const child of node?.children ?? []) {
-      const text = child?.type === NODE_ELEMENT && !TAG_KINDS[child.tag] ? innerText(child, catalogue) : null;
+    for (const child of astNodes(node, 'children')) {
+      const text = child.type === NODE_ELEMENT && !TAG_KINDS[astString(child, 'tag') ?? ''] ? innerText(child, catalogue) : null;
       visit(child, siblingText);
       if (text) siblingText = text;
       else if (child?.type === NODE_INTERPOLATION || child?.type === NODE_TEXT) {
@@ -229,7 +235,7 @@ export function collectVueElements(root: AstNode, {catalogue = {}, templateFor =
       }
     }
     // A `v-if` chain hides its arms under `branches`, and each arm can hold real fields.
-    for (const branch of node?.branches ?? []) visit(branch, nearby);
+    for (const branch of astNodes(node, 'branches')) visit(branch, nearby);
   };
   visit(root);
 
@@ -350,14 +356,14 @@ export function headersFromScript(ast: AstNode | null, catalogue: CatalogueEntri
   if (!ast) return found;
   walk(ast, (node) => {
     if (node.type !== 'ObjectProperty') return;
-    const key = node.key?.name ?? node.key?.value;
-    if (!key || node.value?.type !== 'ArrayExpression') return;
+    const key = astString(node, 'key', 'name') ?? astString(node, 'key', 'value');
+    if (!key || astNode(node, 'value')?.type !== 'ArrayExpression') return;
     const columns = [];
-    for (const entry of node.value.elements ?? []) {
+    for (const entry of astNodes(node, 'value', 'elements')) {
       if (entry?.type !== 'ObjectExpression') continue;
-      for (const prop of entry.properties ?? []) {
-        if ((prop.key?.name ?? prop.key?.value) !== 'title') continue;
-        const title = titleOf(prop.value, catalogue);
+      for (const prop of astNodes(entry, 'properties')) {
+        if ((astString(prop, 'key', 'name') ?? astString(prop, 'key', 'value')) !== 'title') continue;
+        const title = titleOf(astNode(prop, 'value'), catalogue);
         if (title) columns.push({name: title});
       }
     }
@@ -367,16 +373,17 @@ export function headersFromScript(ast: AstNode | null, catalogue: CatalogueEntri
 }
 
 /** `this.$t('ns.key')` or `$t('ns.key')`, or a plain string. */
-function titleOf(node: AstNode, catalogue: CatalogueEntries): string | null {
-  if (node?.type === 'StringLiteral') return node.value;
+function titleOf(node: AstNode | undefined, catalogue: CatalogueEntries): string | null {
+  if (node?.type === 'StringLiteral') return astString(node, 'value') ?? null;
   if (node?.type !== 'CallExpression') return null;
-  const callee = node.callee;
-  const name = callee?.name ?? callee?.property?.name;
+  const callee = astNode(node, 'callee');
+  const name = astString(callee, 'name') ?? astString(callee, 'property', 'name');
   if (name !== '$t') return null;
-  const arg = node.arguments?.[0];
+  const arg = astNode(node, 'arguments', 0);
   // A second argument means interpolation, and an interpolated heading is not a stable anchor.
-  if (arg?.type !== 'StringLiteral' || node.arguments.length > 1) return null;
-  return catalogue[arg.value] ?? null;
+  if (arg?.type !== 'StringLiteral' || astNodes(node, 'arguments').length > 1) return null;
+  const key = astString(arg, 'value');
+  return key === undefined ? null : catalogue[key] ?? null;
 }
 
 /**

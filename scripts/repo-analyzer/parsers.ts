@@ -5,6 +5,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import {astField, astNode, astNodes, astString} from './ast.js';
 import {isTestIdAttr, TEST_ID_ATTRS, tryImport, unique} from './util.js';
 import {collectVueElements, dedupeNames, headersFromScript, relabel} from './elements-vue.js';
 import type {ChildReference} from './elements-vue.js';
@@ -25,11 +26,11 @@ export async function babelParse(source: string, extraPlugins: string[] = []): P
   const babel = await tryImport('@babel/parser');
   if (!babel) return null;
   try {
-    return babel.parse(source, {
+    return astNode(babel.parse(source, {
       sourceType: 'unambiguous',
       errorRecovery: true,
       plugins: unique([...BABEL_PLUGINS, ...extraPlugins]),
-    });
+    })) ?? null;
   } catch {
     return null;
   }
@@ -70,9 +71,9 @@ export function walkAny(node: unknown, visit: AstVisitor, seen = new Set<object>
 }
 
 export function keyName(prop: AstNode | null | undefined): string | null {
-  if (!prop || !prop.key) return null;
-  if (prop.key.type === 'Identifier') return prop.key.name;
-  if (prop.key.type === 'StringLiteral') return prop.key.value;
+  const key = astNode(prop, 'key');
+  if (key?.type === 'Identifier') return astString(key, 'name') ?? null;
+  if (key?.type === 'StringLiteral') return astString(key, 'value') ?? null;
   return null;
 }
 
@@ -82,11 +83,12 @@ export function keyName(prop: AstNode | null | undefined): string | null {
 function collectVueTemplateTestIds(root: AstNode): TestIdRecord[] {
   const hits: TestIdRecord[] = [];
   walkAny(root, (node) => {
-    if (!Array.isArray(node.props)) return;
-    for (const prop of node.props) {
+    for (const prop of astNodes(node, 'props')) {
       // type 6 is a static attribute; a bound `:data-testid` has no static value to trust.
-      if (prop.type === 6 && isTestIdAttr(prop.name) && prop.value && prop.value.content) {
-        hits.push({attr: prop.name.toLowerCase(), value: prop.value.content});
+      const name = astString(prop, 'name');
+      const value = astString(prop, 'value', 'content');
+      if (prop.type === 6 && name && isTestIdAttr(name) && value) {
+        hits.push({attr: name.toLowerCase(), value});
       }
     }
   });
@@ -97,7 +99,7 @@ async function templateAst(source: string, file?: string): Promise<AstNode | nul
   const dom = await tryImport('@vue/compiler-dom');
   if (!dom) return null;
   try {
-    return dom.parse(stripTemplateDirectives(source), {filename: file});
+    return astNode(dom.parse(stripTemplateDirectives(source), {filename: file})) ?? null;
   } catch {
     return null;
   }
@@ -109,14 +111,16 @@ function stripTemplateDirectives(source: string) {
     .replace(/\{\{[#/^>!&]?[^{]*?\}\}/g, '');
 }
 
-function collectSvelteTestIds(root: AstNode): TestIdRecord[] {
+function collectSvelteTestIds(root: AstNode | undefined): TestIdRecord[] {
   const hits: TestIdRecord[] = [];
   walkAny(root, (node) => {
     if (node.type !== 'Element' && node.type !== 'InlineComponent') return;
-    for (const attr of node.attributes ?? []) {
-      if (attr.type !== 'Attribute' || !isTestIdAttr(attr.name)) continue;
-      const value = Array.isArray(attr.value) ? attr.value.find((v: AstNode) => v.type === 'Text') : null;
-      if (value) hits.push({attr: attr.name.toLowerCase(), value: value.data});
+    for (const attr of astNodes(node, 'attributes')) {
+      const name = astString(attr, 'name');
+      if (attr.type !== 'Attribute' || !name || !isTestIdAttr(name)) continue;
+      const value = astNodes(attr, 'value').find((v) => v.type === 'Text');
+      const data = astString(value, 'data');
+      if (data !== undefined) hits.push({attr: name.toLowerCase(), value: data});
     }
   });
   return hits;
@@ -126,12 +130,15 @@ function collectJsxTestIds(ast: AstNode): TestIdRecord[] {
   const hits: TestIdRecord[] = [];
   walkAst(ast, (node) => {
     if (node.type !== 'JSXAttribute') return;
-    const name = node.name?.type === 'JSXNamespacedName'
-      ? `${node.name.namespace.name}-${node.name.name.name}`
-      : node.name?.name;
+    const nameNode = astNode(node, 'name');
+    const name = nameNode?.type === 'JSXNamespacedName'
+      ? `${astString(nameNode, 'namespace', 'name')}-${astString(nameNode, 'name', 'name')}`
+      : astString(nameNode, 'name');
     if (!name || !isTestIdAttr(name)) return;
-    if (node.value?.type === 'StringLiteral') {
-      hits.push({attr: String(name).toLowerCase(), value: node.value.value});
+    const value = astNode(node, 'value');
+    const text = astString(value, 'value');
+    if (value?.type === 'StringLiteral' && text !== undefined) {
+      hits.push({attr: String(name).toLowerCase(), value: text});
     }
   });
   return hits;
@@ -140,10 +147,11 @@ function collectJsxTestIds(ast: AstNode): TestIdRecord[] {
 function collectAngularTestIds(nodes: unknown): TestIdRecord[] {
   const hits: TestIdRecord[] = [];
   walkAny(nodes, (node) => {
-    if (!Array.isArray(node.attributes)) return;
-    for (const attr of node.attributes) {
-      if (attr?.name && isTestIdAttr(attr.name) && typeof attr.value === 'string' && attr.value) {
-        hits.push({attr: attr.name.toLowerCase(), value: attr.value});
+    for (const attr of astNodes(node, 'attributes')) {
+      const name = astString(attr, 'name');
+      const value = astString(attr, 'value');
+      if (name && isTestIdAttr(name) && value) {
+        hits.push({attr: name.toLowerCase(), value});
       }
     }
   });
@@ -155,24 +163,25 @@ function collectAngularTestIds(nodes: unknown): TestIdRecord[] {
 function vuePropsFromAst(ast: AstNode): string[] {
   const props: string[] = [];
   walkAst(ast, (node) => {
-    if (node.type === 'CallExpression' && node.callee?.name === 'defineProps') {
-      const arg = node.arguments?.[0];
+    if (node.type === 'CallExpression' && astString(node, 'callee', 'name') === 'defineProps') {
+      const arg = astNode(node, 'arguments', 0);
       if (arg?.type === 'ObjectExpression') {
-        props.push(...arg.properties.map(keyName).filter(Boolean));
+        props.push(...astNodes(arg, 'properties').map(keyName).filter((name): name is string => Boolean(name)));
       } else if (arg?.type === 'ArrayExpression') {
-        props.push(...arg.elements.map((e: AstNode) => (e?.type === 'StringLiteral' ? e.value : null)).filter(Boolean));
+        props.push(...astNodes(arg, 'elements').map((e) => e.type === 'StringLiteral' ? astString(e, 'value') : undefined).filter((name): name is string => Boolean(name)));
       }
-      const typeArg = node.typeParameters?.params?.[0];
+      const typeArg = astNode(node, 'typeParameters', 'params', 0);
       if (typeArg?.type === 'TSTypeLiteral') {
-        props.push(...typeArg.members.map((m: AstNode) => (m.key?.name ?? m.key?.value)).filter(Boolean));
+        props.push(...astNodes(typeArg, 'members').map(keyName).filter((name): name is string => Boolean(name)));
       }
       return;
     }
     if (node.type === 'ObjectProperty' && keyName(node) === 'props') {
-      if (node.value?.type === 'ObjectExpression') {
-        props.push(...node.value.properties.map(keyName).filter(Boolean));
-      } else if (node.value?.type === 'ArrayExpression') {
-        props.push(...node.value.elements.map((e: AstNode) => (e?.type === 'StringLiteral' ? e.value : null)).filter(Boolean));
+      const value = astNode(node, 'value');
+      if (value?.type === 'ObjectExpression') {
+        props.push(...astNodes(value, 'properties').map(keyName).filter((name): name is string => Boolean(name)));
+      } else if (value?.type === 'ArrayExpression') {
+        props.push(...astNodes(value, 'elements').map((e) => e.type === 'StringLiteral' ? astString(e, 'value') : undefined).filter((name): name is string => Boolean(name)));
       }
     }
   });
@@ -183,37 +192,37 @@ function jsxPropsFromAst(ast: AstNode, componentName: string): string[] {
   const props: string[] = [];
   const wantedTypes = new Set(['Props', `${componentName}Props`]);
   walkAst(ast, (node) => {
-    const isComponentFn = (node.type === 'FunctionDeclaration' && node.id?.name === componentName)
-      || (node.type === 'VariableDeclarator' && node.id?.name === componentName);
+    const isComponentFn = (node.type === 'FunctionDeclaration' && astString(node, 'id', 'name') === componentName)
+      || (node.type === 'VariableDeclarator' && astString(node, 'id', 'name') === componentName);
     if (isComponentFn) {
       const fn = node.type === 'FunctionDeclaration' ? node : node.init;
-      const param = fn?.params?.[0];
+      const param = astNode(fn, 'params', 0);
       if (param?.type === 'ObjectPattern') {
-        props.push(...param.properties.map((p: AstNode) => (p.type === 'RestElement' ? '...rest' : keyName(p))).filter(Boolean));
+        props.push(...astNodes(param, 'properties').map((p) => p.type === 'RestElement' ? '...rest' : keyName(p)).filter((name): name is string => Boolean(name)));
       }
     }
-    if ((node.type === 'TSInterfaceDeclaration' || node.type === 'TSTypeAliasDeclaration') && wantedTypes.has(node.id?.name)) {
-      const members = node.body?.body ?? node.typeAnnotation?.members ?? [];
-      props.push(...members.map((m: AstNode) => (m.key?.name ?? m.key?.value)).filter(Boolean));
+    if ((node.type === 'TSInterfaceDeclaration' || node.type === 'TSTypeAliasDeclaration') && wantedTypes.has(astString(node, 'id', 'name') ?? '')) {
+      const members = astField(node, 'body', 'body') ?? astField(node, 'typeAnnotation', 'members');
+      props.push(...astNodes(members).map(keyName).filter((name): name is string => Boolean(name)));
     }
-    if (node.type === 'AssignmentExpression' && node.left?.property?.name === 'propTypes'
-        && node.right?.type === 'ObjectExpression') {
-      props.push(...node.right.properties.map(keyName).filter(Boolean));
+    if (node.type === 'AssignmentExpression' && astString(node, 'left', 'property', 'name') === 'propTypes'
+        && astNode(node, 'right')?.type === 'ObjectExpression') {
+      props.push(...astNodes(node, 'right', 'properties').map(keyName).filter((name): name is string => Boolean(name)));
     }
   });
   return unique(props);
 }
 
-function sveltePropsFromInstance(instance: AstNode | null): string[] {
+function sveltePropsFromInstance(instance: AstNode | null | undefined): string[] {
   const props: string[] = [];
   walkAst(instance?.content, (node) => {
     // `export let x` is Svelte 4's prop declaration; a destructured `$props()` is Svelte 5's.
-    if (node.type === 'ExportNamedDeclaration' && node.declaration?.type === 'VariableDeclaration') {
-      props.push(...node.declaration.declarations.map((d: AstNode) => d.id?.name).filter(Boolean));
+    if (node.type === 'ExportNamedDeclaration' && astNode(node, 'declaration')?.type === 'VariableDeclaration') {
+      props.push(...astNodes(node, 'declaration', 'declarations').map((d) => astString(d, 'id', 'name')).filter((name): name is string => Boolean(name)));
     }
-    if (node.type === 'VariableDeclarator' && node.init?.type === 'CallExpression'
-        && node.init.callee?.name === '$props' && node.id?.type === 'ObjectPattern') {
-      props.push(...node.id.properties.map((p: AstNode) => (p.type === 'RestElement' ? '...rest' : keyName(p))).filter(Boolean));
+    if (node.type === 'VariableDeclarator' && astNode(node, 'init')?.type === 'CallExpression'
+        && astString(node, 'init', 'callee', 'name') === '$props' && astNode(node, 'id')?.type === 'ObjectPattern') {
+      props.push(...astNodes(node, 'id', 'properties').map((p) => p.type === 'RestElement' ? '...rest' : keyName(p)).filter((name): name is string => Boolean(name)));
     }
   });
   return unique(props);
@@ -224,21 +233,22 @@ function sveltePropsFromInstance(instance: AstNode | null): string[] {
 export async function parseVue(file: string, source: string, ctx: ParserContext = {}): Promise<ParsedComponent> {
   const sfc = await tryImport('@vue/compiler-sfc');
   if (!sfc) return {name: componentNameFromFile(file), props: [], testIds: [], elements: [], skippedElements: 0, error: '@vue/compiler-sfc not installed'};
-  let descriptor;
+  let descriptor: AstNode | undefined;
   try {
-    ({descriptor} = sfc.parse(source, {filename: file}));
+    descriptor = astNode(sfc.parse(source, {filename: file}), 'descriptor');
   } catch (error) {
     return {name: componentNameFromFile(file), props: [], testIds: [], elements: [], skippedElements: 0, error: (error as Error).message};
   }
-  const scriptSource = [descriptor.script?.content, descriptor.scriptSetup?.content].filter(Boolean).join('\n');
+  const scriptSource = [astString(descriptor, 'script', 'content'), astString(descriptor, 'scriptSetup', 'content')].filter(Boolean).join('\n');
   const scriptAst = scriptSource ? await babelParse(scriptSource) : null;
   const catalogue = ctx.catalogue ?? {};
 
   let elements: ExtractedElement[] = [];
   let skipped = 0;
-  if (descriptor.template?.ast) {
+  const template = astNode(descriptor, 'template', 'ast');
+  if (template) {
     const headers = headersFromScript(scriptAst, catalogue, walkAst);
-    const collected = collectVueElements(descriptor.template.ast, {
+    const collected = collectVueElements(template, {
       catalogue, headers, inheritedLabel: ctx.inheritedLabel ?? null,
       // Omitted rather than passed as undefined, so the default table still applies to a caller
       // that does not narrow it.
@@ -256,7 +266,7 @@ export async function parseVue(file: string, source: string, ctx: ParserContext 
   return {
     name: componentNameFromFile(file),
     props: scriptAst ? vuePropsFromAst(scriptAst) : [],
-    testIds: descriptor.template?.ast ? collectVueTemplateTestIds(descriptor.template.ast) : [],
+    testIds: template ? collectVueTemplateTestIds(template) : [],
     elements: dedupeNames(elements),
     // Controls the walk recognised but could not name. A number that climbs after an app
     // upgrade is the signal that a convention changed, not that the app lost its fields.
@@ -316,10 +326,10 @@ function componentAliases(ast: AstNode | null): Record<string, string> {
   if (!ast) return aliases;
   walkAst(ast, (node) => {
     if (node.type !== 'ObjectProperty' || keyName(node) !== 'components') return;
-    if (node.value?.type !== 'ObjectExpression') return;
-    for (const prop of node.value.properties ?? []) {
+    if (astNode(node, 'value')?.type !== 'ObjectExpression') return;
+    for (const prop of astNodes(node, 'value', 'properties')) {
       const tag = keyName(prop);
-      const target = prop.value?.type === 'Identifier' ? prop.value.name : null;
+      const target = astNode(prop, 'value')?.type === 'Identifier' ? astString(prop, 'value', 'name') : null;
       if (tag && target) aliases[tag] = target;
     }
   });
@@ -337,11 +347,11 @@ export async function parseSvelte(file: string, source: string): Promise<ParsedC
   const compiler = await tryImport('svelte/compiler');
   if (!compiler?.parse) return {name: componentNameFromFile(file), props: [], testIds: [], error: 'svelte/compiler not installed'};
   try {
-    const ast = compiler.parse(source, {filename: file});
+    const ast: unknown = compiler.parse(source, {filename: file});
     return {
       name: componentNameFromFile(file),
-      props: sveltePropsFromInstance(ast.instance),
-      testIds: collectSvelteTestIds(ast.html),
+      props: sveltePropsFromInstance(astNode(ast, 'instance')),
+      testIds: collectSvelteTestIds(astNode(ast, 'html')),
       error: null,
     };
   } catch (error) {
@@ -358,19 +368,21 @@ export async function parseAngular(file: string, source: string): Promise<Parsed
     walkAst(ast, (node) => {
       // @Input() decorates each bound property; the template is either inline or a sibling file.
       if ((node.type === 'ClassProperty' || node.type === 'PropertyDefinition')
-          && (node.decorators ?? []).some((d: AstNode) => (d.expression?.callee?.name ?? d.expression?.name) === 'Input')) {
-        const propName = node.key?.name ?? node.key?.value;
+          && astNodes(node, 'decorators').some((d) => (astString(d, 'expression', 'callee', 'name') ?? astString(d, 'expression', 'name')) === 'Input')) {
+        const propName = keyName(node);
         if (propName) props.push(propName);
       }
       if (node.type !== 'ObjectProperty') return;
-      if (keyName(node) === 'template' && node.value?.type === 'StringLiteral') {
-        templates.push({source: node.value.value});
+      const value = astNode(node, 'value');
+      const text = astString(value, 'value');
+      if (keyName(node) === 'template' && value?.type === 'StringLiteral' && text !== undefined) {
+        templates.push({source: text});
       }
-      if (keyName(node) === 'template' && node.value?.type === 'TemplateLiteral' && node.value.quasis.length === 1) {
-        templates.push({source: node.value.quasis[0].value.raw});
+      if (keyName(node) === 'template' && value?.type === 'TemplateLiteral' && astNodes(value, 'quasis').length === 1) {
+        templates.push({source: astString(value, 'quasis', 0, 'value', 'raw')});
       }
-      if (keyName(node) === 'templateUrl' && node.value?.type === 'StringLiteral') {
-        templates.push({url: node.value.value});
+      if (keyName(node) === 'templateUrl' && value?.type === 'StringLiteral' && text !== undefined) {
+        templates.push({url: text});
       }
     });
   }
@@ -416,9 +428,12 @@ export async function parseBackboneHandlebars(file: string, source: string, ctx:
         if (node.type !== 'ClassProperty' && node.type !== 'PropertyDefinition') return;
         const key = keyName(node);
         if (key !== 'templateContent' && key !== 'template') return;
-        if (node.value?.type === 'StringLiteral') templates.push(...templateSourcesFor(file, node.value.value));
-        if (node.value?.type === 'TemplateLiteral' && node.value.quasis.length === 1) {
-          templates.push(node.value.quasis[0].value.raw);
+        const value = astNode(node, 'value');
+        const text = astString(value, 'value');
+        if (value?.type === 'StringLiteral' && text !== undefined) templates.push(...templateSourcesFor(file, text));
+        if (value?.type === 'TemplateLiteral' && astNodes(value, 'quasis').length === 1) {
+          const raw = astString(value, 'quasis', 0, 'value', 'raw');
+          if (raw !== undefined) templates.push(raw);
         }
       });
     }

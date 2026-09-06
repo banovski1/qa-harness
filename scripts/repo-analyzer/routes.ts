@@ -5,6 +5,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import {astNode, astNodes, astString} from './ast.js';
 import {detect} from './detect.js';
 import {babelParse, keyName, walkAst} from './parsers.js';
 import {paramsOf} from './registry-backend.js';
@@ -73,15 +74,17 @@ async function routerConfigRoutes(detection: DetectionResult): Promise<RouteReco
     if (!ast) continue;
     walkAst(ast, (node) => {
       if (node.type !== 'ObjectExpression') return;
-      const pathProp = node.properties.find((p: AstNode) => keyName(p) === 'path' && p.value?.type === 'StringLiteral');
+      const properties = astNodes(node, 'properties');
+      const pathProp = properties.find((p) => keyName(p) === 'path' && astNode(p, 'value')?.type === 'StringLiteral');
       if (!pathProp) return;
-      const routePath = pathProp.value.value;
-      const componentProp = node.properties.find((p: AstNode) => ['component', 'element', 'loadChildren', 'lazy'].includes(keyName(p)!));
-      const nameProp = node.properties.find((p: AstNode) => keyName(p) === 'name' && p.value?.type === 'StringLiteral');
+      const routePath = astString(pathProp, 'value', 'value');
+      if (routePath === undefined) return;
+      const componentProp = properties.find((p) => ['component', 'element', 'loadChildren', 'lazy'].includes(keyName(p)!));
+      const nameProp = properties.find((p) => keyName(p) === 'name' && astNode(p, 'value')?.type === 'StringLiteral');
       routes.push({
         path: normalisePath(routePath.startsWith('/') ? routePath : `/${routePath}`),
-        name: nameProp?.value?.value ?? null,
-        component: componentDescription(componentProp?.value),
+        name: astString(nameProp, 'value', 'value') ?? null,
+        component: componentDescription(astNode(componentProp, 'value')),
         params: paramsOf(routePath),
         source: `${rel(detection.appPath, file)} (${lib} config)`,
       });
@@ -93,13 +96,14 @@ async function routerConfigRoutes(detection: DetectionResult): Promise<RouteReco
 
 function componentDescription(value: AstNode | null | undefined): string | null {
   if (!value) return null;
-  if (value.type === 'Identifier') return value.name;
-  if (value.type === 'JSXElement') return value.openingElement?.name?.name ?? null;
-  if (value.type === 'StringLiteral') return value.value;
+  if (value.type === 'Identifier') return astString(value, 'name') ?? null;
+  if (value.type === 'JSXElement') return astString(value, 'openingElement', 'name', 'name') ?? null;
+  if (value.type === 'StringLiteral') return astString(value, 'value') ?? null;
   // `component: () => import('./Foo.vue')` — the specifier is the useful half.
   let found: string | null = null;
   walkAst(value, (node) => {
-    if (!found && node.type === 'StringLiteral' && node.value.includes('/')) found = node.value;
+    const text = astString(node, 'value');
+    if (!found && node.type === 'StringLiteral' && text?.includes('/')) found = text;
   });
   return found;
 }
@@ -122,14 +126,22 @@ async function componentIndex(detection: DetectionResult): Promise<Map<string, s
     const imports = new Map<string, string>();
     walkAst(ast, (node) => {
       if (node.type !== 'ImportDeclaration') return;
-      for (const specifier of node.specifiers) imports.set(specifier.local.name, node.source.value);
+      const source = astString(node, 'source', 'value');
+      if (source === undefined) return;
+      for (const specifier of astNodes(node, 'specifiers')) {
+        const name = astString(specifier, 'local', 'name');
+        if (name !== undefined) imports.set(name, source);
+      }
     });
     walkAst(ast, (node) => {
-      if (node.type !== 'ObjectProperty' || node.key?.type !== 'StringLiteral') return;
-      if (node.value?.type !== 'Identifier') return;
-      const target = imports.get(node.value.name);
+      if (node.type !== 'ObjectProperty' || astNode(node, 'key')?.type !== 'StringLiteral') return;
+      if (astNode(node, 'value')?.type !== 'Identifier') return;
+      const name = astString(node, 'value', 'name');
+      const key = astString(node, 'key', 'value');
+      if (name === undefined || key === undefined) return;
+      const target = imports.get(name);
       if (!target) return;
-      index.set(node.key.value, resolveImport(path.dirname(file), target, detection));
+      index.set(key, resolveImport(path.dirname(file), target, detection));
     });
   }
   return index;

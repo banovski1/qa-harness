@@ -23,7 +23,8 @@ import {escapeCell, table} from '../report.js';
 import {fileRouteFor, normalisePath} from '../routes.js';
 import {resolveAppPath} from '../util.js';
 import {analyzerPlan} from '../analyze.js';
-import type {CliArgs, ProjectConfig} from '../types.js';
+import {astField, astNode, astNodes, astString} from '../ast.js';
+import type {AstNode, CliArgs, ProjectConfig} from '../types.js';
 
 // --- root project config ---------------------------------------------------------------
 
@@ -172,6 +173,24 @@ test('isTestIdAttr accepts every recorded convention and nothing else', () => {
   assert.ok(!isTestIdAttr('id'));
 });
 
+test('AST accessors narrow incompatible parser values before reading fields', () => {
+  type IsAny<T> = 0 extends (1 & T) ? true : false;
+  const uncheckedField: IsAny<AstNode['value']> = false;
+  assert.equal(uncheckedField, false);
+
+  class TemplateNode {children = [{type: 2, content: 'Save'}];}
+  const tree: unknown = {type: 1, children: [null, 42, {type: 'Identifier', name: 'field'}, new TemplateNode()]};
+  assert.equal(astNode(tree)?.type, 1);
+  assert.equal(astString(tree, 'children', 2, 'name'), 'field');
+  assert.equal(astString(tree, 'children', 1), undefined);
+  assert.equal(astField(tree, 'children', 0, 'name'), undefined);
+  assert.equal(astNodes(tree, 'children').length, 2);
+  assert.equal(astString(tree, 'children', 3, 'children', 0, 'content'), 'Save');
+  assert.equal(astNode({type: true}), undefined);
+  assert.equal(astNode([]), undefined);
+  assert.deepEqual(astNodes('not an array'), []);
+});
+
 test('walkAny reaches nodes a Babel walker cannot see', () => {
   // Vue tags template nodes with a *numeric* type and Angular hands back class instances. A walker
   // that only visits `typeof node.type === 'string'` finds nothing in either, which reads exactly
@@ -188,7 +207,7 @@ test('walkAny reaches nodes a Babel walker cannot see', () => {
   walkAny(tree, (node) => {
     if (typeof node.type === 'number') seenNumeric.push(node.type);
     if (node instanceof TemplateNode) seenInstances.push(node);
-    if (node.marker) seenMarkers.push(node.marker);
+    if (typeof node.marker === 'string') seenMarkers.push(node.marker);
   });
   assert.deepEqual(seenNumeric, [1]);
   assert.equal(seenInstances.length, 1);
