@@ -29,13 +29,19 @@ node scripts/framework-generator/generate.mjs path/to/config.yaml # a different 
 
 ## Config (`generator-config.yaml`)
 
+The app clone path and test base URL live in root `app-config.yaml`:
+
+```yaml
+appPath: ~/Projects/espocrm
+baseUrl: http://localhost:8080
+```
+
 ```yaml
 language: typescript          # typescript | javascript | java | python | csharp
 projectName: e2e
 outputDir: ./generated-framework
-baseUrl: https://your-app.example
 analysisDir: analysis
-loginConfig: scripts/app-config.yaml   # optional, see below
+loginConfig: app-config.yaml   # optional, see below
 
 pages:
   folderSegment: auto         # see below; or a 1-based segment number
@@ -111,7 +117,7 @@ the signal that a template needs updating. Known ids are `labelledInput`,
 labels are properly associated with their controls needs none of them, because
 `getByLabel` already works.
 
-`loginConfig` points at `scripts/app-config.yaml`. The login flow is not in the
+`loginConfig` points at a YAML file with a `login:` block. The login flow is not in the
 application map — the mapping skill logs in before it starts walking — so reading
 the locators from there is what lets the generator emit a working login helper
 instead of a stub. Credentials are never read from it; they come from

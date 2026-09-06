@@ -25,26 +25,26 @@ The two inputs answer different questions, and tests need both:
 They compose: a recording proves a step happens; the analysis names the control it touched, which is
 how an unstable recorded locator gets repaired without opening a browser.
 
-`scripts/` holds the config, the analyzer and the generator; `analysis/` holds the machine-readable
-reports and the api-map; `generated-framework/` holds the committed output. Every path in the configs
-is relative to the **repo root**, so always run from there.
+`app-config.yaml` is the source of truth for the app clone path and test base URL. `scripts/` holds
+the analyzer and the generator; `analysis/` holds the machine-readable reports and the api-map;
+`generated-framework/` holds the committed output. Every path in the configs is relative to the
+**repo root**, so always run from there.
 
 **This branch carries no target app.** It is the base the per-language branches are taken from, so
 `analysis/`, `codegen-recordings/` and `generated-framework/` do not exist yet — they appear once the
-analyzer, a recording and the generator have been run. Point `scripts/app-config.yaml` and
-`scripts/framework-generator/generator-config.yaml` at an app first; nothing in `scripts/` contains
-app-specific code, so retargeting is a config edit and a re-run.
+analyzer, a recording and the generator have been run. Point root `app-config.yaml` at an app first;
+nothing in `scripts/` contains app-specific code, so retargeting is a config edit and a re-run.
 
 ## Commands
 
 ```bash
 # Stage 0 — static analysis of a local clone of the app under test. This is the spine, not an extra:
 #           routes.mjs first (components.mjs joins onto its output to build the label dictionary).
-cd scripts/repo-analyzer && npm install
-node scripts/repo-analyzer/detect.mjs     --app <app-clone>   # what framework, and why
-node scripts/repo-analyzer/routes.mjs     --app <app-clone>   # analysis/pages-and-routes.md — run first
-node scripts/repo-analyzer/components.mjs --app <app-clone>   # frontend-components.md + label-dictionary.json
-node scripts/repo-analyzer/api-docs.mjs   --app <app-clone>   # add --cross-check <spec> if the app ships one
+npm ci --prefix scripts/repo-analyzer
+node scripts/repo-analyzer/detect.mjs        # what framework, and why
+node scripts/repo-analyzer/routes.mjs        # analysis/pages-and-routes.md — run first
+node scripts/repo-analyzer/components.mjs    # frontend-components.md + label-dictionary.json
+node scripts/repo-analyzer/api-docs.mjs      # add --cross-check <spec> if the app ships one
 node scripts/repo-analyzer/live-urls.mjs  --path-prefix <mount-prefix>   # needs routes.mjs; omit for an app at /
 node scripts/repo-analyzer/__fixtures__/run.mjs                 # the analyzer's test suite
 cd scripts/repo-analyzer && npm test                            # the same suite, with test names
@@ -54,7 +54,7 @@ node scripts/framework-generator/check-analysis.mjs             # freshness + sc
 node scripts/framework-generator/check-analysis.mjs --strict /pim/addEmployee
 
 # Stage 2 — regenerate the framework from the analysis (no network access)
-cd scripts/framework-generator && npm install
+npm ci --prefix scripts/framework-generator
 node scripts/framework-generator/generate.mjs              # from repo root
 node scripts/framework-generator/generate.mjs --dry-run    # print the file plan, write nothing
 
@@ -149,7 +149,7 @@ before its options existed.
 
 **The navigation bar is declared, not derived.** It is the one part of a rendered page static analysis may not reach: an app whose sidebar is rendered by an external design-system package and filled from a server menu payload has navigation that appears in no template in its own source. `navigation:` in `generator-config.yaml` lists those elements by hand, and they become the single `NavigationBar` component instead of repeating on every page object. With `locatorTemplates:` it is one of exactly two places an app-specific selector appears. Leave it empty for an app whose navigation is in its own markup — the extractor will find it.
 
-**The login flow is not in the analysis** — static analysis describes screens, never flows. The generator reads the login locators from `scripts/app-config.yaml` (`loginConfig:` in `generator-config.yaml`) to emit a working login helper. Credentials never flow through: they come from `APP_USERNAME`/`APP_PASSWORD` in the generated project's `.env`.
+**The login flow is not in the analysis** — static analysis describes screens, never flows. The generator can read login locators from a configured `loginConfig:` file to emit a working login helper. Credentials never flow through: they come from `APP_USERNAME`/`APP_PASSWORD` in the generated project's `.env`.
 
 **`.gitattributes` pins `eol=lf`** because the generator writes LF and `generated-framework/` is committed. Do not relax it — under Windows `core.autocrlf` every generated file would show as modified with no content change.
 

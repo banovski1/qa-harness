@@ -4,7 +4,7 @@
 // analysis/api-map/. Deterministic — no browser, no AI judgment is
 // needed to parse a self-describing JSON document.
 //
-//   node scripts/framework-generator/smart-api-map.mjs [scripts/app-config.yaml] [--strict]
+//   node scripts/framework-generator/smart-api-map.mjs [app-config.yaml] [--strict]
 //
 // Run from the repo root. Tries apiSpec.specUrl/specPath first; on failure,
 // falls back to apiSpec.fallbackSpec (already in request-spec vocabulary).
@@ -15,7 +15,7 @@ import { join } from 'node:path';
 import yaml from 'js-yaml';
 import { fromOpenApi, fromFallback, toYamlObject } from './request-spec.mjs';
 
-const DEFAULT_APP_CONFIG = join('scripts', 'app-config.yaml');
+const DEFAULT_APP_CONFIG = 'app-config.yaml';
 const DEFAULT_API_MAP_DIR = join('analysis', 'api-map');
 
 async function main() {

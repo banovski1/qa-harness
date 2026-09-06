@@ -2,16 +2,16 @@
 #
 #   node scripts/framework-generator/generate.mjs [path/to/this-file.yaml] [--dry-run]
 #
-# Run from the repo root so analysisDir and outputDir resolve correctly. The generator
-# reads the reports the repo analyzer writes from a local clone of the app under test and
-# emits a Playwright component-object-model framework in the language named below.
+# Run from the repo root so analysisDir and outputDir resolve correctly. The app test
+# base URL comes from root app-config.yaml. The generator reads the reports the repo
+# analyzer writes from a local clone of the app under test and emits a Playwright
+# component-object-model framework in the language named below.
 
 # Only `typescript` renders page objects today. The other adapters emit a project scaffold and
 # stop — implementing `renderPage` in `languages/<id>.mjs` is what turns one into a real target.
 language: typescript    # typescript | javascript | java | python | csharp
 projectName: e2e
 outputDir: ./generated-framework
-baseUrl: ""             # required — the generator refuses to run without it
 analysisDir: analysis
 
 # Optional. Static analysis describes screens, never flows, so the login sequence is not
@@ -19,9 +19,9 @@ analysisDir: analysis
 # instead of a stub. Credentials are NOT read from it — they come from
 # APP_USERNAME / APP_PASSWORD in the generated project's .env.
 #
-# Commented out because the `login:` block in app-config.yaml is empty on this branch, and a
-# half-filled one is a hard error rather than a stub. Fill that block in, then uncomment this.
-# loginConfig: scripts/app-config.yaml
+# Commented out because no login config is required for static analysis. Fill a login
+# config file in, then uncomment this to generate a working login helper.
+# loginConfig: app-config.yaml
 
 pages:
   folderSegment: auto         # URL segment used as the folder group; `auto` strips the

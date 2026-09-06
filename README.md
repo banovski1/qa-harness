@@ -25,19 +25,20 @@ recorded once. Tests are written from both.
 Run everything from the repo root — all config paths are relative to it.
 
 ```bash
-# 1. Point scripts/app-config.yaml at your target app (baseUrl + the login: block), and set
-#    baseUrl in scripts/framework-generator/generator-config.yaml. Credentials are NOT stored
-#    here — they go in generated-framework/.env as APP_USERNAME / APP_PASSWORD.
+# 1. Point app-config.yaml at your target app. It is the source of truth for the two
+#    required app facts: appPath and baseUrl. Credentials are NOT stored here — they
+#    go in generated-framework/.env as APP_USERNAME / APP_PASSWORD.
 
 # 2. Analyse the clone — routes, components, elements and their labels
-cd scripts/repo-analyzer && npm install
-node scripts/repo-analyzer/routes.mjs     --app <app-clone>   # from repo root; run first
-node scripts/repo-analyzer/components.mjs --app <app-clone>   # joins onto routes.mjs output
+npm ci --prefix scripts/repo-analyzer
+node scripts/repo-analyzer/routes.mjs        # run first
+node scripts/repo-analyzer/components.mjs    # joins onto routes.mjs output
+node scripts/repo-analyzer/api-docs.mjs
 node scripts/repo-analyzer/live-urls.mjs  --path-prefix <mount-prefix>   # omit for an app served at /
 node scripts/framework-generator/check-analysis.mjs            # gate: freshness + schema
 
 # 3. Generate the framework from the analysis
-cd scripts/framework-generator && npm install
+npm ci --prefix scripts/framework-generator
 node scripts/framework-generator/generate.mjs        # from repo root
 node scripts/framework-generator/generate.mjs --dry-run   # preview only, writes nothing
 
@@ -63,7 +64,7 @@ git switch -c java
 
 Then:
 
-1. Set `language: java` in `scripts/framework-generator/generator-config.yaml`, along with `baseUrl`.
+1. Set `language: java` in `scripts/framework-generator/generator-config.yaml`, and set `baseUrl` in root `app-config.yaml`.
 2. Implement `renderPage` in `scripts/framework-generator/languages/java.mjs`. Only
    `typescript.mjs` does today — the rest return `null`, which the orchestrator treats as
    "scaffold only" and reports at generation time. `typescript.mjs` is the worked reference.

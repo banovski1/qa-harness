@@ -5,6 +5,7 @@ import {execFileSync} from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {loadProjectConfig} from '../project-config.mjs';
 
 export const REPO_ROOT = path.resolve(fileURLToPath(import.meta.url), '../../..');
 
@@ -37,11 +38,12 @@ export function parseArgs(argv = process.argv.slice(2)) {
   return args;
 }
 
-export function resolveAppPath(value) {
-  if (!value) {
-    throw new Error('An application path is required: --app <path to the cloned app repo>');
+export function resolveAppPath(value, options = {}) {
+  const configured = value ? null : loadProjectConfig(options.configPath).appPath;
+  if (!value && !configured) {
+    throw new Error('An application path is required: set appPath: in app-config.yaml or pass --app <path to the cloned app repo>');
   }
-  const abs = path.resolve(REPO_ROOT, String(value));
+  const abs = path.resolve(REPO_ROOT, String(value ?? configured));
   if (!fs.existsSync(abs) || !fs.statSync(abs).isDirectory()) {
     throw new Error(`Not a directory: ${abs}`);
   }

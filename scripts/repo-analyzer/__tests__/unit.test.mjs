@@ -8,7 +8,9 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
+import {fileURLToPath} from 'node:url';
 import {bestLocatorFor, classify, rankOf, RUNGS} from '../../framework-generator/locator-ladder.mjs';
+import {loadProjectConfig, projectConfigPath} from '../../project-config.mjs';
 import {crossCheck, mergeByPath} from '../api-docs.mjs';
 import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements-vue.mjs';
 import {resolveLabelExpression} from '../i18n.mjs';
@@ -18,6 +20,48 @@ import {paramsOf} from '../registry-backend.mjs';
 import {FRONTEND_REGISTRY, matchFrontend} from '../registry-frontend.mjs';
 import {escapeCell, table} from '../report.mjs';
 import {fileRouteFor, normalisePath} from '../routes.mjs';
+import {resolveAppPath} from '../util.mjs';
+
+// --- root project config ---------------------------------------------------------------
+
+test('loadProjectConfig reads the root appPath and baseUrl', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'project-config-'));
+  const app = path.join(dir, 'target-app');
+  fs.mkdirSync(app);
+  const configFile = path.join(dir, 'app-config.yaml');
+  fs.writeFileSync(configFile, 'appPath: ./target-app\nbaseUrl: http://localhost:8080\n');
+
+  const config = loadProjectConfig(configFile);
+
+  assert.equal(config.appPath, app);
+  assert.equal(config.baseUrl, 'http://localhost:8080');
+});
+
+test('loadProjectConfig requires only appPath and baseUrl', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'project-config-'));
+  const configFile = path.join(dir, 'app-config.yaml');
+  fs.writeFileSync(configFile, 'appPath: ./target-app\n');
+
+  assert.throws(
+    () => loadProjectConfig(configFile),
+    /Missing 'baseUrl:' in app-config.yaml/,
+  );
+});
+
+test('resolveAppPath defaults to the root project config when --app is omitted', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'project-config-'));
+  const app = path.join(dir, 'target-app');
+  fs.mkdirSync(app);
+  const configFile = path.join(dir, 'app-config.yaml');
+  fs.writeFileSync(configFile, 'appPath: ./target-app\nbaseUrl: http://localhost:8080\n');
+
+  assert.equal(resolveAppPath(undefined, {configPath: configFile}), app);
+});
+
+test('projectConfigPath points at the repository-root app-config.yaml', () => {
+  const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
+  assert.equal(projectConfigPath(), path.join(repoRoot, 'app-config.yaml'));
+});
 
 test('normalisePath rewrites every router dialect to {param}', () => {
   assert.equal(normalisePath('/users/:userId'), '/users/{userId}');

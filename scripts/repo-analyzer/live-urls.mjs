@@ -6,18 +6,14 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import yaml from 'js-yaml';
+import {loadProjectConfig} from '../project-config.mjs';
 import {ANALYSIS_DIR, outPath, reportWritten, table, writeReport} from './report.mjs';
-import {REPO_ROOT, parseArgs, readJson, readText, rel} from './util.mjs';
-
-const APP_CONFIG = path.join(REPO_ROOT, 'scripts/app-config.yaml');
+import {REPO_ROOT, parseArgs, readJson, rel} from './util.mjs';
 
 /** The base URL the rest of the repo already targets, unless the caller names another. */
 function defaultBaseUrl() {
-  const text = readText(APP_CONFIG);
-  if (!text) return null;
   try {
-    return yaml.load(text)?.baseUrl ?? null;
+    return loadProjectConfig().baseUrl;
   } catch {
     return null;
   }
@@ -67,7 +63,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const source = readJson(routesFile);
   const baseUrl = args.baseUrl ? String(args.baseUrl) : defaultBaseUrl();
   if (!baseUrl) {
-    throw new Error('No base URL: pass --base-url, or set baseUrl: in scripts/app-config.yaml.');
+    throw new Error('No base URL: pass --base-url, or set baseUrl: in app-config.yaml.');
   }
   const prefix = args.pathPrefix ? String(args.pathPrefix) : '';
   const rows = source.routes

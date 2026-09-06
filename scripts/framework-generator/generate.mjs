@@ -19,6 +19,7 @@ import { readApplicationModel } from './analysis-reader.mjs';
 import { readApiMap } from './api-map-reader.mjs';
 import { adapterFor, SUPPORTED_LANGUAGES } from './languages/index.mjs';
 import { FileWriter } from './file-writer.mjs';
+import { loadProjectConfig } from '../project-config.mjs';
 
 const DEFAULT_CONFIG = join('scripts', 'framework-generator', 'generator-config.yaml');
 
@@ -135,10 +136,12 @@ function loadConfig(path) {
   if (!existsSync(path)) throw new Error(`Config file not found: ${path}`);
   const raw = yaml.load(readFileSync(path, 'utf8'));
   if (!raw || typeof raw !== 'object') throw new Error(`Empty config file: ${path}`);
+  const projectConfig = loadProjectConfig();
 
   const config = {
     ...DEFAULTS,
     ...raw,
+    baseUrl: raw.baseUrl || projectConfig.baseUrl,
     pages: { ...DEFAULTS.pages, ...(raw.pages ?? {}) },
     waits: { ...DEFAULTS.waits, ...(raw.waits ?? {}) },
     tests: { ...DEFAULTS.tests, ...(raw.tests ?? {}) },
@@ -149,7 +152,7 @@ function loadConfig(path) {
   if (!SUPPORTED_LANGUAGES.includes(config.language)) {
     throw new Error(`Unknown language: '${config.language}'. Supported: ${SUPPORTED_LANGUAGES.join(', ')}`);
   }
-  if (!config.baseUrl) throw new Error("Missing 'baseUrl:' in the generator config.");
+  if (!config.baseUrl) throw new Error("Missing 'baseUrl:' in app-config.yaml or the generator config.");
   if (!config.outputDir) throw new Error("Missing 'outputDir:' in the generator config.");
   const segment = config.pages.folderSegment;
   if (segment !== 'auto' && !(Number.isInteger(segment) && segment >= 1)) {
@@ -176,7 +179,7 @@ function loadConfig(path) {
 
 /**
  * The login flow is not in the application map — the mapping skill logs in before
- * it starts walking, so the locators live in scripts/app-config.yaml. Reading them
+ * it starts walking, so the locators live in a configured YAML file. Reading them
  * here is what lets the generator emit a working login helper instead of a TODO.
  * Credentials are deliberately not read: they belong in the environment.
  */
