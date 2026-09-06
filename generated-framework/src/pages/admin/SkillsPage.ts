@@ -1,9 +1,0 @@
-import { SkillsPageGenerated } from './SkillsPage.generated';
-
-/**
- * SkillsPage — put page-specific actions and assertions here.
- *
- * The generator created this file once and will never overwrite it. Mapped
- * elements live in SkillsPage.generated.ts, which is regenerated on every run.
- */
-export class SkillsPage extends SkillsPageGenerated {}

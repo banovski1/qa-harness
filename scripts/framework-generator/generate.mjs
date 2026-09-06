@@ -30,7 +30,6 @@ const DEFAULTS = {
   analysisDir: 'analysis',
   loginConfig: null,
   pages: { folderSegment: 'auto', dropParamSegments: true, mergeDuplicates: true },
-  elements: { sharedChromeThreshold: 0.8, includeUnstable: true },
   navigation: [],
   waits: { spinnerSelector: '[role="progressbar"], [aria-busy="true"]' },
   tests: { generateSmokeSpecs: true },
@@ -141,7 +140,6 @@ function loadConfig(path) {
     ...DEFAULTS,
     ...raw,
     pages: { ...DEFAULTS.pages, ...(raw.pages ?? {}) },
-    elements: { ...DEFAULTS.elements, ...(raw.elements ?? {}) },
     waits: { ...DEFAULTS.waits, ...(raw.waits ?? {}) },
     tests: { ...DEFAULTS.tests, ...(raw.tests ?? {}) },
     locatorTemplates: { ...(raw.locatorTemplates ?? {}) },
@@ -153,12 +151,6 @@ function loadConfig(path) {
   }
   if (!config.baseUrl) throw new Error("Missing 'baseUrl:' in the generator config.");
   if (!config.outputDir) throw new Error("Missing 'outputDir:' in the generator config.");
-  const threshold = Number(config.elements.sharedChromeThreshold);
-  if (!(threshold > 0 && threshold <= 1)) {
-    throw new Error(`elements.sharedChromeThreshold must be between 0 and 1, got ${config.elements.sharedChromeThreshold}`);
-  }
-  config.elements.sharedChromeThreshold = threshold;
-
   const segment = config.pages.folderSegment;
   if (segment !== 'auto' && !(Number.isInteger(segment) && segment >= 1)) {
     throw new Error(`pages.folderSegment must be 'auto' or a positive integer, got ${JSON.stringify(segment)}`);

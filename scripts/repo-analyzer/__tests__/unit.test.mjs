@@ -10,7 +10,7 @@ import path from 'node:path';
 import test from 'node:test';
 import {bestLocatorFor, classify, rankOf, RUNGS} from '../../framework-generator/locator-ladder.mjs';
 import {crossCheck, mergeByPath} from '../api-docs.mjs';
-import {dedupeNames} from '../elements-vue.mjs';
+import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements-vue.mjs';
 import {resolveLabelExpression} from '../i18n.mjs';
 import {joinUrl} from '../live-urls.mjs';
 import {componentNameFromFile, isTestIdAttr, walkAny, walkAst} from '../parsers.mjs';
@@ -266,4 +266,31 @@ test('dedupeNames flags elements that share one locator', () => {
   assert.equal(deduped[1].locator.unstable, true);
   assert.match(deduped[0].locator.unstableReason, /2 elements .* same locator/);
   assert.equal(deduped[2].locator.unstable, undefined, 'an element with its own locator stays untouched');
+});
+
+// --- templates are proposals, not requirements ------------------------------------------
+
+test('templatesFrom keeps only the ids a config defines', () => {
+  assert.deepEqual(templatesFrom({}), {}, 'no configured templates must propose none');
+  assert.deepEqual(templatesFrom({labelledInput: '.x'}), {input: 'labelledInput'});
+
+  // Every kind in the table is reachable when everything is configured, so a kind added to
+  // KIND_TEMPLATES without a matching config line shows up here rather than at run time.
+  const all = Object.fromEntries(Object.values(KIND_TEMPLATES).map((id) => [id, '.x']));
+  assert.deepEqual(templatesFrom(all), KIND_TEMPLATES);
+});
+
+test('an unconfigured template drops the element down the ladder rather than throwing', () => {
+  // The failure this guards against: `fromMap` throws on a template id the generator config does
+  // not define, so proposing one unconditionally made an empty `locatorTemplates:` crash the
+  // pipeline on the first unassociated label — over half the elements on a typical app.
+  const templateFor = templatesFrom({});
+
+  assert.equal(bestLocatorFor({label: 'City', templateId: KIND_TEMPLATES.input}).rung, 4);
+
+  // Same element with no template configured: a label alone cannot locate it, so a weaker signal
+  // has to carry it, and a lone label yields nothing rather than a broken locator.
+  assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input}), null);
+  assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input, placeholder: 'City'}).rung, 5);
+  assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input, nameAttr: 'city'}).rung, 6);
 });

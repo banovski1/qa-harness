@@ -11,10 +11,10 @@
 // The contract it returns — { pages, sharedChrome, sharedStates, stats } — is unchanged, which
 // is what lets every language adapter stay exactly as it was.
 //
-// One thing the analysis genuinely cannot supply is the shared navigation bar: OrangeHRM's
-// sidebar lives in an external design-system package and is filled from a server menu payload,
-// so the rendered DOM is not a function of the clone alone. It is declared in the generator
-// config instead of being inferred — see `navigation:`.
+// One thing the analysis may not supply is the shared navigation bar. Where a sidebar lives in an
+// external design-system package and is filled from a server menu payload, the rendered DOM is not
+// a function of the clone alone, so it is declared in the generator config rather than inferred —
+// see `navigation:`.
 
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -39,7 +39,7 @@ export function readApplicationModel(config) {
   const routeData = readAnalysisFile(dir, 'pages-and-routes.json');
   const componentData = readAnalysisFile(dir, 'frontend-components.json');
   // A framework's route table holds the paths the *router* matches; the app may be mounted
-  // under a prefix (OrangeHRM serves everything under /web/index.php). live-urls.json is the
+  // under a prefix (`/web/index.php`, say). live-urls.json is the
   // analyzer that knows the difference, so the prefix is taken from there rather than guessed.
   const pathPrefix = readPathPrefix(dir);
 

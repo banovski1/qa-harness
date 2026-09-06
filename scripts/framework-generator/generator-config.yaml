@@ -6,84 +6,50 @@
 # reads the reports the repo analyzer writes from a local clone of the app under test and
 # emits a Playwright component-object-model framework in the language named below.
 
+# Only `typescript` renders page objects today. The other adapters emit a project scaffold and
+# stop — implementing `renderPage` in `languages/<id>.mjs` is what turns one into a real target.
 language: typescript    # typescript | javascript | java | python | csharp
-projectName: orangehrm-e2e
+projectName: e2e
 outputDir: ./generated-framework
-baseUrl: https://opensource-demo.orangehrmlive.com
+baseUrl: ""             # required — the generator refuses to run without it
 analysisDir: analysis
 
 # Optional. Static analysis describes screens, never flows, so the login sequence is not
 # something it can produce — point this at the app config to get a working login helper
 # instead of a stub. Credentials are NOT read from it — they come from
 # APP_USERNAME / APP_PASSWORD in the generated project's .env.
-loginConfig: scripts/app-config.yaml
+#
+# Commented out because the `login:` block in app-config.yaml is empty on this branch, and a
+# half-filled one is a hard error rather than a stub. Fill that block in, then uncomment this.
+# loginConfig: scripts/app-config.yaml
 
 pages:
   folderSegment: auto         # URL segment used as the folder group; `auto` strips the
                               # prefix every mapped URL shares, or set a 1-based number
-  dropParamSegments: true     # drop trailing /empNumber/7 style pairs from page identity
+  dropParamSegments: true     # drop trailing /userId/7 style pairs from page identity
   mergeDuplicates: true       # collapse *Module redirect pages onto their list-page twin
-
-elements:
-  sharedChromeThreshold: 0.8  # retained for the api layer's own grouping; navigation is declared below
-  includeUnstable: true       # emit rung-8 locators, annotated with the reason they are brittle
 
 # The application's shared navigation, declared rather than derived.
 #
-# This is the one part of a rendered page static analysis cannot reach: OrangeHRM's sidebar
-# is rendered by the external @ohrm/oxd package and filled from a server menu payload, so it
-# appears in no template in the app's own source. Each entry is the same
+# This is the one part of a rendered page static analysis may not be able to reach. An app whose
+# navigation is rendered by an external design-system package, or filled from a server menu
+# payload, has a sidebar that appears in no template in the app's own source. Each entry is the same
 # `{ name, component, locator }` shape an extracted element has, and every entry is lifted
 # into a single NavigationBar component instead of being repeated on every page object.
 #
 # Leave the list empty for an app whose navigation is in its own markup — the extractor will
 # find it, and no NavigationBar is emitted.
-navigation:
-  - name: adminMenuLink
-    component: link
-    locator: {strategy: getByRole, args: ["link"], name: "Admin"}
-  - name: pimMenuLink
-    component: link
-    locator: {strategy: getByRole, args: ["link"], name: "PIM"}
-  - name: leaveMenuLink
-    component: link
-    locator: {strategy: getByRole, args: ["link"], name: "Leave"}
-  - name: timeMenuLink
-    component: link
-    locator: {strategy: getByRole, args: ["link"], name: "Time"}
-  - name: recruitmentMenuLink
-    component: link
-    locator: {strategy: getByRole, args: ["link"], name: "Recruitment"}
-  - name: myInfoMenuLink
-    component: link
-    locator: {strategy: getByRole, args: ["link"], name: "My Info"}
-  - name: performanceMenuLink
-    component: link
-    locator: {strategy: getByRole, args: ["link"], name: "Performance"}
-  - name: dashboardMenuLink
-    component: link
-    locator: {strategy: getByRole, args: ["link"], name: "Dashboard"}
-  - name: directoryMenuLink
-    component: link
-    locator: {strategy: getByRole, args: ["link"], name: "Directory"}
-  - name: maintenanceMenuLink
-    component: link
-    locator: {strategy: getByRole, args: ["link"], name: "Maintenance"}
-  - name: claimMenuLink
-    component: link
-    locator: {strategy: getByRole, args: ["link"], name: "Claim"}
-  - name: buzzMenuLink
-    component: link
-    locator: {strategy: getByRole, args: ["link"], name: "Buzz"}
-  - name: searchMenuInput
-    component: input
-    locator: {strategy: css, args: [".oxd-main-menu-search input"]}
-  - name: collapseMenuButton
-    component: button
-    locator: {strategy: css, args: ["button.oxd-main-menu-button"]}
-  - name: currentUserHeading
-    component: text
-    locator: {strategy: css, args: [".oxd-userdropdown-name"]}
+navigation: []
+#
+# A worked example, from an app whose sidebar comes from a server-rendered menu:
+#
+#   navigation:
+#     - name: adminMenuLink
+#       component: link
+#       locator: {strategy: getByRole, args: ["link"], name: "Admin"}
+#     - name: searchMenuInput
+#       component: input
+#       locator: {strategy: css, args: [".main-menu-search input"]}
 
 waits:
   # Selector for the app's loading indicator, used by waitForSpinnerToClear().
@@ -105,13 +71,21 @@ tests:
 # only when the template reproduces its locator exactly; anything else keeps its own, so a
 # one-off never gets bent to fit. Remove a line to turn its factory off; remove the block
 # for an app whose labels are properly associated (`getByLabel` is rung 3 and needs none).
-locatorTemplates:
-  labelledInput:    '.oxd-input-group:has(label:text-is("{label}")) input'
-  labelledTextarea: '.oxd-input-group:has(label:text-is("{label}")) textarea'
-  labelledSelect:   '.oxd-input-group:has(label:text-is("{label}")) .oxd-select-text'
-  labelledRadio:    '.oxd-radio-wrapper:has(label:text-is("{label}")) input'
-  topNavTab:        '.oxd-topbar-body-nav-tab > a:text-is("{label}")'
-  tableByColumn:    '.oxd-table:has(.oxd-table-th:text-is("{label}"))'
+locatorTemplates: {}
+#
+# A worked example, from an app that renders labels without a `for` association:
+#
+#   locatorTemplates:
+#     labelledInput:    '.oxd-input-group:has(label:text-is("{label}")) input'
+#     labelledTextarea: '.oxd-input-group:has(label:text-is("{label}")) textarea'
+#     labelledSelect:   '.oxd-input-group:has(label:text-is("{label}")) .oxd-select-text'
+#     labelledRadio:    '.oxd-radio-wrapper:has(label:text-is("{label}")) input'
+#     topNavTab:        '.topbar-nav-tab > a:text-is("{label}")'
+#     tableByColumn:    '.table:has(.table-th:text-is("{label}"))'
+#
+# Leaving this empty is supported: the extractor only proposes a template id defined here, so
+# elements that would have reached rung 4 fall to a weaker signal or are counted as skipped.
+# Filling it in is an improvement, never a precondition.
 
 # Where scripts/framework-generator/smart-api-map.mjs writes the normalized api-map
 # (one YAML file per resource). Absent or empty directory -> no API layer is

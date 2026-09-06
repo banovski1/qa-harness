@@ -38,7 +38,12 @@ export const TAG_KINDS = {
   a: 'link',
 };
 
-/** The locatorTemplates id that fits each kind — the rung-4 fallback for unassociated labels. */
+/**
+ * The locatorTemplates id that fits each kind — the rung-4 fallback for unassociated labels.
+ *
+ * These are *proposals*. An id only becomes a locator if the generator config defines a pattern
+ * for it, which `templatesFrom` below enforces.
+ */
 export const KIND_TEMPLATES = {
   input: 'labelledInput',
   longInput: 'labelledTextarea',
@@ -47,6 +52,20 @@ export const KIND_TEMPLATES = {
   table: 'tableByColumn',
   menuItem: 'topNavTab',
 };
+
+/**
+ * Narrow the kind→template table to the ids a config actually defines.
+ *
+ * The extractor must not propose a template the generator cannot expand: `fromMap` throws on an
+ * unknown id, so an app configured with no `locatorTemplates:` would fail on the first element
+ * carrying an unassociated label — over half of them, on a typical app. Filtering here lets the
+ * ladder fall through to the next rung instead, so the element is either found by a weaker signal
+ * or counted in `skipped`. Configuring templates is then an improvement, not a precondition.
+ */
+export function templatesFrom(configured, table = KIND_TEMPLATES) {
+  const available = new Set(Object.keys(configured ?? {}));
+  return Object.fromEntries(Object.entries(table).filter(([, id]) => available.has(id)));
+}
 
 /** Only these kinds carry their label as an accessible name, so only these reach rung 2. */
 const ROLE_KINDS = {button: 'button', link: 'link'};

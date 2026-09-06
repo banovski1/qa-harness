@@ -29,8 +29,11 @@ how an unstable recorded locator gets repaired without opening a browser.
 reports and the api-map; `generated-framework/` holds the committed output. Every path in the configs
 is relative to the **repo root**, so always run from there.
 
-The demo target is OrangeHRM's public demo, but nothing here contains app-specific code — retargeting
-is a config edit plus a re-run.
+**This branch carries no target app.** It is the base the per-language branches are taken from, so
+`analysis/`, `codegen-recordings/` and `generated-framework/` do not exist yet — they appear once the
+analyzer, a recording and the generator have been run. Point `scripts/app-config.yaml` and
+`scripts/framework-generator/generator-config.yaml` at an app first; nothing in `scripts/` contains
+app-specific code, so retargeting is a config edit and a re-run.
 
 ## Commands
 
@@ -38,11 +41,11 @@ is a config edit plus a re-run.
 # Stage 0 — static analysis of a local clone of the app under test. This is the spine, not an extra:
 #           routes.mjs first (components.mjs joins onto its output to build the label dictionary).
 cd scripts/repo-analyzer && npm install
-node scripts/repo-analyzer/detect.mjs     --app ../orangehrm   # what framework, and why
-node scripts/repo-analyzer/components.mjs --app ../orangehrm   # analysis/frontend-components.md
-node scripts/repo-analyzer/routes.mjs     --app ../orangehrm   # analysis/pages-and-routes.md
-node scripts/repo-analyzer/api-docs.mjs   --app ../orangehrm   # add --cross-check <spec> if the app ships one
-node scripts/repo-analyzer/live-urls.mjs  --path-prefix /web/index.php   # needs routes.mjs first
+node scripts/repo-analyzer/detect.mjs     --app <app-clone>   # what framework, and why
+node scripts/repo-analyzer/routes.mjs     --app <app-clone>   # analysis/pages-and-routes.md — run first
+node scripts/repo-analyzer/components.mjs --app <app-clone>   # frontend-components.md + label-dictionary.json
+node scripts/repo-analyzer/api-docs.mjs   --app <app-clone>   # add --cross-check <spec> if the app ships one
+node scripts/repo-analyzer/live-urls.mjs  --path-prefix <mount-prefix>   # needs routes.mjs; omit for an app at /
 node scripts/repo-analyzer/__fixtures__/run.mjs                 # the analyzer's test suite
 cd scripts/repo-analyzer && npm test                            # the same suite, with test names
 
@@ -99,14 +102,22 @@ recording the flow and adding a scoped accessor in the protected page object.
 **`locatorTemplates:` keeps app selectors out of both the page objects and the map.** The block in
 `generator-config.yaml` maps a label to a selector (`{label}` is the placeholder), and the generator
 emits it into `src/components/locator-templates.generated.ts` — the only file in the output naming an
-app-specific selector. A map file names the template rather than repeating it —
+app-specific selector. An element names the template rather than repeating it —
 `{ strategy: template, args: ["labelledInput"], name: "City" }` — and `fromMap` expands it into a plain
 `css` spec at read time, which is what keeps `resolve()` and the other language adapters ignorant of
 templates. `renderTemplate` in `locator-spec.mjs` is the single substitution rule, shared by that
 expansion and the emitter's equivalence check so the two cannot disagree.
-The analyzer emits these directly, so nothing has to convert them after the fact. Where a template reproduces an element's locator *exactly*, `factoryFor` in
+
+**The block is empty on this branch, and that is a supported state.** `templatesFrom` in
+`repo-analyzer/elements-vue.mjs` narrows the kind→template table to the ids the config actually
+defines, so the extractor never proposes a template the generator cannot expand. An element that
+would have reached rung 4 falls to a weaker signal or is counted in `skipped`, instead of making
+`fromMap` throw on the first unassociated label — which, on a typical app, is over half of them.
+Filling the block in is an improvement, never a precondition.
+
+The analyzer emits templates directly, so nothing has to convert them after the fact. Where a template reproduces an element's locator *exactly*, `factoryFor` in
 `languages/typescript.mjs` emits `InputComponent.byLabel(this.page, 'City')` instead of the selector;
-anything else keeps the locator the mapper verified. Equivalence is proved per element, never assumed,
+anything else keeps the locator the extractor built. Equivalence is proved per element, never assumed,
 so editing the block cannot silently re-point an accessor — it can only fall back. The
 `GENERATION-REPORT.md` factory tally is how you see that happen. Component *instance* constructors stay
 `(locator, description)`: the factories are statics taking a root, which is what keeps `BaseComponent.nth()`
@@ -115,8 +126,8 @@ and `within:` scoping working.
 **`analysis-reader.mjs` joins the reports into the model, and `page-model.mjs` holds the rules that
 outlived the map.** The reader joins `pages-and-routes.json` (the page list) with
 `frontend-components.json` (elements, matched on `route.component === component.file`) and takes the
-mount prefix from `live-urls.json` — OrangeHRM serves every route under `/web/index.php`, which the
-framework's own route table does not record. It drops API-prefixed routes, roots a path that lost its
+mount prefix from `live-urls.json` — an app mounted under a prefix (`/web/index.php`, say) serves
+every route beneath it, which the framework's own route table does not record. It drops API-prefixed routes, roots a path that lost its
 leading slash, and expands `template` locators through `fromMap` so no adapter ever sees one. A route
 with no component still becomes a page object, carrying a URL and nothing else.
 
@@ -136,7 +147,7 @@ before its options existed.
 
 **`generate.mjs` never branches on language.** Languages are adapters in `languages/`, registered in `languages/index.mjs`, satisfying `{ id, extension, emptyDirs, staticFiles, renderPage, renderTest }`; `renderPage` returning `null` means "scaffold only". Only TypeScript renders page objects today — adding another language means implementing `renderPage` in its adapter and nothing else.
 
-**The navigation bar is declared, not derived.** It is the one part of a rendered page static analysis cannot reach: OrangeHRM's sidebar is rendered by the external `@ohrm/oxd` package and filled from a server menu payload, so it appears in no template in the app's own source. `navigation:` in `generator-config.yaml` lists those elements by hand, and they become the single `NavigationBar` component instead of repeating on every page object. With `locatorTemplates:` it is one of exactly two places an app-specific selector appears. Leave it empty for an app whose navigation is in its own markup — the extractor will find it.
+**The navigation bar is declared, not derived.** It is the one part of a rendered page static analysis may not reach: an app whose sidebar is rendered by an external design-system package and filled from a server menu payload has navigation that appears in no template in its own source. `navigation:` in `generator-config.yaml` lists those elements by hand, and they become the single `NavigationBar` component instead of repeating on every page object. With `locatorTemplates:` it is one of exactly two places an app-specific selector appears. Leave it empty for an app whose navigation is in its own markup — the extractor will find it.
 
 **The login flow is not in the analysis** — static analysis describes screens, never flows. The generator reads the login locators from `scripts/app-config.yaml` (`loginConfig:` in `generator-config.yaml`) to emit a working login helper. Credentials never flow through: they come from `APP_USERNAME`/`APP_PASSWORD` in the generated project's `.env`.
 

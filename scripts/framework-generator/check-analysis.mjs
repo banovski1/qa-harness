@@ -31,7 +31,6 @@ const config = {
   locatorTemplates: rawConfig.locatorTemplates ?? {},
   navigation: rawConfig.navigation ?? [],
   pages: { folderSegment: 'auto', dropParamSegments: true, mergeDuplicates: true, ...(rawConfig.pages ?? {}) },
-  elements: { sharedChromeThreshold: 0.8, ...(rawConfig.elements ?? {}) },
   api: rawConfig.api ?? {},
 };
 

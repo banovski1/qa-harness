@@ -25,13 +25,15 @@ recorded once. Tests are written from both.
 Run everything from the repo root — all config paths are relative to it.
 
 ```bash
-# 1. Point scripts/app-config.yaml at your target app (baseUrl, login locators, credentials)
+# 1. Point scripts/app-config.yaml at your target app (baseUrl + the login: block), and set
+#    baseUrl in scripts/framework-generator/generator-config.yaml. Credentials are NOT stored
+#    here — they go in generated-framework/.env as APP_USERNAME / APP_PASSWORD.
 
 # 2. Analyse the clone — routes, components, elements and their labels
 cd scripts/repo-analyzer && npm install
-node scripts/repo-analyzer/routes.mjs     --app ../orangehrm   # from repo root
-node scripts/repo-analyzer/components.mjs --app ../orangehrm   # needs routes.mjs first
-node scripts/repo-analyzer/live-urls.mjs  --path-prefix /web/index.php
+node scripts/repo-analyzer/routes.mjs     --app <app-clone>   # from repo root; run first
+node scripts/repo-analyzer/components.mjs --app <app-clone>   # joins onto routes.mjs output
+node scripts/repo-analyzer/live-urls.mjs  --path-prefix <mount-prefix>   # omit for an app served at /
 node scripts/framework-generator/check-analysis.mjs            # gate: freshness + schema
 
 # 3. Generate the framework from the analysis
@@ -46,6 +48,30 @@ cp .env.example .env          # fill in APP_USERNAME / APP_PASSWORD
 npm run typecheck
 npm test
 ```
+
+## This is the `clean` branch
+
+It carries the toolchain and no target app: no `analysis/`, no `codegen-recordings/`, no
+`generated-framework/`. Those appear when you run the analyzer, record a flow, and generate.
+
+### Branching for a new language
+
+```bash
+git switch clean
+git switch -c java
+```
+
+Then:
+
+1. Set `language: java` in `scripts/framework-generator/generator-config.yaml`, along with `baseUrl`.
+2. Implement `renderPage` in `scripts/framework-generator/languages/java.mjs`. Only
+   `typescript.mjs` does today — the rest return `null`, which the orchestrator treats as
+   "scaffold only" and reports at generation time. `typescript.mjs` is the worked reference.
+3. Run the analyzer against your app clone, then `generate.mjs`.
+
+The adapter contract is `{ id, extension, emptyDirs, staticFiles, renderPage, renderTest }`,
+registered in `languages/index.mjs`. `generate.mjs` never branches on language, so a new target
+means implementing that one module and nothing else.
 
 ## Notes
 

@@ -31,9 +31,9 @@ node scripts/framework-generator/generate.mjs path/to/config.yaml # a different 
 
 ```yaml
 language: typescript          # typescript | javascript | java | python | csharp
-projectName: orangehrm-e2e
+projectName: e2e
 outputDir: ./generated-framework
-baseUrl: https://opensource-demo.orangehrmlive.com
+baseUrl: https://your-app.example
 analysisDir: analysis
 loginConfig: scripts/app-config.yaml   # optional, see below
 

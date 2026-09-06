@@ -1,5 +1,0 @@
-1. Login with Admin user
-2. Navigate to PIM module
-3. Create a new user with login credentials
-4. Login with the created user
-5. Validate newly created user logged in successfully

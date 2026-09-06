@@ -1,32 +1,46 @@
-# The target application: where it is, how to log in, and the two conventions the
-# mapping skill needs. Point this at ANY web app.
+# The target application: where it is, and how to log in. Point this at ANY web app.
+#
+# This branch carries no target app — fill `baseUrl:` and the `login:` block in before running
+# anything that reads them.
 #
 # Read by:
 #   - the `playwright-codegen` skill, which records a human-driven flow into codegen-recordings/
 #   - scripts/framework-generator (via `loginConfig:` in generator-config.yaml), which reads ONLY the
-#     `login:` block to emit a working login helper. Credentials are NOT read from here — they come
-#     from APP_USERNAME / APP_PASSWORD in the generated project's .env.
+#     `login:` block to emit a working login helper.
 #
-# Locator shape { strategy, args, name } is identical to the emitted map schema.
+# Credentials are deliberately absent. They belong in APP_USERNAME / APP_PASSWORD in the generated
+# project's .env, which is gitignored; nothing here reads them, and a password committed to a base
+# branch would be inherited by every branch taken from it.
+#
+# Locator shape { strategy, args, name } is identical to the schema the analyzer emits.
 # Strategies: getByRole | getByLabel | getByPlaceholder | getByText | getByAltText
 #             | getByTitle | getByTestId | css   (see framework-generator/locator-spec.mjs)
-app: orangehrm
-baseUrl: https://opensource-demo.orangehrmlive.com
-credentials:
-  username: Admin
-  password: admin123
+# Ranking:    scripts/framework-generator/locator-ladder.mjs — prefer the highest rung the app allows.
+app: ""
+baseUrl: ""
 login:
-  loginUrl: /web/index.php/auth/login
-  usernameLocator: { strategy: getByRole, args: ["textbox"], name: "Username" }
-  passwordLocator: { strategy: getByRole, args: ["textbox"], name: "Password" }
-  submitLocator:   { strategy: getByRole, args: ["button"],  name: "Login" }
-  successSignal:   { strategy: getByRole, args: ["heading"], name: "Dashboard" }
+  # e.g. /login, or /web/index.php/auth/login for an app mounted under a prefix
+  loginUrl: ""
+  usernameLocator: {}
+  passwordLocator: {}
+  submitLocator:   {}
+  # An element that exists only once login has succeeded — how the helper knows it worked.
+  successSignal:   {}
+  #
+  # A worked example, from an app whose login form is properly labelled:
+  #
+  #   loginUrl: /web/index.php/auth/login
+  #   usernameLocator: { strategy: getByRole, args: ["textbox"], name: "Username" }
+  #   passwordLocator: { strategy: getByRole, args: ["textbox"], name: "Password" }
+  #   submitLocator:   { strategy: getByRole, args: ["button"],  name: "Login" }
+  #   successSignal:   { strategy: getByRole, args: ["heading"], name: "Dashboard" }
 
-# Path segments matching this collapse to {id} in a map file's `url:` and filename, so one
-# representative page is mapped per entity view rather than one per row.
+# Path segments matching this collapse to {id} in a route's URL, so one representative page is
+# emitted per entity view rather than one per row.
 idSegmentPattern: "^\\d+$"
 
-# The mapping skill never clicks a control whose label contains one of these words.
+# Controls a browser-driven step must never click. Kept app-agnostic: these are the words that
+# name a destructive or session-ending action in most applications.
 denyClickNames:
   - delete
   - save
@@ -41,10 +55,11 @@ denyClickNames:
 # Where the app's API spec lives, read by scripts/framework-generator/smart-api-map.mjs (a
 # deterministic script, not a browser skill — parsing a self-describing JSON doc needs no AI
 # judgment). Tries specUrl/specPath first; on failure, falls back to fallbackSpec, which is
-# already written in this repo's own request-spec vocabulary.
+# written in this repo's own request-spec vocabulary.
+#
+# Set specUrl OR specPath if the app publishes OpenAPI/Swagger. If it does not, describe the
+# endpoints your tests need in the fallback file instead.
 apiSpec:
-  # No specUrl/specPath: OrangeHRM's demo publishes no OpenAPI doc, and the vendor copy that used to
-  # sit at the repo root was not produced by anything here. What the app's API surface actually is now
-  # comes from analysis/api-documentation.md (repo-analyzer, Tier B); this file carries the request and
-  # response shapes that report does not record, for the endpoints the tests need.
+  # specUrl: https://example.test/openapi.json
+  # specPath: ../my-app/openapi.yaml
   fallbackSpec: scripts/api-fallback-spec.yaml

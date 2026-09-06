@@ -4,7 +4,7 @@
 //   B  the backend framework's own route convention (via the backend registry)
 //   C  anything only resolvable once the app boots  (recorded, never guessed)
 //
-//   node scripts/repo-analyzer/api-docs.mjs --app ../orangehrm [--cross-check <a known-good spec>]
+//   node scripts/repo-analyzer/api-docs.mjs --app <app-clone> [--cross-check <a known-good spec>]
 
 import path from 'node:path';
 import yaml from 'js-yaml';

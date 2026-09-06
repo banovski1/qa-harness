@@ -15,6 +15,7 @@ import test from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {mergeByPath, renderApiDocs, tierA, tierB} from '../api-docs.mjs';
 import {collectComponents, renderComponents} from '../components.mjs';
+import {KIND_TEMPLATES} from '../elements-vue.mjs';
 import {detect} from '../detect.mjs';
 import {joinUrl, renderLiveUrls} from '../live-urls.mjs';
 import {collectRoutes, renderRoutes} from '../routes.mjs';
@@ -57,7 +58,9 @@ for (const app of APPS) {
     const routes = await collectRoutes(detection);
 
     await t.test('frontend-components.md', async () => {
-      compare(`${app}.frontend-components`, renderComponents(detection, await collectComponents(detection)));
+      // Pinned for the same reason as in analyzers.test.mjs: a snapshot must not change because
+      // a config file outside this suite changed.
+      compare(`${app}.frontend-components`, renderComponents(detection, await collectComponents(detection, {templateFor: KIND_TEMPLATES})));
     });
 
     await t.test('pages-and-routes.md', () => {

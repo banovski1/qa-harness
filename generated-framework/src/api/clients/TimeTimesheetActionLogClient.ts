@@ -1,9 +1,0 @@
-import { TimeTimesheetActionLogClientGenerated } from './TimeTimesheetActionLogClient.generated';
-
-/**
- * TimeTimesheetActionLogClient — add resource-specific helpers/assertions here.
- *
- * The generator created this file once and will never overwrite it. Mapped
- * operations live in TimeTimesheetActionLogClient.generated.ts, regenerated every run.
- */
-export class TimeTimesheetActionLogClient extends TimeTimesheetActionLogClientGenerated {}

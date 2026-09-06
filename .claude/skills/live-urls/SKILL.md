@@ -18,7 +18,7 @@ node scripts/repo-analyzer/live-urls.mjs [--base-url <url>] [--path-prefix <pref
 
 The base URL defaults to `baseUrl:` in `scripts/app-config.yaml` — the instance the rest of this
 repo already targets. `--path-prefix` is for apps served under a front-controller path
-(OrangeHRM's is `/web/index.php`). If neither a flag nor the config yields a base URL, stop and
+(an app mounted under a prefix might use `/web/index.php`). If neither a flag nor the config yields a base URL, stop and
 ask; never hardcode one.
 
 ## Placeholders stay placeholders

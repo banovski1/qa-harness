@@ -9,6 +9,7 @@ import test from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {mergeByPath, tierA, tierB} from '../api-docs.mjs';
 import {collectComponents} from '../components.mjs';
+import {KIND_TEMPLATES} from '../elements-vue.mjs';
 import {detect} from '../detect.mjs';
 import {joinUrl} from '../live-urls.mjs';
 import {collectRoutes} from '../routes.mjs';
@@ -55,7 +56,9 @@ for (const testCase of CASES) {
 
     if (testCase.components || testCase.testIds || testCase.props || testCase.elements) {
       await t.test('parses components', async () => {
-        const {components, errors} = await collectComponents(detection);
+        // The full template table, so a rung-4 expectation tests the extractor rather than
+        // whatever `locatorTemplates:` happens to hold in the generator config right now.
+        const {components, errors} = await collectComponents(detection, {templateFor: KIND_TEMPLATES});
         assert.deepEqual(errors, [], 'a parser that throws degrades quietly into this list');
         const names = components.map((component) => component.name);
         for (const name of testCase.components ?? []) {

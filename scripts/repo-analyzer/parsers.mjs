@@ -221,6 +221,9 @@ export async function parseVue(file, source, ctx = {}) {
     const headers = headersFromScript(scriptAst, catalogue, walkAst);
     const collected = collectVueElements(descriptor.template.ast, {
       catalogue, headers, inheritedLabel: ctx.inheritedLabel ?? null,
+      // Omitted rather than passed as undefined, so the default table still applies to a caller
+      // that does not narrow it.
+      ...(ctx.templateFor ? {templateFor: ctx.templateFor} : {}),
     });
     elements = collected.elements;
     skipped = collected.skipped;

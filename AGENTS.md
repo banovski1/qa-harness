@@ -6,9 +6,9 @@ This repository converts a local application clone into a Playwright framework t
 
 - `scripts/repo-analyzer/`: framework detection, route/component/API extraction, fixture apps, and Node.js tests.
 - `scripts/framework-generator/`: analysis validation, page models, file writers, and language adapters.
-- `analysis/`: generated reports and API maps.
-- `generated-framework/`: committed TypeScript Playwright project; reusable code lives in `src/`, scenarios in `tests/e2e/`.
-- `codegen-recordings/` and `test-case-candidates/`: recorded flows and candidate scenarios.
+- `analysis/`: reports and API maps *produced* by the analyzer — absent on this branch until it runs.
+- `generated-framework/`: the Playwright project the generator *produces*; reusable code in `src/`, scenarios in `tests/e2e/`. Absent until `generate.mjs` runs.
+- `codegen-recordings/` and `test-case-candidates/`: recorded flows and candidate scenarios, added as you record them.
 - `.claude/`: agent instructions, skills, and enforcement hooks. See `CLAUDE.md` for architecture details.
 
 ## Build, Test, and Development Commands
@@ -16,7 +16,7 @@ This repository converts a local application clone into a Playwright framework t
 Run these from the repository root; configuration paths resolve relative to it. Install dependencies with `npm ci --prefix <directory>` for each of the two script packages and `generated-framework`.
 
 - `npm test --prefix scripts/repo-analyzer`: run Node.js analyzer tests.
-- `node scripts/repo-analyzer/routes.mjs --app ../orangehrm`: extract routes; run `components.mjs` with the same argument afterward.
+- `node scripts/repo-analyzer/routes.mjs --app <app-clone>`: extract routes; run `components.mjs` with the same argument afterward.
 - `node scripts/framework-generator/check-analysis.mjs`: validate analysis freshness and schema.
 - `node scripts/framework-generator/generate.mjs --dry-run`: preview generation; omit `--dry-run` to write output.
 - `npm run typecheck --prefix generated-framework`: check TypeScript without emitting files.

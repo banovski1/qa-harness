@@ -2,17 +2,18 @@
 // Skill A — every UI component in the app, parsed with its own framework's parser, plus any
 // test-id attribute already present in the markup as a *suggested* locator strategy.
 //
-//   node scripts/repo-analyzer/components.mjs --app ../orangehrm [--dry-run]
+//   node scripts/repo-analyzer/components.mjs --app <app-clone> [--dry-run]
 
 import fs from 'node:fs';
 import path from 'node:path';
 import {STRATEGIES} from '../framework-generator/locator-spec.mjs';
 import {detect} from './detect.mjs';
-import {buildComponentIndex} from './elements-vue.mjs';
+import {buildComponentIndex, templatesFrom} from './elements-vue.mjs';
 import {loadCatalogue} from './i18n.mjs';
 import {TEST_ID_ATTRS} from './parsers.mjs';
 import {ANALYSIS_DIR, header, outPath, reportWritten, table, writeReport} from './report.mjs';
 import {findFiles, parseArgs, readJson, readText, rel, REPO_ROOT, resolveAppPath, unique} from './util.mjs';
+import yaml from 'js-yaml';
 
 // A parser-less framework gets a naive listing, and a naive listing must stay conservative:
 // only files that look like components by convention, never every source file in the tree.
@@ -26,11 +27,37 @@ function classify(relPath) {
   return 'component';
 }
 
-export async function collectComponents(detection) {
+const GENERATOR_CONFIG = path.join('scripts', 'framework-generator', 'generator-config.yaml');
+
+/**
+ * The `locatorTemplates:` ids the generator config defines.
+ *
+ * The analyzer reads the generator's config for the same reason it imports `STRATEGIES` from it:
+ * the two must agree about the locator vocabulary, and the generator owns it. A missing or empty
+ * config yields an empty set, and the ladder falls through rather than proposing a template the
+ * generator cannot expand.
+ */
+function configuredTemplates() {
+  try {
+    return yaml.load(readText(path.join(REPO_ROOT, GENERATOR_CONFIG)) ?? '')?.locatorTemplates ?? {};
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * @param detection  the result of detect()
+ * @param options.templateFor  kind -> locatorTemplates id. Defaults to whatever the generator
+ *   config defines. Tests pass this explicitly so their expectations do not shift when someone
+ *   edits a config file elsewhere in the repo.
+ */
+export async function collectComponents(detection, options = {}) {
   const entry = detection.frontend.entry;
-  // Both are built once and shared by every parse: the catalogue is what turns a `$t()` key
-  // into a label, and the index is what lets a parse follow a child component tag to its file.
+  // All three are built once and shared by every parse: the catalogue turns a `$t()` key into a
+  // label, the index lets a parse follow a child component tag to its file, and templateFor is what
+  // the ladder may use for a label the markup does not associate.
   const catalogue = await loadCatalogue(detection.appPath);
+  const templateFor = options.templateFor ?? templatesFrom(configuredTemplates());
   const naive = Boolean(entry.naive) || entry.id === 'lit';
   const files = findFiles(detection.frontend.sourceRoot, (file) => {
     if (!entry.extensions.some((ext) => file.endsWith(ext))) return false;
@@ -46,7 +73,7 @@ export async function collectComponents(detection) {
   const errors = [];
   for (const file of files) {
     const source = readText(file) ?? '';
-    const parsed = await entry.parse(file, source, {catalogue: catalogue.entries, componentIndex});
+    const parsed = await entry.parse(file, source, {catalogue: catalogue.entries, componentIndex, templateFor});
     const relPath = rel(detection.appPath, file);
     if (parsed.error) errors.push({file: relPath, error: parsed.error});
     components.push({
@@ -60,7 +87,7 @@ export async function collectComponents(detection) {
       skippedElements: parsed.skippedElements ?? 0,
     });
   }
-  return {components, errors, naive, catalogue};
+  return {components, errors, naive, catalogue, templateFor};
 }
 
 /**

@@ -7,7 +7,7 @@ allowed-tools: Bash(node:*) Bash(npm:*)
 # Frontend components
 
 Static analysis of a **local clone** of the application under test — a filesystem path the
-engineer gives you (`../orangehrm`), never a GitHub URL, never cloned by this skill. No browser,
+engineer gives you (e.g. `../my-app`), never a GitHub URL, never cloned by this skill. No browser,
 no dev server. Output is `analysis/frontend-components.md` plus a `.json` sidecar the other
 analyzers read.
 
