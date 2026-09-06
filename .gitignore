@@ -9,3 +9,4 @@ scripts/framework-generator/node_modules
 prompt-library/
 analysis/
 docs/superpowers/
+.worktrees/
