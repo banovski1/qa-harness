@@ -8,3 +8,4 @@ scripts/framework-generator/node_modules
 .playwright-cli
 prompt-library/
 analysis/
+docs/superpowers/
