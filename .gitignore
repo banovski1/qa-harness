@@ -7,3 +7,4 @@ scripts/framework-generator/node_modules
 .playwright-mcp
 .playwright-cli
 prompt-library/
+analysis/
