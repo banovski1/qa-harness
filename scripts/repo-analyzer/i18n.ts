@@ -10,12 +10,13 @@
 // empty map rather than an error.
 
 import path from 'node:path';
-import {findFiles, readText, tryImport} from './util.mjs';
+import {findFiles, readText, tryImport} from './util.js';
+import type {Catalogue, CatalogueEntries} from './types.js';
 
 /** Files worth opening when hunting for a catalogue. Keeps the scan off a whole repo of YAML. */
 const YAML_FILE = /\.ya?ml$/;
 
-export const I18N_REGISTRY = [
+export const I18N_REGISTRY: {id: string; label: string; match: (appPath: string) => boolean; load: (appPath: string) => Promise<CatalogueEntries>}[] = [
   {
     id: 'symfony-lang-string',
     label: 'Symfony lang-string YAML (langStrings: [{ value, unitId }])',
@@ -23,7 +24,7 @@ export const I18N_REGISTRY = [
     load: async (appPath) => {
       const yaml = await tryImport('js-yaml');
       if (!yaml) return {};
-      const catalogue = {};
+      const catalogue: CatalogueEntries = {};
       for (const file of findLangStringFiles(appPath)) {
         // The filename stem is the namespace: admin.yaml holds the `admin.*` keys.
         const namespace = path.basename(file).replace(YAML_FILE, '');
@@ -49,7 +50,7 @@ export const I18N_REGISTRY = [
  * same convention somewhere else still resolves. The `langStrings:` line has to appear near
  * the top of the file, which is what keeps this from reading every YAML file in the repo.
  */
-function findLangStringFiles(appPath) {
+function findLangStringFiles(appPath: string) {
   return findFiles(appPath, (file) => {
     if (!YAML_FILE.test(file)) return false;
     const head = readText(file)?.slice(0, 200) ?? '';
@@ -62,7 +63,7 @@ function findLangStringFiles(appPath) {
  *
  * @returns {Promise<{id: string|null, label: string, entries: Record<string, string>, size: number}>}
  */
-export async function loadCatalogue(appPath) {
+export async function loadCatalogue(appPath: string): Promise<Catalogue> {
   for (const row of I18N_REGISTRY) {
     if (!row.match(appPath)) continue;
     const entries = await row.load(appPath);
@@ -80,7 +81,7 @@ const T_CALL = /^\s*\$t\(\s*(['"])([^'"]+)\1\s*\)\s*$/;
  * Returns null for anything dynamic — `:label="someComputed"`, or a `$t` call carrying
  * interpolation — because a guessed label produces a locator that silently matches nothing.
  */
-export function resolveLabelExpression(expression, catalogue = {}) {
+export function resolveLabelExpression(expression: string | null | undefined, catalogue: CatalogueEntries = {}) {
   const match = T_CALL.exec(String(expression ?? ''));
   if (!match) return null;
   return catalogue[match[2]] ?? null;

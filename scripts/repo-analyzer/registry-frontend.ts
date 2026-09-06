@@ -10,10 +10,11 @@
 //   fileBasedRouter  { dirs, extensions, ignore } when routes come from a folder tree
 //   routerLib     the client router package whose config file holds the route array
 
-import {parseAngular, parseBackboneHandlebars, parseHtml, parseJsx, parseNaive, parseSvelte, parseVue} from './parsers.mjs';
-import {rel} from './util.mjs';
+import {parseAngular, parseBackboneHandlebars, parseHtml, parseJsx, parseNaive, parseSvelte, parseVue} from './parsers.js';
+import {rel} from './util.js';
+import type {FrontendRegistryEntry} from './types.js';
 
-export const FRONTEND_REGISTRY = [
+export const FRONTEND_REGISTRY: FrontendRegistryEntry[] = [
   {
     id: 'nuxt', label: 'Nuxt', deps: ['nuxt', 'nuxt3', 'nuxt-edge'], beats: ['vue'],
     extensions: ['.vue'], parse: parseVue,
@@ -90,13 +91,13 @@ export const FRONTEND_REGISTRY = [
 ];
 
 /** The naive mode: list PascalCase files under components/, parse nothing, guess nothing. */
-export const UNKNOWN_FRONTEND = {
+export const UNKNOWN_FRONTEND: FrontendRegistryEntry = {
   id: 'unknown', label: 'not detected', deps: [],
   extensions: ['.vue', '.jsx', '.tsx', '.svelte', '.astro', '.html'],
   parse: parseNaive, fileBasedRouter: null, routerLib: null, naive: true,
 };
 
-export function matchFrontend(deps) {
+export function matchFrontend(deps: Record<string, string>): FrontendRegistryEntry | null {
   const hits = FRONTEND_REGISTRY.filter((entry) => entry.deps.some((dep) => dep in deps));
   if (hits.length === 0) return null;
   const beaten = new Set(hits.flatMap((entry) => entry.beats ?? []));

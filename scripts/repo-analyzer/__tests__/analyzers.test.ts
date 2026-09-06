@@ -7,14 +7,14 @@ import assert from 'node:assert/strict';
 import path from 'node:path';
 import test from 'node:test';
 import {fileURLToPath} from 'node:url';
-import {mergeByPath, tierA, tierB} from '../api-docs.mjs';
-import {collectComponents} from '../components.mjs';
-import {KIND_TEMPLATES} from '../elements-vue.mjs';
-import {detect} from '../detect.mjs';
-import {joinUrl} from '../live-urls.mjs';
-import {collectRoutes} from '../routes.mjs';
-import {rel} from '../util.mjs';
-import {CASES} from '../__fixtures__/cases.mjs';
+import {mergeByPath, tierA, tierB} from '../api-docs.js';
+import {collectComponents} from '../components.js';
+import {KIND_TEMPLATES} from '../elements-vue.js';
+import {detect} from '../detect.js';
+import {joinUrl} from '../live-urls.js';
+import {collectRoutes} from '../routes.js';
+import {rel} from '../util.js';
+import {CASES} from '../__fixtures__/cases.js';
 
 const FIXTURES = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '__fixtures__');
 
@@ -90,9 +90,9 @@ for (const testCase of CASES) {
 
     if (testCase.endpoints) {
       await t.test('the backend registry row returns its routes', async () => {
-        const all = await detection.backend.entry.routes(detection.backend.root);
+        const all = await detection.backend!.entry.routes(detection.backend!.root);
         const found = all.map((route) => route.path);
-        for (const expected of testCase.endpoints) {
+        for (const expected of testCase.endpoints!) {
           assert.ok(found.includes(expected), `missing endpoint ${expected} (got ${found.join(', ')})`);
         }
       });

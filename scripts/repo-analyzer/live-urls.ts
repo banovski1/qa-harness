@@ -7,8 +7,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {loadProjectConfig} from '../project-config.js';
-import {ANALYSIS_DIR, outPath, reportWritten, table, writeReport} from './report.mjs';
-import {REPO_ROOT, parseArgs, readJson, rel} from './util.mjs';
+import {ANALYSIS_DIR, outPath, reportWritten, table, writeReport} from './report.js';
+import {REPO_ROOT, parseArgs, readJson, rel} from './util.js';
+import type {LiveUrlRecord, RoutesReport} from './types.js';
 
 /** The base URL the rest of the repo already targets, unless the caller names another. */
 function defaultBaseUrl() {
@@ -19,14 +20,14 @@ function defaultBaseUrl() {
   }
 }
 
-export function joinUrl(baseUrl, prefix, routePath) {
+export function joinUrl(baseUrl: string, prefix: string, routePath: string) {
   const base = String(baseUrl).replace(/\/+$/, '');
   const middle = prefix ? `/${String(prefix).replace(/^\/+|\/+$/g, '')}` : '';
   const route = routePath === '/' ? '/' : `/${String(routePath).replace(/^\/+/, '')}`;
   return `${base}${middle}${route}`.replace(/([^:])\/{2,}/g, '$1/');
 }
 
-function render(source, baseUrl, prefix, rows) {
+function render(source: Pick<RoutesReport, 'app' | 'strategy'> & {from: string}, baseUrl: string, prefix: string, rows: LiveUrlRecord[]) {
   const withParams = rows.filter((row) => row.params.length > 0);
   return [
     '# Live URLs',
@@ -60,7 +61,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   if (!fs.existsSync(routesFile)) {
     throw new Error(`No route data at ${rel(REPO_ROOT, routesFile)} — run scripts/repo-analyzer/routes.mjs first.`);
   }
-  const source = readJson(routesFile);
+  const source = readJson<RoutesReport>(routesFile)!;
   const baseUrl = args.baseUrl ? String(args.baseUrl) : defaultBaseUrl();
   if (!baseUrl) {
     throw new Error('No base URL: pass --base-url, or set baseUrl: in app-config.yaml.');

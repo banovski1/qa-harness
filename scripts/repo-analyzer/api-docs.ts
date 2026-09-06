@@ -8,25 +8,31 @@
 
 import path from 'node:path';
 import yaml from 'js-yaml';
-import {detect} from './detect.mjs';
-import {paramsOf} from './registry-backend.mjs';
-import {header, outPath, reportWritten, table, writeReport} from './report.mjs';
-import {REPO_ROOT, findFiles, parseArgs, readText, rel, resolveAppPath, unique} from './util.mjs';
+import {detect} from './detect.js';
+import {paramsOf} from './registry-backend.js';
+import {header, outPath, reportWritten, table, writeReport} from './report.js';
+import {REPO_ROOT, findFiles, parseArgs, readText, rel, resolveAppPath, unique} from './util.js';
+import type {ApiComparison, ApiEndpoint, ApiResult, DetectionResult} from './types.js';
+
+interface ApiSpec {
+  paths?: Record<string, Record<string, {summary?: string; operationId?: string; tags?: string[]}>>;
+  servers?: unknown[];
+}
 
 const SPEC_NAMES = /^(openapi|swagger|api[-_.]?spec)\.(ya?ml|json)$/i;
 
-function loadSpec(file) {
+function loadSpec(file: string): ApiSpec | null {
   const text = readText(file);
   if (!text) return null;
   try {
-    return file.endsWith('.json') ? JSON.parse(text) : yaml.load(text);
+    return (file.endsWith('.json') ? JSON.parse(text) : yaml.load(text)) as ApiSpec | null;
   } catch {
     return null;
   }
 }
 
 /** Tier A — an OpenAPI/Swagger document that ships with the app is authoritative. */
-function tierA(appPath) {
+function tierA(appPath: string): ApiResult | null {
   for (const file of findFiles(appPath, (_f, base) => SPEC_NAMES.test(base), {maxDepth: 5})) {
     const spec = loadSpec(file);
     if (!spec?.paths) continue;
@@ -51,7 +57,7 @@ function tierA(appPath) {
 }
 
 /** Tier B — the backend framework declares its routes; the registry knows where. */
-async function tierB(detection, apiPrefix) {
+async function tierB(detection: DetectionResult, apiPrefix: string): Promise<ApiResult | null> {
   if (!detection.backend) return null;
   const all = await detection.backend.entry.routes(detection.backend.root);
   const endpoints = all
@@ -67,8 +73,8 @@ async function tierB(detection, apiPrefix) {
   return {tier: 'B', how: `${detection.backend.label} — ${detection.backend.method}`, endpoints, servers: []};
 }
 
-function mergeByPath(endpoints) {
-  const merged = new Map();
+function mergeByPath(endpoints: ApiEndpoint[]): ApiEndpoint[] {
+  const merged = new Map<string, ApiEndpoint>();
   for (const endpoint of endpoints) {
     const existing = merged.get(endpoint.path);
     if (existing) {
@@ -82,7 +88,7 @@ function mergeByPath(endpoints) {
 }
 
 /** Compare the extracted path set against a known-good spec, so a broken extractor is visible. */
-function crossCheck(endpoints, specFile) {
+function crossCheck(endpoints: Pick<ApiEndpoint, 'path'>[], specFile: string): ApiComparison | null {
   const spec = loadSpec(specFile);
   if (!spec?.paths) return null;
   const specPaths = new Set(Object.keys(spec.paths));
@@ -96,7 +102,7 @@ function crossCheck(endpoints, specFile) {
   };
 }
 
-function render(detection, result, apiPrefix, comparison) {
+function render(detection: DetectionResult, result: ApiResult | null, apiPrefix: string, comparison: ApiComparison | null) {
   const endpoints = mergeByPath(result?.endpoints ?? []);
   const lines = [
     header('API documentation', detection, [

@@ -7,20 +7,21 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {STRATEGIES} from '../framework-generator/locator-spec.mjs';
-import {detect} from './detect.mjs';
-import {buildComponentIndex, templatesFrom} from './elements-vue.mjs';
-import {loadCatalogue} from './i18n.mjs';
-import {TEST_ID_ATTRS} from './parsers.mjs';
-import {ANALYSIS_DIR, header, outPath, reportWritten, table, writeReport} from './report.mjs';
-import {findFiles, parseArgs, readJson, readText, rel, REPO_ROOT, resolveAppPath, unique} from './util.mjs';
+import {detect} from './detect.js';
+import {buildComponentIndex, templatesFrom} from './elements-vue.js';
+import {loadCatalogue} from './i18n.js';
+import {TEST_ID_ATTRS} from './parsers.js';
+import {ANALYSIS_DIR, header, outPath, reportWritten, table, writeReport} from './report.js';
+import {findFiles, parseArgs, readJson, readText, rel, REPO_ROOT, resolveAppPath, unique} from './util.js';
 import yaml from 'js-yaml';
+import type {ComponentCollection, ComponentRecord, DetectionResult, LabelDictionaryReport, RoutesReport, RouteRecord, TemplateMap} from './types.js';
 
 // A parser-less framework gets a naive listing, and a naive listing must stay conservative:
 // only files that look like components by convention, never every source file in the tree.
 const NAIVE_PATH = /(^|\/)(components?|pages|views|screens|templates)(\/|$)/;
 const PASCAL_CASE = /^[A-Z][A-Za-z0-9]*$/;
 
-function classify(relPath) {
+function classify(relPath: string) {
   if (/(^|\/)pages?(\/|$)/.test(relPath)) return 'page';
   if (/(^|\/)(views|screens)(\/|$)/.test(relPath)) return 'view';
   if (/(^|\/)layouts?(\/|$)/.test(relPath)) return 'layout';
@@ -37,9 +38,9 @@ const GENERATOR_CONFIG = path.join('scripts', 'framework-generator', 'generator-
  * config yields an empty set, and the ladder falls through rather than proposing a template the
  * generator cannot expand.
  */
-function configuredTemplates() {
+function configuredTemplates(): Record<string, unknown> {
   try {
-    return yaml.load(readText(path.join(REPO_ROOT, GENERATOR_CONFIG)) ?? '')?.locatorTemplates ?? {};
+    return (yaml.load(readText(path.join(REPO_ROOT, GENERATOR_CONFIG)) ?? '') as {locatorTemplates?: Record<string, unknown>} | null)?.locatorTemplates ?? {};
   } catch {
     return {};
   }
@@ -51,7 +52,7 @@ function configuredTemplates() {
  *   config defines. Tests pass this explicitly so their expectations do not shift when someone
  *   edits a config file elsewhere in the repo.
  */
-export async function collectComponents(detection, options = {}) {
+export async function collectComponents(detection: DetectionResult, options: {templateFor?: TemplateMap} = {}): Promise<ComponentCollection> {
   const entry = detection.frontend.entry;
   // All three are built once and shared by every parse: the catalogue turns a `$t()` key into a
   // label, the index lets a parse follow a child component tag to its file, and templateFor is what
@@ -99,9 +100,9 @@ export async function collectComponents(detection, options = {}) {
  * component could not be resolved is left out entirely rather than written empty — "no
  * elements" and "unknown" have to stay distinguishable.
  */
-export function buildLabelDictionary(components, routes) {
+export function buildLabelDictionary(components: ComponentRecord[], routes: RouteRecord[]): LabelDictionaryReport['routes'] {
   const byFile = new Map(components.map((component) => [component.file, component]));
-  const dictionary = {};
+  const dictionary: LabelDictionaryReport['routes'] = {};
   for (const route of routes) {
     if (!route.component) continue;
     const component = byFile.get(route.component);
@@ -119,7 +120,7 @@ export function buildLabelDictionary(components, routes) {
  * exactly one element on a rendered page, which is what the map requires. The shape is validated
  * against the generator's closed vocabulary so the two cannot drift apart.
  */
-function locatorSpecFor(value) {
+function locatorSpecFor(value: string) {
   const spec = {strategy: 'getByTestId', args: [value]};
   if (!STRATEGIES.includes(spec.strategy)) {
     throw new Error(`getByTestId is no longer in the generator's locator vocabulary: ${STRATEGIES.join(', ')}`);
@@ -127,7 +128,7 @@ function locatorSpecFor(value) {
   return spec;
 }
 
-function render(detection, {components, errors, naive, catalogue}) {
+function render(detection: DetectionResult, {components, errors, naive, catalogue}: ComponentCollection) {
   const sorted = [...components].sort((a, b) => a.file.localeCompare(b.file));
   const testIdRows = [];
   for (const component of sorted) {
@@ -213,7 +214,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   // The dictionary needs the route table to key on, so it is written only once routes.mjs has
   // run. Skipping it is a normal first-run outcome, not a failure — say so and carry on.
   const routesFile = path.join(ANALYSIS_DIR, 'pages-and-routes.json');
-  const routeData = readJson(routesFile);
+  const routeData = readJson<RoutesReport>(routesFile);
   if (!args.dryRun && routeData?.routes) {
     const dictionary = buildLabelDictionary(result.components, routeData.routes);
     const outFile = path.join(ANALYSIS_DIR, 'label-dictionary.json');

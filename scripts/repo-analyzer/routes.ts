@@ -5,16 +5,17 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import {detect} from './detect.mjs';
-import {babelParse, keyName, walkAst} from './parsers.mjs';
-import {paramsOf} from './registry-backend.mjs';
-import {header, outPath, reportWritten, table, writeReport} from './report.mjs';
-import {findFiles, parseArgs, readText, rel, resolveAppPath} from './util.mjs';
+import {detect} from './detect.js';
+import {babelParse, keyName, walkAst} from './parsers.js';
+import {paramsOf} from './registry-backend.js';
+import {header, outPath, reportWritten, table, writeReport} from './report.js';
+import {findFiles, parseArgs, readText, rel, resolveAppPath} from './util.js';
+import type {AstNode, DetectionResult, FileBasedRouterConfig, RouteCollection, RouteRecord} from './types.js';
 
 // Page routes are normalised to `{param}` whichever convention declared them, so Skill C can
 // mark a placeholder without knowing which router produced the route. API endpoints keep their
 // framework's own spelling — those are matched against a spec, where the native form is correct.
-function normalisePath(routePath) {
+function normalisePath(routePath: string) {
   // `<int:pk>` first: rewriting `:pk` ahead of it would leave the converter behind as `{int{pk}}`.
   return String(routePath)
     .replace(/<(?:[^:>]+:)?([^>]+)>/g, '{$1}')
@@ -23,7 +24,7 @@ function normalisePath(routePath) {
 
 // --- strategy 1: a file-based router ----------------------------------------------------
 
-function fileRouteFor(relPath, config) {
+function fileRouteFor(relPath: string, config: Partial<FileBasedRouterConfig>) {
   let route = relPath.replace(/\.[^.]+$/, '');
   if (config.flat) route = route.replace(/\./g, '/');           // Remix flat routes
   if (config.pageFile) route = route.replace(new RegExp(`(^|/)\\${config.pageFile}$`), '');
@@ -38,8 +39,8 @@ function fileRouteFor(relPath, config) {
   return `/${route}`.replace(/\/+/g, '/').replace(/(.)\/$/, '$1');
 }
 
-function fileBasedRoutes(detection) {
-  const config = detection.frontend.fileBasedRouter;
+function fileBasedRoutes(detection: DetectionResult): RouteRecord[] {
+  const config = detection.frontend.fileBasedRouter!;
   const routes = [];
   for (const dir of config.dirs) {
     const base = path.join(detection.frontend.root, dir);
@@ -62,21 +63,21 @@ function fileBasedRoutes(detection) {
 
 // --- strategy 2: a central router config ------------------------------------------------
 
-async function routerConfigRoutes(detection) {
-  const lib = detection.frontend.routerLib;
+async function routerConfigRoutes(detection: DetectionResult): Promise<RouteRecord[]> {
+  const lib = detection.frontend.routerLib!;
   const candidates = findFiles(detection.frontend.sourceRoot,
     (file) => /\.(m?[jt]sx?)$/.test(file) && (readText(file) ?? '').includes(lib), {maxDepth: 8});
-  const routes = [];
+  const routes: RouteRecord[] = [];
   for (const file of candidates) {
     const ast = await babelParse(readText(file) ?? '');
     if (!ast) continue;
     walkAst(ast, (node) => {
       if (node.type !== 'ObjectExpression') return;
-      const pathProp = node.properties.find((p) => keyName(p) === 'path' && p.value?.type === 'StringLiteral');
+      const pathProp = node.properties.find((p: AstNode) => keyName(p) === 'path' && p.value?.type === 'StringLiteral');
       if (!pathProp) return;
       const routePath = pathProp.value.value;
-      const componentProp = node.properties.find((p) => ['component', 'element', 'loadChildren', 'lazy'].includes(keyName(p)));
-      const nameProp = node.properties.find((p) => keyName(p) === 'name' && p.value?.type === 'StringLiteral');
+      const componentProp = node.properties.find((p: AstNode) => ['component', 'element', 'loadChildren', 'lazy'].includes(keyName(p)!));
+      const nameProp = node.properties.find((p: AstNode) => keyName(p) === 'name' && p.value?.type === 'StringLiteral');
       routes.push({
         path: normalisePath(routePath.startsWith('/') ? routePath : `/${routePath}`),
         name: nameProp?.value?.value ?? null,
@@ -90,13 +91,13 @@ async function routerConfigRoutes(detection) {
   return routes;
 }
 
-function componentDescription(value) {
+function componentDescription(value: AstNode | null | undefined): string | null {
   if (!value) return null;
   if (value.type === 'Identifier') return value.name;
   if (value.type === 'JSXElement') return value.openingElement?.name?.name ?? null;
   if (value.type === 'StringLiteral') return value.value;
   // `component: () => import('./Foo.vue')` — the specifier is the useful half.
-  let found = null;
+  let found: string | null = null;
   walkAst(value, (node) => {
     if (!found && node.type === 'StringLiteral' && node.value.includes('/')) found = node.value;
   });
@@ -110,15 +111,15 @@ function componentDescription(value) {
  * name -> file map by reading every object literal that maps a quoted name to an imported symbol,
  * which is the shape of a component registry regardless of the framework that consumes it.
  */
-async function componentIndex(detection) {
-  const index = new Map();
+async function componentIndex(detection: DetectionResult): Promise<Map<string, string>> {
+  const index = new Map<string, string>();
   const files = findFiles(detection.frontend.sourceRoot,
     (file) => /(^|\/)index\.[jt]s$/.test(file) || /main\.[jt]s$/.test(file), {maxDepth: 6});
   for (const file of files) {
     const source = readText(file);
     const ast = source ? await babelParse(source) : null;
     if (!ast) continue;
-    const imports = new Map();
+    const imports = new Map<string, string>();
     walkAst(ast, (node) => {
       if (node.type !== 'ImportDeclaration') return;
       for (const specifier of node.specifiers) imports.set(specifier.local.name, node.source.value);
@@ -136,7 +137,7 @@ async function componentIndex(detection) {
 
 const IMPORT_EXTENSIONS = ['', '.vue', '.svelte', '.tsx', '.jsx', '.ts', '.js', '/index.vue', '/index.ts', '/index.js'];
 
-function resolveImport(fromDir, specifier, detection) {
+function resolveImport(fromDir: string, specifier: string, detection: DetectionResult) {
   const bases = specifier.startsWith('.')
     ? [path.resolve(fromDir, specifier)]
     : [path.join(detection.frontend.sourceRoot, specifier.replace(/^[@~]\//, ''))];
@@ -148,8 +149,8 @@ function resolveImport(fromDir, specifier, detection) {
   return specifier;
 }
 
-async function serverRoutes(detection, apiPrefix) {
-  const backend = detection.backend;
+async function serverRoutes(detection: DetectionResult, apiPrefix: string): Promise<RouteRecord[]> {
+  const backend = detection.backend!;
   const all = await backend.entry.routes(backend.root);
   const index = await componentIndex(detection);
   const routes = [];
@@ -172,7 +173,7 @@ async function serverRoutes(detection, apiPrefix) {
 
 // --- driver -----------------------------------------------------------------------------
 
-export async function collectRoutes(detection, {apiPrefix = '/api'} = {}) {
+export async function collectRoutes(detection: DetectionResult, {apiPrefix = '/api'} = {}): Promise<RouteCollection> {
   if (detection.frontend.fileBasedRouter) {
     const routes = fileBasedRoutes(detection);
     if (routes.length > 0) return {strategy: `${detection.frontend.label} file-based router`, routes};
@@ -188,7 +189,7 @@ export async function collectRoutes(detection, {apiPrefix = '/api'} = {}) {
   return {strategy: null, routes: []};
 }
 
-function render(detection, result, apiPrefix) {
+function render(detection: DetectionResult, result: RouteCollection, apiPrefix: string) {
   const sorted = [...result.routes].sort((a, b) => a.path.localeCompare(b.path));
   const unresolved = sorted.filter((route) => !route.component);
   const body = [

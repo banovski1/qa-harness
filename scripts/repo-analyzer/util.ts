@@ -6,6 +6,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {loadProjectConfig} from '../project-config.js';
+import type {CliArgs} from './types.js';
+
+interface WalkOptions {maxDepth?: number; skip?: Set<string>}
 
 export const REPO_ROOT = path.resolve(fileURLToPath(import.meta.url), '../../..');
 
@@ -16,8 +19,8 @@ export const SKIP_DIRS = new Set([
   '.next', '.nuxt', '.svelte-kit', '.venv', 'venv', '__pycache__', 'target', 'bin', 'obj',
 ]);
 
-export function parseArgs(argv = process.argv.slice(2)) {
-  const args = {_: [], flags: new Set()};
+export function parseArgs(argv: string[] = process.argv.slice(2)): CliArgs {
+  const args: Record<string, string | boolean | string[] | Set<string>> & {_: string[]; flags: Set<string>} = {_: [], flags: new Set()};
   for (let i = 0; i < argv.length; i++) {
     const token = argv[i];
     if (!token.startsWith('--')) {
@@ -38,7 +41,7 @@ export function parseArgs(argv = process.argv.slice(2)) {
   return args;
 }
 
-export function resolveAppPath(value, options = {}) {
+export function resolveAppPath(value: string | undefined, options: {configPath?: string} = {}) {
   const configured = value ? null : loadProjectConfig(options.configPath).appPath;
   if (!value && !configured) {
     throw new Error('An application path is required: set appPath: in app-config.yaml or pass --app <path to the cloned app repo>');
@@ -55,10 +58,10 @@ export function resolveAppPath(value, options = {}) {
  * stall the scan. Directory order is sorted, which is what makes every report stable
  * enough to diff between runs.
  */
-export function* walkFiles(root, {maxDepth = Infinity, skip = SKIP_DIRS} = {}) {
-  const queue = [[root, 0]];
+export function* walkFiles(root: string, {maxDepth = Infinity, skip = SKIP_DIRS}: WalkOptions = {}): Generator<string> {
+  const queue: [string, number][] = [[root, 0]];
   while (queue.length > 0) {
-    const [dir, depth] = queue.shift();
+    const [dir, depth] = queue.shift()!;
     let entries;
     try {
       entries = fs.readdirSync(dir, {withFileTypes: true});
@@ -78,7 +81,7 @@ export function* walkFiles(root, {maxDepth = Infinity, skip = SKIP_DIRS} = {}) {
   }
 }
 
-export function findFiles(root, predicate, options = {}) {
+export function findFiles(root: string, predicate: (file: string, base: string) => boolean, options: WalkOptions = {}) {
   const found = [];
   for (const file of walkFiles(root, options)) {
     if (predicate(file, path.basename(file))) found.push(file);
@@ -86,7 +89,7 @@ export function findFiles(root, predicate, options = {}) {
   return found.sort();
 }
 
-export function readJson(file) {
+export function readJson<T = Record<string, unknown>>(file: string): T | null {
   try {
     return JSON.parse(fs.readFileSync(file, 'utf8'));
   } catch {
@@ -94,7 +97,7 @@ export function readJson(file) {
   }
 }
 
-export function readText(file) {
+export function readText(file: string) {
   try {
     return fs.readFileSync(file, 'utf8');
   } catch {
@@ -102,12 +105,12 @@ export function readText(file) {
   }
 }
 
-export function rel(from, file) {
+export function rel(from: string, file: string) {
   return path.relative(from, file).split(path.sep).join('/');
 }
 
 /** The app's commit, so a stale analysis file is visible rather than silent. */
-export function gitSha(dir) {
+export function gitSha(dir: string) {
   try {
     return execFileSync('git', ['-C', dir, 'rev-parse', '--short', 'HEAD'], {
       encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
@@ -118,7 +121,7 @@ export function gitSha(dir) {
 }
 
 /** Lazy optional import: a missing parser degrades the analyzer, it does not crash it. */
-export async function tryImport(specifier) {
+export async function tryImport(specifier: string) {
   try {
     return await import(specifier);
   } catch {
@@ -132,10 +135,10 @@ export async function tryImport(specifier) {
 // read it without importing the parsers that import the extractor.
 export const TEST_ID_ATTRS = ['data-testid', 'data-test-id', 'data-test', 'data-cy', 'data-qa'];
 
-export function isTestIdAttr(name) {
+export function isTestIdAttr(name: unknown) {
   return TEST_ID_ATTRS.includes(String(name).toLowerCase());
 }
 
-export function unique(values) {
+export function unique<T>(values: Iterable<T>): T[] {
   return [...new Set(values)];
 }

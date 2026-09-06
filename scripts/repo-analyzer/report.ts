@@ -3,16 +3,17 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import {REPO_ROOT, gitSha, rel} from './util.mjs';
+import {REPO_ROOT, gitSha, rel} from './util.js';
+import type {CliArgs, DetectionResult} from './types.js';
 
 export const ANALYSIS_DIR = path.join(REPO_ROOT, 'analysis');
 
-export function escapeCell(value) {
+export function escapeCell(value: unknown) {
   if (value === null || value === undefined || value === '') return '—';
   return String(value).replace(/\|/g, '\\|').replace(/\r?\n/g, ' ');
 }
 
-export function table(headers, rows) {
+export function table(headers: string[], rows: unknown[][]) {
   if (rows.length === 0) return '_No rows._\n';
   const lines = [
     `| ${headers.join(' | ')} |`,
@@ -22,7 +23,7 @@ export function table(headers, rows) {
   return `${lines.join('\n')}\n`;
 }
 
-export function header(title, detection, extra = []) {
+export function header(title: string, detection: DetectionResult, extra: string[] = []) {
   const backend = detection.backend
     ? `${detection.backend.label} (${detection.backend.method})`
     : 'not detected';
@@ -44,7 +45,7 @@ export function header(title, detection, extra = []) {
  * Write the markdown report and, when `data` is given, a JSON sidecar. The sidecar is what the
  * next analyzer in the chain reads — re-parsing a markdown table would be the fragile path.
  */
-export function writeReport({outFile, body, data, dryRun}) {
+export function writeReport({outFile, body, data, dryRun}: {outFile: string; body: string; data?: unknown; dryRun?: boolean}): {written: string[]} {
   if (dryRun) {
     process.stdout.write(body);
     return {written: []};
@@ -60,11 +61,11 @@ export function writeReport({outFile, body, data, dryRun}) {
   return {written};
 }
 
-export function outPath(args, defaultName) {
+export function outPath(args: CliArgs, defaultName: string) {
   return args.out ? path.resolve(REPO_ROOT, String(args.out)) : path.join(ANALYSIS_DIR, defaultName);
 }
 
-export function reportWritten({written}, summaryLines = []) {
+export function reportWritten({written}: {written: string[]}, summaryLines: string[] = []) {
   for (const line of summaryLines) process.stderr.write(`${line}\n`);
   for (const file of written) process.stderr.write(`wrote ${file}\n`);
 }

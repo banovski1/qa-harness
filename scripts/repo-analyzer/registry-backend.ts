@@ -12,33 +12,53 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
-import {babelParse, keyName, walkAst} from './parsers.mjs';
-import {findFiles, readJson, readText, rel, unique} from './util.mjs';
+import {babelParse, keyName, walkAst} from './parsers.js';
+import {findFiles, readJson, readText, rel, unique} from './util.js';
+import type {AstNode, BackendRegistryEntry, BackendRoute} from './types.js';
+
+interface SymfonyRouteEntry {
+  path?: string;
+  methods?: unknown[];
+  defaults?: {_api?: string};
+  controller?: string;
+  requirements?: Record<string, unknown>;
+}
+
+interface JsonRouteEntry {
+  route?: string;
+  path?: string;
+  method?: string;
+  methods?: string[];
+  name?: string;
+  actionClassName?: string;
+  action?: string;
+  params?: Record<string, string>;
+}
 
 const HTTP_METHODS = ['get', 'post', 'put', 'patch', 'delete', 'head', 'options'];
 
 /** `/api/v2/pim/employees/{empNumber}` -> ['empNumber']; also handles :id and <int:id>. */
 /** A route path is an absolute path; a framework config is not obliged to write it as one. */
-function rooted(path) {
+function rooted(path: string) {
   const value = String(path).trim();
   return value.startsWith('/') ? value : `/${value}`;
 }
 
-export function paramsOf(routePath) {
+export function paramsOf(routePath: string): string[] {
   return unique([
     ...String(routePath).matchAll(/\{([^}/]+)\}|:([A-Za-z_][\w]*)|<(?:[^:>]+:)?([^>]+)>/g),
-  ].map((m) => (m[1] ?? m[2] ?? m[3]).split(/[<:]/).pop()));
+  ].map((m) => (m[1] ?? m[2] ?? m[3]).split(/[<:]/).pop()!));
 }
 
 // --- Symfony ---------------------------------------------------------------------------
 
-function symfonyYamlRoutes(root) {
+function symfonyYamlRoutes(root: string): BackendRoute[] {
   const files = findFiles(root, (file) => /(^|\/)config\/(routes[^/]*\.ya?ml|routes\/[^/]+\.ya?ml)$/.test(rel(root, file)), {maxDepth: 6});
   const routes = [];
   for (const file of files) {
     let doc;
     try {
-      doc = yaml.load(readText(file) ?? '');
+      doc = yaml.load(readText(file) ?? '') as Record<string, SymfonyRouteEntry> | null;
     } catch {
       continue;
     }
@@ -59,7 +79,7 @@ function symfonyYamlRoutes(root) {
   return routes;
 }
 
-function symfonyAttributeRoutes(root) {
+function symfonyAttributeRoutes(root: string): BackendRoute[] {
   const controllers = findFiles(root, (file) => file.endsWith('Controller.php'), {maxDepth: 8});
   const routes = [];
   for (const file of controllers) {
@@ -82,7 +102,7 @@ function symfonyAttributeRoutes(root) {
 }
 
 /** Follow a Symfony controller reference back to the Vue component name it renders. */
-function symfonyComponentFor(root, controllerRef) {
+function symfonyComponentFor(root: string, controllerRef: string | null) {
   if (!controllerRef) return null;
   const className = String(controllerRef).split('::')[0].split('\\').pop();
   if (!className || !className.endsWith('Controller')) return null;
@@ -93,9 +113,9 @@ function symfonyComponentFor(root, controllerRef) {
 
 // --- JavaScript backends ---------------------------------------------------------------
 
-async function expressRoutes(root) {
+async function expressRoutes(root: string): Promise<BackendRoute[]> {
   const files = findFiles(root, (file) => /\.(m?js|ts)$/.test(file) && !/\.d\.ts$/.test(file), {maxDepth: 6});
-  const routes = [];
+  const routes: BackendRoute[] = [];
   for (const file of files) {
     const source = readText(file);
     if (!source || !/\.(get|post|put|patch|delete|use)\s*\(/.test(source)) continue;
@@ -117,9 +137,9 @@ async function expressRoutes(root) {
   return routes;
 }
 
-async function nestRoutes(root) {
+async function nestRoutes(root: string): Promise<BackendRoute[]> {
   const files = findFiles(root, (file) => file.endsWith('.controller.ts') || file.endsWith('.controller.js'), {maxDepth: 8});
-  const routes = [];
+  const routes: BackendRoute[] = [];
   for (const file of files) {
     const source = readText(file);
     const ast = source ? await babelParse(source) : null;
@@ -127,7 +147,7 @@ async function nestRoutes(root) {
     walkAst(ast, (node) => {
       if (node.type !== 'ClassDeclaration') return;
       const controllerDecorator = (node.decorators ?? [])
-        .find((d) => d.expression?.callee?.name === 'Controller');
+        .find((d: AstNode) => d.expression?.callee?.name === 'Controller');
       const base = controllerDecorator?.expression?.arguments?.[0]?.value ?? '';
       for (const member of node.body?.body ?? []) {
         for (const decorator of member.decorators ?? []) {
@@ -153,7 +173,12 @@ async function nestRoutes(root) {
 // PHP, Python, Ruby and Java have no parser available here, so these read one declaration
 // line at a time rather than a whole file, and the report names the method used.
 
-function scanRoutes(root, {filePredicate, pattern, build, maxDepth = 8}) {
+function scanRoutes(root: string, {filePredicate, pattern, build, maxDepth = 8}: {
+  filePredicate: (file: string) => boolean;
+  pattern: RegExp;
+  build: (match: RegExpMatchArray, file: string) => (Pick<BackendRoute, 'path' | 'methods' | 'purpose'> | null);
+  maxDepth?: number;
+}): BackendRoute[] {
   const routes = [];
   for (const file of findFiles(root, filePredicate, {maxDepth})) {
     const source = readText(file);
@@ -166,19 +191,19 @@ function scanRoutes(root, {filePredicate, pattern, build, maxDepth = 8}) {
   return routes;
 }
 
-const laravelRoutes = (root) => scanRoutes(root, {
+const laravelRoutes = (root: string) => scanRoutes(root, {
   filePredicate: (file) => /(^|\/)routes\/[^/]+\.php$/.test(rel(root, file)),
   pattern: /Route::(get|post|put|patch|delete|any|match)\s*\(\s*['"]([^'"]+)['"]\s*,\s*([^)]*)/g,
   build: (m) => ({path: m[2].startsWith('/') ? m[2] : `/${m[2]}`, methods: [m[1].toUpperCase()], purpose: m[3].trim().slice(0, 80) || null}),
 });
 
-const djangoRoutes = (root) => scanRoutes(root, {
+const djangoRoutes = (root: string) => scanRoutes(root, {
   filePredicate: (file) => path.basename(file) === 'urls.py',
   pattern: /\b(?:path|re_path|url)\s*\(\s*r?['"]([^'"]*)['"]\s*,\s*([^,)]+)/g,
   build: (m) => ({path: m[1].startsWith('/') ? m[1] : `/${m[1]}`, methods: ['GET'], purpose: m[2].trim()}),
 });
 
-const pyDecoratorRoutes = (root) => scanRoutes(root, {
+const pyDecoratorRoutes = (root: string) => scanRoutes(root, {
   filePredicate: (file) => file.endsWith('.py'),
   pattern: /@\w+\.(get|post|put|patch|delete|route)\s*\(\s*['"]([^'"]+)['"]([^)]*)\)/g,
   build: (m) => {
@@ -188,19 +213,19 @@ const pyDecoratorRoutes = (root) => scanRoutes(root, {
   },
 });
 
-const railsRoutes = (root) => scanRoutes(root, {
+const railsRoutes = (root: string) => scanRoutes(root, {
   filePredicate: (file) => rel(root, file) === 'config/routes.rb',
   pattern: /^\s*(get|post|put|patch|delete)\s+['"]([^'"]+)['"](?:\s*,\s*to:\s*['"]([^'"]+)['"])?/gm,
   build: (m) => ({path: m[2].startsWith('/') ? m[2] : `/${m[2]}`, methods: [m[1].toUpperCase()], purpose: m[3] ?? null}),
 });
 
-const springRoutes = (root) => scanRoutes(root, {
+const springRoutes = (root: string) => scanRoutes(root, {
   filePredicate: (file) => file.endsWith('.java') || file.endsWith('.kt'),
   pattern: /@(Get|Post|Put|Patch|Delete|Request)Mapping\s*\(\s*(?:value\s*=\s*)?['"]([^'"]+)['"]/g,
   build: (m) => ({path: m[2].startsWith('/') ? m[2] : `/${m[2]}`, methods: [m[1] === 'Request' ? 'ANY' : m[1].toUpperCase()]}),
 });
 
-function isJsonRouteManifest(file) {
+function isJsonRouteManifest(file: string) {
   if (path.basename(file) !== 'routes.json') return false;
   const doc = readJson(file);
   return Array.isArray(doc) && doc.some((entry) => {
@@ -210,10 +235,10 @@ function isJsonRouteManifest(file) {
   });
 }
 
-function jsonRouteManifestRoutes(root) {
+function jsonRouteManifestRoutes(root: string): BackendRoute[] {
   const routes = [];
   for (const file of findFiles(root, isJsonRouteManifest, {maxDepth: 8})) {
-    for (const entry of readJson(file) ?? []) {
+    for (const entry of readJson<JsonRouteEntry[]>(file) ?? []) {
       const routePath = entry?.route ?? entry?.path;
       const methods = entry?.methods ?? entry?.method ?? ['GET'];
       if (typeof routePath !== 'string') continue;
@@ -232,7 +257,7 @@ function jsonRouteManifestRoutes(root) {
   return routes;
 }
 
-export const BACKEND_REGISTRY = [
+export const BACKEND_REGISTRY: BackendRegistryEntry[] = [
   {
     id: 'json-routes', label: 'JSON route manifest', deps: [], filePredicate: isJsonRouteManifest,
     method: 'routes.json manifest', routes: async (root) => jsonRouteManifestRoutes(root),
@@ -273,7 +298,7 @@ export const BACKEND_REGISTRY = [
   },
 ];
 
-export function matchBackend(deps, root) {
+export function matchBackend(deps: Record<string, string>, root: string): BackendRegistryEntry | null {
   return BACKEND_REGISTRY.find((entry) => {
     const byDep = entry.deps.some((dep) => dep in deps);
     const byMarker = (entry.markers ?? []).some((marker) => fs.existsSync(path.join(root, marker)));

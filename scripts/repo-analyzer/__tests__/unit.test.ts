@@ -12,17 +12,17 @@ import test from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {bestLocatorFor, classify, rankOf, RUNGS} from '../../framework-generator/locator-ladder.mjs';
 import {loadProjectConfig, projectConfigPath} from '../../project-config.js';
-import {crossCheck, mergeByPath} from '../api-docs.mjs';
-import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements-vue.mjs';
-import {resolveLabelExpression} from '../i18n.mjs';
-import {joinUrl} from '../live-urls.mjs';
-import {componentNameFromFile, isTestIdAttr, walkAny, walkAst} from '../parsers.mjs';
-import {paramsOf} from '../registry-backend.mjs';
-import {FRONTEND_REGISTRY, matchFrontend} from '../registry-frontend.mjs';
-import {escapeCell, table} from '../report.mjs';
-import {fileRouteFor, normalisePath} from '../routes.mjs';
-import {resolveAppPath} from '../util.mjs';
-import {analyzerPlan} from '../analyze.mjs';
+import {crossCheck, mergeByPath} from '../api-docs.js';
+import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements-vue.js';
+import {resolveLabelExpression} from '../i18n.js';
+import {joinUrl} from '../live-urls.js';
+import {componentNameFromFile, isTestIdAttr, walkAny, walkAst} from '../parsers.js';
+import {paramsOf} from '../registry-backend.js';
+import {FRONTEND_REGISTRY, matchFrontend} from '../registry-frontend.js';
+import {escapeCell, table} from '../report.js';
+import {fileRouteFor, normalisePath} from '../routes.js';
+import {resolveAppPath} from '../util.js';
+import {analyzerPlan} from '../analyze.js';
 import type {CliArgs, ProjectConfig} from '../types.js';
 
 // --- root project config ---------------------------------------------------------------
@@ -185,7 +185,7 @@ test('walkAny reaches nodes a Babel walker cannot see', () => {
   const seenNumeric: number[] = [];
   const seenInstances: TemplateNode[] = [];
   const seenMarkers: string[] = [];
-  walkAny(tree, (node: any) => {
+  walkAny(tree, (node) => {
     if (typeof node.type === 'number') seenNumeric.push(node.type);
     if (node instanceof TemplateNode) seenInstances.push(node);
     if (node.marker) seenMarkers.push(node.marker);
@@ -347,7 +347,7 @@ test('dedupeNames flags elements that share one locator', () => {
   assert.deepEqual(deduped.map((e: {name: string}) => e.name), ['durationDropdown', 'durationDropdown2', 'startDayDropdown']);
   assert.equal(deduped[0].locator.unstable, true);
   assert.equal(deduped[1].locator.unstable, true);
-  assert.match(deduped[0].locator.unstableReason, /2 elements .* same locator/);
+  assert.match(deduped[0].locator.unstableReason!, /2 elements .* same locator/);
   assert.equal(deduped[2].locator.unstable, undefined, 'an element with its own locator stays untouched');
 });
 

@@ -13,12 +13,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import {fileURLToPath} from 'node:url';
-import {mergeByPath, renderApiDocs, tierA, tierB} from '../api-docs.mjs';
-import {collectComponents, renderComponents} from '../components.mjs';
-import {KIND_TEMPLATES} from '../elements-vue.mjs';
-import {detect} from '../detect.mjs';
-import {joinUrl, renderLiveUrls} from '../live-urls.mjs';
-import {collectRoutes, renderRoutes} from '../routes.mjs';
+import {mergeByPath, renderApiDocs, tierA, tierB} from '../api-docs.js';
+import {collectComponents, renderComponents} from '../components.js';
+import {KIND_TEMPLATES} from '../elements-vue.js';
+import {detect} from '../detect.js';
+import {joinUrl, renderLiveUrls} from '../live-urls.js';
+import {collectRoutes, renderRoutes} from '../routes.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const FIXTURES = path.join(HERE, '..', '__fixtures__');
@@ -33,14 +33,14 @@ const BASE_URL = 'https://app.test';
 const APPS = ['vue-spa', 'symfony-app', 'next-app', 'unknown-app'];
 
 /** Drop the two lines that legitimately change on every run, and the machine-specific app path. */
-function stableise(body) {
+function stableise(body: string) {
   return body
     .replace(/^- \*\*Generated\*\*: .*$/gm, '- **Generated**: <timestamp>')
     .replace(/ @ `[^`]*`/g, ' @ `<sha>`')
     .replace(new RegExp(FIXTURES.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), '<fixtures>');
 }
 
-function compare(name, body) {
+function compare(name: string, body: string) {
   const file = path.join(SNAPSHOTS, `${name}.md`);
   const actual = stableise(body);
   if (UPDATE || !fs.existsSync(file)) {

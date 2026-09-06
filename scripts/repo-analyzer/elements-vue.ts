@@ -10,14 +10,20 @@
 
 import {bestLocatorFor} from '../framework-generator/locator-ladder.mjs';
 import {toCamel} from '../framework-generator/naming.mjs';
-import {isTestIdAttr} from './util.mjs';
-import {resolveLabelExpression} from './i18n.mjs';
+import {isTestIdAttr} from './util.js';
+import {resolveLabelExpression} from './i18n.js';
+import type {AstNode, AstVisitor, CatalogueEntries, ComponentIndex, ExtractedElement, LocatorRecord, ParserContext, TemplateMap} from './types.js';
+
+interface Attributes {statics: Record<string, string>; bound: Record<string, string>}
+export interface ChildReference {tag: string; label: string | null}
+type Headers = Record<string, {name: string}[]>;
+type NamedElement = {name: string; locator: Pick<LocatorRecord, 'strategy' | 'args'> & Partial<LocatorRecord>};
 
 /**
  * Tag → the generator's closed `component:` vocabulary. A tag that is not here yields no
  * element: an unmapped tag is an unknown, and an unknown must not become a guess.
  */
-export const TAG_KINDS = {
+export const TAG_KINDS: Record<string, string> = {
   'oxd-input-field': 'input',
   'oxd-input': 'input',
   input: 'input',
@@ -44,7 +50,7 @@ export const TAG_KINDS = {
  * These are *proposals*. An id only becomes a locator if the generator config defines a pattern
  * for it, which `templatesFrom` below enforces.
  */
-export const KIND_TEMPLATES = {
+export const KIND_TEMPLATES: TemplateMap = {
   input: 'labelledInput',
   longInput: 'labelledTextarea',
   dropdown: 'labelledSelect',
@@ -62,15 +68,15 @@ export const KIND_TEMPLATES = {
  * ladder fall through to the next rung instead, so the element is either found by a weaker signal
  * or counted in `skipped`. Configuring templates is then an improvement, not a precondition.
  */
-export function templatesFrom(configured, table = KIND_TEMPLATES) {
+export function templatesFrom(configured: Record<string, unknown> | null, table: TemplateMap = KIND_TEMPLATES): TemplateMap {
   const available = new Set(Object.keys(configured ?? {}));
   return Object.fromEntries(Object.entries(table).filter(([, id]) => available.has(id)));
 }
 
 /** Only these kinds carry their label as an accessible name, so only these reach rung 2. */
-const ROLE_KINDS = {button: 'button', link: 'link'};
+const ROLE_KINDS: Record<string, string> = {button: 'button', link: 'link'};
 
-const KIND_SUFFIX = {
+const KIND_SUFFIX: Record<string, string> = {
   input: 'Input', longInput: 'LongInput', button: 'Button', link: 'Link',
   dropdown: 'Dropdown', table: 'Table', switch: 'Switch', checkbox: 'Checkbox',
   radio: 'Radio', menuItem: 'MenuItem', text: 'Text', tab: 'Tab', image: 'Image',
@@ -82,14 +88,14 @@ const ATTR_STATIC = 6;
 const ATTR_DIRECTIVE = 7;
 
 /** A tag that is not a known kind but looks like a component worth following one hop into. */
-function looksLikeComponent(tag) {
+function looksLikeComponent(tag: string) {
   return /-/.test(tag) || /^[A-Z]/.test(tag);
 }
 
 /** Read every attribute into `{ static: {}, bound: {} }`, keeping the two kinds apart. */
-function attributesOf(node) {
-  const statics = {};
-  const bound = {};
+function attributesOf(node: AstNode): Attributes {
+  const statics: Record<string, string> = {};
+  const bound: Record<string, string> = {};
   for (const prop of node.props ?? []) {
     if (prop.type === ATTR_STATIC && prop.value?.content != null) {
       statics[prop.name] = prop.value.content;
@@ -103,7 +109,7 @@ function attributesOf(node) {
 }
 
 /** A label is either written literally or bound to a resolvable `$t()` key. Nothing else counts. */
-function labelOf({statics, bound}, catalogue) {
+function labelOf({statics, bound}: Attributes, catalogue: CatalogueEntries): string | null {
   // On a radio or checkbox, `label` belongs to the group and `option-label` to this option.
   // Reading the group's label would give every option in the group the same name.
   if (typeof statics['option-label'] === 'string' && statics['option-label'].trim()) return statics['option-label'].trim();
@@ -127,9 +133,9 @@ const NODE_INTERPOLATION = 5;
  * the only way such a control gets a name, so it is offered to the next unlabelled control in
  * the same parent and to nothing else.
  */
-function innerText(node, catalogue) {
-  let found = null;
-  const visit = (current) => {
+function innerText(node: AstNode, catalogue: CatalogueEntries): string | null {
+  let found: string | null = null;
+  const visit = (current: AstNode) => {
     if (found || !current) return;
     if (current.type === NODE_TEXT && current.content?.trim()) {
       found = current.content.trim();
@@ -145,13 +151,13 @@ function innerText(node, catalogue) {
   return found;
 }
 
-function placeholderOf({statics, bound}, catalogue) {
+function placeholderOf({statics, bound}: Attributes, catalogue: CatalogueEntries): string | null {
   if (typeof statics.placeholder === 'string' && statics.placeholder.trim()) return statics.placeholder.trim();
   if (bound.placeholder) return resolveLabelExpression(bound.placeholder, catalogue);
   return null;
 }
 
-function testIdOf({statics}) {
+function testIdOf({statics}: Attributes): string | null {
   for (const [name, value] of Object.entries(statics)) {
     if (isTestIdAttr(name) && value) return value;
   }
@@ -159,7 +165,7 @@ function testIdOf({statics}) {
 }
 
 /** `type="textarea"` on a generic field widens the kind; `type="submit"` does not change it. */
-function refineKind(kind, statics) {
+function refineKind(kind: string, statics: Record<string, string>) {
   if (kind !== 'input') return kind;
   if (statics.type === 'textarea') return 'longInput';
   if (statics.type === 'checkbox') return 'checkbox';
@@ -176,9 +182,9 @@ function refineKind(kind, statics) {
  *
  * @returns {{elements: object[], childRefs: {tag: string, label: string|null}[], skipped: number}}
  */
-export function collectVueElements(root, {catalogue = {}, templateFor = KIND_TEMPLATES, headers = {}, inheritedLabel = null} = {}) {
-  const elements = [];
-  const childRefs = [];
+export function collectVueElements(root: AstNode, {catalogue = {}, templateFor = KIND_TEMPLATES, headers = {}, inheritedLabel = null}: ParserContext & {headers?: Headers} = {}) {
+  const elements: ExtractedElement[] = [];
+  const childRefs: ChildReference[] = [];
   let skipped = 0;
   // `<date-input :label="From Date" />` labels a wrapper whose own template carries no label at
   // all, and `<submit-button :label="Apply" />` overrides one that does. The label refers to the
@@ -188,7 +194,7 @@ export function collectVueElements(root, {catalogue = {}, templateFor = KIND_TEM
   // on whichever element happened to come first. Resolved after the walk, once the count is known.
   let pending = inheritedLabel;
 
-  const visit = (node, adjacentText = null) => {
+  const visit = (node: AstNode, adjacentText: string | null = null) => {
     let nearby = adjacentText;
     if (node?.type === NODE_ELEMENT && typeof node.tag === 'string') {
       const attrs = attributesOf(node);
@@ -213,7 +219,7 @@ export function collectVueElements(root, {catalogue = {}, templateFor = KIND_TEM
     }
 
     // Text seen among these children labels a later sibling, never an earlier one.
-    let siblingText = null;
+    let siblingText: string | null = null;
     for (const child of node?.children ?? []) {
       const text = child?.type === NODE_ELEMENT && !TAG_KINDS[child.tag] ? innerText(child, catalogue) : null;
       visit(child, siblingText);
@@ -230,7 +236,9 @@ export function collectVueElements(root, {catalogue = {}, templateFor = KIND_TEM
   return {elements, childRefs, skipped};
 }
 
-function buildElement({kind, attrs, catalogue, templateFor, headers, inherited = null}) {
+function buildElement({kind, attrs, catalogue, templateFor, headers, inherited = null}: {
+  kind: string; attrs: Attributes; catalogue: CatalogueEntries; templateFor: TemplateMap; headers: Headers; inherited?: string | null;
+}): ExtractedElement | null {
   const label = inherited ?? labelOf(attrs, catalogue);
   const columns = kind === 'table' ? columnsFor(attrs, headers) : null;
   const testId = testIdOf(attrs);
@@ -251,7 +259,7 @@ function buildElement({kind, attrs, catalogue, templateFor, headers, inherited =
     // not an identity worth locating by.
     nameAttr: ROLE_KINDS[kind] ? null : attrs.statics.name,
     idAttr: attrs.statics.id,
-  });
+  } as Parameters<typeof bestLocatorFor>[0]);
   if (!locator) return null;
 
   // What to call the element in code. It follows the same order the ladder just used, so the
@@ -273,14 +281,14 @@ function buildElement({kind, attrs, catalogue, templateFor, headers, inherited =
 }
 
 /** `<oxd-card-table :headers="headers">` names a script-level array; the caller resolves it. */
-function columnsFor({bound}, headers) {
+function columnsFor({bound}: Attributes, headers: Headers) {
   const binding = bound.headers;
   if (!binding) return null;
   const resolved = headers[binding.trim()];
   return resolved && resolved.length > 0 ? resolved : null;
 }
 
-function identifierFor(label, kind) {
+function identifierFor(label: string | null | undefined, kind: string) {
   const base = toCamel(String(label ?? kind));
   const suffix = KIND_SUFFIX[kind] ?? '';
   return base.endsWith(suffix) ? base : `${base}${suffix}`;
@@ -294,8 +302,8 @@ function identifierFor(label, kind) {
  * locator is the failure this whole pipeline is meant to avoid — so it is flagged rather than
  * left to surface as a confusing strict-mode violation at run time.
  */
-export function dedupeNames(elements) {
-  const locatorCounts = new Map();
+export function dedupeNames<T extends NamedElement>(elements: T[]): (T & {locator: T['locator'] & Partial<LocatorRecord>})[] {
+  const locatorCounts = new Map<string, number>();
   for (const element of elements) {
     const key = locatorKey(element.locator);
     locatorCounts.set(key, (locatorCounts.get(key) ?? 0) + 1);
@@ -304,14 +312,14 @@ export function dedupeNames(elements) {
   // Suffixes are assigned against the names already taken, not against a per-base counter:
   // elements inlined from a child arrive already deduped, so `amountInput2` can exist before
   // this page's own second `amountInput` needs that name.
-  const used = new Set();
+  const used = new Set<string>();
   return elements.map((element) => {
     let name = element.name;
     for (let n = 2; used.has(name); n += 1) name = `${element.name}${n}`;
     used.add(name);
     const named = name === element.name ? element : {...element, name};
 
-    const shared = locatorCounts.get(locatorKey(element.locator));
+    const shared = locatorCounts.get(locatorKey(element.locator))!;
     if (shared < 2) return named;
     return {
       ...named,
@@ -324,7 +332,7 @@ export function dedupeNames(elements) {
   });
 }
 
-function locatorKey(locator) {
+function locatorKey(locator: NamedElement['locator']) {
   return `${locator.strategy}|${(locator.args ?? []).join('\u0000')}|${locator.name ?? ''}`;
 }
 
@@ -337,8 +345,8 @@ function locatorKey(locator) {
  *
  * @returns {Record<string, {name: string}[]>} keyed by the identifier the template binds to
  */
-export function headersFromScript(ast, catalogue = {}, walk) {
-  const found = {};
+export function headersFromScript(ast: AstNode | null, catalogue: CatalogueEntries = {}, walk: (node: unknown, visit: AstVisitor) => void): Headers {
+  const found: Headers = {};
   if (!ast) return found;
   walk(ast, (node) => {
     if (node.type !== 'ObjectProperty') return;
@@ -359,7 +367,7 @@ export function headersFromScript(ast, catalogue = {}, walk) {
 }
 
 /** `this.$t('ns.key')` or `$t('ns.key')`, or a plain string. */
-function titleOf(node, catalogue) {
+function titleOf(node: AstNode, catalogue: CatalogueEntries): string | null {
   if (node?.type === 'StringLiteral') return node.value;
   if (node?.type !== 'CallExpression') return null;
   const callee = node.callee;
@@ -378,7 +386,7 @@ function titleOf(node, catalogue) {
  * overrides: `<submit-button :label="$t('general.apply')" />` renders an "Apply" button. The
  * call site wins, so the inlined element is rebuilt around the parent's label.
  */
-export function relabel(element, label) {
+export function relabel(element: ExtractedElement, label: string | null): ExtractedElement {
   if (!label || !element.label) return element;
   const locator = {...element.locator};
   if (locator.name != null) locator.name = label;
@@ -398,9 +406,9 @@ export function relabel(element, label) {
  * points at. Built once per run and shared by every parse, since resolving a tag by walking
  * the tree per occurrence is what would make the hop expensive.
  */
-export function buildComponentIndex(files, basename) {
-  const byKebab = new Map();
-  const byClass = new Map();
+export function buildComponentIndex(files: string[], basename: (file: string) => string): ComponentIndex & {size: number} {
+  const byKebab = new Map<string, string>();
+  const byClass = new Map<string, string>();
   for (const file of files) {
     const stem = basename(file);
     byClass.set(stem, file);
@@ -409,13 +417,13 @@ export function buildComponentIndex(files, basename) {
   return {
     size: byClass.size,
     resolve(tag, alias) {
-      if (alias && byClass.has(alias)) return byClass.get(alias);
-      if (byKebab.has(tag)) return byKebab.get(tag);
+      if (alias && byClass.has(alias)) return byClass.get(alias)!;
+      if (byKebab.has(tag)) return byKebab.get(tag)!;
       return byClass.get(tag) ?? null;
     },
   };
 }
 
-function kebab(name) {
+function kebab(name: string) {
   return String(name).replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 }

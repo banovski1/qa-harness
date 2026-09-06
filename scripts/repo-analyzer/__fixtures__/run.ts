@@ -11,5 +11,6 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
 const tests = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '__tests__');
-const run = spawnSync(process.execPath, ['--test', path.join(tests, '*.test.mjs')], {stdio: 'inherit'});
+const tsxCli = fileURLToPath(import.meta.resolve('tsx/cli'));
+const run = spawnSync(process.execPath, [tsxCli, '--test', path.join(tests, '*.test.ts')], {stdio: 'inherit'});
 process.exit(run.status ?? 1);

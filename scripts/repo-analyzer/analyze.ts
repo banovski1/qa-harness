@@ -4,21 +4,22 @@
 import {spawnSync} from 'node:child_process';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {parseArgs, REPO_ROOT} from './util.mjs';
+import {parseArgs, REPO_ROOT} from './util.js';
+import type {CliArgs} from './types.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const TSX_CLI = fileURLToPath(import.meta.resolve('tsx/cli'));
 
-export function analyzerPlan(args) {
+export function analyzerPlan(args: CliArgs) {
   const liveUrlArgs = [];
   if (args.pathPrefix) liveUrlArgs.push('--path-prefix', String(args.pathPrefix));
 
   return [
-    {name: 'detect', args: [TSX_CLI, path.join(HERE, 'detect.mjs')]},
-    {name: 'routes', args: [TSX_CLI, path.join(HERE, 'routes.mjs')]},
-    {name: 'components', args: [TSX_CLI, path.join(HERE, 'components.mjs')]},
-    {name: 'api-docs', args: [TSX_CLI, path.join(HERE, 'api-docs.mjs')]},
-    {name: 'live-urls', args: [TSX_CLI, path.join(HERE, 'live-urls.mjs'), ...liveUrlArgs]},
+    {name: 'detect', args: [TSX_CLI, path.join(HERE, 'detect.ts')]},
+    {name: 'routes', args: [TSX_CLI, path.join(HERE, 'routes.ts')]},
+    {name: 'components', args: [TSX_CLI, path.join(HERE, 'components.ts')]},
+    {name: 'api-docs', args: [TSX_CLI, path.join(HERE, 'api-docs.ts')]},
+    {name: 'live-urls', args: [TSX_CLI, path.join(HERE, 'live-urls.ts'), ...liveUrlArgs]},
   ];
 }
 

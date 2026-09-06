@@ -35,7 +35,7 @@ export interface DetectedFrontend {
   manifestPath: string | null;
   fileBasedRouter: FileBasedRouterConfig | null;
   routerLib: string | null;
-  entry: unknown;
+  entry: FrontendRegistryEntry;
 }
 
 export interface DetectedBackend {
@@ -45,7 +45,7 @@ export interface DetectedBackend {
   root: string;
   manifestPath: string;
   method: string;
-  entry: unknown;
+  entry: BackendRegistryEntry;
 }
 
 export interface DetectionResult {
@@ -84,7 +84,7 @@ export interface ExtractedElement {
   rung: number;
   locator: LocatorRecord;
   comment?: string;
-  columns?: string[];
+  columns?: {name: string}[];
   rowCount?: number | null;
 }
 
@@ -107,7 +107,7 @@ export interface ComponentRecord {
 export interface ApiEndpoint {
   path: string;
   methods: string[];
-  purpose: string | null;
+  purpose: string | null | undefined;
   params: string[];
   source: string;
 }
@@ -154,4 +154,100 @@ export interface LabelDictionaryReport {
   framework: string;
   catalogue: string | null;
   routes: Record<string, LabelDictionaryRoute>;
+}
+
+// Parser packages expose incompatible AST dialects. Keep their dynamic fields at this boundary.
+export type AstNode = Record<string, any> & {type?: string | number};
+export type AstVisitor = (node: AstNode) => void;
+export type CatalogueEntries = Record<string, string>;
+export type TemplateMap = Record<string, string>;
+
+export interface ComponentIndex {
+  resolve(tag: string, alias?: string): string | null;
+}
+
+export interface ParserContext {
+  catalogue?: CatalogueEntries;
+  templateFor?: TemplateMap;
+  inheritedLabel?: string | null;
+  componentIndex?: ComponentIndex;
+  depth?: number;
+}
+
+export interface ParsedComponent {
+  name: string;
+  props: string[];
+  testIds: TestIdRecord[];
+  elements?: ExtractedElement[];
+  skippedElements?: number;
+  error: string | null;
+}
+
+export interface FrontendRegistryEntry {
+  id: string;
+  label: string;
+  deps: string[];
+  beats?: string[];
+  extensions: string[];
+  parse(file: string, source: string, context?: ParserContext): Promise<ParsedComponent>;
+  filePredicate?: (file: string, detection: DetectionResult) => boolean;
+  fileBasedRouter: FileBasedRouterConfig | null;
+  routerLib: string | null;
+  naive?: boolean;
+}
+
+export interface BackendRoute {
+  path: string;
+  methods: string[];
+  source: string;
+  name: string | null;
+  purpose?: string | null;
+  controller: string | null;
+  requirements: Record<string, unknown> | null;
+  kind?: string;
+}
+
+export interface BackendRegistryEntry {
+  id: string;
+  label: string;
+  deps: string[];
+  extensions?: string[];
+  markers?: string[];
+  filePredicate?: (file: string) => boolean;
+  method: string;
+  routes(root: string): BackendRoute[] | Promise<BackendRoute[]>;
+  componentFor?: (root: string, controller: string | null) => string | null;
+}
+
+export interface Catalogue {
+  id: string | null;
+  label: string;
+  entries: CatalogueEntries;
+  size: number;
+}
+
+export interface ComponentCollection {
+  components: ComponentRecord[];
+  errors: {file: string; error: string}[];
+  naive: boolean;
+  catalogue: Catalogue;
+  templateFor: TemplateMap;
+}
+
+export type RouteCollection = Pick<RoutesReport, 'strategy' | 'routes'>;
+
+export interface ApiResult {
+  tier: 'A' | 'B';
+  how: string;
+  endpoints: ApiEndpoint[];
+  specFile?: string;
+  servers: unknown[];
+}
+
+export interface ApiComparison {
+  specFile: string;
+  specCount: number;
+  foundCount: number;
+  missing: string[];
+  extra: string[];
 }

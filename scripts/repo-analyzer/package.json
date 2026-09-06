@@ -4,11 +4,13 @@
   "description": "Static analysis of a local application repo. Detects the frontend and backend frameworks, then writes the component, route, URL and API reference files under analysis/.",
   "type": "module",
   "scripts": {
-    "analyze": "cd ../.. && tsx scripts/repo-analyzer/analyze.mjs",
-    "detect": "cd ../.. && tsx scripts/repo-analyzer/detect.mjs",
+    "analyze": "cd ../.. && tsx scripts/repo-analyzer/analyze.ts",
+    "detect": "cd ../.. && tsx scripts/repo-analyzer/detect.ts",
     "test": "tsx --test __tests__/*.test.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "fixtures": "tsx __fixtures__/run.mjs"
+    "test:unit": "tsx --test __tests__/unit.test.ts",
+    "test:analyzers": "tsx --test __tests__/analyzers.test.ts",
+    "fixtures": "tsx __fixtures__/run.ts"
   },
   "dependencies": {
     "@babel/parser": "^7.24.0",

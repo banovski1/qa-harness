@@ -7,9 +7,18 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
-import {matchBackend} from './registry-backend.mjs';
-import {UNKNOWN_FRONTEND, matchFrontend} from './registry-frontend.mjs';
-import {parseArgs, readJson, readText, rel, resolveAppPath, walkFiles} from './util.mjs';
+import {matchBackend} from './registry-backend.js';
+import {UNKNOWN_FRONTEND, matchFrontend} from './registry-frontend.js';
+import {parseArgs, readJson, readText, rel, resolveAppPath, walkFiles} from './util.js';
+import type {BackendRegistryEntry, CliArgs, DetectionResult, FrontendRegistryEntry} from './types.js';
+
+interface Candidate<T> {
+  entry: T;
+  root: string;
+  manifestPath: string | null;
+  version: string | null;
+  score?: number;
+}
 
 const MANIFESTS = new Set([
   'package.json', 'composer.json', 'requirements.txt', 'pyproject.toml', 'Pipfile',
@@ -17,11 +26,11 @@ const MANIFESTS = new Set([
 ]);
 
 /** Normalise every manifest format down to one flat `{ dependency: version }` map. */
-function dependenciesOf(file) {
+function dependenciesOf(file: string): Record<string, string> {
   const base = path.basename(file);
   const text = readText(file) ?? '';
   if (base === 'package.json' || base === 'composer.json') {
-    const json = readJson(file) ?? {};
+    const json = readJson<Record<string, Record<string, string>>>(file) ?? {};
     return {...(json.dependencies ?? {}), ...(json.devDependencies ?? {}), ...(json['require'] ?? {}), ...(json['require-dev'] ?? {})};
   }
   if (base === 'requirements.txt' || base === 'Pipfile') {
@@ -43,7 +52,7 @@ function dependenciesOf(file) {
     .map((m) => [m[1] ?? m[3], '*']).filter(([k]) => k));
 }
 
-function findManifests(appPath) {
+function findManifests(appPath: string) {
   const found = [];
   for (const file of walkFiles(appPath, {maxDepth: 4})) {
     if (!MANIFESTS.has(path.basename(file))) continue;
@@ -64,7 +73,7 @@ const AUXILIARY_SEGMENTS = ['installer', 'example', 'examples', 'demo', 'docs', 
  */
 const BACKEND_EXTENSIONS = ['.php', '.py', '.rb', '.java', '.kt', '.go', '.js', '.ts'];
 
-function scoreCandidate(appPath, root, entry) {
+function scoreCandidate(appPath: string, root: string, entry: FrontendRegistryEntry | BackendRegistryEntry) {
   const extensions = entry.extensions ?? BACKEND_EXTENSIONS;
   let files = 0;
   for (const file of walkFiles(sourceRootOf(root), {maxDepth: 8})) {
@@ -77,18 +86,18 @@ function scoreCandidate(appPath, root, entry) {
 }
 
 /** Which of the framework's own directories actually holds the sources. */
-function sourceRootOf(root) {
+function sourceRootOf(root: string) {
   for (const candidate of ['src', 'app', 'lib', 'assets']) {
     if (fs.existsSync(path.join(root, candidate))) return path.join(root, candidate);
   }
   return root;
 }
 
-export function detect(appPath, overrides = {}) {
+export function detect(appPath: string, overrides: Pick<CliArgs, 'frontendRoot' | 'backendRoot'> = {}): DetectionResult {
   const manifests = findManifests(appPath);
   const evidence = [];
-  let frontend = null;
-  let backend = null;
+  let frontend: Candidate<FrontendRegistryEntry> | null = null;
+  let backend: (Candidate<BackendRegistryEntry> & {manifestPath: string}) | null = null;
   const others = [];
 
   const frontCandidates = [];
@@ -99,11 +108,11 @@ export function detect(appPath, overrides = {}) {
     const backMatch = matchBackend(deps, root);
     if (frontMatch) {
       frontCandidates.push({entry: frontMatch, root, manifestPath: rel(appPath, file),
-        version: deps[frontMatch.deps.find((d) => d in deps)] ?? null, score: scoreCandidate(appPath, root, frontMatch)});
+        version: deps[frontMatch.deps.find((d) => d in deps)!] ?? null, score: scoreCandidate(appPath, root, frontMatch)});
     }
     if (backMatch) {
       backCandidates.push({entry: backMatch, root, manifestPath: rel(appPath, file),
-        version: deps[backMatch.deps.find((d) => d in deps)] ?? null, score: scoreCandidate(appPath, root, backMatch)});
+        version: deps[backMatch.deps.find((d) => d in deps)!] ?? null, score: scoreCandidate(appPath, root, backMatch)});
     }
   }
   frontCandidates.sort((a, b) => b.score - a.score);
@@ -153,7 +162,7 @@ export function detect(appPath, overrides = {}) {
   };
 }
 
-function summarise(result) {
+function summarise(result: DetectionResult) {
   return {
     app: result.appPath,
     frontend: {framework: result.frontend.framework, version: result.frontend.version,

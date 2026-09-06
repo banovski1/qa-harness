@@ -18,7 +18,27 @@
 //   endpoints           paths the backend registry row's own routes() must return
 //   tier / apiPaths     the api-docs tier letter and the endpoints it must report
 
-export const CASES = [
+import type {ExtractedElement, LocatorRecord} from '../types.js';
+
+interface FixtureCase {
+  app: string;
+  frontend: string;
+  backend: string | null;
+  frontendRoot?: string;
+  routeStrategy?: RegExp | null;
+  routes?: string[];
+  components?: string[];
+  props?: Record<string, string[]>;
+  testIds?: string[];
+  elements?: (Pick<ExtractedElement, 'name' | 'component' | 'rung'> & {locator?: Partial<LocatorRecord>})[];
+  endpoints?: string[];
+  tier?: 'A' | 'B';
+  apiPaths?: string[];
+  apiPathsAbsent?: string[];
+  renders?: Record<string, string>;
+}
+
+export const CASES: FixtureCase[] = [
   {
     app: 'vue-spa', frontend: 'vue', backend: null,
     routeStrategy: /vue-router config/,
