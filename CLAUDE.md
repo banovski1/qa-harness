@@ -41,11 +41,8 @@ nothing in `scripts/` contains app-specific code, so retargeting is a config edi
 # Stage 0 — static analysis of a local clone of the app under test. This is the spine, not an extra:
 #           routes.mjs first (components.mjs joins onto its output to build the label dictionary).
 npm ci --prefix scripts/repo-analyzer
-node scripts/repo-analyzer/detect.mjs        # what framework, and why
-node scripts/repo-analyzer/routes.mjs        # analysis/pages-and-routes.md — run first
-node scripts/repo-analyzer/components.mjs    # frontend-components.md + label-dictionary.json
-node scripts/repo-analyzer/api-docs.mjs      # add --cross-check <spec> if the app ships one
-node scripts/repo-analyzer/live-urls.mjs  --path-prefix <mount-prefix>   # needs routes.mjs; omit for an app at /
+npm run analyze                              # detect, routes, components, api-docs, live-urls
+npm run analyze -- --path-prefix <mount-prefix>   # if the app is not served at /
 node scripts/repo-analyzer/__fixtures__/run.mjs                 # the analyzer's test suite
 cd scripts/repo-analyzer && npm test                            # the same suite, with test names
 

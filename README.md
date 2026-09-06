@@ -29,12 +29,11 @@ Run everything from the repo root — all config paths are relative to it.
 #    required app facts: appPath and baseUrl. Credentials are NOT stored here — they
 #    go in generated-framework/.env as APP_USERNAME / APP_PASSWORD.
 
-# 2. Analyse the clone — routes, components, elements and their labels
+# 2. Analyse the clone — routes, components, elements, API docs and live URLs
 npm ci --prefix scripts/repo-analyzer
-node scripts/repo-analyzer/routes.mjs        # run first
-node scripts/repo-analyzer/components.mjs    # joins onto routes.mjs output
-node scripts/repo-analyzer/api-docs.mjs
-node scripts/repo-analyzer/live-urls.mjs  --path-prefix <mount-prefix>   # omit for an app served at /
+npm run analyze
+# If the app is mounted under a prefix:
+# npm run analyze -- --path-prefix <mount-prefix>
 node scripts/framework-generator/check-analysis.mjs            # gate: freshness + schema
 
 # 3. Generate the framework from the analysis

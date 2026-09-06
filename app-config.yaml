@@ -1,2 +1,2 @@
-appPath: ~/test
-baseUrl: http://localhost:8080
+appPath: ~/Projects/espocrm
+baseUrl: https://demo.eu.espocrm.com/?l=en_GB#Contact

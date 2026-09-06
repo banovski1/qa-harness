@@ -21,6 +21,7 @@ import {FRONTEND_REGISTRY, matchFrontend} from '../registry-frontend.mjs';
 import {escapeCell, table} from '../report.mjs';
 import {fileRouteFor, normalisePath} from '../routes.mjs';
 import {resolveAppPath} from '../util.mjs';
+import {analyzerPlan} from '../analyze.mjs';
 
 // --- root project config ---------------------------------------------------------------
 
@@ -61,6 +62,23 @@ test('resolveAppPath defaults to the root project config when --app is omitted',
 test('projectConfigPath points at the repository-root app-config.yaml', () => {
   const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
   assert.equal(projectConfigPath(), path.join(repoRoot, 'app-config.yaml'));
+});
+
+test('analyzerPlan runs repo analysis stages in dependency order', () => {
+  assert.deepEqual(analyzerPlan({}).map((step) => step.name), [
+    'detect',
+    'routes',
+    'components',
+    'api-docs',
+    'live-urls',
+  ]);
+});
+
+test('analyzerPlan passes pathPrefix only to live URL generation', () => {
+  const plan = analyzerPlan({pathPrefix: '/web/index.php'});
+
+  assert.ok(plan.slice(0, 4).every((step) => !step.args.includes('--path-prefix')));
+  assert.deepEqual(plan[4].args.slice(-2), ['--path-prefix', '/web/index.php']);
 });
 
 test('normalisePath rewrites every router dialect to {param}', () => {

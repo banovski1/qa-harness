@@ -16,7 +16,7 @@ This repository converts a local application clone into a Playwright framework t
 Run these from the repository root; configuration paths resolve relative to it. Install dependencies with `npm ci --prefix <directory>` for each of the two script packages and `generated-framework`.
 
 - `npm test --prefix scripts/repo-analyzer`: run Node.js analyzer tests.
-- `node scripts/repo-analyzer/routes.mjs`: extract routes from `appPath` in root `app-config.yaml`; run `components.mjs` afterward.
+- `npm run analyze`: run repo analysis from `appPath` in root `app-config.yaml` in the required order.
 - `node scripts/framework-generator/check-analysis.mjs`: validate analysis freshness and schema.
 - `node scripts/framework-generator/generate.mjs --dry-run`: preview generation; omit `--dry-run` to write output.
 - `npm run typecheck --prefix generated-framework`: check TypeScript without emitting files.
