@@ -55,7 +55,7 @@ async function tierB(detection, apiPrefix) {
   if (!detection.backend) return null;
   const all = await detection.backend.entry.routes(detection.backend.root);
   const endpoints = all
-    .filter((route) => route.path.startsWith(apiPrefix))
+    .filter((route) => route.kind === 'api' || route.path.startsWith(apiPrefix))
     .map((route) => ({
       path: route.path,
       methods: route.methods,

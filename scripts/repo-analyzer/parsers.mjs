@@ -90,6 +90,22 @@ function collectVueTemplateTestIds(root) {
   return hits;
 }
 
+async function templateAst(source, file) {
+  const dom = await tryImport('@vue/compiler-dom');
+  if (!dom) return null;
+  try {
+    return dom.parse(stripTemplateDirectives(source), {filename: file});
+  } catch {
+    return null;
+  }
+}
+
+function stripTemplateDirectives(source) {
+  return String(source)
+    .replace(/\{\{\{[^}]*?\}\}\}/g, '')
+    .replace(/\{\{[#/^>!&]?[^{]*?\}\}/g, '');
+}
+
 function collectSvelteTestIds(root) {
   const hits = [];
   walkAny(root, (node) => {
@@ -377,17 +393,80 @@ export async function parseAngular(file, source) {
 
 /** Plain-HTML fallback: used for Angular templates when @angular/compiler is absent, and for .html components. */
 export async function parseHtmlTemplate(source) {
-  const dom = await tryImport('@vue/compiler-dom');
-  if (!dom) return [];
-  try {
-    return collectVueTemplateTestIds(dom.parse(source));
-  } catch {
-    return [];
-  }
+  const ast = await templateAst(source);
+  return ast ? collectVueTemplateTestIds(ast) : [];
 }
 
 export async function parseHtml(file, source) {
   return {name: componentNameFromFile(file), props: [], testIds: await parseHtmlTemplate(source), error: null};
+}
+
+export async function parseBackboneHandlebars(file, source, ctx = {}) {
+  const name = componentNameFromFile(file);
+  const templates = [];
+  if (/\.(tpl|html|hbs)$/.test(file)) {
+    templates.push(source);
+  } else {
+    const ast = await babelParse(source);
+    if (ast) {
+      walkAst(ast, (node) => {
+        if (node.type !== 'ClassProperty' && node.type !== 'PropertyDefinition') return;
+        const key = keyName(node);
+        if (key !== 'templateContent' && key !== 'template') return;
+        if (node.value?.type === 'StringLiteral') templates.push(...templateSourcesFor(file, node.value.value));
+        if (node.value?.type === 'TemplateLiteral' && node.value.quasis.length === 1) {
+          templates.push(node.value.quasis[0].value.raw);
+        }
+      });
+    }
+  }
+
+  const testIds = [];
+  let elements = [];
+  let skippedElements = 0;
+  for (const template of templates) {
+    const ast = await templateAst(template, file);
+    if (!ast) continue;
+    testIds.push(...collectVueTemplateTestIds(ast));
+    const collected = collectVueElements(ast, {
+      catalogue: ctx.catalogue ?? {},
+      ...(ctx.templateFor ? {templateFor: ctx.templateFor} : {}),
+    });
+    elements = elements.concat(collected.elements);
+    skippedElements += collected.skipped;
+  }
+
+  return {
+    name,
+    props: [],
+    testIds: unique(testIds.map((hit) => `${hit.attr}:${hit.value}`)).map((key) => {
+      const [attr, ...parts] = key.split(':');
+      return {attr, value: parts.join(':')};
+    }),
+    elements: dedupeNames(elements),
+    skippedElements,
+    error: null,
+  };
+}
+
+function templateSourcesFor(file, name) {
+  if (/[<>{}]/.test(name)) return [name];
+  const root = findProjectRoot(file);
+  const candidates = [
+    path.join(root, 'client', 'res', 'templates', `${name}.tpl`),
+    path.join(root, 'res', 'templates', `${name}.tpl`),
+    path.join(root, 'templates', `${name}.tpl`),
+  ];
+  return candidates.filter((candidate) => fs.existsSync(candidate)).map((candidate) => fs.readFileSync(candidate, 'utf8'));
+}
+
+function findProjectRoot(file) {
+  let dir = path.dirname(file);
+  while (dir !== path.dirname(dir)) {
+    if (fs.existsSync(path.join(dir, 'package.json')) || fs.existsSync(path.join(dir, 'composer.json'))) return dir;
+    dir = path.dirname(dir);
+  }
+  return path.dirname(file);
 }
 
 /** No framework matched: the file is listed, never guessed at. */

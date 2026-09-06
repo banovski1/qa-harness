@@ -154,6 +154,7 @@ async function serverRoutes(detection, apiPrefix) {
   const index = await componentIndex(detection);
   const routes = [];
   for (const route of all) {
+    if (route.kind === 'api') continue;
     if (route.path.startsWith(apiPrefix)) continue;
     const componentName = backend.entry.componentFor?.(backend.root, route.controller) ?? null;
     routes.push({

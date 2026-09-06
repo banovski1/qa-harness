@@ -13,7 +13,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
 import {babelParse, keyName, walkAst} from './parsers.mjs';
-import {findFiles, readText, rel, unique} from './util.mjs';
+import {findFiles, readJson, readText, rel, unique} from './util.mjs';
 
 const HTTP_METHODS = ['get', 'post', 'put', 'patch', 'delete', 'head', 'options'];
 
@@ -200,7 +200,43 @@ const springRoutes = (root) => scanRoutes(root, {
   build: (m) => ({path: m[2].startsWith('/') ? m[2] : `/${m[2]}`, methods: [m[1] === 'Request' ? 'ANY' : m[1].toUpperCase()]}),
 });
 
+function isJsonRouteManifest(file) {
+  if (path.basename(file) !== 'routes.json') return false;
+  const doc = readJson(file);
+  return Array.isArray(doc) && doc.some((entry) => {
+    const routePath = entry?.route ?? entry?.path;
+    const method = entry?.method ?? entry?.methods;
+    return typeof routePath === 'string' && (typeof method === 'string' || Array.isArray(method));
+  });
+}
+
+function jsonRouteManifestRoutes(root) {
+  const routes = [];
+  for (const file of findFiles(root, isJsonRouteManifest, {maxDepth: 8})) {
+    for (const entry of readJson(file) ?? []) {
+      const routePath = entry?.route ?? entry?.path;
+      const methods = entry?.methods ?? entry?.method ?? ['GET'];
+      if (typeof routePath !== 'string') continue;
+      routes.push({
+        name: entry.name ?? null,
+        path: rooted(routePath),
+        methods: (Array.isArray(methods) ? methods : [methods]).map((m) => String(m).toUpperCase()),
+        purpose: entry.actionClassName ?? entry.params?.action ?? entry.action ?? entry.params?.controller ?? null,
+        controller: entry.params?.controller ?? null,
+        requirements: entry.params ?? null,
+        kind: 'api',
+        source: rel(root, file),
+      });
+    }
+  }
+  return routes;
+}
+
 export const BACKEND_REGISTRY = [
+  {
+    id: 'json-routes', label: 'JSON route manifest', deps: [], filePredicate: isJsonRouteManifest,
+    method: 'routes.json manifest', routes: async (root) => jsonRouteManifestRoutes(root),
+  },
   {
     id: 'symfony', label: 'Symfony', deps: ['symfony/framework-bundle', 'symfony/http-kernel', 'symfony/routing'],
     method: 'config/routes*.yaml + #[Route] attributes',
@@ -241,8 +277,9 @@ export function matchBackend(deps, root) {
   return BACKEND_REGISTRY.find((entry) => {
     const byDep = entry.deps.some((dep) => dep in deps);
     const byMarker = (entry.markers ?? []).some((marker) => fs.existsSync(path.join(root, marker)));
-    return byDep || byMarker;
+    const byFile = entry.filePredicate ? findFiles(root, entry.filePredicate, {maxDepth: 8}).length > 0 : false;
+    return byDep || byMarker || byFile;
   }) ?? null;
 }
 
-export {keyName};
+export {keyName, jsonRouteManifestRoutes};

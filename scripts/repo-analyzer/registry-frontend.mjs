@@ -10,7 +10,8 @@
 //   fileBasedRouter  { dirs, extensions, ignore } when routes come from a folder tree
 //   routerLib     the client router package whose config file holds the route array
 
-import {parseAngular, parseHtml, parseJsx, parseNaive, parseSvelte, parseVue} from './parsers.mjs';
+import {parseAngular, parseBackboneHandlebars, parseHtml, parseJsx, parseNaive, parseSvelte, parseVue} from './parsers.mjs';
+import {rel} from './util.mjs';
 
 export const FRONTEND_REGISTRY = [
   {
@@ -79,6 +80,12 @@ export const FRONTEND_REGISTRY = [
     extensions: ['.hbs'], parse: parseHtml,
     fileBasedRouter: {dirs: ['app/templates'], extensions: ['.hbs']},
     routerLib: null,
+  },
+  {
+    id: 'backbone', label: 'Backbone / Handlebars', deps: ['backbone', 'bullbone', 'handlebars'],
+    extensions: ['.js', '.ts', '.tpl', '.hbs', '.html'], parse: parseBackboneHandlebars,
+    filePredicate: (file, detection) => /(^|\/)(components?|pages|views|screens|templates)(\/|$)/.test(rel(detection.frontend.root, file)),
+    fileBasedRouter: null, routerLib: null,
   },
 ];
 

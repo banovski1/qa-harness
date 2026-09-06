@@ -62,6 +62,7 @@ export async function collectComponents(detection, options = {}) {
   const files = findFiles(detection.frontend.sourceRoot, (file) => {
     if (!entry.extensions.some((ext) => file.endsWith(ext))) return false;
     if (/\.(spec|test|stories|d)\.[jt]sx?$/.test(file)) return false;
+    if (entry.filePredicate && !entry.filePredicate(file, detection)) return false;
     if (!naive) return true;
     const relPath = rel(detection.frontend.sourceRoot, file);
     return NAIVE_PATH.test(relPath) || PASCAL_CASE.test(path.basename(file, path.extname(file)));

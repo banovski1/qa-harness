@@ -110,6 +110,8 @@ function labelOf({statics, bound}, catalogue) {
   if (bound['option-label']) return resolveLabelExpression(bound['option-label'], catalogue);
   if (typeof statics.label === 'string' && statics.label.trim()) return statics.label.trim();
   if (bound.label) return resolveLabelExpression(bound.label, catalogue);
+  if (typeof statics['aria-label'] === 'string' && statics['aria-label'].trim()) return statics['aria-label'].trim();
+  if (typeof statics.title === 'string' && statics.title.trim()) return statics.title.trim();
   return null;
 }
 
@@ -194,9 +196,10 @@ export function collectVueElements(root, {catalogue = {}, templateFor = KIND_TEM
 
       if (baseKind) {
         const kind = refineKind(baseKind, attrs.statics);
+        const ownText = ROLE_KINDS[kind] ? innerText(node, catalogue) : null;
         // Order matters: the call site's label beats the control's own, which beats the copy
         // sitting beside it. Adjacent text is the weakest signal and is used only as a last resort.
-        const inherited = pending ?? (labelOf(attrs, catalogue) ? null : nearby);
+        const inherited = pending ?? (labelOf(attrs, catalogue) ? null : ownText ?? nearby);
         const built = buildElement({kind, attrs, catalogue, templateFor, headers, inherited});
         if (built) {
           if (pending) pending = null;
@@ -254,12 +257,14 @@ function buildElement({kind, attrs, catalogue, templateFor, headers, inherited =
   // What to call the element in code. It follows the same order the ladder just used, so the
   // identifier names whatever the locator actually anchors to — an element found by its test
   // id reads as `orderIdInput`, not `inputInput`.
-  const displayName = anchor ?? testId ?? placeholder ?? attrs.statics.name ?? attrs.statics.id;
   const {rung, ...spec} = locator;
+  const displayName = spec.strategy === 'getByTestId'
+    ? testId
+    : anchor ?? testId ?? placeholder ?? attrs.statics.name ?? attrs.statics.id;
   return {
     name: identifierFor(displayName, kind),
     component: kind,
-    label: anchor ?? null,
+    label: spec.strategy === 'getByTestId' ? null : anchor ?? null,
     rung,
     locator: spec,
     comment: displayName ? `${displayName} (${kind})` : `(${kind})`,

@@ -107,6 +107,17 @@ export const CASES = [
   {app: 'flask-api', frontend: 'unknown', backend: 'fastapi', endpoints: ['/api/health', '/api/items'], tier: 'B'},
   {app: 'laravel-app', frontend: 'unknown', backend: 'laravel', endpoints: ['/api/invoices', '/api/invoices/{invoice}'], tier: 'B'},
   {
+    app: 'backbone-handlebars', frontend: 'backbone', backend: 'json-routes',
+    components: ['detail'],
+    testIds: ['contact-detail'],
+    elements: [
+      {name: 'nameInput', component: 'input', rung: 4, locator: {strategy: 'template', args: ['labelledInput'], name: 'Name'}},
+      {name: 'saveButton', component: 'button', rung: 2, locator: {strategy: 'getByRole', args: ['button'], name: 'Save'}},
+    ],
+    endpoints: ['/Contact/:id', '/Contact'],
+    tier: 'B', apiPaths: ['/Contact/:id', '/Contact'],
+  },
+  {
     // Ships a spec *and* has extractable express routes: Tier A must win and stop, so the
     // source-only endpoint below must not appear in the report.
     app: 'spec-app', frontend: 'unknown', backend: 'express',
