@@ -19,7 +19,7 @@ import { readApplicationModel } from './analysis-reader.mjs';
 import { readApiMap } from './api-map-reader.mjs';
 import { adapterFor, SUPPORTED_LANGUAGES } from './languages/index.mjs';
 import { FileWriter } from './file-writer.mjs';
-import { loadProjectConfig } from '../project-config.mjs';
+import { loadProjectConfig } from '../project-config.js';
 
 const DEFAULT_CONFIG = join('scripts', 'framework-generator', 'generator-config.yaml');
 

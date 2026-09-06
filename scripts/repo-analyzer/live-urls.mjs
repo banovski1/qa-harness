@@ -6,7 +6,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import {loadProjectConfig} from '../project-config.mjs';
+import {loadProjectConfig} from '../project-config.js';
 import {ANALYSIS_DIR, outPath, reportWritten, table, writeReport} from './report.mjs';
 import {REPO_ROOT, parseArgs, readJson, rel} from './util.mjs';
 

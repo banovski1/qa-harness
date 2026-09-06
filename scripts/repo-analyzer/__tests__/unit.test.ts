@@ -4,13 +4,14 @@
 //   node --test scripts/repo-analyzer/__tests__/
 
 import assert from 'node:assert/strict';
+import {spawnSync} from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {bestLocatorFor, classify, rankOf, RUNGS} from '../../framework-generator/locator-ladder.mjs';
-import {loadProjectConfig, projectConfigPath} from '../../project-config.mjs';
+import {loadProjectConfig, projectConfigPath} from '../../project-config.js';
 import {crossCheck, mergeByPath} from '../api-docs.mjs';
 import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements-vue.mjs';
 import {resolveLabelExpression} from '../i18n.mjs';
@@ -22,20 +23,23 @@ import {escapeCell, table} from '../report.mjs';
 import {fileRouteFor, normalisePath} from '../routes.mjs';
 import {resolveAppPath} from '../util.mjs';
 import {analyzerPlan} from '../analyze.mjs';
+import type {CliArgs, ProjectConfig} from '../types.js';
 
 // --- root project config ---------------------------------------------------------------
 
-test('loadProjectConfig reads the root appPath and baseUrl', () => {
+test('public analyzer contracts accept the root project config flow', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'project-config-'));
   const app = path.join(dir, 'target-app');
   fs.mkdirSync(app);
-  const configFile = path.join(dir, 'app-config.yaml');
-  fs.writeFileSync(configFile, 'appPath: ./target-app\nbaseUrl: http://localhost:8080\n');
+  const fixtureConfig = path.join(dir, 'app-config.yaml');
+  fs.writeFileSync(fixtureConfig, 'appPath: ./target-app\nbaseUrl: https://example.test\n');
 
-  const config = loadProjectConfig(configFile);
+  const config: ProjectConfig = loadProjectConfig(fixtureConfig);
+  const args: CliArgs = {pathPrefix: '/web'};
 
   assert.equal(config.appPath, app);
-  assert.equal(config.baseUrl, 'http://localhost:8080');
+  assert.equal(config.baseUrl, 'https://example.test');
+  assert.equal(analyzerPlan(args).at(-1)?.args.at(-1), '/web');
 });
 
 test('loadProjectConfig requires only appPath and baseUrl', () => {
@@ -79,6 +83,15 @@ test('analyzerPlan passes pathPrefix only to live URL generation', () => {
 
   assert.ok(plan.slice(0, 4).every((step) => !step.args.includes('--path-prefix')));
   assert.deepEqual(plan[4].args.slice(-2), ['--path-prefix', '/web/index.php']);
+});
+
+test('analyzer plan stages can load the typed shared config', () => {
+  const fixtureApp = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../__fixtures__/backbone-handlebars');
+  const [detectStep] = analyzerPlan({});
+
+  const result = spawnSync(process.execPath, [...detectStep.args, '--app', fixtureApp], {encoding: 'utf8'});
+
+  assert.equal(result.status, 0, result.stderr);
 });
 
 test('normalisePath rewrites every router dialect to {param}', () => {
@@ -164,13 +177,15 @@ test('walkAny reaches nodes a Babel walker cannot see', () => {
   // that only visits `typeof node.type === 'string'` finds nothing in either, which reads exactly
   // like an app with no test ids — the bug this assertion exists to keep out.
   class TemplateNode {
-    constructor(children) { this.children = children; }
+    children: unknown[];
+
+    constructor(children: unknown[]) { this.children = children; }
   }
   const tree = {children: [{type: 1, name: 'div'}, new TemplateNode([{marker: 'deep'}])]};
-  const seenNumeric = [];
-  const seenInstances = [];
-  const seenMarkers = [];
-  walkAny(tree, (node) => {
+  const seenNumeric: number[] = [];
+  const seenInstances: TemplateNode[] = [];
+  const seenMarkers: string[] = [];
+  walkAny(tree, (node: any) => {
     if (typeof node.type === 'number') seenNumeric.push(node.type);
     if (node instanceof TemplateNode) seenInstances.push(node);
     if (node.marker) seenMarkers.push(node.marker);
@@ -179,8 +194,8 @@ test('walkAny reaches nodes a Babel walker cannot see', () => {
   assert.equal(seenInstances.length, 1);
   assert.deepEqual(seenMarkers, ['deep']);
 
-  const babelSeen = [];
-  walkAst(tree, (node) => babelSeen.push(node));
+  const babelSeen: unknown[] = [];
+  walkAst(tree, (node: unknown) => babelSeen.push(node));
   assert.equal(babelSeen.length, 0, 'walkAst is the Babel-only walker; walkAny is what template ASTs need');
 });
 
@@ -202,6 +217,7 @@ test('crossCheck reports the delta in both directions', (t) => {
   t.after(() => fs.rmSync(dir, {recursive: true, force: true}));
 
   const result = crossCheck([{path: '/api/a'}, {path: '/api/c'}], specFile);
+  assert.ok(result);
   assert.equal(result.specCount, 2);
   assert.equal(result.foundCount, 2);
   assert.deepEqual(result.missing, ['/api/b']);
@@ -209,6 +225,7 @@ test('crossCheck reports the delta in both directions', (t) => {
 
   // Both sides empty must still report 0 vs 0 rather than a clean bill of health.
   const empty = crossCheck([], specFile);
+  assert.ok(empty);
   assert.equal(empty.foundCount, 0);
   assert.deepEqual(empty.missing, ['/api/a', '/api/b']);
 });
@@ -230,36 +247,39 @@ test('bestLocatorFor picks the highest rung the signals support', () => {
     testId: 'submit', role: 'button', name: 'Save', label: 'Save',
     templateId: 'labelledInput', placeholder: 'Save', nameAttr: 'save', text: 'Save', cssPath: '.save',
   });
+  assert.ok(all);
   assert.equal(all.rung, 1);
   assert.equal(all.strategy, 'getByTestId');
 
   // A role with no accessible name matches every button on the page, so it is not rung 2.
   assert.equal(bestLocatorFor({role: 'button'}), null);
-  assert.equal(bestLocatorFor({role: 'button', name: 'Save'}).rung, 2);
+  assert.equal(bestLocatorFor({role: 'button', name: 'Save'})?.rung, 2);
 
   // An associated label beats the template; without the association the template is the fallback.
-  assert.equal(bestLocatorFor({label: 'City', labelFor: true}).strategy, 'getByLabel');
-  assert.equal(bestLocatorFor({label: 'City', templateId: 'labelledInput'}).rung, 4);
+  assert.equal(bestLocatorFor({label: 'City', labelFor: true})?.strategy, 'getByLabel');
+  assert.equal(bestLocatorFor({label: 'City', templateId: 'labelledInput'})?.rung, 4);
   // A label with neither association nor a template for its kind cannot be used at all.
   assert.equal(bestLocatorFor({label: 'City'}), null);
 
-  assert.equal(bestLocatorFor({placeholder: 'Search'}).rung, 5);
-  assert.equal(bestLocatorFor({nameAttr: 'city'}).rung, 6);
-  assert.equal(bestLocatorFor({text: 'Save'}).rung, 7);
+  assert.equal(bestLocatorFor({placeholder: 'Search'})?.rung, 5);
+  assert.equal(bestLocatorFor({nameAttr: 'city'})?.rung, 6);
+  assert.equal(bestLocatorFor({text: 'Save'})?.rung, 7);
   assert.equal(bestLocatorFor({}), null, 'no signal must yield no locator, never a guess');
 });
 
 test('only the bottom rung is marked unstable, and it says why', () => {
   const css = bestLocatorFor({cssPath: '.oxd-icon.bi-caret-down'});
+  assert.ok(css);
   assert.equal(css.rung, 8);
   assert.equal(css.unstable, true);
   assert.match(css.unstableReason, /raw CSS/);
   // A template expands to CSS but is anchored to a label, so it must not be tagged unstable.
-  assert.equal(bestLocatorFor({label: 'City', templateId: 'labelledInput'}).unstable, false);
+  assert.equal(bestLocatorFor({label: 'City', templateId: 'labelledInput'})?.unstable, false);
 });
 
 test('a quote in a label cannot break out of an attribute selector', () => {
   const spec = bestLocatorFor({nameAttr: 'a"b'});
+  assert.ok(spec);
   assert.equal(spec.args[0], '[name="a\\"b"]');
 });
 
@@ -279,6 +299,7 @@ test('classify judges a recorded locator, positional indexing first', () => {
   const positional = classify("page.getByRole('textbox', { name: 'yyyy-dd-mm' }).first()");
   assert.equal(positional.rung, 8);
   assert.equal(positional.stable, false);
+  assert.ok(positional.reason);
   assert.match(positional.reason, /positional/);
 
   assert.equal(classify("page.locator('textarea')").rung, 8);
@@ -302,18 +323,18 @@ test('resolveLabelExpression resolves only an unambiguous $t key', () => {
 });
 
 test('dedupeNames keeps identifiers unique without renaming the first', () => {
-  const at = (name, label) => ({name, locator: {strategy: 'template', args: ['labelledSelect'], name: label}});
+  const at = (name: string, label: string) => ({name, locator: {strategy: 'template', args: ['labelledSelect'], name: label}});
   const deduped = dedupeNames([at('durationDropdown', 'A'), at('durationDropdown', 'B'), at('other', 'C'), at('durationDropdown', 'D')]);
-  assert.deepEqual(deduped.map((e) => e.name), ['durationDropdown', 'durationDropdown2', 'other', 'durationDropdown3']);
+  assert.deepEqual(deduped.map((e: {name: string}) => e.name), ['durationDropdown', 'durationDropdown2', 'other', 'durationDropdown3']);
 });
 
 test('dedupeNames does not hand out a suffix another element already took', () => {
   // Elements inlined from a child arrive already deduped, so the name this page would have
   // generated for its own second `amount` field can already be in use.
-  const at = (name, label) => ({name, locator: {strategy: 'template', args: ['labelledInput'], name: label}});
+  const at = (name: string, label: string) => ({name, locator: {strategy: 'template', args: ['labelledInput'], name: label}});
   const deduped = dedupeNames([at('amountInput', 'A'), at('amountInput2', 'B'), at('amountInput', 'C')]);
-  assert.deepEqual(deduped.map((e) => e.name), ['amountInput', 'amountInput2', 'amountInput3']);
-  assert.equal(new Set(deduped.map((e) => e.name)).size, 3);
+  assert.deepEqual(deduped.map((e: {name: string}) => e.name), ['amountInput', 'amountInput2', 'amountInput3']);
+  assert.equal(new Set(deduped.map((e: {name: string}) => e.name)).size, 3);
 });
 
 test('dedupeNames flags elements that share one locator', () => {
@@ -323,7 +344,7 @@ test('dedupeNames flags elements that share one locator', () => {
 
   // Unique names are not the same thing as unique locators: both getters still resolve to
   // both fields, which is the failure the ladder exists to make visible.
-  assert.deepEqual(deduped.map((e) => e.name), ['durationDropdown', 'durationDropdown2', 'startDayDropdown']);
+  assert.deepEqual(deduped.map((e: {name: string}) => e.name), ['durationDropdown', 'durationDropdown2', 'startDayDropdown']);
   assert.equal(deduped[0].locator.unstable, true);
   assert.equal(deduped[1].locator.unstable, true);
   assert.match(deduped[0].locator.unstableReason, /2 elements .* same locator/);
@@ -348,11 +369,11 @@ test('an unconfigured template drops the element down the ladder rather than thr
   // pipeline on the first unassociated label — over half the elements on a typical app.
   const templateFor = templatesFrom({});
 
-  assert.equal(bestLocatorFor({label: 'City', templateId: KIND_TEMPLATES.input}).rung, 4);
+  assert.equal(bestLocatorFor({label: 'City', templateId: KIND_TEMPLATES.input})?.rung, 4);
 
   // Same element with no template configured: a label alone cannot locate it, so a weaker signal
   // has to carry it, and a lone label yields nothing rather than a broken locator.
   assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input}), null);
-  assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input, placeholder: 'City'}).rung, 5);
-  assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input, nameAttr: 'city'}).rung, 6);
+  assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input, placeholder: 'City'})?.rung, 5);
+  assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input, nameAttr: 'city'})?.rung, 6);
 });

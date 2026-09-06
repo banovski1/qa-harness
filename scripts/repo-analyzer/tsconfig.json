@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./*.ts",
+    "./*.mjs",
+    "./__tests__/*.ts",
+    "./__tests__/*.mjs",
+    "./__fixtures__/*.ts",
+    "./__fixtures__/*.mjs",
+    "../project-config.ts",
+    "../framework-generator/**/*.mjs"
+  ]
+}

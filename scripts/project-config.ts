@@ -5,14 +5,15 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import type {ProjectConfig} from './repo-analyzer/types.js';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-export function projectConfigPath() {
+export function projectConfigPath(): string {
   return path.join(REPO_ROOT, 'app-config.yaml');
 }
 
-export function loadProjectConfig(file = projectConfigPath()) {
+export function loadProjectConfig(file = projectConfigPath()): ProjectConfig {
   if (!fs.existsSync(file)) {
     throw new Error(`Project config file not found: ${path.relative(REPO_ROOT, file) || file}`);
   }
@@ -29,8 +30,8 @@ export function loadProjectConfig(file = projectConfigPath()) {
   };
 }
 
-function parseScalarYaml(text) {
-  const values = {};
+function parseScalarYaml(text: string): Record<string, string> {
+  const values: Record<string, string> = {};
   for (const line of text.split(/\r?\n/)) {
     const match = /^\s*([A-Za-z][A-Za-z0-9]*)\s*:\s*(.*?)\s*$/.exec(line);
     if (!match) continue;
@@ -41,14 +42,14 @@ function parseScalarYaml(text) {
   return values;
 }
 
-function unquote(value) {
+function unquote(value: string): string {
   if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
     return value.slice(1, -1);
   }
   return value;
 }
 
-function resolveConfigPath(value, baseDir) {
+function resolveConfigPath(value: string, baseDir: string): string {
   const raw = String(value);
   if (raw === '~') return os.homedir();
   if (raw.startsWith('~/')) return path.join(os.homedir(), raw.slice(2));
