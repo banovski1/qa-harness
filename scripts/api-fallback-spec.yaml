@@ -1,5 +1,5 @@
 # Manual fallback spec, in this repo's own request-spec vocabulary — used by
-# scripts/framework-generator/smart-api-map.mjs when apiSpec.specUrl/specPath is absent
+# scripts/framework-generator/smart-api-map.ts when apiSpec.specUrl/specPath is absent
 # or unreachable. Write it by hand when the app publishes no OpenAPI/Swagger document.
 #
 # Shape: resources: [{ resource, operations: [{ operationId, method, path, pathParams,

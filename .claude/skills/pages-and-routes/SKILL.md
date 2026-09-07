@@ -13,9 +13,9 @@ sidecar that `live-urls` reads.
 ## Run it
 
 ```bash
-cd scripts/repo-analyzer && npm install     # first time only
-node scripts/repo-analyzer/routes.mjs --app <app-path>            # from the repo root
-node scripts/repo-analyzer/routes.mjs --app <app-path> --dry-run
+npm ci --prefix scripts/repo-analyzer     # first time only, from the repo root
+npm run routes --prefix scripts/repo-analyzer -- --app <app-path>            # from the repo root
+npm run routes --prefix scripts/repo-analyzer -- --app <app-path> --dry-run
 ```
 
 `--api-prefix <prefix>` changes which paths are treated as API rather than page routes

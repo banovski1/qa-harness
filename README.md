@@ -31,15 +31,15 @@ Run everything from the repo root — all config paths are relative to it.
 
 # 2. Analyse the clone — routes, components, elements, API docs and live URLs
 npm ci --prefix scripts/repo-analyzer
+npm ci --prefix scripts/framework-generator
 npm run analyze
 # If the app is mounted under a prefix:
 # npm run analyze -- --path-prefix <mount-prefix>
-node scripts/framework-generator/check-analysis.mjs            # gate: freshness + schema
+npm run check-analysis --prefix scripts/framework-generator            # gate: freshness + schema
 
 # 3. Generate the framework from the analysis
-npm ci --prefix scripts/framework-generator
-node scripts/framework-generator/generate.mjs        # from repo root
-node scripts/framework-generator/generate.mjs --dry-run   # preview only, writes nothing
+npm run generate --prefix scripts/framework-generator        # from repo root
+npm run generate:dry --prefix scripts/framework-generator   # preview only, writes nothing
 
 # 4. Run the generated project
 cd generated-framework
@@ -47,6 +47,18 @@ npm install && npx playwright install chromium
 cp .env.example .env          # fill in APP_USERNAME / APP_PASSWORD
 npm run typecheck
 npm test
+```
+
+## Tooling Checks
+
+Run these from the repository root; both packages execute TypeScript through `tsx`
+and type-check it separately without emitting build files.
+
+```bash
+npm test --prefix scripts/repo-analyzer
+npm run typecheck --prefix scripts/repo-analyzer
+npm test --prefix scripts/framework-generator
+npm run typecheck --prefix scripts/framework-generator
 ```
 
 ## This is the `clean` branch
@@ -64,13 +76,13 @@ git switch -c java
 Then:
 
 1. Set `language: java` in `scripts/framework-generator/generator-config.yaml`, and set `baseUrl` in root `app-config.yaml`.
-2. Implement `renderPage` in `scripts/framework-generator/languages/java.mjs`. Only
-   `typescript.mjs` does today — the rest return `null`, which the orchestrator treats as
-   "scaffold only" and reports at generation time. `typescript.mjs` is the worked reference.
-3. Run the analyzer against your app clone, then `generate.mjs`.
+2. Implement `renderPage` in `scripts/framework-generator/languages/java.ts`. Only
+   `typescript.ts` does today — the rest return `null`, which the orchestrator treats as
+   "scaffold only" and reports at generation time. `typescript.ts` is the worked reference.
+3. Run the analyzer against your app clone, then `generate.ts`.
 
 The adapter contract is `{ id, extension, emptyDirs, staticFiles, renderPage, renderTest }`,
-registered in `languages/index.mjs`. `generate.mjs` never branches on language, so a new target
+registered in `languages/index.ts`. `generate.ts` never branches on language, so a new target
 means implementing that one module and nothing else.
 
 ## Notes

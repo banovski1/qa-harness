@@ -26,7 +26,7 @@ Read, in order, stopping at the first that exists:
 1. `generated-framework/.env` — `BASE_URL=`
 2. `generated-framework/.env.example` — `BASE_URL=` (warn: using the example default,
    suggest `cp .env.example .env`)
-3. `scripts/app-config.yaml` — `baseUrl:`
+3. `app-config.yaml` — `baseUrl:`
 
 Never hardcode an app URL. If none of the three resolve, stop and ask the user for one.
 
@@ -127,7 +127,7 @@ Shaping rules:
 - One numbered step per recorded action, in order, preserving the raw locator
   Playwright emitted and any typed/selected value.
 - Rank every step's locator with `classify()` from
-  `scripts/framework-generator/locator-ladder.mjs`, and record the rung. That module is the
+  `scripts/framework-generator/locator-ladder.ts`, and record the rung. That module is the
   single ranking the whole repo shares, so a step flagged here reads the same way it would to
   the write-hook or the generator. Rungs 1-6 are stable; 7 and 8 are flagged **UNSTABLE**
   with the reason `classify` gives (positional, unnamed role, raw CSS, text-only).

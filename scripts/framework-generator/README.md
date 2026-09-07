@@ -13,8 +13,7 @@ generation time. The same analysis always produces the same framework.
 ## Install (one-time)
 
 ```bash
-cd scripts/framework-generator
-npm install
+npm ci --prefix scripts/framework-generator
 ```
 
 ## Run
@@ -22,10 +21,21 @@ npm install
 From the **repo root** (so `analysisDir` and `outputDir` resolve):
 
 ```bash
-node scripts/framework-generator/generate.mjs                     # generate
-node scripts/framework-generator/generate.mjs --dry-run           # show the file plan, write nothing
-node scripts/framework-generator/generate.mjs path/to/config.yaml # a different config
+npm run generate --prefix scripts/framework-generator                     # generate
+npm run generate:dry --prefix scripts/framework-generator           # show the file plan, write nothing
+npm run generate --prefix scripts/framework-generator -- path/to/config.yaml # a different config
 ```
+
+## Verify
+
+```bash
+npm test --prefix scripts/framework-generator
+npm run typecheck --prefix scripts/framework-generator
+npm run check-analysis --prefix scripts/framework-generator
+npm run generate:dry --prefix scripts/framework-generator
+```
+
+Run the gate and dry run after `npm run analyze` refreshes the configured application's reports.
 
 ## Config (`generator-config.yaml`)
 
@@ -93,7 +103,7 @@ a silent drop.
 
 The analyzer emits these directly: an element whose label it resolved but whose markup
 associates no `<label for>` lands on rung 4 of the locator ladder
-(`locator-ladder.mjs`), which is exactly a `template` locator. Nothing has to convert
+(`locator-ladder.ts`), which is exactly a `template` locator. Nothing has to convert
 them after the fact.
 
 `locatorTemplates` answers "how does this app connect a visible label to its
@@ -134,7 +144,7 @@ instead of a stub. Credentials are never read from it; they come from
 | C# | yes | not yet |
 
 Adding page objects for another language means implementing `renderPage` in
-`languages/<lang>.mjs`. The orchestrator does not change — it never branches on
+`languages/<lang>.ts`. The orchestrator does not change — it never branches on
 the language.
 
 ## Regenerating is safe
@@ -151,15 +161,16 @@ Nothing is ever deleted. Re-run after every mapping session.
 ## How it works
 
 ```
-generate.mjs      orchestration + config validation; never branches on language
-map-reader.mjs    YAML -> normalized model; owns every quirk of the map format
-naming.mjs        identifier and class-name derivation (pure functions)
-code-writer.mjs   indent-aware string builder
-file-writer.mjs   the generated/protected write policy
-languages/        one adapter per language, registered in index.mjs
+generate.ts         orchestration + config validation; never branches on language
+analysis-reader.ts  JSON reports -> normalized model
+page-model.ts       URL grouping, aliases, and shared page-model rules
+naming.ts           identifier and class-name derivation (pure functions)
+code-writer.ts      indent-aware string builder
+file-writer.ts      the generated/protected write policy
+languages/          one adapter per language, registered in index.ts
 ```
 
-`map-reader.mjs` is where the input's rough edges are absorbed, so no language
+`analysis-reader.ts` and `page-model.ts` absorb the input's rough edges, so no language
 adapter has to know about them:
 
 - elements with no locator are skipped (synthetic dropdown containers),
@@ -181,7 +192,7 @@ adapter has to know about them:
   a label, both getters are emitted with an `// UNSTABLE` comment and tallied in
   `GENERATION-REPORT.md`; the fix is a scoped accessor in the protected page object, and a
   `playwright-codegen` recording is how you see which control is which.
-- The analysis is a snapshot of a commit. `check-analysis.mjs` fails when it no longer
+- The analysis is a snapshot of a commit. `check-analysis.ts` fails when it no longer
   matches the clone's `HEAD`, because a stale analysis generates a framework for an app
   that has moved on.
 - Elements no template describes are invisible here: a control labelled only by adjacent

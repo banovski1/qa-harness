@@ -4,13 +4,24 @@
   "description": "Static analysis in, Playwright test framework out. Reads analysis/ and generates a component-object-model framework in a configurable language.",
   "type": "module",
   "bin": {
-    "framework-generator": "generate.mjs"
+    "framework-generator": "bin.js"
   },
   "scripts": {
-    "generate": "cd ../.. && node scripts/framework-generator/generate.mjs",
-    "check-analysis": "cd ../.. && node scripts/framework-generator/check-analysis.mjs"
+    "generate": "cd ../.. && tsx scripts/framework-generator/generate.ts",
+    "generate:dry": "cd ../.. && tsx scripts/framework-generator/generate.ts --dry-run",
+    "check-analysis": "cd ../.. && tsx scripts/framework-generator/check-analysis.ts",
+    "check-api-map": "cd ../.. && tsx scripts/framework-generator/check-api-map.ts",
+    "smart-api-map": "cd ../.. && tsx scripts/framework-generator/smart-api-map.ts",
+    "test": "tsx --test __tests__/*.test.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
+    "tsx": "^4.23.13"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.20.1",
+    "typescript": "^7.0.2"
   }
 }

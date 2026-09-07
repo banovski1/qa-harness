@@ -4,6 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "analyze": "node scripts/repo-analyzer/analyze.mjs"
+    "analyze": "npm run --prefix scripts/repo-analyzer analyze --"
   }
 }

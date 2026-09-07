@@ -14,13 +14,13 @@ analyzers read.
 ## Run it
 
 ```bash
-cd scripts/repo-analyzer && npm install     # first time only
-node scripts/repo-analyzer/components.mjs --app <app-path>            # from the repo root
-node scripts/repo-analyzer/components.mjs --app <app-path> --dry-run  # print, write nothing
+npm ci --prefix scripts/repo-analyzer     # first time only, from the repo root
+npm run components --prefix scripts/repo-analyzer -- --app <app-path>            # from the repo root
+npm run components --prefix scripts/repo-analyzer -- --app <app-path> --dry-run  # print, write nothing
 ```
 
 If the engineer did not name a path, ask for one. `--frontend-root <dir>` overrides detection
-when a monorepo defeats it; `detect.mjs --app <app-path>` shows what was detected and why.
+when a monorepo defeats it; `npm run detect --prefix scripts/repo-analyzer -- --app <app-path>` shows what was detected and why.
 
 ## Check the output before reporting it
 
@@ -41,8 +41,8 @@ two elements on a page share a label, the extractor says so rather than picking 
 
 ## Adding a framework
 
-One row in `scripts/repo-analyzer/registry-frontend.mjs` and, if it needs a new parser, one
-function in `parsers.mjs`. Add a fixture app under `scripts/repo-analyzer/__fixtures__/` and a
-case in its `run.mjs` — a parser that silently finds nothing looks exactly like an app with
+One row in `scripts/repo-analyzer/registry-frontend.ts` and, if it needs a new parser, one
+function in `parsers.ts`. Add a fixture app under `scripts/repo-analyzer/__fixtures__/` and a
+case in its `cases.ts` — a parser that silently finds nothing looks exactly like an app with
 nothing to find, so the fixture must assert a positive hit. Never edit an analyzer to special-case
 an app.
