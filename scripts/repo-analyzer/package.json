@@ -6,6 +6,10 @@
   "scripts": {
     "analyze": "cd ../.. && tsx scripts/repo-analyzer/analyze.ts",
     "detect": "cd ../.. && tsx scripts/repo-analyzer/detect.ts",
+    "routes": "cd ../.. && tsx scripts/repo-analyzer/routes.ts",
+    "components": "cd ../.. && tsx scripts/repo-analyzer/components.ts",
+    "api-docs": "cd ../.. && tsx scripts/repo-analyzer/api-docs.ts",
+    "live-urls": "cd ../.. && tsx scripts/repo-analyzer/live-urls.ts",
     "test": "tsx --test __tests__/*.test.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test:unit": "tsx --test __tests__/unit.test.ts",

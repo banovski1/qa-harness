@@ -13,9 +13,9 @@ instead of inferring an endpoint from prose.
 ## Run it
 
 ```bash
-cd scripts/repo-analyzer && npm install     # first time only
-node scripts/repo-analyzer/api-docs.mjs --app <app-path> [--cross-check <a known-good spec>]
-node scripts/repo-analyzer/api-docs.mjs --app <app-path> --dry-run
+npm ci --prefix scripts/repo-analyzer     # first time only, from the repo root
+npm run api-docs --prefix scripts/repo-analyzer -- --app <app-path> [--cross-check <a known-good spec>]
+npm run api-docs --prefix scripts/repo-analyzer -- --app <app-path> --dry-run
 ```
 
 ## The three tiers, in order
@@ -35,10 +35,10 @@ it is absent from the analysis, not disproven — confirm it against a running i
 `--cross-check <spec>` diffs the extracted path set against a known spec and puts the delta in the
 report. A handful of differences is normal (param naming, plugins the spec predates); a large
 unexplained gap means the extractor is wrong, and that is a bug to fix in
-`scripts/repo-analyzer/registry-backend.mjs`, not to work around.
+`scripts/repo-analyzer/registry-backend.ts`, not to work around.
 
 ## Adding a backend framework
 
-One entry in `registry-backend.mjs` exposing `routes(root) -> Route[]`, plus a fixture app under
-`__fixtures__/` and a case in its `run.mjs`. No analyzer branches on the framework, so nothing
+One entry in `registry-backend.ts` exposing `routes(root) -> Route[]`, plus a fixture app under
+`__fixtures__/` and a case in its `cases.ts`. No analyzer branches on the framework, so nothing
 else changes.

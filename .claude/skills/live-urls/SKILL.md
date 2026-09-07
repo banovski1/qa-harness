@@ -12,8 +12,8 @@ sample id is invented — this skill never touches the network.
 ## Run it
 
 ```bash
-node scripts/repo-analyzer/routes.mjs --app <app-path>     # must run first
-node scripts/repo-analyzer/live-urls.mjs [--base-url <url>] [--path-prefix <prefix>]
+npm run routes --prefix scripts/repo-analyzer -- --app <app-path>     # must run first
+npm run live-urls --prefix scripts/repo-analyzer -- [--base-url <url>] [--path-prefix <prefix>]
 ```
 
 The base URL defaults to `baseUrl:` in `scripts/app-config.yaml` — the instance the rest of this

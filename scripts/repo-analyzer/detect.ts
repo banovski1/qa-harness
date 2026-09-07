@@ -2,7 +2,7 @@
 // Framework detection for a local application repo. Every analyzer starts here, so nothing
 // downstream ever branches on "which app is this" — it branches on a registry entry.
 //
-//   node scripts/repo-analyzer/detect.mjs [--app <app-clone>]
+//   npm run detect --prefix scripts/repo-analyzer -- [--app <app-clone>]
 
 import fs from 'node:fs';
 import path from 'node:path';

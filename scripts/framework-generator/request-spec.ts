@@ -1,5 +1,5 @@
 // The closed request vocabulary shared by the OpenAPI normalizer, the manual
-// fallback spec, and the emitted api-map. Mirrors locator-spec.mjs: a small
+// fallback spec, and the emitted api-map. Mirrors locator-spec.ts: a small
 // enum plus a normalizer, so the generator never has to know whether an
 // operation came from a pulled OpenAPI doc or a hand-written fallback file.
 

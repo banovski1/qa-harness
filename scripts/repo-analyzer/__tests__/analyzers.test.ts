@@ -1,5 +1,5 @@
 // Each analyzer against every fixture app, one test per app so a failure names the framework that
-// broke. The expectations live in `__fixtures__/cases.mjs`; this file is only the harness.
+// broke. The expectations live in `__fixtures__/cases.ts`; this file is only the harness.
 //
 //   node --test scripts/repo-analyzer/__tests__/
 

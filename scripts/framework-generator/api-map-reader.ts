@@ -1,4 +1,4 @@
-// Api-map (YAML) -> normalized domain model. Parallel to analysis-reader.mjs, but
+// Api-map (YAML) -> normalized domain model. Parallel to analysis-reader.ts, but
 // additive: an app with no api-map yet must generate exactly as it did before
 // this feature existed, so a missing/empty apiMapDir yields an empty model
 // instead of throwing.
@@ -13,7 +13,7 @@ import type { ApiModel, GeneratorConfig, ResourceModel } from './types.js';
 
 /**
  * @typedef {{ resource: string, className: string, source: string, sourceRef: string|null,
- *             operations: import('./request-spec.mjs').Operation[] }} ResourceModel
+ *             operations: import('./request-spec.ts').Operation[] }} ResourceModel
  * @returns {{ resources: ResourceModel[], stats: object }}
  */
 export function readApiMap(config: Pick<GeneratorConfig, 'apiMapDir' | 'api'>): ApiModel {

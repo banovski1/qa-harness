@@ -5,7 +5,7 @@
 // the element reaches rung 4. So this module is what decides whether a whole class of apps
 // yields locators or nothing at all.
 //
-// Structured like registry-frontend.mjs: `{ id, match, load }` rows, first match wins. No
+// Structured like registry-frontend.ts: `{ id, match, load }` rows, first match wins. No
 // match is a normal outcome — an app with literal labels needs no catalogue — and yields an
 // empty map rather than an error.
 

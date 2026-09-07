@@ -1,6 +1,6 @@
 // Element extraction from a Vue template AST.
 //
-// The parsers in parsers.mjs answer "what components exist"; this answers "what does a page
+// The parsers in parsers.ts answer "what components exist"; this answers "what does a page
 // put on screen, and how would a test find it". It is deliberately conservative: an element
 // whose label cannot be resolved is dropped rather than guessed at, because a guessed label
 // produces a locator that matches nothing and fails far from its cause.

@@ -2,7 +2,7 @@
 // Skill A — every UI component in the app, parsed with its own framework's parser, plus any
 // test-id attribute already present in the markup as a *suggested* locator strategy.
 //
-//   node scripts/repo-analyzer/components.mjs [--app <app-clone>] [--dry-run]
+//   npm run components --prefix scripts/repo-analyzer -- [--app <app-clone>] [--dry-run]
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -211,7 +211,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     + `${result.components.reduce((n, c) => n + c.testIds.length, 0)} test-id(s), ${result.errors.length} parse error(s)`,
   ];
 
-  // The dictionary needs the route table to key on, so it is written only once routes.mjs has
+  // The dictionary needs the route table to key on, so it is written only once routes.ts has
   // run. Skipping it is a normal first-run outcome, not a failure — say so and carry on.
   const routesFile = path.join(ANALYSIS_DIR, 'pages-and-routes.json');
   const routeData = readJson<RoutesReport>(routesFile);

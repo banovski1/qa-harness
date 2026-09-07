@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Skill B — every page the app defines, taken from whichever routing convention it actually uses.
 //
-//   node scripts/repo-analyzer/routes.mjs [--app <app-clone>] [--dry-run]
+//   npm run routes --prefix scripts/repo-analyzer -- [--app <app-clone>] [--dry-run]
 
 import fs from 'node:fs';
 import path from 'node:path';

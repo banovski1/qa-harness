@@ -11,7 +11,7 @@ import {collectVueElements, dedupeNames, headersFromScript, relabel} from './ele
 import type {ChildReference} from './elements-vue.js';
 import type {AstNode, AstVisitor, ExtractedElement, ParsedComponent, ParserContext, TestIdRecord} from './types.js';
 
-// Re-exported from util.mjs, which owns the vocabulary so the element extractor can read it
+// Re-exported from util.ts, which owns the vocabulary so the element extractor can read it
 // without importing this module back.
 export {TEST_ID_ATTRS, isTestIdAttr};
 

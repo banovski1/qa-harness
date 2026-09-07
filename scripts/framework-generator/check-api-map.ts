@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Gate for the api-map. Purely static — this never calls the real API, only
-// the YAML files under apiMapDir. Parallel to check-analysis.mjs.
+// the YAML files under apiMapDir. Parallel to check-analysis.ts.
 //
 //   npm run check-api-map --prefix scripts/framework-generator -- [--strict <resource>...]
 //

@@ -127,7 +127,7 @@ Shaping rules:
 - One numbered step per recorded action, in order, preserving the raw locator
   Playwright emitted and any typed/selected value.
 - Rank every step's locator with `classify()` from
-  `scripts/framework-generator/locator-ladder.mjs`, and record the rung. That module is the
+  `scripts/framework-generator/locator-ladder.ts`, and record the rung. That module is the
   single ranking the whole repo shares, so a step flagged here reads the same way it would to
   the write-hook or the generator. Rungs 1-6 are stable; 7 and 8 are flagged **UNSTABLE**
   with the reason `classify` gives (positional, unnamed role, raw CSS, text-only).

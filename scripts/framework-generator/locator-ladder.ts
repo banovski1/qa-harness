@@ -7,7 +7,7 @@
  * the write-hook's positional-selector rule. They agreed by accident and drifted by default.
  * Now they import the same table, so a change to the ranking reaches all of them at once.
  *
- * Every rung resolves to a strategy already in `locator-spec.mjs`'s closed vocabulary: the
+ * Every rung resolves to a strategy already in `locator-spec.ts`'s closed vocabulary: the
  * ladder ranks the vocabulary, it does not extend it.
  */
 import {STRATEGIES} from './locator-spec.js';

@@ -39,21 +39,22 @@ nothing in `scripts/` contains app-specific code, so retargeting is a config edi
 
 ```bash
 # Stage 0 — static analysis of a local clone of the app under test. This is the spine, not an extra:
-#           routes.mjs first (components.mjs joins onto its output to build the label dictionary).
+#           routes.ts first (components.ts joins onto its output to build the label dictionary).
 npm ci --prefix scripts/repo-analyzer
 npm run analyze                              # detect, routes, components, api-docs, live-urls
 npm run analyze -- --path-prefix <mount-prefix>   # if the app is not served at /
-node scripts/repo-analyzer/__fixtures__/run.mjs                 # the analyzer's test suite
-cd scripts/repo-analyzer && npm test                            # the same suite, with test names
+npm run fixtures --prefix scripts/repo-analyzer                 # the analyzer's test suite
+npm test --prefix scripts/repo-analyzer                         # the same suite, with test names
+npm run typecheck --prefix scripts/repo-analyzer
 
 # Stage 1 — gate the analysis before generating from it
-node scripts/framework-generator/check-analysis.mjs             # freshness + schema + model builds
-node scripts/framework-generator/check-analysis.mjs --strict /pim/addEmployee
+npm ci --prefix scripts/framework-generator
+npm run check-analysis --prefix scripts/framework-generator             # freshness + schema + model builds
+npm run check-analysis --prefix scripts/framework-generator -- --strict /pim/addEmployee
 
 # Stage 2 — regenerate the framework from the analysis (no network access)
-npm ci --prefix scripts/framework-generator
-node scripts/framework-generator/generate.mjs              # from repo root
-node scripts/framework-generator/generate.mjs --dry-run    # print the file plan, write nothing
+npm run generate --prefix scripts/framework-generator              # from repo root
+npm run generate:dry --prefix scripts/framework-generator    # print the file plan, write nothing
 
 # Stage 3 — the generated project
 cd generated-framework
@@ -68,17 +69,19 @@ npx playwright test -g "some test title"                   # a single test
 
 Prefer `--dry-run` when changing the generator: it exercises the whole pipeline and reports create/overwrite/preserve/unchanged per file without touching disk.
 
-There is no test suite for the generator itself; `check-analysis.mjs`, `--dry-run` and a `git diff` of `generated-framework/` are the verification loop.
+Run `npm test --prefix scripts/framework-generator` for generator contract tests and
+`npm run typecheck --prefix scripts/framework-generator` for static checks. Follow these with
+the analysis gate, a dry run, and a `git diff` of `generated-framework/` when inspecting output changes.
 
 ## Architecture notes that span files
 
-**Never hand-edit `generated-framework/**/*.generated.ts`** — the generator overwrites it on the next run. Nothing under `analysis/` is hand-editable either: it is a report, and the fix for a wrong one is to re-run the analyzer that wrote it, then `check-analysis.mjs`.
+**Never hand-edit `generated-framework/**/*.generated.ts`** — the generator overwrites it on the next run. Nothing under `analysis/` is hand-editable either: it is a report, and the fix for a wrong one is to re-run the analyzer that wrote it, then `check-analysis.ts`.
 
-**The generated/protected write policy** (`framework-generator/file-writer.mjs`) is the core contract. Every emitted file is tagged `generated` (overwritten every run) or `protected` (written once, then never touched). So `<Name>Page.generated.ts` carries the mapped locators and `<Name>Page.ts` — its subclass — carries your actions and assertions. Nothing is ever deleted. Put real test logic only in protected files.
+**The generated/protected write policy** (`framework-generator/file-writer.ts`) is the core contract. Every emitted file is tagged `generated` (overwritten every run) or `protected` (written once, then never touched). So `<Name>Page.generated.ts` carries the mapped locators and `<Name>Page.ts` — its subclass — carries your actions and assertions. Nothing is ever deleted. Put real test logic only in protected files.
 
-**The locator vocabulary is closed and shared.** `framework-generator/locator-spec.mjs` defines the `{ strategy, args, name, within, nth }` shape used by the login config (input), the analyzer (producer) and the generator (consumer). Adding a strategy means touching that one module.
+**The locator vocabulary is closed and shared.** `framework-generator/locator-spec.ts` defines the `{ strategy, args, name, within, nth }` shape used by the login config (input), the analyzer (producer) and the generator (consumer). Adding a strategy means touching that one module.
 
-**`locator-ladder.mjs` ranks that vocabulary, and four things share the ranking.** Rungs, best to
+**`locator-ladder.ts` ranks that vocabulary, and four things share the ranking.** Rungs, best to
 worst: `getByTestId`, named `getByRole`, `getByLabel`, a label `template`, `getByPlaceholder`, an
 `id`/`name` attribute selector, `getByText`, a raw CSS path. `bestLocatorFor(signals)` is how the
 extractor chooses — it gathers signals and lets the ladder pick, so no call site quietly prefers CSS
@@ -102,25 +105,25 @@ emits it into `src/components/locator-templates.generated.ts` — the only file 
 app-specific selector. An element names the template rather than repeating it —
 `{ strategy: template, args: ["labelledInput"], name: "City" }` — and `fromMap` expands it into a plain
 `css` spec at read time, which is what keeps `resolve()` and the other language adapters ignorant of
-templates. `renderTemplate` in `locator-spec.mjs` is the single substitution rule, shared by that
+templates. `renderTemplate` in `locator-spec.ts` is the single substitution rule, shared by that
 expansion and the emitter's equivalence check so the two cannot disagree.
 
 **The block is empty on this branch, and that is a supported state.** `templatesFrom` in
-`repo-analyzer/elements-vue.mjs` narrows the kind→template table to the ids the config actually
+`repo-analyzer/elements-vue.ts` narrows the kind→template table to the ids the config actually
 defines, so the extractor never proposes a template the generator cannot expand. An element that
 would have reached rung 4 falls to a weaker signal or is counted in `skipped`, instead of making
 `fromMap` throw on the first unassociated label — which, on a typical app, is over half of them.
 Filling the block in is an improvement, never a precondition.
 
 The analyzer emits templates directly, so nothing has to convert them after the fact. Where a template reproduces an element's locator *exactly*, `factoryFor` in
-`languages/typescript.mjs` emits `InputComponent.byLabel(this.page, 'City')` instead of the selector;
+`languages/typescript.ts` emits `InputComponent.byLabel(this.page, 'City')` instead of the selector;
 anything else keeps the locator the extractor built. Equivalence is proved per element, never assumed,
 so editing the block cannot silently re-point an accessor — it can only fall back. The
 `GENERATION-REPORT.md` factory tally is how you see that happen. Component *instance* constructors stay
 `(locator, description)`: the factories are statics taking a root, which is what keeps `BaseComponent.nth()`
 and `within:` scoping working.
 
-**`analysis-reader.mjs` joins the reports into the model, and `page-model.mjs` holds the rules that
+**`analysis-reader.ts` joins the reports into the model, and `page-model.ts` holds the rules that
 outlived the map.** The reader joins `pages-and-routes.json` (the page list) with
 `frontend-components.json` (elements, matched on `route.component === component.file`) and takes the
 mount prefix from `live-urls.json` — an app mounted under a prefix (`/web/index.php`, say) serves
@@ -128,7 +131,7 @@ every route beneath it, which the framework's own route table does not record. I
 leading slash, and expands `template` locators through `fromMap` so no adapter ever sees one. A route
 with no component still becomes a page object, carrying a URL and nothing else.
 
-`page-model.mjs` carries the URL-to-page rules unchanged from the map era — folder grouping, unique
+`page-model.ts` carries the URL-to-page rules unchanged from the map era — folder grouping, unique
 class names, merging duplicate pages onto one class with `aliases`. They are about how URLs become
 page objects, not about where elements came from, which is why the folder layout and class names did
 not shift when the input format did. The one rule that *did* change: when the mount prefix is known,
@@ -136,13 +139,13 @@ the module segment is taken as the one straight after it rather than inferred, b
 route (`/` reduces to just the prefix) would otherwise drag the detected segment onto the prefix.
 
 The contract it returns — `{ pages, sharedChrome, sharedStates, stats }` — is the same one the map
-reader returned, which is what let `languages/typescript.mjs` stay untouched through the switch.
+reader returned, which is what let `languages/typescript.ts` stay untouched through the switch.
 `sharedStates` is always empty now: states were a live-walk product, since a menu had to be opened
 before its options existed.
 
-**`check-analysis.mjs` guards the failures that are silent.** A stale analysis still parses and still generates a framework — one that describes an app which has moved on — so the gate compares the commit in each report's provenance header against the clone's current `HEAD` and fails on a mismatch. It also catches a route path that lost its leading slash, a duplicate element name, a locator no template can expand, and a `navigation:` entry that does not resolve. Run it after re-running the analyzer, with `--strict <route>` for the routes you care about.
+**`check-analysis.ts` guards the failures that are silent.** A stale analysis still parses and still generates a framework — one that describes an app which has moved on — so the gate compares the commit in each report's provenance header against the clone's current `HEAD` and fails on a mismatch. It also catches a route path that lost its leading slash, a duplicate element name, a locator no template can expand, and a `navigation:` entry that does not resolve. Run it after re-running the analyzer, with `--strict <route>` for the routes you care about.
 
-**`generate.mjs` never branches on language.** Languages are adapters in `languages/`, registered in `languages/index.mjs`, satisfying `{ id, extension, emptyDirs, staticFiles, renderPage, renderTest }`; `renderPage` returning `null` means "scaffold only". Only TypeScript renders page objects today — adding another language means implementing `renderPage` in its adapter and nothing else.
+**`generate.ts` never branches on language.** Languages are adapters in `languages/`, registered in `languages/index.ts`, satisfying `{ id, extension, emptyDirs, staticFiles, renderPage, renderTest }`; `renderPage` returning `null` means "scaffold only". Only TypeScript renders page objects today — adding another language means implementing `renderPage` in its adapter and nothing else.
 
 **The navigation bar is declared, not derived.** It is the one part of a rendered page static analysis may not reach: an app whose sidebar is rendered by an external design-system package and filled from a server menu payload has navigation that appears in no template in its own source. `navigation:` in `generator-config.yaml` lists those elements by hand, and they become the single `NavigationBar` component instead of repeating on every page object. With `locatorTemplates:` it is one of exactly two places an app-specific selector appears. Leave it empty for an app whose navigation is in its own markup — the extractor will find it.
 
@@ -152,24 +155,24 @@ before its options existed.
 
 **The repo analyzer never branches on the app.** `scripts/repo-analyzer/` reads a local clone of the
 application under test and writes the four files in `analysis/`. Framework support lives entirely in
-`registry-frontend.mjs` and `registry-backend.mjs` — `{ id, match, parse, routes }` rows — and
-`detect.mjs` picks the frontend and backend roots by scoring candidate manifests, so a monorepo with an
+`registry-frontend.ts` and `registry-backend.ts` — `{ id, match, parse, routes }` rows — and
+`detect.ts` picks the frontend and backend roots by scoring candidate manifests, so a monorepo with an
 installer bundled beside the product resolves to the product. Adding a framework is one registry row
 plus a fixture app under `__fixtures__/`; the four analyzers are framework-blind and must stay that way.
 A parser that silently finds nothing is indistinguishable from an app with nothing to find, which is why
 every fixture row asserts a *positive* hit — a route, a component, a test-id, an endpoint — and never
 just an absence.
 
-**The analyzer's tests are three layers, and the third is the point.** `__tests__/unit.test.mjs` covers
-the pure functions each report is built from; `__tests__/analyzers.test.mjs` runs `detect`,
+**The analyzer's tests are three layers, and the third is the point.** `__tests__/unit.test.ts` covers
+the pure functions each report is built from; `__tests__/analyzers.test.ts` runs `detect`,
 `collectRoutes`, `collectComponents` and the api-docs tier ladder against every app in `__fixtures__/`,
-with the expectations in `__fixtures__/cases.mjs` (one row per registry row it pins); and
-`__tests__/reports.test.mjs` compares the **rendered markdown** against committed snapshots, because a
+with the expectations in `__fixtures__/cases.ts` (one row per registry row it pins); and
+`__tests__/reports.test.ts` compares the **rendered markdown** against committed snapshots, because a
 refactor can preserve every return value while quietly changing what lands in `analysis/`. Only the
 timestamp and commit lines are scrubbed before comparing. Accept an intentional format change with
 `UPDATE_SNAPSHOTS=1 npm test` so it arrives as a reviewable diff of `__tests__/snapshots/*.md` rather
 than a hand edit. Rails and Spring have no fixture app: their extractors are a known gap, stated in
-`cases.mjs` rather than papered over.
+`cases.ts` rather than papered over.
 
 **`analysis/` is the generator's input, and everything in it is a candidate.** A label or a
 `data-testid` found in source cannot be shown to resolve to exactly one element on a rendered page, so

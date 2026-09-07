@@ -1,6 +1,6 @@
 # Framework generator input — the only file you need to edit.
 #
-#   node scripts/framework-generator/generate.mjs [path/to/this-file.yaml] [--dry-run]
+#   npm run generate --prefix scripts/framework-generator -- [path/to/this-file.yaml] [--dry-run]
 #
 # Run from the repo root so analysisDir and outputDir resolve correctly. The app test
 # base URL comes from root app-config.yaml. The generator reads the reports the repo
@@ -8,7 +8,7 @@
 # component-object-model framework in the language named below.
 
 # Only `typescript` renders page objects today. The other adapters emit a project scaffold and
-# stop — implementing `renderPage` in `languages/<id>.mjs` is what turns one into a real target.
+# stop — implementing `renderPage` in `languages/<id>.ts` is what turns one into a real target.
 language: typescript    # typescript | javascript | java | python | csharp
 projectName: e2e
 outputDir: ./generated-framework
@@ -87,7 +87,7 @@ locatorTemplates: {}
 # elements that would have reached rung 4 fall to a weaker signal or are counted as skipped.
 # Filling it in is an improvement, never a precondition.
 
-# Where scripts/framework-generator/smart-api-map.mjs writes the normalized api-map
+# Where scripts/framework-generator/smart-api-map.ts writes the normalized api-map
 # (one YAML file per resource). Absent or empty directory -> no API layer is
 # generated; nothing else changes.
 apiMapDir: analysis/api-map

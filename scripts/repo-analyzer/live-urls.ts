@@ -2,7 +2,7 @@
 // Skill C — Skill B's routes joined to a base URL. Pure string composition: no request is fired
 // and no sample id is invented, so a dynamic segment stays a visible placeholder.
 //
-//   node scripts/repo-analyzer/live-urls.mjs [--base-url https://…] [--path-prefix /web/index.php]
+//   npm run live-urls --prefix scripts/repo-analyzer -- [--base-url https://…] [--path-prefix /web/index.php]
 
 import fs from 'node:fs';
 import path from 'node:path';

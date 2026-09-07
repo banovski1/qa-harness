@@ -1,5 +1,5 @@
 // One entry per backend framework. Every entry exposes the same `routes(root)` interface, so
-// api-docs.mjs and routes.mjs never branch on which framework they are looking at.
+// api-docs.ts and routes.ts never branch on which framework they are looking at.
 //
 //   id/label   stable slug + human name
 //   deps       manifest dependencies that identify it (package.json, composer.json, …)

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // The analyzer's test suite, kept at its documented path. The assertions themselves live in
-// `../__tests__/` and the expectations in `./cases.mjs`; this is a thin wrapper so there is one
+// `../__tests__/` and the expectations in `./cases.ts`; this is a thin wrapper so there is one
 // implementation rather than two that can disagree.
 //
-//   node scripts/repo-analyzer/__fixtures__/run.mjs
+//   npm run fixtures --prefix scripts/repo-analyzer
 //   cd scripts/repo-analyzer && npm test        # the same thing
 
 import {spawnSync} from 'node:child_process';

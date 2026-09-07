@@ -1,7 +1,7 @@
 /**
  * Files no writer may touch. There is no escape hatch here: a `// allow:` on a
  * line cannot make a generator-owned file writable, because the next
- * `generate.mjs` run would silently discard the edit.
+ * `generate.ts` run would silently discard the edit.
  */
 import { existsSync, readFileSync } from 'node:fs';
 

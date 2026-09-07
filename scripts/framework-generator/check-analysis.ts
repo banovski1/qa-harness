@@ -173,7 +173,7 @@ function readAnalysis(name: string): Record<string, unknown> {
   }
 }
 
-/** The commit recorded in a report's provenance header, written by report.mjs. */
+/** The commit recorded in a report's provenance header, written by report.ts. */
 function shaFromReport(name: string): string | null {
   try {
     const body = readFileSync(join(config.analysisDir, name), 'utf8');

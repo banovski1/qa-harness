@@ -58,7 +58,7 @@ for (const app of APPS) {
     const routes = await collectRoutes(detection);
 
     await t.test('frontend-components.md', async () => {
-      // Pinned for the same reason as in analyzers.test.mjs: a snapshot must not change because
+      // Pinned for the same reason as in analyzers.test.ts: a snapshot must not change because
       // a config file outside this suite changed.
       compare(`${app}.frontend-components`, renderComponents(detection, await collectComponents(detection, {templateFor: KIND_TEMPLATES})));
     });
