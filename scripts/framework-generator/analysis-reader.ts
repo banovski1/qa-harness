@@ -18,10 +18,13 @@
 
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { fromMap } from './locator-spec.mjs';
-import { rankOf } from './locator-ladder.mjs';
-import { pageClassName } from './naming.mjs';
-import { assignUniqueClassNames, detectFolderSegment, locatorSignature, mergeDuplicatePages, splitUrl } from './page-model.mjs';
+import { fromMap } from './locator-spec.js';
+import { rankOf } from './locator-ladder.js';
+import { pageClassName } from './naming.js';
+import { assignUniqueClassNames, detectFolderSegment, locatorSignature, mergeDuplicatePages, splitUrl } from './page-model.js';
+import { errorMessage, isRecord, list, record } from './types.js';
+import type { ApplicationConfig, ApplicationModel, ApplicationStats, ElementModel, LocatorTemplates, PageModel } from './types.js';
+import type { RoutesReport, ComponentsReport } from '../repo-analyzer/types.js';
 
 /**
  * @typedef {{ rawName: string, component: string, locator: object, label: string,
@@ -34,17 +37,17 @@ import { assignUniqueClassNames, detectFolderSegment, locatorSignature, mergeDup
 /**
  * @returns {{ pages: PageModel[], sharedChrome: ElementModel[], sharedStates: StateModel[], stats: object }}
  */
-export function readApplicationModel(config) {
+export function readApplicationModel(config: ApplicationConfig): ApplicationModel {
   const dir = config.analysisDir;
-  const routeData = readAnalysisFile(dir, 'pages-and-routes.json');
-  const componentData = readAnalysisFile(dir, 'frontend-components.json');
+  const routeData = readRoutesReport(readAnalysisFile(dir, 'pages-and-routes.json'));
+  const componentData = readComponentsReport(readAnalysisFile(dir, 'frontend-components.json'));
   // A framework's route table holds the paths the *router* matches; the app may be mounted
   // under a prefix (`/web/index.php`, say). live-urls.json is the
   // analyzer that knows the difference, so the prefix is taken from there rather than guessed.
   const pathPrefix = readPathPrefix(dir);
 
   const templates = config.locatorTemplates ?? {};
-  const stats = {
+  const stats: ApplicationStats = {
     files: 2, elementsRead: 0, skippedNoLocator: 0, unstable: 0, tables: 0, rungs: {},
     routes: (routeData.routes ?? []).length, routesWithoutComponent: 0, apiRoutesSkipped: 0,
   };
@@ -54,18 +57,18 @@ export function readApplicationModel(config) {
   );
 
   const apiPrefix = config.api?.pathPrefix ?? '/api/';
-  let pages = [];
+  let pages: PageModel[] = [];
   for (const route of routeData.routes ?? []) {
     const url = canonicalPath(route.path, pathPrefix);
     if (!url) continue;
     // API routes belong to the api-map track, which generates typed clients rather than
     // page objects. A route that leaked past the analyzer's own prefix filter is dropped here.
-    if (canonicalPath(route.path).startsWith(apiPrefix)) {
+    if (canonicalPath(route.path)?.startsWith(apiPrefix)) {
       stats.apiRoutesSkipped += 1;
       continue;
     }
     if (!route.component) stats.routesWithoutComponent += 1;
-    pages.push(toPage(route, url, elementsByFile.get(route.component) ?? [], templates, stats));
+    pages.push(toPage(route, url, elementsByFile.get(route.component ?? '') ?? [], templates, stats));
   }
 
   if (pages.length === 0) {
@@ -108,7 +111,7 @@ export function readApplicationModel(config) {
   return { pages, sharedChrome, sharedStates: [], stats };
 }
 
-function readAnalysisFile(dir, name) {
+function readAnalysisFile(dir: string, name: string): unknown {
   const file = join(dir, name);
   let raw;
   try {
@@ -119,7 +122,7 @@ function readAnalysisFile(dir, name) {
   try {
     return JSON.parse(raw);
   } catch (error) {
-    throw new Error(`Malformed JSON in '${file}': ${error.message}`);
+    throw new Error(`Malformed JSON in '${file}': ${errorMessage(error)}`);
   }
 }
 
@@ -127,7 +130,7 @@ function readAnalysisFile(dir, name) {
  * Routes arrive from a framework's own config, which is not obliged to be tidy: a Symfony
  * YAML path may omit its leading slash, and a query string is not part of a page's identity.
  */
-function canonicalPath(path, prefix = '') {
+function canonicalPath(path: unknown, prefix = ''): string | null {
   if (!path) return null;
   const [withoutQuery] = String(path).split('?');
   const trimmed = withoutQuery.trim();
@@ -137,14 +140,14 @@ function canonicalPath(path, prefix = '') {
   return prefix && !rooted.startsWith(prefix) ? `${prefix}${rooted}` : rooted;
 }
 
-function segmentCount(path) {
+function segmentCount(path: string): number {
   return String(path).split('/').filter(Boolean).length;
 }
 
 /** Absent live-urls.json is not an error: an app served from the root has no prefix. */
-function readPathPrefix(dir) {
+function readPathPrefix(dir: string): string {
   try {
-    const data = JSON.parse(readFileSync(join(dir, 'live-urls.json'), 'utf8'));
+    const data = record(JSON.parse(readFileSync(join(dir, 'live-urls.json'), 'utf8')) as unknown);
     const prefix = String(data.pathPrefix ?? '').trim().replace(/\/$/, '');
     return prefix.startsWith('/') ? prefix : '';
   } catch {
@@ -152,22 +155,22 @@ function readPathPrefix(dir) {
   }
 }
 
-function toPage(route, url, elements, templates, stats) {
+function toPage(route: RoutesReport['routes'][number], url: string, elements: unknown[], templates: LocatorTemplates, stats: ApplicationStats): PageModel {
   return {
     slug: route.name ? String(route.name) : url.replace(/^\//, '').replace(/\//g, '-'),
     url,
     group: '',
     className: '',
     fileBase: '',
-    elements: elements.map((element) => toElement(element, templates, stats)).filter(Boolean),
+    elements: elements.map((element) => toElement(element, templates, stats)).filter((element) => element !== null),
     states: [],
     aliases: [],
   };
 }
 
-function toElement(raw, templates, stats) {
+function toElement(raw: unknown, templates: LocatorTemplates, stats: ApplicationStats): ElementModel | null {
   stats.elementsRead += 1;
-  if (!raw?.name || !raw.component || !raw.locator) {
+  if (!isRecord(raw) || !raw.name || !raw.component || !raw.locator) {
     stats.skippedNoLocator += 1;
     return null;
   }
@@ -175,15 +178,15 @@ function toElement(raw, templates, stats) {
   try {
     locator = fromMap(raw.locator, templates);
   } catch (error) {
-    throw new Error(`Element '${raw.name}': ${error.message}`);
+    throw new Error(`Element '${raw.name}': ${errorMessage(error)}`);
   }
   if (locator.unstable) stats.unstable += 1;
 
-  const rung = raw.rung ?? rankOf(locator);
-  stats.rungs[rung] = (stats.rungs[rung] ?? 0) + 1;
+  const rung = typeof raw.rung === 'number' ? raw.rung : rankOf(locator);
+  stats.rungs[String(rung)] = (stats.rungs[String(rung)] ?? 0) + 1;
 
   const table = Array.isArray(raw.columns)
-    ? { columns: raw.columns.map((c) => (typeof c === 'string' ? c : c.name)).filter(Boolean), rowCount: Number(raw.rowCount ?? 0) }
+    ? { columns: raw.columns.map((c: unknown) => (typeof c === 'string' ? c : String(record(c).name ?? ''))).filter(Boolean), rowCount: Number(raw.rowCount ?? 0) }
     : null;
   if (table) stats.tables += 1;
 
@@ -191,7 +194,7 @@ function toElement(raw, templates, stats) {
     rawName: String(raw.name),
     component: String(raw.component),
     locator,
-    label: raw.label ?? locator.name ?? String(raw.name),
+    label: raw.label != null ? String(raw.label) : locator.name ?? String(raw.name),
     unstable: Boolean(locator.unstable),
     unstableReason: locator.unstableReason ?? null,
     rung,
@@ -204,7 +207,7 @@ function toElement(raw, templates, stats) {
  * The declared navigation bar. Absent or empty is a supported configuration: the framework is
  * generated without a NavigationBar, and each page object carries only its own elements.
  */
-function readNavigation(config, templates, stats) {
+function readNavigation(config: ApplicationConfig, templates: LocatorTemplates, stats: ApplicationStats): ElementModel[] {
   const declared = Array.isArray(config.navigation) ? config.navigation : [];
   return declared.map((raw) => {
     const element = toElement(raw, templates, stats);
@@ -213,4 +216,29 @@ function readNavigation(config, templates, stats) {
     }
     return element;
   });
+}
+
+export function readRoutesReport(value: unknown): Pick<RoutesReport, 'routes'> & Partial<Pick<RoutesReport, 'app'>> {
+  const raw = record(value);
+  return {
+    app: typeof raw.app === 'string' ? raw.app : undefined,
+    routes: list(raw.routes).map((entry) => {
+      const route = record(entry);
+      return {
+        path: String(route.path ?? ''), component: route.component == null ? null : String(route.component),
+        name: route.name == null ? null : String(route.name), params: list(route.params).map(String), source: String(route.source ?? ''),
+      };
+    }),
+  };
+}
+
+export function readComponentsReport(value: unknown): { app?: string; components: (Pick<ComponentsReport['components'][number], 'file'> & { elements: unknown[] })[] } {
+  const raw = record(value);
+  return {
+    app: typeof raw.app === 'string' ? raw.app : undefined,
+    components: list(raw.components).map((entry) => {
+      const component = record(entry);
+      return { file: String(component.file ?? ''), elements: list(component.elements) };
+    }),
+  };
 }

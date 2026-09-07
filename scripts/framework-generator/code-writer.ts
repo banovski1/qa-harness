@@ -6,6 +6,9 @@
 // so an emitter only says "open a block" / "close a block".
 
 export class CodeWriter {
+  indentUnit: string;
+  level: number;
+  parts: string[];
   constructor(indentUnit = '  ') {
     this.indentUnit = indentUnit;
     this.level = 0;
@@ -19,7 +22,7 @@ export class CodeWriter {
   }
 
   /** Append several lines at the current indent level. */
-  lines(list) {
+  lines(list: string[]) {
     for (const l of list) this.line(l);
     return this;
   }
@@ -41,7 +44,7 @@ export class CodeWriter {
   }
 
   /** Emit `open`, run `body` one level deeper, then emit `close`. */
-  block(open, body, close = '}') {
+  block(open: string, body: (writer: CodeWriter) => void, close = '}') {
     this.line(open).indent();
     body(this);
     this.dedent().line(close);
@@ -56,11 +59,11 @@ export class CodeWriter {
 }
 
 /** Escape a value for a double-quoted string literal in C-family languages. */
-export function quote(value) {
+export function quote(value: unknown): string {
   return `'${String(value).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n')}'`;
 }
 
 /** Escape a value for a double-quoted string literal (Java, C#, JSON). */
-export function dquote(value) {
+export function dquote(value: unknown): string {
   return `"${String(value).replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n')}"`;
 }

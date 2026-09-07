@@ -10,7 +10,8 @@
  * Every rung resolves to a strategy already in `locator-spec.mjs`'s closed vocabulary: the
  * ladder ranks the vocabulary, it does not extend it.
  */
-import {STRATEGIES} from './locator-spec.mjs';
+import {STRATEGIES} from './locator-spec.js';
+import type { LocatorSpec, LocatorSignals } from './types.js';
 
 /**
  * Best to worst. `rung` is the sort key and the number reported in tallies; `id` is the
@@ -42,7 +43,7 @@ for (const {id, strategy} of RUNGS) {
   }
 }
 
-export function rungById(id) {
+export function rungById(id: string) {
   const found = BY_ID.get(id);
   if (!found) throw new Error(`unknown ladder rung '${id}' (have: ${[...BY_ID.keys()].join(', ')})`);
   return found;
@@ -71,7 +72,7 @@ export const LAST_STABLE_RUNG = 6;
  * @param {string} [signals.cssPath]     a last-resort selector
  * @returns {{strategy, args, name, unstable, unstableReason, rung}|null}
  */
-export function bestLocatorFor(signals = {}) {
+export function bestLocatorFor(signals: LocatorSignals = {}): (LocatorSpec & { rung: number }) | null {
   const {
     testId, role, name, labelFor, label, templateId,
     placeholder, idAttr, nameAttr, text, cssPath,
@@ -95,7 +96,7 @@ export function bestLocatorFor(signals = {}) {
   return null;
 }
 
-function spec(id, {args, name = null, unstableReason = null}) {
+function spec(id: string, {args, name = null, unstableReason = null}: { args: string[]; name?: string | null; unstableReason?: string | null }): LocatorSpec & { rung: number } {
   const rung = rungById(id);
   return {
     strategy: rung.strategy,
@@ -108,7 +109,7 @@ function spec(id, {args, name = null, unstableReason = null}) {
 }
 
 /** A double quote inside an attribute selector would close the selector early. */
-function cssEscape(value) {
+function cssEscape(value: unknown): string {
   return String(value).replaceAll('"', '\\"');
 }
 
@@ -120,7 +121,7 @@ function cssEscape(value) {
  * css spec and leaves the template id behind on `.template`; without that check every
  * expanded template would be misreported as a rung-8 CSS path.
  */
-export function rankOf(spec) {
+export function rankOf(spec: Partial<LocatorSpec> | null | undefined): number | null {
   if (!spec || !spec.strategy) return null;
   if (spec.strategy === 'template' || spec.template) return 4;
   if (spec.strategy === 'getByTestId') return 1;
@@ -143,7 +144,7 @@ const ATTRIBUTE_ONLY = /^\[[\w-]+=("[^"]*"|'[^']*'|[\w-]+)\]$/;
  *
  * @returns {{rung: number, stable: boolean, reason: string|null}}
  */
-export function classify(expression) {
+export function classify(expression: unknown) {
   const source = String(expression ?? '');
 
   // Positional indexing is judged before the base strategy: `getByRole(...).nth(1)` is a
@@ -172,6 +173,6 @@ export function classify(expression) {
 const POSITIONAL = /\.nth\s*\(|\.(first|last)\s*\(\s*\)|:nth-(child|of-type|last-child)/;
 const NAMED_ROLE = /\.getByRole\s*\([^)]*\bname\s*:/;
 
-function stable(rung) {
+function stable(rung: number) {
   return {rung, stable: true, reason: null};
 }

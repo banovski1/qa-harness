@@ -5,9 +5,9 @@
 // per mapped page split into a generated half and a protected half, and a smoke
 // spec per page. Everything static lives in ./typescript-runtime.mjs.
 
-import { CodeWriter, quote } from '../code-writer.mjs';
-import { renderTemplate } from '../locator-spec.mjs';
-import { safeIdentifier, toKebab, toPascal, toCamel } from '../naming.mjs';
+import { CodeWriter, quote } from '../code-writer.js';
+import { renderTemplate } from '../locator-spec.js';
+import { safeIdentifier, toKebab, toPascal, toCamel } from '../naming.js';
 import { runtimeFiles } from './typescript-runtime.mjs';
 
 const EXT = '.ts';

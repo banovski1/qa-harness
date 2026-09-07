@@ -8,8 +8,8 @@
 // Nothing here picks a locator strategy. Signals are gathered and handed to the ladder, which
 // is what keeps this extractor and the codegen shaping step ranking locators the same way.
 
-import {bestLocatorFor} from '../framework-generator/locator-ladder.mjs';
-import {toCamel} from '../framework-generator/naming.mjs';
+import {bestLocatorFor} from '../framework-generator/locator-ladder.js';
+import {toCamel} from '../framework-generator/naming.js';
 import {isTestIdAttr} from './util.js';
 import {resolveLabelExpression} from './i18n.js';
 import {astNode, astNodes, astString} from './ast.js';

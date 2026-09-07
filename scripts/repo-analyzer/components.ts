@@ -6,7 +6,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import {STRATEGIES} from '../framework-generator/locator-spec.mjs';
+import {STRATEGIES} from '../framework-generator/locator-spec.js';
 import {detect} from './detect.js';
 import {buildComponentIndex, templatesFrom} from './elements-vue.js';
 import {loadCatalogue} from './i18n.js';

@@ -4,7 +4,7 @@
 // analysis/api-map/. Deterministic — no browser, no AI judgment is
 // needed to parse a self-describing JSON document.
 //
-//   node scripts/framework-generator/smart-api-map.mjs [app-config.yaml] [--strict]
+//   npm run smart-api-map --prefix scripts/framework-generator -- [app-config.yaml] [--strict]
 //
 // Run from the repo root. Tries apiSpec.specUrl/specPath first; on failure,
 // falls back to apiSpec.fallbackSpec (already in request-spec vocabulary).
@@ -13,23 +13,35 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import yaml from 'js-yaml';
-import { fromOpenApi, fromFallback, toYamlObject } from './request-spec.mjs';
+import { fromOpenApi, fromFallback, toYamlObject } from './request-spec.js';
+import { errorMessage, isRecord, list, record } from './types.js';
+import type { Operation } from './types.js';
+
+interface ApiSpecConfig { specUrl?: string; specPath?: string; fallbackSpec?: string; fetchAuth?: { header?: string; valueFromEnv?: string } }
+interface MappedResource { resource: string; source: string; sourceRef: string | null; operations: Operation[] }
 
 const DEFAULT_APP_CONFIG = 'app-config.yaml';
 const DEFAULT_API_MAP_DIR = join('analysis', 'api-map');
 
-async function main() {
+async function main(): Promise<void> {
   const args = process.argv.slice(2);
   const configPath = args.find((a) => !a.startsWith('--')) ?? DEFAULT_APP_CONFIG;
   const apiMapDir = process.env.API_MAP_DIR ?? DEFAULT_API_MAP_DIR;
 
   if (!existsSync(configPath)) throw new Error(`Config file not found: ${configPath}`);
   const appConfig = yaml.load(readFileSync(configPath, 'utf8'));
-  const apiSpec = appConfig?.apiSpec;
-  if (!apiSpec) throw new Error(`No 'apiSpec:' block in ${configPath}. Add specUrl/specPath and, optionally, fallbackSpec.`);
+  const rawApiSpec = isRecord(appConfig) ? appConfig.apiSpec : null;
+  if (!isRecord(rawApiSpec)) throw new Error(`No 'apiSpec:' block in ${configPath}. Add specUrl/specPath and, optionally, fallbackSpec.`);
+  const auth = isRecord(rawApiSpec.fetchAuth) ? rawApiSpec.fetchAuth : {};
+  const apiSpec: ApiSpecConfig = {
+    specUrl: rawApiSpec.specUrl == null ? undefined : String(rawApiSpec.specUrl),
+    specPath: rawApiSpec.specPath == null ? undefined : String(rawApiSpec.specPath),
+    fallbackSpec: rawApiSpec.fallbackSpec == null ? undefined : String(rawApiSpec.fallbackSpec),
+    fetchAuth: { header: auth.header == null ? undefined : String(auth.header), valueFromEnv: auth.valueFromEnv == null ? undefined : String(auth.valueFromEnv) },
+  };
 
   let pulled = null;
-  let pullError = null;
+  let pullError: unknown = null;
   if (apiSpec.specUrl || apiSpec.specPath) {
     try {
       pulled = await pullOpenApi(apiSpec);
@@ -45,12 +57,12 @@ async function main() {
     source = 'openapi';
     console.log(`[smart-api-map] pulled spec from ${apiSpec.specUrl ?? apiSpec.specPath}`);
   } else if (apiSpec.fallbackSpec) {
-    if (pullError) console.warn(`[smart-api-map] spec pull failed (${pullError.message}); using fallbackSpec`);
+    if (pullError) console.warn(`[smart-api-map] spec pull failed (${errorMessage(pullError)}); using fallbackSpec`);
     resources = loadFallback(apiSpec.fallbackSpec);
     source = 'manual';
   } else {
     throw new Error(
-      `Could not pull an OpenAPI spec${pullError ? ` (${pullError.message})` : ''} and no 'apiSpec.fallbackSpec' `
+      `Could not pull an OpenAPI spec${pullError ? ` (${errorMessage(pullError)})` : ''} and no 'apiSpec.fallbackSpec' `
       + 'is configured. Set apiSpec.specUrl/specPath to a reachable doc, or add a fallbackSpec file.',
     );
   }
@@ -74,40 +86,43 @@ async function main() {
   console.log(`[smart-api-map] wrote ${union.length} resource(s), ${opCount} operation(s) to ${apiMapDir} (source: ${source})`);
 }
 
-main().catch((err) => {
-  console.error('[smart-api-map] ERROR', err.message);
+main().catch((err: unknown) => {
+  console.error('[smart-api-map] ERROR', errorMessage(err));
   process.exit(1);
 });
 
 // ---- pulling -------------------------------------------------------------
 
-async function pullOpenApi(apiSpec) {
+async function pullOpenApi(apiSpec: ApiSpecConfig): Promise<MappedResource[]> {
   const raw = apiSpec.specPath ? readFileSync(apiSpec.specPath, 'utf8') : await fetchSpec(apiSpec);
-  const doc = JSON.parse(raw);
+  const doc: unknown = JSON.parse(raw);
   return normalizeOpenApiDoc(doc);
 }
 
-async function fetchSpec(apiSpec) {
-  const headers = {};
+async function fetchSpec(apiSpec: ApiSpecConfig): Promise<string> {
+  const headers: Record<string, string> = {};
   const auth = apiSpec.fetchAuth;
   if (auth?.header && auth?.valueFromEnv) {
     const value = process.env[auth.valueFromEnv];
     if (!value) throw new Error(`env var '${auth.valueFromEnv}' (apiSpec.fetchAuth.valueFromEnv) is not set`);
     headers[auth.header] = value;
   }
+  if (!apiSpec.specUrl) throw new Error('apiSpec.specUrl is required to fetch a spec');
   const response = await fetch(apiSpec.specUrl, { headers });
   if (!response.ok) throw new Error(`GET ${apiSpec.specUrl} -> ${response.status} ${response.statusText}`);
   return response.text();
 }
 
 /** OpenAPI doc -> resource[] in this repo's vocabulary, grouped by first tag (or 'default'). */
-function normalizeOpenApiDoc(doc) {
-  const byResource = new Map();
-  for (const [path, methods] of Object.entries(doc.paths ?? {})) {
-    for (const [method, operation] of Object.entries(methods)) {
+function normalizeOpenApiDoc(value: unknown): MappedResource[] {
+  const doc = record(value);
+  const byResource = new Map<string, Operation[]>();
+  for (const [path, methods] of Object.entries(record(doc.paths ?? {}))) {
+    for (const [method, value] of Object.entries(record(methods))) {
       if (!['get', 'post', 'put', 'patch', 'delete'].includes(method)) continue;
-      const resource = operation.tags?.[0] ?? 'default';
-      const operationId = operation.operationId ?? `${method}${path.replace(/[{}\/]/g, '_')}`;
+      const operation = record(value);
+      const resource = String(list(operation.tags)[0] ?? 'default');
+      const operationId = String(operation.operationId ?? `${method}${path.replace(/[{}\/]/g, '_')}`);
       const op = fromOpenApi({
         operationId,
         resource,
@@ -117,8 +132,9 @@ function normalizeOpenApiDoc(doc) {
         requestBody: operation.requestBody,
         responses: operation.responses,
       });
-      if (!byResource.has(resource)) byResource.set(resource, []);
-      byResource.get(resource).push(op);
+      const operations = byResource.get(resource) ?? [];
+      operations.push(op);
+      byResource.set(resource, operations);
     }
   }
   return [...byResource.entries()].map(([resource, operations]) => ({
@@ -128,15 +144,15 @@ function normalizeOpenApiDoc(doc) {
 
 // ---- fallback --------------------------------------------------------------
 
-function loadFallback(path) {
+function loadFallback(path: string): MappedResource[] {
   if (!existsSync(path)) throw new Error(`apiSpec.fallbackSpec file not found: ${path}`);
   const raw = yaml.load(readFileSync(path, 'utf8'));
-  if (!Array.isArray(raw?.resources)) throw new Error(`${path}: expected a top-level 'resources:' list`);
-  return raw.resources.map((r) => ({
-    resource: r.resource,
+  if (!isRecord(raw) || !Array.isArray(raw.resources)) throw new Error(`${path}: expected a top-level 'resources:' list`);
+  return raw.resources.map(record).map((r) => ({
+    resource: String(r.resource),
     source: 'manual',
     sourceRef: null,
-    operations: (r.operations ?? []).map((op) => fromFallback(op, r.resource)),
+    operations: list(r.operations).map((op) => fromFallback(op, r.resource)),
   }));
 }
 
@@ -146,7 +162,7 @@ function loadFallback(path) {
  * is how an app with a partial OpenAPI doc still gets full coverage. Pulled
  * spec wins on a genuine operationId collision.
  */
-function mergeFallbackExtras(resources, fallbackPath, source) {
+function mergeFallbackExtras(resources: MappedResource[], fallbackPath: string | undefined, source: string): MappedResource[] {
   if (source !== 'openapi' || !fallbackPath || !existsSync(fallbackPath)) return resources;
   const fallback = loadFallback(fallbackPath);
   const byResource = new Map(resources.map((r) => [r.resource, r]));
@@ -169,6 +185,6 @@ function mergeFallbackExtras(resources, fallbackPath, source) {
   return [...byResource.values()];
 }
 
-function toKebabResource(resource) {
+function toKebabResource(resource: unknown): string {
   return String(resource).replace(/([a-z0-9])([A-Z])/g, '$1-$2').replace(/[^A-Za-z0-9]+/g, '-').toLowerCase().replace(/^-+|-+$/g, '');
 }

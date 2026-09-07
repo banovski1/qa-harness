@@ -10,7 +10,7 @@ import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import {fileURLToPath} from 'node:url';
-import {bestLocatorFor, classify, rankOf, RUNGS} from '../../framework-generator/locator-ladder.mjs';
+import {bestLocatorFor, classify, rankOf, RUNGS} from '../../framework-generator/locator-ladder.js';
 import {loadProjectConfig, projectConfigPath} from '../../project-config.js';
 import {crossCheck, mergeByPath} from '../api-docs.js';
 import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements-vue.js';
@@ -291,6 +291,7 @@ test('only the bottom rung is marked unstable, and it says why', () => {
   assert.ok(css);
   assert.equal(css.rung, 8);
   assert.equal(css.unstable, true);
+  assert.ok(css.unstableReason);
   assert.match(css.unstableReason, /raw CSS/);
   // A template expands to CSS but is anchored to a label, so it must not be tagged unstable.
   assert.equal(bestLocatorFor({label: 'City', templateId: 'labelledInput'})?.unstable, false);

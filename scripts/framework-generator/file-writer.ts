@@ -8,11 +8,19 @@
 
 import { existsSync, mkdirSync, writeFileSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
+import type { GeneratedFile } from './types.js';
 
 /** @typedef {{ path: string, contents: string, kind: 'generated'|'protected' }} EmittedFile */
 
 export class FileWriter {
-  constructor(outputDir, { dryRun = false } = {}) {
+  outputDir: string;
+  dryRun: boolean;
+  written: number;
+  unchanged: number;
+  preserved: number;
+  planned: { path: string; action: 'preserve' | 'unchanged' | 'overwrite' | 'create' | 'dir' }[];
+
+  constructor(outputDir: string, { dryRun = false } = {}) {
     this.outputDir = outputDir;
     this.dryRun = dryRun;
     this.written = 0;
@@ -22,7 +30,7 @@ export class FileWriter {
   }
 
   /** Apply the write policy to one file. `file.path` is relative to outputDir. */
-  write(file) {
+  write(file: GeneratedFile): void {
     const target = join(this.outputDir, file.path);
     const exists = existsSync(target);
 
@@ -45,7 +53,7 @@ export class FileWriter {
   }
 
   /** Create a directory that would otherwise stay empty (e.g. src/api/clients). */
-  ensureDir(relative) {
+  ensureDir(relative: string): void {
     this.planned.push({ path: `${relative}/`, action: 'dir' });
     if (this.dryRun) return;
     mkdirSync(join(this.outputDir, relative), { recursive: true });

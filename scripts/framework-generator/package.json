@@ -4,11 +4,13 @@
   "description": "Static analysis in, Playwright test framework out. Reads analysis/ and generates a component-object-model framework in a configurable language.",
   "type": "module",
   "bin": {
-    "framework-generator": "generate.mjs"
+    "framework-generator": "generate.ts"
   },
   "scripts": {
-    "generate": "cd ../.. && tsx scripts/framework-generator/generate.mjs",
-    "check-analysis": "cd ../.. && tsx scripts/framework-generator/check-analysis.mjs",
+    "generate": "cd ../.. && tsx scripts/framework-generator/generate.ts",
+    "check-analysis": "cd ../.. && tsx scripts/framework-generator/check-analysis.ts",
+    "check-api-map": "cd ../.. && tsx scripts/framework-generator/check-api-map.ts",
+    "smart-api-map": "cd ../.. && tsx scripts/framework-generator/smart-api-map.ts",
     "test": "tsx --test __tests__/*.test.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

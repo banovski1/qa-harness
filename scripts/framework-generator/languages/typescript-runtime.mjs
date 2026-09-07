@@ -11,7 +11,7 @@
 //   * A component never reaches for `page`; it only knows its own Locator. That
 //     is what makes it composable inside another component's scope.
 
-import { quote } from '../code-writer.mjs';
+import { quote } from '../code-writer.js';
 
 /** @returns {{path: string, contents: string, kind: 'generated'|'protected'}[]} */
 export function runtimeFiles(context) {

@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S npx tsx
 // Static analysis in, Playwright test framework out.
 //
 // Reads the reports the repo analyzer writes from a local clone of the app under test and
@@ -6,24 +6,27 @@
 // is orchestration only: it validates the config, builds the model, hands it to a language
 // adapter, and applies the write policy. It never branches on the language.
 //
-//   node scripts/framework-generator/generate.mjs [path/to/generator-config.yaml] [--dry-run]
+//   npm run generate --prefix scripts/framework-generator -- [path/to/generator-config.yaml] [--dry-run]
 //
 // Run from the repo root so analysisDir and outputDir resolve correctly.
 
 import { readFileSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
-import { fromMap } from './locator-spec.mjs';
-import { RUNGS } from './locator-ladder.mjs';
-import { readApplicationModel } from './analysis-reader.mjs';
-import { readApiMap } from './api-map-reader.mjs';
+import { fromMap } from './locator-spec.js';
+import { RUNGS } from './locator-ladder.js';
+import { readApplicationModel } from './analysis-reader.js';
+import { readApiMap } from './api-map-reader.js';
 import { adapterFor, SUPPORTED_LANGUAGES } from './languages/index.mjs';
-import { FileWriter } from './file-writer.mjs';
+import { FileWriter } from './file-writer.js';
 import { loadProjectConfig } from '../project-config.js';
+import { errorMessage, isRecord, list, record } from './types.js';
+import type { ApplicationModel, GeneratedFile, GenerationContext, GeneratorConfig, LanguageAdapter, LoginFlow, NavigationEntry } from './types.js';
 
 const DEFAULT_CONFIG = join('scripts', 'framework-generator', 'generator-config.yaml');
 
-const DEFAULTS = {
+const DEFAULTS: Omit<GeneratorConfig, 'login'> = {
   language: 'typescript',
   projectName: 'playwright-framework',
   outputDir: './generated-framework',
@@ -45,13 +48,14 @@ export const TEMPLATE_IDS = ['labelledInput', 'labelledTextarea', 'labelledSelec
 
 // ---- entry point -------------------------------------------------------------
 
-async function main() {
-  const args = process.argv.slice(2);
+export async function main(argv: string[] = process.argv.slice(2)): Promise<void> {
+  const args = argv;
   const dryRun = args.includes('--dry-run');
   const configPath = args.find((a) => !a.startsWith('--')) ?? DEFAULT_CONFIG;
 
   const config = loadConfig(configPath);
-  const adapter = adapterFor(config.language);
+  // The adapters remain JavaScript until the next migration task.
+  const adapter = adapterFor(config.language) as LanguageAdapter;
   console.log(`[framework-gen] ${config.language} -> ${config.outputDir}${dryRun ? ' (dry run)' : ''}`);
 
   const model = readApplicationModel(config);
@@ -72,7 +76,7 @@ async function main() {
       `${apiModel.stats.operations} operation(s)${apiModel.stats.droppedFields ? `, ${apiModel.stats.droppedFields} dropped field(s)` : ''}`);
   }
 
-  const context = { config, model, apiModel, adapter };
+  const context: GenerationContext = { config, model, apiModel, adapter };
   const writer = new FileWriter(config.outputDir, { dryRun });
 
   for (const dir of adapter.emptyDirs(context)) writer.ensureDir(dir);
@@ -84,7 +88,7 @@ async function main() {
     console.warn(`[framework-gen] page objects are not implemented for ${config.language} yet — emitted scaffold only`);
   } else {
     for (const page of model.pages) {
-      for (const file of adapter.renderPage(page, context)) writer.write(file);
+      for (const file of adapter.renderPage(page, context) ?? []) writer.write(file);
       const spec = adapter.renderTest(page, context);
       if (spec) writer.write(spec);
       pageObjects += 1;
@@ -103,10 +107,12 @@ async function main() {
   console.log(`[framework-gen] done: ${pageObjects} page object(s), ${apiResources} api resource(s), ${writer.summary()}.`);
 }
 
-main().catch((err) => {
-  console.error('[framework-gen] ERROR', err.message);
-  process.exit(1);
-});
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((err: unknown) => {
+    console.error('[framework-gen] ERROR', errorMessage(err));
+    process.exit(1);
+  });
+}
 
 /**
  * How the elements are distributed across the locator ladder.
@@ -115,7 +121,7 @@ main().catch((err) => {
  * found, the ladder says how well it will hold up. A run that shifts elements down a rung is
  * a regression even when it finds more of them.
  */
-function rungTable(model) {
+function rungTable(model: ApplicationModel): string {
   const counts = model.stats.rungs ?? {};
   const rungs = Object.keys(counts).map(Number).sort((a, b) => a - b);
   if (rungs.length === 0) return '';
@@ -132,49 +138,61 @@ function rungTable(model) {
 // ---- config ------------------------------------------------------------------
 
 /** Read, merge over defaults, and validate the generator config. */
-function loadConfig(path) {
+export function loadConfig(path: string): GeneratorConfig {
   if (!existsSync(path)) throw new Error(`Config file not found: ${path}`);
   const raw = yaml.load(readFileSync(path, 'utf8'));
-  if (!raw || typeof raw !== 'object') throw new Error(`Empty config file: ${path}`);
+  if (!isRecord(raw)) throw new Error(`Empty config file: ${path}`);
   const projectConfig = loadProjectConfig();
 
-  const config = {
-    ...DEFAULTS,
-    ...raw,
-    baseUrl: raw.baseUrl || projectConfig.baseUrl,
-    pages: { ...DEFAULTS.pages, ...(raw.pages ?? {}) },
-    waits: { ...DEFAULTS.waits, ...(raw.waits ?? {}) },
-    tests: { ...DEFAULTS.tests, ...(raw.tests ?? {}) },
-    locatorTemplates: { ...(raw.locatorTemplates ?? {}) },
-    api: { ...DEFAULTS.api, ...(raw.api ?? {}) },
-  };
+  const language = raw.language === undefined ? DEFAULTS.language : String(raw.language);
+  const baseUrl = String(raw.baseUrl || projectConfig.baseUrl);
+  const outputDir = raw.outputDir === undefined ? DEFAULTS.outputDir : raw.outputDir;
+  const pages = { ...DEFAULTS.pages, ...record(raw.pages ?? {}) };
+  const waits = { ...DEFAULTS.waits, ...record(raw.waits ?? {}) };
+  const tests = { ...DEFAULTS.tests, ...record(raw.tests ?? {}) };
+  const api = { ...DEFAULTS.api, ...record(raw.api ?? {}) };
+  const locatorTemplates = record(raw.locatorTemplates ?? {});
 
-  if (!SUPPORTED_LANGUAGES.includes(config.language)) {
-    throw new Error(`Unknown language: '${config.language}'. Supported: ${SUPPORTED_LANGUAGES.join(', ')}`);
+  if (!SUPPORTED_LANGUAGES.includes(language)) {
+    throw new Error(`Unknown language: '${language}'. Supported: ${SUPPORTED_LANGUAGES.join(', ')}`);
   }
-  if (!config.baseUrl) throw new Error("Missing 'baseUrl:' in app-config.yaml or the generator config.");
-  if (!config.outputDir) throw new Error("Missing 'outputDir:' in the generator config.");
-  const segment = config.pages.folderSegment;
-  if (segment !== 'auto' && !(Number.isInteger(segment) && segment >= 1)) {
+  if (!baseUrl) throw new Error("Missing 'baseUrl:' in app-config.yaml or the generator config.");
+  if (!outputDir) throw new Error("Missing 'outputDir:' in the generator config.");
+  const segment: unknown = pages.folderSegment;
+  if (segment !== 'auto' && !(typeof segment === 'number' && Number.isInteger(segment) && segment >= 1)) {
     throw new Error(`pages.folderSegment must be 'auto' or a positive integer, got ${JSON.stringify(segment)}`);
   }
-  if (!config.waits.spinnerSelector) {
+  if (!waits.spinnerSelector) {
     throw new Error("waits.spinnerSelector must be a CSS selector. Remove the key to use the default.");
   }
 
   // A template whose id the generator does not know, or which forgets {label}, would
   // silently never match an element and quietly disable the factory it was written for.
-  for (const [id, template] of Object.entries(config.locatorTemplates)) {
+  const templates: Record<string, string> = {};
+  for (const [id, template] of Object.entries(locatorTemplates)) {
     if (!TEMPLATE_IDS.includes(id)) {
       throw new Error(`Unknown locatorTemplates id '${id}'. Known ids: ${TEMPLATE_IDS.join(', ')}`);
     }
     if (typeof template !== 'string' || !template.includes('{label}')) {
       throw new Error(`locatorTemplates.${id} must be a selector string containing {label}, got ${JSON.stringify(template)}`);
     }
+    templates[id] = template;
   }
 
-  config.login = config.loginConfig ? loadLoginFlow(config.loginConfig) : null;
-  return config;
+  const loginConfig = raw.loginConfig ? String(raw.loginConfig) : null;
+  return {
+    ...raw,
+    language, baseUrl, outputDir: String(outputDir), projectName: String(raw.projectName ?? DEFAULTS.projectName),
+    analysisDir: String(raw.analysisDir ?? DEFAULTS.analysisDir), apiMapDir: String(raw.apiMapDir ?? DEFAULTS.apiMapDir),
+    loginConfig, login: loginConfig ? loadLoginFlow(loginConfig) : null,
+    ...(raw.mapDir == null ? {} : { mapDir: String(raw.mapDir) }),
+    pages: { folderSegment: segment, dropParamSegments: Boolean(pages.dropParamSegments), mergeDuplicates: Boolean(pages.mergeDuplicates) },
+    waits: { spinnerSelector: String(waits.spinnerSelector) }, tests: { generateSmokeSpecs: Boolean(tests.generateSmokeSpecs) },
+    navigation: list(raw.navigation).map(readNavigationEntry), locatorTemplates: templates,
+    api: { enabled: Boolean(api.enabled), pathPrefix: api.pathPrefix == null ? undefined : String(api.pathPrefix),
+      include: readApiFilter(api.include), exclude: readApiFilter(api.exclude),
+      generateAssertionSpecs: Boolean(api.generateAssertionSpecs), generateFactories: Boolean(api.generateFactories) },
+  };
 }
 
 /**
@@ -183,11 +201,11 @@ function loadConfig(path) {
  * here is what lets the generator emit a working login helper instead of a TODO.
  * Credentials are deliberately not read: they belong in the environment.
  */
-function loadLoginFlow(path) {
+function loadLoginFlow(path: string): LoginFlow {
   if (!existsSync(path)) throw new Error(`loginConfig file not found: ${path}`);
   const spec = yaml.load(readFileSync(path, 'utf8'));
-  const login = spec?.login;
-  if (!login) throw new Error(`No 'login:' block in ${path}`);
+  const login = isRecord(spec) ? spec.login : null;
+  if (!isRecord(login)) throw new Error(`No 'login:' block in ${path}`);
 
   const required = ['loginUrl', 'usernameLocator', 'passwordLocator', 'submitLocator'];
   for (const key of required) {
@@ -210,7 +228,7 @@ function loadLoginFlow(path) {
  * an element whose label the extractor could not resolve, or one of several elements
  * sharing a label — recording the flow with playwright-codegen is what pins them down.
  */
-function report(context) {
+function report(context: GenerationContext): GeneratedFile {
   const { model, config } = context;
   const rows = [];
   for (const page of model.pages) {
@@ -277,9 +295,31 @@ function report(context) {
   return { path: 'GENERATION-REPORT.md', contents: md, kind: 'generated' };
 }
 
-function printPlan(writer) {
+function printPlan(writer: FileWriter): void {
   for (const { path, action } of writer.planned) {
     if (action === 'unchanged') continue;
     console.log(`  ${action.padEnd(9)} ${path}`);
   }
+}
+
+function readApiFilter(value: unknown) {
+  const raw = record(value ?? {});
+  return {
+    ...(raw.tags == null ? {} : { tags: list(raw.tags).map(String) }),
+    ...(raw.operationIds == null ? {} : { operationIds: list(raw.operationIds).map(String) }),
+  };
+}
+
+function readNavigationEntry(value: unknown): NavigationEntry {
+  const raw = record(value);
+  if (!raw.name || !raw.component || !raw.locator) {
+    throw new Error(`navigation: entry needs name, component and locator — got ${JSON.stringify(value)}`);
+  }
+  return {
+    name: String(raw.name), component: String(raw.component),
+    locator: raw.locator, label: raw.label == null ? null : String(raw.label),
+    ...(typeof raw.rung === 'number' ? { rung: raw.rung } : {}),
+    ...(raw.columns == null ? {} : { columns: list(raw.columns).map((c) => typeof c === 'string' ? c : { name: String(record(c).name) }) }),
+    ...(raw.rowCount == null ? {} : { rowCount: Number(raw.rowCount) }),
+  };
 }

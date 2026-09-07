@@ -2,6 +2,9 @@
 // application map (output). Each spec resolves to a real Playwright Locator so a
 // candidate's uniqueness can be verified with .count().
 
+import { isRecord } from './types.js';
+import type { LocatorSpec, LocatorTemplates, LocatorRoot } from './types.js';
+
 export const STRATEGIES = [
   'getByRole', 'getByLabel', 'getByPlaceholder', 'getByText',
   'getByAltText', 'getByTitle', 'getByTestId', 'css', 'template',
@@ -17,18 +20,18 @@ export const STRATEGIES = [
  * and every consumer only ever see a selector they already understand. The template id
  * and label ride along so toYamlInline can write the short form back out.
  */
-export function fromMap(m, templates = {}) {
-  if (!m || !STRATEGIES.includes(m.strategy)) {
+export function fromMap(m: unknown, templates: LocatorTemplates = {}): LocatorSpec {
+  if (!isRecord(m) || typeof m.strategy !== 'string' || !STRATEGIES.includes(m.strategy)) {
     throw new Error(`Invalid locator strategy: ${JSON.stringify(m)}`);
   }
-  const spec = {
+  const spec: LocatorSpec = {
     strategy: m.strategy,
     args: Array.isArray(m.args) ? m.args.map(String) : [],
     name: m.name != null ? String(m.name) : null,
     unstable: Boolean(m.unstable),
-    unstableReason: m.unstableReason ?? null,
+    unstableReason: m.unstableReason != null ? String(m.unstableReason) : null,
     within: m.within ? fromMap(m.within, templates) : null,
-    nth: Number.isInteger(m.nth) ? m.nth : null,
+    nth: typeof m.nth === 'number' && Number.isInteger(m.nth) ? m.nth : null,
     template: null,
   };
   return spec.strategy === 'template' ? expandTemplate(spec, templates) : spec;
@@ -42,12 +45,12 @@ export function fromMap(m, templates = {}) {
  * the generator and the runtime would disagree about the same element. Both the map
  * expansion and the emitter's equivalence check call this, so there is one rule.
  */
-export function renderTemplate(pattern, label) {
+export function renderTemplate(pattern: string, label: unknown): string {
   return pattern.replaceAll('{label}', String(label).replaceAll('"', '\\"'));
 }
 
 /** Substitute the label into the configured pattern, yielding an ordinary css spec. */
-function expandTemplate(spec, templates) {
+function expandTemplate(spec: LocatorSpec, templates: LocatorTemplates): LocatorSpec {
   const id = spec.args[0];
   const pattern = templates[id];
   if (!pattern) {
@@ -61,7 +64,7 @@ function expandTemplate(spec, templates) {
 }
 
 /** Convenience constructor with the same defaults as fromMap. */
-export function make(strategy, args, name = null, extra = {}) {
+export function make(strategy: string, args: string[], name: string | null = null, extra: Partial<LocatorSpec> = {}): LocatorSpec {
   return { strategy, args, name, unstable: false, unstableReason: null, within: null, nth: null, template: null, ...extra };
 }
 
@@ -71,7 +74,7 @@ export function make(strategy, args, name = null, extra = {}) {
  * this is how ambiguous elements (e.g. a table-header checkbox with no name) get scoped
  * to a unique locator instead of being dropped.
  */
-export function resolve(root, spec) {
+export function resolve(root: LocatorRoot, spec: LocatorSpec): LocatorRoot {
   const scope = spec.within ? resolve(root, spec.within) : root;
   const a0 = spec.args[0] ?? '';
   let locator;
@@ -94,7 +97,7 @@ export function resolve(root, spec) {
 }
 
 /** Emit the inline-YAML shape used across app-config.yaml and application-map/*.yaml. */
-export function toYamlInline(spec) {
+export function toYamlInline(spec: LocatorSpec): string {
   // An expanded template writes back as the template it came from, not as the
   // selector it expanded to — otherwise a round-trip would silently inline the app's
   // CSS back into the map and undo the reason for having templates.
@@ -112,6 +115,6 @@ export function toYamlInline(spec) {
 }
 
 /** Double-quote and escape a YAML scalar. */
-export function yamlString(v) {
+export function yamlString(v: unknown): string {
   return `"${String(v).replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
 }

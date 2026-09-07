@@ -7,7 +7,7 @@
 // `2Button` from pagination) and names that could collide with a keyword in a
 // target language. safeIdentifier() is the single place both are fixed.
 
-const RESERVED = {
+const RESERVED: Record<string, Set<string>> = {
   typescript: new Set([
     'break', 'case', 'catch', 'class', 'const', 'continue', 'debugger', 'default', 'delete',
     'do', 'else', 'enum', 'export', 'extends', 'false', 'finally', 'for', 'function', 'if',
@@ -51,7 +51,7 @@ const RESERVED = {
 };
 
 /** Split an arbitrary string into lowercase word tokens (drops punctuation, splits camelCase). */
-export function words(input) {
+export function words(input: unknown): string[] {
   return String(input ?? '')
     .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
     .replace(/[^A-Za-z0-9]+/g, ' ')
@@ -62,23 +62,23 @@ export function words(input) {
 }
 
 /** "view system users" -> "ViewSystemUsers" */
-export function toPascal(input) {
+export function toPascal(input: unknown): string {
   return words(input).map((w) => w[0].toUpperCase() + w.slice(1)).join('');
 }
 
 /** "View System Users" -> "viewSystemUsers" */
-export function toCamel(input) {
+export function toCamel(input: unknown): string {
   const p = toPascal(input);
   return p ? p[0].toLowerCase() + p.slice(1) : '';
 }
 
 /** "ViewSystemUsers" -> "view_system_users" */
-export function toSnake(input) {
+export function toSnake(input: unknown): string {
   return words(input).join('_');
 }
 
 /** "ViewSystemUsers" -> "view-system-users" */
-export function toKebab(input) {
+export function toKebab(input: unknown): string {
   return words(input).join('-');
 }
 
@@ -88,7 +88,7 @@ export function toKebab(input) {
  * supported language allows one; reserved words get a trailing underscore, which
  * is the least surprising escape in all five.
  */
-export function safeIdentifier(name, language) {
+export function safeIdentifier(name: unknown, language: string): string {
   let id = String(name ?? '').replace(/[^A-Za-z0-9_]/g, '');
   if (!id) id = 'element';
   if (/^[0-9]/.test(id)) id = `n${id}`;
@@ -105,7 +105,7 @@ export function safeIdentifier(name, language) {
  * both fall back to the module segment. A trailing `Module` that just repeats
  * the folder it lives in ("maintenance/MaintenanceModulePage") is stripped too.
  */
-export function pageClassName(moduleSegment, actionSegment) {
+export function pageClassName(moduleSegment: unknown, actionSegment: unknown): string {
   let base = toPascal(actionSegment ?? '');
   if (/^View[A-Z]/.test(base)) base = base.slice(4);
   const moduleName = toPascal(moduleSegment ?? '');

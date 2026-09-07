@@ -6,15 +6,17 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import yaml from 'js-yaml';
-import { fromFallback } from './request-spec.mjs';
-import { safeIdentifier, toCamel, toPascal } from './naming.mjs';
+import { fromFallback } from './request-spec.js';
+import { safeIdentifier, toCamel, toPascal } from './naming.js';
+import { isRecord, list, record } from './types.js';
+import type { ApiModel, GeneratorConfig, ResourceModel } from './types.js';
 
 /**
  * @typedef {{ resource: string, className: string, source: string, sourceRef: string|null,
  *             operations: import('./request-spec.mjs').Operation[] }} ResourceModel
  * @returns {{ resources: ResourceModel[], stats: object }}
  */
-export function readApiMap(config) {
+export function readApiMap(config: Pick<GeneratorConfig, 'apiMapDir' | 'api'>): ApiModel {
   const stats = { files: 0, resources: 0, operations: 0, droppedFields: 0 };
   if (!config.api?.enabled) return { resources: [], stats };
 
@@ -28,19 +30,20 @@ export function readApiMap(config) {
 
   const included = config.api.include ?? {};
   const excluded = config.api.exclude ?? {};
-  const resources = [];
+  const resources: ResourceModel[] = [];
 
   for (const file of files) {
     const raw = yaml.load(readFileSync(join(config.apiMapDir, file), 'utf8'));
-    if (!raw || typeof raw !== 'object') throw new Error(`Empty or malformed api-map file: ${file}`);
+    if (!isRecord(raw)) throw new Error(`Empty or malformed api-map file: ${file}`);
     if (!raw.resource) throw new Error(`${file}: no 'resource:' key`);
 
-    if (excluded.tags?.includes(raw.resource)) continue;
-    if (included.tags?.length && !included.tags.includes(raw.resource)) continue;
+    const resource = String(raw.resource);
+    if (excluded.tags?.includes(resource)) continue;
+    if (included.tags?.length && !included.tags.includes(resource)) continue;
 
-    const operations = (raw.operations ?? [])
-      .filter((op) => !included.operationIds?.length || included.operationIds.includes(op.operationId))
-      .filter((op) => !excluded.operationIds?.includes(op.operationId))
+    const operations = list(raw.operations).map(record)
+      .filter((op) => !included.operationIds?.length || included.operationIds.includes(String(op.operationId)))
+      .filter((op) => !excluded.operationIds?.includes(String(op.operationId)))
       .map((op) => fromFallback(op, raw.resource));
 
     if (operations.length === 0) continue;
@@ -52,8 +55,8 @@ export function readApiMap(config) {
     resources.push({
       resource: String(raw.resource),
       className: toPascal(raw.resource),
-      source: raw.source ?? 'manual',
-      sourceRef: raw.sourceRef ?? null,
+      source: String(raw.source ?? 'manual'),
+      sourceRef: raw.sourceRef == null ? null : String(raw.sourceRef),
       // operationIds are commonly kebab-case (OpenAPI convention) or already
       // camelCase (fallback files); toCamel handles both the same way words()
       // does for map element names, then safeIdentifier guards leading digits
