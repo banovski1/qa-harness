@@ -8,11 +8,65 @@ import { join, basename } from 'node:path';
 import { readApplicationModel } from '../analysis-reader.js';
 import { readApiMap } from '../api-map-reader.js';
 import { loadConfig, main } from '../generate.js';
+import type { GeneratedFile, GenerationContext, LanguageAdapter } from '../types.js';
 
 function fixture(t: { after(fn: () => void): void }) {
   const dir = mkdtempSync(join(tmpdir(), 'generator-contract-'));
   t.after(() => rmSync(dir, { recursive: true, force: true }));
   return dir;
+}
+
+for (const [id, extension] of [['typescript', '.ts'], ['javascript', '.js'], ['java', '.java'], ['python', '.py'], ['csharp', '.cs']]) {
+  test(`${id} adapter emits project files and honors its page-generation contract`, async (t) => {
+    const { adapterFor, SUPPORTED_LANGUAGES } = await import('../languages/index.js');
+    const adapter: LanguageAdapter = adapterFor(id);
+    assert.ok(SUPPORTED_LANGUAGES.includes(id));
+    assert.equal(adapter.id, id);
+    assert.equal(adapter.extension, extension);
+    assert.throws(() => adapterFor('unsupported'), /Unknown language.*Supported:/);
+
+    const dir = fixture(t);
+    const configPath = join(dir, 'config.yaml');
+    writeFileSync(configPath, JSON.stringify({ analysisDir: dir, baseUrl: 'https://example.test' }));
+    writeFileSync(join(dir, 'pages-and-routes.json'), JSON.stringify({ routes: [{ path: '/users', component: 'Users.vue' }] }));
+    writeFileSync(join(dir, 'frontend-components.json'), JSON.stringify({ components: [{ file: 'Users.vue', elements: [
+      { name: 'save', component: 'button', locator: { strategy: 'getByRole', args: ['button'], name: 'Save' } },
+    ] }] }));
+    const config = loadConfig(configPath);
+    const model = readApplicationModel(config);
+    const context: GenerationContext = { config, model, apiModel: readApiMap(config), adapter };
+    const assertFiles = (files: GeneratedFile[]) => {
+      assert.ok(Array.isArray(files));
+      assert.ok(files.length > 0);
+      for (const file of files) {
+        assert.equal(typeof file.path, 'string');
+        assert.equal(typeof file.contents, 'string');
+        assert.ok(['generated', 'protected'].includes(file.kind));
+      }
+      assert.equal(new Set(files.map((file) => file.path)).size, files.length);
+    };
+    const staticFiles = adapter.staticFiles(context);
+    assertFiles(staticFiles);
+    assert.match(staticFiles.find((file) => file.path === '.env.example')!.contents, /BASE_URL=https:\/\/example.test/);
+    const dirs = adapter.emptyDirs(context);
+    assert.ok(Array.isArray(dirs));
+    assert.ok(dirs.length > 0);
+    assert.ok(dirs.every((dir) => typeof dir === 'string'));
+    const pageFiles = adapter.renderPage(model.pages[0], context);
+    if (id === 'typescript') {
+      assert.ok(pageFiles);
+      assertFiles(pageFiles);
+      assert.deepEqual(pageFiles.map((file) => file.kind), ['generated', 'protected']);
+      assert.match(pageFiles[0].contents, /ButtonComponent.byLabel\(this.page, 'Save'\)/);
+      assert.match(adapter.renderTest(model.pages[0], context)!.contents, /usersPage.goto\(\)/);
+      context.config.tests.generateSmokeSpecs = false;
+      assert.equal(adapter.renderTest(model.pages[0], context), null);
+      assert.deepEqual(adapter.locatorStats!(model, config), { total: 1, derived: 1, byFactory: [['ButtonComponent.byLabel', 1]] });
+    } else {
+      assert.equal(pageFiles, null);
+      assert.equal(adapter.renderTest(model.pages[0], context), null);
+    }
+  });
 }
 
 test('joins literal routes and components, applies mount prefix and removes shared navigation', (t) => {

@@ -61,6 +61,11 @@ export interface Operation {
 export interface ResourceModel { resource: string; className: string; source: string; sourceRef: string | null; operations: (Operation & { safeId: string })[] }
 export interface ApiModel { resources: ResourceModel[]; stats: { files: number; resources: number; operations: number; droppedFields: number } }
 export interface GeneratedFile { path: string; contents: string; kind: 'generated' | 'protected' }
+export interface ScaffoldDefinition {
+  id: string; displayName: string; extension: string; emptyDirs: string[];
+  layoutNotes: string; gettingStarted: string;
+  files(context: GenerationContext): GeneratedFile[];
+}
 export interface GenerationContext { config: GeneratorConfig; model: ApplicationModel; apiModel: ApiModel; adapter: LanguageAdapter }
 export interface LanguageAdapter {
   id: string; extension: string;
@@ -70,7 +75,7 @@ export interface LanguageAdapter {
   renderTest(page: PageModel, context: GenerationContext): GeneratedFile | null;
   renderApiClient?(resource: ResourceModel, context: GenerationContext): GeneratedFile[] | null;
   renderApiTest?(resource: ResourceModel, context: GenerationContext): GeneratedFile[] | null;
-  locatorStats?(model: ApplicationModel, config: GeneratorConfig): { total: number; derived: number; byFactory: Map<string, number> };
+  locatorStats?(model: ApplicationModel, config: GeneratorConfig): { total: number; derived: number; byFactory: [string, number][] };
 }
 export interface LocatorRoot {
   getByRole(role: string, options?: { name: string; exact: boolean }): LocatorRoot;

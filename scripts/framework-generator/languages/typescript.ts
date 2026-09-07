@@ -3,18 +3,19 @@
 // It renders three kinds of thing from the model: the shared navigation
 // component (from the chrome the mapper found on every page), one page object
 // per mapped page split into a generated half and a protected half, and a smoke
-// spec per page. Everything static lives in ./typescript-runtime.mjs.
+// spec per page. Everything static lives in ./typescript-runtime.ts.
 
 import { CodeWriter, quote } from '../code-writer.js';
 import { renderTemplate } from '../locator-spec.js';
 import { safeIdentifier, toKebab, toPascal, toCamel } from '../naming.js';
-import { runtimeFiles } from './typescript-runtime.mjs';
+import { runtimeFiles } from './typescript-runtime.js';
+import type { ElementModel, GeneratedFile, GenerationContext, GeneratorConfig, LanguageAdapter, LocatorSpec, Operation, PageModel, RequestSpecSchema, ResourceModel, StateModel } from '../types.js';
 
 const EXT = '.ts';
 
 // component -> class. `dropdown` splits on role because the mapper emits both
 // the trigger and its individual options under that one name.
-const COMPONENT_CLASS = {
+const COMPONENT_CLASS: Record<string, string> = {
   button: 'ButtonComponent',
   link: 'LinkComponent',
   input: 'InputComponent',
@@ -29,7 +30,7 @@ const COMPONENT_CLASS = {
   table: 'TableComponent',
 };
 
-const IMPORT_PATH = {
+const IMPORT_PATH: Record<string, string> = {
   TableComponent: 'components/tables/TableComponent',
 };
 
@@ -42,7 +43,9 @@ const IMPORT_PATH = {
  * is only usable for an element of that exact kind — otherwise the description
  * would change.
  */
-const FACTORIES = {
+type ComponentFactory = { method: string; kind: string } & ({ role: 'link' | 'button' | 'radio' | 'tab' | 'heading'; template?: never } | { role?: never; template: string });
+
+const FACTORIES: Record<string, ComponentFactory[]> = {
   LinkComponent: [{ method: 'byLabel', kind: 'link', role: 'link' }],
   ButtonComponent: [{ method: 'byLabel', kind: 'button', role: 'button' }],
   RadioComponent: [{ method: 'byLabel', kind: 'radio', role: 'radio' }],
@@ -57,7 +60,7 @@ const FACTORIES = {
   TableComponent: [{ method: 'byColumn', kind: 'table', template: 'tableByColumn' }],
 };
 
-export const typescript = {
+export const typescript: LanguageAdapter = {
   id: 'typescript',
   extension: EXT,
 
@@ -85,7 +88,7 @@ export const typescript = {
   },
 
   renderApiClient(resource, context) {
-    const files = [
+    const files: GeneratedFile[] = [
       { path: `src/data/testData/${resource.className}.types.generated.ts`, contents: dtoTypes(resource), kind: 'generated' },
       { path: `src/api/clients/${resource.className}Client.generated.ts`, contents: generatedApiClient(resource), kind: 'generated' },
       { path: `src/api/clients/${resource.className}Client.ts`, contents: protectedApiClient(resource), kind: 'protected' },
@@ -111,7 +114,7 @@ export const typescript = {
    * was actually written.
    */
   locatorStats(model, config) {
-    const byFactory = new Map();
+    const byFactory = new Map<string, number>();
     let total = 0;
     let derived = 0;
     const elements = [
@@ -134,7 +137,7 @@ export const typescript = {
 
 // ---- page objects ------------------------------------------------------------
 
-function pagePath(page, suffix) {
+function pagePath(page: PageModel, suffix: string): string {
   return `src/pages/${page.group}/${page.fileBase}${suffix}${EXT}`;
 }
 
@@ -143,9 +146,9 @@ function pagePath(page, suffix) {
  * element. Accessors are getters rather than constructor-assigned fields so a
  * page object stays cheap to build — nothing touches the DOM until it is used.
  */
-function generatedPage(page, context) {
+function generatedPage(page: PageModel, context: GenerationContext): string {
   const w = new CodeWriter();
-  const used = new Set();
+  const used = new Set<string>();
   const stateClasses = page.states.map((state) => ({
     state,
     className: `${page.className}${toPascal(state.rawName)}`,
@@ -198,8 +201,8 @@ function generatedPage(page, context) {
   return w.toString();
 }
 
-function emitStateClass(w, state, className, config) {
-  const used = new Set();
+function emitStateClass(w: CodeWriter, state: StateModel, className: string, config: GeneratorConfig): void {
+  const used = new Set<string>();
   w.line(`/** Only present while ${quote(state.triggerLabel)} is open. */`);
   w.block(`export class ${className} {`, (b) => {
     b.line('constructor(private readonly page: Page) {}');
@@ -210,7 +213,7 @@ function emitStateClass(w, state, className, config) {
   });
 }
 
-function emitAccessor(w, element, used, root, config) {
+function emitAccessor(w: CodeWriter, element: ElementModel, used: Set<string>, root: string, config: GeneratorConfig): boolean {
   const name = uniqueAccessor(element.rawName, used);
   const cls = classFor(element);
   const doc = element.label ? `${element.label} (${element.component})` : element.component;
@@ -230,7 +233,7 @@ function emitAccessor(w, element, used, root, config) {
 }
 
 /** The protected half — written once, then left alone forever. */
-function protectedPage(page) {
+function protectedPage(page: PageModel): string {
   const w = new CodeWriter();
   w.line(`import { ${page.className}Generated } from './${page.fileBase}.generated';`);
   w.blank();
@@ -254,7 +257,7 @@ function protectedPage(page) {
  * unique. Emitting `{ name: '' }` instead would produce a different, unverified
  * locator.
  */
-function renderLocator(spec, root) {
+function renderLocator(spec: LocatorSpec, root: string): string {
   let expr = spec.within ? renderLocator(spec.within, root) : root;
   const arg = quote(spec.args[0] ?? '');
 
@@ -288,7 +291,7 @@ function renderLocator(spec, root) {
  * whole map at once: a template that stops matching degrades to the old output
  * instead of silently addressing a different element.
  */
-function factoryFor(element, cls, root, config) {
+function factoryFor(element: ElementModel, cls: string, root: string, config: GeneratorConfig): string | null {
   const spec = element.locator;
   if (spec.within || spec.nth != null || spec.unstable) return null;
 
@@ -313,19 +316,19 @@ function factoryFor(element, cls, root, config) {
   return null;
 }
 
-function classFor(element) {
+function classFor(element: ElementModel): string {
   if (element.component === 'dropdown') {
     return element.locator.args[0] === 'option' ? 'OptionComponent' : 'DropdownComponent';
   }
   return COMPONENT_CLASS[element.component] ?? 'GenericComponent';
 }
 
-function collectClasses(elements) {
+function collectClasses(elements: ElementModel[]): string[] {
   const set = new Set(elements.map(classFor));
   return [...set].sort();
 }
 
-function uniqueAccessor(rawName, used) {
+function uniqueAccessor(rawName: string, used: Set<string>): string {
   const base = safeIdentifier(rawName, 'typescript');
   let name = base;
   let n = 2;
@@ -344,10 +347,10 @@ function uniqueAccessor(rawName, used) {
  * once as a component keeps 17 links out of all 28 page objects and gives tests
  * one obvious place to navigate from.
  */
-function navigationComponent(context) {
+function navigationComponent(context: GenerationContext): GeneratedFile {
   const { sharedChrome, sharedStates } = context.model;
   const w = new CodeWriter();
-  const used = new Set();
+  const used = new Set<string>();
   const classes = collectClasses([...sharedChrome, ...sharedStates.flatMap((s) => s.elements)]);
 
   w.line('// AUTO-GENERATED by framework-generator. Do not edit — every run overwrites this file.');
@@ -378,7 +381,7 @@ function navigationComponent(context) {
 
 // ---- fixtures ----------------------------------------------------------------
 
-function fixtureFiles(context) {
+function fixtureFiles(context: GenerationContext): GeneratedFile[] {
   const pages = context.model.pages;
   const resources = context.apiModel.resources;
   const w = new CodeWriter();
@@ -462,7 +465,7 @@ export const test = generated.extend<ExtraFixtures>({});
  * the locators from there and emits a real, working login helper rather than a
  * TODO. Credentials come from the environment, never from generated source.
  */
-function authFixture(context) {
+function authFixture(context: GenerationContext): string {
   const login = context.config.login;
   const w = new CodeWriter();
 
@@ -502,7 +505,7 @@ function authFixture(context) {
   return w.toString();
 }
 
-function globalSetup(context) {
+function globalSetup(context: GenerationContext): string {
   const w = new CodeWriter();
   w.line('// AUTO-GENERATED by framework-generator. Do not edit — every run overwrites this file.');
   w.line('//');
@@ -532,7 +535,7 @@ function globalSetup(context) {
  * Its real job is to prove the generated page object compiles and its locators
  * resolve against the live app.
  */
-function smokeSpec(page) {
+function smokeSpec(page: PageModel): string {
   const heading = page.elements.find((e) => e.component === 'text');
   const fixture = toCamel(page.className);
   const w = new CodeWriter();
@@ -556,14 +559,14 @@ function smokeSpec(page) {
   return w.toString();
 }
 
-function escapeRegex(value) {
+function escapeRegex(value: string): string {
   return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 // ---- api layer -----------------------------------------------------------------
 
 /** RequestSpecSchema -> a TS type expression. Object schemas get a name so nested types read well. */
-function tsType(schema, name) {
+function tsType(schema: RequestSpecSchema | null, name: string): string {
   if (!schema) return 'unknown';
   if (schema.kind === 'primitive') return schema.type;
   if (schema.kind === 'array') return `${tsType(schema.items, name)}[]`;
@@ -571,26 +574,26 @@ function tsType(schema, name) {
   return props.length ? `{ ${props.join(' ')} }` : 'Record<string, never>';
 }
 
-function tsPrimitive(type) {
+function tsPrimitive(type: string): string {
   return ['string', 'number', 'boolean'].includes(type) ? type : 'unknown';
 }
 
 /** The successful-response schema — the smallest 2xx status, since that is the shape callers care about. */
-function successSchema(op) {
+function successSchema(op: Operation): RequestSpecSchema | null {
   const ok = op.responses.filter((r) => r.status >= 200 && r.status < 300 && r.schema).sort((a, b) => a.status - b.status);
   return ok[0]?.schema ?? null;
 }
 
-function requestTypeName(op) {
+function requestTypeName(op: Operation): string {
   return `${toPascal(op.operationId)}Request`;
 }
 
-function responseTypeName(op) {
+function responseTypeName(op: Operation): string {
   return `${toPascal(op.operationId)}Response`;
 }
 
 /** DTOs for a resource: one request/response interface pair per operation that has a body/schema. */
-function dtoTypes(resource) {
+function dtoTypes(resource: ResourceModel): string {
   const w = new CodeWriter();
   w.line('// AUTO-GENERATED by framework-generator. Do not edit — every run overwrites this file.');
   w.line(`// Source: ${resource.source} api-map for '${resource.resource}'.`);
@@ -611,13 +614,13 @@ function dtoTypes(resource) {
 }
 
 /** `/users/{id}` + pathParams -> a template literal expression, e.g. `\`/users/${id}\`` */
-function pathExpression(op) {
+function pathExpression(op: Operation): string {
   let expr = op.path;
   for (const p of op.pathParams) expr = expr.replace(`{${p.name}}`, `\${${safeIdentifier(p.name, 'typescript')}}`);
   return `\`${expr}\``;
 }
 
-function methodParams(op) {
+function methodParams(op: Operation): string {
   const parts = [...op.pathParams.map((p) => `${safeIdentifier(p.name, 'typescript')}: ${tsPrimitive(p.type)}`)];
   if (op.requestBody) parts.push(`body: ${requestTypeName(op)}`);
   if (op.queryParams.length) {
@@ -628,13 +631,13 @@ function methodParams(op) {
   return parts.join(', ');
 }
 
-function callArgs(op) {
+function callArgs(op: Operation): string {
   const path = op.queryParams.length ? `${pathExpression(op)} + queryString(query)` : pathExpression(op);
   return op.requestBody ? `${path}, body` : path;
 }
 
 /** Placeholder call args for a generated assertion spec: real path/query values are for you to fill in. */
-function sampleCallArgs(op) {
+function sampleCallArgs(op: Operation): string {
   const args = op.pathParams.map(() => `${quote('REPLACE_ME')} as never`);
   if (op.requestBody) args.push('{} as never');
   if (op.queryParams.length) args.push(op.queryParams.some((p) => p.required) ? '{} as never' : '{}');
@@ -642,7 +645,7 @@ function sampleCallArgs(op) {
 }
 
 /** The generated half of a resource's typed client: one method per api-mapped operation. */
-function generatedApiClient(resource) {
+function generatedApiClient(resource: ResourceModel): string {
   const w = new CodeWriter();
   const hasQuery = resource.operations.some((op) => op.queryParams.length > 0);
 
@@ -682,7 +685,7 @@ function generatedApiClient(resource) {
 }
 
 /** The protected half — written once, then left alone forever. */
-function protectedApiClient(resource) {
+function protectedApiClient(resource: ResourceModel): string {
   const w = new CodeWriter();
   w.line(`import { ${resource.className}ClientGenerated } from './${resource.className}Client.generated';`);
   w.blank();
@@ -701,7 +704,7 @@ function protectedApiClient(resource) {
  * shape, not which values make a valid record for this app, so this file is
  * protected from the start and left for you to fill in.
  */
-function factoryStub(resource) {
+function factoryStub(resource: ResourceModel): string {
   const w = new CodeWriter();
   const creators = resource.operations.filter((op) => op.method === 'POST' && op.requestBody);
   w.line("import type { APIResponse } from '@playwright/test';");
@@ -738,7 +741,7 @@ function factoryStub(resource) {
 }
 
 /** A generated, regenerable status/schema check — one per api-mapped operation. */
-function assertionSpec(resource, op) {
+function assertionSpec(resource: ResourceModel, op: ResourceModel['operations'][number]): string {
   const w = new CodeWriter();
   const fixture = `${toCamel(resource.className)}Api`;
   const schema = successSchema(op);
@@ -767,7 +770,7 @@ function assertionSpec(resource, op) {
 
 // ---- project files -----------------------------------------------------------
 
-function projectFiles(context) {
+function projectFiles(context: GenerationContext): GeneratedFile[] {
   const { projectName, baseUrl } = context.config;
   return [
     { path: 'package.json', contents: packageJson(projectName), kind: 'protected' },
@@ -779,7 +782,7 @@ function projectFiles(context) {
   ];
 }
 
-function packageJson(projectName) {
+function packageJson(projectName: string): string {
   return `${JSON.stringify({
     name: projectName,
     version: '1.0.0',
@@ -818,7 +821,7 @@ const TSCONFIG = `${JSON.stringify({
   include: ['src/**/*.ts', 'tests/**/*.ts', 'playwright.config.ts'],
 }, null, 2)}\n`;
 
-function playwrightConfig(baseUrl) {
+function playwrightConfig(baseUrl: string): string {
   return `import { defineConfig, devices } from '@playwright/test';
 import 'dotenv/config';
 
@@ -857,7 +860,7 @@ export default defineConfig({
 `;
 }
 
-function envExample(baseUrl) {
+function envExample(baseUrl: string): string {
   return `# Copy to .env and fill in. Never commit .env.
 BASE_URL=${baseUrl}
 
@@ -884,7 +887,7 @@ blob-report/
 .env
 `;
 
-function readme(context) {
+function readme(context: GenerationContext): string {
   const { stats, pages } = context.model;
   return `# ${context.config.projectName}
 

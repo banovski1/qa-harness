@@ -8,6 +8,7 @@
   },
   "scripts": {
     "generate": "cd ../.. && tsx scripts/framework-generator/generate.ts",
+    "generate:dry": "cd ../.. && tsx scripts/framework-generator/generate.ts --dry-run",
     "check-analysis": "cd ../.. && tsx scripts/framework-generator/check-analysis.ts",
     "check-api-map": "cd ../.. && tsx scripts/framework-generator/check-api-map.ts",
     "smart-api-map": "cd ../.. && tsx scripts/framework-generator/smart-api-map.ts",

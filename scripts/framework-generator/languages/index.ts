@@ -1,5 +1,5 @@
 // Adapter registry. Adding a language means adding one module and one entry
-// here — generate.mjs never branches on language and does not change.
+// here — generate.ts never branches on language and does not change.
 //
 // The contract every adapter satisfies:
 //
@@ -17,13 +17,14 @@
 // EmittedFile = { path, contents, kind: 'generated' | 'protected' }
 // context     = { config, model, apiModel }
 
-import { typescript } from './typescript.mjs';
-import { javascript } from './javascript.mjs';
-import { java } from './java.mjs';
-import { python } from './python.mjs';
-import { csharp } from './csharp.mjs';
+import { typescript } from './typescript.js';
+import { javascript } from './javascript.js';
+import { java } from './java.js';
+import { python } from './python.js';
+import { csharp } from './csharp.js';
+import type { LanguageAdapter } from '../types.js';
 
-const ADAPTERS = new Map([
+const ADAPTERS = new Map<string, LanguageAdapter>([
   [typescript.id, typescript],
   [javascript.id, javascript],
   [java.id, java],
@@ -33,8 +34,8 @@ const ADAPTERS = new Map([
 
 export const SUPPORTED_LANGUAGES = [...ADAPTERS.keys()];
 
-/** @returns {object} the adapter for `id`, or throws listing what is supported. */
-export function adapterFor(id) {
+/** Return the adapter for `id`, or throw listing what is supported. */
+export function adapterFor(id: string): LanguageAdapter {
   const adapter = ADAPTERS.get(id);
   if (!adapter) {
     throw new Error(`Unknown language: '${id}'. Supported: ${SUPPORTED_LANGUAGES.join(', ')}`);

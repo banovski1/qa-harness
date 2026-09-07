@@ -1,6 +1,6 @@
 // JavaScript scaffold: @playwright/test without TypeScript.
 
-import { makeScaffold } from './scaffold.mjs';
+import { makeScaffold } from './scaffold.js';
 
 export const javascript = makeScaffold({
   id: 'javascript',
@@ -22,7 +22,7 @@ export const javascript = makeScaffold({
   ],
 });
 
-function packageJson(projectName) {
+function packageJson(projectName: string): string {
   return `${JSON.stringify({
     name: projectName,
     version: '1.0.0',
@@ -38,7 +38,7 @@ const JSCONFIG = `${JSON.stringify({
   include: ['src/**/*.js', 'tests/**/*.js'],
 }, null, 2)}\n`;
 
-function playwrightConfig(baseUrl) {
+function playwrightConfig(baseUrl: string): string {
   return `import { defineConfig, devices } from '@playwright/test';
 import 'dotenv/config';
 

@@ -4,10 +4,12 @@
 // project file, and a BasePage / BaseComponent pair so the architecture is
 // visible from the first commit. Page-object generation from the application
 // map is implemented for TypeScript only; `renderPage` returning null is how an
-// adapter says so, and generate.mjs reports it instead of failing.
+// adapter says so, and generate.ts reports it instead of failing.
+
+import type { GenerationContext, LanguageAdapter, ScaffoldDefinition } from '../types.js';
 
 /** Build an adapter from a language-specific definition. */
-export function makeScaffold(def) {
+export function makeScaffold(def: ScaffoldDefinition): LanguageAdapter {
   return {
     id: def.id,
     extension: def.extension,
@@ -22,7 +24,7 @@ export function makeScaffold(def) {
   };
 }
 
-function envExample(context) {
+function envExample(context: GenerationContext): string {
   return `# Copy to .env and fill in. Never commit .env.
 BASE_URL=${context.config.baseUrl}
 APP_USERNAME=
@@ -30,7 +32,7 @@ APP_PASSWORD=
 `;
 }
 
-function scaffoldReadme(def, context) {
+function scaffoldReadme(def: ScaffoldDefinition, context: GenerationContext): string {
   const { model, config } = context;
   return `# ${config.projectName}
 

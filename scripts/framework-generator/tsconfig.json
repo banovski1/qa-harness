@@ -3,7 +3,6 @@
   "include": [
     "./**/*.ts",
     "./bin.js",
-    "./languages/**/*.mjs",
     "../project-config.ts",
     "../repo-analyzer/types.ts"
   ]

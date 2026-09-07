@@ -1,6 +1,6 @@
 // C# scaffold: Microsoft.Playwright.NUnit.
 
-import { makeScaffold } from './scaffold.mjs';
+import { makeScaffold } from './scaffold.js';
 
 export const csharp = makeScaffold({
   id: 'csharp',
@@ -20,7 +20,7 @@ export const csharp = makeScaffold({
   ],
 });
 
-function pascal(value) {
+function pascal(value: string): string {
   return String(value)
     .split(/[^A-Za-z0-9]+/)
     .filter(Boolean)

@@ -17,11 +17,11 @@ import { fromMap } from './locator-spec.js';
 import { RUNGS } from './locator-ladder.js';
 import { readApplicationModel } from './analysis-reader.js';
 import { readApiMap } from './api-map-reader.js';
-import { adapterFor, SUPPORTED_LANGUAGES } from './languages/index.mjs';
+import { adapterFor, SUPPORTED_LANGUAGES } from './languages/index.js';
 import { FileWriter } from './file-writer.js';
 import { loadProjectConfig } from '../project-config.js';
 import { errorMessage, isRecord, list, record } from './types.js';
-import type { ApplicationModel, GeneratedFile, GenerationContext, GeneratorConfig, LanguageAdapter, LoginFlow, NavigationEntry } from './types.js';
+import type { ApplicationModel, GeneratedFile, GenerationContext, GeneratorConfig, LoginFlow, NavigationEntry } from './types.js';
 
 const DEFAULT_CONFIG = join('scripts', 'framework-generator', 'generator-config.yaml');
 
@@ -53,8 +53,7 @@ export async function main(argv: string[] = process.argv.slice(2)): Promise<void
   const configPath = args.find((a) => !a.startsWith('--')) ?? DEFAULT_CONFIG;
 
   const config = loadConfig(configPath);
-  // The adapters remain JavaScript until the next migration task.
-  const adapter = adapterFor(config.language) as LanguageAdapter;
+  const adapter = adapterFor(config.language);
   console.log(`[framework-gen] ${config.language} -> ${config.outputDir}${dryRun ? ' (dry run)' : ''}`);
 
   const model = readApplicationModel(config);

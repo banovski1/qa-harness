@@ -1,6 +1,6 @@
 // Java scaffold: Maven + playwright-java + JUnit 5.
 
-import { makeScaffold } from './scaffold.mjs';
+import { makeScaffold } from './scaffold.js';
 
 const PKG = 'com/example/framework';
 
@@ -31,7 +31,7 @@ export const java = makeScaffold({
   ],
 });
 
-function pom(projectName) {
+function pom(projectName: string): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

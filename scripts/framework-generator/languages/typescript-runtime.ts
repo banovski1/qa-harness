@@ -12,9 +12,9 @@
 //     is what makes it composable inside another component's scope.
 
 import { quote } from '../code-writer.js';
+import type { GeneratedFile, GenerationContext, LocatorTemplates } from '../types.js';
 
-/** @returns {{path: string, contents: string, kind: 'generated'|'protected'}[]} */
-export function runtimeFiles(context) {
+export function runtimeFiles(context: GenerationContext): GeneratedFile[] {
   const templates = context.config.locatorTemplates ?? {};
   return [
     file('src/components/base/BaseComponent.ts', BASE_COMPONENT),
@@ -44,7 +44,7 @@ export function runtimeFiles(context) {
   ];
 }
 
-function file(path, contents) {
+function file(path: string, contents: string): GeneratedFile {
   return { path, contents, kind: 'generated' };
 }
 
@@ -57,7 +57,7 @@ function file(path, contents) {
  * Emitted even when the config is empty, so the components that import it compile
  * for an app that needs no templates at all.
  */
-function locatorTemplateTable(templates) {
+function locatorTemplateTable(templates: LocatorTemplates): string {
   const entries = Object.entries(templates);
   const body = entries.length === 0
     ? '  /* No locatorTemplates configured — this app is addressable by role and label alone. */\n'
@@ -76,7 +76,7 @@ ${body}} satisfies Record<string, (label: string) => string>;
 }
 
 /** Turn `.foo:has(label:text-is("{label}")) input` into a TS template-literal body. */
-function toTemplateLiteral(pattern) {
+function toTemplateLiteral(pattern: string): string {
   return pattern
     .replace(/\\/g, '\\\\')
     .replace(/`/g, '\\`')
@@ -200,7 +200,7 @@ export class LinkComponent extends BaseComponent {
  * factory is what lets a page object say `InputComponent.byLabel(this.page,
  * 'City')` instead of carrying the app's field-wrapper selector.
  */
-function templatedFactories(templates, specs) {
+function templatedFactories(templates: LocatorTemplates, specs: { template: string; factory: string }[]): { imports: string; body: string } {
   const available = specs.filter((s) => templates[s.template]);
   if (available.length === 0) return { imports: '', body: '' };
   return {
@@ -209,7 +209,7 @@ function templatedFactories(templates, specs) {
   };
 }
 
-const INPUT = (templates) => {
+const INPUT = (templates: LocatorTemplates): string => {
   const { imports, body } = templatedFactories(templates, [
     {
       template: 'labelledInput',
@@ -295,7 +295,7 @@ export class RadioComponent extends BaseComponent {
 }
 `;
 
-const DROPDOWN = (templates) => {
+const DROPDOWN = (templates: LocatorTemplates): string => {
   const { imports, body } = templatedFactories(templates, [
     {
       template: 'labelledSelect',
@@ -383,7 +383,7 @@ export class TabComponent extends BaseComponent {
 }
 `;
 
-const MENU_ITEM = (templates) => {
+const MENU_ITEM = (templates: LocatorTemplates): string => {
   const { imports, body } = templatedFactories(templates, [
     {
       template: 'topNavTab',
@@ -433,7 +433,7 @@ export class ImageComponent extends BaseComponent {
 }
 `;
 
-const TABLE = (templates) => {
+const TABLE = (templates: LocatorTemplates): string => {
   const { imports, body } = templatedFactories(templates, [
     {
       template: 'tableByColumn',
@@ -619,7 +619,7 @@ export function optionalEnv(name: string, fallback: string): string {
  * being guessed. The default is role-based and therefore app-agnostic; add your
  * app's own class to the config if it has no accessible busy state.
  */
-function waitHelpers(spinnerSelector) {
+function waitHelpers(spinnerSelector: string): string {
   return `import { expect, type Locator, type Page } from '@playwright/test';
 
 /**

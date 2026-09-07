@@ -1,6 +1,6 @@
 // Python scaffold: pytest + pytest-playwright.
 
-import { makeScaffold } from './scaffold.mjs';
+import { makeScaffold } from './scaffold.js';
 
 export const python = makeScaffold({
   id: 'python',
