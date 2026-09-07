@@ -8,18 +8,18 @@ import { existsSync, readFileSync } from 'node:fs';
 const FORBIDDEN = [
   {
     match: (p) => p.endsWith('.generated.ts'),
-    fix: 'Generated file — the next generate.mjs run overwrites it. Put the change in the protected subclass without the .generated suffix, or fix the analysis and re-run the repo analyzer.',
+    fix: 'Generated file — the next scripts/framework-generator/generate.ts run overwrites it. Put the change in the protected subclass without the .generated suffix, or fix the analysis and re-run the repo analyzer.',
   },
   {
     match: (p) => /(^|\/)src\/components\//.test(p),
-    fix: 'The component library is generator-owned (languages/typescript-runtime.mjs). Edit the generator template, not the output.',
+    fix: 'The component library is generator-owned (scripts/framework-generator/languages/typescript-runtime.ts). Edit the generator template, not the output.',
   },
   {
     match: (p) =>
       /(^|\/)src\/utils\/(env|waitHelpers|testData|network|schema-assert)\.ts$/.test(p) ||
       /(^|\/)src\/api\/clients\/ApiClient\.ts$/.test(p) ||
       /(^|\/)src\/config\/constants\.ts$/.test(p),
-    fix: 'Generator-owned runtime helper (languages/typescript-runtime.mjs) — regenerated every run. Change the template there, or put app-specific helpers in a new file such as src/utils/auth.ts.',
+    fix: 'Generator-owned runtime helper (scripts/framework-generator/languages/typescript-runtime.ts) — regenerated every run. Change the template there, or put app-specific helpers in a new file such as src/utils/auth.ts.',
   },
   {
     match: (p) => /(^|\/)src\/pages\/base\/BasePage\.ts$/.test(p),

@@ -59,7 +59,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const args = parseArgs();
   const routesFile = args.routes ? path.resolve(REPO_ROOT, String(args.routes)) : path.join(ANALYSIS_DIR, 'pages-and-routes.json');
   if (!fs.existsSync(routesFile)) {
-    throw new Error(`No route data at ${rel(REPO_ROOT, routesFile)} — run scripts/repo-analyzer/routes.mjs first.`);
+    throw new Error(`No route data at ${rel(REPO_ROOT, routesFile)} — run npm run routes --prefix scripts/repo-analyzer first.`);
   }
   const source = readJson<RoutesReport>(routesFile)!;
   const baseUrl = args.baseUrl ? String(args.baseUrl) : defaultBaseUrl();

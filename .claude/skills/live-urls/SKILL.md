@@ -16,7 +16,7 @@ npm run routes --prefix scripts/repo-analyzer -- --app <app-path>     # must run
 npm run live-urls --prefix scripts/repo-analyzer -- [--base-url <url>] [--path-prefix <prefix>]
 ```
 
-The base URL defaults to `baseUrl:` in `scripts/app-config.yaml` — the instance the rest of this
+The base URL defaults to `baseUrl:` in root `app-config.yaml` — the instance the rest of this
 repo already targets. `--path-prefix` is for apps served under a front-controller path
 (an app mounted under a prefix might use `/web/index.php`). If neither a flag nor the config yields a base URL, stop and
 ask; never hardcode one.

@@ -26,7 +26,7 @@ Read, in order, stopping at the first that exists:
 1. `generated-framework/.env` — `BASE_URL=`
 2. `generated-framework/.env.example` — `BASE_URL=` (warn: using the example default,
    suggest `cp .env.example .env`)
-3. `scripts/app-config.yaml` — `baseUrl:`
+3. `app-config.yaml` — `baseUrl:`
 
 Never hardcode an app URL. If none of the three resolve, stop and ask the user for one.
 

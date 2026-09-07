@@ -32,7 +32,7 @@ const failures = [];
 const warnings = [];
 
 if (!existsSync(config.apiMapDir)) {
-  console.log(`[check-api-map] ${config.apiMapDir} does not exist — nothing to check. Run smart-api-map.mjs first.`);
+  console.log(`[check-api-map] ${config.apiMapDir} does not exist — nothing to check. Run npm run smart-api-map --prefix scripts/framework-generator first.`);
   process.exit(0);
 }
 
