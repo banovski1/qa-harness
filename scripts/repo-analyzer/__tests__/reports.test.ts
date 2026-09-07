@@ -4,7 +4,7 @@
 //
 // Snapshots live in `__tests__/snapshots/`. To accept an intentional format change:
 //
-//   UPDATE_SNAPSHOTS=1 node --test scripts/repo-analyzer/__tests__/
+//   UPDATE_SNAPSHOTS=1 npm test --prefix scripts/repo-analyzer
 //
 // which rewrites them, so the change shows up as a reviewable diff rather than a hand edit.
 

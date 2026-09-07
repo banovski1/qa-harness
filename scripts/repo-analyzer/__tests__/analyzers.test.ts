@@ -1,7 +1,7 @@
 // Each analyzer against every fixture app, one test per app so a failure names the framework that
 // broke. The expectations live in `__fixtures__/cases.ts`; this file is only the harness.
 //
-//   node --test scripts/repo-analyzer/__tests__/
+//   npm test --prefix scripts/repo-analyzer
 
 import assert from 'node:assert/strict';
 import path from 'node:path';

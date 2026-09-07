@@ -1,7 +1,7 @@
 // Unit tests for the analyzer's pure functions: the string and shape rules every report is built
 // out of. These need no fixture app on disk — a failure here points at one function, not a pipeline.
 //
-//   node --test scripts/repo-analyzer/__tests__/
+//   npm test --prefix scripts/repo-analyzer
 
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
