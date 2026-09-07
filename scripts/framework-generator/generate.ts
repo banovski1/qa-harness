@@ -1,4 +1,3 @@
-#!/usr/bin/env -S npx tsx
 // Static analysis in, Playwright test framework out.
 //
 // Reads the reports the repo analyzer writes from a local clone of the app under test and
@@ -158,6 +157,9 @@ export function loadConfig(path: string): GeneratorConfig {
   }
   if (!baseUrl) throw new Error("Missing 'baseUrl:' in app-config.yaml or the generator config.");
   if (!outputDir) throw new Error("Missing 'outputDir:' in the generator config.");
+  if (typeof outputDir !== 'string' || !outputDir.trim()) {
+    throw new Error("'outputDir:' must be a non-empty string in the generator config.");
+  }
   const segment: unknown = pages.folderSegment;
   if (segment !== 'auto' && !(typeof segment === 'number' && Number.isInteger(segment) && segment >= 1)) {
     throw new Error(`pages.folderSegment must be 'auto' or a positive integer, got ${JSON.stringify(segment)}`);
@@ -182,7 +184,7 @@ export function loadConfig(path: string): GeneratorConfig {
   const loginConfig = raw.loginConfig ? String(raw.loginConfig) : null;
   return {
     ...raw,
-    language, baseUrl, outputDir: String(outputDir), projectName: String(raw.projectName ?? DEFAULTS.projectName),
+    language, baseUrl, outputDir, projectName: String(raw.projectName ?? DEFAULTS.projectName),
     analysisDir: String(raw.analysisDir ?? DEFAULTS.analysisDir), apiMapDir: String(raw.apiMapDir ?? DEFAULTS.apiMapDir),
     loginConfig, login: loginConfig ? loadLoginFlow(loginConfig) : null,
     ...(raw.mapDir == null ? {} : { mapDir: String(raw.mapDir) }),
