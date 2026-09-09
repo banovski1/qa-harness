@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {astField, astNode, astNodes, astString} from './ast.js';
 import {isTestIdAttr, TEST_ID_ATTRS, tryImport, unique} from './util.js';
+import {collectAngularElements} from './elements-angular.js';
 import {collectVueElements, headersFromScript} from './elements-vue.js';
 import {dedupeNames, relabel} from './elements.js';
 import type {ChildReference} from './elements.js';
@@ -367,7 +368,7 @@ export async function parseSvelte(file: string, source: string): Promise<ParsedC
   }
 }
 
-export async function parseAngular(file: string, source: string): Promise<ParsedComponent> {
+export async function parseAngular(file: string, source: string, ctx: ParserContext = {}): Promise<ParsedComponent> {
   const name = componentNameFromFile(file);
   const ast = await babelParse(source, BABEL_PLUGINS_NO_JSX);
   const props: string[] = [];
@@ -396,6 +397,10 @@ export async function parseAngular(file: string, source: string): Promise<Parsed
   }
   const compiler = await tryImport('@angular/compiler');
   const testIds = [];
+  // A component can declare an inline `template:` and a `templateUrl:` both, so elements
+  // accumulate across every template the file names and are deduped once at the end.
+  let elements: ExtractedElement[] = [];
+  let skippedElements = 0;
   for (const template of templates) {
     let html = template.source ?? null;
     if (!html && template.url) {
@@ -405,13 +410,31 @@ export async function parseAngular(file: string, source: string): Promise<Parsed
     if (!html) continue;
     if (compiler?.parseTemplate) {
       try {
-        testIds.push(...collectAngularTestIds(compiler.parseTemplate(html, file).nodes));
+        const nodes: unknown = compiler.parseTemplate(html, file).nodes;
+        testIds.push(...collectAngularTestIds(nodes));
+        const collected = collectAngularElements(nodes, {
+          catalogue: ctx.catalogue ?? {},
+          ...(ctx.templateFor ? {templateFor: ctx.templateFor} : {}),
+        });
+        elements = elements.concat(collected.elements);
+        skippedElements += collected.skipped;
         continue;
       } catch { /* fall through to the HTML reader below */ }
     }
+    // Without @angular/compiler the template is read by @vue/compiler-dom, whose AST the
+    // Angular walker cannot read at all — and a Vue element walk over Angular markup would
+    // find none of the wrappers it has no vocabulary for. Test ids still resolve; elements
+    // are reported as none, which is honest where a partial reading would not be.
     testIds.push(...(await parseHtmlTemplate(html)));
   }
-  return {name, props: unique(props), testIds, error: ast ? null : 'could not parse this file'};
+  return {
+    name,
+    props: unique(props),
+    testIds,
+    elements: dedupeNames(elements),
+    skippedElements,
+    error: ast ? null : 'could not parse this file',
+  };
 }
 
 /** Plain-HTML fallback: used for Angular templates when @angular/compiler is absent, and for .html components. */

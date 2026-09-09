@@ -26,6 +26,9 @@ export const KIND_TEMPLATES: TemplateMap = {
   longInput: 'labelledTextarea',
   dropdown: 'labelledSelect',
   radio: 'labelledRadio',
+  checkbox: 'labelledCheckbox',
+  switch: 'labelledSwitch',
+  button: 'labelledButton',
   table: 'tableByColumn',
   menuItem: 'topNavTab',
 };
