@@ -16,7 +16,7 @@ import {crossCheck, mergeByPath} from '../api-docs.js';
 import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements.js';
 import {loadCatalogue, resolveAngularLabelExpression, resolveLabelExpression} from '../i18n.js';
 import {joinUrl} from '../live-urls.js';
-import {componentNameFromFile, isTestIdAttr, walkAny, walkAst} from '../parsers.js';
+import {componentNameFromFile, isTestIdAttr, parseAngular, walkAny, walkAst} from '../parsers.js';
 import {paramsOf} from '../registry-backend.js';
 import {FRONTEND_REGISTRY, matchFrontend} from '../registry-frontend.js';
 import {escapeCell, table} from '../report.js';
@@ -216,6 +216,26 @@ test('walkAny reaches nodes a Babel walker cannot see', () => {
   const babelSeen: unknown[] = [];
   walkAst(tree, (node: unknown) => babelSeen.push(node));
   assert.equal(babelSeen.length, 0, 'walkAst is the Babel-only walker; walkAny is what template ASTs need');
+});
+
+test('parseAngular reports a collector failure instead of raising it', async () => {
+  // `collectComponents` calls `parse()` bare in its per-file loop, so a throw out of either
+  // Angular collector would take the whole components stage down and cost the report for every
+  // other file. It has to come back as this component's `error` — attributable and non-fatal.
+  const source = [
+    "import {Component} from '@angular/core';",
+    "@Component({selector: 'app-x', template: '<textinput></textinput>'})",
+    'export class XComponent {}',
+  ].join('\n');
+  // The hostile input the public surface already allows: a templateFor whose lookup throws, which
+  // fails `collectAngularElements` from the inside without the extractor being altered to suit.
+  const exploding = new Proxy({}, {get() { throw new Error('boom'); }}) as Record<string, string>;
+  const parsed = await parseAngular('x.component.ts', source, {templateFor: exploding});
+
+  assert.match(parsed.error ?? '', /inline template/, 'the message must name which template failed');
+  assert.match(parsed.error ?? '', /boom/, 'and carry the underlying failure');
+  assert.deepEqual(parsed.elements, [], 'a failed collection contributes no elements');
+  assert.equal(parsed.name, 'x.component', 'the rest of the component is still reported');
 });
 
 test('mergeByPath folds methods onto one row per endpoint', () => {

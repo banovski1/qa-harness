@@ -401,6 +401,7 @@ export async function parseAngular(file: string, source: string, ctx: ParserCont
   // accumulate across every template the file names and are deduped once at the end.
   let elements: ExtractedElement[] = [];
   let skippedElements = 0;
+  const failures: string[] = [];
   for (const template of templates) {
     let html = template.source ?? null;
     if (!html && template.url) {
@@ -408,10 +409,10 @@ export async function parseAngular(file: string, source: string, ctx: ParserCont
       html = fs.existsSync(resolved) ? fs.readFileSync(resolved, 'utf8') : null;
     }
     if (!html) continue;
-    // Only the parse is guarded. Reading the result inside the `try` would let a bug in either
-    // reader fall through to the fallback below, pushing this template's test ids a second time
-    // and dropping its elements with `error` still null — a plausible-looking report is a worse
-    // failure here than a loud one.
+    // Two failures, two guards. An unparseable template is normal and falls through to the HTML
+    // reader below; a *reader* failing is a bug, and letting it share this `catch` would push
+    // this template's test ids a second time and drop its elements with `error` still null — a
+    // plausible-looking report is a worse failure here than a stated one.
     let nodes: unknown = null;
     if (compiler?.parseTemplate) {
       try {
@@ -419,10 +420,20 @@ export async function parseAngular(file: string, source: string, ctx: ParserCont
       } catch { /* fall through to the HTML reader below */ }
     }
     if (nodes) {
-      testIds.push(...collectAngularTestIds(nodes));
-      const collected = collectAngularElements(nodes, ctx);
-      elements = elements.concat(collected.elements);
-      skippedElements += collected.skipped;
+      // A collector bug is reported as this component's parse error, not raised: `collectComponents`
+      // calls `parse()` bare in its per-file loop, so a throw would take the whole components stage
+      // down and cost the report for every other file. A returned `error` reaches the report's
+      // "Parse errors" section instead — attributable to one component, loud, and non-fatal. The
+      // `catch` deliberately does not fall through to `parseHtmlTemplate`: that fallback belongs to
+      // a `parseTemplate` failure, and re-reading here would push this template's test ids twice.
+      try {
+        testIds.push(...collectAngularTestIds(nodes));
+        const collected = collectAngularElements(nodes, ctx);
+        elements = elements.concat(collected.elements);
+        skippedElements += collected.skipped;
+      } catch (error) {
+        failures.push(`${template.url ?? 'inline template'}: ${(error as Error).message}`);
+      }
       continue;
     }
     // Without @angular/compiler the template is read by @vue/compiler-dom, whose AST the
@@ -437,8 +448,14 @@ export async function parseAngular(file: string, source: string, ctx: ParserCont
     testIds,
     elements: dedupeNames(elements),
     skippedElements,
-    error: ast ? null : 'could not parse this file',
+    // A file with no AST yields no templates, so the two messages can never compete.
+    error: ast ? collectionError(failures) : 'could not parse this file',
   };
+}
+
+/** One `error` field, possibly several templates: each failure names the template it came from. */
+function collectionError(failures: string[]): string | null {
+  return failures.length === 0 ? null : `element collection failed — ${failures.join('; ')}`;
 }
 
 /** Plain-HTML fallback: used for Angular templates when @angular/compiler is absent, and for .html components. */
@@ -477,6 +494,7 @@ export async function parseBackboneHandlebars(file: string, source: string, ctx:
   const testIds = [];
   let elements: ExtractedElement[] = [];
   let skippedElements = 0;
+  const failures: string[] = [];
   for (const template of templates) {
     const ast = await templateAst(template, file);
     if (!ast) continue;
