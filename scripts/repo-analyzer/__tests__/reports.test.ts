@@ -29,8 +29,9 @@ const BASE_URL = 'https://app.test';
 
 // vue-spa: a client router. symfony-app: server routing through a controller bridge.
 // next-app: a file-based router. unknown-app: the "nothing matched" report, which is the one most
-// likely to decay into an empty file without anyone noticing.
-const APPS = ['vue-spa', 'symfony-app', 'next-app', 'unknown-app'];
+// likely to decay into an empty file without anyone noticing. angular-app: the class-instance AST,
+// an inline template and a templateUrl one, and a nested-JSON label catalogue.
+const APPS = ['vue-spa', 'symfony-app', 'next-app', 'unknown-app', 'angular-app'];
 
 /** Drop the two lines that legitimately change on every run, and the machine-specific app path. */
 function stableise(body: string) {

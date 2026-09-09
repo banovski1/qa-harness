@@ -84,12 +84,26 @@ export const CASES: FixtureCase[] = [
     app: 'angular-app', frontend: 'angular', backend: null,
     routeStrategy: /@angular\/router config/,
     routes: ['/', '/users/{userId}'],
-    components: ['user-card.component', 'legacy-cast.component'],
+    components: ['user-card.component', 'legacy-cast.component', 'order-form.component', 'order-history.component'],
     props: {'user-card.component': ['name', 'role'], 'legacy-cast.component': ['label']},
     // Angular's compiler hands back class instances, not plain `{type: string}` nodes: this row is
     // what proves the template walker still reaches them. `legacy-cast.component` pins the `jsx`
     // plugin regression — its `<HTMLInputElement>` cast must parse rather than error.
-    testIds: ['user-card', 'user-name', 'legacy-cast'],
+    testIds: ['user-card', 'user-name', 'legacy-cast', 'order-id', 'urgent-flag'],
+    // One element per rung the Angular extractor can reach, split across the two ways a component
+    // names its template: `order-form.component.ts` declares its markup inline; `urgentFlagInput`
+    // comes from `order-history.component.html` through `templateUrl:` — 1601 of the app-under-test's
+    // 1657 components use that branch, and it carried no element coverage before this row. The same
+    // control also proves a `*ngIf` host (a `Template` node) is walked rather than counted itself.
+    elements: [
+      {name: 'orderIdInput', component: 'input', rung: 1, locator: {strategy: 'getByTestId', args: ['order-id']}},
+      {name: 'submitOrderButton', component: 'button', rung: 2, locator: {strategy: 'getByRole', args: ['button'], name: 'Submit Order'}},
+      {name: 'notesLongInput', component: 'longInput', rung: 3, locator: {strategy: 'getByLabel', args: ['Notes']}},
+      {name: 'orderNameInput', component: 'input', rung: 4, locator: {strategy: 'template', args: ['labelledInput'], name: 'Order Name'}},
+      {name: 'searchOrdersInput', component: 'input', rung: 5, locator: {strategy: 'getByPlaceholder', args: ['Search orders']}},
+      {name: 'quantityInput', component: 'input', rung: 6, locator: {strategy: 'css', args: ['[name="quantity"]']}},
+      {name: 'urgentFlagInput', component: 'input', rung: 1, locator: {strategy: 'getByTestId', args: ['urgent-flag']}},
+    ],
   },
   {
     app: 'svelte-app', frontend: 'svelte', backend: null,
