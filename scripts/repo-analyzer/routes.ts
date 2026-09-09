@@ -589,7 +589,10 @@ async function serverRoutes(detection: DetectionResult, apiPrefix: string): Prom
   const routes = [];
   for (const route of all) {
     if (route.kind === 'api') continue;
-    if (route.path.startsWith(apiPrefix)) continue;
+    // An explicit `kind: 'page'` overrides the prefix clause, symmetrically with Tier B in
+    // `api-docs.ts`: a context-pathed app composes every route under the same prefix regardless
+    // of kind, and skipping a page route here would leave it in neither report.
+    if (route.kind !== 'page' && route.path.startsWith(apiPrefix)) continue;
     const componentName = backend.entry.componentFor?.(backend.root, route.controller) ?? null;
     routes.push({
       path: normalisePath(route.path),

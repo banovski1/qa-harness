@@ -211,6 +211,10 @@ export const CASES: FixtureCase[] = [
     // @RequestMapping base, which only a real parser can do. `server.servlet.context-path=/api`
     // in application.properties prefixes all of them again.
     app: 'spring-api', frontend: 'unknown', backend: 'spring',
+    // `/api/home` is a page route under the same context-path prefix as every API route here;
+    // `serverRoutes`'s filter must let a `kind: 'page'` route through despite the prefix match,
+    // symmetrically with the Tier B override just below, or it lands in neither report.
+    routes: ['/api/home'],
     endpoints: [
       '/api/v2/employees',            // bare @GetMapping: class base alone
       '/api/v2/employees/legacy',     // `path =` keyword form
@@ -224,7 +228,10 @@ export const CASES: FixtureCase[] = [
     // real parser gets right: java-parser drops comments from the CST entirely, and a base built
     // from `IDENTIFIER + "literal"` cannot be resolved without the classpath, so the whole class
     // is dropped rather than emitting `/never` without its (unknown) prefix.
-    endpointsAbsent: ['/api/v2/employees/commented-out', '/api/legacy/never'],
+    // `/api/legacy/never` catches a regression that harvests the literal out of
+    // `BASE_PATH + "/legacy"`; `/api/never` catches the different regression where
+    // `mappingPaths` returns `[]` instead of `null`, dropping the base rather than the whole class.
+    endpointsAbsent: ['/api/v2/employees/commented-out', '/api/legacy/never', '/api/never'],
     // The return-type chain in both directions: @RestController forces `api` regardless of
     // return type, and a bare @Controller method returning String with no @ResponseBody is a
     // page — the one distinction a typo in `springKind` would erase.
