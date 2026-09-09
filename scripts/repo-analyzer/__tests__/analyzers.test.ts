@@ -114,6 +114,21 @@ for (const testCase of CASES) {
         for (const expected of testCase.endpoints!) {
           assert.ok(found.includes(expected), `missing endpoint ${expected} (got ${found.join(', ')})`);
         }
+        // A mapping only a silent parser regression could produce — a commented-out annotation
+        // read as live, or an unresolvable class-level base composed onto its methods anyway.
+        for (const absent of testCase.endpointsAbsent ?? []) {
+          assert.ok(!found.includes(absent), `endpoint ${absent} should not have been extracted (got ${found.join(', ')})`);
+        }
+        // The classification itself, not just its side effects: a typo in the return-type chain
+        // makes everything read `api`, and Tier B's prefix clause can mask that for a page route.
+        for (const [routePath, kind] of Object.entries(testCase.endpointKinds ?? {})) {
+          assert.equal(all.find((route) => route.path === routePath)?.kind, kind, `${routePath} kind`);
+        }
+        // A verb read from a `method =` attribute, not defaulted to ANY because the attribute
+        // wasn't the first one written.
+        for (const [routePath, methods] of Object.entries(testCase.endpointMethods ?? {})) {
+          assert.deepEqual(all.find((route) => route.path === routePath)?.methods, methods, `${routePath} methods`);
+        }
       });
     }
 

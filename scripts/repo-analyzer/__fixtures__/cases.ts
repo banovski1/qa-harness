@@ -2,8 +2,8 @@
 //
 // Every row asserts at least one *positive* hit — a route, a component, a test-id, an endpoint.
 // A parser that silently finds nothing is indistinguishable from an app with nothing to find, so
-// an empty expectation would let a broken registry row pass. Rails and Spring have no fixture yet;
-// their extractors are unproven, and that is a known gap rather than a covered one.
+// an empty expectation would let a broken registry row pass. Rails has no fixture yet; its
+// extractor is unproven, and that is a known gap rather than a covered one.
 //
 // Fields, all optional except `app`/`frontend`:
 //   frontend, backend   expected detect() ids (`backend: null` means none matched)
@@ -23,6 +23,15 @@
 //                       locator ladder per rung, so a regression that quietly drops every
 //                       element to CSS fails here rather than in a generated framework
 //   endpoints           paths the backend registry row's own routes() must return
+//   endpointsAbsent     paths that must *not* appear in that same raw routes() output — for a
+//                       mapping only a silent parser regression could produce, e.g. a
+//                       commented-out annotation read as live, or an unresolvable class-level
+//                       base composed onto its methods instead of dropping the class
+//   endpointKinds       path -> the `kind` ('api' | 'page') that same raw route must carry —
+//                       pins the return-type classification directly, since a page route can
+//                       still surface in `tier`/`apiPaths` by path prefix alone
+//   endpointMethods     path -> the HTTP verbs that same raw route must carry — pins a verb read
+//                       from a `method =` attribute rather than defaulted to ANY
 //   tier / apiPaths     the api-docs tier letter and the endpoints it must report
 
 import type {ExtractedElement, LocatorRecord} from '../types.js';
@@ -42,6 +51,9 @@ interface FixtureCase {
   testIdCounts?: Record<string, number>;
   elements?: (Pick<ExtractedElement, 'name' | 'component' | 'rung'> & {locator?: Partial<LocatorRecord>})[];
   endpoints?: string[];
+  endpointsAbsent?: string[];
+  endpointKinds?: Record<string, 'api' | 'page'>;
+  endpointMethods?: Record<string, string[]>;
   tier?: 'A' | 'B';
   apiPaths?: string[];
   apiPathsAbsent?: string[];
@@ -192,6 +204,45 @@ export const CASES: FixtureCase[] = [
   {app: 'django-api', frontend: 'unknown', backend: 'django', endpoints: ['/api/orders/', '/api/orders/<int:order_id>/'], tier: 'B'},
   {app: 'flask-api', frontend: 'unknown', backend: 'fastapi', endpoints: ['/api/health', '/api/items'], tier: 'B'},
   {app: 'laravel-app', frontend: 'unknown', backend: 'laravel', endpoints: ['/api/invoices', '/api/invoices/{invoice}'], tier: 'B'},
+  {
+    // The Java AST reader, one method per defect the old regex extractor got wrong: bare
+    // @GetMapping, `path =`, `value =` beside `method =`, the array form, and a regex-constrained
+    // `{id:[0-9]+}` path variable — every one of them composed onto the class-level
+    // @RequestMapping base, which only a real parser can do. `server.servlet.context-path=/api`
+    // in application.properties prefixes all of them again.
+    app: 'spring-api', frontend: 'unknown', backend: 'spring',
+    endpoints: [
+      '/api/v2/employees',            // bare @GetMapping: class base alone
+      '/api/v2/employees/legacy',     // `path =` keyword form
+      '/api/v2/employees/bulk',       // `value =` beside `method =` (verb read, not defaulted to ANY)
+      '/api/v2/employees/active',     // array form, first element
+      '/api/v2/employees/inactive',   // array form, second element
+      '/api/v2/employees/{id:[0-9]+}', // a regex-constrained path variable survives intact
+      '/api/home',                    // PageController: a genuine view-returning method
+    ],
+    // A commented-out annotation and an unresolvable class-level base are the two cases only a
+    // real parser gets right: java-parser drops comments from the CST entirely, and a base built
+    // from `IDENTIFIER + "literal"` cannot be resolved without the classpath, so the whole class
+    // is dropped rather than emitting `/never` without its (unknown) prefix.
+    endpointsAbsent: ['/api/v2/employees/commented-out', '/api/legacy/never'],
+    // The return-type chain in both directions: @RestController forces `api` regardless of
+    // return type, and a bare @Controller method returning String with no @ResponseBody is a
+    // page — the one distinction a typo in `springKind` would erase.
+    endpointKinds: {'/api/v2/employees': 'api', '/api/home': 'page'},
+    // `method =` before `value =` in bulkCreate's annotation: the verb read must not default to
+    // ANY just because the value attribute is not the first one written.
+    endpointMethods: {'/api/v2/employees/bulk': ['POST']},
+    tier: 'B',
+    // `/api/home` is a page route, not an api one, but it still surfaces here: the app's
+    // context-path prefixes every composed path with `/api`, so tierB's `path.startsWith('/api')`
+    // clause admits it independently of `kind`. Pinned as the app's actual behavior, not as a
+    // claim that page/api are distinguished by Tier B for a wholly `/api`-context-pathed app.
+    apiPaths: [
+      '/api/v2/employees', '/api/v2/employees/legacy', '/api/v2/employees/bulk',
+      '/api/v2/employees/active', '/api/v2/employees/inactive', '/api/v2/employees/{id:[0-9]+}',
+      '/api/home',
+    ],
+  },
   {
     app: 'backbone-handlebars', frontend: 'backbone', backend: 'json-routes',
     components: ['detail'],
