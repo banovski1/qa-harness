@@ -37,7 +37,8 @@ function stableise(body: string) {
   return body
     .replace(/^- \*\*Generated\*\*: .*$/gm, '- **Generated**: <timestamp>')
     .replace(/ @ `[^`]*`/g, ' @ `<sha>`')
-    .replace(new RegExp(FIXTURES.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), '<fixtures>');
+    .replace(new RegExp(FIXTURES.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), '<fixtures>')
+    .replace(/<fixtures>[^\s`]*/g, (match) => match.replace(/\\/g, '/'));
 }
 
 function compare(name: string, body: string) {

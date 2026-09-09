@@ -119,7 +119,7 @@ function componentDescription(value: AstNode | null | undefined): string | null 
 async function componentIndex(detection: DetectionResult): Promise<Map<string, string>> {
   const index = new Map<string, string>();
   const files = findFiles(detection.frontend.sourceRoot,
-    (file) => /(^|\/)index\.[jt]s$/.test(file) || /main\.[jt]s$/.test(file), {maxDepth: 6});
+    (file, base) => /^index\.[jt]s$/.test(base) || /^main\.[jt]s$/.test(base), {maxDepth: 6});
   for (const file of files) {
     const source = readText(file);
     const ast = source ? await babelParse(source) : null;
