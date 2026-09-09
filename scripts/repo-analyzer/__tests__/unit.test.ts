@@ -13,7 +13,7 @@ import {fileURLToPath} from 'node:url';
 import {bestLocatorFor, classify, rankOf, RUNGS} from '../../framework-generator/locator-ladder.js';
 import {loadProjectConfig, projectConfigPath} from '../../project-config.js';
 import {crossCheck, mergeByPath} from '../api-docs.js';
-import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements-vue.js';
+import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements.js';
 import {resolveLabelExpression} from '../i18n.js';
 import {joinUrl} from '../live-urls.js';
 import {componentNameFromFile, isTestIdAttr, walkAny, walkAst} from '../parsers.js';

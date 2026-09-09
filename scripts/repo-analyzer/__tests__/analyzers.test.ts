@@ -9,7 +9,7 @@ import test from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {mergeByPath, tierA, tierB} from '../api-docs.js';
 import {collectComponents} from '../components.js';
-import {KIND_TEMPLATES} from '../elements-vue.js';
+import {KIND_TEMPLATES} from '../elements.js';
 import {detect} from '../detect.js';
 import {joinUrl} from '../live-urls.js';
 import {collectRoutes} from '../routes.js';

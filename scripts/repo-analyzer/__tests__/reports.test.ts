@@ -15,7 +15,7 @@ import test from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {mergeByPath, renderApiDocs, tierA, tierB} from '../api-docs.js';
 import {collectComponents, renderComponents} from '../components.js';
-import {KIND_TEMPLATES} from '../elements-vue.js';
+import {KIND_TEMPLATES} from '../elements.js';
 import {detect} from '../detect.js';
 import {joinUrl, renderLiveUrls} from '../live-urls.js';
 import {collectRoutes, renderRoutes} from '../routes.js';

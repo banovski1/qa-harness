@@ -7,8 +7,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {astField, astNode, astNodes, astString} from './ast.js';
 import {isTestIdAttr, TEST_ID_ATTRS, tryImport, unique} from './util.js';
-import {collectVueElements, dedupeNames, headersFromScript, relabel} from './elements-vue.js';
-import type {ChildReference} from './elements-vue.js';
+import {collectVueElements, headersFromScript} from './elements-vue.js';
+import {dedupeNames, relabel} from './elements.js';
+import type {ChildReference} from './elements.js';
 import type {AstNode, AstVisitor, ExtractedElement, ParsedComponent, ParserContext, TestIdRecord} from './types.js';
 
 // Re-exported from util.ts, which owns the vocabulary so the element extractor can read it

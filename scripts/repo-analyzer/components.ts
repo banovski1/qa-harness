@@ -9,7 +9,7 @@ import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {STRATEGIES} from '../framework-generator/locator-spec.js';
 import {detect} from './detect.js';
-import {buildComponentIndex, templatesFrom} from './elements-vue.js';
+import {buildComponentIndex, templatesFrom} from './elements.js';
 import {loadCatalogue} from './i18n.js';
 import {TEST_ID_ATTRS} from './parsers.js';
 import {ANALYSIS_DIR, header, outPath, reportWritten, table, writeReport} from './report.js';
