@@ -44,8 +44,14 @@ export const TAG_KINDS: Record<string, string> = {
   radio: 'radio',
   'mco-radio': 'radio',
   'mco-toggle': 'switch',
-  'two-option-button': 'button',
-  'button-group': 'button',
+  // Both name themselves after buttons and are neither: each renders `role="radiogroup"` filled
+  // with `role="radio"` children (`two-option-button.component.html:29`,
+  // `button-group.component.html:14,36`), and their `componentLabel` names the *group*. Kind
+  // `button` would put them in ROLE_KINDS, and the ladder would then anchor 568 controls to
+  // `getByRole('button', {name: <group label>})` — a name no button in the group has. `radio`
+  // carries no role, so the group label anchors the rung-4 template instead.
+  'two-option-button': 'radio',
+  'button-group': 'radio',
   'mco-table': 'table',
   input: 'input',
   textarea: 'longInput',
