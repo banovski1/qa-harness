@@ -17,7 +17,7 @@ import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements.js';
 import {loadCatalogue, resolveAngularLabelExpression, resolveLabelExpression} from '../i18n.js';
 import {joinUrl} from '../live-urls.js';
 import {componentNameFromFile, isTestIdAttr, parseAngular, walkAny, walkAst} from '../parsers.js';
-import {paramsOf} from '../registry-backend.js';
+import {paramsOf, springMethod} from '../registry-backend.js';
 import {FRONTEND_REGISTRY, matchFrontend} from '../registry-frontend.js';
 import {escapeCell, table} from '../report.js';
 import {fileRouteFor, joinRoutePath, normalisePath} from '../routes.js';
@@ -144,6 +144,26 @@ test('paramsOf reads every parameter spelling and de-duplicates', () => {
   // and the colon means the opposite of what it means in Django's `<int:one>` above.
   assert.deepEqual(paramsOf('/a/{one:[0-9]+}'), ['one']);
   assert.deepEqual(paramsOf('/a/{one:[0-9]+}/b/{two}'), ['one', 'two']);
+});
+
+test('springMethod reads unchanged with no web.xml, and names uncomposed servlet mappings when one exists', (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'spring-method-'));
+  t.after(() => fs.rmSync(dir, {recursive: true, force: true}));
+
+  const baseline = '@RequestMapping / @GetMapping annotations (Java AST)';
+  // The common case — no WEB-INF/web.xml anywhere under root — must read exactly as it did
+  // before this ever looked for one.
+  assert.equal(springMethod(dir), baseline);
+
+  const webInf = path.join(dir, 'src/main/webapp/WEB-INF');
+  fs.mkdirSync(webInf, {recursive: true});
+  fs.writeFileSync(path.join(webInf, 'web.xml'), `<web-app>
+    <servlet-mapping><servlet-name>a</servlet-name><url-pattern>/foo/*</url-pattern></servlet-mapping>
+    <servlet-mapping><servlet-name>b</servlet-name><url-pattern>/bar/*</url-pattern></servlet-mapping>
+  </web-app>`);
+  const withMappings = springMethod(dir);
+  assert.ok(withMappings.startsWith(baseline), 'the baseline text must still open the string');
+  assert.match(withMappings, /\b2 `<servlet-mapping>` entries\b/);
 });
 
 test('matchFrontend applies the beats: precedence rather than registry order', () => {
