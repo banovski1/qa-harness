@@ -72,6 +72,11 @@ for (const testCase of CASES) {
         for (const value of testCase.testIds ?? []) {
           assert.ok(values.includes(value), `missing test-id ${value} (got ${values.join(', ')})`);
         }
+        // Presence alone would miss a value found *twice* — e.g. a structural-directive host
+        // duplicating its attributes onto the element it wraps — so a count pins that too.
+        for (const [value, count] of Object.entries(testCase.testIdCounts ?? {})) {
+          assert.equal(values.filter((v) => v === value).length, count, `${value} test-id hit count`);
+        }
 
         const extracted = components.flatMap((component) => component.elements ?? []);
         for (const expected of testCase.elements ?? []) {

@@ -445,7 +445,15 @@ export async function parseAngular(file: string, source: string, ctx: ParserCont
   return {
     name,
     props: unique(props),
-    testIds,
+    // `*ngIf`/`*ngFor` microsyntax desugars to a `Template` host that duplicates its static
+    // attributes onto both itself and the element it wraps (`elements-angular.ts:85-93`), so the
+    // same test id is read twice from one control. Deduping here — the same fix
+    // `parseBackboneHandlebars` already applies below — is robust to that and to any other source
+    // of duplication, rather than special-casing `Template` nodes for this one collector.
+    testIds: unique(testIds.map((hit) => `${hit.attr}:${hit.value}`)).map((key) => {
+      const [attr, ...parts] = key.split(':');
+      return {attr, value: parts.join(':')};
+    }),
     elements: dedupeNames(elements),
     skippedElements,
     // A file with no AST yields no templates, so the two messages can never compete.

@@ -12,6 +12,8 @@
 //   routes              route paths that must be present
 //   components/props    component names and the props their parser must expose
 //   testIds             test-id values that must be found in the markup
+//   testIdCounts        value -> exact hit count, for pinning that a value is found *once* —
+//                       e.g. a structural-directive-guarded element must not be double-counted
 //   elements            extracted elements, each `{name, component, rung, locator?}` — pins the
 //                       locator ladder per rung, so a regression that quietly drops every
 //                       element to CSS fails here rather than in a generated framework
@@ -30,6 +32,7 @@ interface FixtureCase {
   components?: string[];
   props?: Record<string, string[]>;
   testIds?: string[];
+  testIdCounts?: Record<string, number>;
   elements?: (Pick<ExtractedElement, 'name' | 'component' | 'rung'> & {locator?: Partial<LocatorRecord>})[];
   endpoints?: string[];
   tier?: 'A' | 'B';
@@ -90,6 +93,10 @@ export const CASES: FixtureCase[] = [
     // what proves the template walker still reaches them. `legacy-cast.component` pins the `jsx`
     // plugin regression — its `<HTMLInputElement>` cast must parse rather than error.
     testIds: ['user-card', 'user-name', 'legacy-cast', 'order-id', 'urgent-flag'],
+    // `*ngIf` desugars to a `Template` host that duplicates its static attributes onto both
+    // itself and the element it wraps, so `urgent-flag` must be read once, not twice
+    // (`parseAngular`'s testIds dedupe in parsers.ts).
+    testIdCounts: {'urgent-flag': 1},
     // One element per rung the Angular extractor can reach, split across the two ways a component
     // names its template: `order-form.component.ts` declares its markup inline; `urgentFlagInput`
     // comes from `order-history.component.html` through `templateUrl:` — 1601 of the app-under-test's

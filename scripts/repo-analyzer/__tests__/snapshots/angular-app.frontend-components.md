@@ -29,7 +29,6 @@ Each row is a **candidate**, not a locator. Static source cannot show that a val
 | `src/app/legacy-cast.component.ts` | `data-testid` | `legacy-cast` | `{"strategy":"getByTestId","args":["legacy-cast"]}` |
 | `src/app/order-form.component.ts` | `data-testid` | `order-id` | `{"strategy":"getByTestId","args":["order-id"]}` |
 | `src/app/order-history.component.ts` | `data-testid` | `urgent-flag` | `{"strategy":"getByTestId","args":["urgent-flag"]}` |
-| `src/app/order-history.component.ts` | `data-testid` | `urgent-flag` | `{"strategy":"getByTestId","args":["urgent-flag"]}` |
 | `src/app/user-card.component.ts` | `data-testid` | `user-card` | `{"strategy":"getByTestId","args":["user-card"]}` |
 | `src/app/user-card.component.ts` | `data-test` | `user-name` | `{"strategy":"getByTestId","args":["user-name"]}` |
 
