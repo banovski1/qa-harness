@@ -6,6 +6,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import {pathToFileURL} from 'node:url';
 import {loadProjectConfig} from '../project-config.js';
 import {ANALYSIS_DIR, outPath, reportWritten, table, writeReport} from './report.js';
 import {REPO_ROOT, parseArgs, readJson, rel} from './util.js';
@@ -55,7 +56,7 @@ function render(source: Pick<RoutesReport, 'app' | 'strategy'> & {from: string},
   ].join('\n');
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const args = parseArgs();
   const routesFile = args.routes ? path.resolve(REPO_ROOT, String(args.routes)) : path.join(ANALYSIS_DIR, 'pages-and-routes.json');
   if (!fs.existsSync(routesFile)) {

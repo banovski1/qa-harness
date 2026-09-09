@@ -6,6 +6,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import {pathToFileURL} from 'node:url';
 import yaml from 'js-yaml';
 import {matchBackend} from './registry-backend.js';
 import {UNKNOWN_FRONTEND, matchFrontend} from './registry-frontend.js';
@@ -178,7 +179,7 @@ function summarise(result: DetectionResult) {
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const args = parseArgs();
   const result = detect(resolveAppPath(args.app), {frontendRoot: args.frontendRoot, backendRoot: args.backendRoot});
   const summary = summarise(result);

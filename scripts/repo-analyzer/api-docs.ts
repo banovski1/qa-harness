@@ -7,6 +7,7 @@
 //   npm run api-docs --prefix scripts/repo-analyzer -- [--app <app-clone>] [--cross-check <a known-good spec>]
 
 import path from 'node:path';
+import {pathToFileURL} from 'node:url';
 import yaml from 'js-yaml';
 import {detect} from './detect.js';
 import {paramsOf} from './registry-backend.js';
@@ -141,7 +142,7 @@ function render(detection: DetectionResult, result: ApiResult | null, apiPrefix:
   return lines.join('\n');
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const args = parseArgs();
   const appPath = resolveAppPath(args.app);
   const detection = detect(appPath, {frontendRoot: args.frontendRoot, backendRoot: args.backendRoot});

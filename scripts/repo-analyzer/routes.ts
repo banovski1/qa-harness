@@ -5,6 +5,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import {pathToFileURL} from 'node:url';
 import {astNode, astNodes, astString} from './ast.js';
 import {detect} from './detect.js';
 import {babelParse, keyName, walkAst} from './parsers.js';
@@ -227,7 +228,7 @@ function render(detection: DetectionResult, result: RouteCollection, apiPrefix: 
   return body;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const args = parseArgs();
   const detection = detect(resolveAppPath(args.app), {frontendRoot: args.frontendRoot, backendRoot: args.backendRoot});
   const apiPrefix = args.apiPrefix ? String(args.apiPrefix) : '/api';

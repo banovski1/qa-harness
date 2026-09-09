@@ -3,7 +3,7 @@
 
 import {spawnSync} from 'node:child_process';
 import path from 'node:path';
-import {fileURLToPath} from 'node:url';
+import {fileURLToPath, pathToFileURL} from 'node:url';
 import {parseArgs, REPO_ROOT} from './util.js';
 import type {CliArgs} from './types.js';
 
@@ -33,6 +33,6 @@ function run() {
   return 0;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   process.exit(run());
 }
