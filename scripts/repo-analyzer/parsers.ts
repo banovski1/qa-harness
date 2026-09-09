@@ -22,14 +22,21 @@ export function componentNameFromFile(file: string) {
 
 const BABEL_PLUGINS = ['jsx', 'typescript', 'decorators-legacy', 'classProperties', 'topLevelAwait'];
 
-export async function babelParse(source: string, extraPlugins: string[] = []): Promise<AstNode | null> {
+// `jsx` and a legacy angle-bracket type assertion (`<Type>expr`) both start with `<`, and `jsx`
+// wins: Angular source that casts this way throws "Unterminated JSX contents" instead of parsing.
+// Angular templates are never JSX, so this is the one set that drops the plugin. `babelParse`
+// takes the whole plugin set rather than retrying without `jsx` on failure — deterministic and
+// one parse per file — so every other caller keeps the default above untouched.
+const BABEL_PLUGINS_NO_JSX = BABEL_PLUGINS.filter((plugin) => plugin !== 'jsx');
+
+export async function babelParse(source: string, plugins: string[] = BABEL_PLUGINS): Promise<AstNode | null> {
   const babel = await tryImport('@babel/parser');
   if (!babel) return null;
   try {
     return astNode(babel.parse(source, {
       sourceType: 'unambiguous',
       errorRecovery: true,
-      plugins: unique([...BABEL_PLUGINS, ...extraPlugins]),
+      plugins: unique(plugins),
     })) ?? null;
   } catch {
     return null;
@@ -361,7 +368,7 @@ export async function parseSvelte(file: string, source: string): Promise<ParsedC
 
 export async function parseAngular(file: string, source: string): Promise<ParsedComponent> {
   const name = componentNameFromFile(file);
-  const ast = await babelParse(source);
+  const ast = await babelParse(source, BABEL_PLUGINS_NO_JSX);
   const props: string[] = [];
   const templates: {source?: string; url?: string}[] = [];
   if (ast) {

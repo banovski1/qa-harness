@@ -84,11 +84,12 @@ export const CASES: FixtureCase[] = [
     app: 'angular-app', frontend: 'angular', backend: null,
     routeStrategy: /@angular\/router config/,
     routes: ['/', '/users/{userId}'],
-    components: ['user-card.component'],
-    props: {'user-card.component': ['name', 'role']},
+    components: ['user-card.component', 'legacy-cast.component'],
+    props: {'user-card.component': ['name', 'role'], 'legacy-cast.component': ['label']},
     // Angular's compiler hands back class instances, not plain `{type: string}` nodes: this row is
-    // what proves the template walker still reaches them.
-    testIds: ['user-card', 'user-name'],
+    // what proves the template walker still reaches them. `legacy-cast.component` pins the `jsx`
+    // plugin regression — its `<HTMLInputElement>` cast must parse rather than error.
+    testIds: ['user-card', 'user-name', 'legacy-cast'],
   },
   {
     app: 'svelte-app', frontend: 'svelte', backend: null,
