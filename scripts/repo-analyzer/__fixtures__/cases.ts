@@ -10,6 +10,8 @@
 //   frontendRoot        expected frontend root, relative to the app — pins the monorepo tie-break
 //   routeStrategy       RegExp the collectRoutes() strategy string must match; `null` means none
 //   routes              route paths that must be present
+//   routesAbsent        route paths that must *not* be present — for a path only a broken
+//                       traversal could reach, e.g. one lap further around an import cycle
 //   components/props    component names and the props their parser must expose
 //   testIds             test-id values that must be found in the markup
 //   testIdCounts        value -> exact hit count, for pinning that a value is found *once* —
@@ -29,6 +31,7 @@ interface FixtureCase {
   frontendRoot?: string;
   routeStrategy?: RegExp | null;
   routes?: string[];
+  routesAbsent?: string[];
   components?: string[];
   props?: Record<string, string[]>;
   testIds?: string[];
@@ -86,7 +89,18 @@ export const CASES: FixtureCase[] = [
   {
     app: 'angular-app', frontend: 'angular', backend: null,
     routeStrategy: /@angular\/router config/,
-    routes: ['/', '/users/{userId}'],
+    // The two halves of the Angular route reader, each pinned by a path only that half can reach.
+    // Constants: `/orders` is `AppRoutes.ORDERS`, `/orders/add` delegates through `Global.ADD`, and
+    // `/orders/history` is a template literal composed from a sibling field. Lazy children:
+    // everything under `/orders` comes from a `loadChildren` file, and `/legacy/cast` from a module
+    // that only re-exports a sibling's array to `forChild`. `AppRoutes.RUNTIME_PATH` is computed,
+    // so its route is absent from this list rather than present with a guessed path.
+    routes: ['/', '/users/{userId}', '/orders', '/orders/add', '/orders/view/{orderId}', '/orders/history', '/orders/nested', '/legacy/cast'],
+    // One more lap around `order.routes.ts`'s self-import is what an unguarded cycle produces.
+    routesAbsent: ['/orders/nested/nested'],
+    // A lazily-loaded child declaring `path: ''` names the same URL as the parent that loaded it,
+    // and the child is the row that knows what renders there.
+    renders: {'/orders': 'OrderHistoryComponent', '/legacy/cast': 'LegacyCastComponent'},
     components: ['user-card.component', 'legacy-cast.component', 'order-form.component', 'order-history.component'],
     props: {'user-card.component': ['name', 'role'], 'legacy-cast.component': ['label']},
     // Angular's compiler hands back class instances, not plain `{type: string}` nodes: this row is

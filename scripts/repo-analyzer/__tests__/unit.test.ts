@@ -20,7 +20,7 @@ import {componentNameFromFile, isTestIdAttr, parseAngular, walkAny, walkAst} fro
 import {paramsOf} from '../registry-backend.js';
 import {FRONTEND_REGISTRY, matchFrontend} from '../registry-frontend.js';
 import {escapeCell, table} from '../report.js';
-import {fileRouteFor, normalisePath} from '../routes.js';
+import {fileRouteFor, joinRoutePath, normalisePath} from '../routes.js';
 import {resolveAppPath} from '../util.js';
 import {analyzerPlan} from '../analyze.js';
 import {astField, astNode, astNodes, astString} from '../ast.js';
@@ -113,6 +113,17 @@ test('fileRouteFor covers each file-based routing convention', () => {
   assert.equal(fileRouteFor('blog/[slug]/page.tsx', {pageFile: 'page'}), '/blog/{slug}');
   assert.equal(fileRouteFor('items/[id]/+page.svelte', {pageFile: '+page'}), '/items/{id}');
   assert.equal(fileRouteFor('users.$id.tsx', {flat: true}), '/users/{id}');
+});
+
+test('joinRoutePath composes a parent and a child route, empty segments included', () => {
+  // A layout route spells its path as the empty string, at either end of the join, and both a
+  // doubled and a missing slash would name a URL the app does not serve.
+  assert.equal(joinRoutePath('', ''), '/');
+  assert.equal(joinRoutePath('', 'orders'), '/orders');
+  assert.equal(joinRoutePath('/orders', ''), '/orders');
+  assert.equal(joinRoutePath('/orders', 'view/:id'), '/orders/view/:id');
+  assert.equal(joinRoutePath('/orders/', '/view'), '/orders/view');
+  assert.equal(joinRoutePath('/', 'orders'), '/orders');
 });
 
 test('joinUrl composes a base, a prefix and a route without doubling slashes', () => {

@@ -9,6 +9,9 @@
 //   parse         (file, source) -> { name, props, testIds, error }
 //   fileBasedRouter  { dirs, extensions, ignore } when routes come from a folder tree
 //   routerLib     the client router package whose config file holds the route array
+//   routerConfig  how far into that config to read — nested children, lazily-loaded child files
+//                 and constant route paths. Omit it and the config is read as one flat array of
+//                 string literals, which is all a small app declares.
 
 import {parseAngular, parseBackboneHandlebars, parseHtml, parseJsx, parseNaive, parseSvelte, parseVue} from './parsers.js';
 import {rel} from './util.js';
@@ -60,6 +63,18 @@ export const FRONTEND_REGISTRY: FrontendRegistryEntry[] = [
     id: 'angular', label: 'Angular', deps: ['@angular/core'],
     extensions: ['.component.ts'], parse: parseAngular,
     fileBasedRouter: null, routerLib: '@angular/router',
+    // An Angular app of any size declares four literals in its root routing file and everything
+    // else as a constant on a class, behind `loadChildren`, or both. `reexportCalls` covers the
+    // older half of such an app, where the lazy target is an NgModule that only hands a route
+    // array declared in a sibling file to `RouterModule.forChild`.
+    routerConfig: {
+      childrenKeys: ['children'],
+      lazyKeys: ['loadChildren'],
+      componentKeys: ['component', 'loadComponent'],
+      reexportCalls: ['forChild', 'forRoot'],
+      constantModules: true,
+      maxDepth: 12,
+    },
   },
   {
     id: 'react', label: 'React', deps: ['react', 'preact'],

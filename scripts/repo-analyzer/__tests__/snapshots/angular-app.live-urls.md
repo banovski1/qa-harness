@@ -5,15 +5,21 @@
 - **App**: `<fixtures>/angular-app`
 - **Base URL**: https://app.test
 - **Path prefix**: none
-- **Routes**: 2 (from `analysis/pages-and-routes.json`, strategy: @angular/router config)
+- **Routes**: 8 (from `analysis/pages-and-routes.json`, strategy: @angular/router config)
 - **Generated**: <timestamp>
 
 | URL | Placeholders | Renders |
 | --- | --- | --- |
 | [https://app.test/](https://app.test/) | — | `UserCardComponent` |
+| [https://app.test/legacy/cast](https://app.test/legacy/cast) | — | `LegacyCastComponent` |
+| [https://app.test/orders](https://app.test/orders) | — | `OrderHistoryComponent` |
+| [https://app.test/orders/add](https://app.test/orders/add) | — | `OrderFormComponent` |
+| [https://app.test/orders/history](https://app.test/orders/history) | — | `OrderHistoryComponent` |
+| [https://app.test/orders/nested](https://app.test/orders/nested) | — | — |
+| https://app.test/orders/view/{orderId} | `{orderId}` | `OrderFormComponent` |
 | https://app.test/users/{userId} | `{userId}` | `UserCardComponent` |
 
 
 ## Placeholders
 
-1 URL(s) carry a dynamic segment. The placeholder is left intact: no sample id is invented here, because a wrong one reads as a real URL and fails confusingly. Fill them from a precondition step (see `analysis/api-documentation.md`).
+2 URL(s) carry a dynamic segment. The placeholder is left intact: no sample id is invented here, because a wrong one reads as a real URL and fails confusingly. Fill them from a precondition step (see `analysis/api-documentation.md`).

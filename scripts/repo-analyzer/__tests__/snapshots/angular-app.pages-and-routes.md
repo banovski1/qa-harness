@@ -7,15 +7,21 @@
 - **Backend**: not detected
 - **Generated**: <timestamp>
 - **Route source**: @angular/router config
-- **Routes found**: 2
+- **Routes found**: 8
 - **API prefix excluded**: `/api` (see `analysis/api-documentation.md`)
 
 | Route | Renders | Params | Source |
 | --- | --- | --- | --- |
 | `/` | `UserCardComponent` | — | src/app/app.routes.ts (@angular/router config) |
+| `/legacy/cast` | `LegacyCastComponent` | — | src/app/legacy-routes.ts (@angular/router config) |
+| `/orders` | `OrderHistoryComponent` | — | src/app/order.routes.ts (@angular/router config) |
+| `/orders/add` | `OrderFormComponent` | — | src/app/order.routes.ts (@angular/router config) |
+| `/orders/history` | `OrderHistoryComponent` | — | src/app/app.routes.ts (@angular/router config) |
+| `/orders/nested` | — | — | src/app/order.routes.ts (@angular/router config) |
+| `/orders/view/{orderId}` | `OrderFormComponent` | `{orderId}` | src/app/order.routes.ts (@angular/router config) |
 | `/users/{userId}` | `UserCardComponent` | `{userId}` | src/app/app.routes.ts (@angular/router config) |
 
 
 ## Not statically resolvable
 
-0 route(s) above resolve to no component file — either the route is a redirect or download endpoint, or the component is chosen at runtime. They are listed with an empty **Renders** cell rather than guessed at.
+1 route(s) above resolve to no component file — either the route is a redirect or download endpoint, or the component is chosen at runtime. They are listed with an empty **Renders** cell rather than guessed at.

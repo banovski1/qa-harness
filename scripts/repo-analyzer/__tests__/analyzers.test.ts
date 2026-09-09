@@ -44,6 +44,10 @@ for (const testCase of CASES) {
       for (const expected of testCase.routes ?? []) {
         assert.ok(found.includes(expected), `missing route ${expected} (got ${found.join(', ')})`);
       }
+      // The one place an absence is asserted: a path only a broken traversal could reach.
+      for (const unwanted of testCase.routesAbsent ?? []) {
+        assert.ok(!found.includes(unwanted), `route ${unwanted} should not exist (got ${found.join(', ')})`);
+      }
       for (const [routePath, component] of Object.entries(testCase.renders ?? {})) {
         assert.equal(routes.find((route) => route.path === routePath)?.component, component);
       }
