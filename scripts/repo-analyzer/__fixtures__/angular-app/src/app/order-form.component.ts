@@ -16,8 +16,8 @@ import {Component} from '@angular/core';
       <textarea id="orderNotes"></textarea>
       <!-- rung 4: a componentLabel catalogue key, not associated with any <label for> -->
       <input componentLabel="order.name" />
-      <!-- rung 5: nothing but a placeholder, read untranslated because useI18 is off -->
-      <input placeholder="Search orders" [useI18]="false" />
+      <!-- rung 5: nothing but a placeholder — read literally, a static one is never piped -->
+      <input placeholder="Search orders" />
       <!-- rung 6: nothing but a name attribute -->
       <input name="quantity" />
     </form>

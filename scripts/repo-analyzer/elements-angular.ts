@@ -12,6 +12,7 @@
 // attributes onto itself *and* onto the element it wraps, so it has to stay transparent.
 
 import {bestLocatorFor} from '../framework-generator/locator-ladder.js';
+import type {LocatorSignals} from '../framework-generator/types.js';
 import {resolveAngularLabelExpression} from './i18n.js';
 import {astNode, astNodes, astString} from './ast.js';
 import {identifierFor, KIND_TEMPLATES, refineKind, ROLE_KINDS, testIdOf} from './elements.js';
@@ -216,10 +217,23 @@ function labelOf(attrs: Attributes, catalogue: CatalogueEntries): string | null 
   return null;
 }
 
-// A wrapper pipes its placeholder on the same `useI18` flag the label uses. A native
-// `<input [placeholder]="'x'">` is read as if wrapped too: the wrappers are 98% of the mapped
-// tags, and the mismatch costs a missing rung-5 signal rather than a wrong one.
-const placeholderOf = (attrs: Attributes, catalogue: CatalogueEntries) => wrappedValue(attrs, 'placeholder', catalogue);
+/**
+ * A wrapper pipes its *bound* placeholder on the same `useI18` flag the label uses, so that form
+ * keeps `wrappedValue`'s reasoning. A native `<input [placeholder]="'x'">` is read as if wrapped
+ * too: the wrappers are 98% of the mapped tags, and the mismatch costs a missing rung-5 signal
+ * rather than a wrong one.
+ *
+ * A *static* `placeholder="…"` is never piped — there is no pipe syntax in a plain HTML attribute
+ * — so it is the rendered text regardless of `useI18`, the same reasoning `directValue` already
+ * applies to `aria-label`. Routing it through `wrappedValue` was the bug: on ordinary Angular
+ * markup with no `useI18` at all, `translatesLabels` defaults to `true`, and a static string that
+ * happens not to be a catalogue key came back `null` — silently dropping the placeholder.
+ */
+function placeholderOf(attrs: Attributes, catalogue: CatalogueEntries): string | null {
+  const value = attrs.statics.placeholder?.trim();
+  if (value) return staticLabel(value, catalogue);
+  return wrappedValue(attrs, 'placeholder', catalogue);
+}
 
 /**
  * The element's own id. `componentId` counts because the wrappers forward it to the real
@@ -350,7 +364,7 @@ function buildElement({kind, node, attrs, catalogue, templateFor, labelTargets}:
     placeholder,
     nameAttr: role ? null : attrs.statics.name,
     idAttr,
-  } as Parameters<typeof bestLocatorFor>[0]);
+  } satisfies LocatorSignals);
   if (!locator) return null;
 
   // What to call the element in code follows the order the ladder just used, so the identifier
