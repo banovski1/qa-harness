@@ -62,7 +62,10 @@ async function tierB(detection: DetectionResult, apiPrefix: string): Promise<Api
   if (!detection.backend) return null;
   const all = await detection.backend.entry.routes(detection.backend.root);
   const endpoints = all
-    .filter((route) => route.kind === 'api' || route.path.startsWith(apiPrefix))
+    // An explicit `kind: 'page'` overrides the prefix clause: a context-pathed app composes every
+    // route under the same prefix regardless of kind, and a view-returning route in this report
+    // is a request the app cannot serve — the same class of harm as a fabricated path.
+    .filter((route) => route.kind === 'api' || (route.kind !== 'page' && route.path.startsWith(apiPrefix)))
     .map((route) => ({
       path: route.path,
       methods: route.methods,

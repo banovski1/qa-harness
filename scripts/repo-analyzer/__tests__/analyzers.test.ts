@@ -120,7 +120,7 @@ for (const testCase of CASES) {
           assert.ok(!found.includes(absent), `endpoint ${absent} should not have been extracted (got ${found.join(', ')})`);
         }
         // The classification itself, not just its side effects: a typo in the return-type chain
-        // makes everything read `api`, and Tier B's prefix clause can mask that for a page route.
+        // makes everything read `api`, which Tier B's kind-aware filter now depends on directly.
         for (const [routePath, kind] of Object.entries(testCase.endpointKinds ?? {})) {
           assert.equal(all.find((route) => route.path === routePath)?.kind, kind, `${routePath} kind`);
         }

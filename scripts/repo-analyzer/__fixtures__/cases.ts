@@ -28,8 +28,8 @@
 //                       commented-out annotation read as live, or an unresolvable class-level
 //                       base composed onto its methods instead of dropping the class
 //   endpointKinds       path -> the `kind` ('api' | 'page') that same raw route must carry —
-//                       pins the return-type classification directly, since a page route can
-//                       still surface in `tier`/`apiPaths` by path prefix alone
+//                       pins the return-type classification directly, independent of whatever
+//                       tierB does with it
 //   endpointMethods     path -> the HTTP verbs that same raw route must carry — pins a verb read
 //                       from a `method =` attribute rather than defaulted to ANY
 //   tier / apiPaths     the api-docs tier letter and the endpoints it must report
@@ -233,15 +233,13 @@ export const CASES: FixtureCase[] = [
     // ANY just because the value attribute is not the first one written.
     endpointMethods: {'/api/v2/employees/bulk': ['POST']},
     tier: 'B',
-    // `/api/home` is a page route, not an api one, but it still surfaces here: the app's
-    // context-path prefixes every composed path with `/api`, so tierB's `path.startsWith('/api')`
-    // clause admits it independently of `kind`. Pinned as the app's actual behavior, not as a
-    // claim that page/api are distinguished by Tier B for a wholly `/api`-context-pathed app.
+    // `/api/home` is a page route: its path starts with the app's context-path like every other
+    // route here, but `kind: 'page'` overrides that prefix match, so it must not reach Tier B.
     apiPaths: [
       '/api/v2/employees', '/api/v2/employees/legacy', '/api/v2/employees/bulk',
       '/api/v2/employees/active', '/api/v2/employees/inactive', '/api/v2/employees/{id:[0-9]+}',
-      '/api/home',
     ],
+    apiPathsAbsent: ['/api/home'],
   },
   {
     app: 'backbone-handlebars', frontend: 'backbone', backend: 'json-routes',
