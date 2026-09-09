@@ -92,9 +92,25 @@ locatorTemplates:
   tableByColumn:     '[data-e2e-label="{label}"]'
   topNavTab:         '[data-e2e-label="{label}"]'
 #
-# Leaving this empty is supported: the extractor only proposes a template id defined here, so
-# elements that would have reached rung 4 fall to a weaker signal or are counted as skipped.
-# Filling it in is an improvement, never a precondition.
+# Every pattern above is the identical `[data-e2e-label="{label}"]` string, and that is
+# deliberate, not an oversight to collapse: the per-kind `data-e2e-id` half carries no
+# selector-level discrimination here, since five different wrapper tags (textinput, search-input,
+# datepicker, date-time-picker, mco-input-spinner) all collapse to kind `input` while each stamps
+# a *different* `data-e2e-id`. Pairing an id into the pattern would be worse than this, not better
+# — it would match only the one wrapper that happens to use that id and silently miss the other
+# four sharing the kind. `data-e2e-label` alone is the per-instance half, so a label-only anchor
+# is the only pattern that covers every wrapper a kind maps to.
+#
+# That anchor is also why `check-analysis` reports roughly 1031 locator-collision warnings on the
+# verification clone: a label-only selector cannot prove page-wide uniqueness the way an
+# id-pinned one could. That count is the expected, honest cost of this trade-off, not a defect to
+# chase to zero — pinning a specific collision down means recording the flow and adding a scoped
+# accessor in the protected page object, per `locator-ladder.ts`'s rung-4 note.
+#
+# Leaving the block empty remains a supported state for a fresh app whose ids are not yet known:
+# the extractor only proposes a template id defined here, so an empty block sends elements that
+# would have reached rung 4 to a weaker signal or into `skipped` instead of erroring. Filling it
+# in — as this block now does — is an improvement, never a precondition.
 
 # Where scripts/framework-generator/smart-api-map.ts writes the normalized api-map
 # (one YAML file per resource). Absent or empty directory -> no API layer is
