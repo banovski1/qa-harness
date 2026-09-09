@@ -140,6 +140,10 @@ test('paramsOf reads every parameter spelling and de-duplicates', () => {
   assert.deepEqual(paramsOf('/a/<int:one>/'), ['one']);
   assert.deepEqual(paramsOf('/a/{one}/b/{one}'), ['one']);
   assert.deepEqual(paramsOf('/a/b'), []);
+  // Spring writes a regex constraint into the placeholder; the parameter is `one`, not the pattern,
+  // and the colon means the opposite of what it means in Django's `<int:one>` above.
+  assert.deepEqual(paramsOf('/a/{one:[0-9]+}'), ['one']);
+  assert.deepEqual(paramsOf('/a/{one:[0-9]+}/b/{two}'), ['one', 'two']);
 });
 
 test('matchFrontend applies the beats: precedence rather than registry order', () => {

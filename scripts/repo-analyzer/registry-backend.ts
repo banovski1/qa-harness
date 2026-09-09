@@ -14,7 +14,8 @@ import path from 'node:path';
 import yaml from 'js-yaml';
 import {astNode, astNodes, astString} from './ast.js';
 import {babelParse, keyName, walkAst} from './parsers.js';
-import {findFiles, readJson, readText, rel, unique} from './util.js';
+import {findFiles, readJson, readText, rel, tryImport, unique} from './util.js';
+import type {CstElement, CstNode as JavaCstNode} from 'java-parser';
 import type {BackendRegistryEntry, BackendRoute} from './types.js';
 
 interface SymfonyRouteEntry {
@@ -46,9 +47,12 @@ function rooted(path: string) {
 }
 
 export function paramsOf(routePath: string): string[] {
+  // The two brace-and-colon spellings put the name on opposite sides of the colon: Spring writes
+  // a regex constraint after it (`{id:[0-9]+}` names `id`), Django a converter before it
+  // (`<int:id>` also names `id`), so the brace form cannot share the other's `.pop()`.
   return unique([
     ...String(routePath).matchAll(/\{([^}/]+)\}|:([A-Za-z_][\w]*)|<(?:[^:>]+:)?([^>]+)>/g),
-  ].map((m) => (m[1] ?? m[2] ?? m[3]).split(/[<:]/).pop()!));
+  ].map((m) => (m[1] !== undefined ? m[1].split(':')[0].trim() : (m[2] ?? m[3]).split(/[<:]/).pop()!)));
 }
 
 // --- Symfony ---------------------------------------------------------------------------
@@ -171,8 +175,246 @@ async function nestRoutes(root: string): Promise<BackendRoute[]> {
   return routes;
 }
 
+// --- Spring (Java AST) ------------------------------------------------------------------
+// Spring joins a class-level @RequestMapping base onto each method's own path — the same shape
+// nestRoutes reads for Nest — which a line-at-a-time regex cannot do, and it spells one mapping
+// six ways (`value =`, `path =`, bare, an array, a `method =` beside any of them). java-parser
+// gives the structure, and leaves comments out of the CST so a commented-out @GetMapping cannot
+// be read as a live one. Everything below walks the annotation *structure* rather than
+// harvesting string literals: a returned view name is a string literal too.
+//
+// Java only: java-parser cannot read Kotlin, so a Kotlin Spring app reports no endpoints and
+// api-docs falls to Tier C — which states that the app has to run, rather than half-reading it.
+
+type JavaNode = JavaCstNode | undefined;
+
+const SPRING_VERB_FOR: Record<string, string | undefined> = {
+  GetMapping: 'GET', PostMapping: 'POST', PutMapping: 'PUT',
+  PatchMapping: 'PATCH', DeleteMapping: 'DELETE', RequestMapping: 'ANY',
+};
+
+const REQUEST_METHODS = new Set(['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS', 'TRACE']);
+const VIEW_RETURN_TYPES = new Set(['String', 'ModelAndView']);
+
+// A Maven module buries its packages nine directories deep before the file
+// (`src/main/java/com/acme/app/web/rest/FooController.java`), and a multi-module repo adds more.
+const JAVA_MAX_DEPTH = 18;
+
+// Parsing every Java file in a large repo costs minutes, and only a file that mentions a mapping
+// annotation can declare an endpoint. Over-matching is free: the parser then finds nothing.
+const SPRING_MAPPING_HINT = /@(?:Request|Get|Post|Put|Patch|Delete)Mapping\b/;
+
+interface SpringApplicationYaml {
+  server?: {servlet?: {'context-path'?: string}; 'context-path'?: string};
+}
+
+// A Chevrotain CST node holds `children`; a token holds `image` and no children. The parameter
+// admits the wide node type too, so the narrowed type stays assignable to it.
+function isCstNode(element: CstElement | JavaCstNode): element is JavaCstNode {
+  return (element as JavaCstNode).children !== undefined;
+}
+
+function cstNodes(node: JavaNode, key: string): JavaCstNode[] {
+  const nodes: JavaCstNode[] = [];
+  for (const element of node?.children[key] ?? []) if (isCstNode(element)) nodes.push(element);
+  return nodes;
+}
+
+function cstImages(node: JavaNode, key: string): string[] {
+  const images: string[] = [];
+  for (const element of node?.children[key] ?? []) if (!isCstNode(element)) images.push(element.image);
+  return images;
+}
+
+/** One child per step down a chain of grammar rules, which is the shape most Java rules have. */
+function cstStep(node: JavaNode, ...keys: string[]): JavaNode {
+  let current = node;
+  for (const key of keys) current = cstNodes(current, key)[0];
+  return current;
+}
+
+/** Every node carrying this rule name below the given one, itself included. */
+function cstFind(node: JavaNode, name: string): JavaCstNode[] {
+  const found: JavaCstNode[] = [];
+  const visit = (current: JavaCstNode) => {
+    if (current.name === name) found.push(current);
+    for (const key of Object.keys(current.children)) for (const child of cstNodes(current, key)) visit(child);
+  };
+  if (node) visit(node);
+  return found;
+}
+
+/** A fully qualified `@org.springframework.web.bind.annotation.GetMapping` ends in the simple name. */
+function annotationName(annotation: JavaCstNode): string {
+  return cstImages(cstStep(annotation, 'typeName'), 'Identifier').at(-1) ?? '';
+}
+
+function annotationAttribute(annotation: JavaCstNode, names: string[]): JavaNode {
+  for (const pair of cstNodes(cstStep(annotation, 'elementValuePairList'), 'elementValuePair')) {
+    if (names.includes(cstImages(pair, 'Identifier')[0] ?? '')) return cstNodes(pair, 'elementValue')[0];
+  }
+  return undefined;
+}
+
+/**
+ * The paths one mapping annotation declares. `[]` means it declares none — a bare `@GetMapping`,
+ * or one carrying only `produces` — and inherits the class base. `null` means it declares one
+ * that cannot be resolved here: a constant reference or a concatenation needs the whole
+ * classpath, and half a path is worse than no path, so the caller drops the mapping.
+ */
+function mappingPaths(annotation: JavaCstNode): string[] | null {
+  const value = cstNodes(annotation, 'elementValue')[0] ?? annotationAttribute(annotation, ['value', 'path']);
+  if (!value) return [];
+  const literals = cstFind(value, 'literal').flatMap((node) => cstImages(node, 'StringLiteral'));
+  if (literals.length === 0 || cstFind(value, 'fqnOrRefType').length > 0) return null;
+  return literals.map((image) => image.slice(1, -1));
+}
+
+/** `method = RequestMethod.POST`, `method = { GET, POST }` and the static-import spelling alike. */
+function mappingMethods(annotation: JavaCstNode): string[] {
+  const declared = cstFind(annotationAttribute(annotation, ['method']), 'fqnOrRefTypePartCommon')
+    .flatMap((part) => cstImages(part, 'Identifier'))
+    .filter((image) => REQUEST_METHODS.has(image));
+  // A @RequestMapping naming no verb answers every one of them, which the report spells ANY.
+  return declared.length > 0 ? unique(declared) : [SPRING_VERB_FOR[annotationName(annotation)] ?? 'ANY'];
+}
+
+/**
+ * Spring's own rule, never this app's: a mapped method is an endpoint unless it demonstrably
+ * returns a view. @ResponseBody — which @RestController implies — settles it either way, so a
+ * @Controller whose methods write JSON to the response is API, and only a String/ModelAndView
+ * return with no @ResponseBody anywhere is a page.
+ */
+function springKind(returnType: string, annotationNames: string[]): 'api' | 'page' {
+  if (annotationNames.includes('ResponseBody') || annotationNames.includes('RestController')) return 'api';
+  return VIEW_RETURN_TYPES.has(returnType) ? 'page' : 'api';
+}
+
+/** `{id:[0-9]+}` constrains `id` the way a Symfony route's `requirements:` block does. */
+function springRequirements(routePath: string): Record<string, string> | null {
+  const entries = [...routePath.matchAll(/\{([A-Za-z_]\w*)\s*:\s*([^}]+)\}/g)].map((m) => [m[1], m[2].trim()]);
+  return entries.length > 0 ? Object.fromEntries(entries) : null;
+}
+
+function classMethods(normalClass: JavaNode): JavaCstNode[] {
+  return cstNodes(cstStep(normalClass, 'classBody'), 'classBodyDeclaration')
+    .flatMap((declaration) => cstNodes(declaration, 'classMemberDeclaration'))
+    .flatMap((member) => cstNodes(member, 'methodDeclaration'));
+}
+
+/** The declared return type only: `void`, a primitive and an array all read as '' and so are API. */
+function methodFacts(method: JavaCstNode) {
+  const header = cstStep(method, 'methodHeader');
+  const returned = cstStep(header, 'result', 'unannType', 'unannReferenceType', 'unannClassOrInterfaceType', 'unannClassType');
+  return {
+    name: cstImages(cstStep(header, 'methodDeclarator'), 'Identifier')[0] ?? null,
+    returnType: cstImages(returned, 'Identifier').at(-1) ?? '',
+    annotations: cstNodes(method, 'methodModifier').flatMap((modifier) => cstNodes(modifier, 'annotation')),
+  };
+}
+
+function joinSpringPath(segments: string[]) {
+  const joined = `/${segments.filter(Boolean).join('/')}`.replace(/\/+/g, '/');
+  return joined.length > 1 ? joined.replace(/\/$/, '') : joined;
+}
+
+/**
+ * One Java file's endpoints. The unit is the class, not the file: an inner class carries its own
+ * @RequestMapping base and does not inherit the enclosing one's.
+ */
+function springFileRoutes(root: string, file: string, cst: JavaCstNode, contextPath: string): BackendRoute[] {
+  const routes: BackendRoute[] = [];
+  for (const declaration of cstFind(cst, 'classDeclaration')) {
+    const classAnnotations = cstNodes(declaration, 'classModifier').flatMap((modifier) => cstNodes(modifier, 'annotation'));
+    const classNames = classAnnotations.map(annotationName);
+    const classMapping = classAnnotations.find((annotation) => annotationName(annotation) === 'RequestMapping');
+    const bases = classMapping ? mappingPaths(classMapping) : [];
+    // An unresolvable base would mis-root every method beneath it, so the class is dropped whole.
+    if (bases === null) continue;
+    const normalClass = cstStep(declaration, 'normalClassDeclaration');
+    const controller = cstImages(cstStep(normalClass, 'typeIdentifier'), 'Identifier')[0] ?? null;
+    for (const method of classMethods(normalClass)) {
+      const {name, returnType, annotations} = methodFacts(method);
+      const kind = springKind(returnType, [...classNames, ...annotations.map(annotationName)]);
+      for (const annotation of annotations) {
+        if (!SPRING_VERB_FOR[annotationName(annotation)]) continue;
+        const suffixes = mappingPaths(annotation);
+        if (suffixes === null) continue;
+        const methods = mappingMethods(annotation);
+        for (const base of bases.length > 0 ? bases : ['']) {
+          for (const suffix of suffixes.length > 0 ? suffixes : ['']) {
+            const routePath = joinSpringPath([contextPath, base, suffix]);
+            routes.push({
+              path: routePath, methods, source: rel(root, file), name, controller,
+              purpose: `${controller ?? ''}.${name ?? ''}`,
+              requirements: springRequirements(routePath), kind,
+            });
+          }
+        }
+      }
+    }
+  }
+  return routes;
+}
+
+/**
+ * `server.servlet.context-path` prefixes every mapped path. Only the backend root's own
+ * `application.properties`/`.yml` is read: in a multi-module repo a sub-module's property file
+ * describes that module, not the application the aggregator builds, and borrowing its context
+ * path would mis-root every endpoint in the repo.
+ */
+function springContextPath(root: string): string {
+  const isAppConfig = (file: string) => /^(?:src\/main\/resources\/)?application\.(properties|ya?ml)$/.test(rel(root, file));
+  for (const file of findFiles(root, isAppConfig, {maxDepth: 3})) {
+    const text = readText(file);
+    if (!text) continue;
+    if (file.endsWith('.properties')) {
+      const declared = text.match(/^[ \t]*server\.(?:servlet\.)?(?:context-path|contextPath)[ \t]*[=:][ \t]*(\S+)/m)?.[1];
+      if (declared) return normaliseContextPath(declared);
+      continue;
+    }
+    let doc: SpringApplicationYaml | null = null;
+    try {
+      doc = yaml.load(text) as SpringApplicationYaml | null;
+    } catch {
+      continue;
+    }
+    const declared = doc?.server?.servlet?.['context-path'] ?? doc?.server?.['context-path'];
+    if (declared) return normaliseContextPath(String(declared));
+  }
+  return '';
+}
+
+// A `${...}` placeholder is resolved at boot from the environment, so it is not a path.
+function normaliseContextPath(value: string) {
+  const trimmed = value.trim();
+  return trimmed === '' || trimmed.includes('${') ? '' : rooted(trimmed).replace(/\/+$/, '');
+}
+
+async function springRoutes(root: string): Promise<BackendRoute[]> {
+  const parser = (await tryImport('java-parser')) as typeof import('java-parser') | null;
+  if (!parser) return [];
+  const contextPath = springContextPath(root);
+  const routes: BackendRoute[] = [];
+  let unparsed = 0;
+  for (const file of findFiles(root, (_file, base) => base.endsWith('.java'), {maxDepth: JAVA_MAX_DEPTH})) {
+    const source = readText(file);
+    if (!source || !SPRING_MAPPING_HINT.test(source)) continue;
+    let cst: JavaCstNode | null = null;
+    try {
+      cst = parser.parse(source);
+    } catch {
+      unparsed++;
+    }
+    if (cst) routes.push(...springFileRoutes(root, file, cst, contextPath));
+  }
+  // A parser that silently finds nothing reads the same as an app with nothing to find.
+  if (unparsed > 0) console.warn(`spring: ${unparsed} candidate Java file(s) failed to parse and were skipped`);
+  return routes;
+}
+
 // --- pattern-scanned backends -----------------------------------------------------------
-// PHP, Python, Ruby and Java have no parser available here, so these read one declaration
+// PHP, Python and Ruby have no parser available here, so these read one declaration
 // line at a time rather than a whole file, and the report names the method used.
 
 function scanRoutes(root: string, {filePredicate, pattern, build, maxDepth = 8}: {
@@ -219,12 +461,6 @@ const railsRoutes = (root: string) => scanRoutes(root, {
   filePredicate: (file) => rel(root, file) === 'config/routes.rb',
   pattern: /^\s*(get|post|put|patch|delete)\s+['"]([^'"]+)['"](?:\s*,\s*to:\s*['"]([^'"]+)['"])?/gm,
   build: (m) => ({path: m[2].startsWith('/') ? m[2] : `/${m[2]}`, methods: [m[1].toUpperCase()], purpose: m[3] ?? null}),
-});
-
-const springRoutes = (root: string) => scanRoutes(root, {
-  filePredicate: (file) => file.endsWith('.java') || file.endsWith('.kt'),
-  pattern: /@(Get|Post|Put|Patch|Delete|Request)Mapping\s*\(\s*(?:value\s*=\s*)?['"]([^'"]+)['"]/g,
-  build: (m) => ({path: m[2].startsWith('/') ? m[2] : `/${m[2]}`, methods: [m[1] === 'Request' ? 'ANY' : m[1].toUpperCase()]}),
 });
 
 function isJsonRouteManifest(file: string) {
@@ -296,7 +532,7 @@ export const BACKEND_REGISTRY: BackendRegistryEntry[] = [
   },
   {
     id: 'spring', label: 'Spring', deps: ['spring-boot', 'spring-boot-starter-web', 'org.springframework.boot'],
-    method: '@RequestMapping / @GetMapping annotations', routes: async (root) => springRoutes(root),
+    method: '@RequestMapping / @GetMapping annotations (Java AST)', routes: springRoutes,
   },
 ];
 
