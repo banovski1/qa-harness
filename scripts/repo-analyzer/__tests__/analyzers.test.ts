@@ -8,7 +8,7 @@ import path from 'node:path';
 import test from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {mergeByPath, tierA, tierB} from '../api-docs.js';
-import {collectComponents} from '../components.js';
+import {buildLabelDictionary, collectComponents} from '../components.js';
 import {KIND_TEMPLATES} from '../elements.js';
 import {detect} from '../detect.js';
 import {joinUrl} from '../live-urls.js';
@@ -92,6 +92,16 @@ for (const testCase of CASES) {
             assert.equal(found.locator.strategy, expected.locator.strategy, `${expected.name} strategy`);
             assert.deepEqual(found.locator.args, expected.locator.args, `${expected.name} args`);
             if (expected.locator.name) assert.equal(found.locator.name, expected.locator.name, `${expected.name} locator name`);
+          }
+        }
+
+        // The join, not either half of it: extracted elements only reach a spec through here, and
+        // a route whose component stayed a class name leaves the dictionary silently empty.
+        const dictionary = buildLabelDictionary(components, routes);
+        for (const [routePath, names] of Object.entries(testCase.labelDictionary ?? {})) {
+          const carried = (dictionary[routePath]?.elements ?? []).map((element) => element.name);
+          for (const name of names) {
+            assert.ok(carried.includes(name), `label dictionary ${routePath} is missing ${name} (got ${carried.join(', ') || 'nothing'})`);
           }
         }
       });

@@ -12,14 +12,14 @@
 
 | Route | Renders | Params | Source |
 | --- | --- | --- | --- |
-| `/` | `UserCardComponent` | — | src/app/app.routes.ts (@angular/router config) |
-| `/legacy/cast` | `LegacyCastComponent` | — | src/app/legacy-routes.ts (@angular/router config) |
-| `/orders` | `OrderHistoryComponent` | — | src/app/order.routes.ts (@angular/router config) |
-| `/orders/add` | `OrderFormComponent` | — | src/app/order.routes.ts (@angular/router config) |
-| `/orders/history` | `OrderHistoryComponent` | — | src/app/app.routes.ts (@angular/router config) |
+| `/` | `src/app/user-card.component.ts` | — | src/app/app.routes.ts (@angular/router config) |
+| `/legacy/cast` | `src/app/legacy-cast.component.ts` | — | src/app/legacy-routes.ts (@angular/router config) |
+| `/orders` | `src/app/order-history.component.ts` | — | src/app/order.routes.ts (@angular/router config) |
+| `/orders/add` | `src/app/order-form.component.ts` | — | src/app/order.routes.ts (@angular/router config) |
+| `/orders/history` | `src/app/order-history.component.ts` | — | src/app/app.routes.ts (@angular/router config) |
 | `/orders/nested` | — | — | src/app/order.routes.ts (@angular/router config) |
-| `/orders/view/{orderId}` | `OrderFormComponent` | `{orderId}` | src/app/order.routes.ts (@angular/router config) |
-| `/users/{userId}` | `UserCardComponent` | `{userId}` | src/app/app.routes.ts (@angular/router config) |
+| `/orders/view/{orderId}` | `src/app/order-form.component.ts` | `{orderId}` | src/app/order.routes.ts (@angular/router config) |
+| `/users/{userId}` | `src/app/user-card.component.ts` | `{userId}` | src/app/app.routes.ts (@angular/router config) |
 
 
 ## Not statically resolvable

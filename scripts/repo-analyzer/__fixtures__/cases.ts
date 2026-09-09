@@ -12,6 +12,9 @@
 //   routes              route paths that must be present
 //   routesAbsent        route paths that must *not* be present — for a path only a broken
 //                       traversal could reach, e.g. one lap further around an import cycle
+//   labelDictionary     route path -> element names buildLabelDictionary() must carry for it. This
+//                       is the join between the route half and the element half, so a route whose
+//                       component resolved to a class name rather than a file empties it silently
 //   components/props    component names and the props their parser must expose
 //   testIds             test-id values that must be found in the markup
 //   testIdCounts        value -> exact hit count, for pinning that a value is found *once* —
@@ -32,6 +35,7 @@ interface FixtureCase {
   routeStrategy?: RegExp | null;
   routes?: string[];
   routesAbsent?: string[];
+  labelDictionary?: Record<string, string[]>;
   components?: string[];
   props?: Record<string, string[]>;
   testIds?: string[];
@@ -99,8 +103,23 @@ export const CASES: FixtureCase[] = [
     // One more lap around `order.routes.ts`'s self-import is what an unguarded cycle produces.
     routesAbsent: ['/orders/nested/nested'],
     // A lazily-loaded child declaring `path: ''` names the same URL as the parent that loaded it,
-    // and the child is the row that knows what renders there.
-    renders: {'/orders': 'OrderHistoryComponent', '/legacy/cast': 'LegacyCastComponent'},
+    // and the child is the row that knows what renders there. Renders is asserted as the component
+    // *file*, not the class name the route declares: that is what `buildLabelDictionary` joins on,
+    // so a regression in the class index shows up here rather than as an empty dictionary.
+    // `/legacy/cast` also pins that the index parses without the `jsx` plugin — its component
+    // casts with `<HTMLInputElement>`, which `jsx` cannot read.
+    renders: {
+      '/orders': 'src/app/order-history.component.ts',
+      '/orders/add': 'src/app/order-form.component.ts',
+      '/legacy/cast': 'src/app/legacy-cast.component.ts',
+    },
+    // The span itself, end to end: a route path reaching the elements of the component it renders.
+    // Both branches are covered — order-form declares its markup inline, order-history through
+    // `templateUrl:` — and either half of the bridge breaking empties this.
+    labelDictionary: {
+      '/orders/add': ['orderIdInput', 'submitOrderButton', 'orderNameInput'],
+      '/orders': ['urgentFlagInput'],
+    },
     components: ['user-card.component', 'legacy-cast.component', 'order-form.component', 'order-history.component'],
     props: {'user-card.component': ['name', 'role'], 'legacy-cast.component': ['label']},
     // Angular's compiler hands back class instances, not plain `{type: string}` nodes: this row is

@@ -73,6 +73,7 @@ export const FRONTEND_REGISTRY: FrontendRegistryEntry[] = [
       componentKeys: ['component', 'loadComponent'],
       reexportCalls: ['forChild', 'forRoot'],
       constantModules: true,
+      componentClassIndex: true,
       maxDepth: 12,
     },
   },

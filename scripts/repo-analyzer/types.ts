@@ -42,6 +42,12 @@ export interface RouterConfigTraversal {
   reexportCalls?: string[];
   /** resolve `Class.FIELD` / `Enum.MEMBER` paths through the imports of the file they appear in */
   constantModules?: boolean;
+  /**
+   * resolve a route's component identifier to the file whose class declaration it names, keeping
+   * the identifier in `componentName`. Set it where a route names its component by symbol rather
+   * than by path, since the label dictionary joins routes to elements on the *file*.
+   */
+  componentClassIndex?: boolean;
   /** how far the child graph is followed, counting both nesting levels and file hops */
   maxDepth?: number;
 }

@@ -10,14 +10,14 @@
 
 | URL | Placeholders | Renders |
 | --- | --- | --- |
-| [https://app.test/](https://app.test/) | — | `UserCardComponent` |
-| [https://app.test/legacy/cast](https://app.test/legacy/cast) | — | `LegacyCastComponent` |
-| [https://app.test/orders](https://app.test/orders) | — | `OrderHistoryComponent` |
-| [https://app.test/orders/add](https://app.test/orders/add) | — | `OrderFormComponent` |
-| [https://app.test/orders/history](https://app.test/orders/history) | — | `OrderHistoryComponent` |
+| [https://app.test/](https://app.test/) | — | `src/app/user-card.component.ts` |
+| [https://app.test/legacy/cast](https://app.test/legacy/cast) | — | `src/app/legacy-cast.component.ts` |
+| [https://app.test/orders](https://app.test/orders) | — | `src/app/order-history.component.ts` |
+| [https://app.test/orders/add](https://app.test/orders/add) | — | `src/app/order-form.component.ts` |
+| [https://app.test/orders/history](https://app.test/orders/history) | — | `src/app/order-history.component.ts` |
 | [https://app.test/orders/nested](https://app.test/orders/nested) | — | — |
-| https://app.test/orders/view/{orderId} | `{orderId}` | `OrderFormComponent` |
-| https://app.test/users/{userId} | `{userId}` | `UserCardComponent` |
+| https://app.test/orders/view/{orderId} | `{orderId}` | `src/app/order-form.component.ts` |
+| https://app.test/users/{userId} | `{userId}` | `src/app/user-card.component.ts` |
 
 
 ## Placeholders

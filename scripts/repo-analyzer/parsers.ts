@@ -29,7 +29,7 @@ const BABEL_PLUGINS = ['jsx', 'typescript', 'decorators-legacy', 'classPropertie
 // Angular templates are never JSX, so this is the one set that drops the plugin. `babelParse`
 // takes the whole plugin set rather than retrying without `jsx` on failure — deterministic and
 // one parse per file — so every other caller keeps the default above untouched.
-const BABEL_PLUGINS_NO_JSX = BABEL_PLUGINS.filter((plugin) => plugin !== 'jsx');
+export const BABEL_PLUGINS_NO_JSX = BABEL_PLUGINS.filter((plugin) => plugin !== 'jsx');
 
 export async function babelParse(source: string, plugins: string[] = BABEL_PLUGINS): Promise<AstNode | null> {
   const babel = await tryImport('@babel/parser');

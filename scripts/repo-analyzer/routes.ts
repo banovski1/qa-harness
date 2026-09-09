@@ -8,7 +8,7 @@ import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {astField, astNode, astNodes, astString} from './ast.js';
 import {detect} from './detect.js';
-import {babelParse, keyName, walkAst} from './parsers.js';
+import {BABEL_PLUGINS_NO_JSX, babelParse, keyName, walkAst} from './parsers.js';
 import {paramsOf} from './registry-backend.js';
 import {header, outPath, reportWritten, table, writeReport} from './report.js';
 import {findFiles, parseArgs, readText, rel, resolveAppPath} from './util.js';
@@ -204,12 +204,50 @@ function createConstantResolver(detection: DetectionResult, {constantModules = f
   return {resolve, importsOf};
 }
 
+/**
+ * Mechanism 3 — the component-class index.
+ *
+ * A route names what it renders by symbol (`component: LoginComponent`), but `buildLabelDictionary`
+ * joins a route to its extracted elements on `component.file`. Without this every route carried a
+ * class name that matched no file, and the label dictionary — the span between the route half and
+ * the element half of this analysis — came out empty.
+ *
+ * So: one pass over the same files `collectComponents` parses, mapping an exported class name to
+ * *every* file declaring it. A name is rarely unique — `AlertListComponent` is declared four times
+ * in the app under test — so the list is kept rather than collapsed, and the route file's own
+ * import of the identifier is what picks between them. Nothing is guessed: a name the index cannot
+ * narrow to one file keeps its identifier.
+ */
+async function componentClassFiles(detection: DetectionResult): Promise<Map<string, string[]>> {
+  const entry = detection.frontend.entry;
+  const files = findFiles(detection.frontend.sourceRoot, (file) => entry.extensions.some((ext) => file.endsWith(ext))
+    && !/\.(spec|test|stories|d)\.[jt]sx?$/.test(file)
+    && (!entry.filePredicate || entry.filePredicate(file, detection)), {maxDepth: 10});
+  const index = new Map<string, string[]>();
+  for (const file of files) {
+    const source = readText(file);
+    // No `jsx`: an Angular file casting with `<HTMLInputElement>expr` fails to parse with it on.
+    const ast = source ? await babelParse(source, BABEL_PLUGINS_NO_JSX) : null;
+    if (!ast) continue;
+    const relPath = rel(detection.appPath, file);
+    for (const statement of astNodes(ast, 'program', 'body')) {
+      const node = astNode(statement, 'declaration') ?? statement;
+      const name = node.type === 'ClassDeclaration' ? astString(node, 'id', 'name') : undefined;
+      if (!name) continue;
+      const declaring = index.get(name) ?? [];
+      if (!declaring.includes(relPath)) index.set(name, [...declaring, relPath]);
+    }
+  }
+  return index;
+}
+
 interface RouteWalk {
   detection: DetectionResult;
   lib: string;
   config: RouterConfigTraversal;
   constants: ReturnType<typeof createConstantResolver>;
   asts: Map<string, Promise<AstNode | null>>;
+  classFiles: Map<string, string[]>;
   routes: RouteRecord[];
   visits: number;
 }
@@ -240,6 +278,26 @@ function lazyImportTarget(walk: RouteWalk, value: AstNode, file: string): string
     specifier = astString(node, 'arguments', 0, 'value') ?? null;
   });
   return specifier ? resolveImportFile(path.dirname(file), specifier, walk.detection) : null;
+}
+
+// `componentDescription` hands back either a class name or a module specifier, and the label
+// dictionary joins on neither — it joins on the component's file. A specifier resolves through the
+// module resolver; a class name through the index, narrowed by the route file's own import when
+// several files declare it. Every branch falls back to what it was handed rather than to a guess.
+async function resolveComponentFile(walk: RouteWalk, described: string | null, file: string): Promise<string | null> {
+  if (described === null || !walk.config.componentClassIndex) return described;
+  if (described.includes('/')) {
+    const target = resolveImportFile(path.dirname(file), described, walk.detection);
+    return target ? rel(walk.detection.appPath, target) : described;
+  }
+  const declaring = walk.classFiles.get(described) ?? [];
+  if (declaring.length === 1) return declaring[0];
+  if (declaring.length === 0) return described;
+  // Several files declare this class, so the name alone cannot say which one the route means.
+  // The route file imported it from exactly one of them; that import is the answer.
+  const imported = (await walk.constants.importsOf(file)).get(described);
+  const relPath = imported ? rel(walk.detection.appPath, imported) : null;
+  return relPath && declaring.includes(relPath) ? relPath : described;
 }
 
 function claimSubtree(object: AstNode, claimed: Set<AstNode>) {
@@ -312,7 +370,8 @@ async function walkRouteObject(
 
   const componentKeys = walk.config.componentKeys ?? DEFAULT_COMPONENT_KEYS;
   const componentProp = properties.find((p) => componentKeys.includes(keyName(p)!));
-  const component = componentDescription(astNode(componentProp, 'value'));
+  const componentName = componentDescription(astNode(componentProp, 'value'));
+  const component = await resolveComponentFile(walk, componentName, file);
   const grouping = children.length > 0 || lazy.some((value) => value !== undefined);
   // A pure grouping node is a URL prefix, not a page: navigating to it lands on whichever child
   // declares `path: ''`, and that child is emitted in its own right. So it is kept only when it
@@ -324,6 +383,7 @@ async function walkRouteObject(
     path: normalisePath(full),
     name: astString(nameProp, 'value', 'value') ?? null,
     component,
+    componentName,
     params: paramsOf(full),
     source: `${rel(walk.detection.appPath, file)} (${walk.lib} config)`,
   });
@@ -369,9 +429,11 @@ async function routerConfigRoutes(detection: DetectionResult): Promise<RouteReco
   const config = detection.frontend.entry.routerConfig ?? {};
   const candidates = findFiles(detection.frontend.sourceRoot,
     (file) => /\.(m?[jt]sx?)$/.test(file) && (readText(file) ?? '').includes(lib), {maxDepth: 8});
+  // Once per run, not once per route: there are ~1650 candidate component files behind it.
+  const classFiles = config.componentClassIndex ? await componentClassFiles(detection) : new Map<string, string[]>();
   for (const file of candidates) {
     const walk: RouteWalk = {
-      detection, lib, config, asts: new Map(), routes: [], visits: 0,
+      detection, lib, config, classFiles, asts: new Map(), routes: [], visits: 0,
       constants: createConstantResolver(detection, {constantModules: config.constantModules === true}),
     };
     await walkRouteFile(walk, file, '', 0, new Set([file]));
