@@ -241,7 +241,10 @@ export interface BackendRegistryEntry {
   extensions?: string[];
   markers?: string[];
   filePredicate?: (file: string) => boolean;
-  method: string;
+  // A plain string for a framework whose extraction method never varies by app. A function lets
+  // an entry name a limitation only visible once the app's own root is known — Spring's, e.g.,
+  // notes web.xml servlet mappings the Java-AST reader cannot compose (registry-backend.ts).
+  method: string | ((root: string) => string);
   routes(root: string): BackendRoute[] | Promise<BackendRoute[]>;
   componentFor?: (root: string, controller: string | null) => string | null;
 }

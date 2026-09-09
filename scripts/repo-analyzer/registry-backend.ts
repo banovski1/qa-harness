@@ -427,6 +427,38 @@ function normaliseContextPath(value: string) {
   return trimmed === '' || trimmed.includes('${') ? '' : rooted(trimmed).replace(/\/+$/, '');
 }
 
+const WEB_XML_PATH = /(^|\/)WEB-INF\/web\.xml$/;
+
+const SPRING_METHOD = '@RequestMapping / @GetMapping annotations (Java AST)';
+
+/**
+ * A pre-Boot Spring MVC app can run one servlet per controller instead of a single front
+ * controller, each given its own URL prefix by a `<servlet-mapping>` in web.xml — a prefix this
+ * Java-AST reader never sees, because it lives in XML, not in an annotation. Composing it would
+ * need `<servlet>`/`<servlet-mapping>` parsing plus a controller-to-context mapping — a second
+ * mechanism outside what `@RequestMapping` reading does — so this only counts the mappings that
+ * exist, which is enough to tell a reader that every path below is relative, not complete.
+ */
+function springServletMappingCount(root: string): number {
+  let count = 0;
+  for (const file of findFiles(root, (file) => WEB_XML_PATH.test(rel(root, file)), {maxDepth: JAVA_MAX_DEPTH})) {
+    const text = readText(file);
+    if (text) count += (text.match(/<servlet-mapping\b/g) ?? []).length;
+  }
+  return count;
+}
+
+/** The common case — a normal Spring Boot app with no servlet-mapping XML — must read unchanged. */
+function springMethod(root: string): string {
+  const servletMappings = springServletMappingCount(root);
+  if (servletMappings === 0) return SPRING_METHOD;
+  const noun = servletMappings === 1 ? 'entry' : 'entries';
+  // Backticked: this string is written straight into a markdown report header, and a bare
+  // `<servlet-mapping>` there reads to a markdown renderer as an (unknown, hidden) HTML tag.
+  return `${SPRING_METHOD}; ${servletMappings} \`<servlet-mapping>\` ${noun} in web.xml were not composed `
+    + 'onto these paths — treat each path as relative to its own servlet, not a complete URL';
+}
+
 async function springRoutes(root: string): Promise<BackendRoute[]> {
   const parser = (await tryImport('java-parser')) as typeof import('java-parser') | null;
   // Every branch below that finds nothing says so: an empty result otherwise reads as "this app
@@ -578,7 +610,7 @@ export const BACKEND_REGISTRY: BackendRegistryEntry[] = [
   },
   {
     id: 'spring', label: 'Spring', deps: ['spring-boot', 'spring-boot-starter-web', 'org.springframework.boot'],
-    method: '@RequestMapping / @GetMapping annotations (Java AST)', routes: springRoutes,
+    method: springMethod, routes: springRoutes,
   },
 ];
 
@@ -591,4 +623,4 @@ export function matchBackend(deps: Record<string, string>, root: string): Backen
   }) ?? null;
 }
 
-export {keyName, jsonRouteManifestRoutes};
+export {keyName, jsonRouteManifestRoutes, springMethod};
