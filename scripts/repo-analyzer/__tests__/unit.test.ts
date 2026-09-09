@@ -486,6 +486,58 @@ test('loadCatalogue reads a Java .properties file, decoding every quirk the real
   assert.equal(catalogue.size, 4, 'comment and blank lines contribute no entries, and the locale sibling is not read');
 });
 
+test('loadCatalogue parses an escaped separator inside a key', async () => {
+  const dir = withTempApp((d) => {
+    const resources = path.join(d, 'app', 'src', 'main', 'resources');
+    fs.mkdirSync(resources, {recursive: true});
+    fs.writeFileSync(path.join(resources, 'messages.properties'), 'a\\:b=value');
+  });
+  const catalogue = await loadCatalogue(dir);
+  assert.equal(catalogue.entries['a:b'], 'value');
+});
+
+test('loadCatalogue silently drops a non-string leaf in a nested-JSON catalogue', async () => {
+  const dir = withTempApp((d) => {
+    const i18nDir = path.join(d, 'front-end', 'src', 'assets', 'i18n');
+    fs.mkdirSync(i18nDir, {recursive: true});
+    fs.writeFileSync(path.join(i18nDir, 'en.json'), JSON.stringify({
+      count: 5,
+      label: {status: 'Status'},
+    }));
+  });
+  const catalogue = await loadCatalogue(dir);
+  assert.equal(catalogue.entries['label.status'], 'Status');
+  assert.equal('count' in catalogue.entries, false, 'a number leaf is not a resolvable label and must not appear');
+});
+
+// The real repo this task measures against has six files named exactly `messages.properties`
+// (component-level validation-message bundles alongside the 22,068-entry UI catalogue), and
+// findFiles returns them sorted alphabetically — so without a size tie-break, the loader would
+// silently bind whichever one sorts first, which need not be the real one. An untested
+// tie-break is a regression waiting to reintroduce the never-found failure Global Constraint 5
+// forbids: a broken registry row and an app with no labels would both just look empty.
+test('loadCatalogue picks the largest messages.properties when several exist, not the first alphabetically', async () => {
+  const dir = withTempApp((d) => {
+    // "a-module" sorts before "z-module", so an alphabetical- or first-found tie-break would
+    // wrongly pick this small, unrelated file over the real catalogue below.
+    const smaller = path.join(d, 'a-module', 'src', 'main', 'resources');
+    fs.mkdirSync(smaller, {recursive: true});
+    fs.writeFileSync(path.join(smaller, 'messages.properties'), 'validation.required=Required');
+
+    const larger = path.join(d, 'z-module', 'src', 'main', 'resources');
+    fs.mkdirSync(larger, {recursive: true});
+    fs.writeFileSync(path.join(larger, 'messages.properties'), [
+      'label.status=Status',
+      'label.description=Description',
+      'label.comment=Comment',
+    ].join('\n'));
+  });
+  const catalogue = await loadCatalogue(dir);
+  assert.equal(catalogue.id, 'java-properties');
+  assert.equal(catalogue.entries['label.status'], 'Status', 'the larger catalogue must win');
+  assert.equal('validation.required' in catalogue.entries, false, 'the smaller, alphabetically-first file must not be the one read');
+});
+
 test('loadCatalogue reads a nested-JSON catalogue under an i18n/ directory, flattened to dotted keys', async () => {
   const dir = withTempApp((d) => {
     const i18nDir = path.join(d, 'front-end', 'src', 'assets', 'i18n');
