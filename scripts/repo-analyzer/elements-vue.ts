@@ -9,11 +9,10 @@
 // is what keeps this extractor and the codegen shaping step ranking locators the same way.
 
 import {bestLocatorFor} from '../framework-generator/locator-ladder.js';
-import {isTestIdAttr} from './util.js';
 import {resolveLabelExpression} from './i18n.js';
 import {astNode, astNodes, astString} from './ast.js';
-import {identifierFor, KIND_TEMPLATES, refineKind, ROLE_KINDS} from './elements.js';
-import type {ChildReference} from './elements.js';
+import {identifierFor, KIND_TEMPLATES, refineKind, ROLE_KINDS, testIdOf} from './elements.js';
+import type {Attributes, ChildReference} from './elements.js';
 import type {AstNode, AstVisitor, CatalogueEntries, ExtractedElement, ParserContext, TemplateMap} from './types.js';
 
 // Framework-neutral element helpers used here live in elements.ts; re-exported so nothing
@@ -21,7 +20,6 @@ import type {AstNode, AstVisitor, CatalogueEntries, ExtractedElement, ParserCont
 export {buildComponentIndex, dedupeNames, KIND_TEMPLATES, relabel, templatesFrom} from './elements.js';
 export type {ChildReference} from './elements.js';
 
-interface Attributes {statics: Record<string, string>; bound: Record<string, string>}
 type Headers = Record<string, {name: string}[]>;
 
 /**
@@ -126,13 +124,6 @@ function innerText(node: AstNode, catalogue: CatalogueEntries): string | null {
 function placeholderOf({statics, bound}: Attributes, catalogue: CatalogueEntries): string | null {
   if (typeof statics.placeholder === 'string' && statics.placeholder.trim()) return statics.placeholder.trim();
   if (bound.placeholder) return resolveLabelExpression(bound.placeholder, catalogue);
-  return null;
-}
-
-function testIdOf({statics}: Attributes): string | null {
-  for (const [name, value] of Object.entries(statics)) {
-    if (isTestIdAttr(name) && value) return value;
-  }
   return null;
 }
 

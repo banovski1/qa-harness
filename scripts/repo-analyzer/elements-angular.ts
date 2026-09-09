@@ -12,14 +12,12 @@
 // attributes onto itself *and* onto the element it wraps, so it has to stay transparent.
 
 import {bestLocatorFor} from '../framework-generator/locator-ladder.js';
-import {isTestIdAttr} from './util.js';
 import {resolveAngularLabelExpression} from './i18n.js';
 import {astNode, astNodes, astString} from './ast.js';
-import {identifierFor, KIND_TEMPLATES, refineKind, ROLE_KINDS} from './elements.js';
-import type {ChildReference} from './elements.js';
+import {identifierFor, KIND_TEMPLATES, refineKind, ROLE_KINDS, testIdOf} from './elements.js';
+import type {Attributes, ChildReference} from './elements.js';
 import type {AstNode, CatalogueEntries, ExtractedElement, ParserContext, TemplateMap} from './types.js';
 
-interface Attributes {statics: Record<string, string>; bound: Record<string, string>}
 /** `<label for="x">` → its text, for every label written directly in the template being walked. */
 type LabelTargets = Record<string, string>;
 
@@ -151,7 +149,7 @@ function boundLabel(expression: string, catalogue: CatalogueEntries): string | n
   return STARTS_QUOTED.test(expression) ? resolveAngularLabelExpression(expression, catalogue) : null;
 }
 
-/** A static attribute is page text whether or not it is also a key, so a miss keeps the text. */
+/** On an unpiped attribute the written value is what renders, so a catalogue miss keeps the text. */
 function staticLabel(value: string, catalogue: CatalogueEntries): string {
   return resolveAngularLabelExpression(value, catalogue) ?? value;
 }
@@ -179,12 +177,17 @@ function translatesLabels(bound: Record<string, string>): boolean | null {
  * piped the value itself did so *because* it turned the wrapper's piping off — measured, 424 of
  * the app's 427 explicitly-piped labels also carry `[useI18]="false"`. Both at once (3 sites)
  * feeds a translation back into the pipe and renders `???text???`, which is no anchor at all.
+ *
+ * A static value is no exception on the translated path: `componentLabel="pension.scheme.name"`
+ * is piped like any other, so an absent key renders `???pension.scheme.name???` and the resolver's
+ * result stands alone — falling back to the key text would name the element something the page
+ * never shows. Only where nothing pipes it is the written value the rendered one.
  */
 function wrappedValue(attrs: Attributes, name: string, catalogue: CatalogueEntries): string | null {
   const translates = translatesLabels(attrs.bound);
   if (translates === null) return null;
   const value = attrs.statics[name]?.trim();
-  if (value) return translates ? staticLabel(value, catalogue) : value;
+  if (value) return translates ? resolveAngularLabelExpression(value, catalogue) : value;
   const expression = attrs.bound[name]?.trim();
   if (!expression) return null;
   if (translates) return QUOTED_LITERAL.test(expression) ? boundLabel(expression, catalogue) : null;
@@ -217,13 +220,6 @@ function labelOf(attrs: Attributes, catalogue: CatalogueEntries): string | null 
 // `<input [placeholder]="'x'">` is read as if wrapped too: the wrappers are 98% of the mapped
 // tags, and the mismatch costs a missing rung-5 signal rather than a wrong one.
 const placeholderOf = (attrs: Attributes, catalogue: CatalogueEntries) => wrappedValue(attrs, 'placeholder', catalogue);
-
-function testIdOf({statics}: Attributes): string | null {
-  for (const [name, value] of Object.entries(statics)) {
-    if (isTestIdAttr(name) && value) return value;
-  }
-  return null;
-}
 
 /**
  * The element's own id. `componentId` counts because the wrappers forward it to the real

@@ -3,15 +3,32 @@
 //
 // Nothing here reads a template AST: that stays in the framework-specific module, one per
 // dialect. What belongs here is what every extractor needs once it already has a kind and a
-// label — mapping a kind to its locator template, turning a label into a unique identifier,
-// resolving a child component tag to a file, and re-labelling an inlined element. An extractor
-// that needs to walk its own AST does not belong in this file.
+// label, or once its dialect's attributes have been normalised — mapping a kind to its locator
+// template, reading a test id out of that normalised set, turning a label into a unique
+// identifier, resolving a child component tag to a file, and re-labelling an inlined element.
+// An extractor that needs to walk its own AST does not belong in this file.
 
 import {toCamel} from '../framework-generator/naming.js';
+import {isTestIdAttr} from './util.js';
 import type {ComponentIndex, ExtractedElement, LocatorRecord, TemplateMap} from './types.js';
 
 /** A reference to a child component tag, resolved one hop by the caller. */
 export interface ChildReference {tag: string; label: string | null}
+
+/**
+ * One element's attributes, normalised by whichever dialect's walker read them. Every extractor
+ * has to keep the two apart: only a static value is text the DOM carries verbatim, and a bound
+ * one is an expression that may or may not resolve.
+ */
+export interface Attributes {statics: Record<string, string>; bound: Record<string, string>}
+
+/** The first attribute matching a known test-id convention, from the static set only. */
+export function testIdOf({statics}: Attributes): string | null {
+  for (const [name, value] of Object.entries(statics)) {
+    if (isTestIdAttr(name) && value) return value;
+  }
+  return null;
+}
 
 type NamedElement = {name: string; locator: Pick<LocatorRecord, 'strategy' | 'args'> & Partial<LocatorRecord>};
 

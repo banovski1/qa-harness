@@ -408,18 +408,22 @@ export async function parseAngular(file: string, source: string, ctx: ParserCont
       html = fs.existsSync(resolved) ? fs.readFileSync(resolved, 'utf8') : null;
     }
     if (!html) continue;
+    // Only the parse is guarded. Reading the result inside the `try` would let a bug in either
+    // reader fall through to the fallback below, pushing this template's test ids a second time
+    // and dropping its elements with `error` still null — a plausible-looking report is a worse
+    // failure here than a loud one.
+    let nodes: unknown = null;
     if (compiler?.parseTemplate) {
       try {
-        const nodes: unknown = compiler.parseTemplate(html, file).nodes;
-        testIds.push(...collectAngularTestIds(nodes));
-        const collected = collectAngularElements(nodes, {
-          catalogue: ctx.catalogue ?? {},
-          ...(ctx.templateFor ? {templateFor: ctx.templateFor} : {}),
-        });
-        elements = elements.concat(collected.elements);
-        skippedElements += collected.skipped;
-        continue;
+        nodes = compiler.parseTemplate(html, file).nodes;
       } catch { /* fall through to the HTML reader below */ }
+    }
+    if (nodes) {
+      testIds.push(...collectAngularTestIds(nodes));
+      const collected = collectAngularElements(nodes, ctx);
+      elements = elements.concat(collected.elements);
+      skippedElements += collected.skipped;
+      continue;
     }
     // Without @angular/compiler the template is read by @vue/compiler-dom, whose AST the
     // Angular walker cannot read at all — and a Vue element walk over Angular markup would
