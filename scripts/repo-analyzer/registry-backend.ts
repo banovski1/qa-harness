@@ -183,15 +183,18 @@ async function nestRoutes(root: string): Promise<BackendRoute[]> {
 // be read as a live one. Everything below walks the annotation *structure* rather than
 // harvesting string literals: a returned view name is a string literal too.
 //
-// Java only: java-parser cannot read Kotlin, so a Kotlin Spring app reports no endpoints and
-// api-docs falls to Tier C — which states that the app has to run, rather than half-reading it.
+// Java only: java-parser cannot read Kotlin, so a Kotlin Spring app falls to Tier C — which says
+// the app has to run — rather than being half-read. `springRoutes` counts and names the Kotlin
+// files it had to skip, because Tier C's own text cannot say why it was reached.
 
 type JavaNode = JavaCstNode | undefined;
 
-const SPRING_VERB_FOR: Record<string, string | undefined> = {
-  GetMapping: 'GET', PostMapping: 'POST', PutMapping: 'PUT',
-  PatchMapping: 'PATCH', DeleteMapping: 'DELETE', RequestMapping: 'ANY',
-};
+// A Map, not an object: `annotationName` returns whatever the source wrote, and a plain object
+// would answer `constructor` or `toString` truthily through its prototype.
+const SPRING_VERB_FOR = new Map([
+  ['GetMapping', 'GET'], ['PostMapping', 'POST'], ['PutMapping', 'PUT'],
+  ['PatchMapping', 'PATCH'], ['DeleteMapping', 'DELETE'], ['RequestMapping', 'ANY'],
+]);
 
 const REQUEST_METHODS = new Set(['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS', 'TRACE']);
 const VIEW_RETURN_TYPES = new Set(['String', 'ModelAndView']);
@@ -203,6 +206,15 @@ const JAVA_MAX_DEPTH = 18;
 // Parsing every Java file in a large repo costs minutes, and only a file that mentions a mapping
 // annotation can declare an endpoint. Over-matching is free: the parser then finds nothing.
 const SPRING_MAPPING_HINT = /@(?:Request|Get|Post|Put|Patch|Delete)Mapping\b/;
+
+// A mock controller in a unit test declares mappings the deployed app never serves, and a
+// fabricated URL in the endpoint reference is exactly what that reference exists to prevent.
+// Kotlin is walked only to be counted and warned about — java-parser cannot read it.
+const TEST_SOURCE_ROOT = /(^|\/)src\/(test|it)\/(java|kotlin)\//;
+
+function isSpringSource(relative: string) {
+  return /\.(java|kt)$/.test(relative) && !TEST_SOURCE_ROOT.test(relative);
+}
 
 interface SpringApplicationYaml {
   server?: {servlet?: {'context-path'?: string}; 'context-path'?: string};
@@ -257,17 +269,35 @@ function annotationAttribute(annotation: JavaCstNode, names: string[]): JavaNode
 }
 
 /**
+ * One element value is one path, or nothing. A `+` between its parts is a refusal either way:
+ * `"/a" + CONST` needs the classpath, and `"/a" + "/b"` is a single path whose two literals would
+ * otherwise read exactly like the array form and emit two endpoints the app does not serve.
+ */
+function elementValuePath(value: JavaCstNode): string | null {
+  const composed = cstFind(value, 'binaryExpression').some((node) => cstImages(node, 'BinaryOperator').length > 0);
+  if (composed || cstFind(value, 'fqnOrRefType').length > 0) return null;
+  const literals = cstFind(value, 'literal').flatMap((node) => cstImages(node, 'StringLiteral'));
+  return literals.length === 1 ? literals[0].slice(1, -1) : null;
+}
+
+/**
  * The paths one mapping annotation declares. `[]` means it declares none — a bare `@GetMapping`,
- * or one carrying only `produces` — and inherits the class base. `null` means it declares one
- * that cannot be resolved here: a constant reference or a concatenation needs the whole
- * classpath, and half a path is worse than no path, so the caller drops the mapping.
+ * one carrying only `produces`, or an empty `{}` — and inherits the class base. `null` means it
+ * declares one that cannot be resolved here, and half a path is worse than no path, so the caller
+ * drops the mapping. The array form is the only spelling that yields more than one path.
  */
 function mappingPaths(annotation: JavaCstNode): string[] | null {
   const value = cstNodes(annotation, 'elementValue')[0] ?? annotationAttribute(annotation, ['value', 'path']);
   if (!value) return [];
-  const literals = cstFind(value, 'literal').flatMap((node) => cstImages(node, 'StringLiteral'));
-  if (literals.length === 0 || cstFind(value, 'fqnOrRefType').length > 0) return null;
-  return literals.map((image) => image.slice(1, -1));
+  const initializer = cstStep(value, 'elementValueArrayInitializer');
+  const elements = initializer ? cstNodes(cstStep(initializer, 'elementValueList'), 'elementValue') : [value];
+  const paths: string[] = [];
+  for (const element of elements) {
+    const resolved = elementValuePath(element);
+    if (resolved === null) return null;
+    paths.push(resolved);
+  }
+  return paths;
 }
 
 /** `method = RequestMethod.POST`, `method = { GET, POST }` and the static-import spelling alike. */
@@ -276,7 +306,7 @@ function mappingMethods(annotation: JavaCstNode): string[] {
     .flatMap((part) => cstImages(part, 'Identifier'))
     .filter((image) => REQUEST_METHODS.has(image));
   // A @RequestMapping naming no verb answers every one of them, which the report spells ANY.
-  return declared.length > 0 ? unique(declared) : [SPRING_VERB_FOR[annotationName(annotation)] ?? 'ANY'];
+  return declared.length > 0 ? unique(declared) : [SPRING_VERB_FOR.get(annotationName(annotation)) ?? 'ANY'];
 }
 
 /**
@@ -302,13 +332,19 @@ function classMethods(normalClass: JavaNode): JavaCstNode[] {
     .flatMap((member) => cstNodes(member, 'methodDeclaration'));
 }
 
-/** The declared return type only: `void`, a primitive and an array all read as '' and so are API. */
+/**
+ * The declared return type only, and only when it is a plain class type: `void` and a primitive
+ * read as ''. `String[]` still reaches `unannClassType`, so the array dims are checked as a direct
+ * child of `unannReferenceType` — deep would also catch the `String[]` inside `List<String[]>`,
+ * whose return type really is `List`.
+ */
 function methodFacts(method: JavaCstNode) {
   const header = cstStep(method, 'methodHeader');
-  const returned = cstStep(header, 'result', 'unannType', 'unannReferenceType', 'unannClassOrInterfaceType', 'unannClassType');
+  const reference = cstStep(header, 'result', 'unannType', 'unannReferenceType');
+  const returned = cstStep(reference, 'unannClassOrInterfaceType', 'unannClassType');
   return {
     name: cstImages(cstStep(header, 'methodDeclarator'), 'Identifier')[0] ?? null,
-    returnType: cstImages(returned, 'Identifier').at(-1) ?? '',
+    returnType: cstNodes(reference, 'dims').length > 0 ? '' : cstImages(returned, 'Identifier').at(-1) ?? '',
     annotations: cstNodes(method, 'methodModifier').flatMap((modifier) => cstNodes(modifier, 'annotation')),
   };
 }
@@ -337,7 +373,7 @@ function springFileRoutes(root: string, file: string, cst: JavaCstNode, contextP
       const {name, returnType, annotations} = methodFacts(method);
       const kind = springKind(returnType, [...classNames, ...annotations.map(annotationName)]);
       for (const annotation of annotations) {
-        if (!SPRING_VERB_FOR[annotationName(annotation)]) continue;
+        if (!SPRING_VERB_FOR.has(annotationName(annotation))) continue;
         const suffixes = mappingPaths(annotation);
         if (suffixes === null) continue;
         const methods = mappingMethods(annotation);
@@ -393,13 +429,23 @@ function normaliseContextPath(value: string) {
 
 async function springRoutes(root: string): Promise<BackendRoute[]> {
   const parser = (await tryImport('java-parser')) as typeof import('java-parser') | null;
-  if (!parser) return [];
+  // Every branch below that finds nothing says so: an empty result otherwise reads as "this app
+  // has no endpoints", which is a different claim from "this could not be read".
+  if (!parser) {
+    console.warn('spring: java-parser could not be loaded — reinstall scripts/repo-analyzer; no endpoints will be reported');
+    return [];
+  }
   const contextPath = springContextPath(root);
   const routes: BackendRoute[] = [];
   let unparsed = 0;
-  for (const file of findFiles(root, (_file, base) => base.endsWith('.java'), {maxDepth: JAVA_MAX_DEPTH})) {
+  let kotlin = 0;
+  for (const file of findFiles(root, (file) => isSpringSource(rel(root, file)), {maxDepth: JAVA_MAX_DEPTH})) {
     const source = readText(file);
     if (!source || !SPRING_MAPPING_HINT.test(source)) continue;
+    if (file.endsWith('.kt')) {
+      kotlin++;
+      continue;
+    }
     let cst: JavaCstNode | null = null;
     try {
       cst = parser.parse(source);
@@ -408,8 +454,8 @@ async function springRoutes(root: string): Promise<BackendRoute[]> {
     }
     if (cst) routes.push(...springFileRoutes(root, file, cst, contextPath));
   }
-  // A parser that silently finds nothing reads the same as an app with nothing to find.
   if (unparsed > 0) console.warn(`spring: ${unparsed} candidate Java file(s) failed to parse and were skipped`);
+  if (kotlin > 0) console.warn(`spring: ${kotlin} Kotlin file(s) declare request mappings this Java parser cannot read; those endpoints are missing from the report`);
   return routes;
 }
 
