@@ -14,7 +14,7 @@ import {bestLocatorFor, classify, rankOf, RUNGS} from '../../framework-generator
 import {loadProjectConfig, projectConfigPath} from '../../project-config.js';
 import {crossCheck, mergeByPath} from '../api-docs.js';
 import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements.js';
-import {resolveLabelExpression} from '../i18n.js';
+import {loadCatalogue, resolveAngularLabelExpression, resolveLabelExpression} from '../i18n.js';
 import {joinUrl} from '../live-urls.js';
 import {componentNameFromFile, isTestIdAttr, walkAny, walkAst} from '../parsers.js';
 import {paramsOf} from '../registry-backend.js';
@@ -396,4 +396,126 @@ test('an unconfigured template drops the element down the ladder rather than thr
   assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input}), null);
   assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input, placeholder: 'City'})?.rung, 5);
   assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input, nameAttr: 'city'})?.rung, 6);
+});
+
+// --- Angular label resolution -----------------------------------------------------------
+
+test('resolveAngularLabelExpression resolves a quoted literal piped through i18 or translate', () => {
+  const catalogue = {'label.status': 'Status'};
+  assert.equal(resolveAngularLabelExpression("'label.status' | i18", catalogue), 'Status');
+  assert.equal(resolveAngularLabelExpression('"label.status" | i18', catalogue), 'Status');
+  assert.equal(resolveAngularLabelExpression("'label.status'|i18", catalogue), 'Status', 'no space around the pipe is still valid Angular syntax');
+  // ngx-translate is not used by the app under test, but the registry is meant to be general.
+  assert.equal(resolveAngularLabelExpression("'label.status' | translate", catalogue), 'Status');
+  // A key the catalogue does not carry must not fall back to the key itself.
+  assert.equal(resolveAngularLabelExpression("'label.missing' | i18", catalogue), null);
+});
+
+test('resolveAngularLabelExpression resolves a bare quoted literal with no pipe', () => {
+  const catalogue = {'label.status': 'Status'};
+  assert.equal(resolveAngularLabelExpression("'label.status'", catalogue), 'Status');
+  assert.equal(resolveAngularLabelExpression('"label.status"', catalogue), 'Status');
+  assert.equal(resolveAngularLabelExpression("'label.missing'", catalogue), null);
+});
+
+test('resolveAngularLabelExpression resolves Angular\'s built-in i18n="@@id" custom id', () => {
+  const catalogue = {'label.status': 'Status'};
+  assert.equal(resolveAngularLabelExpression('@@label.status', catalogue), 'Status');
+  // Not real syntax the app under test uses (0 occurrences), but common in the ecosystem —
+  // an id absent from the catalogue must not guess at the description text either.
+  assert.equal(resolveAngularLabelExpression('@@label.missing', catalogue), null);
+});
+
+test('resolveAngularLabelExpression falls back to literal text only for a static attribute value', () => {
+  const catalogue = {'label.status': 'Status'};
+  // A plain (unbound) attribute that happens to look like a key: real page text either way.
+  assert.equal(resolveAngularLabelExpression('label.status', catalogue), 'Status');
+  assert.equal(resolveAngularLabelExpression('label.missing', catalogue), 'label.missing');
+});
+
+test('resolveAngularLabelExpression rejects a pipe argument, an interpolating pipe, and dynamic shapes', () => {
+  const catalogue = {'label.status': 'Status'};
+  // A pipe argument makes the value depend on runtime data.
+  assert.equal(resolveAngularLabelExpression("'label.status' | i18:{count: n}", catalogue), null);
+  // The interpolating pipe variants are a different pipe, not `i18` with a longer name.
+  for (const pipe of ['i18Conjunction', 'i18SimpleObject', 'i18SimpleObjectArray', 'i18ConditionOperator']) {
+    assert.equal(resolveAngularLabelExpression(`'label.status' | ${pipe}`, catalogue), null, pipe);
+  }
+  // String concatenation, real in textinput.component.html:2.
+  assert.equal(resolveAngularLabelExpression('componentLabel + labelSuffix', catalogue), null);
+  // A ternary is dynamic regardless of what its branches look like.
+  assert.equal(resolveAngularLabelExpression("cond ? 'label.status' : 'label.other'", catalogue), null);
+  // A bare identifier is Global Constraint 4's core case: no dot means no plausible key shape,
+  // so it can only be a live expression — the Vue equivalent is pinned above at line 341.
+  assert.equal(resolveAngularLabelExpression('someComputed', catalogue), null);
+  assert.equal(resolveAngularLabelExpression(null, catalogue), null);
+  assert.equal(resolveAngularLabelExpression(undefined, catalogue), null);
+});
+
+// --- catalogue loading ------------------------------------------------------------------
+
+function withTempApp(write: (dir: string) => void) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'i18n-catalogue-'));
+  write(dir);
+  return dir;
+}
+
+test('loadCatalogue reads a Java .properties file, decoding every quirk the real one has', async () => {
+  const dir = withTempApp((d) => {
+    const resources = path.join(d, 'app', 'src', 'main', 'resources');
+    fs.mkdirSync(resources, {recursive: true});
+    fs.writeFileSync(path.join(resources, 'messages.properties'), [
+      '# a comment line',
+      '! a bang comment line',
+      '',
+      'label.status=Status',
+      'label.name:Name',
+      'label.cafe=Caf\\u00e9',
+      'label.continued=Hello \\',
+      'World',
+    ].join('\n'));
+    // A locale sibling must never be read for the English default.
+    fs.writeFileSync(path.join(resources, 'messages_de.properties'), 'label.status=Zustand');
+  });
+  const catalogue = await loadCatalogue(dir);
+  assert.equal(catalogue.id, 'java-properties');
+  assert.equal(catalogue.entries['label.status'], 'Status', '"=" separator');
+  assert.equal(catalogue.entries['label.name'], 'Name', '":" separator');
+  assert.equal(catalogue.entries['label.cafe'], 'Café', '\\uXXXX escape decoded');
+  assert.equal(catalogue.entries['label.continued'], 'Hello World', 'trailing-backslash line continuation joined');
+  assert.equal(catalogue.size, 4, 'comment and blank lines contribute no entries, and the locale sibling is not read');
+});
+
+test('loadCatalogue reads a nested-JSON catalogue under an i18n/ directory, flattened to dotted keys', async () => {
+  const dir = withTempApp((d) => {
+    const i18nDir = path.join(d, 'front-end', 'src', 'assets', 'i18n');
+    fs.mkdirSync(i18nDir, {recursive: true});
+    fs.writeFileSync(path.join(i18nDir, 'en.json'), JSON.stringify({
+      'cui-login-page': {productName: 'AccountView'},
+    }));
+  });
+  const catalogue = await loadCatalogue(dir);
+  assert.equal(catalogue.id, 'angular-nested-json');
+  assert.equal(catalogue.entries['cui-login-page.productName'], 'AccountView');
+  assert.equal(catalogue.size, 1);
+});
+
+test('loadCatalogue prefers the properties catalogue over a nested-JSON one for the same key', async () => {
+  const dir = withTempApp((d) => {
+    const resources = path.join(d, 'app', 'src', 'main', 'resources');
+    fs.mkdirSync(resources, {recursive: true});
+    fs.writeFileSync(path.join(resources, 'messages.properties'), 'label.status=Status');
+    const i18nDir = path.join(d, 'front-end', 'src', 'assets', 'i18n');
+    fs.mkdirSync(i18nDir, {recursive: true});
+    fs.writeFileSync(path.join(i18nDir, 'en.json'), JSON.stringify({label: {status: 'WrongJSON'}}));
+  });
+  const catalogue = await loadCatalogue(dir);
+  assert.equal(catalogue.id, 'java-properties');
+  assert.equal(catalogue.entries['label.status'], 'Status');
+});
+
+test('loadCatalogue returns an empty map, not an error, when no catalogue convention matches', async () => {
+  const dir = withTempApp((d) => fs.mkdirSync(path.join(d, 'src'), {recursive: true}));
+  const catalogue = await loadCatalogue(dir);
+  assert.deepEqual(catalogue, {id: null, label: 'none found — `$t()` labels cannot be resolved', entries: {}, size: 0});
 });
