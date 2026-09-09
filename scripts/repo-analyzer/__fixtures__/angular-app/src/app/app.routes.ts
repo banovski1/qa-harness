@@ -10,6 +10,15 @@ export const routes = [
   {path: AppRoutes.ORDER_HISTORY, component: OrderHistoryComponent},
   {path: AppRoutes.RUNTIME_PATH, component: UserCardComponent},
   {path: 'legacy', loadChildren: () => import('./legacy.module').then(m => m.LegacyModule)},
+  // A refused path with something under it, so the refusal is *visible*: `/computed` survives and
+  // nothing below it does. Degrade the resolver to '' and `/computed/leaf` appears; loosen it to
+  // evaluate the join() and `/computed/runtime/path/leaf` appears; stop claiming the subtree and
+  // `/leaf` appears. All three are asserted absent in cases.ts.
+  {path: 'computed', children: [
+    {path: AppRoutes.RUNTIME_PATH, children: [
+      {path: 'leaf', component: OrderHistoryComponent},
+    ]},
+  ]},
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes);

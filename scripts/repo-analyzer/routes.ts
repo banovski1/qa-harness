@@ -155,6 +155,9 @@ function createConstantResolver(detection: DetectionResult, {constantModules = f
   async function resolve(expr: AstNode | null | undefined, fromFile: string, hops = 0, seen = new Set<string>()): Promise<string | null> {
     if (!expr || hops > MAX_CONSTANT_HOPS) return null;
     if (expr.type === 'StringLiteral') return astString(expr, 'value') ?? null;
+    // Everything below reads a *constant*, so it is all gated: a config with no `constantModules`
+    // row resolves string literals and nothing else, which is exactly what it resolved before.
+    if (!constantModules) return null;
     if (expr.type === 'TemplateLiteral') {
       const quasis = astNodes(expr, 'quasis');
       const expressions = astNodes(expr, 'expressions');
@@ -169,7 +172,6 @@ function createConstantResolver(detection: DetectionResult, {constantModules = f
       }
       return joined;
     }
-    if (!constantModules) return null;
     if (expr.type === 'TSAsExpression' || expr.type === 'TSNonNullExpression') {
       return resolve(astNode(expr, 'expression'), fromFile, hops + 1, seen);
     }
@@ -290,14 +292,22 @@ async function resolveComponentFile(walk: RouteWalk, described: string | null, f
     const target = resolveImportFile(path.dirname(file), described, walk.detection);
     return target ? rel(walk.detection.appPath, target) : described;
   }
+  // The route file's own import is the evidence, in every case and not only the ambiguous one. A
+  // name unique among the scanned files still says nothing about *this* route if the route file
+  // imported a same-named class from a file outside them — and such files exist here, which is how
+  // a route could have quietly been handed another screen's elements. So: the import names the
+  // file, and the index only confirms that file declares the class. Neither alone is enough.
   const declaring = walk.classFiles.get(described) ?? [];
-  if (declaring.length === 1) return declaring[0];
-  if (declaring.length === 0) return described;
-  // Several files declare this class, so the name alone cannot say which one the route means.
-  // The route file imported it from exactly one of them; that import is the answer.
   const imported = (await walk.constants.importsOf(file)).get(described);
   const relPath = imported ? rel(walk.detection.appPath, imported) : null;
-  return relPath && declaring.includes(relPath) ? relPath : described;
+  return relPath !== null && declaring.includes(relPath) ? relPath : described;
+}
+
+// Claiming a subtree and collapsing duplicate URLs are both consequences of composing a parent
+// path onto a child. A config that does neither never traverses into a nested route object, so for
+// it a nested object is still a top-level route and two rows with one path are still two rows.
+function composesChildren(config: RouterConfigTraversal) {
+  return (config.childrenKeys?.length ?? 0) > 0 || (config.lazyKeys?.length ?? 0) > 0;
 }
 
 function claimSubtree(object: AstNode, claimed: Set<AstNode>) {
@@ -349,7 +359,7 @@ async function walkRouteObject(
   // An unresolved path takes its whole subtree with it: a child joined onto a missing prefix would
   // name a URL the app does not serve, which is exactly the guess this analyzer must not make.
   if (routePath === null) {
-    claimSubtree(object, claimed);
+    if (composesChildren(walk.config)) claimSubtree(object, claimed);
     return 0;
   }
   const full = joinRoutePath(prefix, routePath);
@@ -390,18 +400,25 @@ async function walkRouteObject(
   return emitted + 1;
 }
 
-// A lazy target that declares no routes of its own is asked one more question: which imported
-// identifier does it hand to a router-registration call? That is the NgModule shape — the module
-// only wires `RouterModule.forChild(submissionsRoutes)` onto an array declared next door.
-async function followReexports(walk: RouteWalk, ast: AstNode, file: string, prefix: string, depth: number, branch: Set<string>): Promise<number> {
+// Which identifiers does this file hand to a router-registration call? Shared by the re-export hop
+// and the reachability pass below, so the two cannot disagree about what counts as an edge.
+function registrationArguments(ast: AstNode, calls: string[]): Set<string> {
   const registered = new Set<string>();
   walkAst(ast, (node) => {
     if (node.type !== 'CallExpression' || astNode(node, 'callee')?.type !== 'MemberExpression') return;
     const method = astString(node, 'callee', 'property', 'name');
-    if (!method || !walk.config.reexportCalls!.includes(method)) return;
+    if (!method || !calls.includes(method)) return;
     const argument = astString(node, 'arguments', 0, 'name');
     if (argument) registered.add(argument);
   });
+  return registered;
+}
+
+// A lazy target that declares no routes of its own is asked one more question: which imported
+// identifier does it hand to a router-registration call? That is the NgModule shape — the module
+// only wires `RouterModule.forChild(submissionsRoutes)` onto an array declared next door.
+async function followReexports(walk: RouteWalk, ast: AstNode, file: string, prefix: string, depth: number, branch: Set<string>): Promise<number> {
+  const registered = registrationArguments(ast, walk.config.reexportCalls ?? []);
   const imports = await walk.constants.importsOf(file);
   let emitted = 0;
   for (const name of registered) {
@@ -424,20 +441,70 @@ function dedupeByPath(routes: RouteRecord[]): RouteRecord[] {
   return [...byPath.values()];
 }
 
+/**
+ * Which candidate is the root route file? A child is imported by its parent — directly through
+ * `loadChildren`, or through the module that registers it — so the root is the file nothing points
+ * at, and every file something points at is tried only after all of those. Ordering by reachability
+ * rather than alphabetically is what stops the walk adopting a child as the root: `src/app/api/`
+ * would sort ahead of `src/app/app.routing.ts`, and the answer would be a whole subtree of URLs
+ * with no prefix on them, every one plausible and none real. Out-degree breaks the remaining ties —
+ * a route table reaching hundreds of files is a likelier root than a component that merely injects
+ * `Router` — and the original alphabetical order breaks the rest, so this only ever refines it.
+ */
+async function rootFirstCandidates(walk: RouteWalk, candidates: {file: string; text: string}[]): Promise<string[]> {
+  const edgeKeys = [...(walk.config.lazyKeys ?? []), ...(walk.config.reexportCalls ?? [])];
+  if (edgeKeys.length === 0) return candidates.map((candidate) => candidate.file);
+  const known = new Set(candidates.map((candidate) => candidate.file));
+  const reached = new Set<string>();
+  const reaches = new Map<string, number>();
+  for (const {file, text} of candidates) {
+    // A file whose text never mentions one of those keys cannot declare such an edge, which keeps
+    // this off the many files that merely import the router package to inject it.
+    if (!edgeKeys.some((key) => text.includes(key))) continue;
+    const ast = await astOf(walk, file);
+    if (!ast) continue;
+    const targets = new Set<string>();
+    walkAst(ast, (node) => {
+      if (node.type !== 'ObjectExpression') return;
+      for (const property of astNodes(node, 'properties')) {
+        if (!(walk.config.lazyKeys ?? []).includes(keyName(property) ?? '')) continue;
+        const value = astNode(property, 'value');
+        const target = value ? lazyImportTarget(walk, value, file) : null;
+        if (target) targets.add(target);
+      }
+    });
+    const imports = await walk.constants.importsOf(file);
+    for (const name of registrationArguments(ast, walk.config.reexportCalls ?? [])) {
+      const target = imports.get(name);
+      if (target) targets.add(target);
+    }
+    reaches.set(file, targets.size);
+    for (const target of targets) if (target !== file && known.has(target)) reached.add(target);
+  }
+  return candidates.map((candidate) => candidate.file).sort((a, b) =>
+    (Number(reached.has(a)) - Number(reached.has(b)))
+    || ((reaches.get(b) ?? 0) - (reaches.get(a) ?? 0))
+    || a.localeCompare(b));
+}
+
 async function routerConfigRoutes(detection: DetectionResult): Promise<RouteRecord[]> {
   const lib = detection.frontend.routerLib!;
   const config = detection.frontend.entry.routerConfig ?? {};
-  const candidates = findFiles(detection.frontend.sourceRoot,
-    (file) => /\.(m?[jt]sx?)$/.test(file) && (readText(file) ?? '').includes(lib), {maxDepth: 8});
-  // Once per run, not once per route: there are ~1650 candidate component files behind it.
+  // The text is kept rather than re-read: the reachability pass filters on it before parsing.
+  const candidates = findFiles(detection.frontend.sourceRoot, (file) => /\.(m?[jt]sx?)$/.test(file), {maxDepth: 8})
+    .map((file) => ({file, text: readText(file) ?? ''}))
+    .filter((candidate) => candidate.text.includes(lib));
+  // Both are built once per run, not once per candidate, and the AST cache is shared with the
+  // reachability pass so no file is parsed twice.
   const classFiles = config.componentClassIndex ? await componentClassFiles(detection) : new Map<string, string[]>();
-  for (const file of candidates) {
-    const walk: RouteWalk = {
-      detection, lib, config, classFiles, asts: new Map(), routes: [], visits: 0,
-      constants: createConstantResolver(detection, {constantModules: config.constantModules === true}),
-    };
+  const shared = {
+    detection, lib, config, classFiles, asts: new Map<string, Promise<AstNode | null>>(),
+    constants: createConstantResolver(detection, {constantModules: config.constantModules === true}),
+  };
+  for (const file of await rootFirstCandidates({...shared, routes: [], visits: 0}, candidates)) {
+    const walk: RouteWalk = {...shared, routes: [], visits: 0};
     await walkRouteFile(walk, file, '', 0, new Set([file]));
-    if (walk.routes.length > 0) return dedupeByPath(walk.routes);
+    if (walk.routes.length > 0) return composesChildren(config) ? dedupeByPath(walk.routes) : walk.routes;
   }
   return [];
 }

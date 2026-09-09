@@ -99,9 +99,20 @@ export const CASES: FixtureCase[] = [
     // everything under `/orders` comes from a `loadChildren` file, and `/legacy/cast` from a module
     // that only re-exports a sibling's array to `forChild`. `AppRoutes.RUNTIME_PATH` is computed,
     // so its route is absent from this list rather than present with a guessed path.
-    routes: ['/', '/users/{userId}', '/orders', '/orders/add', '/orders/view/{orderId}', '/orders/history', '/orders/nested', '/legacy/cast'],
-    // One more lap around `order.routes.ts`'s self-import is what an unguarded cycle produces.
-    routesAbsent: ['/orders/nested/nested'],
+    routes: ['/', '/users/{userId}', '/orders', '/orders/add', '/orders/view/{orderId}', '/orders/history', '/orders/nested', '/legacy/cast', '/computed'],
+    // The headline safety property, asserted rather than described. `AppRoutes.RUNTIME_PATH` is
+    // computed, and each of these is a path that appears only if the refusal breaks in a specific
+    // way: `/runtime/path` if the resolver starts evaluating expressions, `/computed/leaf` if it
+    // degrades a refusal to '', `/computed/runtime/path/leaf` if it evaluates the join(), and
+    // `/leaf` if a refused path stops taking its subtree with it. Plus one lap too many around
+    // `order.routes.ts`'s self-import, which is what an unguarded cycle produces.
+    routesAbsent: [
+      '/orders/nested/nested',
+      '/runtime/path',
+      '/computed/leaf',
+      '/computed/runtime/path/leaf',
+      '/leaf',
+    ],
     // A lazily-loaded child declaring `path: ''` names the same URL as the parent that loaded it,
     // and the child is the row that knows what renders there. Renders is asserted as the component
     // *file*, not the class name the route declares: that is what `buildLabelDictionary` joins on,

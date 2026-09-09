@@ -7,12 +7,13 @@
 - **Backend**: not detected
 - **Generated**: <timestamp>
 - **Route source**: @angular/router config
-- **Routes found**: 8
+- **Routes found**: 9
 - **API prefix excluded**: `/api` (see `analysis/api-documentation.md`)
 
 | Route | Renders | Params | Source |
 | --- | --- | --- | --- |
 | `/` | `src/app/user-card.component.ts` | — | src/app/app.routes.ts (@angular/router config) |
+| `/computed` | — | — | src/app/app.routes.ts (@angular/router config) |
 | `/legacy/cast` | `src/app/legacy-cast.component.ts` | — | src/app/legacy-routes.ts (@angular/router config) |
 | `/orders` | `src/app/order-history.component.ts` | — | src/app/order.routes.ts (@angular/router config) |
 | `/orders/add` | `src/app/order-form.component.ts` | — | src/app/order.routes.ts (@angular/router config) |
@@ -24,4 +25,4 @@
 
 ## Not statically resolvable
 
-1 route(s) above resolve to no component file — either the route is a redirect or download endpoint, or the component is chosen at runtime. They are listed with an empty **Renders** cell rather than guessed at.
+2 route(s) above resolve to no component file — either the route is a redirect or download endpoint, or the component is chosen at runtime. They are listed with an empty **Renders** cell rather than guessed at.

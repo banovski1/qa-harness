@@ -5,12 +5,13 @@
 - **App**: `<fixtures>/angular-app`
 - **Base URL**: https://app.test
 - **Path prefix**: none
-- **Routes**: 8 (from `analysis/pages-and-routes.json`, strategy: @angular/router config)
+- **Routes**: 9 (from `analysis/pages-and-routes.json`, strategy: @angular/router config)
 - **Generated**: <timestamp>
 
 | URL | Placeholders | Renders |
 | --- | --- | --- |
 | [https://app.test/](https://app.test/) | — | `src/app/user-card.component.ts` |
+| [https://app.test/computed](https://app.test/computed) | — | — |
 | [https://app.test/legacy/cast](https://app.test/legacy/cast) | — | `src/app/legacy-cast.component.ts` |
 | [https://app.test/orders](https://app.test/orders) | — | `src/app/order-history.component.ts` |
 | [https://app.test/orders/add](https://app.test/orders/add) | — | `src/app/order-form.component.ts` |
