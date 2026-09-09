@@ -71,17 +71,26 @@ tests:
 # only when the template reproduces its locator exactly; anything else keeps its own, so a
 # one-off never gets bent to fit. Remove a line to turn its factory off; remove the block
 # for an app whose labels are properly associated (`getByLabel` is rung 3 and needs none).
-locatorTemplates: {}
-#
-# A worked example, from an app that renders labels without a `for` association:
-#
-#   locatorTemplates:
-#     labelledInput:    '.oxd-input-group:has(label:text-is("{label}")) input'
-#     labelledTextarea: '.oxd-input-group:has(label:text-is("{label}")) textarea'
-#     labelledSelect:   '.oxd-input-group:has(label:text-is("{label}")) .oxd-select-text'
-#     labelledRadio:    '.oxd-radio-wrapper:has(label:text-is("{label}")) input'
-#     topNavTab:        '.topbar-nav-tab > a:text-is("{label}")'
-#     tableByColumn:    '.table:has(.table-th:text-is("{label}"))'
+# mco's design system stamps `data-e2e-label` on every labelled control, but the `data-e2e-id`
+# half is per-*wrapper-tag*, not per-kind: five different wrapper tags all collapse to kind
+# `input` (textinput, search-input, datepicker, date-time-picker, mco-input-spinner) and each
+# stamps a different `data-e2e-id`. Pinning a pattern to one of those ids would match only the
+# wrapper that happens to use it and silently miss the rest — `data-e2e-label` alone is the
+# per-instance half and is what actually discriminates one control from the next, so every
+# pattern below is label-only. Every id `KIND_TEMPLATES` (repo-analyzer/elements.ts) maps is
+# listed here, `labelledRadio` included, since the two radio-group wrappers (`two-option-button`,
+# `button-group`) depend on it — an id missing from this block is an id `templatesFrom` drops,
+# and its elements fall to a weaker signal or into `skipped` instead of erroring.
+locatorTemplates:
+  labelledInput:     '[data-e2e-label="{label}"]'
+  labelledTextarea:  '[data-e2e-label="{label}"]'
+  labelledSelect:    '[data-e2e-label="{label}"]'
+  labelledRadio:     '[data-e2e-label="{label}"]'
+  labelledCheckbox:  '[data-e2e-label="{label}"]'
+  labelledSwitch:    '[data-e2e-label="{label}"]'
+  labelledButton:    '[data-e2e-label="{label}"]'
+  tableByColumn:     '[data-e2e-label="{label}"]'
+  topNavTab:         '[data-e2e-label="{label}"]'
 #
 # Leaving this empty is supported: the extractor only proposes a template id defined here, so
 # elements that would have reached rung 4 fall to a weaker signal or are counted as skipped.
