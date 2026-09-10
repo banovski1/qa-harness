@@ -41,9 +41,12 @@ const DEFAULTS: Omit<GeneratorConfig, 'login'> = {
   api: { enabled: false, include: {}, exclude: {}, generateAssertionSpecs: true, generateFactories: true },
 };
 
-// Every template id the generator knows how to emit a factory for, and the component
-// kinds that use it. An id absent from the config simply has no factory.
-export const TEMPLATE_IDS = ['labelledInput', 'labelledTextarea', 'labelledSelect', 'labelledRadio', 'topNavTab', 'tableByColumn'];
+// The closed set of ids a `locatorTemplates:` block may name, and it must cover every id in the
+// analyzer's KIND_TEMPLATES (`repo-analyzer/elements.ts`) — the extractor writes those into the
+// analysis, so an id missing here rejects a sound analysis at config load. A factory is optional:
+// `labelledRadio` and `labelledCheckbox` have none and reach the page object as expanded CSS.
+export const TEMPLATE_IDS = ['labelledInput', 'labelledTextarea', 'labelledSelect', 'labelledRadio',
+  'labelledCheckbox', 'labelledSwitch', 'labelledButton', 'topNavTab', 'tableByColumn'];
 
 // ---- entry point -------------------------------------------------------------
 
