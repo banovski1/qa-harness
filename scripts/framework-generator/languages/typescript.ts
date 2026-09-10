@@ -223,8 +223,11 @@ function emitAccessor(w: CodeWriter, element: ElementModel, used: Set<string>, r
 
   const factory = config ? factoryFor(element, cls, root, config) : null;
   const locator = renderLocator(element.locator, root);
-  const args = element.table
-    ? `${locator}, [${element.table.columns.map(quote).join(', ')}], ${quote(doc)}`
+  // TableComponent takes its column list between locator and description, and static analysis
+  // cannot know a table's columns — so `table` is null for every table the analyzer produces. The
+  // arity has to follow the class the accessor returns, or the emitted call will not compile.
+  const args = cls === 'TableComponent'
+    ? `${locator}, [${columnsOf(element)}], ${quote(doc)}`
     : `${locator}, ${quote(doc)}`;
   w.line(`get ${name}(): ${cls} {`);
   w.indent().line(factory ? `return ${factory};` : `return new ${cls}(${args});`).dedent();
@@ -308,12 +311,17 @@ function factoryFor(element: ElementModel, cls: string, root: string, config: Ge
       if (renderTemplate(pattern, element.label) !== spec.args[0]) continue;
     }
 
-    const args = element.table
-      ? `${root}, ${quote(element.label)}, [${element.table.columns.map(quote).join(', ')}]`
+    const args = cls === 'TableComponent'
+      ? `${root}, ${quote(element.label)}, [${columnsOf(element)}]`
       : `${root}, ${quote(element.label)}`;
     return `${cls}.${factory.method}(${args})`;
   }
   return null;
+}
+
+/** An unmapped table is a real table with an unknown column list, not a non-table. */
+function columnsOf(element: ElementModel): string {
+  return (element.table?.columns ?? []).map(quote).join(', ');
 }
 
 function classFor(element: ElementModel): string {
