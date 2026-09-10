@@ -107,8 +107,15 @@ export class BasePage {
     this.path = path;
   }
 
-  async goto() {
-    await this.page.goto(this.path);
+  /** A parameterized path (\`/orders/view/{id}\`) needs its record ids: \`goto({ id: 7 })\`. */
+  async goto(params = {}) {
+    const target = this.path.replace(/\\{(\\w+)\\}/g, (_, name) => {
+      if (params[name] === undefined) {
+        throw new Error(\`\${this.constructor.name}: path '\${this.path}' needs a value for {\${name}}\`);
+      }
+      return encodeURIComponent(String(params[name]));
+    });
+    await this.page.goto(target);
     await this.waitUntilReady();
   }
 

@@ -1,12 +1,14 @@
-// Page-model construction: URL -> folder group, action and a unique class name.
+// Page-model construction: URL -> folder group, screen merging and a unique class name.
 //
 // These rules are about how an application's URLs become a set of page objects, not about
-// where the elements came from. They were written against the YAML application map and are
-// kept here so the analysis reader inherits them unchanged — the folder layout and class
-// names of a generated framework must not shift just because the input format did.
+// where the elements came from. The folder layout is still the module segment, but a page's
+// *identity* is its full parameterless path: two controls named from the same two segments
+// used to collapse onto one class name and come back numbered (KyeAssignmentsPage22), which
+// no reader can tell apart. Now every meaningful segment counts, and a name only grows as far
+// as it must to be unique.
 
-import { toKebab, toPascal } from './naming.js';
-import type { LocatorSpec, PageModel, PagesConfig } from './types.js';
+import { pageClassName, toPascal } from './naming.js';
+import type { LocatorSpec, PageModel } from './types.js';
 
 /**
  * Work out which path segment names the app's module, by stripping the prefix
@@ -35,23 +37,18 @@ export function detectFolderSegment(urls: string[]): number {
   }
   return common + 1;
 }
+
 /**
- * `/web/index.php/admin/viewSystemUsers` with folderSegment 3 -> group `admin`,
- * action `viewSystemUsers`. Trailing `/empNumber/7` style pairs are identity
- * noise (fixture data baked into the crawl) and are dropped by default.
+ * The segments that carry a page's identity: everything from the module segment on,
+ * with parameter placeholders (`{id}`, `{dealId}`, `:id` — any of them, whatever the
+ * name) dropped. Params are how a route says "some record goes here", so they never
+ * distinguish one screen from another.
  */
-export function splitUrl(url: string, pagesConfig: Omit<PagesConfig, 'folderSegment'> & { folderSegment: number }) {
-  // `{id}` segments are the mapper's collapsed entity-ID placeholders — identity
-  // noise, never grouping or action information.
-  const parts = String(url).split('/').filter((p) => p && p !== '{id}');
-  const groupIndex = Math.max(0, pagesConfig.folderSegment - 1);
-  const group = parts[groupIndex] ?? 'app';
-  let action = parts[groupIndex + 1] ?? 'index';
-  if (!pagesConfig.dropParamSegments && parts.length > groupIndex + 2) {
-    action = parts.slice(groupIndex + 1).join('-');
-  }
-  return { group: toKebab(group) || 'app', action };
+export function meaningfulSegments(url: string, folderSegment: number): string[] {
+  const parts = String(url).split('/').filter((p) => p && !/^[{:]/.test(p));
+  return parts.slice(Math.max(0, folderSegment - 1));
 }
+
 export function locatorSignature(locator: LocatorSpec): string {
   const parts = [locator.strategy, `[${locator.args.join('|')}]`];
   if (locator.name != null) parts.push(`name=${locator.name}`);
@@ -59,52 +56,91 @@ export function locatorSignature(locator: LocatorSpec): string {
   if (locator.within) parts.push(`within=${locatorSignature(locator.within)}`);
   return parts.join(' ');
 }
+
 /**
- * The `*Module` URLs are server-side redirects onto their list page, so the
- * crawler mapped the same screen twice. Keep one page object and record the
- * other URL as an alias instead of emitting two near-identical classes.
+ * Routes that render the same component are the same screen, wherever the router
+ * mounts it — `/my/submissions/...` and `/kye/assignments/view/{id}/submissions/...`
+ * are one page object, not two near-identical classes. The shortest URL is the
+ * canonical one and every other mount becomes an alias, so nothing reachable is lost.
+ * A route with no component has nothing to prove identity with and never merges.
  */
-export function mergeDuplicatePages(pages: PageModel[]): PageModel[] {
-  const byFingerprint = new Map<string, PageModel>();
+export function mergeDuplicatePages(pages: PageModel[], folderSegment: number): PageModel[] {
+  const byScreen = new Map<string, PageModel[]>();
   for (const page of pages) {
-    const key = `${page.group}::${page.elements.map((e) => e.signature).join(';')}`;
-    const existing = byFingerprint.get(key);
-    if (!existing) {
-      byFingerprint.set(key, page);
-      continue;
-    }
-    const [keep, drop] = preferredOf(existing, page);
-    keep.aliases.push(drop.url, ...drop.aliases);
-    byFingerprint.set(key, keep);
+    const key = page.component ?? `url:${page.url}`;
+    const group = byScreen.get(key);
+    if (group) group.push(page);
+    else byScreen.set(key, [page]);
   }
-  return [...byFingerprint.values()].sort((a, b) => a.slug.localeCompare(b.slug));
+
+  const merged: PageModel[] = [];
+  for (const group of byScreen.values()) {
+    group.sort((a, b) => canonicalRank(a, folderSegment) - canonicalRank(b, folderSegment)
+      || a.url.length - b.url.length || a.url.localeCompare(b.url));
+    const [keep, ...rest] = group;
+    const urls = new Set([...keep.aliases, ...rest.flatMap((page) => [page.url, ...page.aliases])]);
+    urls.delete(keep.url);
+    keep.aliases = [...urls];
+    merged.push(keep);
+  }
+  return merged.sort((a, b) => a.url.localeCompare(b.url));
 }
 
-/** Prefer the concrete list page over the `*Module` redirect that lands on it. */
-function preferredOf(a: PageModel, b: PageModel): [PageModel, PageModel] {
-  const aIsModule = a.className.endsWith('ModulePage');
-  const bIsModule = b.className.endsWith('ModulePage');
-  if (aIsModule && !bIsModule) return [b, a];
-  if (bIsModule && !aIsModule) return [a, b];
-  return a.slug <= b.slug ? [a, b] : [b, a];
+/**
+ * Fewer segments make the better canonical URL (and the shorter class name). A leaf
+ * ending in `Module` is a server-side redirect onto its list page, so it never wins
+ * over the page it lands on.
+ */
+function canonicalRank(page: PageModel, folderSegment: number): number {
+  const segments = meaningfulSegments(page.url, folderSegment);
+  const redirect = toPascal(segments[segments.length - 1] ?? '').endsWith('Module') ? 1000 : 0;
+  return segments.length + redirect;
 }
-/** Guarantee class names are unique across the whole project and set fileBase. */
-export function assignUniqueClassNames(pages: PageModel[]): void {
-  const used = new Set<string>();
-  for (const page of pages) {
-    let name = page.className;
-    if (used.has(name)) {
-      const qualified = `${toPascal(page.group)}${name}`;
-      name = used.has(qualified) ? uniqueSuffix(qualified, used) : qualified;
+
+/**
+ * Name every page from its own path, extending a name toward the root only while it
+ * collides: `/kye/employee-trading/firm-trades` is FirmTradesPage on its own, and
+ * `/kye/assignments` + `/kytp/assignments` become KyeAssignmentsPage and
+ * KytpAssignmentsPage — both extend, so a name never depends on which route was read
+ * first. A numeric suffix survives only for paths whose meaningful segments are
+ * identical (`/requests/add` next to `/requests/add/{id}` with different components),
+ * where the URL itself offers nothing left to say.
+ */
+export function assignPageNames(pages: PageModel[], folderSegment: number): void {
+  const segments = pages.map((page) => {
+    const segs = meaningfulSegments(page.url, folderSegment);
+    return segs.length ? segs : ['home'];
+  });
+  const depths = pages.map(() => 1);
+  const nameOf = (i: number) => pageClassName(segments[i], depths[i]);
+
+  for (let changed = true; changed;) {
+    changed = false;
+    const byName = new Map<string, number[]>();
+    pages.forEach((_, i) => {
+      const name = nameOf(i);
+      const clash = byName.get(name);
+      if (clash) clash.push(i);
+      else byName.set(name, [i]);
+    });
+    for (const clash of byName.values()) {
+      if (clash.length < 2) continue;
+      for (const i of clash) {
+        if (depths[i] < segments[i].length) {
+          depths[i] += 1;
+          changed = true;
+        }
+      }
     }
-    used.add(name);
+  }
+
+  const used = new Map<string, number>();
+  pages.forEach((page, i) => {
+    let name = nameOf(i);
+    const count = (used.get(name) ?? 0) + 1;
+    used.set(name, count);
+    if (count > 1) name = `${name}${count}`;
     page.className = name;
     page.fileBase = name;
-  }
-}
-
-function uniqueSuffix(base: string, used: Set<string>): string {
-  let n = 2;
-  while (used.has(`${base}${n}`)) n += 1;
-  return `${base}${n}`;
+  });
 }

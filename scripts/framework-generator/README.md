@@ -55,8 +55,8 @@ loginConfig: app-config.yaml   # optional, see below
 
 pages:
   folderSegment: auto         # see below; or a 1-based segment number
-  dropParamSegments: true     # drop trailing /empNumber/7 pairs from page identity
-  mergeDuplicates: true       # collapse *Module redirect pages onto their list-page twin
+  mergeDuplicates: true       # routes rendering the same component are one screen: the
+                              # shortest URL is the page, every other mount an alias
 
 elements:
   sharedChromeThreshold: 0.8  # elements on >= 80% of pages become a shared nav component
@@ -178,8 +178,14 @@ adapter has to know about them:
   prose `comment:` form kept as a fallback for older files,
 - chrome repeated on nearly every page is lifted into one `NavigationBar`
   component instead of being regenerated per page,
-- `*Module` URLs that redirect onto a list page are merged into one page object
-  with the extra URL kept as an alias,
+- routes that render the same component are one page object — the shortest URL
+  is canonical and every other mount an alias, so a screen the router exposes
+  at eight paths is one class, not eight,
+- a class is named from its path's trailing segments and extends toward the
+  root only while two pages collide (`KyeAssignmentsPage` / `KytpAssignmentsPage`),
+  so no page ever comes back as `SomethingPage22`,
+- `{id}`-style parameter segments are dropped from page identity, whatever the
+  parameter is called,
 - names that start with a digit or collide with a keyword are made safe per
   target language,
 - the folder-grouping segment is detected from the mapped URLs, so pointing the

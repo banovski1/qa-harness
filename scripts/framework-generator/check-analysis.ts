@@ -32,7 +32,7 @@ const config: ApplicationConfig = {
   analysisDir: String(rawConfig.analysisDir ?? 'analysis'),
   locatorTemplates: Object.fromEntries(Object.entries(record(rawConfig.locatorTemplates ?? {})).map(([key, value]) => [key, String(value)])),
   navigation: list(rawConfig.navigation).map(record),
-  pages: { folderSegment: 'auto', dropParamSegments: true, mergeDuplicates: true, ...record(rawConfig.pages ?? {}) },
+  pages: { folderSegment: 'auto', mergeDuplicates: true, ...record(rawConfig.pages ?? {}) },
   api: { enabled: Boolean(rawApi.enabled), ...(rawApi.pathPrefix == null ? {} : { pathPrefix: String(rawApi.pathPrefix) }) },
 };
 

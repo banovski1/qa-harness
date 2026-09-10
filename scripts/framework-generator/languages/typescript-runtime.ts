@@ -564,9 +564,22 @@ export abstract class BasePage {
     readonly path: string,
   ) {}
 
-  /** Navigate to this page's own path, relative to the configured baseURL. */
-  async goto(): Promise<void> {
-    await this.page.goto(this.path, { waitUntil: 'domcontentloaded' });
+  /**
+   * Navigate to this page's own path, relative to the configured baseURL.
+   *
+   * A parameterized path (\`/orders/view/{id}\`) needs its record ids:
+   * \`await ordersViewPage.goto({ id: 7 })\`. Navigating without them fails
+   * here, by name, instead of as a 404 three seconds later.
+   */
+  async goto(params: Record<string, string | number> = {}): Promise<void> {
+    const target = this.path.replace(/\\{(\\w+)\\}/g, (_, name: string) => {
+      const value = params[name];
+      if (value === undefined) {
+        throw new Error(\`\${this.constructor.name}: path '\${this.path}' needs a value for {\${name}}\`);
+      }
+      return encodeURIComponent(String(value));
+    });
+    await this.page.goto(target, { waitUntil: 'domcontentloaded' });
     await this.waitUntilReady();
   }
 

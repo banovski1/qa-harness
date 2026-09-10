@@ -8,6 +8,8 @@ import { join, basename } from 'node:path';
 import { readApplicationModel } from '../analysis-reader.js';
 import { readApiMap } from '../api-map-reader.js';
 import { loadConfig, main } from '../generate.js';
+import { meaningfulSegments } from '../page-model.js';
+import { pageClassName } from '../naming.js';
 import type { GeneratedFile, GenerationContext, LanguageAdapter } from '../types.js';
 
 function fixture(t: { after(fn: () => void): void }) {
@@ -80,7 +82,7 @@ test('joins literal routes and components, applies mount prefix and removes shar
     { file: 'Users.vue', elements: [nav, { name: 'save', component: 'Button', locator: { strategy: 'getByRole', args: ['button'], name: 'Save' } }] },
   ] }));
   writeFileSync(join(dir, 'live-urls.json'), JSON.stringify({ pathPrefix: '/app/' }));
-  const model = readApplicationModel({ analysisDir: dir, pages: { folderSegment: 'auto', dropParamSegments: true, mergeDuplicates: true }, navigation: [nav] });
+  const model = readApplicationModel({ analysisDir: dir, pages: { folderSegment: 'auto', mergeDuplicates: true }, navigation: [nav] });
   assert.deepEqual(model.pages.map((page) => ({ url: page.url, group: page.group, className: page.className, names: page.elements.map((e) => e.rawName) })), [
     { url: '/app/users/viewUsers', group: 'users', className: 'UsersPage', names: ['save'] },
   ]);
@@ -90,10 +92,61 @@ test('joins literal routes and components, applies mount prefix and removes shar
   assert.equal(model.stats.apiRoutesSkipped, 1);
 });
 
+test('names pages from the full route path and never numbers a resolvable collision', (t) => {
+  const dir = fixture(t);
+  writeFileSync(join(dir, 'pages-and-routes.json'), JSON.stringify({ routes: [
+    { path: '/kye/assignments', component: 'Assignments.vue' },
+    { path: '/kye/assignments/edit/{id}/authorizations/individual-arls', component: 'IndividualArls.vue' },
+    { path: '/kye/authorizations/individual-arls', component: 'IndividualArls.vue' },
+    { path: '/kytp/assignments', component: 'KytpAssignments.vue' },
+    { path: '/kye/documents/{folderId}/list', component: 'Documents.vue' },
+  ] }));
+  writeFileSync(join(dir, 'frontend-components.json'), JSON.stringify({ components: [
+    { file: 'Assignments.vue', elements: [] },
+    { file: 'IndividualArls.vue', elements: [] },
+    { file: 'KytpAssignments.vue', elements: [] },
+    { file: 'Documents.vue', elements: [] },
+  ] }));
+  const model = readApplicationModel({ analysisDir: dir, pages: { folderSegment: 'auto', mergeDuplicates: true } });
+  assert.deepEqual(model.pages.map((page) => ({ url: page.url, group: page.group, className: page.className, aliases: page.aliases })), [
+    // Two `assignments` leaves collide, so BOTH extend to their module — no first-come-wins, no numbers.
+    { url: '/kye/assignments', group: 'kye', className: 'KyeAssignmentsPage', aliases: [] },
+    // The same component at two mounts is one screen: the shortest URL is canonical, the other an alias.
+    { url: '/kye/authorizations/individual-arls', group: 'kye', className: 'IndividualArlsPage', aliases: ['/kye/assignments/edit/{id}/authorizations/individual-arls'] },
+    // `{folderId}` is a param placeholder, not identity — any {param} segment is dropped, not just {id}.
+    { url: '/kye/documents/{folderId}/list', group: 'kye', className: 'ListPage', aliases: [] },
+    { url: '/kytp/assignments', group: 'kytp', className: 'KytpAssignmentsPage', aliases: [] },
+  ]);
+});
+
+test('a numeric suffix remains only for paths whose meaningful segments are identical', (t) => {
+  const dir = fixture(t);
+  writeFileSync(join(dir, 'pages-and-routes.json'), JSON.stringify({ routes: [
+    { path: '/requests/add', component: 'Add.vue' },
+    { path: '/requests/add/{id}', component: 'AddForEntity.vue' },
+  ] }));
+  writeFileSync(join(dir, 'frontend-components.json'), JSON.stringify({ components: [
+    { file: 'Add.vue', elements: [] }, { file: 'AddForEntity.vue', elements: [] },
+  ] }));
+  const model = readApplicationModel({ analysisDir: dir, pages: { folderSegment: 1, mergeDuplicates: true } });
+  assert.deepEqual(model.pages.map((page) => page.className), ['RequestsAddPage', 'RequestsAddPage2']);
+});
+
+test('path-to-name helpers: params, index leaves, and depth extension', () => {
+  assert.deepEqual(meaningfulSegments('/users/{userId}/settings', 1), ['users', 'settings']);
+  assert.deepEqual(meaningfulSegments('/app/v2/users/:id', 3), ['users']);
+  assert.deepEqual(meaningfulSegments('/', 1), []);
+  assert.equal(pageClassName(['admin', 'viewSystemUsers']), 'SystemUsersPage');
+  assert.equal(pageClassName(['pim', 'viewPimModule']), 'PimPage');
+  assert.equal(pageClassName(['kye', 'assignments', 'index']), 'AssignmentsPage');
+  assert.equal(pageClassName(['kye', 'assignments', 'edit'], 2), 'AssignmentsEditPage');
+  assert.equal(pageClassName(['home']), 'HomePage');
+});
+
 test('rejects malformed analysis JSON with its file context', (t) => {
   const dir = fixture(t);
   writeFileSync(join(dir, 'pages-and-routes.json'), '{');
-  assert.throws(() => readApplicationModel({ analysisDir: dir, pages: { folderSegment: 'auto', dropParamSegments: true, mergeDuplicates: true } }), /Malformed JSON in '.*pages-and-routes.json'/);
+  assert.throws(() => readApplicationModel({ analysisDir: dir, pages: { folderSegment: 'auto', mergeDuplicates: true } }), /Malformed JSON in '.*pages-and-routes.json'/);
 });
 
 test('normalizes API operations and preserves dropped fields', (t) => {

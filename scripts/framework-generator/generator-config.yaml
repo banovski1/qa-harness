@@ -26,8 +26,8 @@ analysisDir: analysis
 pages:
   folderSegment: auto         # URL segment used as the folder group; `auto` strips the
                               # prefix every mapped URL shares, or set a 1-based number
-  dropParamSegments: true     # drop trailing /userId/7 style pairs from page identity
-  mergeDuplicates: true       # collapse *Module redirect pages onto their list-page twin
+  mergeDuplicates: true       # routes rendering the same component are one screen: the
+                              # shortest URL is the page, every other mount an alias
 
 # The application's shared navigation, declared rather than derived.
 #
