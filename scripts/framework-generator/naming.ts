@@ -98,21 +98,26 @@ export function safeIdentifier(name: unknown, language: string): string {
 }
 
 /**
- * Derive a page-object class name from a URL path.
+ * Derive a page-object class name from a route's meaningful segments (module segment
+ * first, params already dropped — see `meaningfulSegments` in page-model.ts).
  *
- * `/web/index.php/admin/viewSystemUsers` -> "SystemUsersPage". A leading `view`
- * is noise on every OrangeHRM action name, and `index` carries no meaning, so
- * both fall back to the module segment. A trailing `Module` that just repeats
- * the folder it lives in ("maintenance/MaintenanceModulePage") is stripped too.
+ * `depth` is how many trailing segments the name is built from; callers start at 1 —
+ * just the leaf — and extend only while two pages collide, so a name is as short as
+ * uniqueness allows. The leaf keeps the old cleanups: a leading `view` is noise on
+ * every action-style route name (`/admin/viewSystemUsers` -> "SystemUsersPage"),
+ * `index` defers to its parent, and a trailing `Module` that just repeats the module
+ * segment (`/pim/viewPimModule`) is a redirect's name, not a screen's.
  */
-export function pageClassName(moduleSegment: unknown, actionSegment: unknown): string {
-  let base = toPascal(actionSegment ?? '');
-  if (/^View[A-Z]/.test(base)) base = base.slice(4);
-  const moduleName = toPascal(moduleSegment ?? '');
-  if (!base || base === 'Index') base = moduleName;
-  if (base.endsWith('Module') && base.slice(0, -6).toLowerCase() === moduleName.toLowerCase()) {
-    base = base.slice(0, -6);
-  }
-  if (!base) base = 'App';
-  return `${base}Page`;
+export function pageClassName(segments: unknown[], depth = 1): string {
+  const names = (segments ?? []).map(toPascal).filter(Boolean);
+  while (names.length > 1 && names[names.length - 1] === 'Index') names.pop();
+
+  let leaf = names[names.length - 1] ?? '';
+  if (/^View[A-Z]/.test(leaf)) leaf = leaf.slice(4);
+  const moduleName = names[0] ?? '';
+  if (leaf.endsWith('Module') && leaf.slice(0, -6) === moduleName) leaf = leaf.slice(0, -6);
+  if (!leaf) leaf = moduleName;
+
+  const base = [...names.slice(-depth, -1), leaf].filter(Boolean).join('');
+  return `${base || 'Home'}Page`;
 }

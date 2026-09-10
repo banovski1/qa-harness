@@ -20,8 +20,8 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fromMap } from './locator-spec.js';
 import { rankOf } from './locator-ladder.js';
-import { pageClassName } from './naming.js';
-import { assignUniqueClassNames, detectFolderSegment, locatorSignature, mergeDuplicatePages, splitUrl } from './page-model.js';
+import { toKebab } from './naming.js';
+import { assignPageNames, detectFolderSegment, locatorSignature, meaningfulSegments, mergeDuplicatePages } from './page-model.js';
 import { errorMessage, isRecord, list, record } from './types.js';
 import type { ApplicationConfig, ApplicationModel, ApplicationStats, ElementModel, LocatorTemplates, PageModel } from './types.js';
 import type { RoutesReport, ComponentsReport } from '../repo-analyzer/types.js';
@@ -31,7 +31,8 @@ import type { RoutesReport, ComponentsReport } from '../repo-analyzer/types.js';
  *             unstable: boolean, unstableReason: string|null, rung: number|null,
  *             table: {columns: string[], rowCount: number}|null, signature: string }} ElementModel
  * @typedef {{ slug: string, url: string, group: string, className: string, fileBase: string,
- *             elements: ElementModel[], states: StateModel[], aliases: string[] }} PageModel
+ *             component: string|null, elements: ElementModel[], states: StateModel[],
+ *             aliases: string[] }} PageModel
  */
 
 /**
@@ -87,9 +88,7 @@ export function readApplicationModel(config: ApplicationConfig): ApplicationMode
   stats.folderSegment = folderSegment;
   stats.folderSegmentDetected = config.pages.folderSegment === 'auto';
   for (const page of pages) {
-    const { group, action } = splitUrl(page.url, { ...config.pages, folderSegment });
-    page.group = group;
-    page.className = pageClassName(group, action);
+    page.group = toKebab(meaningfulSegments(page.url, folderSegment)[0] ?? 'home') || 'home';
   }
 
   const sharedChrome = readNavigation(config, templates, stats);
@@ -100,8 +99,8 @@ export function readApplicationModel(config: ApplicationConfig): ApplicationMode
     page.elements = page.elements.filter((e) => !chromeKeys.has(e.signature));
   }
 
-  if (config.pages.mergeDuplicates) pages = mergeDuplicatePages(pages);
-  assignUniqueClassNames(pages);
+  if (config.pages.mergeDuplicates) pages = mergeDuplicatePages(pages, folderSegment);
+  assignPageNames(pages, folderSegment);
 
   stats.pages = pages.length;
   stats.sharedChrome = sharedChrome.length;
@@ -162,6 +161,7 @@ function toPage(route: RoutesReport['routes'][number], url: string, elements: un
     group: '',
     className: '',
     fileBase: '',
+    component: route.component ? String(route.component) : null,
     elements: elements.map((element) => toElement(element, templates, stats)).filter((element) => element !== null),
     states: [],
     aliases: [],

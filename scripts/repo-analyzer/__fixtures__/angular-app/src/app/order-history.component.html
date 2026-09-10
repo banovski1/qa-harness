@@ -1,0 +1,11 @@
+<!--
+  rung 1, again: pins that a `*ngIf`-guarded control — a `Template` host that duplicates its
+  attributes onto both itself and the element it wraps (`elements-angular.ts:85-93`) — is walked
+  through `children` and its own test id read, not the transparent host counted twice.
+-->
+<input *ngIf="isUrgent" data-testid="urgent-flag" />
+<!--
+  unresolvable: a runtime property access carries no static label, so this reaches no rung and is
+  counted in `skipped` rather than guessed at (`elements-angular.ts:148-150`).
+-->
+<input [componentLabel]="row.label" />

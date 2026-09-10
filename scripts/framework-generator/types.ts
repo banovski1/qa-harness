@@ -10,7 +10,7 @@ export interface NavigationEntry extends Partial<Omit<ExtractedElement, 'locator
   locator?: unknown;
   columns?: (string | { name: string })[];
 }
-export interface PagesConfig { folderSegment: 'auto' | number; dropParamSegments: boolean; mergeDuplicates: boolean }
+export interface PagesConfig { folderSegment: 'auto' | number; mergeDuplicates: boolean }
 export interface ApiFilter { tags?: string[]; operationIds?: string[] }
 export interface ApiConfig {
   enabled: boolean; pathPrefix?: string; include?: ApiFilter; exclude?: ApiFilter;
@@ -37,6 +37,7 @@ export interface ElementModel {
 export interface StateModel { rawName: string; triggerLabel: string; elements: ElementModel[] }
 export interface PageModel {
   slug: string; url: string; group: string; className: string; fileBase: string;
+  component: string | null;
   elements: ElementModel[]; states: StateModel[]; aliases: string[];
 }
 export interface ApplicationStats {

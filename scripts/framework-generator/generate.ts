@@ -32,7 +32,7 @@ const DEFAULTS: Omit<GeneratorConfig, 'login'> = {
   baseUrl: '',
   analysisDir: 'analysis',
   loginConfig: null,
-  pages: { folderSegment: 'auto', dropParamSegments: true, mergeDuplicates: true },
+  pages: { folderSegment: 'auto', mergeDuplicates: true },
   navigation: [],
   waits: { spinnerSelector: '[role="progressbar"], [aria-busy="true"]' },
   tests: { generateSmokeSpecs: true },
@@ -41,9 +41,12 @@ const DEFAULTS: Omit<GeneratorConfig, 'login'> = {
   api: { enabled: false, include: {}, exclude: {}, generateAssertionSpecs: true, generateFactories: true },
 };
 
-// Every template id the generator knows how to emit a factory for, and the component
-// kinds that use it. An id absent from the config simply has no factory.
-export const TEMPLATE_IDS = ['labelledInput', 'labelledTextarea', 'labelledSelect', 'labelledRadio', 'topNavTab', 'tableByColumn'];
+// The closed set of ids a `locatorTemplates:` block may name, and it must cover every id in the
+// analyzer's KIND_TEMPLATES (`repo-analyzer/elements.ts`) — the extractor writes those into the
+// analysis, so an id missing here rejects a sound analysis at config load. A factory is optional:
+// `labelledRadio` and `labelledCheckbox` have none and reach the page object as expanded CSS.
+export const TEMPLATE_IDS = ['labelledInput', 'labelledTextarea', 'labelledSelect', 'labelledRadio',
+  'labelledCheckbox', 'labelledSwitch', 'labelledButton', 'topNavTab', 'tableByColumn'];
 
 // ---- entry point -------------------------------------------------------------
 
@@ -187,7 +190,7 @@ export function loadConfig(path: string): GeneratorConfig {
     analysisDir: String(raw.analysisDir ?? DEFAULTS.analysisDir), apiMapDir: String(raw.apiMapDir ?? DEFAULTS.apiMapDir),
     loginConfig, login: loginConfig ? loadLoginFlow(loginConfig) : null,
     ...(raw.mapDir == null ? {} : { mapDir: String(raw.mapDir) }),
-    pages: { folderSegment: segment, dropParamSegments: Boolean(pages.dropParamSegments), mergeDuplicates: Boolean(pages.mergeDuplicates) },
+    pages: { folderSegment: segment, mergeDuplicates: Boolean(pages.mergeDuplicates) },
     waits: { spinnerSelector: String(waits.spinnerSelector) }, tests: { generateSmokeSpecs: Boolean(tests.generateSmokeSpecs) },
     navigation: list(raw.navigation).map(readNavigationEntry), locatorTemplates: templates,
     api: { enabled: Boolean(api.enabled), pathPrefix: api.pathPrefix == null ? undefined : String(api.pathPrefix),

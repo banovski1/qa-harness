@@ -27,7 +27,8 @@ how an unstable recorded locator gets repaired without opening a browser.
 
 `app-config.yaml` is the source of truth for the app clone path and test base URL. `scripts/` holds
 the analyzer and the generator; `analysis/` holds the machine-readable reports and the api-map;
-`generated-framework/` holds the committed output. Every path in the configs is relative to the
+`generated-framework/` holds the generated output (gitignored — regenerate it, never restore it
+from history). Every path in the configs is relative to the
 **repo root**, so always run from there.
 
 **This branch carries no target app.** It is the base the per-language branches are taken from, so
@@ -131,12 +132,19 @@ every route beneath it, which the framework's own route table does not record. I
 leading slash, and expands `template` locators through `fromMap` so no adapter ever sees one. A route
 with no component still becomes a page object, carrying a URL and nothing else.
 
-`page-model.ts` carries the URL-to-page rules unchanged from the map era — folder grouping, unique
-class names, merging duplicate pages onto one class with `aliases`. They are about how URLs become
-page objects, not about where elements came from, which is why the folder layout and class names did
-not shift when the input format did. The one rule that *did* change: when the mount prefix is known,
-the module segment is taken as the one straight after it rather than inferred, because a single short
-route (`/` reduces to just the prefix) would otherwise drag the detected segment onto the prefix.
+`page-model.ts` holds the URL-to-page rules, and a page's identity is its **full parameterless
+path**, never a truncation of it. Folders still come from the module segment (taken as the one
+straight after the mount prefix when that is known, inferred otherwise — a single short route would
+drag the detected segment onto the prefix). Three rules do the rest. *Merging*: routes that render
+the same component are one screen wherever the router mounts them — the shortest URL is the page,
+every other mount an alias, so `/my/authorizations/individual-arls` and its seven deeper mounts are
+one class, not eight. *Naming* (`assignPageNames`): a class is named from its path's trailing
+segments, extended toward the root only while two pages collide — `/kye/assignments` and
+`/kytp/assignments` both extend to `KyeAssignmentsPage` / `KytpAssignmentsPage`, so a name never
+depends on read order. *Params*: any `{param}` or `:param` segment is a record slot, not identity,
+and is dropped before either rule runs. A numeric suffix survives only when two different components
+sit on identical parameterless paths (`/requests/add` beside `/requests/add/{id}`) — on the current
+app that is 4 classes out of 589, and each one is a real ambiguity, not a naming failure.
 
 The contract it returns — `{ pages, sharedChrome, sharedStates, stats }` — is the same one the map
 reader returned, which is what let `languages/typescript.ts` stay untouched through the switch.
@@ -151,7 +159,7 @@ before its options existed.
 
 **The login flow is not in the analysis** — static analysis describes screens, never flows. The generator can read login locators from a configured `loginConfig:` file to emit a working login helper. Credentials never flow through: they come from `APP_USERNAME`/`APP_PASSWORD` in the generated project's `.env`.
 
-**`.gitattributes` pins `eol=lf`** because the generator writes LF and `generated-framework/` is committed. Do not relax it — under Windows `core.autocrlf` every generated file would show as modified with no content change.
+**`.gitattributes` pins `eol=lf`** because the generator writes LF. `generated-framework/` is gitignored on this branch, but any committed generated file (analyzer snapshots, fixtures) has the same problem: do not relax the pin — under Windows `core.autocrlf` every generated file would show as modified with no content change.
 
 **The repo analyzer never branches on the app.** `scripts/repo-analyzer/` reads a local clone of the
 application under test and writes the four files in `analysis/`. Framework support lives entirely in

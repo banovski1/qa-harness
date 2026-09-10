@@ -6,9 +6,10 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import {pathToFileURL} from 'node:url';
 import {STRATEGIES} from '../framework-generator/locator-spec.js';
 import {detect} from './detect.js';
-import {buildComponentIndex, templatesFrom} from './elements-vue.js';
+import {buildComponentIndex, templatesFrom} from './elements.js';
 import {loadCatalogue} from './i18n.js';
 import {TEST_ID_ATTRS} from './parsers.js';
 import {ANALYSIS_DIR, header, outPath, reportWritten, table, writeReport} from './report.js';
@@ -194,7 +195,7 @@ function render(detection: DetectionResult, {components, errors, naive, catalogu
   ].join('\n');
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const args = parseArgs();
   const detection = detect(resolveAppPath(args.app), {frontendRoot: args.frontendRoot});
   const result = await collectComponents(detection);

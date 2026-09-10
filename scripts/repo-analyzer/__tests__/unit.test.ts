@@ -13,14 +13,14 @@ import {fileURLToPath} from 'node:url';
 import {bestLocatorFor, classify, rankOf, RUNGS} from '../../framework-generator/locator-ladder.js';
 import {loadProjectConfig, projectConfigPath} from '../../project-config.js';
 import {crossCheck, mergeByPath} from '../api-docs.js';
-import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements-vue.js';
-import {resolveLabelExpression} from '../i18n.js';
+import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements.js';
+import {loadCatalogue, resolveAngularLabelExpression, resolveLabelExpression} from '../i18n.js';
 import {joinUrl} from '../live-urls.js';
-import {componentNameFromFile, isTestIdAttr, walkAny, walkAst} from '../parsers.js';
-import {paramsOf} from '../registry-backend.js';
+import {componentNameFromFile, isTestIdAttr, parseAngular, walkAny, walkAst} from '../parsers.js';
+import {paramsOf, springMethod} from '../registry-backend.js';
 import {FRONTEND_REGISTRY, matchFrontend} from '../registry-frontend.js';
 import {escapeCell, table} from '../report.js';
-import {fileRouteFor, normalisePath} from '../routes.js';
+import {fileRouteFor, joinRoutePath, normalisePath} from '../routes.js';
 import {resolveAppPath} from '../util.js';
 import {analyzerPlan} from '../analyze.js';
 import {astField, astNode, astNodes, astString} from '../ast.js';
@@ -115,6 +115,17 @@ test('fileRouteFor covers each file-based routing convention', () => {
   assert.equal(fileRouteFor('users.$id.tsx', {flat: true}), '/users/{id}');
 });
 
+test('joinRoutePath composes a parent and a child route, empty segments included', () => {
+  // A layout route spells its path as the empty string, at either end of the join, and both a
+  // doubled and a missing slash would name a URL the app does not serve.
+  assert.equal(joinRoutePath('', ''), '/');
+  assert.equal(joinRoutePath('', 'orders'), '/orders');
+  assert.equal(joinRoutePath('/orders', ''), '/orders');
+  assert.equal(joinRoutePath('/orders', 'view/:id'), '/orders/view/:id');
+  assert.equal(joinRoutePath('/orders/', '/view'), '/orders/view');
+  assert.equal(joinRoutePath('/', 'orders'), '/orders');
+});
+
 test('joinUrl composes a base, a prefix and a route without doubling slashes', () => {
   assert.equal(joinUrl('https://app.test', '', '/pim/list'), 'https://app.test/pim/list');
   assert.equal(joinUrl('https://app.test/', '', '/pim/list'), 'https://app.test/pim/list');
@@ -129,6 +140,30 @@ test('paramsOf reads every parameter spelling and de-duplicates', () => {
   assert.deepEqual(paramsOf('/a/<int:one>/'), ['one']);
   assert.deepEqual(paramsOf('/a/{one}/b/{one}'), ['one']);
   assert.deepEqual(paramsOf('/a/b'), []);
+  // Spring writes a regex constraint into the placeholder; the parameter is `one`, not the pattern,
+  // and the colon means the opposite of what it means in Django's `<int:one>` above.
+  assert.deepEqual(paramsOf('/a/{one:[0-9]+}'), ['one']);
+  assert.deepEqual(paramsOf('/a/{one:[0-9]+}/b/{two}'), ['one', 'two']);
+});
+
+test('springMethod reads unchanged with no web.xml, and names uncomposed servlet mappings when one exists', (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'spring-method-'));
+  t.after(() => fs.rmSync(dir, {recursive: true, force: true}));
+
+  const baseline = '@RequestMapping / @GetMapping annotations (Java AST)';
+  // The common case — no WEB-INF/web.xml anywhere under root — must read exactly as it did
+  // before this ever looked for one.
+  assert.equal(springMethod(dir), baseline);
+
+  const webInf = path.join(dir, 'src/main/webapp/WEB-INF');
+  fs.mkdirSync(webInf, {recursive: true});
+  fs.writeFileSync(path.join(webInf, 'web.xml'), `<web-app>
+    <servlet-mapping><servlet-name>a</servlet-name><url-pattern>/foo/*</url-pattern></servlet-mapping>
+    <servlet-mapping><servlet-name>b</servlet-name><url-pattern>/bar/*</url-pattern></servlet-mapping>
+  </web-app>`);
+  const withMappings = springMethod(dir);
+  assert.ok(withMappings.startsWith(baseline), 'the baseline text must still open the string');
+  assert.match(withMappings, /\b2 `<servlet-mapping>` entries\b/);
 });
 
 test('matchFrontend applies the beats: precedence rather than registry order', () => {
@@ -216,6 +251,26 @@ test('walkAny reaches nodes a Babel walker cannot see', () => {
   const babelSeen: unknown[] = [];
   walkAst(tree, (node: unknown) => babelSeen.push(node));
   assert.equal(babelSeen.length, 0, 'walkAst is the Babel-only walker; walkAny is what template ASTs need');
+});
+
+test('parseAngular reports a collector failure instead of raising it', async () => {
+  // `collectComponents` calls `parse()` bare in its per-file loop, so a throw out of either
+  // Angular collector would take the whole components stage down and cost the report for every
+  // other file. It has to come back as this component's `error` — attributable and non-fatal.
+  const source = [
+    "import {Component} from '@angular/core';",
+    "@Component({selector: 'app-x', template: '<textinput></textinput>'})",
+    'export class XComponent {}',
+  ].join('\n');
+  // The hostile input the public surface already allows: a templateFor whose lookup throws, which
+  // fails `collectAngularElements` from the inside without the extractor being altered to suit.
+  const exploding = new Proxy({}, {get() { throw new Error('boom'); }}) as Record<string, string>;
+  const parsed = await parseAngular('x.component.ts', source, {templateFor: exploding});
+
+  assert.match(parsed.error ?? '', /inline template/, 'the message must name which template failed');
+  assert.match(parsed.error ?? '', /boom/, 'and carry the underlying failure');
+  assert.deepEqual(parsed.elements, [], 'a failed collection contributes no elements');
+  assert.equal(parsed.name, 'x.component', 'the rest of the component is still reported');
 });
 
 test('mergeByPath folds methods onto one row per endpoint', () => {
@@ -396,4 +451,178 @@ test('an unconfigured template drops the element down the ladder rather than thr
   assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input}), null);
   assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input, placeholder: 'City'})?.rung, 5);
   assert.equal(bestLocatorFor({label: 'City', templateId: templateFor.input, nameAttr: 'city'})?.rung, 6);
+});
+
+// --- Angular label resolution -----------------------------------------------------------
+
+test('resolveAngularLabelExpression resolves a quoted literal piped through i18 or translate', () => {
+  const catalogue = {'label.status': 'Status'};
+  assert.equal(resolveAngularLabelExpression("'label.status' | i18", catalogue), 'Status');
+  assert.equal(resolveAngularLabelExpression('"label.status" | i18', catalogue), 'Status');
+  assert.equal(resolveAngularLabelExpression("'label.status'|i18", catalogue), 'Status', 'no space around the pipe is still valid Angular syntax');
+  // ngx-translate is not used by the app under test, but the registry is meant to be general.
+  assert.equal(resolveAngularLabelExpression("'label.status' | translate", catalogue), 'Status');
+  // A key the catalogue does not carry must not fall back to the key itself.
+  assert.equal(resolveAngularLabelExpression("'label.missing' | i18", catalogue), null);
+});
+
+test('resolveAngularLabelExpression resolves a bare quoted literal with no pipe', () => {
+  const catalogue = {'label.status': 'Status'};
+  assert.equal(resolveAngularLabelExpression("'label.status'", catalogue), 'Status');
+  assert.equal(resolveAngularLabelExpression('"label.status"', catalogue), 'Status');
+  assert.equal(resolveAngularLabelExpression("'label.missing'", catalogue), null);
+});
+
+test('resolveAngularLabelExpression resolves Angular\'s built-in i18n="@@id" custom id', () => {
+  const catalogue = {'label.status': 'Status'};
+  assert.equal(resolveAngularLabelExpression('@@label.status', catalogue), 'Status');
+  // Not real syntax the app under test uses (0 occurrences), but common in the ecosystem —
+  // an id absent from the catalogue must not guess at the description text either.
+  assert.equal(resolveAngularLabelExpression('@@label.missing', catalogue), null);
+});
+
+test('resolveAngularLabelExpression falls back to literal text only for a static attribute value', () => {
+  const catalogue = {'label.status': 'Status'};
+  // A plain (unbound) attribute that happens to look like a key: real page text either way.
+  assert.equal(resolveAngularLabelExpression('label.status', catalogue), 'Status');
+  assert.equal(resolveAngularLabelExpression('label.missing', catalogue), 'label.missing');
+});
+
+test('resolveAngularLabelExpression rejects a pipe argument, an interpolating pipe, and dynamic shapes', () => {
+  const catalogue = {'label.status': 'Status'};
+  // A pipe argument makes the value depend on runtime data.
+  assert.equal(resolveAngularLabelExpression("'label.status' | i18:{count: n}", catalogue), null);
+  // The interpolating pipe variants are a different pipe, not `i18` with a longer name.
+  for (const pipe of ['i18Conjunction', 'i18SimpleObject', 'i18SimpleObjectArray', 'i18ConditionOperator']) {
+    assert.equal(resolveAngularLabelExpression(`'label.status' | ${pipe}`, catalogue), null, pipe);
+  }
+  // String concatenation, real in textinput.component.html:2.
+  assert.equal(resolveAngularLabelExpression('componentLabel + labelSuffix', catalogue), null);
+  // A ternary is dynamic regardless of what its branches look like.
+  assert.equal(resolveAngularLabelExpression("cond ? 'label.status' : 'label.other'", catalogue), null);
+  // A bare identifier is Global Constraint 4's core case: no dot means no plausible key shape,
+  // so it can only be a live expression — the Vue equivalent is pinned above at line 341.
+  assert.equal(resolveAngularLabelExpression('someComputed', catalogue), null);
+  assert.equal(resolveAngularLabelExpression(null, catalogue), null);
+  assert.equal(resolveAngularLabelExpression(undefined, catalogue), null);
+});
+
+// --- catalogue loading ------------------------------------------------------------------
+
+function withTempApp(write: (dir: string) => void) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'i18n-catalogue-'));
+  write(dir);
+  return dir;
+}
+
+test('loadCatalogue reads a Java .properties file, decoding every quirk the real one has', async () => {
+  const dir = withTempApp((d) => {
+    const resources = path.join(d, 'app', 'src', 'main', 'resources');
+    fs.mkdirSync(resources, {recursive: true});
+    fs.writeFileSync(path.join(resources, 'messages.properties'), [
+      '# a comment line',
+      '! a bang comment line',
+      '',
+      'label.status=Status',
+      'label.name:Name',
+      'label.cafe=Caf\\u00e9',
+      'label.continued=Hello \\',
+      'World',
+    ].join('\n'));
+    // A locale sibling must never be read for the English default.
+    fs.writeFileSync(path.join(resources, 'messages_de.properties'), 'label.status=Zustand');
+  });
+  const catalogue = await loadCatalogue(dir);
+  assert.equal(catalogue.id, 'java-properties');
+  assert.equal(catalogue.entries['label.status'], 'Status', '"=" separator');
+  assert.equal(catalogue.entries['label.name'], 'Name', '":" separator');
+  assert.equal(catalogue.entries['label.cafe'], 'Café', '\\uXXXX escape decoded');
+  assert.equal(catalogue.entries['label.continued'], 'Hello World', 'trailing-backslash line continuation joined');
+  assert.equal(catalogue.size, 4, 'comment and blank lines contribute no entries, and the locale sibling is not read');
+});
+
+test('loadCatalogue parses an escaped separator inside a key', async () => {
+  const dir = withTempApp((d) => {
+    const resources = path.join(d, 'app', 'src', 'main', 'resources');
+    fs.mkdirSync(resources, {recursive: true});
+    fs.writeFileSync(path.join(resources, 'messages.properties'), 'a\\:b=value');
+  });
+  const catalogue = await loadCatalogue(dir);
+  assert.equal(catalogue.entries['a:b'], 'value');
+});
+
+test('loadCatalogue silently drops a non-string leaf in a nested-JSON catalogue', async () => {
+  const dir = withTempApp((d) => {
+    const i18nDir = path.join(d, 'front-end', 'src', 'assets', 'i18n');
+    fs.mkdirSync(i18nDir, {recursive: true});
+    fs.writeFileSync(path.join(i18nDir, 'en.json'), JSON.stringify({
+      count: 5,
+      label: {status: 'Status'},
+    }));
+  });
+  const catalogue = await loadCatalogue(dir);
+  assert.equal(catalogue.entries['label.status'], 'Status');
+  assert.equal('count' in catalogue.entries, false, 'a number leaf is not a resolvable label and must not appear');
+});
+
+// The real repo this task measures against has six files named exactly `messages.properties`
+// (component-level validation-message bundles alongside the 22,068-entry UI catalogue), and
+// findFiles returns them sorted alphabetically — so without a size tie-break, the loader would
+// silently bind whichever one sorts first, which need not be the real one. An untested
+// tie-break is a regression waiting to reintroduce the never-found failure Global Constraint 5
+// forbids: a broken registry row and an app with no labels would both just look empty.
+test('loadCatalogue picks the largest messages.properties when several exist, not the first alphabetically', async () => {
+  const dir = withTempApp((d) => {
+    // "a-module" sorts before "z-module", so an alphabetical- or first-found tie-break would
+    // wrongly pick this small, unrelated file over the real catalogue below.
+    const smaller = path.join(d, 'a-module', 'src', 'main', 'resources');
+    fs.mkdirSync(smaller, {recursive: true});
+    fs.writeFileSync(path.join(smaller, 'messages.properties'), 'validation.required=Required');
+
+    const larger = path.join(d, 'z-module', 'src', 'main', 'resources');
+    fs.mkdirSync(larger, {recursive: true});
+    fs.writeFileSync(path.join(larger, 'messages.properties'), [
+      'label.status=Status',
+      'label.description=Description',
+      'label.comment=Comment',
+    ].join('\n'));
+  });
+  const catalogue = await loadCatalogue(dir);
+  assert.equal(catalogue.id, 'java-properties');
+  assert.equal(catalogue.entries['label.status'], 'Status', 'the larger catalogue must win');
+  assert.equal('validation.required' in catalogue.entries, false, 'the smaller, alphabetically-first file must not be the one read');
+});
+
+test('loadCatalogue reads a nested-JSON catalogue under an i18n/ directory, flattened to dotted keys', async () => {
+  const dir = withTempApp((d) => {
+    const i18nDir = path.join(d, 'front-end', 'src', 'assets', 'i18n');
+    fs.mkdirSync(i18nDir, {recursive: true});
+    fs.writeFileSync(path.join(i18nDir, 'en.json'), JSON.stringify({
+      'cui-login-page': {productName: 'AccountView'},
+    }));
+  });
+  const catalogue = await loadCatalogue(dir);
+  assert.equal(catalogue.id, 'angular-nested-json');
+  assert.equal(catalogue.entries['cui-login-page.productName'], 'AccountView');
+  assert.equal(catalogue.size, 1);
+});
+
+test('loadCatalogue prefers the properties catalogue over a nested-JSON one for the same key', async () => {
+  const dir = withTempApp((d) => {
+    const resources = path.join(d, 'app', 'src', 'main', 'resources');
+    fs.mkdirSync(resources, {recursive: true});
+    fs.writeFileSync(path.join(resources, 'messages.properties'), 'label.status=Status');
+    const i18nDir = path.join(d, 'front-end', 'src', 'assets', 'i18n');
+    fs.mkdirSync(i18nDir, {recursive: true});
+    fs.writeFileSync(path.join(i18nDir, 'en.json'), JSON.stringify({label: {status: 'WrongJSON'}}));
+  });
+  const catalogue = await loadCatalogue(dir);
+  assert.equal(catalogue.id, 'java-properties');
+  assert.equal(catalogue.entries['label.status'], 'Status');
+});
+
+test('loadCatalogue returns an empty map, not an error, when no catalogue convention matches', async () => {
+  const dir = withTempApp((d) => fs.mkdirSync(path.join(d, 'src'), {recursive: true}));
+  const catalogue = await loadCatalogue(dir);
+  assert.deepEqual(catalogue, {id: null, label: 'none found — `$t()` labels cannot be resolved', entries: {}, size: 0});
 });

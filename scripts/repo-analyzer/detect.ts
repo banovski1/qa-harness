@@ -6,6 +6,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import {pathToFileURL} from 'node:url';
 import yaml from 'js-yaml';
 import {matchBackend} from './registry-backend.js';
 import {UNKNOWN_FRONTEND, matchFrontend} from './registry-frontend.js';
@@ -93,6 +94,13 @@ function sourceRootOf(root: string) {
   return root;
 }
 
+// A registry entry's `method` is a plain string unless it needs the app's own root to describe
+// a limitation only visible there (Spring's does, for web.xml servlet mappings) — this stays
+// framework-blind by resolving either shape the same way, never asking which entry it is.
+function methodOf(entry: BackendRegistryEntry, root: string): string {
+  return typeof entry.method === 'function' ? entry.method(root) : entry.method;
+}
+
 export function detect(appPath: string, overrides: Pick<CliArgs, 'frontendRoot' | 'backendRoot'> = {}): DetectionResult {
   const manifests = findManifests(appPath);
   const evidence = [];
@@ -120,7 +128,7 @@ export function detect(appPath: string, overrides: Pick<CliArgs, 'frontendRoot' 
   frontend = frontCandidates[0] ?? null;
   backend = backCandidates[0] ?? null;
   if (frontend) evidence.push(`${frontend.manifestPath}: ${frontend.entry.label} ${frontend.version ?? ''} (${frontend.score} source files)`.replace(/\s+/g, ' '));
-  if (backend) evidence.push(`${backend.manifestPath}: ${backend.entry.label} (${backend.entry.method})`);
+  if (backend) evidence.push(`${backend.manifestPath}: ${backend.entry.label} (${methodOf(backend.entry, backend.root)})`);
   for (const candidate of [...frontCandidates.slice(1), ...backCandidates.slice(1)]) {
     others.push(`${candidate.manifestPath}: ${candidate.entry.label} (not selected)`);
   }
@@ -155,7 +163,7 @@ export function detect(appPath: string, overrides: Pick<CliArgs, 'frontendRoot' 
     },
     backend: backend
       ? {framework: backend.entry.id, label: backend.entry.label, version: backend.version, root: backend.root,
-         manifestPath: backend.manifestPath, method: backend.entry.method, entry: backend.entry}
+         manifestPath: backend.manifestPath, method: methodOf(backend.entry, backend.root), entry: backend.entry}
       : null,
     monorepo: others,
     evidence,
@@ -178,7 +186,7 @@ function summarise(result: DetectionResult) {
   };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const args = parseArgs();
   const result = detect(resolveAppPath(args.app), {frontendRoot: args.frontendRoot, backendRoot: args.backendRoot});
   const summary = summarise(result);

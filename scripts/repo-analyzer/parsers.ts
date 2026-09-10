@@ -7,8 +7,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {astField, astNode, astNodes, astString} from './ast.js';
 import {isTestIdAttr, TEST_ID_ATTRS, tryImport, unique} from './util.js';
-import {collectVueElements, dedupeNames, headersFromScript, relabel} from './elements-vue.js';
-import type {ChildReference} from './elements-vue.js';
+import {collectAngularElements} from './elements-angular.js';
+import {collectVueElements, headersFromScript} from './elements-vue.js';
+import {dedupeNames, relabel} from './elements.js';
+import type {ChildReference} from './elements.js';
 import type {AstNode, AstVisitor, ExtractedElement, ParsedComponent, ParserContext, TestIdRecord} from './types.js';
 
 // Re-exported from util.ts, which owns the vocabulary so the element extractor can read it
@@ -22,14 +24,21 @@ export function componentNameFromFile(file: string) {
 
 const BABEL_PLUGINS = ['jsx', 'typescript', 'decorators-legacy', 'classProperties', 'topLevelAwait'];
 
-export async function babelParse(source: string, extraPlugins: string[] = []): Promise<AstNode | null> {
+// `jsx` and a legacy angle-bracket type assertion (`<Type>expr`) both start with `<`, and `jsx`
+// wins: Angular source that casts this way throws "Unterminated JSX contents" instead of parsing.
+// Angular templates are never JSX, so this is the one set that drops the plugin. `babelParse`
+// takes the whole plugin set rather than retrying without `jsx` on failure — deterministic and
+// one parse per file — so every other caller keeps the default above untouched.
+export const BABEL_PLUGINS_NO_JSX = BABEL_PLUGINS.filter((plugin) => plugin !== 'jsx');
+
+export async function babelParse(source: string, plugins: string[] = BABEL_PLUGINS): Promise<AstNode | null> {
   const babel = await tryImport('@babel/parser');
   if (!babel) return null;
   try {
     return astNode(babel.parse(source, {
       sourceType: 'unambiguous',
       errorRecovery: true,
-      plugins: unique([...BABEL_PLUGINS, ...extraPlugins]),
+      plugins: unique(plugins),
     })) ?? null;
   } catch {
     return null;
@@ -359,9 +368,9 @@ export async function parseSvelte(file: string, source: string): Promise<ParsedC
   }
 }
 
-export async function parseAngular(file: string, source: string): Promise<ParsedComponent> {
+export async function parseAngular(file: string, source: string, ctx: ParserContext = {}): Promise<ParsedComponent> {
   const name = componentNameFromFile(file);
-  const ast = await babelParse(source);
+  const ast = await babelParse(source, BABEL_PLUGINS_NO_JSX);
   const props: string[] = [];
   const templates: {source?: string; url?: string}[] = [];
   if (ast) {
@@ -388,6 +397,11 @@ export async function parseAngular(file: string, source: string): Promise<Parsed
   }
   const compiler = await tryImport('@angular/compiler');
   const testIds = [];
+  // A component can declare an inline `template:` and a `templateUrl:` both, so elements
+  // accumulate across every template the file names and are deduped once at the end.
+  let elements: ExtractedElement[] = [];
+  let skippedElements = 0;
+  const failures: string[] = [];
   for (const template of templates) {
     let html = template.source ?? null;
     if (!html && template.url) {
@@ -395,15 +409,61 @@ export async function parseAngular(file: string, source: string): Promise<Parsed
       html = fs.existsSync(resolved) ? fs.readFileSync(resolved, 'utf8') : null;
     }
     if (!html) continue;
+    // Two failures, two guards. An unparseable template is normal and falls through to the HTML
+    // reader below; a *reader* failing is a bug, and letting it share this `catch` would push
+    // this template's test ids a second time and drop its elements with `error` still null — a
+    // plausible-looking report is a worse failure here than a stated one.
+    let nodes: unknown = null;
     if (compiler?.parseTemplate) {
       try {
-        testIds.push(...collectAngularTestIds(compiler.parseTemplate(html, file).nodes));
-        continue;
+        nodes = compiler.parseTemplate(html, file).nodes;
       } catch { /* fall through to the HTML reader below */ }
     }
+    if (nodes) {
+      // A collector bug is reported as this component's parse error, not raised: `collectComponents`
+      // calls `parse()` bare in its per-file loop, so a throw would take the whole components stage
+      // down and cost the report for every other file. A returned `error` reaches the report's
+      // "Parse errors" section instead — attributable to one component, loud, and non-fatal. The
+      // `catch` deliberately does not fall through to `parseHtmlTemplate`: that fallback belongs to
+      // a `parseTemplate` failure, and re-reading here would push this template's test ids twice.
+      try {
+        testIds.push(...collectAngularTestIds(nodes));
+        const collected = collectAngularElements(nodes, ctx);
+        elements = elements.concat(collected.elements);
+        skippedElements += collected.skipped;
+      } catch (error) {
+        failures.push(`${template.url ?? 'inline template'}: ${(error as Error).message}`);
+      }
+      continue;
+    }
+    // Without @angular/compiler the template is read by @vue/compiler-dom, whose AST the
+    // Angular walker cannot read at all — and a Vue element walk over Angular markup would
+    // find none of the wrappers it has no vocabulary for. Test ids still resolve; elements
+    // are reported as none, which is honest where a partial reading would not be.
     testIds.push(...(await parseHtmlTemplate(html)));
   }
-  return {name, props: unique(props), testIds, error: ast ? null : 'could not parse this file'};
+  return {
+    name,
+    props: unique(props),
+    // `*ngIf`/`*ngFor` microsyntax desugars to a `Template` host that duplicates its static
+    // attributes onto both itself and the element it wraps (`elements-angular.ts:85-93`), so the
+    // same test id is read twice from one control. Deduping here — the same fix
+    // `parseBackboneHandlebars` already applies below — is robust to that and to any other source
+    // of duplication, rather than special-casing `Template` nodes for this one collector.
+    testIds: unique(testIds.map((hit) => `${hit.attr}:${hit.value}`)).map((key) => {
+      const [attr, ...parts] = key.split(':');
+      return {attr, value: parts.join(':')};
+    }),
+    elements: dedupeNames(elements),
+    skippedElements,
+    // A file with no AST yields no templates, so the two messages can never compete.
+    error: ast ? collectionError(failures) : 'could not parse this file',
+  };
+}
+
+/** One `error` field, possibly several templates: each failure names the template it came from. */
+function collectionError(failures: string[]): string | null {
+  return failures.length === 0 ? null : `element collection failed — ${failures.join('; ')}`;
 }
 
 /** Plain-HTML fallback: used for Angular templates when @angular/compiler is absent, and for .html components. */
@@ -442,6 +502,7 @@ export async function parseBackboneHandlebars(file: string, source: string, ctx:
   const testIds = [];
   let elements: ExtractedElement[] = [];
   let skippedElements = 0;
+  const failures: string[] = [];
   for (const template of templates) {
     const ast = await templateAst(template, file);
     if (!ast) continue;

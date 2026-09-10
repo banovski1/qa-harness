@@ -8,8 +8,8 @@ import path from 'node:path';
 import test from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {mergeByPath, tierA, tierB} from '../api-docs.js';
-import {collectComponents} from '../components.js';
-import {KIND_TEMPLATES} from '../elements-vue.js';
+import {buildLabelDictionary, collectComponents} from '../components.js';
+import {KIND_TEMPLATES} from '../elements.js';
 import {detect} from '../detect.js';
 import {joinUrl} from '../live-urls.js';
 import {collectRoutes} from '../routes.js';
@@ -44,6 +44,10 @@ for (const testCase of CASES) {
       for (const expected of testCase.routes ?? []) {
         assert.ok(found.includes(expected), `missing route ${expected} (got ${found.join(', ')})`);
       }
+      // The one place an absence is asserted: a path only a broken traversal could reach.
+      for (const unwanted of testCase.routesAbsent ?? []) {
+        assert.ok(!found.includes(unwanted), `route ${unwanted} should not exist (got ${found.join(', ')})`);
+      }
       for (const [routePath, component] of Object.entries(testCase.renders ?? {})) {
         assert.equal(routes.find((route) => route.path === routePath)?.component, component);
       }
@@ -72,6 +76,11 @@ for (const testCase of CASES) {
         for (const value of testCase.testIds ?? []) {
           assert.ok(values.includes(value), `missing test-id ${value} (got ${values.join(', ')})`);
         }
+        // Presence alone would miss a value found *twice* — e.g. a structural-directive host
+        // duplicating its attributes onto the element it wraps — so a count pins that too.
+        for (const [value, count] of Object.entries(testCase.testIdCounts ?? {})) {
+          assert.equal(values.filter((v) => v === value).length, count, `${value} test-id hit count`);
+        }
 
         const extracted = components.flatMap((component) => component.elements ?? []);
         for (const expected of testCase.elements ?? []) {
@@ -85,6 +94,16 @@ for (const testCase of CASES) {
             if (expected.locator.name) assert.equal(found.locator.name, expected.locator.name, `${expected.name} locator name`);
           }
         }
+
+        // The join, not either half of it: extracted elements only reach a spec through here, and
+        // a route whose component stayed a class name leaves the dictionary silently empty.
+        const dictionary = buildLabelDictionary(components, routes);
+        for (const [routePath, names] of Object.entries(testCase.labelDictionary ?? {})) {
+          const carried = (dictionary[routePath]?.elements ?? []).map((element) => element.name);
+          for (const name of names) {
+            assert.ok(carried.includes(name), `label dictionary ${routePath} is missing ${name} (got ${carried.join(', ') || 'nothing'})`);
+          }
+        }
       });
     }
 
@@ -94,6 +113,21 @@ for (const testCase of CASES) {
         const found = all.map((route) => route.path);
         for (const expected of testCase.endpoints!) {
           assert.ok(found.includes(expected), `missing endpoint ${expected} (got ${found.join(', ')})`);
+        }
+        // A mapping only a silent parser regression could produce — a commented-out annotation
+        // read as live, or an unresolvable class-level base composed onto its methods anyway.
+        for (const absent of testCase.endpointsAbsent ?? []) {
+          assert.ok(!found.includes(absent), `endpoint ${absent} should not have been extracted (got ${found.join(', ')})`);
+        }
+        // The classification itself, not just its side effects: a typo in the return-type chain
+        // makes everything read `api`, which Tier B's kind-aware filter now depends on directly.
+        for (const [routePath, kind] of Object.entries(testCase.endpointKinds ?? {})) {
+          assert.equal(all.find((route) => route.path === routePath)?.kind, kind, `${routePath} kind`);
+        }
+        // A verb read from a `method =` attribute, not defaulted to ANY because the attribute
+        // wasn't the first one written.
+        for (const [routePath, methods] of Object.entries(testCase.endpointMethods ?? {})) {
+          assert.deepEqual(all.find((route) => route.path === routePath)?.methods, methods, `${routePath} methods`);
         }
       });
     }

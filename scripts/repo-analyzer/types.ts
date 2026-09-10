@@ -26,6 +26,32 @@ export interface FileBasedRouterConfig {
   pageFile?: string;
 }
 
+/**
+ * How deeply a client router's config may be read. Everything here is a *field*, not a framework
+ * name: an app whose route table is one flat array of literals needs none of it, and one whose
+ * paths are class constants split across 247 lazily-loaded files needs all of it.
+ */
+export interface RouterConfigTraversal {
+  /** properties holding an inline array of child routes, whose paths compose onto the parent's */
+  childrenKeys?: string[];
+  /** properties holding a dynamic `import()` of a file that declares child routes */
+  lazyKeys?: string[];
+  /** properties naming what the route renders; the historic list is used when this is absent */
+  componentKeys?: string[];
+  /** call-property names a module uses to register a route array declared in a sibling file */
+  reexportCalls?: string[];
+  /** resolve `Class.FIELD` / `Enum.MEMBER` paths through the imports of the file they appear in */
+  constantModules?: boolean;
+  /**
+   * resolve a route's component identifier to the file whose class declaration it names, keeping
+   * the identifier in `componentName`. Set it where a route names its component by symbol rather
+   * than by path, since the label dictionary joins routes to elements on the *file*.
+   */
+  componentClassIndex?: boolean;
+  /** how far the child graph is followed, counting both nesting levels and file hops */
+  maxDepth?: number;
+}
+
 export interface DetectedFrontend {
   framework: string;
   label: string;
@@ -193,6 +219,7 @@ export interface FrontendRegistryEntry {
   filePredicate?: (file: string, detection: DetectionResult) => boolean;
   fileBasedRouter: FileBasedRouterConfig | null;
   routerLib: string | null;
+  routerConfig?: RouterConfigTraversal | null;
   naive?: boolean;
 }
 
@@ -214,7 +241,10 @@ export interface BackendRegistryEntry {
   extensions?: string[];
   markers?: string[];
   filePredicate?: (file: string) => boolean;
-  method: string;
+  // A plain string for a framework whose extraction method never varies by app. A function lets
+  // an entry name a limitation only visible once the app's own root is known — Spring's, e.g.,
+  // notes web.xml servlet mappings the Java-AST reader cannot compose (registry-backend.ts).
+  method: string | ((root: string) => string);
   routes(root: string): BackendRoute[] | Promise<BackendRoute[]>;
   componentFor?: (root: string, controller: string | null) => string | null;
 }

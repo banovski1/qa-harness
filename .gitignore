@@ -8,5 +8,6 @@ scripts/framework-generator/node_modules
 .playwright-cli
 prompt-library/
 analysis/
+generated-framework/
 docs/superpowers/
 .worktrees/
