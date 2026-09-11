@@ -20,6 +20,18 @@ export interface CliArgs {
   flags?: Set<string>;
 }
 
+/**
+ * How a router that matches the fragment after `#` declares its routes. Backbone writes a
+ * `routes:` hash of fragment -> handler; its Bullbone fork writes a `routeList` array of
+ * `{route, resolution}` rows. Both are fields, not framework names — a row names the keys its
+ * library uses and the extractor stays blind to which app it is reading.
+ */
+export interface HashRouterConfig {
+  objectKeys: string[];
+  listKeys: string[];
+  itemKey: string;
+}
+
 export interface FileBasedRouterConfig {
   dirs: string[];
   extensions: string[];
@@ -221,6 +233,7 @@ export interface FrontendRegistryEntry {
   fileBasedRouter: FileBasedRouterConfig | null;
   routerLib: string | null;
   routerConfig?: RouterConfigTraversal | null;
+  hashRouter?: HashRouterConfig | null;
   naive?: boolean;
 }
 

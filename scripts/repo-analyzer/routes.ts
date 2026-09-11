@@ -12,7 +12,7 @@ import {BABEL_PLUGINS_NO_JSX, babelParse, keyName, walkAst} from './parsers.js';
 import {paramsOf} from './registry-backend.js';
 import {header, outPath, reportWritten, table, writeReport} from './report.js';
 import {findFiles, parseArgs, readText, rel, resolveAppPath} from './util.js';
-import type {AstNode, DetectionResult, FileBasedRouterConfig, RouteCollection, RouteRecord, RouterConfigTraversal} from './types.js';
+import type {AstNode, DetectionResult, FileBasedRouterConfig, HashRouterConfig, RouteCollection, RouteRecord, RouterConfigTraversal} from './types.js';
 
 // Page routes are normalised to `{param}` whichever convention declared them, so Skill C can
 // mark a placeholder without knowing which router produced the route. API endpoints keep their
@@ -607,6 +607,72 @@ async function serverRoutes(detection: DetectionResult, apiPrefix: string): Prom
   return routes;
 }
 
+// --- strategy 4: a hash-fragment router --------------------------------------------------
+//
+// Backbone matches the part of the URL after `#`, so its route table is the screen list of an
+// app whose server serves one page. The fragment stays in the path (`/#Contact`) because that is
+// what has to be opened in a browser — the same spelling `app-explorer` records from a live
+// crawl. No route here names a component: a Backbone router hands control to a controller, which
+// picks its view at runtime, so these routes reach the generator as a URL and nothing else.
+//
+// A splat (`*actions`) is skipped: it matches every fragment the earlier routes did not, which
+// makes it the app's fallback handler rather than a screen of its own.
+const ROUTER_FILE = /(^|\/)[\w.-]*rout[\w.-]*\.(js|mjs|cjs|ts)$/i;
+
+function hashRoutePath(fragment: string) {
+  // Backbone's optional group is `(/:id)`; dropping it leaves the shortest URL the route
+  // matches, which is the one that can be opened without inventing a record id.
+  const trimmed = fragment.replace(/\([^)]*\)/g, '').replace(/^\/+|\/+$/g, '');
+  return normalisePath(`/#${trimmed}`);
+}
+
+function hashRoutesIn(ast: AstNode, config: HashRouterConfig): string[] {
+  const fragments: string[] = [];
+  walkAst(ast, (node) => {
+    const key = keyName(node);
+    if (key === null) return;
+    if (config.objectKeys.includes(key)) {
+      for (const prop of astNodes(node, 'value', 'properties')) {
+        const fragment = keyName(prop);
+        if (fragment !== null) fragments.push(fragment);
+      }
+    }
+    if (config.listKeys.includes(key)) {
+      for (const row of astNodes(node, 'value', 'elements')) {
+        for (const prop of astNodes(row, 'properties')) {
+          if (keyName(prop) !== config.itemKey) continue;
+          const fragment = astString(prop, 'value', 'value');
+          if (fragment !== undefined) fragments.push(fragment);
+        }
+      }
+    }
+  });
+  return fragments;
+}
+
+async function hashRouterRoutes(detection: DetectionResult): Promise<RouteRecord[]> {
+  const config = detection.frontend.entry.hashRouter!;
+  const root = detection.frontend.sourceRoot;
+  const routes: RouteRecord[] = [];
+  for (const file of findFiles(root, (f) => ROUTER_FILE.test(rel(root, f)))) {
+    const source = readText(file);
+    const ast = source ? await babelParse(source, BABEL_PLUGINS_NO_JSX) : null;
+    if (!ast) continue;
+    for (const fragment of hashRoutesIn(ast, config)) {
+      if (fragment.includes('*')) continue;
+      const routePath = hashRoutePath(fragment);
+      if (routePath === '/#') continue;
+      routes.push({
+        path: routePath,
+        component: null,
+        params: paramsOf(routePath),
+        source: `${rel(detection.appPath, file)} (hash router)`,
+      });
+    }
+  }
+  return dedupeByPath(routes);
+}
+
 // --- driver -----------------------------------------------------------------------------
 
 export async function collectRoutes(detection: DetectionResult, {apiPrefix = '/api'} = {}): Promise<RouteCollection> {
@@ -617,6 +683,10 @@ export async function collectRoutes(detection: DetectionResult, {apiPrefix = '/a
   if (detection.frontend.routerLib) {
     const routes = await routerConfigRoutes(detection);
     if (routes.length > 0) return {strategy: `${detection.frontend.routerLib} config`, routes};
+  }
+  if (detection.frontend.entry.hashRouter) {
+    const routes = await hashRouterRoutes(detection);
+    if (routes.length > 0) return {strategy: `${detection.frontend.label} hash router`, routes};
   }
   if (detection.backend) {
     const routes = await serverRoutes(detection, apiPrefix);

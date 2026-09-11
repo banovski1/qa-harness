@@ -249,7 +249,13 @@ export const CASES: FixtureCase[] = [
     apiPathsAbsent: ['/api/home'],
   },
   {
+    // Both hash-router shapes at once: the `routeList` array and the classic `routes` hash. The
+    // fragment is part of the path, the splat is not a screen, and an optional group resolves to
+    // the URL without it — the three decisions a regression here would quietly reverse.
     app: 'backbone-handlebars', frontend: 'backbone', backend: 'json-routes',
+    routeStrategy: /hash router/,
+    routes: ['/#clearCache', '/#{controller}', '/#{controller}/view/{id}', '/#admin/settings', '/#admin/jobs'],
+    routesAbsent: ['/#{actions}', '/#admin/jobs/{status}'],
     components: ['detail'],
     testIds: ['contact-detail'],
     elements: [

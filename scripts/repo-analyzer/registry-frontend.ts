@@ -103,6 +103,7 @@ export const FRONTEND_REGISTRY: FrontendRegistryEntry[] = [
     extensions: ['.js', '.ts', '.tpl', '.hbs', '.html'], parse: parseBackboneHandlebars,
     filePredicate: (file, detection) => /(^|\/)(components?|pages|views|screens|templates)(\/|$)/.test(rel(detection.frontend.root, file)),
     fileBasedRouter: null, routerLib: null,
+    hashRouter: {objectKeys: ['routes'], listKeys: ['routeList'], itemKey: 'route'},
   },
 ];
 

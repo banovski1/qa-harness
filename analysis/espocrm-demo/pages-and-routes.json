@@ -1,5 +1,95 @@
 {
   "app": "C:\\Users\\Tsvetomir Banovski\\Projects\\espocrm",
-  "strategy": null,
-  "routes": []
+  "strategy": "Backbone / Handlebars hash router",
+  "routes": [
+    {
+      "path": "/#clearCache",
+      "component": null,
+      "params": [],
+      "source": "client/src/router.js (hash router)"
+    },
+    {
+      "path": "/#{controller}/view/{id}/{options}",
+      "component": null,
+      "params": [
+        "controller",
+        "id",
+        "options"
+      ],
+      "source": "client/src/router.js (hash router)"
+    },
+    {
+      "path": "/#{controller}/view/{id}",
+      "component": null,
+      "params": [
+        "controller",
+        "id"
+      ],
+      "source": "client/src/router.js (hash router)"
+    },
+    {
+      "path": "/#{controller}/edit/{id}/{options}",
+      "component": null,
+      "params": [
+        "controller",
+        "id",
+        "options"
+      ],
+      "source": "client/src/router.js (hash router)"
+    },
+    {
+      "path": "/#{controller}/edit/{id}",
+      "component": null,
+      "params": [
+        "controller",
+        "id"
+      ],
+      "source": "client/src/router.js (hash router)"
+    },
+    {
+      "path": "/#{controller}/create",
+      "component": null,
+      "params": [
+        "controller"
+      ],
+      "source": "client/src/router.js (hash router)"
+    },
+    {
+      "path": "/#{controller}/related/{id}/{link}",
+      "component": null,
+      "params": [
+        "controller",
+        "id",
+        "link"
+      ],
+      "source": "client/src/router.js (hash router)"
+    },
+    {
+      "path": "/#{controller}/{action}/{options}",
+      "component": null,
+      "params": [
+        "controller",
+        "action",
+        "options"
+      ],
+      "source": "client/src/router.js (hash router)"
+    },
+    {
+      "path": "/#{controller}/{action}",
+      "component": null,
+      "params": [
+        "controller",
+        "action"
+      ],
+      "source": "client/src/router.js (hash router)"
+    },
+    {
+      "path": "/#{controller}",
+      "component": null,
+      "params": [
+        "controller"
+      ],
+      "source": "client/src/router.js (hash router)"
+    }
+  ]
 }

@@ -5,7 +5,7 @@
 - **App**: `C:\Users\Tsvetomir Banovski\Projects\espocrm` @ `e181121984`
 - **Frontend**: Backbone / Handlebars ^1.3.3 — `.`
 - **Backend**: JSON route manifest (routes.json manifest)
-- **Generated**: 2026-09-11T07:08:08.343Z
+- **Generated**: 2026-09-11T08:47:13.879Z
 - **Tier**: B — JSON route manifest — routes.json manifest
 - **Endpoints found**: 102
 - **API prefix**: `/api`

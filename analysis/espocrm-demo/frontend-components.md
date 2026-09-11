@@ -5,7 +5,7 @@
 - **App**: `C:\Users\Tsvetomir Banovski\Projects\espocrm` @ `e181121984`
 - **Frontend**: Backbone / Handlebars ^1.3.3 — `.`
 - **Backend**: JSON route manifest (routes.json manifest)
-- **Generated**: 2026-09-11T07:08:07.360Z
+- **Generated**: 2026-09-11T08:47:12.911Z
 - **Components found**: 1485
 - **Test-id convention**: none found — this app tags no element with any of `data-testid`, `data-test-id`, `data-test`, `data-cy`, `data-qa`
 - **Elements extracted**: 192 (885 skipped — recognised controls with no resolvable label)

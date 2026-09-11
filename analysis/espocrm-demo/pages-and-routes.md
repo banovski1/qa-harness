@@ -5,14 +5,25 @@
 - **App**: `C:\Users\Tsvetomir Banovski\Projects\espocrm` @ `e181121984`
 - **Frontend**: Backbone / Handlebars ^1.3.3 — `.`
 - **Backend**: JSON route manifest (routes.json manifest)
-- **Generated**: 2026-09-11T07:08:03.729Z
-- **Route source**: none — no routing convention was statically resolvable
-- **Routes found**: 0
+- **Generated**: 2026-09-11T08:47:09.366Z
+- **Route source**: Backbone / Handlebars hash router
+- **Routes found**: 10
 - **API prefix excluded**: `/api` (see `api-documentation.md`)
 
-_No rows._
+| Route | Renders | Params | Source |
+| --- | --- | --- | --- |
+| `/#{controller}` | — | `{controller}` | client/src/router.js (hash router) |
+| `/#{controller}/{action}` | — | `{controller}`, `{action}` | client/src/router.js (hash router) |
+| `/#{controller}/{action}/{options}` | — | `{controller}`, `{action}`, `{options}` | client/src/router.js (hash router) |
+| `/#{controller}/create` | — | `{controller}` | client/src/router.js (hash router) |
+| `/#{controller}/edit/{id}` | — | `{controller}`, `{id}` | client/src/router.js (hash router) |
+| `/#{controller}/edit/{id}/{options}` | — | `{controller}`, `{id}`, `{options}` | client/src/router.js (hash router) |
+| `/#{controller}/related/{id}/{link}` | — | `{controller}`, `{id}`, `{link}` | client/src/router.js (hash router) |
+| `/#{controller}/view/{id}` | — | `{controller}`, `{id}` | client/src/router.js (hash router) |
+| `/#{controller}/view/{id}/{options}` | — | `{controller}`, `{id}`, `{options}` | client/src/router.js (hash router) |
+| `/#clearCache` | — | — | client/src/router.js (hash router) |
 
 
 ## Not statically resolvable
 
-No routing convention matched this app. Routes registered at runtime cannot be recovered from source; record the flows you need with the `playwright-codegen` skill instead.
+10 route(s) above resolve to no component file — either the route is a redirect or download endpoint, or the component is chosen at runtime. They are listed with an empty **Renders** cell rather than guessed at.

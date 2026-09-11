@@ -4,4 +4,6 @@ appPath: ~/Projects/espocrm
 # the clone directory name (`espocrm`), so set it when the app has a better title.
 appName: espocrm-demo
 
-baseUrl: https://demo.eu.espocrm.com/?l=en_GB#Contact
+# The origin only. A deep link here (`/?l=en_GB#Contact`) would be joined in front of every
+# route path, producing URLs that open the wrong screen.
+baseUrl: https://demo.eu.espocrm.com

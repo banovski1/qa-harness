@@ -180,6 +180,15 @@ A parser that silently finds nothing is indistinguishable from an app with nothi
 every fixture row asserts a *positive* hit — a route, a component, a test-id, an endpoint — and never
 just an absence.
 
+**A hash-router app keeps the `#` in its route path.** Backbone (and its Bullbone fork) matches the
+fragment after `#`, declared either as a `routes:` hash or as a `routeList` array — `hashRouter:` on
+the registry row names those keys, and `routes.ts` reads them as strategy 4. The fragment stays in the
+path (`/#Contact`), because that is the URL a browser has to be pointed at and the spelling
+`app-explorer` records from a live crawl; a splat (`*actions`) is the app's fallback handler, not a
+screen, and an optional group (`admin/jobs(/:status)`) resolves to the URL without it. No such route
+names a component — the router hands control to a controller which picks its view at runtime — so the
+page objects it produces carry a URL and nothing else until a recording fills them in.
+
 **The analyzer's tests are three layers, and the third is the point.** `__tests__/unit.test.ts` covers
 the pure functions each report is built from; `__tests__/analyzers.test.ts` runs `detect`,
 `collectRoutes`, `collectComponents` and the api-docs tier ladder against every app in `__fixtures__/`,
