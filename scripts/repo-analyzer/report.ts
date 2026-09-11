@@ -3,10 +3,23 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import {loadProjectConfig, slugifyAppName} from '../project-config.js';
 import {REPO_ROOT, gitSha, rel} from './util.js';
 import type {CliArgs, DetectionResult} from './types.js';
 
-export const ANALYSIS_DIR = path.join(REPO_ROOT, 'analysis');
+/**
+ * Every report for one app lands in `analysis/<app>/`, the app named in app-config.yaml —
+ * so analyzing a second app adds a folder instead of overwriting the first one's reports.
+ * `--app` names its own folder, keeping the folder honest about which clone was read.
+ * Resolved per call rather than at import time: a pure-function test must not need a
+ * project config on disk to import this module.
+ */
+export function analysisDir(args: CliArgs = {}): string {
+  const name = args.app
+    ? slugifyAppName(path.basename(path.resolve(REPO_ROOT, String(args.app))))
+    : loadProjectConfig().appName;
+  return path.join(REPO_ROOT, 'analysis', name);
+}
 
 export function escapeCell(value: unknown) {
   if (value === null || value === undefined || value === '') return '—';
@@ -62,7 +75,7 @@ export function writeReport({outFile, body, data, dryRun}: {outFile: string; bod
 }
 
 export function outPath(args: CliArgs, defaultName: string) {
-  return args.out ? path.resolve(REPO_ROOT, String(args.out)) : path.join(ANALYSIS_DIR, defaultName);
+  return args.out ? path.resolve(REPO_ROOT, String(args.out)) : path.join(analysisDir(args), defaultName);
 }
 
 export function reportWritten({written}: {written: string[]}, summaryLines: string[] = []) {

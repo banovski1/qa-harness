@@ -1,2 +1,7 @@
 appPath: ~/Projects/espocrm
+
+# The folder analysis artifacts land in: analysis/<appName>/. Optional — it defaults to
+# the clone directory name (`espocrm`), so set it when the app has a better title.
+appName: espocrm-demo
+
 baseUrl: https://demo.eu.espocrm.com/?l=en_GB#Contact

@@ -69,7 +69,7 @@ Turn Skill B's route list into the actual URLs an engineer can open against a ru
 </task>
 
 <input_data>
-`analysis/pages-and-routes.md` plus a base URL for the running app (given by the engineer, e.g. the demo instance).
+`../analysis/<app>/pages-and-routes.md` plus a base URL for the running app (given by the engineer, e.g. the demo instance).
 </input_data>
 
 <output>

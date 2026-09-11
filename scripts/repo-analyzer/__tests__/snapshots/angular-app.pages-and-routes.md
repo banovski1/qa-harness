@@ -8,7 +8,7 @@
 - **Generated**: <timestamp>
 - **Route source**: @angular/router config
 - **Routes found**: 9
-- **API prefix excluded**: `/api` (see `analysis/api-documentation.md`)
+- **API prefix excluded**: `/api` (see `api-documentation.md`)
 
 | Route | Renders | Params | Source |
 | --- | --- | --- | --- |

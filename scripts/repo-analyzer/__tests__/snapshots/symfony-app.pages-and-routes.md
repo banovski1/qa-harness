@@ -8,7 +8,7 @@
 - **Generated**: <timestamp>
 - **Route source**: Symfony server routing
 - **Routes found**: 2
-- **API prefix excluded**: `/api` (see `analysis/api-documentation.md`)
+- **API prefix excluded**: `/api` (see `api-documentation.md`)
 
 | Route | Renders | Params | Source |
 | --- | --- | --- | --- |

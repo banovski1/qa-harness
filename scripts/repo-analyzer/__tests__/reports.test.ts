@@ -78,7 +78,8 @@ for (const app of APPS) {
       const rows = routes.routes
         .map((route) => ({...route, url: joinUrl(BASE_URL, '', route.path)}))
         .sort((a, b) => a.url.localeCompare(b.url));
-      const source = {app: detection.appPath, strategy: routes.strategy, from: 'analysis/pages-and-routes.json'};
+      // A literal, not the configured folder: a snapshot must not change because app-config.yaml did.
+      const source = {app: detection.appPath, strategy: routes.strategy, from: 'analysis/<app>/pages-and-routes.json'};
       compare(`${app}.live-urls`, renderLiveUrls(source, BASE_URL, '', rows));
     });
   });

@@ -7,7 +7,7 @@ allowed-tools: Bash(node:*) Bash(npm:*)
 # Pages and routes
 
 Static analysis of a **local clone** of the application under test — a filesystem path the
-engineer gives you, never a URL. Output is `analysis/pages-and-routes.md` plus the `.json`
+engineer gives you, never a URL. Output is `../../../analysis/<app>/pages-and-routes.md` (`<app>` is `appName:` in root `app-config.yaml`, so one clone's reports never overwrite another's) plus the `.json`
 sidecar that `live-urls` reads.
 
 ## Run it

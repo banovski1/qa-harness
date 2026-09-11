@@ -8,7 +8,7 @@
 - **Generated**: <timestamp>
 - **Route source**: none — no routing convention was statically resolvable
 - **Routes found**: 0
-- **API prefix excluded**: `/api` (see `analysis/api-documentation.md`)
+- **API prefix excluded**: `/api` (see `api-documentation.md`)
 
 _No rows._
 

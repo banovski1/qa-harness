@@ -5,7 +5,7 @@
 - **App**: `<fixtures>/next-app`
 - **Base URL**: https://app.test
 - **Path prefix**: none
-- **Routes**: 2 (from `analysis/pages-and-routes.json`, strategy: Next.js file-based router)
+- **Routes**: 2 (from `analysis/<app>/pages-and-routes.json`, strategy: Next.js file-based router)
 - **Generated**: <timestamp>
 
 | URL | Placeholders | Renders |
@@ -16,4 +16,4 @@
 
 ## Placeholders
 
-1 URL(s) carry a dynamic segment. The placeholder is left intact: no sample id is invented here, because a wrong one reads as a real URL and fails confusingly. Fill them from a precondition step (see `analysis/api-documentation.md`).
+1 URL(s) carry a dynamic segment. The placeholder is left intact: no sample id is invented here, because a wrong one reads as a real URL and fails confusingly. Fill them from a precondition step (see `api-documentation.md`).

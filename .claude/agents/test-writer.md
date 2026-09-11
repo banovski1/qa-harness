@@ -15,7 +15,8 @@ browser: the steps in order, the locator Playwright resolved for each, and the v
 the only evidence of *behaviour* you have — what a click leads to, which field comes first, what the
 app does on submit. If a recording covers the flow in the script, follow its ordering.
 
-**`analysis/label-dictionary.json` — what is on each screen.** Keyed by route path
+**`../../analysis/<app>/label-dictionary.json` — what is on each screen**, where `<app>` is `appName:`
+in root `app-config.yaml`. Keyed by route path
 (`/web/index.php` prefix stripped: `/leave/applyLeave`). Each entry lists the elements the route's
 component renders, with the getter `name`, the `component` kind, the visible `label`, and the ladder
 `rung` its locator reached. This is what tells you the *name* of the thing a recording clicked.
@@ -107,7 +108,7 @@ await expect(systemUsersPage.successToast.locator).toBeVisible();
 
 Validation rules, authorization, pagination, response codes and boundary values are cheaper and steadier at the API layer, and for setup and teardown of records the journey merely needs to exist. A browser test should answer a journey question: can this user log in, create the record, complete the flow. If the pasted script is really twenty validation permutations, write the few that prove the UI is wired up, cover the rest through the API layer, and say so in your report.
 
-When a resource has been mapped by `smart-api-map` (check `analysis/api-map/` and `generated-framework/src/api/clients/`), prefer its typed fixture over the generic one — e.g. `usersApi` (a `UsersClient`) instead of `api` (`ApiClient`) — because its methods are typed to the mapped operation, not a bare path string. Fall back to `api`/`ApiClient` for any endpoint outside the api-map. For creating preconditions, prefer a generated factory helper in `src/data/factories/<resource>-factory.ts` (e.g. `createUser()`) over calling the typed client directly — factories are the one place field values get filled in, and a scaffolded-but-empty factory is a signal to fill it in, not to work around it inline.
+When a resource has been mapped by `smart-api-map` (check `analysis/<app>/api-map/` and `generated-framework/src/api/clients/`), prefer its typed fixture over the generic one — e.g. `usersApi` (a `UsersClient`) instead of `api` (`ApiClient`) — because its methods are typed to the mapped operation, not a bare path string. Fall back to `api`/`ApiClient` for any endpoint outside the api-map. For creating preconditions, prefer a generated factory helper in `src/data/factories/<resource>-factory.ts` (e.g. `createUser()`) over calling the typed client directly — factories are the one place field values get filled in, and a scaffolded-but-empty factory is a signal to fill it in, not to work around it inline.
 
 ## 7. Steps neither source covers
 

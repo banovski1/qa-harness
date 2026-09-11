@@ -6,7 +6,8 @@ This repository converts a local application clone into a Playwright framework t
 
 - `scripts/repo-analyzer/`: framework detection, route/component/API extraction, fixture apps, and Node.js tests.
 - `scripts/framework-generator/`: analysis validation, page models, file writers, and language adapters.
-- `analysis/`: reports and API maps *produced* by the analyzer — absent on this branch until it runs.
+- `analysis/<app>/`: reports and API maps *produced* by the analyzer, one folder per app (`appName:` in
+  root `app-config.yaml`) — absent on this branch until it runs.
 - `generated-framework/`: the Playwright project the generator *produces*; reusable code in `src/`, scenarios in `tests/e2e/`. Absent until `generate.ts` runs.
 - `codegen-recordings/` and `test-case-candidates/`: recorded flows and candidate scenarios, added as you record them.
 - `.claude/`: agent instructions, skills, and enforcement hooks. See `CLAUDE.md` for architecture details.

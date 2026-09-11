@@ -25,11 +25,14 @@ The two inputs answer different questions, and tests need both:
 They compose: a recording proves a step happens; the analysis names the control it touched, which is
 how an unstable recorded locator gets repaired without opening a browser.
 
-`app-config.yaml` is the source of truth for the app clone path and test base URL. `scripts/` holds
-the analyzer and the generator; `analysis/` holds the machine-readable reports and the api-map;
-`generated-framework/` holds the generated output (gitignored — regenerate it, never restore it
-from history). Every path in the configs is relative to the
-**repo root**, so always run from there.
+`app-config.yaml` is the source of truth for the app clone path, its title and the test base URL.
+`scripts/` holds the analyzer and the generator; `analysis/<app>/` holds the machine-readable reports
+and the api-map, in a folder named by `appName:` — so analyzing a second app adds a folder instead of
+overwriting the first one's reports, and every consumer (the generator, both gates, the skills) reads
+the same folder without naming the app itself. Omit `appName:` and the clone's own directory name is
+the title. `generated-framework/` holds the generated output (gitignored — regenerate it, never
+restore it from history). Every path in the configs is relative to the **repo root**, so always run
+from there.
 
 **This branch carries no target app.** It is the base the per-language branches are taken from, so
 `analysis/`, `codegen-recordings/` and `generated-framework/` do not exist yet — they appear once the
@@ -221,7 +224,7 @@ recipe is at the end of the skill.
 
 `playwright-cli` (the Playwright Agent CLI, installed globally; skill at `.claude/skills/playwright-cli/`) is the only thing that drives a browser here. Never use the Playwright MCP (`mcp__playwright__*`) tools — `playwright-cli` replaces them and is far more token-efficient. Its scratch output lands in `.playwright-cli/` (gitignored).
 
-The `playwright-codegen` skill (`.claude/skills/playwright-codegen/SKILL.md`) is the entry point for every "record a flow" / "capture a codegen session" request. It is the one deliberate exception to the rule above: `npx playwright codegen` opens a browser a **human** drives, and the skill shapes the result into `codegen-recordings/<flow>-<timestamp>.md` — the numbered steps, each ranked on the locator ladder, with every unstable step repaired against `analysis/label-dictionary.json` and credentials redacted. Recordings accumulate as a library; they are never edited afterwards, because a recording is evidence of what happened.
+The `playwright-codegen` skill (`.claude/skills/playwright-codegen/SKILL.md`) is the entry point for every "record a flow" / "capture a codegen session" request. It is the one deliberate exception to the rule above: `npx playwright codegen` opens a browser a **human** drives, and the skill shapes the result into `codegen-recordings/<flow>-<timestamp>.md` — the numbered steps, each ranked on the locator ladder, with every unstable step repaired against `analysis/<app>/label-dictionary.json` and credentials redacted. Recordings accumulate as a library; they are never edited afterwards, because a recording is evidence of what happened.
 
 Nothing walks the app to build an inventory any more. If a screen's elements are missing, the answer is to re-run the analyzer; if a *flow* is unknown, the answer is to record it.
 

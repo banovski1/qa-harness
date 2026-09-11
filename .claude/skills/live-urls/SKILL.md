@@ -6,7 +6,7 @@ allowed-tools: Bash(node:*)
 
 # Live URLs
 
-Pure string composition over `analysis/pages-and-routes.json`. **No request is fired** and no
+Pure string composition over `../../../analysis/<app>/pages-and-routes.json` (`<app>` is `appName:` in root `app-config.yaml`, so one clone's reports never overwrite another's). **No request is fired** and no
 sample id is invented — this skill never touches the network.
 
 ## Run it
@@ -27,4 +27,4 @@ A route with a dynamic segment is written `…/empNumber/{empNumber}`, not with 
 fabricated id reads as a real URL and fails confusingly; the placeholder makes the missing
 precondition obvious. Those URLs are rendered as plain text while static ones are links, so the
 openable set is visible at a glance. Fill a placeholder from a precondition step — see
-`analysis/api-documentation.md` for the endpoint that creates the record.
+`../../../analysis/<app>/api-documentation.md` for the endpoint that creates the record.

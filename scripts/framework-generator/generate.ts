@@ -19,25 +19,25 @@ import { readApplicationModel } from './analysis-reader.js';
 import { readApiMap } from './api-map-reader.js';
 import { adapterFor, SUPPORTED_LANGUAGES } from './languages/index.js';
 import { FileWriter } from './file-writer.js';
-import { loadProjectConfig } from '../project-config.js';
+import { appAnalysisDir, loadProjectConfig } from '../project-config.js';
 import { errorMessage, isRecord, list, record } from './types.js';
 import type { ApplicationModel, GeneratedFile, GenerationContext, GeneratorConfig, LoginFlow, NavigationEntry } from './types.js';
 
 const DEFAULT_CONFIG = join('scripts', 'framework-generator', 'generator-config.yaml');
 
-const DEFAULTS: Omit<GeneratorConfig, 'login'> = {
+// analysisDir and apiMapDir are absent here on purpose: both are app-scoped, so their
+// defaults are derived from app-config.yaml in loadConfig rather than fixed here.
+const DEFAULTS: Omit<GeneratorConfig, 'login' | 'analysisDir' | 'apiMapDir'> = {
   language: 'typescript',
   projectName: 'playwright-framework',
   outputDir: './generated-framework',
   baseUrl: '',
-  analysisDir: 'analysis',
   loginConfig: null,
   pages: { folderSegment: 'auto', mergeDuplicates: true },
   navigation: [],
   waits: { spinnerSelector: '[role="progressbar"], [aria-busy="true"]' },
   tests: { generateSmokeSpecs: true },
   locatorTemplates: {},
-  apiMapDir: join('analysis', 'api-map'),
   api: { enabled: false, include: {}, exclude: {}, generateAssertionSpecs: true, generateFactories: true },
 };
 
@@ -144,6 +144,7 @@ export function loadConfig(path: string): GeneratorConfig {
   const raw = yaml.load(readFileSync(path, 'utf8'));
   if (!isRecord(raw)) throw new Error(`Empty config file: ${path}`);
   const projectConfig = loadProjectConfig();
+  const analysisRoot = appAnalysisDir(projectConfig);
 
   const language = raw.language === undefined ? DEFAULTS.language : String(raw.language);
   const baseUrl = String(raw.baseUrl || projectConfig.baseUrl);
@@ -187,7 +188,7 @@ export function loadConfig(path: string): GeneratorConfig {
   return {
     ...raw,
     language, baseUrl, outputDir, projectName: String(raw.projectName ?? DEFAULTS.projectName),
-    analysisDir: String(raw.analysisDir ?? DEFAULTS.analysisDir), apiMapDir: String(raw.apiMapDir ?? DEFAULTS.apiMapDir),
+    analysisDir: String(raw.analysisDir ?? analysisRoot), apiMapDir: String(raw.apiMapDir ?? join(analysisRoot, 'api-map')),
     loginConfig, login: loginConfig ? loadLoginFlow(loginConfig) : null,
     ...(raw.mapDir == null ? {} : { mapDir: String(raw.mapDir) }),
     pages: { folderSegment: segment, mergeDuplicates: Boolean(pages.mergeDuplicates) },

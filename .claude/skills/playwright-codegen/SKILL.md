@@ -108,7 +108,7 @@ Structure:
 2. **fill** `getByRole('textbox', { name: 'Username' })` = `"Admin"` — stable
 3. **click** `locator('.oxd-table tr:nth-child(3) button')` — ⚠ UNSTABLE (positional CSS)
    → resolves to `recordsTable` — "Username" (table, rung 4) via `tableByColumn`
-     [analysis/label-dictionary.json → /admin/viewSystemUsers]
+     [analysis/<app>/label-dictionary.json → /admin/viewSystemUsers]
 ...
 
 ## Raw generated code
@@ -133,14 +133,14 @@ Shaping rules:
   with the reason `classify` gives (positional, unnamed role, raw CSS, text-only).
 - **Repair each flagged step against the label dictionary.** Take the route from the most
   recent `goto` (or the URL the step ran against), strip the `/web/index.php` prefix, and look
-  it up in `analysis/label-dictionary.json`. Match the flagged element to a dictionary entry by
+  it up in `../../../analysis/<app>/label-dictionary.json`. Match the flagged element to a dictionary entry by
   position in the form and by kind, and record the resolved element — its `name`, `label` and
   rung — as the substitute. Write what it *is*, not what it might be:
 
   ```
   9. **click** `locator('.oxd-icon.bi-caret-down-fill.oxd-select-text--arrow')` — ⚠ UNSTABLE (raw CSS)
      → resolves to `leaveTypeDropdown` — "Leave Type" (dropdown, rung 4) via `labelledSelect`
-       [analysis/label-dictionary.json → /leave/applyLeave]
+       [analysis/<app>/label-dictionary.json → /leave/applyLeave]
   ```
 
   When the route is absent from the dictionary, or no entry plausibly matches, say so
@@ -178,7 +178,7 @@ Tell the user:
 - Every shaped file gets a unique `<content-slug>-<timestamp>.md` name (step 3) —
   never reuse the launch-time slug as the final filename, so recordings accumulate as
   a library instead of overwriting each other.
-- This skill reads `analysis/label-dictionary.json` and never writes to it. The analysis is
+- This skill reads `../../../analysis/<app>/label-dictionary.json` and never writes to it. The analysis is
   the repo analyzer's output; a recording that disagrees with it is a reason to re-run the
   analyzer, not to edit its report.
 - Once BASE_URL resolves and a slug is chosen (from the request, or the `recording`

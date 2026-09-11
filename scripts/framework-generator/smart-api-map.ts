@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Pulls (or loads) the target app's API spec and normalizes it into this
 // repo's own request vocabulary, one YAML file per resource under
-// analysis/api-map/. Deterministic — no browser, no AI judgment is
+// analysis/<app>/api-map/. Deterministic — no browser, no AI judgment is
 // needed to parse a self-describing JSON document.
 //
 //   npm run smart-api-map --prefix scripts/framework-generator -- [app-config.yaml] [--strict]
@@ -14,6 +14,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import yaml from 'js-yaml';
 import { fromOpenApi, fromFallback, toYamlObject } from './request-spec.js';
+import { appAnalysisDir } from '../project-config.js';
 import { errorMessage, isRecord, list, record } from './types.js';
 import type { Operation } from './types.js';
 
@@ -21,12 +22,11 @@ interface ApiSpecConfig { specUrl?: string; specPath?: string; fallbackSpec?: st
 interface MappedResource { resource: string; source: string; sourceRef: string | null; operations: Operation[] }
 
 const DEFAULT_APP_CONFIG = 'app-config.yaml';
-const DEFAULT_API_MAP_DIR = join('analysis', 'api-map');
 
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
   const configPath = args.find((a) => !a.startsWith('--')) ?? DEFAULT_APP_CONFIG;
-  const apiMapDir = process.env.API_MAP_DIR ?? DEFAULT_API_MAP_DIR;
+  const apiMapDir = process.env.API_MAP_DIR ?? join(appAnalysisDir(), 'api-map');
 
   if (!existsSync(configPath)) throw new Error(`Config file not found: ${configPath}`);
   const appConfig = yaml.load(readFileSync(configPath, 'utf8'));

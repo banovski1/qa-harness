@@ -5,7 +5,7 @@
 - **App**: `<fixtures>/angular-app`
 - **Base URL**: https://app.test
 - **Path prefix**: none
-- **Routes**: 9 (from `analysis/pages-and-routes.json`, strategy: @angular/router config)
+- **Routes**: 9 (from `analysis/<app>/pages-and-routes.json`, strategy: @angular/router config)
 - **Generated**: <timestamp>
 
 | URL | Placeholders | Renders |
@@ -23,4 +23,4 @@
 
 ## Placeholders
 
-2 URL(s) carry a dynamic segment. The placeholder is left intact: no sample id is invented here, because a wrong one reads as a real URL and fails confusingly. Fill them from a precondition step (see `analysis/api-documentation.md`).
+2 URL(s) carry a dynamic segment. The placeholder is left intact: no sample id is invented here, because a wrong one reads as a real URL and fails confusingly. Fill them from a precondition step (see `api-documentation.md`).

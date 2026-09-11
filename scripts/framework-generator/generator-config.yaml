@@ -12,7 +12,11 @@
 language: typescript    # typescript | javascript | java | python | csharp
 projectName: e2e
 outputDir: ./generated-framework
-analysisDir: analysis
+
+# Where the repo analyzer's reports are read from. Defaults to `analysis/<appName>/` —
+# the app folder named in root app-config.yaml — so this file stays app-agnostic. Set it
+# only to read an analysis from somewhere else.
+# analysisDir: analysis/<appName>
 
 # Optional. Static analysis describes screens, never flows, so the login sequence is not
 # something it can produce — point this at the app config to get a working login helper
@@ -115,7 +119,8 @@ locatorTemplates:
 # Where scripts/framework-generator/smart-api-map.ts writes the normalized api-map
 # (one YAML file per resource). Absent or empty directory -> no API layer is
 # generated; nothing else changes.
-apiMapDir: analysis/api-map
+# Defaults to `<analysisDir>/api-map`.
+# apiMapDir: analysis/<appName>/api-map
 
 api:
   enabled: true

@@ -12,7 +12,7 @@ import {detect} from './detect.js';
 import {buildComponentIndex, templatesFrom} from './elements.js';
 import {loadCatalogue} from './i18n.js';
 import {TEST_ID_ATTRS} from './parsers.js';
-import {ANALYSIS_DIR, header, outPath, reportWritten, table, writeReport} from './report.js';
+import {analysisDir, header, outPath, reportWritten, table, writeReport} from './report.js';
 import {findFiles, parseArgs, readJson, readText, rel, REPO_ROOT, resolveAppPath, unique} from './util.js';
 import yaml from 'js-yaml';
 import type {ComponentCollection, ComponentRecord, DetectionResult, LabelDictionaryReport, RoutesReport, RouteRecord, TemplateMap} from './types.js';
@@ -214,11 +214,12 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
 
   // The dictionary needs the route table to key on, so it is written only once routes.ts has
   // run. Skipping it is a normal first-run outcome, not a failure — say so and carry on.
-  const routesFile = path.join(ANALYSIS_DIR, 'pages-and-routes.json');
+  const outDir = analysisDir(args);
+  const routesFile = path.join(outDir, 'pages-and-routes.json');
   const routeData = readJson<RoutesReport>(routesFile);
   if (!args.dryRun && routeData?.routes) {
     const dictionary = buildLabelDictionary(result.components, routeData.routes);
-    const outFile = path.join(ANALYSIS_DIR, 'label-dictionary.json');
+    const outFile = path.join(outDir, 'label-dictionary.json');
     fs.writeFileSync(outFile, `${JSON.stringify({
       app: detection.appPath,
       framework: detection.frontend.framework,
@@ -228,7 +229,7 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     written.written.push(rel(REPO_ROOT, outFile));
     summary.push(`${Object.keys(dictionary).length} route(s) carry elements`);
   } else if (!args.dryRun) {
-    summary.push('no analysis/pages-and-routes.json yet — run routes.mjs, then re-run this to write label-dictionary.json');
+    summary.push(`no ${rel(REPO_ROOT, routesFile)} yet — run routes.mjs, then re-run this to write label-dictionary.json`);
   }
 
   reportWritten(written, summary);

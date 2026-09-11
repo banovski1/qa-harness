@@ -5,7 +5,7 @@
 - **App**: `<fixtures>/unknown-app`
 - **Base URL**: https://app.test
 - **Path prefix**: none
-- **Routes**: 0 (from `analysis/pages-and-routes.json`, strategy: none)
+- **Routes**: 0 (from `analysis/<app>/pages-and-routes.json`, strategy: none)
 - **Generated**: <timestamp>
 
 _No rows._

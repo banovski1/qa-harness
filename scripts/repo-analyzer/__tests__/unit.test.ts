@@ -11,7 +11,7 @@ import path from 'node:path';
 import test from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {bestLocatorFor, classify, rankOf, RUNGS} from '../../framework-generator/locator-ladder.js';
-import {loadProjectConfig, projectConfigPath} from '../../project-config.js';
+import {appAnalysisDir, loadProjectConfig, projectConfigPath, slugifyAppName} from '../../project-config.js';
 import {crossCheck, mergeByPath} from '../api-docs.js';
 import {dedupeNames, KIND_TEMPLATES, templatesFrom} from '../elements.js';
 import {loadCatalogue, resolveAngularLabelExpression, resolveLabelExpression} from '../i18n.js';
@@ -19,7 +19,7 @@ import {joinUrl} from '../live-urls.js';
 import {componentNameFromFile, isTestIdAttr, parseAngular, walkAny, walkAst} from '../parsers.js';
 import {paramsOf, springMethod} from '../registry-backend.js';
 import {FRONTEND_REGISTRY, matchFrontend} from '../registry-frontend.js';
-import {escapeCell, table} from '../report.js';
+import {analysisDir, escapeCell, table} from '../report.js';
 import {fileRouteFor, joinRoutePath, normalisePath} from '../routes.js';
 import {resolveAppPath} from '../util.js';
 import {analyzerPlan} from '../analyze.js';
@@ -39,6 +39,7 @@ test('public analyzer contracts accept the root project config flow', () => {
   const args: CliArgs = {pathPrefix: '/web'};
 
   assert.equal(config.appPath, app);
+  assert.equal(config.appName, 'target-app');
   assert.equal(config.baseUrl, 'https://example.test');
   assert.equal(analyzerPlan(args).at(-1)?.args.at(-1), '/web');
 });
@@ -62,6 +63,28 @@ test('resolveAppPath defaults to the root project config when --app is omitted',
   fs.writeFileSync(configFile, 'appPath: ./target-app\nbaseUrl: http://localhost:8080\n');
 
   assert.equal(resolveAppPath(undefined, {configPath: configFile}), app);
+});
+
+test('appName names the analysis folder: an explicit title wins, the clone name is the fallback', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'project-config-'));
+  fs.mkdirSync(path.join(dir, 'Target App'));
+  const configFile = path.join(dir, 'app-config.yaml');
+  fs.writeFileSync(configFile, 'appPath: ./Target App\nbaseUrl: https://example.test\n');
+
+  assert.equal(loadProjectConfig(configFile).appName, 'target-app');
+  assert.equal(appAnalysisDir(loadProjectConfig(configFile)), path.join('analysis', 'target-app'));
+
+  fs.writeFileSync(configFile, 'appPath: ./Target App\nappName: EspoCRM demo (EU)\nbaseUrl: https://example.test\n');
+  assert.equal(loadProjectConfig(configFile).appName, 'espocrm-demo-eu');
+  assert.throws(() => slugifyAppName('///'), /set appName: in app-config.yaml/);
+});
+
+test('reports land in analysis/<app>/, and --app names its own folder', () => {
+  const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
+  const configured = loadProjectConfig().appName;
+
+  assert.equal(analysisDir(), path.join(repoRoot, 'analysis', configured));
+  assert.equal(analysisDir({app: path.join(os.tmpdir(), 'Other App')}), path.join(repoRoot, 'analysis', 'other-app'));
 });
 
 test('projectConfigPath points at the repository-root app-config.yaml', () => {

@@ -7,7 +7,7 @@ allowed-tools: Bash(node:*) Bash(npm:*)
 # API documentation
 
 Static analysis of a **local clone** of the application under test. Output is
-`analysis/api-documentation.md` plus a `.json` sidecar. This is what `test-preconditions` reads
+`../../../analysis/<app>/api-documentation.md` plus a `.json` sidecar (`<app>` is `appName:` in root `app-config.yaml`, so one clone's reports never overwrite another's). This is what `test-preconditions` reads
 instead of inferring an endpoint from prose.
 
 ## Run it

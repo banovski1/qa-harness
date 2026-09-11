@@ -10,6 +10,7 @@ import { readApiMap } from '../api-map-reader.js';
 import { loadConfig, main } from '../generate.js';
 import { meaningfulSegments } from '../page-model.js';
 import { pageClassName } from '../naming.js';
+import { appAnalysisDir } from '../../project-config.js';
 import type { GeneratedFile, GenerationContext, LanguageAdapter } from '../types.js';
 
 function fixture(t: { after(fn: () => void): void }) {
@@ -173,6 +174,10 @@ test('config defaults remain stable and required outputDir is validated', async 
   assert.equal(config.pages.folderSegment, 'auto');
   assert.equal(config.api.enabled, false);
   assert.equal(config.login, null);
+  // Both analysis paths default into the app's own folder, so the generator reads what
+  // the analyzer wrote without either config naming the app.
+  assert.equal(config.analysisDir, appAnalysisDir());
+  assert.equal(config.apiMapDir, join(appAnalysisDir(), 'api-map'));
   writeFileSync(path, "baseUrl: https://example.test\noutputDir: ''\n");
   assert.throws(() => loadConfig(path), /Missing 'outputDir:'/);
   await assert.rejects(main([path, '--dry-run']), /Missing 'outputDir:'/);

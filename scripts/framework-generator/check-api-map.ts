@@ -12,6 +12,7 @@ import { join } from 'node:path';
 import yaml from 'js-yaml';
 import { METHODS, SOURCES } from './request-spec.js';
 import { readApiMap } from './api-map-reader.js';
+import { appAnalysisDir } from '../project-config.js';
 import { isRecord, list, record } from './types.js';
 
 const strictArgIndex = process.argv.indexOf('--strict');
@@ -22,7 +23,7 @@ const strictTargets = new Set(
 const rawConfig = record(yaml.load(readFileSync(join('scripts', 'framework-generator', 'generator-config.yaml'), 'utf8')));
 const rawApi = record(rawConfig.api ?? {});
 const config = {
-  apiMapDir: process.env.API_MAP_DIR ?? String(rawConfig.apiMapDir ?? join('analysis', 'api-map')),
+  apiMapDir: process.env.API_MAP_DIR ?? String(rawConfig.apiMapDir ?? join(appAnalysisDir(), 'api-map')),
   // This gate checks whatever files are on disk regardless of whether generation
   // is toggled on, so `enabled` is forced true here rather than read from config.
   api: { include: readFilter(rawApi.include), exclude: readFilter(rawApi.exclude), enabled: true },

@@ -1,5 +1,7 @@
 // Root-level project config shared by analyzer and generator entrypoints.
 // Kept deliberately small: appPath and baseUrl are the only required project facts.
+// `appName` is derived rather than required — it names the folder every artifact for this
+// app lands in, so two apps analyzed from the same checkout never overwrite each other.
 
 import fs from 'node:fs';
 import os from 'node:os';
@@ -24,10 +26,32 @@ export function loadProjectConfig(file = projectConfigPath()): ProjectConfig {
     throw new Error(`Missing '${missing[0]}:' in ${path.basename(file)}.`);
   }
 
+  const appPath = resolveConfigPath(raw.appPath, path.dirname(file));
   return {
-    appPath: resolveConfigPath(raw.appPath, path.dirname(file)),
+    appPath,
+    appName: slugifyAppName(raw.appName ?? path.basename(appPath)),
     baseUrl: String(raw.baseUrl),
   };
+}
+
+/**
+ * `analysis/<app>/`, relative to the repo root: where the repo analyzer writes this app's
+ * reports and where every consumer reads them from. One helper so the two cannot diverge.
+ */
+export function appAnalysisDir(config: ProjectConfig = loadProjectConfig()): string {
+  return path.join('analysis', config.appName);
+}
+
+/**
+ * The folder name artifacts for this app are written under. An explicit `appName:` wins;
+ * otherwise the clone's own directory name is the title, so retargeting stays a config edit.
+ */
+export function slugifyAppName(value: string): string {
+  const slug = String(value).trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  if (!slug) {
+    throw new Error(`Cannot derive an app folder name from '${value}': set appName: in app-config.yaml.`);
+  }
+  return slug;
 }
 
 function parseScalarYaml(text: string): Record<string, string> {

@@ -1,5 +1,6 @@
 export interface ProjectConfig {
   appPath: string;
+  appName: string;
   baseUrl: string;
 }
 

@@ -632,7 +632,7 @@ function render(detection: DetectionResult, result: RouteCollection, apiPrefix: 
     header('Pages and routes', detection, [
       `**Route source**: ${result.strategy ?? 'none — no routing convention was statically resolvable'}`,
       `**Routes found**: ${sorted.length}`,
-      `**API prefix excluded**: \`${apiPrefix}\` (see \`analysis/api-documentation.md\`)`,
+      `**API prefix excluded**: \`${apiPrefix}\` (see \`api-documentation.md\`)`,
     ]),
     table(['Route', 'Renders', 'Params', 'Source'], sorted.map((route) => [
       `\`${route.path}\``,

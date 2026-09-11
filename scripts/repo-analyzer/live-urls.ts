@@ -8,7 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {loadProjectConfig} from '../project-config.js';
-import {ANALYSIS_DIR, outPath, reportWritten, table, writeReport} from './report.js';
+import {analysisDir, outPath, reportWritten, table, writeReport} from './report.js';
 import {REPO_ROOT, parseArgs, readJson, rel} from './util.js';
 import type {LiveUrlRecord, RoutesReport} from './types.js';
 
@@ -51,14 +51,14 @@ function render(source: Pick<RoutesReport, 'app' | 'strategy'> & {from: string},
     '',
     withParams.length === 0
       ? 'Every route is static — each URL above can be opened as written.'
-      : `${withParams.length} URL(s) carry a dynamic segment. The placeholder is left intact: no sample id is invented here, because a wrong one reads as a real URL and fails confusingly. Fill them from a precondition step (see \`analysis/api-documentation.md\`).`,
+      : `${withParams.length} URL(s) carry a dynamic segment. The placeholder is left intact: no sample id is invented here, because a wrong one reads as a real URL and fails confusingly. Fill them from a precondition step (see \`api-documentation.md\`).`,
     '',
   ].join('\n');
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const args = parseArgs();
-  const routesFile = args.routes ? path.resolve(REPO_ROOT, String(args.routes)) : path.join(ANALYSIS_DIR, 'pages-and-routes.json');
+  const routesFile = args.routes ? path.resolve(REPO_ROOT, String(args.routes)) : path.join(analysisDir(args), 'pages-and-routes.json');
   if (!fs.existsSync(routesFile)) {
     throw new Error(`No route data at ${rel(REPO_ROOT, routesFile)} — run npm run routes --prefix scripts/repo-analyzer first.`);
   }

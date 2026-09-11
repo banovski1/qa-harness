@@ -18,6 +18,7 @@ import { join } from 'node:path';
 import yaml from 'js-yaml';
 import { fromMap } from './locator-spec.js';
 import { readApplicationModel } from './analysis-reader.js';
+import { appAnalysisDir } from '../project-config.js';
 import { errorMessage, isRecord, list, record } from './types.js';
 import type { ApplicationConfig } from './types.js';
 
@@ -29,7 +30,7 @@ const CONFIG_PATH = join('scripts', 'framework-generator', 'generator-config.yam
 const rawConfig = record(yaml.load(readFileSync(CONFIG_PATH, 'utf8')));
 const rawApi = record(rawConfig.api ?? {});
 const config: ApplicationConfig = {
-  analysisDir: String(rawConfig.analysisDir ?? 'analysis'),
+  analysisDir: String(rawConfig.analysisDir ?? appAnalysisDir()),
   locatorTemplates: Object.fromEntries(Object.entries(record(rawConfig.locatorTemplates ?? {})).map(([key, value]) => [key, String(value)])),
   navigation: list(rawConfig.navigation).map(record),
   pages: { folderSegment: 'auto', mergeDuplicates: true, ...record(rawConfig.pages ?? {}) },
