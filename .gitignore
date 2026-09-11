@@ -6,8 +6,6 @@ scripts/framework-generator/node_modules
 .idea
 .playwright-mcp
 .playwright-cli
-analysis/
-generated-framework/
 docs/superpowers/
 .worktrees/
 
