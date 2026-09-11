@@ -7,7 +7,8 @@
 //
 //   npm run generate --prefix scripts/framework-generator -- [path/to/generator-config.yaml] [--dry-run]
 //
-// Run from the repo root so analysisDir and outputDir resolve correctly.
+// Run from the repo root so analysisDir and outputDir resolve correctly. Both default into
+// the app's own folder — analysis/<app>/ in, generated-framework/<app>/ out.
 
 import { readFileSync, existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
@@ -19,18 +20,17 @@ import { readApplicationModel } from './analysis-reader.js';
 import { readApiMap } from './api-map-reader.js';
 import { adapterFor, SUPPORTED_LANGUAGES } from './languages/index.js';
 import { FileWriter } from './file-writer.js';
-import { appAnalysisDir, loadProjectConfig } from '../project-config.js';
+import { appAnalysisDir, appOutputDir, loadProjectConfig } from '../project-config.js';
 import { errorMessage, isRecord, list, record } from './types.js';
 import type { ApplicationModel, GeneratedFile, GenerationContext, GeneratorConfig, LoginFlow, NavigationEntry } from './types.js';
 
 const DEFAULT_CONFIG = join('scripts', 'framework-generator', 'generator-config.yaml');
 
-// analysisDir and apiMapDir are absent here on purpose: both are app-scoped, so their
-// defaults are derived from app-config.yaml in loadConfig rather than fixed here.
-const DEFAULTS: Omit<GeneratorConfig, 'login' | 'analysisDir' | 'apiMapDir'> = {
+// outputDir, analysisDir and apiMapDir are absent here on purpose: all three are app-scoped,
+// so their defaults are derived from app-config.yaml in loadConfig rather than fixed here.
+const DEFAULTS: Omit<GeneratorConfig, 'login' | 'analysisDir' | 'apiMapDir' | 'outputDir'> = {
   language: 'typescript',
   projectName: 'playwright-framework',
-  outputDir: './generated-framework',
   baseUrl: '',
   loginConfig: null,
   pages: { folderSegment: 'auto', mergeDuplicates: true },
@@ -148,7 +148,7 @@ export function loadConfig(path: string): GeneratorConfig {
 
   const language = raw.language === undefined ? DEFAULTS.language : String(raw.language);
   const baseUrl = String(raw.baseUrl || projectConfig.baseUrl);
-  const outputDir = raw.outputDir === undefined ? DEFAULTS.outputDir : raw.outputDir;
+  const outputDir = raw.outputDir === undefined ? appOutputDir(projectConfig) : raw.outputDir;
   const pages = { ...DEFAULTS.pages, ...record(raw.pages ?? {}) };
   const waits = { ...DEFAULTS.waits, ...record(raw.waits ?? {}) };
   const tests = { ...DEFAULTS.tests, ...record(raw.tests ?? {}) };

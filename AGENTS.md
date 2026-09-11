@@ -8,13 +8,13 @@ This repository converts a local application clone into a Playwright framework t
 - `scripts/framework-generator/`: analysis validation, page models, file writers, and language adapters.
 - `analysis/<app>/`: reports and API maps *produced* by the analyzer, one folder per app (`appName:` in
   root `app-config.yaml`) — absent on this branch until it runs.
-- `generated-framework/`: the Playwright project the generator *produces*; reusable code in `src/`, scenarios in `tests/e2e/`. Absent until `generate.ts` runs.
+- `generated-framework/<app>/`: the Playwright project the generator *produces*, one folder per app (`appName:` in root `app-config.yaml`); reusable code in `src/`, scenarios in `tests/e2e/`. Absent until `generate.ts` runs. Committed, like `analysis/<app>/`: re-running a tool and reading the diff is how a change to it is reviewed.
 - `codegen-recordings/` and `test-case-candidates/`: recorded flows and candidate scenarios, added as you record them.
 - `.claude/`: agent instructions, skills, and enforcement hooks. See `CLAUDE.md` for architecture details.
 
 ## Build, Test, and Development Commands
 
-Run these from the repository root; configuration paths resolve relative to it. Install dependencies with `npm ci --prefix <directory>` for each of the two script packages and `generated-framework`.
+Run these from the repository root; configuration paths resolve relative to it. Install dependencies with `npm ci --prefix <directory>` for each of the two script packages and `generated-framework/<app>`.
 
 - `npm test --prefix scripts/repo-analyzer`: run Node.js analyzer tests.
 - `npm run typecheck --prefix scripts/repo-analyzer`: check the analyzer TypeScript.
@@ -23,10 +23,10 @@ Run these from the repository root; configuration paths resolve relative to it. 
 - `npm run analyze`: run repo analysis from `appPath` in root `app-config.yaml` in the required order.
 - `npm run check-analysis --prefix scripts/framework-generator`: validate analysis freshness and schema.
 - `npm run generate:dry --prefix scripts/framework-generator`: preview generation; use `npm run generate --prefix scripts/framework-generator` to write output.
-- `npm run typecheck --prefix generated-framework`: check TypeScript without emitting files.
-- `npm test --prefix generated-framework`: execute Playwright tests.
+- `npm run typecheck --prefix generated-framework/<app>`: check TypeScript without emitting files.
+- `npm test --prefix generated-framework/<app>`: execute Playwright tests.
 
-Before browser tests, run `npx playwright install chromium` inside `generated-framework` and configure its `.env` from `.env.example`.
+Before browser tests, run `npx playwright install chromium` inside `generated-framework/<app>` and configure its `.env` from `.env.example`.
 
 ## Coding Style & Naming Conventions
 

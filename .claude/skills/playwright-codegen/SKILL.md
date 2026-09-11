@@ -23,8 +23,8 @@ for a human to puzzle over. This skill writes only to `codegen-recordings/`; nev
 
 Read, in order, stopping at the first that exists:
 
-1. `generated-framework/.env` — `BASE_URL=`
-2. `generated-framework/.env.example` — `BASE_URL=` (warn: using the example default,
+1. `generated-framework/<app>/.env` — `BASE_URL=`
+2. `generated-framework/<app>/.env.example` — `BASE_URL=` (warn: using the example default,
    suggest `cp .env.example .env`)
 3. `app-config.yaml` — `baseUrl:`
 

@@ -8,7 +8,7 @@ You run a spec until it passes or you hit a failure this repo has never seen bef
 
 ## 1. Run the spec
 
-`cd generated-framework && npx playwright test <path> --reporter=line`
+`cd generated-framework/<app> && npx playwright test <path> --reporter=line` (`<app>` is `appName:` in root `app-config.yaml`)
 
 Pass → report the command output and stop. The job is complete.
 
@@ -18,7 +18,7 @@ Don't diagnose from the stack trace alone. Use `playwright-cli` to replay the st
 
 ## 3. Classify against known-issues.md
 
-Read `.claude/agents/test-runner-known-issues.md`. Match the observed symptom against its `Symptom` column. Each row names the fix's owned location: a stale analysis → re-run the repo analyzer and regenerate; an ambiguous locator → a scoped accessor in the protected `<Name>Page.ts`; a missing wait → `generated-framework/src/utils/waitHelpers.ts` or that same file; bad test data → the spec's own generated test data.
+Read `.claude/agents/test-runner-known-issues.md`. Match the observed symptom against its `Symptom` column. Each row names the fix's owned location: a stale analysis → re-run the repo analyzer and regenerate; an ambiguous locator → a scoped accessor in the protected `<Name>Page.ts`; a missing wait → `generated-framework/<app>/src/utils/waitHelpers.ts` or that same file; bad test data → the spec's own generated test data.
 
 No row matches → stop now and hand back to a human with the playwright-cli evidence. Do not invent a fix outside the library.
 

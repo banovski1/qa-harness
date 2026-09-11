@@ -1,6 +1,6 @@
 ---
 name: test-writer
-description: Turns a plain-English numbered test script into a Playwright spec inside generated-framework/. Use whenever the user pastes numbered test steps.
+description: Turns a plain-English numbered test script into a Playwright spec inside generated-framework/<app>/. Use whenever the user pastes numbered test steps.
 model: sonnet
 ---
 
@@ -60,7 +60,7 @@ reach a spec:
 
 ## 3. Write the spec
 
-New file at `generated-framework/tests/e2e/<module>/<scenario>.spec.ts`. Never edit an existing `<kebab-page-name>.spec.ts` — those carry the AUTO-GENERATED header and are overwritten.
+New file at `generated-framework/<app>/tests/e2e/<module>/<scenario>.spec.ts`. Never edit an existing `<kebab-page-name>.spec.ts` — those carry the AUTO-GENERATED header and are overwritten.
 
 - `import { test, expect } from '../../../src/fixtures';` — relative, there are no path aliases.
 - Page objects arrive as destructured fixtures. Never `new` a page object in a spec.
@@ -108,7 +108,7 @@ await expect(systemUsersPage.successToast.locator).toBeVisible();
 
 Validation rules, authorization, pagination, response codes and boundary values are cheaper and steadier at the API layer, and for setup and teardown of records the journey merely needs to exist. A browser test should answer a journey question: can this user log in, create the record, complete the flow. If the pasted script is really twenty validation permutations, write the few that prove the UI is wired up, cover the rest through the API layer, and say so in your report.
 
-When a resource has been mapped by `smart-api-map` (check `analysis/<app>/api-map/` and `generated-framework/src/api/clients/`), prefer its typed fixture over the generic one — e.g. `usersApi` (a `UsersClient`) instead of `api` (`ApiClient`) — because its methods are typed to the mapped operation, not a bare path string. Fall back to `api`/`ApiClient` for any endpoint outside the api-map. For creating preconditions, prefer a generated factory helper in `src/data/factories/<resource>-factory.ts` (e.g. `createUser()`) over calling the typed client directly — factories are the one place field values get filled in, and a scaffolded-but-empty factory is a signal to fill it in, not to work around it inline.
+When a resource has been mapped by `smart-api-map` (check `analysis/<app>/api-map/` and `generated-framework/<app>/src/api/clients/`), prefer its typed fixture over the generic one — e.g. `usersApi` (a `UsersClient`) instead of `api` (`ApiClient`) — because its methods are typed to the mapped operation, not a bare path string. Fall back to `api`/`ApiClient` for any endpoint outside the api-map. For creating preconditions, prefer a generated factory helper in `src/data/factories/<resource>-factory.ts` (e.g. `createUser()`) over calling the typed client directly — factories are the one place field values get filled in, and a scaffolded-but-empty factory is a signal to fill it in, not to work around it inline.
 
 ## 7. Steps neither source covers
 
@@ -129,7 +129,7 @@ scoped accessor in the protected page object instead, and report that you did.
 
 ## 8. Verify and report
 
-Run `npm run typecheck` in `generated-framework/`. Report: files created and modified, which recordings and dictionary routes you drew on, `// UNVERIFIED` locators, any step you could not source from either file, new `.env` variables, and the command to run the spec.
+Run `npm run typecheck` in `generated-framework/<app>/`. Report: files created and modified, which recordings and dictionary routes you drew on, `// UNVERIFIED` locators, any step you could not source from either file, new `.env` variables, and the command to run the spec.
 
 ## Hard rules (hook-enforced)
 

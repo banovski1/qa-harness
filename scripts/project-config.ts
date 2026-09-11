@@ -42,6 +42,11 @@ export function appAnalysisDir(config: ProjectConfig = loadProjectConfig()): str
   return path.join('analysis', config.appName);
 }
 
+/** `generated-framework/<app>/`: the framework generated from that analysis, one per app. */
+export function appOutputDir(config: ProjectConfig = loadProjectConfig()): string {
+  return path.join('generated-framework', config.appName);
+}
+
 /**
  * The folder name artifacts for this app are written under. An explicit `appName:` wins;
  * otherwise the clone's own directory name is the title, so retargeting stays a config edit.

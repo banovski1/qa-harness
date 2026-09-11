@@ -49,7 +49,7 @@ baseUrl: http://localhost:8080
 ```yaml
 language: typescript          # typescript | javascript | java | python | csharp
 projectName: e2e
-outputDir: ./generated-framework
+outputDir: ./generated-framework/<app>   # default; omit the key to derive it from appName:
 analysisDir: analysis
 loginConfig: app-config.yaml   # optional, see below
 

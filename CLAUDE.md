@@ -8,10 +8,10 @@ A pipeline that turns a local clone of a web app into a Playwright test framewor
 anywhere in the generation path** — the same clone always produces the same framework.
 
 ```
-a local clone of the app ──► scripts/repo-analyzer ──► analysis/ ──► scripts/framework-generator ──► generated-framework/
-                              (four skills, no browser)     │          (renders page objects)        (a real Playwright project)
-                                                            │
-                              codegen-recordings/ ──────────┴──► test-writer ──► specs
+a local clone of the app ──► scripts/repo-analyzer ──► analysis/<app>/ ──► scripts/framework-generator ──► generated-framework/<app>/
+                              (four skills, no browser)       │            (renders page objects)          (a real Playwright project)
+                                                              │
+                              codegen-recordings/ ────────────┴──► test-writer ──► specs
                               (a human's flow, recorded once)
 ```
 
@@ -30,14 +30,19 @@ how an unstable recorded locator gets repaired without opening a browser.
 and the api-map, in a folder named by `appName:` — so analyzing a second app adds a folder instead of
 overwriting the first one's reports, and every consumer (the generator, both gates, the skills) reads
 the same folder without naming the app itself. Omit `appName:` and the clone's own directory name is
-the title. `generated-framework/` holds the generated output (gitignored — regenerate it, never
-restore it from history). Every path in the configs is relative to the **repo root**, so always run
-from there.
+the title. `generated-framework/<app>/` holds the framework generated from that analysis, in a folder
+named the same way. Every path in the configs is relative to the **repo root**, so always run from
+there.
 
-**This branch carries no target app.** It is the base the per-language branches are taken from, so
-`analysis/`, `codegen-recordings/` and `generated-framework/` do not exist yet — they appear once the
-analyzer, a recording and the generator have been run. Point root `app-config.yaml` at an app first;
-nothing in `scripts/` contains app-specific code, so retargeting is a config edit and a re-run.
+**Both outputs are committed, on purpose.** They used to be gitignored and regenerated from scratch,
+which made a change to the analyzer or the generator impossible to review: the only evidence was the
+console summary. Now re-running either one produces a `git diff` — that diff *is* the test of the
+change. Regenerate, read the diff, commit it with the code that caused it. Nothing under either folder
+is hand-editable; the fix for a wrong report or a wrong page object is upstream, in the tool that wrote it.
+
+Nothing in `scripts/` contains app-specific code, so retargeting is a config edit and a re-run: point
+root `app-config.yaml` at another clone, give it an `appName:`, and both folders appear beside the
+existing ones instead of replacing them.
 
 ## Commands
 
@@ -60,8 +65,8 @@ npm run check-analysis --prefix scripts/framework-generator -- --strict /pim/add
 npm run generate --prefix scripts/framework-generator              # from repo root
 npm run generate:dry --prefix scripts/framework-generator    # print the file plan, write nothing
 
-# Stage 3 — the generated project
-cd generated-framework
+# Stage 3 — the generated project (<app> is appName: from app-config.yaml)
+cd generated-framework/<app>
 npm install && npx playwright install chromium
 cp .env.example .env          # fill in APP_USERNAME / APP_PASSWORD
 npm run typecheck             # tsc --noEmit
@@ -75,7 +80,8 @@ Prefer `--dry-run` when changing the generator: it exercises the whole pipeline 
 
 Run `npm test --prefix scripts/framework-generator` for generator contract tests and
 `npm run typecheck --prefix scripts/framework-generator` for static checks. Follow these with
-the analysis gate, a dry run, and a `git diff` of `generated-framework/` when inspecting output changes.
+the analysis gate, a dry run, and a `git diff` of `generated-framework/<app>/` — that diff is how an
+output change is reviewed, so regenerate before committing rather than after.
 
 ## Architecture notes that span files
 
@@ -162,7 +168,7 @@ before its options existed.
 
 **The login flow is not in the analysis** — static analysis describes screens, never flows. The generator can read login locators from a configured `loginConfig:` file to emit a working login helper. Credentials never flow through: they come from `APP_USERNAME`/`APP_PASSWORD` in the generated project's `.env`.
 
-**`.gitattributes` pins `eol=lf`** because the generator writes LF. `generated-framework/` is gitignored on this branch, but any committed generated file (analyzer snapshots, fixtures) has the same problem: do not relax the pin — under Windows `core.autocrlf` every generated file would show as modified with no content change.
+**`.gitattributes` pins `eol=lf`** because the generator writes LF, and every generated file is now committed — the analysis, the framework, the analyzer snapshots and the fixtures. Do not relax the pin: under Windows `core.autocrlf` each of them would show as modified with no content change, which is exactly the noise that makes a real diff unreadable.
 
 **The repo analyzer never branches on the app.** `scripts/repo-analyzer/` reads a local clone of the
 application under test and writes the four files in `analysis/`. Framework support lives entirely in

@@ -11,7 +11,11 @@
 # stop — implementing `renderPage` in `languages/<id>.ts` is what turns one into a real target.
 language: typescript    # typescript | javascript | java | python | csharp
 projectName: e2e
-outputDir: ./generated-framework
+
+# Where the framework is written. Defaults to `generated-framework/<appName>/` — the app
+# folder named in root app-config.yaml — so generating for a second app adds a folder
+# instead of overwriting the first one's framework. Set it only to write somewhere else.
+# outputDir: ./generated-framework/<appName>
 
 # Where the repo analyzer's reports are read from. Defaults to `analysis/<appName>/` —
 # the app folder named in root app-config.yaml — so this file stays app-agnostic. Set it

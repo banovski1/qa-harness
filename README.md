@@ -5,12 +5,12 @@ no browser anywhere in the generation path. See `CLAUDE.md` for full architectur
 just the setup.
 
 ```
-a local clone of the app ──► repo-analyzer ──► analysis/ ──► framework-generator ──► generated-framework/
+a local clone of the app ──► repo-analyzer ──► analysis/<app>/ ──► framework-generator ──► generated-framework/<app>/
                                                     │
 codegen-recordings/ ────────────────────────────────┴──► test-writer ──► specs
 ```
 
-`analysis/` is what the app *has*: every route, the elements each screen renders, and the label of
+`analysis/<app>/` is what the app *has*: every route, the elements each screen renders, and the label of
 each one. `codegen-recordings/` is what the app *does*: a human's flow through a real browser,
 recorded once. Tests are written from both.
 
@@ -26,8 +26,9 @@ Run everything from the repo root — all config paths are relative to it.
 
 ```bash
 # 1. Point app-config.yaml at your target app. It is the source of truth for the two
-#    required app facts: appPath and baseUrl. Credentials are NOT stored here — they
-#    go in generated-framework/.env as APP_USERNAME / APP_PASSWORD.
+#    required app facts: appPath and baseUrl. appName is optional and names the output
+#    folders. Credentials are NOT stored here — they go in
+#    generated-framework/<app>/.env as APP_USERNAME / APP_PASSWORD.
 
 # 2. Analyse the clone — routes, components, elements, API docs and live URLs
 npm ci --prefix scripts/repo-analyzer
@@ -41,8 +42,8 @@ npm run check-analysis --prefix scripts/framework-generator            # gate: f
 npm run generate --prefix scripts/framework-generator        # from repo root
 npm run generate:dry --prefix scripts/framework-generator   # preview only, writes nothing
 
-# 4. Run the generated project
-cd generated-framework
+# 4. Run the generated project (<app> is appName: from app-config.yaml)
+cd generated-framework/<app>
 npm install && npx playwright install chromium
 cp .env.example .env          # fill in APP_USERNAME / APP_PASSWORD
 npm run typecheck
@@ -63,8 +64,9 @@ npm run typecheck --prefix scripts/framework-generator
 
 ## This is the `clean` branch
 
-It carries the toolchain and no target app: no `analysis/`, no `codegen-recordings/`, no
-`generated-framework/`. Those appear when you run the analyzer, record a flow, and generate.
+It carries the toolchain and no target app: no `analysis/<app>/`, no `codegen-recordings/`, no
+`generated-framework/<app>/`. Those appear when you run the analyzer, record a flow, and generate —
+and they are committed, so a change to either tool is reviewed as the diff it produces in them.
 
 ### Branching for a new language
 
@@ -87,7 +89,7 @@ means implementing that one module and nothing else.
 
 ## Notes
 
-- Never hand-edit `generated-framework/**/*.generated.ts` or anything under `analysis/` — both are
+- Never hand-edit `generated-framework/<app>/**/*.generated.ts` or anything under `analysis/` — both are
   overwritten by the tool that owns them. Put your own code in the protected `<Name>Page.ts`
   subclass, and fix an analysis by re-running the analyzer.
 - To capture a flow for `test-writer`, invoke the `playwright-codegen` skill and click through it

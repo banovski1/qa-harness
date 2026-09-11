@@ -17,7 +17,7 @@ Use the same judgment call `test-writer.md` §6c already documents: validation r
 
 ## 2. Check for an existing API path
 
-Look at `analysis/<app>/api-map/` and `generated-framework/src/api/clients/` for a typed client or factory (`src/data/factories/<resource>-factory.ts`) covering the setup steps. If one exists, name it. If not, say plainly "no API map for this resource yet" — never invent a client or factory that doesn't exist.
+Look at `analysis/<app>/api-map/` and `generated-framework/<app>/src/api/clients/` for a typed client or factory (`src/data/factories/<resource>-factory.ts`) covering the setup steps. If one exists, name it. If not, say plainly "no API map for this resource yet" — never invent a client or factory that doesn't exist.
 
 ## 3. Return the enhanced prompt
 
