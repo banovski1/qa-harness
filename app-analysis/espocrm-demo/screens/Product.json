@@ -1,0 +1,6525 @@
+{
+  "url": "https://demo.eu.espocrm.com/#Product",
+  "path": "/#Product",
+  "title": "Products",
+  "headings": [
+    {
+      "level": 3,
+      "text": "Products"
+    }
+  ],
+  "tables": [],
+  "regions": {
+    "navigation": 74,
+    "body": 61,
+    "footer": 1
+  },
+  "elements": [
+    {
+      "index": 0,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "toggleCollapsable"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('#navbar > div.navbar.navbar-inverse > div.navbar-header:nth-of-type(1) > button.navbar-toggle')",
+        "matchCount": 1,
+        "args": [
+          "#navbar > div.navbar.navbar-inverse > div.navbar-header:nth-of-type(1) > button.navbar-toggle"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": []
+    },
+    {
+      "index": 1,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "logo",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'logo', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "logo"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 2,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 13,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('#navbar > div.navbar.navbar-inverse > div.navbar-header:nth-of-type(1) > a.side-menu-button')",
+        "matchCount": 1,
+        "args": [
+          "#navbar > div.navbar.navbar-inverse > div.navbar-header:nth-of-type(1) > a.side-menu-button"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('#navbar > div.navbar.navbar-inverse > div.navbar-header:nth-of-type(1) > a.side-menu-button')",
+          "matchCount": 1,
+          "args": [
+            "#navbar > div.navbar.navbar-inverse > div.navbar-header:nth-of-type(1) > a.side-menu-button"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Home",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#",
+      "box": {
+        "x": 0,
+        "y": 65,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Home', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Home"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Home', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Home"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Home\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Home\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Home\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Home\"] a"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Home', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Home"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Accounts",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Account",
+      "box": {
+        "x": 0,
+        "y": 149,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Accounts', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Accounts"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Accounts', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Accounts"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Account\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Account\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Account\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Account\"] a"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Accounts', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Accounts"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Contacts",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Contact",
+      "box": {
+        "x": 0,
+        "y": 189,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Contacts', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Contacts"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Contacts', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Contacts"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Contact\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Contact\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Contact\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Contact\"] a"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Contacts', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Contacts"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Leads",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Lead",
+      "box": {
+        "x": 0,
+        "y": 229,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Leads', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Leads"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Leads', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Leads"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Lead\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Lead\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Lead\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Lead\"] a"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Leads', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Leads"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Opportunities",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Opportunity",
+      "box": {
+        "x": 0,
+        "y": 269,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Opportunities', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Opportunities"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Opportunities', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Opportunities"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Opportunity\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Opportunity\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Opportunity\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Opportunity\"] a"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Opportunities', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Opportunities"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Emails",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Email",
+      "box": {
+        "x": 0,
+        "y": 353,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Emails', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Emails"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Emails', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Emails"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Email\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Email\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Email\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Email\"] a"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Emails', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Emails"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Calendar",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Calendar",
+      "box": {
+        "x": 0,
+        "y": 393,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Calendar', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Calendar"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Calendar', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Calendar"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Calendar\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Calendar\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Calendar\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Calendar\"] a"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Calendar', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Calendar"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Meetings",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Meeting",
+      "box": {
+        "x": 0,
+        "y": 433,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Meetings', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Meetings"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Meetings', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Meetings"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Meeting\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Meeting\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Meeting\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Meeting\"] a"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Meetings', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Meetings"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Calls",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Call",
+      "box": {
+        "x": 0,
+        "y": 473,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Calls', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Calls"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Calls', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Calls"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Call\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Call\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Call\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Call\"] a"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Calls', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Calls"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Tasks",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Task",
+      "box": {
+        "x": 0,
+        "y": 513,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Tasks', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Tasks"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Tasks', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Tasks"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Task\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Task\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Task\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Task\"] a"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Tasks', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Tasks"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Cases",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Case",
+      "box": {
+        "x": 0,
+        "y": 597,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Cases', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Cases"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Cases', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Cases"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Case\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Case\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Case\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Case\"] a"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Cases', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Cases"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Knowledge Base",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#KnowledgeBaseArticle",
+      "box": {
+        "x": 0,
+        "y": 637,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Knowledge Base', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Knowledge Base"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Knowledge Base', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Knowledge Base"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"KnowledgeBaseArticle\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"KnowledgeBaseArticle\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"KnowledgeBaseArticle\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"KnowledgeBaseArticle\"] a"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Knowledge Base', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Knowledge Base"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Documents",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Document",
+      "box": {
+        "x": 0,
+        "y": 721,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Documents', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Documents"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Documents', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Documents"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Document\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Document\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"Document\\\"] a')",
+          "matchCount": 1,
+          "args": [
+            "[data-name=\"Document\"] a"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Documents', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Documents"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Sales & Purchases",
+      "label": null,
+      "placeholder": null,
+      "id": "nav-tab-group-group-17",
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-toggle": "dropdown"
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 761,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Sales & Purchases', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Sales & Purchases"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Sales & Purchases', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Sales & Purchases"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"group-17\\\"] a')",
+          "matchCount": 21,
+          "args": [
+            "[data-name=\"group-17\"] a"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('[data-name=\\\"group-17\\\"] a')",
+          "matchCount": 21,
+          "args": [
+            "[data-name=\"group-17\"] a"
+          ]
+        },
+        {
+          "strategy": "attribute",
+          "expression": "locator('#nav-tab-group-group-17')",
+          "matchCount": 1,
+          "args": [
+            "#nav-tab-group-group-17"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Products",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Product",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Products', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Products"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 18,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Quotes",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Quote",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Quotes', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Quotes"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 19,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Sales Orders",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#SalesOrder",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Sales Orders', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Sales Orders"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 20,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Invoices",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Invoice",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Invoices', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Invoices"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 21,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Delivery Orders",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#DeliveryOrder",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Delivery Orders', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Delivery Orders"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 22,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Return Orders",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#ReturnOrder",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Return Orders', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Return Orders"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 23,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Credit Notes",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#CreditNote",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Credit Notes', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Credit Notes"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 24,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Suppliers",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Supplier",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "scoped",
+        "expression": "locator('[data-name=\\\"Supplier\\\"] a')",
+        "matchCount": 1,
+        "args": [
+          "[data-name=\"Supplier\"] a"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 25,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Purchase Orders",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#PurchaseOrder",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Purchase Orders', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Purchase Orders"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 26,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Receipt Orders",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#ReceiptOrder",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Receipt Orders', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Receipt Orders"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 27,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Bills",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#SupplierBill",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Bills', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Bills"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 28,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Bill Credits",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#SupplierCredit",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Bill Credits', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Bill Credits"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 29,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Payments",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#PaymentEntry",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Payments', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Payments"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 30,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Payment Requests",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#PaymentRequest",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Payment Requests', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Payment Requests"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 31,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Subscription",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Subscription",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Subscription', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Subscription"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 32,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Transfer Orders",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#TransferOrder",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Transfer Orders', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Transfer Orders"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 33,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Inventory Adjustments",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#InventoryAdjustment",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "scoped",
+        "expression": "locator('[data-name=\\\"InventoryAdjustment\\\"] a')",
+        "matchCount": 1,
+        "args": [
+          "[data-name=\"InventoryAdjustment\"] a"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 34,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Warehouses",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Warehouse",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "scoped",
+        "expression": "locator('[data-name=\\\"Warehouse\\\"] a')",
+        "matchCount": 1,
+        "args": [
+          "[data-name=\"Warehouse\"] a"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 35,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Inventory Numbers",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#InventoryNumber",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "scoped",
+        "expression": "locator('[data-name=\\\"InventoryNumber\\\"] a')",
+        "matchCount": 1,
+        "args": [
+          "[data-name=\"InventoryNumber\"] a"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 36,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Inventory Transactions",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#InventoryTransaction",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "scoped",
+        "expression": "locator('[data-name=\\\"InventoryTransaction\\\"] a')",
+        "matchCount": 1,
+        "args": [
+          "[data-name=\"InventoryTransaction\"] a"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 37,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": "nav-more-tabs-dropdown",
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-toggle": "dropdown"
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 801,
+        "w": 50,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "attribute",
+        "expression": "locator('#nav-more-tabs-dropdown')",
+        "matchCount": 1,
+        "args": [
+          "#nav-more-tabs-dropdown"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "attribute",
+          "expression": "locator('#nav-more-tabs-dropdown')",
+          "matchCount": 1,
+          "args": [
+            "#nav-more-tabs-dropdown"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('#nav-more-tabs-dropdown')",
+          "matchCount": 1,
+          "args": [
+            "#nav-more-tabs-dropdown"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 38,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Campaigns",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Campaign",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Campaigns', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Campaigns"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 39,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Target Lists",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#TargetList",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Target Lists', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Target Lists"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 40,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Reports",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Report",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Reports', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Reports"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 41,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Projects",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Project",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Projects', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Projects"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 42,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Project Tasks",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#ProjectTask",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Project Tasks', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Project Tasks"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 43,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Organization",
+      "label": null,
+      "placeholder": null,
+      "id": "nav-tab-group-group-28",
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-toggle": "dropdown"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Organization', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Organization"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 44,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Users",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#User",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Users', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Users"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 45,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Teams",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Team",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Teams', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Teams"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 46,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Stream",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Stream",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Stream', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Stream"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 47,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Global Stream",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#GlobalStream",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Global Stream', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Global Stream"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 48,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Working Time Calendars",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#WorkingTimeCalendar",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Working Time Calendars', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Working Time Calendars"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 49,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Automation",
+      "label": null,
+      "placeholder": null,
+      "id": "nav-tab-group-group-29",
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-toggle": "dropdown"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Automation', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Automation"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 50,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Workflows",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Workflow",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Workflows', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Workflows"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 51,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Flowcharts",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#BpmnFlowchart",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Flowcharts', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Flowcharts"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 52,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Processes",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#BpmnProcess",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Processes', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Processes"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 53,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 19,
+        "y": 693,
+        "w": 10,
+        "h": 22
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('#navbar > div.navbar.navbar-inverse > div.navbar-collapse.navbar-body:nth-of-type(2) > div.navbar-left-container:nth-of-type(1) > a.minimizer')",
+        "matchCount": 1,
+        "args": [
+          "#navbar > div.navbar.navbar-inverse > div.navbar-collapse.navbar-body:nth-of-type(2) > div.navbar-left-container:nth-of-type(1) > a.minimizer"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('#navbar > div.navbar.navbar-inverse > div.navbar-collapse.navbar-body:nth-of-type(2) > div.navbar-left-container:nth-of-type(1) > a.minimizer')",
+          "matchCount": 1,
+          "args": [
+            "#navbar > div.navbar.navbar-inverse > div.navbar-collapse.navbar-body:nth-of-type(2) > div.navbar-left-container:nth-of-type(1) > a.minimizer"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 54,
+      "tag": "input",
+      "type": "search",
+      "role": "searchbox",
+      "name": "Search",
+      "label": null,
+      "placeholder": "Search",
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 842,
+        "y": 0,
+        "w": 260,
+        "h": 32
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('searchbox', { name: 'Search', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "searchbox",
+          "Search"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('searchbox', { name: 'Search', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "searchbox",
+            "Search"
+          ]
+        },
+        {
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('Search', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Search"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.navbar-collapse.navbar-body:nth-of-type(2) > div.navbar-right-container:nth-of-type(2) > ul.nav.navbar-nav > li.navbar-form.global-search-container:nth-of-type(1) > div.input-group.has-feedback:nth-of-type(1) > input.form-control.global-search-input')",
+          "matchCount": 1,
+          "args": [
+            "div.navbar-collapse.navbar-body:nth-of-type(2) > div.navbar-right-container:nth-of-type(2) > ul.nav.navbar-nav > li.navbar-form.global-search-container:nth-of-type(1) > div.input-group.has-feedback:nth-of-type(1) > input.form-control.global-search-input"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 55,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Last Viewed",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "showLastViewed"
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1133,
+        "y": 0,
+        "w": 34,
+        "h": 32
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Last Viewed', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Last Viewed"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Last Viewed', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Last Viewed"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.navbar.navbar-inverse > div.navbar-collapse.navbar-body:nth-of-type(2) > div.navbar-right-container:nth-of-type(2) > ul.nav.navbar-nav > li:nth-of-type(2) > a')",
+          "matchCount": 1,
+          "args": [
+            "div.navbar.navbar-inverse > div.navbar-collapse.navbar-body:nth-of-type(2) > div.navbar-right-container:nth-of-type(2) > ul.nav.navbar-nav > li:nth-of-type(2) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 56,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Create",
+      "label": null,
+      "placeholder": null,
+      "id": "nav-quick-create-dropdown",
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-toggle": "dropdown"
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1167,
+        "y": 0,
+        "w": 34,
+        "h": 32
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Create', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Create"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Create', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Create"
+          ]
+        },
+        {
+          "strategy": "attribute",
+          "expression": "locator('#nav-quick-create-dropdown')",
+          "matchCount": 1,
+          "args": [
+            "#nav-quick-create-dropdown"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('#nav-quick-create-dropdown')",
+          "matchCount": 1,
+          "args": [
+            "#nav-quick-create-dropdown"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 57,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Account",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "Account",
+        "data-action": "quickCreate"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Account/create",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Account', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Account"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 58,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Contact",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "Contact",
+        "data-action": "quickCreate"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Contact/create",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Contact', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Contact"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 59,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Lead",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "Lead",
+        "data-action": "quickCreate"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Lead/create",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Lead', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Lead"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 60,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Opportunity",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "Opportunity",
+        "data-action": "quickCreate"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Opportunity/create",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Opportunity', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Opportunity"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 61,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Meeting",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "Meeting",
+        "data-action": "quickCreate"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Meeting/create",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Meeting', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Meeting"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 62,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Call",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "Call",
+        "data-action": "quickCreate"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Call/create",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Call', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Call"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 63,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Task",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "Task",
+        "data-action": "quickCreate"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Task/create",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Task', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Task"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 64,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Case",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "Case",
+        "data-action": "quickCreate"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Case/create",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Case', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Case"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 65,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Email",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "Email",
+        "data-action": "quickCreate"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Email/create",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Email', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Email"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 66,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Project Task",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "ProjectTask",
+        "data-action": "quickCreate"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#ProjectTask/create",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Project Task', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Project Task"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 67,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Notifications",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "showNotifications"
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1201,
+        "y": 0,
+        "w": 34,
+        "h": 32
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Notifications', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Notifications"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Notifications', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Notifications"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.navbar.navbar-inverse > div.navbar-collapse.navbar-body:nth-of-type(2) > div.navbar-right-container:nth-of-type(2) > ul.nav.navbar-nav > li.dropdown.notifications-badge-container:nth-of-type(4) > a.notifications-button')",
+          "matchCount": 1,
+          "args": [
+            "div.navbar.navbar-inverse > div.navbar-collapse.navbar-body:nth-of-type(2) > div.navbar-right-container:nth-of-type(2) > ul.nav.navbar-nav > li.dropdown.notifications-badge-container:nth-of-type(4) > a.notifications-button"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 68,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Menu",
+      "label": null,
+      "placeholder": null,
+      "id": "nav-menu-dropdown",
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-toggle": "dropdown"
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1235,
+        "y": 0,
+        "w": 34,
+        "h": 32
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Menu', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Menu"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Menu', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Menu"
+          ]
+        },
+        {
+          "strategy": "attribute",
+          "expression": "locator('#nav-menu-dropdown')",
+          "matchCount": 1,
+          "args": [
+            "#nav-menu-dropdown"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('#nav-menu-dropdown')",
+          "matchCount": 1,
+          "args": [
+            "#nav-menu-dropdown"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 69,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Jack Adams",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#User/view/1",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Jack Adams', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Jack Adams"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 70,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Administration",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "admin"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Admin",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Administration', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Administration"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 71,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Preferences",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "preferences"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Preferences",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Preferences', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Preferences"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 72,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "About",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "about"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#About",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'About', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "About"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 73,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Log Out",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "logout"
+      },
+      "region": "navigation",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Log Out', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Log Out"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 74,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "Create Product",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "quickCreate",
+        "data-action": "quickCreate"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1090,
+        "y": 47,
+        "w": 140,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Create Product', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Create Product"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Create Product', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Create Product"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('button[data-name=\\\"quickCreate\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "button[data-name=\"quickCreate\"]"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Create Product', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Create Product"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('#main > div.page-header:nth-of-type(1) > div.page-header-row > div:nth-of-type(2) > div.header-buttons.btn-group > button.btn.action')",
+          "matchCount": 1,
+          "args": [
+            "#main > div.page-header:nth-of-type(1) > div.page-header-row > div:nth-of-type(2) > div.header-buttons.btn-group > button.btn.action"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 75,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-toggle": "dropdown"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1229,
+        "y": 47,
+        "w": 36,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.page-header:nth-of-type(1) > div.page-header-row > div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > button.btn.btn-default')",
+        "matchCount": 1,
+        "args": [
+          "div.page-header:nth-of-type(1) > div.page-header-row > div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > button.btn.btn-default"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.page-header:nth-of-type(1) > div.page-header-row > div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > button.btn.btn-default')",
+          "matchCount": 1,
+          "args": [
+            "div.page-header:nth-of-type(1) > div.page-header-row > div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > button.btn.btn-default"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 76,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Categories",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#ProductCategory",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Categories', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Categories"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 77,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Brands",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#ProductBrand",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Brands', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Brands"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 78,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Attributes",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#ProductAttribute",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Attributes', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Attributes"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 79,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Price Books",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#PriceBook",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Price Books', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Price Books"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 80,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Suppliers",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Supplier",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > ul.dropdown-menu.pull-right > li:nth-of-type(6) > a.main-header-manu-action')",
+        "matchCount": 1,
+        "args": [
+          "div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > ul.dropdown-menu.pull-right > li:nth-of-type(6) > a.main-header-manu-action"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": []
+    },
+    {
+      "index": 81,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Tax Profiles",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Tax",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Tax Profiles', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Tax Profiles"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 82,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Warehouses",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Warehouse",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > ul.dropdown-menu.pull-right > li:nth-of-type(9) > a.main-header-manu-action')",
+        "matchCount": 1,
+        "args": [
+          "div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > ul.dropdown-menu.pull-right > li:nth-of-type(9) > a.main-header-manu-action"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": []
+    },
+    {
+      "index": 83,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Inventory Numbers",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#InventoryNumber",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > ul.dropdown-menu.pull-right > li:nth-of-type(10) > a.main-header-manu-action')",
+        "matchCount": 1,
+        "args": [
+          "div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > ul.dropdown-menu.pull-right > li:nth-of-type(10) > a.main-header-manu-action"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": []
+    },
+    {
+      "index": 84,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Inventory Adjustments",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#InventoryAdjustment",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > ul.dropdown-menu.pull-right > li:nth-of-type(11) > a.main-header-manu-action')",
+        "matchCount": 1,
+        "args": [
+          "div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > ul.dropdown-menu.pull-right > li:nth-of-type(11) > a.main-header-manu-action"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": []
+    },
+    {
+      "index": 85,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Inventory Transactions",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#InventoryTransaction",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > ul.dropdown-menu.pull-right > li:nth-of-type(13) > a.main-header-manu-action')",
+        "matchCount": 1,
+        "args": [
+          "div:nth-of-type(2) > div.header-buttons.btn-group > div.btn-group > ul.dropdown-menu.pull-right > li:nth-of-type(13) > a.main-header-manu-action"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": []
+    },
+    {
+      "index": 86,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "All",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-toggle": "dropdown"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 65,
+        "y": 98,
+        "w": 51,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.search-container:nth-of-type(2) > div.row.search-row:nth-of-type(1) > div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn.left-dropdown:nth-of-type(1) > button.btn.dropdown-toggle')",
+        "matchCount": 1,
+        "args": [
+          "div.search-container:nth-of-type(2) > div.row.search-row:nth-of-type(1) > div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn.left-dropdown:nth-of-type(1) > button.btn.dropdown-toggle"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'All', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "button",
+            "All"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('All', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "All"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.search-container:nth-of-type(2) > div.row.search-row:nth-of-type(1) > div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn.left-dropdown:nth-of-type(1) > button.btn.dropdown-toggle')",
+          "matchCount": 1,
+          "args": [
+            "div.search-container:nth-of-type(2) > div.row.search-row:nth-of-type(1) > div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn.left-dropdown:nth-of-type(1) > button.btn.dropdown-toggle"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 87,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "All",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "",
+        "data-action": "selectPreset"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn.left-dropdown:nth-of-type(1) > ul.dropdown-menu.pull-left > li:nth-of-type(1) > a.preset')",
+        "matchCount": 1,
+        "args": [
+          "div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn.left-dropdown:nth-of-type(1) > ul.dropdown-menu.pull-left > li:nth-of-type(1) > a.preset"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": []
+    },
+    {
+      "index": 88,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Active",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "available",
+        "data-action": "selectPreset"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Active', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Active"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 89,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Remove Filter",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "removePreset"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": true,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Remove Filter', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Remove Filter"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 90,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Save Filter",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "savePreset"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": true,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Save Filter', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Save Filter"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 91,
+      "tag": "input",
+      "type": "search",
+      "role": "searchbox",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-name": "textFilter"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 115,
+        "y": 98,
+        "w": 463,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "scoped",
+        "expression": "locator('input[data-name=\\\"textFilter\\\"]')",
+        "matchCount": 1,
+        "args": [
+          "input[data-name=\"textFilter\"]"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "scoped",
+          "expression": "locator('input[data-name=\\\"textFilter\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "input[data-name=\"textFilter\"]"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('#main > div.search-container:nth-of-type(2) > div.row.search-row:nth-of-type(1) > div.form-group:nth-of-type(1) > div.input-group > input.form-control.text-filter')",
+          "matchCount": 1,
+          "args": [
+            "#main > div.search-container:nth-of-type(2) > div.row.search-row:nth-of-type(1) > div.form-group:nth-of-type(1) > div.input-group > input.form-control.text-filter"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 92,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "Search",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "search"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 576,
+        "y": 98,
+        "w": 76,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Search', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Search"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Search', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Search"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.search-container:nth-of-type(2) > div.row.search-row:nth-of-type(1) > div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn:nth-of-type(2) > button.btn.btn-default')",
+          "matchCount": 1,
+          "args": [
+            "div.search-container:nth-of-type(2) > div.row.search-row:nth-of-type(1) > div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn:nth-of-type(2) > button.btn.btn-default"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 93,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-toggle": "dropdown"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 651,
+        "y": 98,
+        "w": 54,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.search-container:nth-of-type(2) > div.row.search-row:nth-of-type(1) > div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn:nth-of-type(3) > button.btn.btn-text:nth-of-type(1)')",
+        "matchCount": 1,
+        "args": [
+          "div.search-container:nth-of-type(2) > div.row.search-row:nth-of-type(1) > div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn:nth-of-type(3) > button.btn.btn-text:nth-of-type(1)"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.search-container:nth-of-type(2) > div.row.search-row:nth-of-type(1) > div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn:nth-of-type(3) > button.btn.btn-text:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div.search-container:nth-of-type(2) > div.row.search-row:nth-of-type(1) > div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn:nth-of-type(3) > button.btn.btn-text:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 94,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "Reset",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "reset"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 704,
+        "y": 98,
+        "w": 54,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Reset', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Reset"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 95,
+      "tag": "input",
+      "type": null,
+      "role": "textbox",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn:nth-of-type(3) > ul.dropdown-menu.pull-right > li.quick-search-list-item:nth-of-type(2) > input.form-control.field-filter-quick-search-input')",
+        "matchCount": 1,
+        "args": [
+          "div.form-group:nth-of-type(1) > div.input-group > div.input-group-btn:nth-of-type(3) > ul.dropdown-menu.pull-right > li.quick-search-list-item:nth-of-type(2) > input.form-control.field-filter-quick-search-input"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": []
+    },
+    {
+      "index": 96,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Brand",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "brand"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Brand', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Brand"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 97,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Type",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "type"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Type', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Type"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 98,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Item Type",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "itemType"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Item Type', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Item Type"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 99,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Sellable",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "isSellable"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Sellable', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Sellable"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 100,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Purchasable",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "isPurchasable"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Purchasable', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Purchasable"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 101,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Subscribable",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "isSubscribable"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Subscribable', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Subscribable"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 102,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Suppliers",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "suppliers"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Suppliers', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Suppliers"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 103,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Available",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "quantity"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Available', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Available"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 104,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "On Hand",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "quantityOnHand"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'On Hand', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "On Hand"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 105,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Warehouses (On Hand)",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "warehousesOnHand"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Warehouses (On Hand)', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Warehouses (On Hand)"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 106,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Part Number",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "partNumber"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Part Number', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Part Number"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 107,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Track Inventory",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "isInventory"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Track Inventory', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Track Inventory"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 108,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Inventory Number Type",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "inventoryNumberType"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Inventory Number Type', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Inventory Number Type"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 109,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Removal Strategy",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "removalStrategy"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Removal Strategy', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Removal Strategy"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 110,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Expiration Days",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "expirationDays"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Expiration Days', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Expiration Days"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 111,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Tax Classes",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "taxClasses"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Tax Classes', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Tax Classes"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 112,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Teams",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "teams"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Teams', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Teams"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 113,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Created At",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "addFilter",
+        "data-name": "createdAt"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Created At', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Created At"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 114,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Apply Reset",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "applyFilters"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": true,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Apply Reset', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Apply Reset"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 115,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-toggle": "dropdown"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1229,
+        "y": 152,
+        "w": 36,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.list-main-column > div.nested-categories-container:nth-of-type(1) > div.list-nested-categories > div.clearfix:nth-of-type(1) > div.btn-group.pull-right > a.dropdown-toggle.btn')",
+        "matchCount": 1,
+        "args": [
+          "div.list-main-column > div.nested-categories-container:nth-of-type(1) > div.list-nested-categories > div.clearfix:nth-of-type(1) > div.btn-group.pull-right > a.dropdown-toggle.btn"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.list-main-column > div.nested-categories-container:nth-of-type(1) > div.list-nested-categories > div.clearfix:nth-of-type(1) > div.btn-group.pull-right > a.dropdown-toggle.btn')",
+          "matchCount": 1,
+          "args": [
+            "div.list-main-column > div.nested-categories-container:nth-of-type(1) > div.list-nested-categories > div.clearfix:nth-of-type(1) > div.btn-group.pull-right > a.dropdown-toggle.btn"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 116,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Create Category",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "createCategory"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#ProductCategory/create?returnUrl=%23Product",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Create Category', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Create Category"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 117,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Manage Categories",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "manageCategories"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": "#ProductCategory",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Manage Categories', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Manage Categories"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 118,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Expand",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "expand"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Expand', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Expand"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 119,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Show Navigation Panel",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "toggleNavigationPanel"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Show Navigation Panel', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Show Navigation Panel"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 120,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Electronics",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "openCategory",
+        "data-id": "659d52b11847ca8d0",
+        "data-name": "Electronics"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Product/list/categoryId=659d52b11847ca8d0",
+      "box": {
+        "x": 65,
+        "y": 200,
+        "w": 98,
+        "h": 17
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Electronics', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Electronics"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Electronics', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Electronics"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('a[data-name=\\\"Electronics\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "a[data-name=\"Electronics\"]"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Electronics', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Electronics"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.nested-categories-container:nth-of-type(1) > div.list-nested-categories > div.grid-auto-fill-xs:nth-of-type(2) > div.category-cell:nth-of-type(1) > div.category-item > a.action.text-default')",
+          "matchCount": 1,
+          "args": [
+            "div.nested-categories-container:nth-of-type(1) > div.list-nested-categories > div.grid-auto-fill-xs:nth-of-type(2) > div.category-cell:nth-of-type(1) > div.category-item > a.action.text-default"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 121,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Accessories",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "openCategory",
+        "data-id": "659d52ed0c7a28552",
+        "data-name": "Accessories"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Product/list/categoryId=659d52ed0c7a28552",
+      "box": {
+        "x": 308,
+        "y": 200,
+        "w": 106,
+        "h": 17
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Accessories', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Accessories"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Accessories', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Accessories"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('a[data-name=\\\"Accessories\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "a[data-name=\"Accessories\"]"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Accessories', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Accessories"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.nested-categories-container:nth-of-type(1) > div.list-nested-categories > div.grid-auto-fill-xs:nth-of-type(2) > div.category-cell:nth-of-type(2) > div.category-item > a.action.text-default')",
+          "matchCount": 1,
+          "args": [
+            "div.nested-categories-container:nth-of-type(1) > div.list-nested-categories > div.grid-auto-fill-xs:nth-of-type(2) > div.category-cell:nth-of-type(2) > div.category-item > a.action.text-default"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 122,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Services",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "openCategory",
+        "data-id": "659d5311c91c5e73d",
+        "data-name": "Services"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Product/list/categoryId=659d5311c91c5e73d",
+      "box": {
+        "x": 551,
+        "y": 200,
+        "w": 82,
+        "h": 17
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Services', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Services"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Services', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Services"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('a[data-name=\\\"Services\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "a[data-name=\"Services\"]"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Services', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Services"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.nested-categories-container:nth-of-type(1) > div.list-nested-categories > div.grid-auto-fill-xs:nth-of-type(2) > div.category-cell:nth-of-type(3) > div.category-item > a.action.text-default')",
+          "matchCount": 1,
+          "args": [
+            "div.nested-categories-container:nth-of-type(1) > div.list-nested-categories > div.grid-auto-fill-xs:nth-of-type(2) > div.category-cell:nth-of-type(3) > div.category-item > a.action.text-default"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 123,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Subscriptions",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "openCategory",
+        "data-id": "698edb1eb2ae5f160",
+        "data-name": "Subscriptions"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Product/list/categoryId=698edb1eb2ae5f160",
+      "box": {
+        "x": 795,
+        "y": 200,
+        "w": 116,
+        "h": 17
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Subscriptions', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Subscriptions"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Subscriptions', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Subscriptions"
+          ]
+        },
+        {
+          "strategy": "scoped",
+          "expression": "locator('a[data-name=\\\"Subscriptions\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "a[data-name=\"Subscriptions\"]"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Subscriptions', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Subscriptions"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.nested-categories-container:nth-of-type(1) > div.list-nested-categories > div.grid-auto-fill-xs:nth-of-type(2) > div.category-cell:nth-of-type(4) > div.category-item > a.action.text-default')",
+          "matchCount": 1,
+          "args": [
+            "div.nested-categories-container:nth-of-type(1) > div.list-nested-categories > div.grid-auto-fill-xs:nth-of-type(2) > div.category-cell:nth-of-type(4) > div.category-item > a.action.text-default"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 124,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "Actions",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-toggle": "dropdown"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Actions', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Actions"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 125,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Remove",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "remove"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": true,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Remove', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Remove"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 126,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Mass Update",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "massUpdate"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Mass Update', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Mass Update"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 127,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Export",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "export"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": true,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Export', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Export"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 128,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Convert Currency",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "convertCurrency"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": true,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Convert Currency', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Convert Currency"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 129,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Update Price",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-action": "updatePrice"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Update Price', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Update Price"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 130,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "0 / 0",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-toggle": "dropdown"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '0 / 0', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "0 / 0"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 131,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "First Page",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-page": "first"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'First Page', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "First Page"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 132,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Last Page",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-page": "last"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Last Page', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Last Page"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 133,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Previous Page",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-page": "previous"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Previous Page', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Previous Page"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 134,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "Next Page",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-page": "next"
+      },
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Next Page', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Next Page"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 135,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "EspoCRM, Inc.",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "footer",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://www.espocrm.com",
+      "box": {
+        "x": 111,
+        "y": 852,
+        "w": 83,
+        "h": 15
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'EspoCRM, Inc.', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "EspoCRM, Inc."
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'EspoCRM, Inc.', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "EspoCRM, Inc."
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('EspoCRM, Inc.', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "EspoCRM, Inc."
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('#footer > p.credit.small > a')",
+          "matchCount": 1,
+          "args": [
+            "#footer > p.credit.small > a"
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "href": "#",
+      "resolved": "https://demo.eu.espocrm.com/#",
+      "text": ""
+    },
+    {
+      "href": "#",
+      "resolved": "https://demo.eu.espocrm.com/#",
+      "text": "Home"
+    },
+    {
+      "href": "#Account",
+      "resolved": "https://demo.eu.espocrm.com/#Account",
+      "text": "Accounts"
+    },
+    {
+      "href": "#Contact",
+      "resolved": "https://demo.eu.espocrm.com/#Contact",
+      "text": "Contacts"
+    },
+    {
+      "href": "#Lead",
+      "resolved": "https://demo.eu.espocrm.com/#Lead",
+      "text": "Leads"
+    },
+    {
+      "href": "#Opportunity",
+      "resolved": "https://demo.eu.espocrm.com/#Opportunity",
+      "text": "Opportunities"
+    },
+    {
+      "href": "#Email",
+      "resolved": "https://demo.eu.espocrm.com/#Email",
+      "text": "Emails"
+    },
+    {
+      "href": "#Calendar",
+      "resolved": "https://demo.eu.espocrm.com/#Calendar",
+      "text": "Calendar"
+    },
+    {
+      "href": "#Meeting",
+      "resolved": "https://demo.eu.espocrm.com/#Meeting",
+      "text": "Meetings"
+    },
+    {
+      "href": "#Call",
+      "resolved": "https://demo.eu.espocrm.com/#Call",
+      "text": "Calls"
+    },
+    {
+      "href": "#Task",
+      "resolved": "https://demo.eu.espocrm.com/#Task",
+      "text": "Tasks"
+    },
+    {
+      "href": "#Case",
+      "resolved": "https://demo.eu.espocrm.com/#Case",
+      "text": "Cases"
+    },
+    {
+      "href": "#KnowledgeBaseArticle",
+      "resolved": "https://demo.eu.espocrm.com/#KnowledgeBaseArticle",
+      "text": "Knowledge Base"
+    },
+    {
+      "href": "#Document",
+      "resolved": "https://demo.eu.espocrm.com/#Document",
+      "text": "Documents"
+    },
+    {
+      "href": "#Product",
+      "resolved": "https://demo.eu.espocrm.com/#Product",
+      "text": "Products"
+    },
+    {
+      "href": "#Quote",
+      "resolved": "https://demo.eu.espocrm.com/#Quote",
+      "text": "Quotes"
+    },
+    {
+      "href": "#SalesOrder",
+      "resolved": "https://demo.eu.espocrm.com/#SalesOrder",
+      "text": "Sales Orders"
+    },
+    {
+      "href": "#Invoice",
+      "resolved": "https://demo.eu.espocrm.com/#Invoice",
+      "text": "Invoices"
+    },
+    {
+      "href": "#DeliveryOrder",
+      "resolved": "https://demo.eu.espocrm.com/#DeliveryOrder",
+      "text": "Delivery Orders"
+    },
+    {
+      "href": "#ReturnOrder",
+      "resolved": "https://demo.eu.espocrm.com/#ReturnOrder",
+      "text": "Return Orders"
+    },
+    {
+      "href": "#CreditNote",
+      "resolved": "https://demo.eu.espocrm.com/#CreditNote",
+      "text": "Credit Notes"
+    },
+    {
+      "href": "#Supplier",
+      "resolved": "https://demo.eu.espocrm.com/#Supplier",
+      "text": "Suppliers"
+    },
+    {
+      "href": "#PurchaseOrder",
+      "resolved": "https://demo.eu.espocrm.com/#PurchaseOrder",
+      "text": "Purchase Orders"
+    },
+    {
+      "href": "#ReceiptOrder",
+      "resolved": "https://demo.eu.espocrm.com/#ReceiptOrder",
+      "text": "Receipt Orders"
+    },
+    {
+      "href": "#SupplierBill",
+      "resolved": "https://demo.eu.espocrm.com/#SupplierBill",
+      "text": "Bills"
+    },
+    {
+      "href": "#SupplierCredit",
+      "resolved": "https://demo.eu.espocrm.com/#SupplierCredit",
+      "text": "Bill Credits"
+    },
+    {
+      "href": "#PaymentEntry",
+      "resolved": "https://demo.eu.espocrm.com/#PaymentEntry",
+      "text": "Payments"
+    },
+    {
+      "href": "#PaymentRequest",
+      "resolved": "https://demo.eu.espocrm.com/#PaymentRequest",
+      "text": "Payment Requests"
+    },
+    {
+      "href": "#Subscription",
+      "resolved": "https://demo.eu.espocrm.com/#Subscription",
+      "text": "Subscription"
+    },
+    {
+      "href": "#TransferOrder",
+      "resolved": "https://demo.eu.espocrm.com/#TransferOrder",
+      "text": "Transfer Orders"
+    },
+    {
+      "href": "#InventoryAdjustment",
+      "resolved": "https://demo.eu.espocrm.com/#InventoryAdjustment",
+      "text": "Inventory Adjustments"
+    },
+    {
+      "href": "#Warehouse",
+      "resolved": "https://demo.eu.espocrm.com/#Warehouse",
+      "text": "Warehouses"
+    },
+    {
+      "href": "#InventoryNumber",
+      "resolved": "https://demo.eu.espocrm.com/#InventoryNumber",
+      "text": "Inventory Numbers"
+    },
+    {
+      "href": "#InventoryTransaction",
+      "resolved": "https://demo.eu.espocrm.com/#InventoryTransaction",
+      "text": "Inventory Transactions"
+    },
+    {
+      "href": "#Campaign",
+      "resolved": "https://demo.eu.espocrm.com/#Campaign",
+      "text": "Campaigns"
+    },
+    {
+      "href": "#TargetList",
+      "resolved": "https://demo.eu.espocrm.com/#TargetList",
+      "text": "Target Lists"
+    },
+    {
+      "href": "#Report",
+      "resolved": "https://demo.eu.espocrm.com/#Report",
+      "text": "Reports"
+    },
+    {
+      "href": "#Project",
+      "resolved": "https://demo.eu.espocrm.com/#Project",
+      "text": "Projects"
+    },
+    {
+      "href": "#ProjectTask",
+      "resolved": "https://demo.eu.espocrm.com/#ProjectTask",
+      "text": "Project Tasks"
+    },
+    {
+      "href": "#User",
+      "resolved": "https://demo.eu.espocrm.com/#User",
+      "text": "Users"
+    },
+    {
+      "href": "#Team",
+      "resolved": "https://demo.eu.espocrm.com/#Team",
+      "text": "Teams"
+    },
+    {
+      "href": "#Stream",
+      "resolved": "https://demo.eu.espocrm.com/#Stream",
+      "text": "Stream"
+    },
+    {
+      "href": "#GlobalStream",
+      "resolved": "https://demo.eu.espocrm.com/#GlobalStream",
+      "text": "Global Stream"
+    },
+    {
+      "href": "#WorkingTimeCalendar",
+      "resolved": "https://demo.eu.espocrm.com/#WorkingTimeCalendar",
+      "text": "Working Time Calendars"
+    },
+    {
+      "href": "#Workflow",
+      "resolved": "https://demo.eu.espocrm.com/#Workflow",
+      "text": "Workflows"
+    },
+    {
+      "href": "#BpmnFlowchart",
+      "resolved": "https://demo.eu.espocrm.com/#BpmnFlowchart",
+      "text": "Flowcharts"
+    },
+    {
+      "href": "#BpmnProcess",
+      "resolved": "https://demo.eu.espocrm.com/#BpmnProcess",
+      "text": "Processes"
+    },
+    {
+      "href": "#Account/create",
+      "resolved": "https://demo.eu.espocrm.com/#Account/create",
+      "text": "Account"
+    },
+    {
+      "href": "#Contact/create",
+      "resolved": "https://demo.eu.espocrm.com/#Contact/create",
+      "text": "Contact"
+    },
+    {
+      "href": "#Lead/create",
+      "resolved": "https://demo.eu.espocrm.com/#Lead/create",
+      "text": "Lead"
+    },
+    {
+      "href": "#Opportunity/create",
+      "resolved": "https://demo.eu.espocrm.com/#Opportunity/create",
+      "text": "Opportunity"
+    },
+    {
+      "href": "#Meeting/create",
+      "resolved": "https://demo.eu.espocrm.com/#Meeting/create",
+      "text": "Meeting"
+    },
+    {
+      "href": "#Call/create",
+      "resolved": "https://demo.eu.espocrm.com/#Call/create",
+      "text": "Call"
+    },
+    {
+      "href": "#Task/create",
+      "resolved": "https://demo.eu.espocrm.com/#Task/create",
+      "text": "Task"
+    },
+    {
+      "href": "#Case/create",
+      "resolved": "https://demo.eu.espocrm.com/#Case/create",
+      "text": "Case"
+    },
+    {
+      "href": "#Email/create",
+      "resolved": "https://demo.eu.espocrm.com/#Email/create",
+      "text": "Email"
+    },
+    {
+      "href": "#ProjectTask/create",
+      "resolved": "https://demo.eu.espocrm.com/#ProjectTask/create",
+      "text": "Project Task"
+    },
+    {
+      "href": "#User/view/1",
+      "resolved": "https://demo.eu.espocrm.com/#User/view/1",
+      "text": "Jack Adams"
+    },
+    {
+      "href": "#Admin",
+      "resolved": "https://demo.eu.espocrm.com/#Admin",
+      "text": "Administration"
+    },
+    {
+      "href": "#Preferences",
+      "resolved": "https://demo.eu.espocrm.com/#Preferences",
+      "text": "Preferences"
+    },
+    {
+      "href": "#About",
+      "resolved": "https://demo.eu.espocrm.com/#About",
+      "text": "About"
+    },
+    {
+      "href": "#ProductCategory",
+      "resolved": "https://demo.eu.espocrm.com/#ProductCategory",
+      "text": "Categories"
+    },
+    {
+      "href": "#ProductBrand",
+      "resolved": "https://demo.eu.espocrm.com/#ProductBrand",
+      "text": "Brands"
+    },
+    {
+      "href": "#ProductAttribute",
+      "resolved": "https://demo.eu.espocrm.com/#ProductAttribute",
+      "text": "Attributes"
+    },
+    {
+      "href": "#PriceBook",
+      "resolved": "https://demo.eu.espocrm.com/#PriceBook",
+      "text": "Price Books"
+    },
+    {
+      "href": "#Supplier",
+      "resolved": "https://demo.eu.espocrm.com/#Supplier",
+      "text": "Suppliers"
+    },
+    {
+      "href": "#Tax",
+      "resolved": "https://demo.eu.espocrm.com/#Tax",
+      "text": "Tax Profiles"
+    },
+    {
+      "href": "#Warehouse",
+      "resolved": "https://demo.eu.espocrm.com/#Warehouse",
+      "text": "Warehouses"
+    },
+    {
+      "href": "#InventoryNumber",
+      "resolved": "https://demo.eu.espocrm.com/#InventoryNumber",
+      "text": "Inventory Numbers"
+    },
+    {
+      "href": "#InventoryAdjustment",
+      "resolved": "https://demo.eu.espocrm.com/#InventoryAdjustment",
+      "text": "Inventory Adjustments"
+    },
+    {
+      "href": "#InventoryTransaction",
+      "resolved": "https://demo.eu.espocrm.com/#InventoryTransaction",
+      "text": "Inventory Transactions"
+    },
+    {
+      "href": "#ProductCategory/create?returnUrl=%23Product",
+      "resolved": "https://demo.eu.espocrm.com/#ProductCategory/create?returnUrl=%23Product",
+      "text": "Create Category"
+    },
+    {
+      "href": "#ProductCategory",
+      "resolved": "https://demo.eu.espocrm.com/#ProductCategory",
+      "text": "Manage Categories"
+    },
+    {
+      "href": "#Product/list/categoryId=659d52b11847ca8d0",
+      "resolved": "https://demo.eu.espocrm.com/#Product/list/categoryId=659d52b11847ca8d0",
+      "text": "Electronics"
+    },
+    {
+      "href": "#Product/list/categoryId=659d52ed0c7a28552",
+      "resolved": "https://demo.eu.espocrm.com/#Product/list/categoryId=659d52ed0c7a28552",
+      "text": "Accessories"
+    },
+    {
+      "href": "#Product/list/categoryId=659d5311c91c5e73d",
+      "resolved": "https://demo.eu.espocrm.com/#Product/list/categoryId=659d5311c91c5e73d",
+      "text": "Services"
+    },
+    {
+      "href": "#Product/list/categoryId=698edb1eb2ae5f160",
+      "resolved": "https://demo.eu.espocrm.com/#Product/list/categoryId=698edb1eb2ae5f160",
+      "text": "Subscriptions"
+    },
+    {
+      "href": "https://www.espocrm.com",
+      "resolved": "https://www.espocrm.com/",
+      "text": "EspoCRM, Inc."
+    }
+  ],
+  "stats": {
+    "elements": 136,
+    "visible": 34,
+    "hidden": 102,
+    "semantic": 27,
+    "fragile": 7,
+    "ambiguous": 0,
+    "withTestId": 0
+  }
+}

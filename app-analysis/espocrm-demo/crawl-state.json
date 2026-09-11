@@ -1,0 +1,971 @@
+{
+  "pending": [],
+  "queued": {
+    "root": true,
+    "Account": true,
+    "Contact": true,
+    "Contact-create": true,
+    "Lead": true,
+    "Lead-create": true,
+    "Opportunity": true,
+    "Opportunity-create": true,
+    "Email": true,
+    "Calendar": true,
+    "Meeting": true,
+    "Meeting-create": true,
+    "Call": true,
+    "Task": true,
+    "Task-create": true,
+    "Case": true,
+    "Case-create": true,
+    "KnowledgeBaseArticle": true,
+    "Document": true,
+    "Product": true,
+    "Quote": true,
+    "SalesOrder": true,
+    "Invoice": true,
+    "Campaign": true,
+    "TargetList": true,
+    "Report": true,
+    "Project": true,
+    "ProjectTask": true,
+    "User": true,
+    "Team": true,
+    "Stream": true,
+    "Preferences": true,
+    "DeliveryOrder": true,
+    "ReturnOrder": true,
+    "CreditNote": true,
+    "Supplier": true,
+    "PurchaseOrder": true,
+    "ReceiptOrder": true,
+    "SupplierBill": true,
+    "SupplierCredit": true,
+    "PaymentEntry": true,
+    "PaymentRequest": true,
+    "Subscription": true,
+    "TransferOrder": true,
+    "InventoryAdjustment": true,
+    "Warehouse": true,
+    "InventoryNumber": true,
+    "InventoryTransaction": true,
+    "GlobalStream": true,
+    "WorkingTimeCalendar": true,
+    "Workflow": true,
+    "BpmnFlowchart": true,
+    "BpmnProcess": true,
+    "Account-create": true,
+    "Call-create": true,
+    "Email-create": true,
+    "ProjectTask-create": true,
+    "User-view-1": true,
+    "Admin": true,
+    "About": true
+  },
+  "visited": {
+    "root": {
+      "url": "https://demo.eu.espocrm.com/",
+      "title": "EspoCRM Demo",
+      "settled": true,
+      "stats": {
+        "elements": 313,
+        "visible": 150,
+        "hidden": 163,
+        "semantic": 62,
+        "fragile": 74,
+        "ambiguous": 14,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Account": {
+      "url": "https://demo.eu.espocrm.com#Account",
+      "title": "Accounts",
+      "settled": true,
+      "stats": {
+        "elements": 222,
+        "visible": 74,
+        "hidden": 148,
+        "semantic": 48,
+        "fragile": 26,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Contact": {
+      "url": "https://demo.eu.espocrm.com#Contact",
+      "title": "Contacts",
+      "settled": true,
+      "stats": {
+        "elements": 323,
+        "visible": 157,
+        "hidden": 166,
+        "semantic": 109,
+        "fragile": 48,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Contact-create": {
+      "url": "https://demo.eu.espocrm.com#Contact/create",
+      "title": "Create Contact",
+      "settled": true,
+      "stats": {
+        "elements": 118,
+        "visible": 55,
+        "hidden": 63,
+        "semantic": 38,
+        "fragile": 16,
+        "ambiguous": 1,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Lead": {
+      "url": "https://demo.eu.espocrm.com#Lead",
+      "title": "Leads",
+      "settled": true,
+      "stats": {
+        "elements": 330,
+        "visible": 157,
+        "hidden": 173,
+        "semantic": 103,
+        "fragile": 54,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Lead-create": {
+      "url": "https://demo.eu.espocrm.com#Lead/create",
+      "title": "Create Lead",
+      "settled": true,
+      "stats": {
+        "elements": 142,
+        "visible": 62,
+        "hidden": 80,
+        "semantic": 42,
+        "fragile": 18,
+        "ambiguous": 2,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Opportunity": {
+      "url": "https://demo.eu.espocrm.com#Opportunity",
+      "title": "Opportunities",
+      "settled": true,
+      "stats": {
+        "elements": 279,
+        "visible": 77,
+        "hidden": 202,
+        "semantic": 50,
+        "fragile": 7,
+        "ambiguous": 20,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Opportunity-create": {
+      "url": "https://demo.eu.espocrm.com#Opportunity/create",
+      "title": "Create Opportunity",
+      "settled": true,
+      "stats": {
+        "elements": 110,
+        "visible": 49,
+        "hidden": 61,
+        "semantic": 38,
+        "fragile": 9,
+        "ambiguous": 2,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Email": {
+      "url": "https://demo.eu.espocrm.com#Email",
+      "title": "Emails",
+      "settled": true,
+      "stats": {
+        "elements": 172,
+        "visible": 43,
+        "hidden": 129,
+        "semantic": 33,
+        "fragile": 10,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Calendar": {
+      "url": "https://demo.eu.espocrm.com#Calendar",
+      "title": "Calendar",
+      "settled": true,
+      "stats": {
+        "elements": 111,
+        "visible": 52,
+        "hidden": 59,
+        "semantic": 24,
+        "fragile": 28,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Meeting": {
+      "url": "https://demo.eu.espocrm.com#Meeting",
+      "title": "Meetings",
+      "settled": true,
+      "stats": {
+        "elements": 342,
+        "visible": 140,
+        "hidden": 202,
+        "semantic": 74,
+        "fragile": 66,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Meeting-create": {
+      "url": "https://demo.eu.espocrm.com#Meeting/create",
+      "title": "Create Meeting",
+      "settled": true,
+      "stats": {
+        "elements": 116,
+        "visible": 55,
+        "hidden": 61,
+        "semantic": 41,
+        "fragile": 13,
+        "ambiguous": 1,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Call": {
+      "url": "https://demo.eu.espocrm.com#Call",
+      "title": "Calls",
+      "settled": true,
+      "stats": {
+        "elements": 336,
+        "visible": 138,
+        "hidden": 198,
+        "semantic": 78,
+        "fragile": 60,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Task": {
+      "url": "https://demo.eu.espocrm.com#Task",
+      "title": "Tasks",
+      "settled": true,
+      "stats": {
+        "elements": 297,
+        "visible": 117,
+        "hidden": 180,
+        "semantic": 62,
+        "fragile": 55,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Task-create": {
+      "url": "https://demo.eu.espocrm.com#Task/create",
+      "title": "Create Task",
+      "settled": true,
+      "stats": {
+        "elements": 117,
+        "visible": 53,
+        "hidden": 64,
+        "semantic": 38,
+        "fragile": 11,
+        "ambiguous": 4,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Case": {
+      "url": "https://demo.eu.espocrm.com#Case",
+      "title": "Cases",
+      "settled": true,
+      "stats": {
+        "elements": 233,
+        "visible": 94,
+        "hidden": 139,
+        "semantic": 51,
+        "fragile": 43,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Case-create": {
+      "url": "https://demo.eu.espocrm.com#Case/create",
+      "title": "Create Case",
+      "settled": true,
+      "stats": {
+        "elements": 107,
+        "visible": 46,
+        "hidden": 61,
+        "semantic": 36,
+        "fragile": 10,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "KnowledgeBaseArticle": {
+      "url": "https://demo.eu.espocrm.com#KnowledgeBaseArticle",
+      "title": "Knowledge Base",
+      "settled": true,
+      "stats": {
+        "elements": 128,
+        "visible": 38,
+        "hidden": 90,
+        "semantic": 28,
+        "fragile": 10,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Document": {
+      "url": "https://demo.eu.espocrm.com#Document",
+      "title": "Documents",
+      "settled": true,
+      "stats": {
+        "elements": 149,
+        "visible": 46,
+        "hidden": 103,
+        "semantic": 30,
+        "fragile": 16,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Product": {
+      "url": "https://demo.eu.espocrm.com#Product",
+      "title": "Products",
+      "settled": true,
+      "stats": {
+        "elements": 136,
+        "visible": 34,
+        "hidden": 102,
+        "semantic": 27,
+        "fragile": 7,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Quote": {
+      "url": "https://demo.eu.espocrm.com#Quote",
+      "title": "Quotes",
+      "settled": true,
+      "stats": {
+        "elements": 162,
+        "visible": 44,
+        "hidden": 118,
+        "semantic": 29,
+        "fragile": 15,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "SalesOrder": {
+      "url": "https://demo.eu.espocrm.com#SalesOrder",
+      "title": "Sales Orders",
+      "settled": true,
+      "stats": {
+        "elements": 163,
+        "visible": 44,
+        "hidden": 119,
+        "semantic": 29,
+        "fragile": 15,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Invoice": {
+      "url": "https://demo.eu.espocrm.com#Invoice",
+      "title": "Invoices",
+      "settled": true,
+      "stats": {
+        "elements": 178,
+        "visible": 44,
+        "hidden": 134,
+        "semantic": 29,
+        "fragile": 15,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Campaign": {
+      "url": "https://demo.eu.espocrm.com#Campaign",
+      "title": "Campaigns",
+      "settled": true,
+      "stats": {
+        "elements": 148,
+        "visible": 46,
+        "hidden": 102,
+        "semantic": 29,
+        "fragile": 17,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "TargetList": {
+      "url": "https://demo.eu.espocrm.com#TargetList",
+      "title": "Target Lists",
+      "settled": true,
+      "stats": {
+        "elements": 138,
+        "visible": 43,
+        "hidden": 95,
+        "semantic": 28,
+        "fragile": 15,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Report": {
+      "url": "https://demo.eu.espocrm.com#Report",
+      "title": "Reports",
+      "settled": true,
+      "stats": {
+        "elements": 195,
+        "visible": 69,
+        "hidden": 126,
+        "semantic": 43,
+        "fragile": 26,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Project": {
+      "url": "https://demo.eu.espocrm.com#Project",
+      "title": "Projects",
+      "settled": true,
+      "stats": {
+        "elements": 174,
+        "visible": 50,
+        "hidden": 124,
+        "semantic": 31,
+        "fragile": 19,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "ProjectTask": {
+      "url": "https://demo.eu.espocrm.com#ProjectTask",
+      "title": "Project Tasks",
+      "settled": true,
+      "stats": {
+        "elements": 319,
+        "visible": 120,
+        "hidden": 199,
+        "semantic": 68,
+        "fragile": 52,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "User": {
+      "url": "https://demo.eu.espocrm.com#User",
+      "title": "Users",
+      "settled": true,
+      "stats": {
+        "elements": 167,
+        "visible": 59,
+        "hidden": 108,
+        "semantic": 34,
+        "fragile": 25,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Team": {
+      "url": "https://demo.eu.espocrm.com#Team",
+      "title": "Teams",
+      "settled": true,
+      "stats": {
+        "elements": 111,
+        "visible": 36,
+        "hidden": 75,
+        "semantic": 27,
+        "fragile": 9,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Stream": {
+      "url": "https://demo.eu.espocrm.com#Stream",
+      "title": "EspoCRM Demo",
+      "settled": true,
+      "stats": {
+        "elements": 244,
+        "visible": 125,
+        "hidden": 119,
+        "semantic": 46,
+        "fragile": 79,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "Preferences": {
+      "url": "https://demo.eu.espocrm.com#Preferences",
+      "title": "Preferences",
+      "settled": true,
+      "stats": {
+        "elements": 351,
+        "visible": 37,
+        "hidden": 314,
+        "semantic": 31,
+        "fragile": 6,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "DeliveryOrder": {
+      "url": "https://demo.eu.espocrm.com/#DeliveryOrder",
+      "title": "Delivery Orders",
+      "settled": true,
+      "stats": {
+        "elements": 164,
+        "visible": 45,
+        "hidden": 119,
+        "semantic": 29,
+        "fragile": 16,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "ReturnOrder": {
+      "url": "https://demo.eu.espocrm.com/#ReturnOrder",
+      "title": "Return Orders",
+      "settled": true,
+      "stats": {
+        "elements": 143,
+        "visible": 33,
+        "hidden": 110,
+        "semantic": 23,
+        "fragile": 10,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "CreditNote": {
+      "url": "https://demo.eu.espocrm.com/#CreditNote",
+      "title": "Credit Notes",
+      "settled": true,
+      "stats": {
+        "elements": 142,
+        "visible": 33,
+        "hidden": 109,
+        "semantic": 23,
+        "fragile": 10,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "Supplier": {
+      "url": "https://demo.eu.espocrm.com/#Supplier",
+      "title": "Suppliers",
+      "settled": true,
+      "stats": {
+        "elements": 129,
+        "visible": 42,
+        "hidden": 87,
+        "semantic": 26,
+        "fragile": 16,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "PurchaseOrder": {
+      "url": "https://demo.eu.espocrm.com/#PurchaseOrder",
+      "title": "Purchase Orders",
+      "settled": true,
+      "stats": {
+        "elements": 190,
+        "visible": 60,
+        "hidden": 130,
+        "semantic": 35,
+        "fragile": 25,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "ReceiptOrder": {
+      "url": "https://demo.eu.espocrm.com/#ReceiptOrder",
+      "title": "Receipt Orders",
+      "settled": true,
+      "stats": {
+        "elements": 186,
+        "visible": 60,
+        "hidden": 126,
+        "semantic": 36,
+        "fragile": 24,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "SupplierBill": {
+      "url": "https://demo.eu.espocrm.com/#SupplierBill",
+      "title": "Bills",
+      "settled": true,
+      "stats": {
+        "elements": 143,
+        "visible": 33,
+        "hidden": 110,
+        "semantic": 23,
+        "fragile": 10,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "SupplierCredit": {
+      "url": "https://demo.eu.espocrm.com/#SupplierCredit",
+      "title": "Bill Credits",
+      "settled": true,
+      "stats": {
+        "elements": 143,
+        "visible": 33,
+        "hidden": 110,
+        "semantic": 23,
+        "fragile": 10,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "PaymentEntry": {
+      "url": "https://demo.eu.espocrm.com/#PaymentEntry",
+      "title": "Payments",
+      "settled": true,
+      "stats": {
+        "elements": 157,
+        "visible": 45,
+        "hidden": 112,
+        "semantic": 27,
+        "fragile": 18,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "PaymentRequest": {
+      "url": "https://demo.eu.espocrm.com/#PaymentRequest",
+      "title": "Payment Requests",
+      "settled": true,
+      "stats": {
+        "elements": 144,
+        "visible": 45,
+        "hidden": 99,
+        "semantic": 29,
+        "fragile": 16,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "Subscription": {
+      "url": "https://demo.eu.espocrm.com/#Subscription",
+      "title": "Subscription",
+      "settled": true,
+      "stats": {
+        "elements": 140,
+        "visible": 33,
+        "hidden": 107,
+        "semantic": 23,
+        "fragile": 10,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "TransferOrder": {
+      "url": "https://demo.eu.espocrm.com/#TransferOrder",
+      "title": "Transfer Orders",
+      "settled": true,
+      "stats": {
+        "elements": 187,
+        "visible": 60,
+        "hidden": 127,
+        "semantic": 33,
+        "fragile": 27,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "InventoryAdjustment": {
+      "url": "https://demo.eu.espocrm.com/#InventoryAdjustment",
+      "title": "Inventory Adjustments",
+      "settled": true,
+      "stats": {
+        "elements": 154,
+        "visible": 48,
+        "hidden": 106,
+        "semantic": 28,
+        "fragile": 20,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "Warehouse": {
+      "url": "https://demo.eu.espocrm.com/#Warehouse",
+      "title": "Warehouses",
+      "settled": true,
+      "stats": {
+        "elements": 145,
+        "visible": 50,
+        "hidden": 95,
+        "semantic": 33,
+        "fragile": 17,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "InventoryNumber": {
+      "url": "https://demo.eu.espocrm.com/#InventoryNumber",
+      "title": "Inventory Numbers",
+      "settled": true,
+      "stats": {
+        "elements": 273,
+        "visible": 119,
+        "hidden": 154,
+        "semantic": 66,
+        "fragile": 53,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "InventoryTransaction": {
+      "url": "https://demo.eu.espocrm.com/#InventoryTransaction",
+      "title": "Inventory Transactions",
+      "settled": true,
+      "stats": {
+        "elements": 292,
+        "visible": 141,
+        "hidden": 151,
+        "semantic": 44,
+        "fragile": 97,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "GlobalStream": {
+      "url": "https://demo.eu.espocrm.com/#GlobalStream",
+      "title": "EspoCRM Demo",
+      "settled": true,
+      "stats": {
+        "elements": 265,
+        "visible": 122,
+        "hidden": 143,
+        "semantic": 37,
+        "fragile": 85,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "WorkingTimeCalendar": {
+      "url": "https://demo.eu.espocrm.com/#WorkingTimeCalendar",
+      "title": "Working Time Calendars",
+      "settled": true,
+      "stats": {
+        "elements": 110,
+        "visible": 39,
+        "hidden": 71,
+        "semantic": 27,
+        "fragile": 12,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "Workflow": {
+      "url": "https://demo.eu.espocrm.com/#Workflow",
+      "title": "Workflows",
+      "settled": true,
+      "stats": {
+        "elements": 110,
+        "visible": 30,
+        "hidden": 80,
+        "semantic": 23,
+        "fragile": 7,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "BpmnFlowchart": {
+      "url": "https://demo.eu.espocrm.com/#BpmnFlowchart",
+      "title": "Flowcharts",
+      "settled": true,
+      "stats": {
+        "elements": 108,
+        "visible": 30,
+        "hidden": 78,
+        "semantic": 23,
+        "fragile": 7,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "BpmnProcess": {
+      "url": "https://demo.eu.espocrm.com/#BpmnProcess",
+      "title": "Processes",
+      "settled": true,
+      "stats": {
+        "elements": 121,
+        "visible": 33,
+        "hidden": 88,
+        "semantic": 23,
+        "fragile": 10,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "Account-create": {
+      "url": "https://demo.eu.espocrm.com/#Account/create",
+      "title": "Create Account",
+      "settled": true,
+      "stats": {
+        "elements": 119,
+        "visible": 56,
+        "hidden": 63,
+        "semantic": 41,
+        "fragile": 15,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "Call-create": {
+      "url": "https://demo.eu.espocrm.com/#Call/create",
+      "title": "Create Call",
+      "settled": true,
+      "stats": {
+        "elements": 116,
+        "visible": 56,
+        "hidden": 60,
+        "semantic": 42,
+        "fragile": 13,
+        "ambiguous": 1,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "Email-create": {
+      "url": "https://demo.eu.espocrm.com/#Email/create",
+      "title": "Create Email",
+      "settled": true,
+      "stats": {
+        "elements": 347,
+        "visible": 65,
+        "hidden": 282,
+        "semantic": 52,
+        "fragile": 13,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "ProjectTask-create": {
+      "url": "https://demo.eu.espocrm.com/#ProjectTask/create",
+      "title": "Create Project Task",
+      "settled": true,
+      "stats": {
+        "elements": 122,
+        "visible": 43,
+        "hidden": 79,
+        "semantic": 29,
+        "fragile": 10,
+        "ambiguous": 4,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "User-view-1": {
+      "url": "https://demo.eu.espocrm.com/#User/view/1",
+      "title": "Jack Adams",
+      "settled": true,
+      "stats": {
+        "elements": 189,
+        "visible": 65,
+        "hidden": 124,
+        "semantic": 38,
+        "fragile": 27,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "Admin": {
+      "url": "https://demo.eu.espocrm.com/#Admin",
+      "title": "Administration",
+      "settled": true,
+      "stats": {
+        "elements": 147,
+        "visible": 95,
+        "hidden": 52,
+        "semantic": 85,
+        "fragile": 3,
+        "ambiguous": 7,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "About": {
+      "url": "https://demo.eu.espocrm.com/#About",
+      "title": "EspoCRM Demo",
+      "settled": true,
+      "stats": {
+        "elements": 77,
+        "visible": 25,
+        "hidden": 52,
+        "semantic": 22,
+        "fragile": 3,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    }
+  },
+  "failed": {},
+  "authenticated": true,
+  "startedAt": "2026-09-11T06:42:47.130Z",
+  "finishedAt": "2026-09-11T06:44:32.034Z"
+}

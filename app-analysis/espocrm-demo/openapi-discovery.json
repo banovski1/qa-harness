@@ -1,0 +1,55 @@
+{
+  "found": false,
+  "probedAt": "2026-09-11T06:44:44.749Z",
+  "probes": [
+    {
+      "url": "https://demo.eu.espocrm.com/swagger.json",
+      "status": 200,
+      "note": "answered, but not a specification"
+    },
+    {
+      "url": "https://demo.eu.espocrm.com/openapi.json",
+      "status": 200,
+      "note": "answered, but not a specification"
+    },
+    {
+      "url": "https://demo.eu.espocrm.com/api-docs",
+      "status": 200,
+      "note": "answered, but not a specification"
+    },
+    {
+      "url": "https://demo.eu.espocrm.com/api-docs.json",
+      "status": 200,
+      "note": "answered, but not a specification"
+    },
+    {
+      "url": "https://demo.eu.espocrm.com/api/openapi.json",
+      "status": 200,
+      "note": "answered, but not a specification"
+    },
+    {
+      "url": "https://demo.eu.espocrm.com/api/v1/openapi.json",
+      "status": 404
+    },
+    {
+      "url": "https://demo.eu.espocrm.com/api/swagger.json",
+      "status": 200,
+      "note": "answered, but not a specification"
+    },
+    {
+      "url": "https://demo.eu.espocrm.com/v3/api-docs",
+      "status": 200,
+      "note": "answered, but not a specification"
+    },
+    {
+      "url": "https://demo.eu.espocrm.com/swagger/v1/swagger.json",
+      "status": 200,
+      "note": "answered, but not a specification"
+    },
+    {
+      "url": "https://demo.eu.espocrm.com/openapi.yaml",
+      "status": 200,
+      "note": "answered, but not a specification"
+    }
+  ]
+}

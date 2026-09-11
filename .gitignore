@@ -11,3 +11,7 @@ analysis/
 generated-framework/
 docs/superpowers/
 .worktrees/
+
+# app-explorer scratch: the bundle it hands to playwright-cli
+app-analysis/**/.batch.js
+app-analysis/**/.probe.js

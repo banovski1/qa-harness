@@ -1,0 +1,4633 @@
+[
+  {
+    "screen": "__auth__",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Settings",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "systemUserAttributes": {
+        "id": "string",
+        "userName": "string",
+        "firstName": "string",
+        "lastName": "string",
+        "type": "string"
+      },
+      "jobPeriod": "number",
+      "jobPeriodForActiveProcess": "number",
+      "jobRerunAttemptNumber": "number",
+      "cronMinInterval": "number",
+      "useCache": "boolean",
+      "jobMaxPortion": "number",
+      "jobRunInParallel": "boolean",
+      "jobPoolConcurrencyNumber": "number",
+      "daemonMaxProcessNumber": "number",
+      "daemonInterval": "number",
+      "daemonProcessTimeout": "number",
+      "recordsPerPage": "number",
+      "recordsPerPageSmall": "number",
+      "recordsPerPageSelect": "number",
+      "applicationName": "string",
+      "timeZone": "string",
+      "dateFormat": "string",
+      "timeFormat": "string",
+      "weekStart": "number",
+      "thousandSeparator": "string",
+      "decimalMark": "string",
+      "exportDelimiter": "string",
+      "currencyList": [
+        "string"
+      ],
+      "defaultCurrency": "string",
+      "baseCurrency": "string",
+      "outboundEmailIsShared": "boolean",
+      "outboundEmailFromName": "string",
+      "outboundEmailFromAddress": "string",
+      "smtpServer": "string",
+      "smtpPort": "number",
+      "smtpAuth": "boolean",
+      "smtpSecurity": "string",
+      "smtpUsername": "string",
+      "language": "string",
+      "authenticationMethod": "string",
+      "globalSearchEntityList": [
+        "string"
+      ],
+      "tabList": [
+        {
+          "type": "string",
+          "text": "string",
+          "id": "string"
+        }
+      ],
+      "quickCreateList": [
+        "string"
+      ],
+      "exportDisabled": "boolean"
+    }
+  },
+  {
+    "screen": "__auth__",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/App/user?",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "user": {
+        "id": "string",
+        "name": "string",
+        "deleted": "boolean",
+        "userName": "string",
+        "type": "string",
+        "authMethod": "null",
+        "salutationName": "null",
+        "firstName": "string",
+        "lastName": "string",
+        "isActive": "boolean",
+        "title": "string",
+        "emailAddress": "null",
+        "phoneNumber": "null",
+        "token": "string",
+        "ipAddress": "string",
+        "avatarColor": "null",
+        "gender": "string",
+        "createdAt": "string",
+        "modifiedAt": "string",
+        "auth2FA": "null",
+        "middleName": "null",
+        "emailAddressIsOptedOut": "null",
+        "emailAddressIsInvalid": "null",
+        "phoneNumberIsOptedOut": "null",
+        "phoneNumberIsInvalid": "null",
+        "defaultTeamId": "null",
+        "defaultTeamName": "null",
+        "teamsIds": [
+          "string"
+        ],
+        "teamsNames": {
+          "6128977b8cc8163d5": "string"
+        },
+        "teamsColumns": {
+          "6128977b8cc8163d5": {
+            "role": "…"
+          }
+        },
+        "contactId": "null",
+        "contactName": "null",
+        "avatarId": "null",
+        "avatarName": "null",
+        "createdById": "string",
+        "createdByName": "string",
+        "dashboardTemplateId": "null",
+        "dashboardTemplateName": "null",
+        "workingTimeCalendarId": "null",
+        "layoutSetId": "null"
+      },
+      "acl": {
+        "table": {
+          "ActionHistoryRecord": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "AddressCountry": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "AppLogRecord": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "AppSecret": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "ArrayValue": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Attachment": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "AuthLogRecord": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "AuthToken": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "AuthenticationProvider": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Autofollow": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Currency": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "CurrencyRecord": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "CurrencyRecordRate": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Dashboard": "boolean",
+          "DashboardTemplate": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Email": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "EmailAccount": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "EmailAccountScope": "boolean",
+          "EmailAddress": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "EmailFilter": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "EmailFolder": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "EmailTemplate": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "EmailTemplateCategory": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Export": "boolean",
+          "Extension": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "ExternalAccount": "boolean",
+          "Formula": "boolean",
+          "GlobalStream": "boolean",
+          "GroupEmailFolder": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Import": "boolean",
+          "ImportEml": "boolean",
+          "ImportError": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "InboundEmail": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Integration": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Job": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "LastViewed": "boolean",
+          "LayoutRecord": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "LayoutSet": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "LeadCapture": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "LeadCaptureLogRecord": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          }
+        },
+        "fieldTable": {
+          "ActionHistoryRecord": {},
+          "AddressCountry": {},
+          "AppLogRecord": {},
+          "AppSecret": {},
+          "ArrayValue": {},
+          "Attachment": {},
+          "AuthLogRecord": {},
+          "AuthToken": {},
+          "AuthenticationProvider": {},
+          "Autofollow": {},
+          "Currency": {},
+          "CurrencyRecord": {},
+          "CurrencyRecordRate": {},
+          "DashboardTemplate": {},
+          "Email": {},
+          "EmailAccount": {},
+          "EmailAddress": {},
+          "EmailFilter": {},
+          "EmailFolder": {},
+          "EmailTemplate": {},
+          "EmailTemplateCategory": {},
+          "Extension": {},
+          "ExternalAccount": {},
+          "GroupEmailFolder": {},
+          "Import": {},
+          "ImportError": {},
+          "InboundEmail": {},
+          "Integration": {},
+          "Job": {},
+          "LayoutRecord": {},
+          "LayoutSet": {},
+          "LeadCapture": {},
+          "LeadCaptureLogRecord": {},
+          "Note": {},
+          "Notification": {},
+          "OAuthAccount": {},
+          "OAuthProvider": {},
+          "PasswordChangeRequest": {},
+          "PhoneNumber": {},
+          "Pipeline": {}
+        },
+        "assignmentPermission": "string",
+        "messagePermission": "string",
+        "mentionPermission": "string",
+        "userCalendarPermission": "string",
+        "auditPermission": "string",
+        "exportPermission": "string",
+        "massUpdatePermission": "string",
+        "userPermission": "string",
+        "portalPermission": "string",
+        "groupEmailAccountPermission": "string",
+        "followerManagementPermission": "string",
+        "dataPrivacyPermission": "string",
+        "lockPermission": "string",
+        "fieldTableQuickAccess": {
+          "ActionHistoryRecord": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "AddressCountry": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "AppLogRecord": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "AppSecret": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "ArrayValue": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Attachment": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "AuthLogRecord": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "AuthToken": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "AuthenticationProvider": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Autofollow": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Currency": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "CurrencyRecord": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "CurrencyRecordRate": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "DashboardTemplate": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Email": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "EmailAccount": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "EmailAddress": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "EmailFilter": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "EmailFolder": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "EmailTemplate": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "EmailTemplateCategory": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Extension": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "ExternalAccount": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "GroupEmailFolder": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Import": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "ImportError": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "InboundEmail": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Integration": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Job": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "LayoutRecord": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "LayoutSet": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "LeadCapture": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "LeadCaptureLogRecord": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Note": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Notification": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "OAuthAccount": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "OAuthProvider": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "PasswordChangeRequest": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "PhoneNumber": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Pipeline": {
+            "attributes": "…",
+            "fields": "…"
+          }
+        }
+      },
+      "preferences": {
+        "id": "string",
+        "timeZone": "string",
+        "dateFormat": "string",
+        "timeFormat": "string",
+        "weekStart": "number",
+        "defaultCurrency": "string",
+        "thousandSeparator": "string",
+        "decimalMark": "string",
+        "dashboardLayout": [
+          {
+            "name": "…",
+            "layout": "…"
+          }
+        ],
+        "dashletsOptions": {
+          "d969245": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayOnlyCount": "…",
+            "displayTotal": "…",
+            "useSiMultiplier": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d889033": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "mode": "…",
+            "enabledScopeList": "…"
+          },
+          "default-activities": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "enabledScopeList": "…",
+            "displayRecords": "…",
+            "futureDays": "…"
+          },
+          "d35420": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d143911": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "includeShared": "…",
+            "expandedLayout": "…"
+          },
+          "d980301": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "expandedLayout": "…"
+          },
+          "d57664": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d10179": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d52792": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d108827": {
+            "title": "…",
+            "dateFrom": "…",
+            "dateTo": "…",
+            "dateFilter": "…",
+            "useLastStage": "…",
+            "teamName": "…",
+            "teamId": "…"
+          },
+          "d101433": {
+            "title": "…",
+            "dateFrom": "…",
+            "dateTo": "…",
+            "dateFilter": "…"
+          },
+          "d494906": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d248822": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d191950": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d405857": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "expandedLayout": "…"
+          },
+          "d56856": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "enabledScopeList": "…",
+            "mode": "…",
+            "usersIds": "…",
+            "usersNames": "…",
+            "teamsIds": "…",
+            "teamsNames": "…"
+          },
+          "d915388": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "includeShared": "…",
+            "expandedLayout": "…"
+          },
+          "d213450": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d492727": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d28848": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d154104": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d252027": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d623707": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "includeShared": "…",
+            "expandedLayout": "…"
+          },
+          "d341653": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "includeShared": "…",
+            "expandedLayout": "…"
+          },
+          "d843485": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "displayRecords": "…",
+            "primaryFilter": "…",
+            "sortBy": "…",
+            "boolFilterList": "…",
+            "sortDirection": "…",
+            "expandedLayout": "…"
+          },
+          "d186537": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "futureDays": "…",
+            "includeOwn": "…",
+            "includeShared": "…",
+            "excludeMy": "…",
+            "limitGroupType": "…",
+            "groupTypes": "…",
+            "expandedLayout": "…"
+          },
+          "d338920": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "futureDays": "…",
+            "includeOwn": "…",
+            "includeShared": "…",
+            "excludeMy": "…",
+            "limitGroupType": "…",
+            "groupTypes": "…",
+            "expandedLayout": "…"
+          },
+          "d743307": {
+            "title": "…",
+            "dateFilter": "…"
+          },
+          "d385820": {
+            "title": "…",
+            "dateFilter": "…"
+          },
+          "d638952": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "autorefreshInterval": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…",
+            "columnsData": "…",
+            "internalClassName": "…"
+          }
+        },
+        "dashboardLocked": "boolean",
+        "importParams": "null",
+        "sharedCalendarUserList": "null",
+        "calendarViewDataList": "null",
+        "presetFilters": "null",
+        "language": "string",
+        "exportDelimiter": "string",
+        "receiveAssignmentEmailNotifications": "boolean",
+        "receiveMentionEmailNotifications": "boolean",
+        "receiveStreamEmailNotifications": "boolean",
+        "assignmentNotificationsIgnoreEntityTypeList": "null",
+        "assignmentEmailNotificationsIgnoreEntityTypeList": "null",
+        "reactionNotifications": "boolean",
+        "reactionNotificationsNotFollowed": "boolean",
+        "notificationGrouping": "boolean",
+        "notificationSound": "boolean",
+        "autoFollowEntityTypeList": [],
+        "signature": "string",
+        "defaultReminders": "null",
+        "defaultRemindersTask": "null",
+        "themeParams": "null",
+        "useCustomTabList": "boolean",
+        "addCustomTabs": "boolean",
+        "tabList": "null",
+        "emailReplyToAllByDefault": "boolean",
+        "emailReplyForceHtml": "boolean",
+        "doNotFillAssignedUserIfNotRequired": "boolean",
+        "followEntityOnStreamPost": "boolean",
+        "followCreatedEntities": "boolean",
+        "followCreatedEntityTypeList": "null"
+      },
+      "token": "string",
+      "settings": {
+        "systemUserAttributes": {
+          "id": "string",
+          "userName": "string",
+          "firstName": "string",
+          "lastName": "string",
+          "type": "string"
+        },
+        "jobPeriod": "number",
+        "jobPeriodForActiveProcess": "number",
+        "jobRerunAttemptNumber": "number",
+        "cronMinInterval": "number",
+        "useCache": "boolean",
+        "jobMaxPortion": "number",
+        "jobRunInParallel": "boolean",
+        "jobPoolConcurrencyNumber": "number",
+        "daemonMaxProcessNumber": "number",
+        "daemonInterval": "number",
+        "daemonProcessTimeout": "number",
+        "recordsPerPage": "number",
+        "recordsPerPageSmall": "number",
+        "recordsPerPageSelect": "number",
+        "applicationName": "string",
+        "timeZone": "string",
+        "dateFormat": "string",
+        "timeFormat": "string",
+        "weekStart": "number",
+        "thousandSeparator": "string",
+        "decimalMark": "string",
+        "exportDelimiter": "string",
+        "currencyList": [
+          "string"
+        ],
+        "defaultCurrency": "string",
+        "baseCurrency": "string",
+        "outboundEmailIsShared": "boolean",
+        "outboundEmailFromName": "string",
+        "outboundEmailFromAddress": "string",
+        "smtpServer": "string",
+        "smtpPort": "number",
+        "smtpAuth": "boolean",
+        "smtpSecurity": "string",
+        "smtpUsername": "string",
+        "language": "string",
+        "authenticationMethod": "string",
+        "globalSearchEntityList": [
+          "string"
+        ],
+        "tabList": [
+          {
+            "type": "…",
+            "text": "…",
+            "id": "…"
+          }
+        ],
+        "quickCreateList": [
+          "string"
+        ],
+        "exportDisabled": "boolean"
+      },
+      "language": "string",
+      "appParams": {
+        "maxUploadSize": "number",
+        "isRestrictedMode": "boolean",
+        "passwordChangeForNonAdminDisabled": "boolean",
+        "timeZoneList": [
+          "string"
+        ],
+        "auth2FARequired": "boolean",
+        "logoutWait": "boolean",
+        "systemUserId": "string",
+        "templateEntityTypeList": [
+          "string"
+        ],
+        "extensions": [],
+        "addressCountryData": {
+          "list": [],
+          "preferredList": []
+        },
+        "currencyRates": {
+          "USD": "string",
+          "EUR": "string"
+        },
+        "pipelines": [],
+        "meetingServices": [],
+        "flowchartEntityTypeList": [],
+        "manualWorkflows": {},
+        "defaultTaxRateQuote": "null",
+        "defaultTaxRateSalesOrder": "null",
+        "defaultTaxRateInvoice": "null",
+        "defaultTaxRatePurchaseOrder": "null",
+        "salesParams": {
+          "isTaxInclusivePrices": "boolean",
+          "defaultPaymentTermsDays": "null"
+        },
+        "projectBoards": {
+          "66d6cb8a3b5f6c1d0": {
+            "columns": "…"
+          },
+          "698cb2bfca9411200": {
+            "columns": "…"
+          }
+        },
+        "projectRoles": [
+          {
+            "id": "…",
+            "name": "…"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "screen": "__auth__",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "string"
+  },
+  {
+    "screen": "__auth__",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/PopupNotification/action/grouped",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "event": []
+    }
+  },
+  {
+    "screen": "__auth__",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Case?maxSize=10&offset=0&orderBy=number&order=desc&whereGroup%5B0%5D%5Btype%5D=bool&whereGroup%5B0%5D%5Bvalue%5D%5B%5D=onlyMy&whereGroup%5B1%5D%5Btype%5D=primary&whereGroup%5B1%5D%5Bvalue%5D=open&attributeSelect=number%2Cname%2Ctype%2Cstatus%2Cpriority%2CaccountId%2CaccountName",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "number": "number",
+          "status": "string",
+          "priority": "string",
+          "type": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "createdById": "string",
+          "assignedUserId": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "__auth__",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "number"
+  },
+  {
+    "screen": "__auth__",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Activities/upcoming?entityTypeList%5B%5D=Meeting&entityTypeList%5B%5D=Call&entityTypeList%5B%5D=Task&futureDays=7&maxSize=10&offset=0&orderBy=&order=",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "status": "string",
+          "priority": "string",
+          "dateStart": "null",
+          "dateEnd": "string",
+          "dateStartDate": "null",
+          "dateEndDate": "null",
+          "dateCompleted": "null",
+          "description": "null",
+          "createdAt": "string",
+          "modifiedAt": "string",
+          "streamUpdatedAt": "null",
+          "parentId": "string",
+          "parentType": "string",
+          "parentName": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "contactId": "string",
+          "contactName": "string",
+          "createdById": "string",
+          "createdByName": "string",
+          "modifiedById": "string",
+          "modifiedByName": "string",
+          "assignedUserId": "string",
+          "assignedUserName": "string",
+          "emailId": "null",
+          "_scope": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "__auth__",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Stream?maxSize=10&offset=0&orderBy=number&order=desc",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "post": "null",
+          "data": {
+            "fields": "…",
+            "attributes": "…",
+            "value": "…"
+          },
+          "type": "string",
+          "targetType": "null",
+          "number": "number",
+          "isGlobal": "boolean",
+          "createdByGender": "string",
+          "isInternal": "boolean",
+          "reactionCounts": "null",
+          "myReactions": [],
+          "createdAt": "string",
+          "parentId": "string",
+          "parentType": "string",
+          "parentName": "string",
+          "relatedId": "null",
+          "relatedType": "null",
+          "createdById": "string",
+          "createdByName": "string"
+        }
+      ],
+      "reactionsCheckDate": "string",
+      "updatedReactions": []
+    }
+  },
+  {
+    "screen": "__auth__",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Activities?from=2026-09-07%2000:00&to=2026-09-14%2000:00&scopeList=Meeting%2CCall%2CTask&agenda=true",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": [
+      {
+        "scope": "string",
+        "dateStart": "string",
+        "dateEnd": "string",
+        "id": "string",
+        "name": "string",
+        "status": "string",
+        "dateStartDate": "null",
+        "dateEndDate": "null",
+        "parentType": "string",
+        "parentId": "string",
+        "createdAt": "string",
+        "color": "null"
+      }
+    ]
+  },
+  {
+    "screen": "root",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Settings",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "systemUserAttributes": {
+        "id": "string",
+        "userName": "string",
+        "firstName": "string",
+        "lastName": "string",
+        "type": "string"
+      },
+      "jobPeriod": "number",
+      "jobPeriodForActiveProcess": "number",
+      "jobRerunAttemptNumber": "number",
+      "cronMinInterval": "number",
+      "useCache": "boolean",
+      "jobMaxPortion": "number",
+      "jobRunInParallel": "boolean",
+      "jobPoolConcurrencyNumber": "number",
+      "daemonMaxProcessNumber": "number",
+      "daemonInterval": "number",
+      "daemonProcessTimeout": "number",
+      "recordsPerPage": "number",
+      "recordsPerPageSmall": "number",
+      "recordsPerPageSelect": "number",
+      "applicationName": "string",
+      "timeZone": "string",
+      "dateFormat": "string",
+      "timeFormat": "string",
+      "weekStart": "number",
+      "thousandSeparator": "string",
+      "decimalMark": "string",
+      "exportDelimiter": "string",
+      "currencyList": [
+        "string"
+      ],
+      "defaultCurrency": "string",
+      "baseCurrency": "string",
+      "outboundEmailIsShared": "boolean",
+      "outboundEmailFromName": "string",
+      "outboundEmailFromAddress": "string",
+      "smtpServer": "string",
+      "smtpPort": "number",
+      "smtpAuth": "boolean",
+      "smtpSecurity": "string",
+      "smtpUsername": "string",
+      "language": "string",
+      "authenticationMethod": "string",
+      "globalSearchEntityList": [
+        "string"
+      ],
+      "tabList": [
+        {
+          "type": "string",
+          "text": "string",
+          "id": "string"
+        }
+      ],
+      "quickCreateList": [
+        "string"
+      ],
+      "exportDisabled": "boolean"
+    }
+  },
+  {
+    "screen": "root",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/App/user?",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "user": {
+        "id": "string",
+        "name": "string",
+        "deleted": "boolean",
+        "userName": "string",
+        "type": "string",
+        "authMethod": "null",
+        "salutationName": "null",
+        "firstName": "string",
+        "lastName": "string",
+        "isActive": "boolean",
+        "title": "string",
+        "emailAddress": "null",
+        "phoneNumber": "null",
+        "token": "string",
+        "ipAddress": "string",
+        "avatarColor": "null",
+        "gender": "string",
+        "createdAt": "string",
+        "modifiedAt": "string",
+        "auth2FA": "null",
+        "middleName": "null",
+        "emailAddressIsOptedOut": "null",
+        "emailAddressIsInvalid": "null",
+        "phoneNumberIsOptedOut": "null",
+        "phoneNumberIsInvalid": "null",
+        "defaultTeamId": "null",
+        "defaultTeamName": "null",
+        "teamsIds": [
+          "string"
+        ],
+        "teamsNames": {
+          "6128977b8cc8163d5": "string"
+        },
+        "teamsColumns": {
+          "6128977b8cc8163d5": {
+            "role": "…"
+          }
+        },
+        "contactId": "null",
+        "contactName": "null",
+        "avatarId": "null",
+        "avatarName": "null",
+        "createdById": "string",
+        "createdByName": "string",
+        "dashboardTemplateId": "null",
+        "dashboardTemplateName": "null",
+        "workingTimeCalendarId": "null",
+        "layoutSetId": "null"
+      },
+      "acl": {
+        "table": {
+          "ActionHistoryRecord": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "AddressCountry": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "AppLogRecord": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "AppSecret": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "ArrayValue": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Attachment": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "AuthLogRecord": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "AuthToken": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "AuthenticationProvider": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Autofollow": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Currency": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "CurrencyRecord": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "CurrencyRecordRate": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Dashboard": "boolean",
+          "DashboardTemplate": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Email": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "EmailAccount": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "EmailAccountScope": "boolean",
+          "EmailAddress": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "EmailFilter": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "EmailFolder": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "EmailTemplate": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "EmailTemplateCategory": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Export": "boolean",
+          "Extension": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "ExternalAccount": "boolean",
+          "Formula": "boolean",
+          "GlobalStream": "boolean",
+          "GroupEmailFolder": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Import": "boolean",
+          "ImportEml": "boolean",
+          "ImportError": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "InboundEmail": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Integration": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "Job": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "LastViewed": "boolean",
+          "LayoutRecord": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "LayoutSet": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "LeadCapture": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          },
+          "LeadCaptureLogRecord": {
+            "read": "…",
+            "stream": "…",
+            "edit": "…",
+            "delete": "…",
+            "create": "…"
+          }
+        },
+        "fieldTable": {
+          "ActionHistoryRecord": {},
+          "AddressCountry": {},
+          "AppLogRecord": {},
+          "AppSecret": {},
+          "ArrayValue": {},
+          "Attachment": {},
+          "AuthLogRecord": {},
+          "AuthToken": {},
+          "AuthenticationProvider": {},
+          "Autofollow": {},
+          "Currency": {},
+          "CurrencyRecord": {},
+          "CurrencyRecordRate": {},
+          "DashboardTemplate": {},
+          "Email": {},
+          "EmailAccount": {},
+          "EmailAddress": {},
+          "EmailFilter": {},
+          "EmailFolder": {},
+          "EmailTemplate": {},
+          "EmailTemplateCategory": {},
+          "Extension": {},
+          "ExternalAccount": {},
+          "GroupEmailFolder": {},
+          "Import": {},
+          "ImportError": {},
+          "InboundEmail": {},
+          "Integration": {},
+          "Job": {},
+          "LayoutRecord": {},
+          "LayoutSet": {},
+          "LeadCapture": {},
+          "LeadCaptureLogRecord": {},
+          "Note": {},
+          "Notification": {},
+          "OAuthAccount": {},
+          "OAuthProvider": {},
+          "PasswordChangeRequest": {},
+          "PhoneNumber": {},
+          "Pipeline": {}
+        },
+        "assignmentPermission": "string",
+        "messagePermission": "string",
+        "mentionPermission": "string",
+        "userCalendarPermission": "string",
+        "auditPermission": "string",
+        "exportPermission": "string",
+        "massUpdatePermission": "string",
+        "userPermission": "string",
+        "portalPermission": "string",
+        "groupEmailAccountPermission": "string",
+        "followerManagementPermission": "string",
+        "dataPrivacyPermission": "string",
+        "lockPermission": "string",
+        "fieldTableQuickAccess": {
+          "ActionHistoryRecord": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "AddressCountry": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "AppLogRecord": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "AppSecret": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "ArrayValue": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Attachment": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "AuthLogRecord": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "AuthToken": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "AuthenticationProvider": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Autofollow": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Currency": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "CurrencyRecord": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "CurrencyRecordRate": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "DashboardTemplate": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Email": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "EmailAccount": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "EmailAddress": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "EmailFilter": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "EmailFolder": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "EmailTemplate": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "EmailTemplateCategory": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Extension": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "ExternalAccount": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "GroupEmailFolder": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Import": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "ImportError": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "InboundEmail": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Integration": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Job": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "LayoutRecord": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "LayoutSet": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "LeadCapture": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "LeadCaptureLogRecord": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Note": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Notification": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "OAuthAccount": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "OAuthProvider": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "PasswordChangeRequest": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "PhoneNumber": {
+            "attributes": "…",
+            "fields": "…"
+          },
+          "Pipeline": {
+            "attributes": "…",
+            "fields": "…"
+          }
+        }
+      },
+      "preferences": {
+        "id": "string",
+        "timeZone": "string",
+        "dateFormat": "string",
+        "timeFormat": "string",
+        "weekStart": "number",
+        "defaultCurrency": "string",
+        "thousandSeparator": "string",
+        "decimalMark": "string",
+        "dashboardLayout": [
+          {
+            "name": "…",
+            "layout": "…"
+          }
+        ],
+        "dashletsOptions": {
+          "d969245": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayOnlyCount": "…",
+            "displayTotal": "…",
+            "useSiMultiplier": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d889033": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "mode": "…",
+            "enabledScopeList": "…"
+          },
+          "default-activities": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "enabledScopeList": "…",
+            "displayRecords": "…",
+            "futureDays": "…"
+          },
+          "d35420": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d143911": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "includeShared": "…",
+            "expandedLayout": "…"
+          },
+          "d980301": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "expandedLayout": "…"
+          },
+          "d57664": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d10179": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d52792": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d108827": {
+            "title": "…",
+            "dateFrom": "…",
+            "dateTo": "…",
+            "dateFilter": "…",
+            "useLastStage": "…",
+            "teamName": "…",
+            "teamId": "…"
+          },
+          "d101433": {
+            "title": "…",
+            "dateFrom": "…",
+            "dateTo": "…",
+            "dateFilter": "…"
+          },
+          "d494906": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d248822": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d191950": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d405857": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "expandedLayout": "…"
+          },
+          "d56856": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "enabledScopeList": "…",
+            "mode": "…",
+            "usersIds": "…",
+            "usersNames": "…",
+            "teamsIds": "…",
+            "teamsNames": "…"
+          },
+          "d915388": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "includeShared": "…",
+            "expandedLayout": "…"
+          },
+          "d213450": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d492727": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d28848": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d154104": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d252027": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "autorefreshInterval": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…"
+          },
+          "d623707": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "includeShared": "…",
+            "expandedLayout": "…"
+          },
+          "d341653": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "includeShared": "…",
+            "expandedLayout": "…"
+          },
+          "d843485": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "entityType": "…",
+            "displayRecords": "…",
+            "primaryFilter": "…",
+            "sortBy": "…",
+            "boolFilterList": "…",
+            "sortDirection": "…",
+            "expandedLayout": "…"
+          },
+          "d186537": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "futureDays": "…",
+            "includeOwn": "…",
+            "includeShared": "…",
+            "excludeMy": "…",
+            "limitGroupType": "…",
+            "groupTypes": "…",
+            "expandedLayout": "…"
+          },
+          "d338920": {
+            "title": "…",
+            "autorefreshInterval": "…",
+            "displayRecords": "…",
+            "futureDays": "…",
+            "includeOwn": "…",
+            "includeShared": "…",
+            "excludeMy": "…",
+            "limitGroupType": "…",
+            "groupTypes": "…",
+            "expandedLayout": "…"
+          },
+          "d743307": {
+            "title": "…",
+            "dateFilter": "…"
+          },
+          "d385820": {
+            "title": "…",
+            "dateFilter": "…"
+          },
+          "d638952": {
+            "title": "…",
+            "reportName": "…",
+            "reportId": "…",
+            "column": "…",
+            "autorefreshInterval": "…",
+            "displayType": "…",
+            "displayTotal": "…",
+            "displayOnlyCount": "…",
+            "useSiMultiplier": "…",
+            "filtersData": "…",
+            "entityType": "…",
+            "runtimeFilters": "…",
+            "type": "…",
+            "columns": "…",
+            "depth": "…",
+            "columnsData": "…",
+            "internalClassName": "…"
+          }
+        },
+        "dashboardLocked": "boolean",
+        "importParams": "null",
+        "sharedCalendarUserList": "null",
+        "calendarViewDataList": "null",
+        "presetFilters": "null",
+        "language": "string",
+        "exportDelimiter": "string",
+        "receiveAssignmentEmailNotifications": "boolean",
+        "receiveMentionEmailNotifications": "boolean",
+        "receiveStreamEmailNotifications": "boolean",
+        "assignmentNotificationsIgnoreEntityTypeList": "null",
+        "assignmentEmailNotificationsIgnoreEntityTypeList": "null",
+        "reactionNotifications": "boolean",
+        "reactionNotificationsNotFollowed": "boolean",
+        "notificationGrouping": "boolean",
+        "notificationSound": "boolean",
+        "autoFollowEntityTypeList": [],
+        "signature": "string",
+        "defaultReminders": "null",
+        "defaultRemindersTask": "null",
+        "themeParams": "null",
+        "useCustomTabList": "boolean",
+        "addCustomTabs": "boolean",
+        "tabList": "null",
+        "emailReplyToAllByDefault": "boolean",
+        "emailReplyForceHtml": "boolean",
+        "doNotFillAssignedUserIfNotRequired": "boolean",
+        "followEntityOnStreamPost": "boolean",
+        "followCreatedEntities": "boolean",
+        "followCreatedEntityTypeList": "null"
+      },
+      "token": "string",
+      "settings": {
+        "systemUserAttributes": {
+          "id": "string",
+          "userName": "string",
+          "firstName": "string",
+          "lastName": "string",
+          "type": "string"
+        },
+        "jobPeriod": "number",
+        "jobPeriodForActiveProcess": "number",
+        "jobRerunAttemptNumber": "number",
+        "cronMinInterval": "number",
+        "useCache": "boolean",
+        "jobMaxPortion": "number",
+        "jobRunInParallel": "boolean",
+        "jobPoolConcurrencyNumber": "number",
+        "daemonMaxProcessNumber": "number",
+        "daemonInterval": "number",
+        "daemonProcessTimeout": "number",
+        "recordsPerPage": "number",
+        "recordsPerPageSmall": "number",
+        "recordsPerPageSelect": "number",
+        "applicationName": "string",
+        "timeZone": "string",
+        "dateFormat": "string",
+        "timeFormat": "string",
+        "weekStart": "number",
+        "thousandSeparator": "string",
+        "decimalMark": "string",
+        "exportDelimiter": "string",
+        "currencyList": [
+          "string"
+        ],
+        "defaultCurrency": "string",
+        "baseCurrency": "string",
+        "outboundEmailIsShared": "boolean",
+        "outboundEmailFromName": "string",
+        "outboundEmailFromAddress": "string",
+        "smtpServer": "string",
+        "smtpPort": "number",
+        "smtpAuth": "boolean",
+        "smtpSecurity": "string",
+        "smtpUsername": "string",
+        "language": "string",
+        "authenticationMethod": "string",
+        "globalSearchEntityList": [
+          "string"
+        ],
+        "tabList": [
+          {
+            "type": "…",
+            "text": "…",
+            "id": "…"
+          }
+        ],
+        "quickCreateList": [
+          "string"
+        ],
+        "exportDisabled": "boolean"
+      },
+      "language": "string",
+      "appParams": {
+        "maxUploadSize": "number",
+        "isRestrictedMode": "boolean",
+        "passwordChangeForNonAdminDisabled": "boolean",
+        "timeZoneList": [
+          "string"
+        ],
+        "auth2FARequired": "boolean",
+        "logoutWait": "boolean",
+        "systemUserId": "string",
+        "templateEntityTypeList": [
+          "string"
+        ],
+        "extensions": [],
+        "addressCountryData": {
+          "list": [],
+          "preferredList": []
+        },
+        "currencyRates": {
+          "USD": "string",
+          "EUR": "string"
+        },
+        "pipelines": [],
+        "meetingServices": [],
+        "flowchartEntityTypeList": [],
+        "manualWorkflows": {},
+        "defaultTaxRateQuote": "null",
+        "defaultTaxRateSalesOrder": "null",
+        "defaultTaxRateInvoice": "null",
+        "defaultTaxRatePurchaseOrder": "null",
+        "salesParams": {
+          "isTaxInclusivePrices": "boolean",
+          "defaultPaymentTermsDays": "null"
+        },
+        "projectBoards": {
+          "66d6cb8a3b5f6c1d0": {
+            "columns": "…"
+          },
+          "698cb2bfca9411200": {
+            "columns": "…"
+          }
+        },
+        "projectRoles": [
+          {
+            "id": "…",
+            "name": "…"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "screen": "root",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "string"
+  },
+  {
+    "screen": "root",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/PopupNotification/action/grouped",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "event": []
+    }
+  },
+  {
+    "screen": "root",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "number"
+  },
+  {
+    "screen": "root",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Activities/upcoming?entityTypeList%5B%5D=Meeting&entityTypeList%5B%5D=Call&entityTypeList%5B%5D=Task&futureDays=7&maxSize=10&offset=0&orderBy=&order=",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "status": "string",
+          "priority": "string",
+          "dateStart": "null",
+          "dateEnd": "string",
+          "dateStartDate": "null",
+          "dateEndDate": "null",
+          "dateCompleted": "null",
+          "description": "null",
+          "createdAt": "string",
+          "modifiedAt": "string",
+          "streamUpdatedAt": "null",
+          "parentId": "string",
+          "parentType": "string",
+          "parentName": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "contactId": "string",
+          "contactName": "string",
+          "createdById": "string",
+          "createdByName": "string",
+          "modifiedById": "string",
+          "modifiedByName": "string",
+          "assignedUserId": "string",
+          "assignedUserName": "string",
+          "emailId": "null",
+          "_scope": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "root",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Stream?maxSize=10&offset=0&orderBy=number&order=desc",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "post": "null",
+          "data": {
+            "fields": "…",
+            "attributes": "…",
+            "value": "…"
+          },
+          "type": "string",
+          "targetType": "null",
+          "number": "number",
+          "isGlobal": "boolean",
+          "createdByGender": "string",
+          "isInternal": "boolean",
+          "reactionCounts": "null",
+          "myReactions": [],
+          "createdAt": "string",
+          "parentId": "string",
+          "parentType": "string",
+          "parentName": "string",
+          "relatedId": "null",
+          "relatedType": "null",
+          "createdById": "string",
+          "createdByName": "string"
+        }
+      ],
+      "reactionsCheckDate": "string",
+      "updatedReactions": []
+    }
+  },
+  {
+    "screen": "root",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Activities?from=2026-09-07%2000:00&to=2026-09-14%2000:00&scopeList=Meeting%2CCall%2CTask&agenda=true",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": [
+      {
+        "scope": "string",
+        "dateStart": "string",
+        "dateEnd": "string",
+        "id": "string",
+        "name": "string",
+        "status": "string",
+        "dateStartDate": "null",
+        "dateEndDate": "null",
+        "parentType": "string",
+        "parentId": "string",
+        "createdAt": "string",
+        "color": "null"
+      }
+    ]
+  },
+  {
+    "screen": "root",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Case?maxSize=10&offset=0&orderBy=number&order=desc&whereGroup%5B0%5D%5Btype%5D=bool&whereGroup%5B0%5D%5Bvalue%5D%5B%5D=onlyMy&whereGroup%5B1%5D%5Btype%5D=primary&whereGroup%5B1%5D%5Bvalue%5D=open&attributeSelect=number%2Cname%2Ctype%2Cstatus%2Cpriority%2CaccountId%2CaccountName",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "number": "number",
+          "status": "string",
+          "priority": "string",
+          "type": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "createdById": "string",
+          "assignedUserId": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Account",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Account?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cindustry%2Ctype%2CbillingAddressCountry",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "type": "string",
+          "industry": "string",
+          "billingAddressCountry": "string",
+          "createdAt": "string",
+          "createdById": "string",
+          "assignedUserId": "null",
+          "isStarred": "boolean"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Contact",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Contact?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=salutationName%2CfirstName%2ClastName%2CmiddleName%2Cname%2CaccountId%2CaccountName%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2CphoneNumberIsOptedOut%2CphoneNumberIsInvalid%2CphoneNumber%2CphoneNumberData",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "salutationName": "null",
+          "firstName": "string",
+          "lastName": "string",
+          "emailAddress": "string",
+          "phoneNumber": "string",
+          "accountIsInactive": "boolean",
+          "createdAt": "string",
+          "middleName": "null",
+          "emailAddressIsOptedOut": "boolean",
+          "emailAddressIsInvalid": "boolean",
+          "phoneNumberIsOptedOut": "boolean",
+          "phoneNumberIsInvalid": "boolean",
+          "accountId": "string",
+          "accountName": "string",
+          "createdById": "string",
+          "assignedUserId": "null",
+          "isStarred": "boolean"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Contact",
+    "method": "POST",
+    "url": "https://region1.analytics.google.com/g/collect?v=2&tid=G-R3RHVCTJQG&gtm=45je6992h1v9133517092z8854693747za20gzb854693747zd854693747&_p=1789108970038&gcd=13l3l3l2l1l1&npa=1&dma_cps=a&dma=1&_eu=EAAAAGQC&cid=385235615.1789074655&frm=0&ir=1&pscdl=noapi&rcb=18&sr=1280x720&uaa=arm&uab=64&uafvl=Chromium%3B152.0.7977.77%7CNot%253FA_Brand%3B24.0.0.0%7CGoogle%2520Chrome%3B152.0.7977.77&uam=&uamb=0&uap=macOS&uapv=26.6.2&uaw=0&ul=en-us&gaf=2&_s=1&tag_exp=115938466~115938469~118897920~118897930~120213116~120385423~120469145~120469153&sid=1789107192&sct=2&seg=1&dl=https%3A%2F%2Fdemo.eu.espocrm.com%2F&dt=EspoCRM%20Demo&en=page_view&tfd=5162",
+    "status": 204,
+    "requestShape": null,
+    "responseShape": null
+  },
+  {
+    "screen": "Lead",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Lead?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=salutationName%2CfirstName%2ClastName%2CmiddleName%2Cname%2Cstatus%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2CphoneNumberIsOptedOut%2CphoneNumberIsInvalid%2CphoneNumber%2CphoneNumberData%2CassignedUserId%2CassignedUserName",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "salutationName": "string",
+          "firstName": "string",
+          "lastName": "string",
+          "status": "string",
+          "emailAddress": "string",
+          "phoneNumber": "string",
+          "createdAt": "string",
+          "accountName": "string",
+          "middleName": "null",
+          "emailAddressIsOptedOut": "boolean",
+          "emailAddressIsInvalid": "boolean",
+          "phoneNumberIsOptedOut": "boolean",
+          "phoneNumberIsInvalid": "boolean",
+          "createdById": "string",
+          "assignedUserId": "string",
+          "assignedUserName": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Opportunity",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Kanban/Opportunity?maxSize=5&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2CamountCurrency%2Camount%2CaccountId%2CaccountName%2CcloseDate%2Cstage",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "groups": [
+        {
+          "name": "string",
+          "total": "number",
+          "list": [
+            "…"
+          ],
+          "label": "null",
+          "style": "null"
+        }
+      ],
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "amount": "number",
+          "stage": "string",
+          "closeDate": "string",
+          "createdAt": "string",
+          "amountCurrency": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "createdById": "string",
+          "assignedUserId": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Opportunity-create",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "number"
+  },
+  {
+    "screen": "Email",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/EmailFolder/action/listAll?maxSize=200&offset=0&orderBy=order&order=asc",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "skipNotifications": "boolean"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Email",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Email?maxSize=20&offset=0&orderBy=dateSent&order=desc&whereGroup%5B0%5D%5Btype%5D=inFolder&whereGroup%5B0%5D%5Battribute%5D=folderId&whereGroup%5B0%5D%5Bvalue%5D=inbox&attributeSelect=personStringData%2Csubject%2CparentId%2CparentType%2CparentName%2CdateSent",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": []
+    }
+  },
+  {
+    "screen": "Email",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Email/inbox/notReadCounts",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "inbox": "number",
+      "drafts": "number",
+      "65f1958d76139321f": "number",
+      "group:65f195fc74eebb3f6": "number"
+    }
+  },
+  {
+    "screen": "Calendar",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Activities?from=2026-09-07%2000:00&to=2026-09-14%2000:00&scopeList=Meeting%2CCall%2CTask&agenda=true",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": [
+      {
+        "scope": "string",
+        "dateStart": "string",
+        "dateEnd": "string",
+        "id": "string",
+        "name": "string",
+        "status": "string",
+        "dateStartDate": "null",
+        "dateEndDate": "null",
+        "parentType": "string",
+        "parentId": "string",
+        "createdAt": "string",
+        "color": "null"
+      }
+    ]
+  },
+  {
+    "screen": "Meeting",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Meeting?maxSize=20&offset=0&orderBy=dateStart&order=desc&attributeSelect=name%2Cstatus%2CparentId%2CparentType%2CparentName%2CdateStart%2CdateStartDate%2CassignedUserId%2CassignedUserName",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "dateStart": "string",
+          "dateEnd": "string",
+          "dateStartDate": "null",
+          "dateEndDate": "null",
+          "parentId": "string",
+          "parentType": "string",
+          "parentName": "string",
+          "createdById": "string",
+          "assignedUserId": "string",
+          "assignedUserName": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Meeting",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/PopupNotification/action/grouped",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "event": []
+    }
+  },
+  {
+    "screen": "Meeting-create",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Timeline/busyRanges?from=2026-09-10%2003:00&to=2026-09-13%2010:59&userIdList=1&entityType=Meeting",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "1": [
+        {
+          "dateStart": "string",
+          "dateEnd": "string",
+          "isBusyRange": "boolean"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Call",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Call?maxSize=20&offset=0&orderBy=dateStart&order=desc&attributeSelect=name%2Cstatus%2CparentId%2CparentType%2CparentName%2CdateStart%2CassignedUserId%2CassignedUserName",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "dateStart": "string",
+          "dateEnd": "string",
+          "parentId": "string",
+          "parentType": "string",
+          "parentName": "string",
+          "createdById": "string",
+          "assignedUserId": "string",
+          "assignedUserName": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Task",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Task?maxSize=20&offset=0&orderBy=dateEnd&order=desc&attributeSelect=name%2Cstatus%2Cpriority%2CdateEnd%2CdateEndDate%2CassignedUserId%2CassignedUserName",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "priority": "string",
+          "dateEnd": "string",
+          "dateEndDate": "null",
+          "parentName": "null",
+          "createdById": "string",
+          "assignedUserId": "string",
+          "assignedUserName": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Task",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "number"
+  },
+  {
+    "screen": "Case",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Case?maxSize=20&offset=0&orderBy=number&order=desc&attributeSelect=name%2Cnumber%2Cstatus%2Cpriority%2CaccountId%2CaccountName%2CassignedUserId%2CassignedUserName",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "number": "number",
+          "status": "string",
+          "priority": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "createdById": "string",
+          "assignedUserId": "string",
+          "assignedUserName": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "KnowledgeBaseArticle",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/KnowledgeBaseCategory/action/listTree?checkIfEmpty=true&maxSize=20&offset=0&orderBy=&order=",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "description": "null",
+          "createdAt": "string",
+          "modifiedAt": "string",
+          "order": "number",
+          "childList": [],
+          "createdById": "string",
+          "createdByName": "string",
+          "modifiedById": "null",
+          "modifiedByName": "null",
+          "parentId": "null",
+          "parentName": "null"
+        }
+      ],
+      "path": [],
+      "data": "null",
+      "openPath": "null"
+    }
+  },
+  {
+    "screen": "KnowledgeBaseArticle",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/KnowledgeBaseArticle?maxSize=20&offset=0&orderBy=order&order=asc&whereGroup%5B0%5D%5Battribute%5D=categories&whereGroup%5B0%5D%5Btype%5D=isNotLinked&attributeSelect=name%2Cstatus%2CcreatedAt",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": []
+    }
+  },
+  {
+    "screen": "KnowledgeBaseArticle",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/KnowledgeBaseCategory/action/listTree?maxSize=20&offset=0&orderBy=&order=",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "description": "null",
+          "createdAt": "string",
+          "modifiedAt": "string",
+          "order": "number",
+          "childList": [],
+          "createdById": "string",
+          "createdByName": "string",
+          "modifiedById": "null",
+          "modifiedByName": "null",
+          "parentId": "null",
+          "parentName": "null"
+        }
+      ],
+      "path": [],
+      "data": "null",
+      "openPath": "null"
+    }
+  },
+  {
+    "screen": "Document",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/DocumentFolder/action/listTree?maxSize=20&offset=0&orderBy=&order=",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "description": "null",
+          "createdAt": "string",
+          "modifiedAt": "string",
+          "childList": [],
+          "createdById": "string",
+          "createdByName": "string",
+          "modifiedById": "null",
+          "modifiedByName": "null",
+          "parentId": "null",
+          "parentName": "null"
+        }
+      ],
+      "path": [],
+      "data": "null",
+      "openPath": "null"
+    }
+  },
+  {
+    "screen": "Document",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/DocumentFolder/action/listTree?checkIfEmpty=true&maxSize=20&offset=0&orderBy=&order=",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "description": "null",
+          "createdAt": "string",
+          "modifiedAt": "string",
+          "childList": [],
+          "createdById": "string",
+          "createdByName": "string",
+          "modifiedById": "null",
+          "modifiedByName": "null",
+          "parentId": "null",
+          "parentName": "null"
+        }
+      ],
+      "path": [],
+      "data": "null",
+      "openPath": "null"
+    }
+  },
+  {
+    "screen": "Document",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Document?maxSize=20&offset=0&orderBy=createdAt&order=desc&whereGroup%5B0%5D%5Battribute%5D=folderId&whereGroup%5B0%5D%5Btype%5D=isNull&attributeSelect=name%2CfileId%2CfileName%2Cstatus%2CcreatedAt",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "createdAt": "string",
+          "fileId": "string",
+          "fileName": "string",
+          "createdById": "string",
+          "assignedUserId": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Product",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Product?maxSize=20&offset=0&orderBy=name&order=asc&whereGroup%5B0%5D%5Battribute%5D=categoryId&whereGroup%5B0%5D%5Btype%5D=isNull&attributeSelect=name%2CbrandId%2CbrandName%2Cstatus",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": []
+    }
+  },
+  {
+    "screen": "Product",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/ProductCategory/action/listTree?checkIfEmpty=true&maxSize=20&offset=0&orderBy=&order=",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "order": "number",
+          "description": "null",
+          "createdAt": "string",
+          "modifiedAt": "string",
+          "childList": [],
+          "createdById": "string",
+          "createdByName": "string",
+          "modifiedById": "null",
+          "modifiedByName": "null",
+          "parentId": "null",
+          "parentName": "null"
+        }
+      ],
+      "path": [],
+      "data": "null",
+      "openPath": "null"
+    }
+  },
+  {
+    "screen": "Quote",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/PopupNotification/action/grouped",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "event": []
+    }
+  },
+  {
+    "screen": "Quote",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Quote?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CaccountId%2CaccountName%2CdateQuoted%2CamountCurrency%2Camount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "dateQuoted": "string",
+          "amount": "number",
+          "createdAt": "string",
+          "amountCurrency": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "createdById": "string",
+          "assignedUserId": "null"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Quote",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "number"
+  },
+  {
+    "screen": "SalesOrder",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/SalesOrder?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CaccountId%2CaccountName%2CdateOrdered%2CamountCurrency%2Camount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "dateOrdered": "string",
+          "amount": "number",
+          "createdAt": "string",
+          "amountCurrency": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "createdById": "string",
+          "assignedUserId": "null"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Invoice",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Invoice?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CaccountId%2CaccountName%2CdateInvoiced%2CgrandTotalAmountCurrency%2CgrandTotalAmount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "dateInvoiced": "string",
+          "grandTotalAmount": "string",
+          "grandTotalAmountCurrency": "string",
+          "createdAt": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "createdById": "string",
+          "assignedUserId": "null"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Campaign",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Campaign?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Ctype%2Cstatus%2CstartDate",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "type": "string",
+          "startDate": "string",
+          "createdAt": "string",
+          "createdById": "string",
+          "assignedUserId": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "TargetList",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/TargetListCategory/action/listTree?checkIfEmpty=true&maxSize=20&offset=0&orderBy=&order=",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "list": [],
+      "path": [],
+      "data": "null",
+      "openPath": "null"
+    }
+  },
+  {
+    "screen": "TargetList",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/TargetList?maxSize=20&offset=0&orderBy=createdAt&order=desc&whereGroup%5B0%5D%5Battribute%5D=categoryId&whereGroup%5B0%5D%5Btype%5D=isNull&attributeSelect=name%2CentryCount%2CcreatedAt",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "entryCount": "number",
+          "createdAt": "string",
+          "createdById": "string",
+          "assignedUserId": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Report",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/ReportCategory/action/listTree?checkIfEmpty=true&maxSize=20&offset=0&orderBy=&order=",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "order": "number",
+          "description": "null",
+          "createdAt": "string",
+          "modifiedAt": "string",
+          "childList": [],
+          "createdById": "string",
+          "createdByName": "string",
+          "modifiedById": "null",
+          "modifiedByName": "null",
+          "parentId": "null",
+          "parentName": "null"
+        }
+      ],
+      "path": [],
+      "data": "null",
+      "openPath": "null"
+    }
+  },
+  {
+    "screen": "Report",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Report?maxSize=20&offset=0&orderBy=name&order=asc&whereGroup%5B0%5D%5Battribute%5D=categoryId&whereGroup%5B0%5D%5Btype%5D=isNull&attributeSelect=name%2CentityType%2Ctype",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "entityType": "string",
+          "type": "string",
+          "data": "null",
+          "columns": [
+            "…"
+          ],
+          "groupBy": [
+            "…"
+          ],
+          "orderBy": [
+            "…"
+          ],
+          "orderByList": "null",
+          "filters": "null",
+          "filtersDataList": [],
+          "runtimeFilters": [
+            "…"
+          ],
+          "filtersData": "null",
+          "columnsData": "null",
+          "chartColorList": [],
+          "chartColors": {},
+          "chartColor": "string",
+          "chartDataList": "null",
+          "description": "null",
+          "chartType": "string",
+          "depth": "null",
+          "isInternal": "boolean",
+          "internalClassName": "null",
+          "internalParams": "null",
+          "createdAt": "string",
+          "modifiedAt": "string",
+          "emailSendingInterval": "null",
+          "emailSendingSettingMonth": "null",
+          "emailSendingSettingDay": "null",
+          "emailSendingSettingWeekdays": "null",
+          "emailSendingTime": "null",
+          "emailSendingLastDateSent": "null",
+          "emailSendingDoNotSendEmptyReport": "boolean",
+          "applyAcl": "boolean",
+          "tableMode": "string",
+          "joinedReportDataList": "null",
+          "categoryId": "null",
+          "categoryName": "null",
+          "createdById": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Project",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/ProjectCategory/action/listTree?checkIfEmpty=true&maxSize=20&offset=0&orderBy=&order=",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "order": "number",
+          "orderPath": "string",
+          "description": "null",
+          "createdAt": "string",
+          "modifiedAt": "string",
+          "childList": [],
+          "createdById": "string",
+          "createdByName": "string",
+          "modifiedById": "null",
+          "modifiedByName": "null",
+          "parentId": "null",
+          "parentName": "null"
+        }
+      ],
+      "path": [],
+      "data": "null",
+      "openPath": "null"
+    }
+  },
+  {
+    "screen": "Project",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Project?maxSize=20&offset=0&orderBy=order&order=asc&whereGroup%5B0%5D%5Battribute%5D=categoryId&whereGroup%5B0%5D%5Btype%5D=isNull&attributeSelect=name%2Cstatus%2CdateStart%2CdateEnd",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "order": "number",
+          "status": "string",
+          "dateStart": "string",
+          "dateEnd": "null",
+          "activeGroupColor": "number",
+          "ganttView": "boolean",
+          "enableCollaborators": "boolean",
+          "enableTaskDependency": "boolean",
+          "enablePriority": "boolean",
+          "enableHours": "boolean",
+          "enablePoints": "boolean",
+          "activeGroupId": "string",
+          "activeGroupName": "string",
+          "createdById": "string",
+          "isStarred": "boolean"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "ProjectTask",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "number"
+  },
+  {
+    "screen": "ProjectTask",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/ProjectTask?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2CprojectId%2CprojectName%2CcolumnId%2CcolumnName%2Ctimeline%2Cpriority",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "type": "string",
+          "actualSubTaskCount": "null",
+          "boardId": "string",
+          "status": "string",
+          "priority": "string",
+          "dateStart": "string",
+          "dateEnd": "null",
+          "memberRoleData": {
+            "role": "…",
+            "permissions": "…"
+          },
+          "enableCollaborators": "boolean",
+          "enableTaskDependency": "boolean",
+          "createdAt": "string",
+          "projectId": "string",
+          "projectName": "string",
+          "parentTaskId": "null",
+          "columnId": "string",
+          "columnName": "string",
+          "ownerId": "string",
+          "assignedUserId": "string",
+          "createdById": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "User",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/User?userType=internal&maxSize=20&offset=0&orderBy=userName&order=asc&attributeSelect=salutationName%2CfirstName%2ClastName%2CmiddleName%2Cname%2CuserName%2Ctitle%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2CisActive",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "userName": "string",
+          "type": "string",
+          "salutationName": "null",
+          "firstName": "string",
+          "lastName": "string",
+          "isActive": "boolean",
+          "title": "null",
+          "emailAddress": "null",
+          "middleName": "null",
+          "emailAddressIsOptedOut": "null",
+          "emailAddressIsInvalid": "null",
+          "createdById": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Team",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Team?maxSize=20&offset=0&orderBy=name&order=asc&attributeSelect=name",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Stream",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/PopupNotification/action/grouped",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "event": []
+    }
+  },
+  {
+    "screen": "Stream",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Stream?filter=&maxSize=20&offset=0&orderBy=number&order=desc",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "post": "null",
+          "data": {
+            "fields": "…",
+            "attributes": "…",
+            "value": "…"
+          },
+          "type": "string",
+          "targetType": "null",
+          "number": "number",
+          "isGlobal": "boolean",
+          "createdByGender": "string",
+          "isInternal": "boolean",
+          "reactionCounts": "null",
+          "myReactions": [],
+          "createdAt": "string",
+          "parentId": "string",
+          "parentType": "string",
+          "parentName": "string",
+          "relatedId": "null",
+          "relatedType": "null",
+          "createdById": "string",
+          "createdByName": "string"
+        }
+      ],
+      "reactionsCheckDate": "string",
+      "updatedReactions": []
+    }
+  },
+  {
+    "screen": "Preferences",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Preferences/1",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "id": "string",
+      "name": "string",
+      "timeZone": "string",
+      "dateFormat": "string",
+      "timeFormat": "string",
+      "weekStart": "number",
+      "defaultCurrency": "string",
+      "thousandSeparator": "string",
+      "decimalMark": "string",
+      "dashboardLayout": [
+        {
+          "name": "string",
+          "layout": [
+            "…"
+          ]
+        }
+      ],
+      "dashletsOptions": {
+        "d969245": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "null",
+          "displayOnlyCount": "boolean",
+          "displayTotal": "boolean",
+          "useSiMultiplier": "boolean",
+          "filtersData": {
+            "closeDate": "…"
+          },
+          "entityType": "string",
+          "runtimeFilters": [
+            "…"
+          ],
+          "type": "string",
+          "columns": [
+            "…"
+          ],
+          "depth": "null"
+        },
+        "d889033": {
+          "title": "string",
+          "autorefreshInterval": "number",
+          "mode": "string",
+          "enabledScopeList": [
+            "…"
+          ]
+        },
+        "default-activities": {
+          "title": "string",
+          "autorefreshInterval": "number",
+          "enabledScopeList": [
+            "…"
+          ],
+          "displayRecords": "number",
+          "futureDays": "number"
+        },
+        "d35420": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "null",
+          "displayType": "string",
+          "displayTotal": "boolean",
+          "displayOnlyCount": "boolean",
+          "useSiMultiplier": "boolean",
+          "autorefreshInterval": "number",
+          "entityType": "string",
+          "runtimeFilters": "null",
+          "type": "string",
+          "columns": [
+            "…"
+          ],
+          "depth": "number"
+        },
+        "d143911": {
+          "title": "string",
+          "autorefreshInterval": "number",
+          "displayRecords": "number",
+          "includeShared": "boolean",
+          "expandedLayout": {
+            "rows": "…"
+          }
+        },
+        "d980301": {
+          "title": "string",
+          "autorefreshInterval": "number",
+          "displayRecords": "number",
+          "expandedLayout": {
+            "rows": "…"
+          }
+        },
+        "d57664": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "string",
+          "displayType": "string",
+          "displayTotal": "boolean",
+          "displayOnlyCount": "boolean",
+          "useSiMultiplier": "boolean",
+          "autorefreshInterval": "number",
+          "filtersData": {
+            "dateStart": "…"
+          },
+          "entityType": "string",
+          "runtimeFilters": [
+            "…"
+          ],
+          "type": "string",
+          "columns": [
+            "…"
+          ],
+          "depth": "number"
+        },
+        "d10179": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "string",
+          "displayType": "string",
+          "displayTotal": "boolean",
+          "displayOnlyCount": "boolean",
+          "useSiMultiplier": "boolean",
+          "autorefreshInterval": "number",
+          "filtersData": {
+            "dateEnd": "…"
+          },
+          "entityType": "string",
+          "runtimeFilters": [
+            "…"
+          ],
+          "type": "string",
+          "columns": [
+            "…"
+          ],
+          "depth": "number"
+        },
+        "d52792": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "string",
+          "displayType": "string",
+          "displayTotal": "boolean",
+          "displayOnlyCount": "boolean",
+          "useSiMultiplier": "boolean",
+          "autorefreshInterval": "number",
+          "filtersData": {
+            "status": "…"
+          },
+          "entityType": "string",
+          "runtimeFilters": [
+            "…"
+          ],
+          "type": "string",
+          "columns": [
+            "…"
+          ],
+          "depth": "number"
+        },
+        "d108827": {
+          "title": "string",
+          "dateFrom": "string",
+          "dateTo": "string",
+          "dateFilter": "string",
+          "useLastStage": "boolean",
+          "teamName": "null",
+          "teamId": "null"
+        },
+        "d101433": {
+          "title": "string",
+          "dateFrom": "string",
+          "dateTo": "string",
+          "dateFilter": "string"
+        },
+        "d494906": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "string",
+          "displayType": "string",
+          "displayTotal": "boolean",
+          "displayOnlyCount": "boolean",
+          "useSiMultiplier": "boolean",
+          "autorefreshInterval": "number",
+          "entityType": "string",
+          "runtimeFilters": [],
+          "type": "string",
+          "columns": [],
+          "depth": "number"
+        },
+        "d248822": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "string",
+          "displayType": "string",
+          "displayTotal": "boolean",
+          "displayOnlyCount": "boolean",
+          "useSiMultiplier": "boolean",
+          "autorefreshInterval": "number",
+          "filtersData": {
+            "modifiedBy": "…"
+          },
+          "entityType": "string",
+          "runtimeFilters": [
+            "…"
+          ],
+          "type": "string",
+          "columns": [
+            "…"
+          ],
+          "depth": "number"
+        },
+        "d191950": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "null",
+          "displayType": "string",
+          "displayTotal": "boolean",
+          "displayOnlyCount": "boolean",
+          "useSiMultiplier": "boolean",
+          "autorefreshInterval": "number",
+          "entityType": "string",
+          "runtimeFilters": [],
+          "type": "string",
+          "columns": [],
+          "depth": "null"
+        },
+        "d405857": {
+          "title": "string",
+          "autorefreshInterval": "number",
+          "displayRecords": "number",
+          "expandedLayout": {
+            "rows": "…"
+          }
+        },
+        "d56856": {
+          "title": "string",
+          "autorefreshInterval": "number",
+          "enabledScopeList": [
+            "…"
+          ],
+          "mode": "string",
+          "usersIds": [
+            "…"
+          ],
+          "usersNames": {
+            "1": "…",
+            "6128966e1667d6220": "…",
+            "6128991d2f7ac1014": "…",
+            "6128998cd76886801": "…",
+            "612898a4ac2ea939a": "…"
+          },
+          "teamsIds": [
+            "…"
+          ],
+          "teamsNames": {
+            "6128977b8cc8163d5": "…"
+          }
+        },
+        "d915388": {
+          "title": "string",
+          "autorefreshInterval": "number",
+          "displayRecords": "number",
+          "includeShared": "boolean",
+          "expandedLayout": {
+            "rows": "…"
+          }
+        },
+        "d213450": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "string",
+          "displayType": "string",
+          "displayTotal": "boolean",
+          "displayOnlyCount": "boolean",
+          "useSiMultiplier": "boolean",
+          "autorefreshInterval": "number",
+          "filtersData": {
+            "closeDate": "…"
+          },
+          "entityType": "string",
+          "runtimeFilters": [
+            "…"
+          ],
+          "type": "string",
+          "columns": [
+            "…"
+          ],
+          "depth": "number"
+        },
+        "d492727": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "string",
+          "displayType": "string",
+          "displayTotal": "boolean",
+          "displayOnlyCount": "boolean",
+          "useSiMultiplier": "boolean",
+          "autorefreshInterval": "number",
+          "entityType": "string",
+          "runtimeFilters": "null",
+          "type": "string",
+          "columns": [
+            "…"
+          ],
+          "depth": "null"
+        },
+        "d28848": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "string",
+          "displayType": "string",
+          "displayTotal": "boolean",
+          "displayOnlyCount": "boolean",
+          "useSiMultiplier": "boolean",
+          "autorefreshInterval": "number",
+          "entityType": "string",
+          "runtimeFilters": "null",
+          "type": "string",
+          "columns": [
+            "…"
+          ],
+          "depth": "number"
+        },
+        "d154104": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "string",
+          "displayType": "string",
+          "displayTotal": "boolean",
+          "displayOnlyCount": "boolean",
+          "useSiMultiplier": "boolean",
+          "autorefreshInterval": "number",
+          "entityType": "string",
+          "runtimeFilters": [],
+          "type": "string",
+          "columns": [],
+          "depth": "number"
+        },
+        "d252027": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "null",
+          "displayType": "string",
+          "displayTotal": "boolean",
+          "displayOnlyCount": "boolean",
+          "useSiMultiplier": "boolean",
+          "autorefreshInterval": "number",
+          "filtersData": {
+            "assignedUser": "…",
+            "createdAt": "…",
+            "dateEnd": "…",
+            "status": "…"
+          },
+          "entityType": "string",
+          "runtimeFilters": [
+            "…"
+          ],
+          "type": "string",
+          "columns": [],
+          "depth": "number"
+        },
+        "d623707": {
+          "title": "string",
+          "autorefreshInterval": "number",
+          "displayRecords": "number",
+          "includeShared": "boolean",
+          "expandedLayout": {
+            "rows": "…"
+          }
+        },
+        "d341653": {
+          "title": "string",
+          "autorefreshInterval": "number",
+          "displayRecords": "number",
+          "includeShared": "boolean",
+          "expandedLayout": {
+            "rows": "…"
+          }
+        },
+        "d843485": {
+          "title": "string",
+          "autorefreshInterval": "number",
+          "entityType": "string",
+          "displayRecords": "number",
+          "primaryFilter": "string",
+          "sortBy": "string",
+          "boolFilterList": [
+            "…"
+          ],
+          "sortDirection": "string",
+          "expandedLayout": {
+            "rows": "…"
+          }
+        },
+        "d186537": {
+          "title": "string",
+          "autorefreshInterval": "number",
+          "displayRecords": "number",
+          "futureDays": "null",
+          "includeOwn": "boolean",
+          "includeShared": "boolean",
+          "excludeMy": "boolean",
+          "limitGroupType": "boolean",
+          "groupTypes": [
+            "…"
+          ],
+          "expandedLayout": {
+            "rows": "…"
+          }
+        },
+        "d338920": {
+          "title": "string",
+          "autorefreshInterval": "number",
+          "displayRecords": "number",
+          "futureDays": "null",
+          "includeOwn": "boolean",
+          "includeShared": "boolean",
+          "excludeMy": "boolean",
+          "limitGroupType": "boolean",
+          "groupTypes": [
+            "…"
+          ],
+          "expandedLayout": {
+            "rows": "…"
+          }
+        },
+        "d743307": {
+          "title": "string",
+          "dateFilter": "string"
+        },
+        "d385820": {
+          "title": "string",
+          "dateFilter": "string"
+        },
+        "d638952": {
+          "title": "string",
+          "reportName": "string",
+          "reportId": "string",
+          "column": "string",
+          "autorefreshInterval": "number",
+          "displayType": "string",
+          "displayTotal": "boolean",
+          "displayOnlyCount": "boolean",
+          "useSiMultiplier": "boolean",
+          "filtersData": {
+            "closeDate": "…"
+          },
+          "entityType": "string",
+          "runtimeFilters": [
+            "…"
+          ],
+          "type": "string",
+          "columns": [
+            "…"
+          ],
+          "depth": "number",
+          "columnsData": {},
+          "internalClassName": "null"
+        }
+      },
+      "dashboardLocked": "boolean",
+      "importParams": "null",
+      "sharedCalendarUserList": "null",
+      "calendarViewDataList": "null",
+      "presetFilters": "null",
+      "language": "string",
+      "exportDelimiter": "string",
+      "receiveAssignmentEmailNotifications": "boolean",
+      "receiveMentionEmailNotifications": "boolean",
+      "receiveStreamEmailNotifications": "boolean",
+      "assignmentNotificationsIgnoreEntityTypeList": "null",
+      "assignmentEmailNotificationsIgnoreEntityTypeList": "null",
+      "reactionNotifications": "boolean",
+      "reactionNotificationsNotFollowed": "boolean",
+      "notificationGrouping": "boolean",
+      "notificationSound": "boolean",
+      "autoFollowEntityTypeList": [],
+      "signature": "string",
+      "defaultReminders": "null",
+      "defaultRemindersTask": "null",
+      "themeParams": "null",
+      "useCustomTabList": "boolean",
+      "addCustomTabs": "boolean",
+      "tabList": "null",
+      "emailReplyToAllByDefault": "boolean",
+      "emailReplyForceHtml": "boolean",
+      "isPortalUser": "boolean",
+      "doNotFillAssignedUserIfNotRequired": "boolean",
+      "followEntityOnStreamPost": "boolean"
+    }
+  },
+  {
+    "screen": "DeliveryOrder",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/DeliveryOrder?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CaccountId%2CaccountName%2CsalesOrderId%2CsalesOrderName%2CdateOrdered",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "dateOrdered": "string",
+          "createdAt": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "salesOrderId": "string",
+          "salesOrderName": "string",
+          "createdById": "string",
+          "assignedUserId": "null"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "ReturnOrder",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/ReturnOrder?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CaccountId%2CaccountName%2CdateOrdered%2CamountCurrency%2Camount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": []
+    }
+  },
+  {
+    "screen": "ReturnOrder",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "number"
+  },
+  {
+    "screen": "CreditNote",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/CreditNote?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CaccountId%2CaccountName%2CdateIssued%2CgrandTotalAmountCurrency%2CgrandTotalAmount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": []
+    }
+  },
+  {
+    "screen": "Supplier",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Supplier?maxSize=20&offset=0&orderBy=name&order=asc&attributeSelect=name%2CaccountId%2CaccountName%2Cstatus",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "createdById": "string",
+          "assignedUserId": "null"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "PurchaseOrder",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/PurchaseOrder?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CsupplierId%2CsupplierName%2CdateOrdered%2CgrandTotalAmountCurrency%2CgrandTotalAmount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "dateOrdered": "string",
+          "grandTotalAmount": "number",
+          "grandTotalAmountCurrency": "string",
+          "createdAt": "string",
+          "supplierId": "string",
+          "supplierName": "string",
+          "createdById": "string",
+          "assignedUserId": "null"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "ReceiptOrder",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/ReceiptOrder?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CsupplierId%2CsupplierName%2CpurchaseOrderId%2CpurchaseOrderName%2CdateOrdered",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "dateOrdered": "string",
+          "createdAt": "string",
+          "supplierId": "string",
+          "supplierName": "string",
+          "purchaseOrderId": "string",
+          "purchaseOrderName": "string",
+          "createdById": "string",
+          "assignedUserId": "null"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "SupplierBill",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/SupplierBill?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CsupplierId%2CsupplierName%2CdateInvoiced%2CgrandTotalAmountCurrency%2CgrandTotalAmount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": []
+    }
+  },
+  {
+    "screen": "SupplierCredit",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/SupplierCredit?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CsupplierId%2CsupplierName%2CdateIssued%2CgrandTotalAmountCurrency%2CgrandTotalAmount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": []
+    }
+  },
+  {
+    "screen": "PaymentEntry",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/PaymentEntry?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=number%2Ctype%2Cstatus%2CaccountId%2CaccountName%2CdatePaid%2CamountCurrency%2Camount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "number": "string",
+          "status": "string",
+          "type": "string",
+          "datePaid": "string",
+          "amount": "string",
+          "amountCurrency": "string",
+          "createdAt": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "createdById": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "PaymentEntry",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/PopupNotification/action/grouped",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "event": []
+    }
+  },
+  {
+    "screen": "PaymentEntry",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "number"
+  },
+  {
+    "screen": "PaymentRequest",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/PaymentRequest?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=number%2Cstatus%2CaccountId%2CaccountName%2CmethodId%2CmethodName%2CamountCurrency%2Camount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "number": "string",
+          "status": "string",
+          "amount": "string",
+          "createdAt": "string",
+          "amountCurrency": "string",
+          "methodId": "string",
+          "methodName": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "createdById": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Subscription",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Subscription?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CprimaryProductId%2CprimaryProductName%2CaccountId%2CaccountName%2CbillingPlanId%2CbillingPlanName%2CbillingState",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": []
+    }
+  },
+  {
+    "screen": "TransferOrder",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/TransferOrder?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CfromWarehouseId%2CfromWarehouseName%2CtoWarehouseId%2CtoWarehouseName%2CdateOrdered",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "dateOrdered": "string",
+          "createdAt": "string",
+          "fromWarehouseId": "string",
+          "fromWarehouseName": "string",
+          "toWarehouseId": "string",
+          "toWarehouseName": "string",
+          "createdById": "string",
+          "assignedUserId": "null"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "InventoryAdjustment",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/InventoryAdjustment?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2Creason%2CwarehouseId%2CwarehouseName%2Cdate",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "status": "string",
+          "reason": "string",
+          "date": "string",
+          "createdAt": "string",
+          "warehouseId": "string",
+          "warehouseName": "string",
+          "createdById": "string",
+          "assignedUserId": "null"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "Warehouse",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Warehouse?maxSize=20&offset=0&orderBy=order&order=asc&attributeSelect=name%2CaddressCity%2Cstatus%2CisAvailableForStock",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "order": "number",
+          "status": "string",
+          "isAvailableForStock": "boolean",
+          "addressCity": "string",
+          "createdById": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "InventoryNumber",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/InventoryNumber?maxSize=20&offset=0&orderBy=number&order=desc&attributeSelect=name%2CproductId%2CproductName%2Ctype%2CquantityOnHand",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "number": "number",
+          "type": "string",
+          "quantityOnHand": "number",
+          "productId": "string",
+          "productName": "string",
+          "createdById": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "InventoryNumber",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "number"
+  },
+  {
+    "screen": "InventoryTransaction",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/InventoryTransaction?maxSize=20&offset=0&orderBy=number&order=desc&attributeSelect=number%2CproductId%2CproductName%2Cquantity%2CparentId%2CparentType%2CparentName%2Ctype%2CwarehouseId%2CwarehouseName%2CcreatedAt",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "type": "string",
+          "number": "number",
+          "quantity": "number",
+          "createdAt": "string",
+          "parentId": "string",
+          "parentType": "string",
+          "parentName": "string",
+          "productId": "string",
+          "productName": "string",
+          "warehouseId": "string",
+          "warehouseName": "string",
+          "createdById": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "GlobalStream",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/GlobalStream?maxSize=20&offset=0&orderBy=number&order=desc",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "post": "null",
+          "data": {
+            "fields": "…",
+            "attributes": "…",
+            "value": "…"
+          },
+          "type": "string",
+          "targetType": "null",
+          "number": "number",
+          "isGlobal": "boolean",
+          "createdByGender": "string",
+          "isInternal": "boolean",
+          "reactionCounts": "null",
+          "myReactions": [],
+          "createdAt": "string",
+          "parentId": "string",
+          "parentType": "string",
+          "parentName": "string",
+          "relatedId": "null",
+          "relatedType": "null",
+          "createdById": "string",
+          "createdByName": "string",
+          "_scope": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "WorkingTimeCalendar",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/WorkingTimeCalendar?maxSize=20&offset=0&orderBy=name&order=asc&attributeSelect=name%2CtimeZone%2CisDefault",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "timeZone": "null",
+          "isDefault": "boolean",
+          "createdById": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "WorkingTimeCalendar",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/PopupNotification/action/grouped",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "event": []
+    }
+  },
+  {
+    "screen": "Workflow",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/WorkflowCategory/action/listTree?checkIfEmpty=true&maxSize=20&offset=0&orderBy=&order=",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "list": [],
+      "path": [],
+      "data": "null",
+      "openPath": "null"
+    }
+  },
+  {
+    "screen": "Workflow",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Workflow?maxSize=20&offset=0&orderBy=createdAt&order=desc&whereGroup%5B0%5D%5Battribute%5D=categoryId&whereGroup%5B0%5D%5Btype%5D=isNull&attributeSelect=name%2CentityType%2Ctype%2CisActive",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": []
+    }
+  },
+  {
+    "screen": "BpmnFlowchart",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/BpmnFlowchartCategory/action/listTree?checkIfEmpty=true&maxSize=20&offset=0&orderBy=&order=",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "list": [],
+      "path": [],
+      "data": "null",
+      "openPath": "null"
+    }
+  },
+  {
+    "screen": "BpmnFlowchart",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/BpmnFlowchart?maxSize=20&offset=0&orderBy=createdAt&order=desc&whereGroup%5B0%5D%5Battribute%5D=categoryId&whereGroup%5B0%5D%5Btype%5D=isNull&attributeSelect=name%2CtargetType%2CisActive",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": []
+    }
+  },
+  {
+    "screen": "BpmnProcess",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/BpmnProcess?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CtargetType%2CtargetId%2CtargetType%2CtargetName%2CcreatedAt",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": []
+    }
+  },
+  {
+    "screen": "Account-create",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "number"
+  },
+  {
+    "screen": "Call-create",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Timeline/busyRanges?from=2026-09-10%2003:00&to=2026-09-13%2009:59&userIdList=1&entityType=Call",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "1": [
+        {
+          "dateStart": "string",
+          "dateEnd": "string",
+          "isBusyRange": "boolean"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "User-view-1",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/User/1",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "id": "string",
+      "name": "string",
+      "deleted": "boolean",
+      "userName": "string",
+      "type": "string",
+      "authMethod": "null",
+      "apiKey": "null",
+      "salutationName": "null",
+      "firstName": "string",
+      "lastName": "string",
+      "isActive": "boolean",
+      "title": "string",
+      "emailAddress": "null",
+      "phoneNumber": "null",
+      "avatarColor": "null",
+      "gender": "string",
+      "createdAt": "string",
+      "modifiedAt": "string",
+      "auth2FA": "null",
+      "lastAccess": "string",
+      "middleName": "null",
+      "emailAddressIsOptedOut": "null",
+      "emailAddressIsInvalid": "null",
+      "phoneNumberIsOptedOut": "null",
+      "phoneNumberIsInvalid": "null",
+      "emailAddressData": [],
+      "phoneNumberData": [],
+      "defaultTeamId": "null",
+      "defaultTeamName": "null",
+      "teamsIds": [
+        "string"
+      ],
+      "teamsNames": {
+        "6128977b8cc8163d5": "string"
+      },
+      "teamsColumns": {
+        "6128977b8cc8163d5": {
+          "role": "null"
+        }
+      },
+      "rolesIds": [],
+      "rolesNames": {},
+      "portalsIds": [],
+      "portalsNames": {},
+      "portalRolesIds": [],
+      "portalRolesNames": {},
+      "contactId": "null",
+      "contactName": "null"
+    }
+  },
+  {
+    "screen": "User-view-1",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Team?maxSize=50&offset=0&orderBy=name&order=asc&whereGroup%5B0%5D%5Btype%5D=in&whereGroup%5B0%5D%5Bfield%5D=id&whereGroup%5B0%5D%5Bvalue%5D%5B%5D=6128977b8cc8163d5",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "positionList": [
+            "…"
+          ],
+          "description": "null",
+          "createdAt": "string",
+          "modifiedAt": "string",
+          "layoutSetId": "null",
+          "layoutSetName": "null",
+          "workingTimeCalendarId": "string",
+          "workingTimeCalendarName": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "User-view-1",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/User/1/stream?filter=&maxSize=5&offset=0&orderBy=number&order=desc",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "post": "null",
+          "data": {
+            "fields": "…",
+            "attributes": "…",
+            "value": "…"
+          },
+          "type": "string",
+          "targetType": "null",
+          "number": "number",
+          "isGlobal": "boolean",
+          "createdByGender": "string",
+          "isInternal": "boolean",
+          "reactionCounts": "null",
+          "myReactions": [],
+          "createdAt": "string",
+          "parentId": "string",
+          "parentType": "string",
+          "parentName": "string",
+          "relatedId": "null",
+          "relatedType": "null",
+          "createdById": "string",
+          "createdByName": "string"
+        }
+      ],
+      "reactionsCheckDate": "string",
+      "updatedReactions": []
+    }
+  },
+  {
+    "screen": "Admin",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Admin/action/adminNotificationList",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": []
+  },
+  {
+    "screen": "Admin",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/PopupNotification/action/grouped",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "event": []
+    }
+  },
+  {
+    "screen": "Admin",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "number"
+  },
+  {
+    "screen": "About",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/App/about",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "text": "string",
+      "version": "string"
+    }
+  },
+  {
+    "screen": "About",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "number"
+  }
+]

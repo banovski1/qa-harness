@@ -192,6 +192,31 @@ what static analysis cannot reach rather than omitting it. Every analysis file c
 header (app path, commit, framework, timestamp) so a stale one is visible; re-run the analyzer rather
 than hand-editing.
 
+## The second analyzer: app-explorer
+
+`.claude/skills/app-explorer/` documents a **running** app from its base URL alone — no clone, no
+framework detection. It is the counterpart to `scripts/repo-analyzer`, not a replacement: the repo
+analyzer answers *what the source defines*, app-explorer answers *what the running app presents*, and
+only the second one can prove a locator resolves to exactly one element.
+
+```bash
+playwright-cli -s=<session> open <baseUrl>
+node .claude/skills/app-explorer/lib/explore.mjs --profile app-analysis/<app>/app-profile.yaml
+node .claude/skills/app-explorer/lib/probe-openapi.mjs --profile app-analysis/<app>/app-profile.yaml
+node .claude/skills/app-explorer/lib/explore.mjs --profile app-analysis/<app>/app-profile.yaml --reports-only
+```
+
+`app-analysis/<app>/app-profile.yaml` is the only app-specific file — retargeting is a new profile,
+never a code edit. Everything else under `app-analysis/` is generated and must not be hand-edited:
+`screens/*.json` is the machine contract, the four markdown reports are its summary. The agent
+orchestrates; a deterministic in-page extractor does all the reading, which is what keeps the
+inventory independent of how much of a snapshot fits in context. `lib/rank-locators.js` holds the
+ladder, and `render-reports.mjs` reads it back from that file rather than keeping a copy.
+
+The crawl is read-only and its stability is a measured claim: on the EspoCRM demo, two full crawls
+produce identical locators for all 60 screens. Re-check it after changing anything in `lib/` — the
+recipe is at the end of the skill.
+
 ## Browser automation rule
 
 `playwright-cli` (the Playwright Agent CLI, installed globally; skill at `.claude/skills/playwright-cli/`) is the only thing that drives a browser here. Never use the Playwright MCP (`mcp__playwright__*`) tools — `playwright-cli` replaces them and is far more token-efficient. Its scratch output lands in `.playwright-cli/` (gitignored).

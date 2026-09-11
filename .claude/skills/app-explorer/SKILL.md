@@ -1,0 +1,157 @@
+---
+name: app-explorer
+description: Document a running web application from its base URL alone — every screen, the components on it, a proved-unique locator for every control, and the API surface the app actually calls. Use for "analyse the app under test", "document this app", "build the locator strategy", "what screens does the app have", "regenerate app-analysis/<app>/".
+---
+
+# app-explorer
+
+Turns a base URL and a login recipe into durable documentation of a running
+application. No clone of the app's source is involved, and no framework is
+assumed: the analyzer reads a rendered DOM and the traffic the app itself makes.
+
+This is the browser-driven counterpart to `scripts/repo-analyzer`. Where that one
+answers *what the source defines*, this one answers *what the running app
+presents* — and it can prove a locator resolves to exactly one element, which
+static analysis cannot.
+
+## What it produces
+
+For an app named `<app>`:
+
+```
+app-analysis/<app>/
+  app-profile.yaml          the only app-specific file — you write this one
+  screens/<Screen>.json     machine inventory: elements, ranked locators, regions
+  crawl-state.json          visited / pending / failed, so a crawl resumes
+  network.json              every XHR the app made, attributed to a screen
+  openapi-discovery.json    what answered at the probed specification paths
+  SCREEN-INVENTORY.md       every screen, its controls, its tables
+  COMPONENT-ANALYSIS.md     regions that recur across screens vs. screen-specific ones
+  LOCATOR-STRATEGY.md       the ladder, the tallies, and every weak locator by name
+  API-DOCUMENTATION.md      observed endpoints, payload shapes, triggering screen
+```
+
+Everything except `app-profile.yaml` is generated. Never hand-edit it — re-run
+the phase that wrote it.
+
+## Running it
+
+```bash
+# 1. open a browser session (the profile's `session:` names it)
+playwright-cli -s=<session> open <baseUrl>
+
+# 2. crawl — logs in, discovers routes, extracts screens, records traffic
+node .claude/skills/app-explorer/lib/explore.mjs --profile app-analysis/<app>/app-profile.yaml
+
+# 3. probe for a machine-readable API specification, using the logged-in session
+node .claude/skills/app-explorer/lib/probe-openapi.mjs --profile app-analysis/<app>/app-profile.yaml
+
+# 4. re-render the four reports (folds in whatever step 3 found)
+node .claude/skills/app-explorer/lib/explore.mjs --profile app-analysis/<app>/app-profile.yaml --reports-only
+```
+
+Useful flags: `--resume` continues an interrupted crawl from `crawl-state.json`,
+`--max-screens N` and `--batch-size N` override the profile's budget.
+
+## Targeting a new app
+
+Write a profile. Nothing else changes — no code in `lib/` knows about any
+application.
+
+```yaml
+name: My App
+baseUrl: https://app.example.com/
+session: myapp
+
+auth:
+  loginUrl: https://app.example.com/login
+  steps:
+    - { action: fill, selector: "#username", value: "env:APP_USERNAME" }
+    - { action: fill, selector: "#password", value: "env:APP_PASSWORD" }
+    - { action: click, selector: "button[type=submit]" }
+  readyWhen: "nav a[href='/dashboard']"
+
+seedRoutes: ["/dashboard", "/customers", "/customers/new"]
+exclude: ["/logout", "/admin/"]
+budget: { maxScreens: 60, maxDepth: 2 }
+settings:
+  testIdAttribute: data-testid
+  contentSelector: "#main"
+```
+
+A `value:` of `env:NAME` is read from the environment when the crawl runs, so a
+credential never enters the profile or any artifact.
+
+Two fields decide whether the crawl is stable, and both take a **visibly
+rendered** element:
+
+- `auth.readyWhen` proves the login worked. A zero-height container does not
+  count as visible — pick something the user can actually see.
+- `settings.contentSelector` proves the *application* finished rendering into the
+  page. Settling proves the page stopped changing; without this gate a screen
+  whose list has not arrived yet is recorded as a nearly empty one.
+
+## How it stays stable
+
+- **Settle on evidence, never on a timer.** In-flight requests drain, then the
+  DOM mutation count must hold steady across consecutive samples. Then the
+  content gate above. No `sleep` decides anything.
+- **Generated ids are refused.** An id like `contact-edit-3598` is minted per
+  render: stable within one crawl, different in the next. `looksGenerated` in
+  `extract-screen.js` rejects those wherever a locator might anchor to one — this
+  was the single largest source of run-to-run drift.
+- **Failures are recorded, never skipped.** A screen that will not yield is
+  retried once, then written to `crawl-state.json` with its reason and listed in
+  `SCREEN-INVENTORY.md`. A missing screen is always visible.
+- **Read-only.** The crawl navigates and reads. It opens create and edit screens
+  because they are routes, but never activates a control, so nothing is saved,
+  sent or deleted. Controls whose name matches the destructive pattern are
+  flagged `destructive: true` in the JSON for whoever writes the tests.
+- **Bounded and resumable.** `budget:` caps screens and depth; every batch writes
+  state before the next begins.
+
+## The locator ladder
+
+`lib/rank-locators.js` defines the ranking, and it is the only place it exists —
+the reports read it back from that file rather than keeping a copy. Best to
+worst:
+
+`testId` → `role` → `label` → `placeholder` → `scoped` → `attribute` → `text` → `css`
+
+Every candidate is counted against the live DOM when it is built, so **unique
+means one element answered to it on the rendered page**. The best *uniquely
+resolving* candidate wins; a candidate matching several elements can never be
+chosen.
+
+`scoped` is the rung worth understanding: an expression anchored to an attribute
+the application names on purpose — `[data-name="firstName"] input`. It is CSS, but
+it breaks only when the field is renamed, so it counts as semantic. It is the
+answer for a form-heavy app whose inputs carry no `for`-associated label.
+
+A bare `css` path always resolves to one element, so it is never counted as a
+semantic win. Those rows are listed by name in `LOCATOR-STRATEGY.md`: they are
+the locators that will break first, and the controls worth fixing upstream.
+
+## Using the output
+
+`screens/*.json` is the contract; the markdown is its summary. Each element
+carries `locator` (the chosen one), `candidates` (all of them, with match
+counts), `unique`, `fragile`, `region`, `visible` and `destructive`. A framework
+generator should read the JSON; a human should read the markdown.
+
+Counts in the reports cover **visible** controls only. Hidden ones — collapsed
+menus, closed dropdowns — stay in the JSON but are excluded from the totals,
+because a locator for something nobody can see is not one a test can act on.
+
+## Verifying a run
+
+The claim this tool makes is reproducibility, so check it:
+
+```bash
+cp -r app-analysis/<app>/screens /tmp/runA
+node .claude/skills/app-explorer/lib/explore.mjs --profile app-analysis/<app>/app-profile.yaml
+# then diff the chosen locator of every visible element, per screen
+```
+
+On the EspoCRM demo this is 60 screens out of 60 identical. A screen that differs
+is a finding: either genuinely live content, or a stability bug worth fixing here.
