@@ -56,7 +56,7 @@ re-run the skills, then `compile-model.ts`, to change it.
 
 ## Authentication
 
-session — NextAuth session cookie. Credentials come from `APP_USERNAME`/`APP_PASSWORD` and never appear in the analysis.
+undocumented-in-spec — see api.json. Credentials come from `APP_USERNAME`/`APP_PASSWORD` and never appear in the analysis.
 
 ## What the analysis could not settle
 
