@@ -12,3 +12,9 @@ docs/superpowers/
 # app-explorer scratch: the bundle it hands to playwright-cli
 analysis/**/.batch.js
 analysis/**/.probe.js
+
+# The generated projects' own install and run output
+generated-framework/**/node_modules/
+generated-framework/**/test-results/
+generated-framework/**/playwright-report/
+generated-framework/**/.auth/

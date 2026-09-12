@@ -96,12 +96,19 @@ export class RecordTable extends BaseComponent {
    * between "the row is missing" and "the row has not arrived", and the failure says which.
    */
   async settled(): Promise<void> {
+    // Rendered first: a table that has not arrived yet reports zero rows, which reads
+    // identically to a table that is genuinely empty. These are different failures.
+    await this.waitFor(
+      `${this.label} to render`,
+      async () => (await this.locator().count()) > 0,
+      async () => `no element matches the table root ${this.shape.root}`,
+    );
     let previous = -1;
     await this.waitFor(
       `${this.label} to stop loading rows`,
       async () => {
         const now = await this.count();
-        const stable = now === previous && now >= 0;
+        const stable = now === previous;
         previous = now;
         return stable;
       },

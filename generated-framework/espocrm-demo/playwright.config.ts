@@ -11,10 +11,13 @@ export default defineConfig({
     baseURL: process.env.BASE_URL ?? 'https://demo.eu.espocrm.com/',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
-    storageState: '.auth/user.json',
+    // Shorter than the test timeout on purpose: a component must fail while there
+    // is still budget left to diagnose why, or every failure reads as TIMED_OUT.
+    actionTimeout: 15_000,
+    navigationTimeout: 30_000,
   },
   projects: [
-    { name: 'setup', testMatch: /auth\.setup\.ts/, use: { storageState: undefined } },
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] }, dependencies: ['setup'] },
+    { name: 'setup', testMatch: /auth\.setup\.ts/ },
+    { name: 'chromium', use: { ...devices['Desktop Chrome'], storageState: '.auth/user.json' }, dependencies: ['setup'] },
   ],
 });

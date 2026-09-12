@@ -13,6 +13,21 @@ export interface Identity {
   role?: string;
 }
 
+/**
+ * The accessible name, allowing for a decorative glyph in front of it.
+ *
+ * `exact: true` looks like the strict choice and is the brittle one. A button built as
+ * `<i class="icon"/><span>Create Contact</span>` computes its name as "+ Create Contact"
+ * once the icon font loads, and as "Create Contact" before it does — so an exact match
+ * passes or fails depending on font timing, which is not a property any test should
+ * depend on. Anchoring the END of the name and requiring a boundary at the start keeps
+ * what exactness was for: "Save" still does not match "Save and Close", and "Create
+ * Contact" does not match "Recreate Contact".
+ */
+export function wholeName(label: string): RegExp {
+  return new RegExp(`(^|[^\\w])\\s*${label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`);
+}
+
 export function renderTemplate(template: string, values: Record<string, string>): string {
   return template.replace(/\{(\w+)\}/g, (_, key) => values[key] ?? '');
 }
@@ -40,10 +55,7 @@ function quote(value: string): string {
 export function resolve(pageOrRoot: Page | Locator, role: string, identity: Identity): Locator {
   const scope = scopeOf(pageOrRoot, identity);
   if (identity.label) {
-    return scope.getByRole(role as Parameters<Locator['getByRole']>[0], {
-      name: identity.label,
-      exact: true,
-    });
+    return scope.getByRole(role as Parameters<Locator['getByRole']>[0], { name: wholeName(identity.label) });
   }
   if (identity.field) {
     if (!FIELD_TEMPLATE) {

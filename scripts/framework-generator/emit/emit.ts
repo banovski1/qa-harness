@@ -234,9 +234,14 @@ function staticProject(model: AppModel): { path: string; contents: string; kind:
         `    baseURL: process.env.BASE_URL ?? ${q(model.app.baseUrl)},`,
         `    trace: 'retain-on-failure',`,
         `    screenshot: 'only-on-failure',`,
-        ui ? `    storageState: ${q('.auth/user.json')},` : '',
+        `    // Shorter than the test timeout on purpose: a component must fail while there`,
+        `    // is still budget left to diagnose why, or every failure reads as TIMED_OUT.`,
+        `    actionTimeout: 15_000,`,
+        `    navigationTimeout: 30_000,`,
         `  },`,
-        ui ? `  projects: [\n    { name: 'setup', testMatch: /auth\\.setup\\.ts/, use: { storageState: undefined } },\n    { name: 'chromium', use: { ...devices['Desktop Chrome'] }, dependencies: ['setup'] },\n  ],`
+        // The session belongs to the chromium project, not to `use`: a setting there
+        // would apply to the setup project too, which runs before the file exists.
+        ui ? `  projects: [\n    { name: 'setup', testMatch: /auth\\.setup\\.ts/ },\n    { name: 'chromium', use: { ...devices['Desktop Chrome'], storageState: '.auth/user.json' }, dependencies: ['setup'] },\n  ],`
            : `  projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],`,
         `});`,
         '',

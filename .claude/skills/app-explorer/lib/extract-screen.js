@@ -348,7 +348,10 @@ function __extractScreen(options) {
   });
 
   var headings = Array.prototype.slice.call(document.querySelectorAll('h1,h2,h3')).map(function (h) {
-    return { level: Number(h.tagName.slice(1)), text: textOf(h).slice(0, 120) };
+    // innerText, not textContent: a breadcrumb heading built from two spans yields
+    // "Contactscreate" under textContent, which is a heading no assertion can use.
+    var text = (h.innerText || h.textContent || '').replace(/\s+/g, ' ').trim();
+    return { level: Number(h.tagName.slice(1)), text: text.slice(0, 120) };
   }).filter(function (h) { return h.text; });
 
   var tables = Array.prototype.slice.call(document.querySelectorAll('table')).map(function (t) {
