@@ -18,3 +18,9 @@ generated-framework/**/node_modules/
 generated-framework/**/test-results/
 generated-framework/**/playwright-report/
 generated-framework/**/.auth/
+
+# Odoo is the retarget proof, not a corpus member: its analysis is committed, its
+# framework is not. 585 declared routes with no crawl behind them generate 4.7MB of
+# page objects that carry a URL and nothing else — regenerable in seconds, and a diff
+# nobody can read. Crawl an instance and it earns its place.
+generated-framework/odoo/
