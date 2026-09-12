@@ -10,6 +10,7 @@ import { join } from 'node:path';
 // @ts-ignore -- a deliberately small YAML reader, shared with the explorer
 import { parseYaml } from '../../.claude/skills/app-explorer/lib/yaml-lite.mjs';
 import { renderReport } from './render-report.ts';
+import { deriveResources, tagEndpoints } from './api-resources.ts';
 import type { AppModel, ComponentDef, ComponentUse, Screen, LocatorSpec } from './model-types.ts';
 
 /** A region is shared when it recurs on this many screens... */
@@ -406,6 +407,11 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
     if (regionActions.length) (def as any).actions = regionActions;
   }
 
+  // What the API is for, derived from its own shape: which resource each endpoint
+  // addresses, what a call to it establishes, and what it cannot run without.
+  const resources = deriveResources(api.endpoints ?? []);
+  const taggedEndpoints = tagEndpoints(api.endpoints ?? [], resources);
+
   assertNoSelectors(screens);
 
   return {
@@ -420,7 +426,8 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
     components,
     screens,
     api: {
-      endpoints: api.endpoints ?? [],
+      resources,
+      endpoints: taggedEndpoints,
       auth: api.auth
         ? {
             ...api.auth,
@@ -440,6 +447,10 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
       uses: screens.reduce((n, s) => n + s.uses.length, 0),
       actions: screens.reduce((n, s) => n + s.actions.length, 0),
       unverified: unverifiedTotal,
+      endpoints: (api.endpoints ?? []).length,
+      resources: Object.keys(resources).length,
+      creatable: Object.values(resources).filter(r => r.ops.create).length,
+      cleanable: Object.values(resources).filter(r => r.cleanup === 'delete').length,
     },
   };
 }

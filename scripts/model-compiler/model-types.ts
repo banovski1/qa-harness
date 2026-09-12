@@ -88,6 +88,6 @@ export interface AppModel {
   };
   components: Record<string, ComponentDef>;
   screens: Screen[];
-  api: { endpoints: unknown[]; auth: ApiAuth | null };
+  api: { resources: Record<string, unknown>; endpoints: unknown[]; auth: ApiAuth | null };
   stats: Record<string, number>;
 }

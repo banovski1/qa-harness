@@ -3267,6 +3267,1513 @@
     }
   ],
   "api": {
+    "resources": {
+      "Booking": {
+        "name": "Booking",
+        "basePath": "/v2/bookings",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/bookings",
+            "summary": "Get all bookings",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings"
+          },
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/v2/bookings",
+            "summary": "Create a booking",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings"
+          },
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/v2/bookings/{bookingUid}",
+            "summary": "Get a booking",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}"
+          },
+          "actions": [
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/bookings/{bookingUid}/attendees",
+              "summary": "Get all attendees for a booking",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/attendees"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/bookings/{bookingUid}/attendees",
+              "summary": "Add an attendee to a booking",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/attendees"
+            },
+            {
+              "kind": "action",
+              "method": "DELETE",
+              "path": "/v2/bookings/{bookingUid}/attendees/{attendeeId}",
+              "summary": "Remove an attendee from a booking",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/attendees/{attendeeId}"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/bookings/{bookingUid}/attendees/{attendeeId}",
+              "summary": "Get a specific attendee for a booking",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/attendees/{attendeeId}"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/bookings/{bookingUid}/calendar-links",
+              "summary": "Get 'Add to Calendar' links for a booking",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/calendar-links"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/bookings/{bookingUid}/cancel",
+              "summary": "Cancel a booking",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/cancel"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/bookings/{bookingUid}/conferencing-sessions",
+              "summary": "Get Video Meeting Sessions. Only supported for Cal Video",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/conferencing-sessions"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/bookings/{bookingUid}/confirm",
+              "summary": "Confirm a booking",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/confirm"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/bookings/{bookingUid}/decline",
+              "summary": "Decline a booking",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/decline"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/bookings/{bookingUid}/guests",
+              "summary": "Add guests to an existing booking",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/guests"
+            },
+            {
+              "kind": "action",
+              "method": "PATCH",
+              "path": "/v2/bookings/{bookingUid}/location",
+              "summary": "Update booking location for an existing booking",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/location"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/bookings/{bookingUid}/mark-absent",
+              "summary": "Mark a booking absence",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/mark-absent"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/bookings/{bookingUid}/reassign",
+              "summary": "Reassign a booking to auto-selected host",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/reassign"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/bookings/{bookingUid}/reassign/{userId}",
+              "summary": "Reassign a booking to a specific host",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/reassign/{userId}"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/bookings/{bookingUid}/recordings",
+              "summary": "Get all the recordings for the booking",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/recordings"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/bookings/{bookingUid}/references",
+              "summary": "Get booking references",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/references"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/bookings/{bookingUid}/reschedule",
+              "summary": "Reschedule a booking",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/reschedule"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/bookings/{bookingUid}/transcripts",
+              "summary": "Get Cal Video real time transcript download links for the booking",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/transcripts"
+            }
+          ]
+        },
+        "requires": [],
+        "establishes": "a Booking exists",
+        "cleanup": "none"
+      },
+      "BusyTime": {
+        "name": "BusyTime",
+        "basePath": "/v2/calendars/busy-times",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/calendars/busy-times",
+            "summary": "Get busy times",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/busy-times"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "BySeat": {
+        "name": "BySeat",
+        "basePath": "/v2/bookings/by-seat",
+        "ops": {
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/v2/bookings/by-seat/{seatUid}",
+            "summary": "Get a booking by seat UID",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/by-seat/{seatUid}"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Calendar": {
+        "name": "Calendar",
+        "basePath": "/v2/calendars",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/calendars",
+            "summary": "Get all calendars",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars"
+          },
+          "actions": [
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/calendars/{calendar}/check",
+              "summary": "Check a calendar connection",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/check"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/calendars/{calendar}/connect",
+              "summary": "Get OAuth connect URL",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/connect"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/calendars/{calendar}/credentials",
+              "summary": "Save Apple calendar credentials",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/credentials"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/calendars/{calendar}/disconnect",
+              "summary": "Disconnect a calendar",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/disconnect"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/calendars/{calendar}/event/{eventUid}",
+              "summary": "Get meeting details from calendar",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/event/{eventUid}"
+            },
+            {
+              "kind": "action",
+              "method": "PATCH",
+              "path": "/v2/calendars/{calendar}/event/{eventUid}",
+              "summary": "Update meeting details in calendar",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/event/{eventUid}"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/calendars/{calendar}/events",
+              "summary": "List calendar events",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/events"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/calendars/{calendar}/events",
+              "summary": "Create a calendar event",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/events"
+            },
+            {
+              "kind": "action",
+              "method": "DELETE",
+              "path": "/v2/calendars/{calendar}/events/{eventUid}",
+              "summary": "Delete a calendar event",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/events/{eventUid}"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/calendars/{calendar}/events/{eventUid}",
+              "summary": "Get meeting details from calendar",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/events/{eventUid}"
+            },
+            {
+              "kind": "action",
+              "method": "PATCH",
+              "path": "/v2/calendars/{calendar}/events/{eventUid}",
+              "summary": "Update meeting details in calendar",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/events/{eventUid}"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/calendars/{calendar}/freebusy",
+              "summary": "Get free/busy times",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/freebusy"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/calendars/{calendar}/save",
+              "summary": "Save Google or Outlook calendar credentials",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/save"
+            }
+          ]
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Check": {
+        "name": "Check",
+        "basePath": "/v2/stripe/check",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/calendars/ics-feed/check",
+            "summary": "Check an ICS feed",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/ics-feed/check"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Client": {
+        "name": "Client",
+        "basePath": "/v2/auth/oauth2/clients",
+        "ops": {
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/v2/auth/oauth2/clients/{clientId}",
+            "summary": "Get OAuth2 client",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/auth/oauth2/clients/{clientId}"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Conferencing": {
+        "name": "Conferencing",
+        "basePath": "/v2/conferencing",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/conferencing",
+            "summary": "List your conferencing applications",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing"
+          },
+          "actions": [
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/conferencing/{app}/connect",
+              "summary": "Connect your conferencing application",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing/{app}/connect"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/conferencing/{app}/default",
+              "summary": "Set your default conferencing application",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing/{app}/default"
+            },
+            {
+              "kind": "action",
+              "method": "DELETE",
+              "path": "/v2/conferencing/{app}/disconnect",
+              "summary": "Disconnect your conferencing application",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing/{app}/disconnect"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/conferencing/{app}/oauth/auth-url",
+              "summary": "Get OAuth conferencing app auth URL",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing/{app}/oauth/auth-url"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/conferencing/{app}/oauth/callback",
+              "summary": "Conferencing app OAuth callback",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing/{app}/oauth/callback"
+            }
+          ]
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Connect": {
+        "name": "Connect",
+        "basePath": "/v2/stripe/connect",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/stripe/connect",
+            "summary": "Get Stripe connect URL",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/stripe/connect"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Connection": {
+        "name": "Connection",
+        "basePath": "/v2/calendars/connections",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/calendars/connections",
+            "summary": "List calendar connections",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections"
+          },
+          "actions": [
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/calendars/connections/{connectionId}/events",
+              "summary": "List events for a connection",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections/{connectionId}/events"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/calendars/connections/{connectionId}/events",
+              "summary": "Create event on a connection",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections/{connectionId}/events"
+            },
+            {
+              "kind": "action",
+              "method": "DELETE",
+              "path": "/v2/calendars/connections/{connectionId}/events/{eventId}",
+              "summary": "Delete event for a connection",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections/{connectionId}/events/{eventId}"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/calendars/connections/{connectionId}/events/{eventId}",
+              "summary": "Get event for a connection",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections/{connectionId}/events/{eventId}"
+            },
+            {
+              "kind": "action",
+              "method": "PATCH",
+              "path": "/v2/calendars/connections/{connectionId}/events/{eventId}",
+              "summary": "Update event for a connection",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections/{connectionId}/events/{eventId}"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/calendars/connections/{connectionId}/freebusy",
+              "summary": "Get free/busy for a connection",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections/{connectionId}/freebusy"
+            }
+          ]
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Default": {
+        "name": "Default",
+        "basePath": "/v2/schedules/default",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/conferencing/default",
+            "summary": "Get your default conferencing application",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing/default"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "DestinationCalendar": {
+        "name": "DestinationCalendar",
+        "basePath": "/v2/destination-calendars",
+        "ops": {
+          "update": {
+            "kind": "update",
+            "method": "PUT",
+            "path": "/v2/destination-calendars",
+            "summary": "Update destination calendars",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/destination-calendars"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Email": {
+        "name": "Email",
+        "basePath": "/v2/verified-resources/emails",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/verified-resources/emails",
+            "summary": "Get list of verified emails",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/emails"
+          },
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/v2/verified-resources/emails/{id}",
+            "summary": "Get verified email by id",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/emails/{id}"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "EventType": {
+        "name": "EventType",
+        "basePath": "/v2/event-types",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/event-types",
+            "summary": "Get all event types",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types"
+          },
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/v2/event-types",
+            "summary": "Create an event type",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types"
+          },
+          "delete": {
+            "kind": "delete",
+            "method": "DELETE",
+            "path": "/v2/event-types/{eventTypeId}",
+            "summary": "Delete an event type",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}"
+          },
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/v2/event-types/{eventTypeId}",
+            "summary": "Get an event type",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}"
+          },
+          "update": {
+            "kind": "update",
+            "method": "PATCH",
+            "path": "/v2/event-types/{eventTypeId}",
+            "summary": "Update an event type",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}"
+          },
+          "actions": [
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/event-types/{eventTypeId}/private-links",
+              "summary": "Get all private links for an event type",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/private-links"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/event-types/{eventTypeId}/private-links",
+              "summary": "Create a private link for an event type",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/private-links"
+            },
+            {
+              "kind": "action",
+              "method": "DELETE",
+              "path": "/v2/event-types/{eventTypeId}/private-links/{linkId}",
+              "summary": "Delete a private link for an event type",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/private-links/{linkId}"
+            },
+            {
+              "kind": "action",
+              "method": "PATCH",
+              "path": "/v2/event-types/{eventTypeId}/private-links/{linkId}",
+              "summary": "Update a private link for an event type",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/private-links/{linkId}"
+            },
+            {
+              "kind": "action",
+              "method": "DELETE",
+              "path": "/v2/event-types/{eventTypeId}/webhooks",
+              "summary": "Delete all webhooks",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/webhooks"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/event-types/{eventTypeId}/webhooks",
+              "summary": "Get all webhooks",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/webhooks"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/event-types/{eventTypeId}/webhooks",
+              "summary": "Create a webhook",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/webhooks"
+            },
+            {
+              "kind": "action",
+              "method": "DELETE",
+              "path": "/v2/event-types/{eventTypeId}/webhooks/{webhookId}",
+              "summary": "Delete a webhook",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/webhooks/{webhookId}"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/event-types/{eventTypeId}/webhooks/{webhookId}",
+              "summary": "Get a webhook",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/webhooks/{webhookId}"
+            },
+            {
+              "kind": "action",
+              "method": "PATCH",
+              "path": "/v2/event-types/{eventTypeId}/webhooks/{webhookId}",
+              "summary": "Update a webhook",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/webhooks/{webhookId}"
+            }
+          ]
+        },
+        "requires": [],
+        "establishes": "an EventType exists",
+        "cleanup": "delete"
+      },
+      "Me": {
+        "name": "Me",
+        "basePath": "/v2/me",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/me",
+            "summary": "Get my profile",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/me"
+          },
+          "update": {
+            "kind": "update",
+            "method": "PATCH",
+            "path": "/v2/me",
+            "summary": "Update my profile",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/me"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Oauth": {
+        "name": "Oauth",
+        "basePath": "/v2/oauth",
+        "ops": {
+          "actions": [
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/oauth/{clientId}/refresh",
+              "summary": "Refresh managed user tokens",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth/{clientId}/refresh"
+            }
+          ]
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "OauthClient": {
+        "name": "OauthClient",
+        "basePath": "/v2/oauth-clients",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/oauth-clients",
+            "summary": "Get all OAuth clients",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients"
+          },
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/v2/oauth-clients",
+            "summary": "Create an OAuth client",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients"
+          },
+          "delete": {
+            "kind": "delete",
+            "method": "DELETE",
+            "path": "/v2/oauth-clients/{clientId}",
+            "summary": "Delete an OAuth client",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}"
+          },
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/v2/oauth-clients/{clientId}",
+            "summary": "Get an OAuth client",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}"
+          },
+          "update": {
+            "kind": "update",
+            "method": "PATCH",
+            "path": "/v2/oauth-clients/{clientId}",
+            "summary": "Update an OAuth client",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}"
+          },
+          "actions": [
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/oauth-clients/{clientId}/users",
+              "summary": "Get all managed users",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/users"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/oauth-clients/{clientId}/users",
+              "summary": "Create a managed user",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/users"
+            },
+            {
+              "kind": "action",
+              "method": "DELETE",
+              "path": "/v2/oauth-clients/{clientId}/users/{userId}",
+              "summary": "Delete a managed user",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/users/{userId}"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/oauth-clients/{clientId}/users/{userId}",
+              "summary": "Get a managed user",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/users/{userId}"
+            },
+            {
+              "kind": "action",
+              "method": "PATCH",
+              "path": "/v2/oauth-clients/{clientId}/users/{userId}",
+              "summary": "Update a managed user",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/users/{userId}"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/oauth-clients/{clientId}/users/{userId}/force-refresh",
+              "summary": "Force refresh tokens",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/users/{userId}/force-refresh"
+            },
+            {
+              "kind": "action",
+              "method": "DELETE",
+              "path": "/v2/oauth-clients/{clientId}/webhooks",
+              "summary": "Delete all webhooks",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/webhooks"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/oauth-clients/{clientId}/webhooks",
+              "summary": "Get all webhooks",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/webhooks"
+            },
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/v2/oauth-clients/{clientId}/webhooks",
+              "summary": "Create a webhook",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/webhooks"
+            },
+            {
+              "kind": "action",
+              "method": "DELETE",
+              "path": "/v2/oauth-clients/{clientId}/webhooks/{webhookId}",
+              "summary": "Delete a webhook",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/webhooks/{webhookId}"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/v2/oauth-clients/{clientId}/webhooks/{webhookId}",
+              "summary": "Get a webhook",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/webhooks/{webhookId}"
+            },
+            {
+              "kind": "action",
+              "method": "PATCH",
+              "path": "/v2/oauth-clients/{clientId}/webhooks/{webhookId}",
+              "summary": "Update a webhook",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [
+                "$ref"
+              ],
+              "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/webhooks/{webhookId}"
+            }
+          ]
+        },
+        "requires": [],
+        "establishes": "an OauthClient exists",
+        "cleanup": "delete"
+      },
+      "Phone": {
+        "name": "Phone",
+        "basePath": "/v2/verified-resources/phones",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/verified-resources/phones",
+            "summary": "Get list of verified phone numbers",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/phones"
+          },
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/v2/verified-resources/phones/{id}",
+            "summary": "Get verified phone number by id",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/phones/{id}"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Refresh": {
+        "name": "Refresh",
+        "basePath": "/v2/api-keys/refresh",
+        "ops": {
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/v2/api-keys/refresh",
+            "summary": "Refresh API Key",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/api-keys/refresh"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Request": {
+        "name": "Request",
+        "basePath": "/v2/verified-resources/phones/verification-code/request",
+        "ops": {
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/v2/verified-resources/emails/verification-code/request",
+            "summary": "Request email verification code",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/emails/verification-code/request"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Reservation": {
+        "name": "Reservation",
+        "basePath": "/v2/slots/reservations",
+        "ops": {
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/v2/slots/reservations",
+            "summary": "Reserve a slot",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/slots/reservations"
+          },
+          "delete": {
+            "kind": "delete",
+            "method": "DELETE",
+            "path": "/v2/slots/reservations/{uid}",
+            "summary": "Delete a reserved slot",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/slots/reservations/{uid}"
+          },
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/v2/slots/reservations/{uid}",
+            "summary": "Get reserved slot",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/slots/reservations/{uid}"
+          },
+          "update": {
+            "kind": "update",
+            "method": "PATCH",
+            "path": "/v2/slots/reservations/{uid}",
+            "summary": "Update a reserved slot",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/slots/reservations/{uid}"
+          }
+        },
+        "requires": [],
+        "establishes": "a Reservation exists",
+        "cleanup": "delete"
+      },
+      "Save": {
+        "name": "Save",
+        "basePath": "/v2/stripe/save",
+        "ops": {
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/v2/calendars/ics-feed/save",
+            "summary": "Save an ICS feed",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/ics-feed/save"
+          },
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/stripe/save",
+            "summary": "Save Stripe credentials",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/stripe/save"
+          }
+        },
+        "requires": [],
+        "establishes": "a Save exists",
+        "cleanup": "none"
+      },
+      "Schedule": {
+        "name": "Schedule",
+        "basePath": "/v2/schedules",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/schedules",
+            "summary": "Get all schedules",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/schedules"
+          },
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/v2/schedules",
+            "summary": "Create a schedule",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/schedules"
+          },
+          "delete": {
+            "kind": "delete",
+            "method": "DELETE",
+            "path": "/v2/schedules/{scheduleId}",
+            "summary": "Delete a schedule",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/schedules/{scheduleId}"
+          },
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/v2/schedules/{scheduleId}",
+            "summary": "Get a schedule",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/schedules/{scheduleId}"
+          },
+          "update": {
+            "kind": "update",
+            "method": "PATCH",
+            "path": "/v2/schedules/{scheduleId}",
+            "summary": "Update a schedule",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/schedules/{scheduleId}"
+          }
+        },
+        "requires": [],
+        "establishes": "a Schedule exists",
+        "cleanup": "delete"
+      },
+      "SelectedCalendar": {
+        "name": "SelectedCalendar",
+        "basePath": "/v2/selected-calendars",
+        "ops": {
+          "delete": {
+            "kind": "delete",
+            "method": "DELETE",
+            "path": "/v2/selected-calendars",
+            "summary": "Delete a selected calendar",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/selected-calendars"
+          },
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/v2/selected-calendars",
+            "summary": "Add a selected calendar",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/selected-calendars"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "delete"
+      },
+      "Slot": {
+        "name": "Slot",
+        "basePath": "/v2/slots",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/slots",
+            "summary": "Get available time slots for an event type",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/slots"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Token": {
+        "name": "Token",
+        "basePath": "/v2/auth/oauth2/token",
+        "ops": {
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/v2/auth/oauth2/token",
+            "summary": "Exchange authorization code or refresh token for tokens",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/auth/oauth2/token"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Verify": {
+        "name": "Verify",
+        "basePath": "/v2/verified-resources/phones/verification-code/verify",
+        "ops": {
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/v2/verified-resources/emails/verification-code/verify",
+            "summary": "Verify an email",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/emails/verification-code/verify"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Webhook": {
+        "name": "Webhook",
+        "basePath": "/v2/webhooks",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/v2/webhooks",
+            "summary": "Get all webhooks",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/webhooks"
+          },
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/v2/webhooks",
+            "summary": "Create a webhook",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/webhooks"
+          },
+          "delete": {
+            "kind": "delete",
+            "method": "DELETE",
+            "path": "/v2/webhooks/{webhookId}",
+            "summary": "Delete a webhook",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/webhooks/{webhookId}"
+          },
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/v2/webhooks/{webhookId}",
+            "summary": "Get a webhook",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/webhooks/{webhookId}"
+          },
+          "update": {
+            "kind": "update",
+            "method": "PATCH",
+            "path": "/v2/webhooks/{webhookId}",
+            "summary": "Update a webhook",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "$ref"
+            ],
+            "source": "docs/api-reference/v2/openapi.json#/paths//v2/webhooks/{webhookId}"
+          }
+        },
+        "requires": [],
+        "establishes": "a Webhook exists",
+        "cleanup": "delete"
+      }
+    },
     "endpoints": [
       {
         "method": "POST",
@@ -3280,7 +4787,9 @@
           "$ref": "#/components/schemas/RefreshApiKeyInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/api-keys/refresh",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "action: Refresh API Key",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3292,7 +4801,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/auth/oauth2/clients/{clientId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "POST",
@@ -3304,7 +4815,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/auth/oauth2/token",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "action: Exchange authorization code or refresh token for tokens",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3316,7 +4829,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "POST",
@@ -3328,7 +4843,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: a Booking exists",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3340,7 +4857,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/by-seat/{seatUid}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "GET",
@@ -3352,7 +4871,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "GET",
@@ -3364,7 +4885,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/attendees",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get all attendees for a booking on Booking",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3378,7 +4901,9 @@
           "$ref": "#/components/schemas/AddAttendeeInput_2024_08_13"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/attendees",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Add an attendee to a booking on Booking",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -3390,7 +4915,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/attendees/{attendeeId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Remove an attendee from a booking on Booking",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3402,7 +4929,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/attendees/{attendeeId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get a specific attendee for a booking on Booking",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3414,7 +4943,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/calendar-links",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get 'Add to Calendar' links for a booking on Booking",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3426,7 +4957,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/cancel",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Cancel a booking on Booking",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3438,7 +4971,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/conferencing-sessions",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get Video Meeting Sessions. Only supported for Cal Video on Booking",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3450,7 +4985,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/confirm",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Confirm a booking on Booking",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3464,7 +5001,9 @@
           "$ref": "#/components/schemas/DeclineBookingInput_2024_08_13"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/decline",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Decline a booking on Booking",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3478,7 +5017,9 @@
           "$ref": "#/components/schemas/AddGuestsInput_2024_08_13"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/guests",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Add guests to an existing booking on Booking",
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -3492,7 +5033,9 @@
           "$ref": "#/components/schemas/UpdateBookingLocationInput_2024_08_13"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/location",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Update booking location for an existing booking on Booking",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3506,7 +5049,9 @@
           "$ref": "#/components/schemas/MarkAbsentBookingInput_2024_08_13"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/mark-absent",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Mark a booking absence on Booking",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3518,7 +5063,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/reassign",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Reassign a booking to auto-selected host on Booking",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3532,7 +5079,9 @@
           "$ref": "#/components/schemas/ReassignToUserBookingInput_2024_08_13"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/reassign/{userId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Reassign a booking to a specific host on Booking",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3544,7 +5093,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/recordings",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get all the recordings for the booking on Booking",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3556,7 +5107,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/references",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get booking references on Booking",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3568,7 +5121,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/reschedule",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Reschedule a booking on Booking",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3580,7 +5135,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/bookings/{bookingUid}/transcripts",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get Cal Video real time transcript download links for the booking on Booking",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3592,7 +5149,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "GET",
@@ -3604,7 +5163,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/busy-times",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "GET",
@@ -3616,7 +5177,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "GET",
@@ -3628,7 +5191,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections/{connectionId}/events",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: List events for a connection on Connection",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3642,7 +5207,9 @@
           "$ref": "#/components/schemas/CreateUnifiedCalendarEventInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections/{connectionId}/events",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Create event on a connection on Connection",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -3654,7 +5221,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections/{connectionId}/events/{eventId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Delete event for a connection on Connection",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3666,7 +5235,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections/{connectionId}/events/{eventId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get event for a connection on Connection",
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -3680,7 +5251,9 @@
           "$ref": "#/components/schemas/UpdateUnifiedCalendarEventInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections/{connectionId}/events/{eventId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Update event for a connection on Connection",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3692,7 +5265,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/connections/{connectionId}/freebusy",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get free/busy for a connection on Connection",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3704,7 +5279,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/ics-feed/check",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "POST",
@@ -3718,7 +5295,9 @@
           "$ref": "#/components/schemas/CreateIcsFeedInputDto"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/ics-feed/save",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: a Save exists",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3730,7 +5309,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/check",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Check a calendar connection on Calendar",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3742,7 +5323,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/connect",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get OAuth connect URL on Calendar",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3756,7 +5339,9 @@
           "$ref": "#/components/schemas/CreateCalendarCredentialsInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/credentials",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Save Apple calendar credentials on Calendar",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3770,7 +5355,9 @@
           "$ref": "#/components/schemas/DeleteCalendarCredentialsInputBodyDto"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/disconnect",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Disconnect a calendar on Calendar",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3782,7 +5369,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/event/{eventUid}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get meeting details from calendar on Calendar",
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -3796,7 +5385,9 @@
           "$ref": "#/components/schemas/UpdateUnifiedCalendarEventInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/event/{eventUid}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Update meeting details in calendar on Calendar",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3808,7 +5399,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/events",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: List calendar events on Calendar",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3822,7 +5415,9 @@
           "$ref": "#/components/schemas/CreateUnifiedCalendarEventInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/events",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Create a calendar event on Calendar",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -3834,7 +5429,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/events/{eventUid}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Delete a calendar event on Calendar",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3846,7 +5443,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/events/{eventUid}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get meeting details from calendar on Calendar",
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -3860,7 +5459,9 @@
           "$ref": "#/components/schemas/UpdateUnifiedCalendarEventInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/events/{eventUid}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Update meeting details in calendar on Calendar",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3872,7 +5473,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/freebusy",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get free/busy times on Calendar",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3884,7 +5487,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/calendars/{calendar}/save",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Save Google or Outlook calendar credentials on Calendar",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3896,7 +5501,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "GET",
@@ -3908,7 +5515,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing/default",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "POST",
@@ -3920,7 +5529,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing/{app}/connect",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Connect your conferencing application on Conferencing",
+        "requires": []
       },
       {
         "method": "POST",
@@ -3932,7 +5543,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing/{app}/default",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Set your default conferencing application on Conferencing",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -3944,7 +5557,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing/{app}/disconnect",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Disconnect your conferencing application on Conferencing",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3956,7 +5571,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing/{app}/oauth/auth-url",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get OAuth conferencing app auth URL on Conferencing",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3968,7 +5585,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/conferencing/{app}/oauth/callback",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Conferencing app OAuth callback on Conferencing",
+        "requires": []
       },
       {
         "method": "PUT",
@@ -3982,7 +5601,9 @@
           "$ref": "#/components/schemas/DestinationCalendarsInputBodyDto"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/destination-calendars",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: a DestinationCalendar in a chosen state",
+        "requires": []
       },
       {
         "method": "GET",
@@ -3994,7 +5615,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "POST",
@@ -4008,7 +5631,9 @@
           "$ref": "#/components/schemas/CreateEventTypeInput_2024_06_14"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: an EventType exists",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -4020,7 +5645,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "cleanup: removes an EventType",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4032,7 +5659,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -4046,7 +5675,9 @@
           "$ref": "#/components/schemas/UpdateEventTypeInput_2024_06_14"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: an EventType in a chosen state",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4058,7 +5689,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/private-links",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get all private links for an event type on EventType",
+        "requires": []
       },
       {
         "method": "POST",
@@ -4072,7 +5705,9 @@
           "$ref": "#/components/schemas/CreatePrivateLinkInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/private-links",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Create a private link for an event type on EventType",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -4084,7 +5719,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/private-links/{linkId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Delete a private link for an event type on EventType",
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -4098,7 +5735,9 @@
           "$ref": "#/components/schemas/UpdatePrivateLinkBody"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/private-links/{linkId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Update a private link for an event type on EventType",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -4110,7 +5749,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/webhooks",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Delete all webhooks on EventType",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4122,7 +5763,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/webhooks",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get all webhooks on EventType",
+        "requires": []
       },
       {
         "method": "POST",
@@ -4136,7 +5779,9 @@
           "$ref": "#/components/schemas/CreateWebhookInputDto"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/webhooks",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Create a webhook on EventType",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -4148,7 +5793,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/webhooks/{webhookId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Delete a webhook on EventType",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4160,7 +5807,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/webhooks/{webhookId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get a webhook on EventType",
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -4174,7 +5823,9 @@
           "$ref": "#/components/schemas/UpdateWebhookInputDto"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/event-types/{eventTypeId}/webhooks/{webhookId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Update a webhook on EventType",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4186,7 +5837,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/me",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -4200,7 +5853,9 @@
           "$ref": "#/components/schemas/UpdateManagedUserInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/me",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: a Me in a chosen state",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4212,7 +5867,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "POST",
@@ -4226,7 +5883,9 @@
           "$ref": "#/components/schemas/CreateOAuthClientInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: an OauthClient exists",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -4238,7 +5897,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "cleanup: removes an OauthClient",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4250,7 +5911,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -4264,7 +5927,9 @@
           "$ref": "#/components/schemas/UpdateOAuthClientInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: an OauthClient in a chosen state",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4276,7 +5941,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/users",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get all managed users on OauthClient",
+        "requires": []
       },
       {
         "method": "POST",
@@ -4290,7 +5957,9 @@
           "$ref": "#/components/schemas/CreateManagedUserInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/users",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Create a managed user on OauthClient",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -4302,7 +5971,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/users/{userId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Delete a managed user on OauthClient",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4314,7 +5985,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/users/{userId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get a managed user on OauthClient",
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -4328,7 +6001,9 @@
           "$ref": "#/components/schemas/UpdateManagedUserInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/users/{userId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Update a managed user on OauthClient",
+        "requires": []
       },
       {
         "method": "POST",
@@ -4340,7 +6015,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/users/{userId}/force-refresh",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Force refresh tokens on OauthClient",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -4352,7 +6029,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/webhooks",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Delete all webhooks on OauthClient",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4364,7 +6043,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/webhooks",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get all webhooks on OauthClient",
+        "requires": []
       },
       {
         "method": "POST",
@@ -4378,7 +6059,9 @@
           "$ref": "#/components/schemas/CreateWebhookInputDto"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/webhooks",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Create a webhook on OauthClient",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -4390,7 +6073,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/webhooks/{webhookId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Delete a webhook on OauthClient",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4402,7 +6087,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/webhooks/{webhookId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Get a webhook on OauthClient",
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -4416,7 +6103,9 @@
           "$ref": "#/components/schemas/UpdateWebhookInputDto"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth-clients/{clientId}/webhooks/{webhookId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Update a webhook on OauthClient",
+        "requires": []
       },
       {
         "method": "POST",
@@ -4430,7 +6119,9 @@
           "$ref": "#/components/schemas/RefreshTokenInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/oauth/{clientId}/refresh",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "transition: Refresh managed user tokens on Oauth",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4442,7 +6133,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/schedules",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "POST",
@@ -4456,7 +6149,9 @@
           "$ref": "#/components/schemas/CreateScheduleInput_2024_06_11"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/schedules",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: a Schedule exists",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4468,7 +6163,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/schedules/default",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -4480,7 +6177,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/schedules/{scheduleId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "cleanup: removes a Schedule",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4492,7 +6191,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/schedules/{scheduleId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -4506,7 +6207,9 @@
           "$ref": "#/components/schemas/UpdateScheduleInput_2024_06_11"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/schedules/{scheduleId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: a Schedule in a chosen state",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -4518,7 +6221,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/selected-calendars",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "cleanup: removes a SelectedCalendar",
+        "requires": []
       },
       {
         "method": "POST",
@@ -4532,7 +6237,9 @@
           "$ref": "#/components/schemas/SelectedCalendarsInputDto"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/selected-calendars",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "action: Add a selected calendar",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4544,7 +6251,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/slots",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "POST",
@@ -4558,7 +6267,9 @@
           "$ref": "#/components/schemas/ReserveSlotInput_2024_09_04"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/slots/reservations",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: a Reservation exists",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -4570,7 +6281,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/slots/reservations/{uid}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "cleanup: removes a Reservation",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4582,7 +6295,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/slots/reservations/{uid}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -4596,7 +6311,9 @@
           "$ref": "#/components/schemas/ReserveSlotInput_2024_09_04"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/slots/reservations/{uid}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: a Reservation in a chosen state",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4608,7 +6325,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/stripe/check",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "GET",
@@ -4620,7 +6339,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/stripe/connect",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "GET",
@@ -4632,7 +6353,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/stripe/save",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "GET",
@@ -4644,7 +6367,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/emails",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "POST",
@@ -4658,7 +6383,9 @@
           "$ref": "#/components/schemas/RequestEmailVerificationInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/emails/verification-code/request",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "action: Request email verification code",
+        "requires": []
       },
       {
         "method": "POST",
@@ -4672,7 +6399,9 @@
           "$ref": "#/components/schemas/VerifyEmailInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/emails/verification-code/verify",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "action: Verify an email",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4684,7 +6413,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/emails/{id}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "GET",
@@ -4696,7 +6427,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/phones",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "POST",
@@ -4710,7 +6443,9 @@
           "$ref": "#/components/schemas/RequestPhoneVerificationInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/phones/verification-code/request",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "action: Request phone number verification code",
+        "requires": []
       },
       {
         "method": "POST",
@@ -4724,7 +6459,9 @@
           "$ref": "#/components/schemas/VerifyPhoneInput"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/phones/verification-code/verify",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "action: Verify a phone number",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4736,7 +6473,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/verified-resources/phones/{id}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "GET",
@@ -4748,7 +6487,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/webhooks",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "POST",
@@ -4762,7 +6503,9 @@
           "$ref": "#/components/schemas/CreateWebhookInputDto"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/webhooks",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: a Webhook exists",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -4774,7 +6517,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/webhooks/{webhookId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "cleanup: removes a Webhook",
+        "requires": []
       },
       {
         "method": "GET",
@@ -4786,7 +6531,9 @@
         "auth": false,
         "request": null,
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/webhooks/{webhookId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "PATCH",
@@ -4800,7 +6547,9 @@
           "$ref": "#/components/schemas/UpdateWebhookInputDto"
         },
         "source": "docs/api-reference/v2/openapi.json#/paths//v2/webhooks/{webhookId}",
-        "confidence": "declared-in-spec"
+        "confidence": "declared-in-spec",
+        "precondition": "establishes: a Webhook in a chosen state",
+        "requires": []
       }
     ],
     "auth": {
@@ -4831,6 +6580,10 @@
     "regions": 0,
     "uses": 336,
     "actions": 3,
-    "unverified": 22
+    "unverified": 22,
+    "endpoints": 121,
+    "resources": 27,
+    "creatable": 12,
+    "cleanable": 6
   }
 }

@@ -7333,6 +7333,46 @@
     }
   ],
   "api": {
+    "resources": {
+      "DestroyAuthToken": {
+        "name": "DestroyAuthToken",
+        "basePath": "/api/v1/App/destroyAuthToken",
+        "ops": {
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/api/v1/App/destroyAuthToken",
+            "summary": "log out",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "application/Espo/Resources/routes.json:3"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Metadata": {
+        "name": "Metadata",
+        "basePath": "/api/v1/Metadata",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/api/v1/Metadata",
+            "summary": "the full metadata tree — field definitions for every entity, i.e. what a create payload may contain",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "application/Espo/Resources/routes.json:6"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      }
+    },
     "endpoints": [
       {
         "method": "GET",
@@ -7351,7 +7391,8 @@
           "list": "array"
         },
         "source": "application/Espo/Resources/routes.json (:controller generic CRUD)",
-        "confidence": "declared"
+        "confidence": "declared",
+        "precondition": null
       },
       {
         "method": "POST",
@@ -7366,7 +7407,8 @@
           "id": "string"
         },
         "source": "application/Espo/Resources/routes.json",
-        "confidence": "declared"
+        "confidence": "declared",
+        "precondition": null
       },
       {
         "method": "GET",
@@ -7378,7 +7420,8 @@
           "id": "string"
         },
         "source": "application/Espo/Resources/routes.json",
-        "confidence": "declared"
+        "confidence": "declared",
+        "precondition": null
       },
       {
         "method": "PUT",
@@ -7387,7 +7430,8 @@
         "tier": "B",
         "auth": true,
         "source": "application/Espo/Resources/routes.json",
-        "confidence": "declared"
+        "confidence": "declared",
+        "precondition": null
       },
       {
         "method": "DELETE",
@@ -7396,7 +7440,8 @@
         "tier": "B",
         "auth": true,
         "source": "application/Espo/Resources/routes.json",
-        "confidence": "declared"
+        "confidence": "declared",
+        "precondition": null
       },
       {
         "method": "GET",
@@ -7405,7 +7450,8 @@
         "tier": "B",
         "auth": true,
         "source": "application/Espo/Resources/routes.json",
-        "confidence": "declared"
+        "confidence": "declared",
+        "precondition": null
       },
       {
         "method": "POST",
@@ -7414,7 +7460,8 @@
         "tier": "B",
         "auth": true,
         "source": "application/Espo/Resources/routes.json",
-        "confidence": "declared"
+        "confidence": "declared",
+        "precondition": null
       },
       {
         "method": "GET",
@@ -7423,7 +7470,9 @@
         "tier": "B",
         "auth": true,
         "source": "application/Espo/Resources/routes.json:6",
-        "confidence": "declared"
+        "confidence": "declared",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "POST",
@@ -7432,7 +7481,9 @@
         "tier": "B",
         "auth": true,
         "source": "application/Espo/Resources/routes.json:3",
-        "confidence": "declared"
+        "confidence": "declared",
+        "precondition": "action: log out",
+        "requires": []
       }
     ],
     "auth": {
@@ -7493,6 +7544,10 @@
     "regions": 1,
     "uses": 951,
     "actions": 26,
-    "unverified": 464
+    "unverified": 464,
+    "endpoints": 9,
+    "resources": 2,
+    "creatable": 1,
+    "cleanable": 0
   }
 }

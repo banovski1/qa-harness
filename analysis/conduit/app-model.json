@@ -837,6 +837,189 @@
     }
   ],
   "api": {
+    "resources": {
+      "Article": {
+        "name": "Article",
+        "basePath": "/api/articles",
+        "ops": {
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/api/articles",
+            "summary": "create an article — the precondition workhorse",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "article"
+            ],
+            "source": "src/app/features/article/services/articles.service.ts"
+          },
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/api/articles",
+            "summary": "the feed, filtered by tag/author/favorited",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/features/article/services/articles.service.ts"
+          },
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/api/articles/{slug}",
+            "summary": "one article",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/features/article/services/articles.service.ts"
+          },
+          "delete": {
+            "kind": "delete",
+            "method": "DELETE",
+            "path": "/api/articles/{slug}",
+            "summary": "delete an article — use for cleanup",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/features/article/services/articles.service.ts"
+          },
+          "actions": [
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/api/articles/{slug}/favorite",
+              "summary": "favourite an article",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "src/app/features/article/services/articles.service.ts"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/api/articles/{slug}/comments",
+              "summary": "comments on an article",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "src/app/features/article/services/comments.service.ts"
+            },
+            {
+              "kind": "action",
+              "method": "DELETE",
+              "path": "/api/articles/{slug}/comments/{id}",
+              "summary": "delete a comment",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "src/app/features/article/services/comments.service.ts"
+            }
+          ]
+        },
+        "requires": [],
+        "establishes": "an Article exists",
+        "cleanup": "delete"
+      },
+      "Login": {
+        "name": "Login",
+        "basePath": "/api/users/login",
+        "ops": {
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/api/users/login",
+            "summary": "log in",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/core/auth/services/user.service.ts:74"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Profile": {
+        "name": "Profile",
+        "basePath": "/api/profiles",
+        "ops": {
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/api/profiles/{username}",
+            "summary": "a user profile",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/features/profile/services/profile.service.ts"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Tag": {
+        "name": "Tag",
+        "basePath": "/api/tags",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/api/tags",
+            "summary": "the tag cloud",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/features/article/services/tags.service.ts"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "User": {
+        "name": "User",
+        "basePath": "/api/user",
+        "ops": {
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/api/users",
+            "summary": "register — creates a test user",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "user"
+            ],
+            "source": "src/app/core/auth/services/user.service.ts"
+          },
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/api/user",
+            "summary": "the current user",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/core/auth/services/user.service.ts"
+          },
+          "update": {
+            "kind": "update",
+            "method": "PUT",
+            "path": "/api/user",
+            "summary": "update settings",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/core/auth/services/user.service.ts"
+          }
+        },
+        "requires": [],
+        "establishes": "a User exists",
+        "cleanup": "none"
+      }
+    },
     "endpoints": [
       {
         "method": "POST",
@@ -852,7 +1035,9 @@
           }
         },
         "source": "src/app/core/auth/services/user.service.ts",
-        "confidence": "observed-in-client"
+        "confidence": "observed-in-client",
+        "precondition": "establishes: a User exists",
+        "requires": []
       },
       {
         "method": "POST",
@@ -861,7 +1046,9 @@
         "tier": "C",
         "auth": false,
         "source": "src/app/core/auth/services/user.service.ts:74",
-        "confidence": "observed-in-client"
+        "confidence": "observed-in-client",
+        "precondition": "action: log in",
+        "requires": []
       },
       {
         "method": "GET",
@@ -870,7 +1057,9 @@
         "tier": "C",
         "auth": true,
         "source": "src/app/core/auth/services/user.service.ts",
-        "confidence": "observed-in-client"
+        "confidence": "observed-in-client",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "PUT",
@@ -879,7 +1068,9 @@
         "tier": "C",
         "auth": true,
         "source": "src/app/core/auth/services/user.service.ts",
-        "confidence": "observed-in-client"
+        "confidence": "observed-in-client",
+        "precondition": "establishes: a User in a chosen state",
+        "requires": []
       },
       {
         "method": "POST",
@@ -896,7 +1087,9 @@
           }
         },
         "source": "src/app/features/article/services/articles.service.ts",
-        "confidence": "observed-in-client"
+        "confidence": "observed-in-client",
+        "precondition": "establishes: an Article exists",
+        "requires": []
       },
       {
         "method": "GET",
@@ -905,7 +1098,9 @@
         "tier": "C",
         "auth": false,
         "source": "src/app/features/article/services/articles.service.ts",
-        "confidence": "observed-in-client"
+        "confidence": "observed-in-client",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "GET",
@@ -914,7 +1109,9 @@
         "tier": "C",
         "auth": false,
         "source": "src/app/features/article/services/articles.service.ts",
-        "confidence": "observed-in-client"
+        "confidence": "observed-in-client",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -923,7 +1120,9 @@
         "tier": "C",
         "auth": true,
         "source": "src/app/features/article/services/articles.service.ts",
-        "confidence": "observed-in-client"
+        "confidence": "observed-in-client",
+        "precondition": "cleanup: removes an Article",
+        "requires": []
       },
       {
         "method": "POST",
@@ -932,7 +1131,9 @@
         "tier": "C",
         "auth": true,
         "source": "src/app/features/article/services/articles.service.ts",
-        "confidence": "observed-in-client"
+        "confidence": "observed-in-client",
+        "precondition": "transition: favourite an article on Article",
+        "requires": []
       },
       {
         "method": "GET",
@@ -941,7 +1142,9 @@
         "tier": "C",
         "auth": false,
         "source": "src/app/features/article/services/comments.service.ts",
-        "confidence": "observed-in-client"
+        "confidence": "observed-in-client",
+        "precondition": "transition: comments on an article on Article",
+        "requires": []
       },
       {
         "method": "DELETE",
@@ -950,7 +1153,9 @@
         "tier": "C",
         "auth": true,
         "source": "src/app/features/article/services/comments.service.ts",
-        "confidence": "observed-in-client"
+        "confidence": "observed-in-client",
+        "precondition": "transition: delete a comment on Article",
+        "requires": []
       },
       {
         "method": "GET",
@@ -959,7 +1164,9 @@
         "tier": "C",
         "auth": false,
         "source": "src/app/features/profile/services/profile.service.ts",
-        "confidence": "observed-in-client"
+        "confidence": "observed-in-client",
+        "precondition": null,
+        "requires": []
       },
       {
         "method": "GET",
@@ -968,7 +1175,9 @@
         "tier": "C",
         "auth": false,
         "source": "src/app/features/article/services/tags.service.ts",
-        "confidence": "observed-in-client"
+        "confidence": "observed-in-client",
+        "precondition": null,
+        "requires": []
       }
     ],
     "auth": {
@@ -1022,6 +1231,10 @@
     "regions": 1,
     "uses": 97,
     "actions": 4,
-    "unverified": 10
+    "unverified": 10,
+    "endpoints": 13,
+    "resources": 5,
+    "creatable": 3,
+    "cleanable": 1
   }
 }
