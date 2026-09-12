@@ -146,3 +146,140 @@ Will cover: `compile-model.ts` and the `app-model.json` schema, how region recur
 becomes component classes, how `fillForm`/navigation methods are derived, the replacement
 for `check-analysis.ts`, and the one command that regenerates the whole corpus and shows
 the diff.
+
+---
+
+# Section 2 — The contract, the assertions, the diagnostics *(agreed 2026-09-13)*
+
+## Corpus (A, settled)
+
+| App | Clone | Stack | Crawl target |
+| --- | --- | --- | --- |
+| EspoCRM | `~/Projects/espocrm` | Backbone/Handlebars + PHP | `demo.eu.espocrm.com` |
+| OrangeHRM | `~/Projects/orangehrm` | Vue 3 + Symfony | `opensource-demo.orangehrmlive.com` |
+| Cal.com | `~/Projects/cal.diy` | Next.js app-router + tRPC | `cal.com/systemly.app/demo-website` (booker only — 2 of 79 routes) |
+| Conduit | `~/Projects/angular-realworld-example-app` | Angular | `demo.realworld.show` |
+
+Odoo (`~/Projects/odoo`) is deliberately held back: it is the "new app, no code
+changes" test once the pipeline is built, which is worth more than a fifth corpus row.
+
+## `app-model.json` — the generator's only input
+
+Four tables. **Only `components` holds locators.**
+
+```jsonc
+{
+  "app": { "name", "baseUrl", "repoPath", "repoCommit", "stack", "generatedAt" },
+  "components": {
+    "NavigationBar": { "kind": "region", "root": {...}, "controls": {...}, "seenOn": 60 },
+    "TextField":     { "kind": "field", "byLabel": true },
+    "RecordTable":   { "kind": "collection", "columns": [...], "keyColumn": "Name",
+                       "rowHref": "/#Contact/view/{id}", "empty": { "text": "No Data" } }
+  },
+  "screens": [{
+    "name", "path", "url", "title", "aliases": [],
+    "identity": { "urlPattern": "/#Contact", "heading": "Contacts" },
+    "source":  { "component", "route" },
+    "crawled": true,
+    "uses": [ { "component": "Button", "as": "submitRequest", "label": "Submit Request" } ],
+    "actions": [ { "name": "openCreate", "via": "nav.create", "leadsTo": "ContactCreatePage" } ],
+    "unverified": 12
+  }],
+  "api": { "endpoints": [], "auth": { "kind", "loginEndpoint", "storageStatePath" } },
+  "stats": {}
+}
+```
+
+### Invariants
+
+1. **A screen carries semantic identity, never a selector.** `label`, `heading`,
+   `within` — English strings a human can fix. A screen entry containing anything
+   shaped like a locator spec is a *compile error* in `compile-model.ts`, with a test.
+   A region whose only handle is CSS owns that CSS privately inside its component class.
+2. **Every control is reached through a component.** Unassignable elements are counted
+   in `unverified` and emitted as `// UNVERIFIED` getters — visible, never dropped.
+3. **Recurrence makes a component**: the same root signature on **≥2 screens** with
+   **≥70% of controls matching**. Both numbers are one exported constant; the corpus
+   snapshots justify any change.
+4. **`kind` decides the emitted class.** `region` → control getters; `field` →
+   parameterised (`new TextField(page, 'City')`), which replaces `locatorTemplates:`
+   entirely; `collection` → key-addressed rows.
+5. **`crawled: false` is first-class.** Declared-but-unreached routes become page
+   objects with a URL and no controls (Cal.com: ~77 of 79).
+6. **Actions are crawl-proven; navigation is universal.** A typed click-through method
+   only where the crawl proved the transition — plus a plain URL `goto` for every route,
+   so no route is unreachable and nothing is invented.
+
+## Assertions
+
+- Collections declare a **key column** (first column linking to a detail URL, else the
+  first non-checkbox text column) and expose `row(key)`, `hasRow(key)`, `cell(col)`,
+  `count()`, `isEmpty()`. **Never `nth`.**
+- "Newly created" is identified by **value, not position**: `uniqueName('Contact')` →
+  `Contact-k3f9a2` (prefix + per-run short id). Survives demo data, parallel workers
+  and re-runs; makes leftover rows obviously test-created and cleanup addressable.
+- Each screen's `identity` block (URL pattern + heading) backs the "am I on the right
+  screen" assertion.
+- Each `kind` has a fixed observable surface: `TextField` → `value/isVisible/isDisabled/
+  errorMessage`; `Button` → `isEnabled`; `collection` → the four above; plus a `Toast`
+  component when the crawl finds one.
+- A collection with no discoverable key column downgrades to `count()`/`contains(text)`
+  and is tallied in the report. The compiler never invents a key.
+
+## Component diagnostics
+
+One wrapper on `BaseComponent`; every generated component inherits it. On failure it
+classifies rather than timing out blindly, and names the component + screen in
+`app-model.json` that produced it, so triage can tell a bad test from a stale analysis.
+
+| Mode | Detection | Stated next action |
+| --- | --- | --- |
+| `NOT_FOUND` | 0 matches, page settled | re-crawl, or wrong screen (prints actual URL/heading vs `identity`) |
+| `AMBIGUOUS` | >1 match | scope it, or test data collided |
+| `HIDDEN` | 1 match, not visible | a step is missing; nothing opened it |
+| `DISABLED` | 1 match, disabled | precondition unmet; prints validation messages |
+| `COVERED` | click intercepted | names the intercepting element |
+| `DETACHED` | stale mid-action | re-render race — the real "waits" bug, named as one |
+| `TIMED_OUT` | condition never met | prints what it waited for and the value instead |
+
+Every wait is an explicit named condition, never a sleep, and is reported as such
+(`waited 5041ms for RecordTable to settle — rowCount still changing: 20→40→60`), so the
+common misdiagnosis that leads to a pasted `waitForTimeout` is not available.
+
+Two channels: `test.step` for the human-readable trace, and
+`test-results/diagnostics.jsonl` (`{mode, component, screen, label, matchCount, waitedMs,
+waitedFor, candidates[], modelPath}`) for a future agent. Classification runs
+unconditionally on failure (free) and opt-in on success via `DIAG=1`.
+
+# Section 3 — The three skills and the test loop *(agreed 2026-09-13)*
+
+| # | Skill | Reads | Writes |
+| --- | --- | --- | --- |
+| 1 | `app-dossier` | repo | `dossier.json/.md`, `routes.json/.md` |
+| 2 | `app-components` | repo + dossier | `components.json/.md` |
+| 3 | `app-api` | repo + dossier | `api.json/.md` |
+| — | `app-explorer` (exists, re-primed) | running app | `screens/*.json`, `storageState` |
+| — | `compile-model.ts` (pure code) | all of the above | `app-model.json` |
+
+`live-urls` dies — the crawl produces URLs. Stack detection is not its own pass: the
+first skill writes it down for the other two.
+
+Each SKILL.md is a page of prose: find the router the way this stack does, here are the
+idioms to grep for, write this JSON shape, say what you could not find. No registry, no
+AST layer, no fixture apps — which is how 5,355 lines becomes three pages, and why an
+unseen stack gets read instead of failing a `match()` predicate nobody wrote.
+
+Honesty is enforced at the boundary: `compile-model.ts` schema-checks each skill's JSON
+and fails loudly. Prose may drift; shape may not. `app-model.json` is committed per
+corpus app, so a skill change that does not move it did not change the framework.
+
+## Test loop
+
+1. `compile-model.ts` — unit + snapshot tests per corpus app. Pure, fast.
+2. Crawl stability — re-crawl EspoCRM, compare chosen-locator-per-element. 60/60 today;
+   must stay so.
+3. Corpus end-to-end — four apps analysed → compiled → generated → `tsc --noEmit` each.
+   A generated framework that does not typecheck is a failed run.
+4. Live smoke — real specs per app against the demos, including create-a-record then
+   find-its-row, which only a live run proves.
+5. Odoo, untouched code — the new-app test.
