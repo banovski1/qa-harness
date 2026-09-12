@@ -1,0 +1,1946 @@
+{
+  "url": "https://demo.realworld.show/tag/ai",
+  "path": "/tag/ai",
+  "title": "Conduit",
+  "headings": [
+    {
+      "level": 1,
+      "text": "Introduction to Machine Learning for Developers"
+    }
+  ],
+  "tables": [],
+  "regions": {
+    "navigation": 5,
+    "body": 22,
+    "footer": 2
+  },
+  "elements": [
+    {
+      "index": 0,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Conduit",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/",
+      "box": {
+        "x": 85,
+        "y": 8,
+        "w": 88,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('body > app-root > app-layout-header > nav.navbar.navbar-light > div.container > a.navbar-brand')",
+        "matchCount": 1,
+        "args": [
+          "body > app-root > app-layout-header > nav.navbar.navbar-light > div.container > a.navbar-brand"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Conduit', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "link",
+            "Conduit"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('body > app-root > app-layout-header > nav.navbar.navbar-light > div.container > a.navbar-brand')",
+          "matchCount": 1,
+          "args": [
+            "body > app-root > app-layout-header > nav.navbar.navbar-light > div.container > a.navbar-brand"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Home",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/",
+      "box": {
+        "x": 1011,
+        "y": 9,
+        "w": 40,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Home', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Home"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Home', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Home"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Home', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Home"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(1) > a.nav-link')",
+          "matchCount": 1,
+          "args": [
+            "app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(1) > a.nav-link"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Sign in",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/login",
+      "box": {
+        "x": 1067,
+        "y": 9,
+        "w": 45,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Sign in', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Sign in"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Sign in', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Sign in"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Sign in', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Sign in"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(2) > a.nav-link')",
+          "matchCount": 1,
+          "args": [
+            "app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(2) > a.nav-link"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Sign up",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/register",
+      "box": {
+        "x": 1128,
+        "y": 12,
+        "w": 67,
+        "h": 32
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Sign up', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Sign up"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Sign up', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Sign up"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Sign up', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Sign up"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(3) > a.nav-link.nav-signup')",
+          "matchCount": 1,
+          "args": [
+            "app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(3) > a.nav-link.nav-signup"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Angular frontend",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://github.com/realworld-apps/angular-realworld-example-app",
+      "box": {
+        "x": 509,
+        "y": 161,
+        "w": 109,
+        "h": 20
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Angular frontend', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Angular frontend"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Angular frontend', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Angular frontend"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Angular frontend', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Angular frontend"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('app-home-page > div.home-page > div.banner:nth-of-type(1) > div.container > p > a:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "app-home-page > div.home-page > div.banner:nth-of-type(1) > div.container > p > a:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Realworld",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://github.com/realworld-apps/realworld",
+      "box": {
+        "x": 721,
+        "y": 161,
+        "w": 65,
+        "h": 20
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Realworld', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Realworld"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Realworld', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Realworld"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Realworld', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Realworld"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('app-home-page > div.home-page > div.banner:nth-of-type(1) > div.container > p > a:nth-of-type(2)')",
+          "matchCount": 1,
+          "args": [
+            "app-home-page > div.home-page > div.banner:nth-of-type(1) > div.container > p > a:nth-of-type(2)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Global Feed",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/",
+      "box": {
+        "x": 85,
+        "y": 272,
+        "w": 111,
+        "h": 42
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Global Feed', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Global Feed"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Global Feed', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Global Feed"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Global Feed', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Global Feed"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.row > div:nth-of-type(1) > div.feed-toggle > ul.nav.nav-pills > li.nav-item:nth-of-type(1) > a.nav-link')",
+          "matchCount": 1,
+          "args": [
+            "div.row > div:nth-of-type(1) > div.feed-toggle > ul.nav.nav-pills > li.nav-item:nth-of-type(1) > a.nav-link"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/profile/sarahchen",
+      "box": {
+        "x": 85,
+        "y": 341,
+        "w": 32,
+        "h": 20
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('app-article-list > app-article-preview > div.article-preview > app-article-meta > div.article-meta > a')",
+        "matchCount": 1,
+        "args": [
+          "app-article-list > app-article-preview > div.article-preview > app-article-meta > div.article-meta > a"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('app-article-list > app-article-preview > div.article-preview > app-article-meta > div.article-meta > a')",
+          "matchCount": 1,
+          "args": [
+            "app-article-list > app-article-preview > div.article-preview > app-article-meta > div.article-meta > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "sarahchen",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/profile/sarahchen",
+      "box": {
+        "x": 125,
+        "y": 338,
+        "w": 102,
+        "h": 16
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'sarahchen', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "sarahchen"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'sarahchen', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "sarahchen"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('sarahchen', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "sarahchen"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('app-article-preview > div.article-preview > app-article-meta > div.article-meta > div.info > a.author')",
+          "matchCount": 1,
+          "args": [
+            "app-article-preview > div.article-preview > app-article-meta > div.article-meta > div.info > a.author"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "tag": "button",
+      "type": null,
+      "role": "button",
+      "name": "1",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 871,
+        "y": 338,
+        "w": 39,
+        "h": 28
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('app-article-preview > div.article-preview > app-article-meta > div.article-meta > app-favorite-button.pull-xs-right > button.btn.btn-sm')",
+        "matchCount": 1,
+        "args": [
+          "app-article-preview > div.article-preview > app-article-meta > div.article-meta > app-favorite-button.pull-xs-right > button.btn.btn-sm"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '1', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "button",
+            "1"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('1', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "1"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('app-article-preview > div.article-preview > app-article-meta > div.article-meta > app-favorite-button.pull-xs-right > button.btn.btn-sm')",
+          "matchCount": 1,
+          "args": [
+            "app-article-preview > div.article-preview > app-article-meta > div.article-meta > app-favorite-button.pull-xs-right > button.btn.btn-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Introduction to Machine Learning for DevelopersGetting started with ML concepts and practical applications for software developersRead more... ai datascience machinelearning python",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/article/introduction-to-machine-learning-for-developers",
+      "box": {
+        "x": 85,
+        "y": 386,
+        "w": 825,
+        "h": 87
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Introduction to Machine Learning for DevelopersGetting started with ML concepts and practical applications for software developersRead more... ai datascience machinelearning python', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Introduction to Machine Learning for DevelopersGetting started with ML concepts and practical applications for software developersRead more... ai datascience machinelearning python"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Introduction to Machine Learning for DevelopersGetting started with ML concepts and practical applications for software developersRead more... ai datascience machinelearning python', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Introduction to Machine Learning for DevelopersGetting started with ML concepts and practical applications for software developersRead more... ai datascience machinelearning python"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.row > div:nth-of-type(1) > app-article-list > app-article-preview > div.article-preview > a.preview-link')",
+          "matchCount": 1,
+          "args": [
+            "div.row > div:nth-of-type(1) > app-article-list > app-article-preview > div.article-preview > a.preview-link"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "tag": "button",
+      "type": null,
+      "role": "button",
+      "name": "1",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 85,
+        "y": 515,
+        "w": 34,
+        "h": 42
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div:nth-of-type(1) > app-article-list > nav > ul.pagination > li.page-item.active > button.page-link')",
+        "matchCount": 1,
+        "args": [
+          "div:nth-of-type(1) > app-article-list > nav > ul.pagination > li.page-item.active > button.page-link"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '1', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "button",
+            "1"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('1', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "1"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(1) > app-article-list > nav > ul.pagination > li.page-item.active > button.page-link')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(1) > app-article-list > nav > ul.pagination > li.page-item.active > button.page-link"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "ai",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/ai",
+      "box": {
+        "x": 971,
+        "y": 299,
+        "w": 36,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'ai', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "ai"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'ai', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "ai"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('ai', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "ai"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "api",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/api",
+      "box": {
+        "x": 1015,
+        "y": 299,
+        "w": 43,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'api', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "api"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'api', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "api"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('api', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "api"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(2)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(2)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "architecture",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/architecture",
+      "box": {
+        "x": 1065,
+        "y": 299,
+        "w": 91,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'architecture', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "architecture"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'architecture', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "architecture"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('architecture', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "architecture"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(3)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(3)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "backend",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/backend",
+      "box": {
+        "x": 971,
+        "y": 338,
+        "w": 72,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'backend', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "backend"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'backend', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "backend"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('backend', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "backend"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(4)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(4)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "beginners",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/beginners",
+      "box": {
+        "x": 1051,
+        "y": 338,
+        "w": 79,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'beginners', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "beginners"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'beginners', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "beginners"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('beginners', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "beginners"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(5)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(5)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "datascience",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/datascience",
+      "box": {
+        "x": 971,
+        "y": 376,
+        "w": 90,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'datascience', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "datascience"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'datascience', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "datascience"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('datascience', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "datascience"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(6)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(6)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "frontend",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/frontend",
+      "box": {
+        "x": 1069,
+        "y": 376,
+        "w": 73,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'frontend', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "frontend"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'frontend', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "frontend"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('frontend', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "frontend"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(7)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(7)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "hooks",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/hooks",
+      "box": {
+        "x": 971,
+        "y": 415,
+        "w": 59,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'hooks', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "hooks"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'hooks', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "hooks"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('hooks', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "hooks"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(8)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(8)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "javascript",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/javascript",
+      "box": {
+        "x": 1038,
+        "y": 415,
+        "w": 78,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'javascript', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "javascript"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'javascript', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "javascript"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('javascript', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "javascript"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(9)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(9)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "machinelearning",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/machinelearning",
+      "box": {
+        "x": 971,
+        "y": 454,
+        "w": 116,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'machinelearning', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "machinelearning"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'machinelearning', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "machinelearning"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('machinelearning', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "machinelearning"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(10)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(10)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "nodejs",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/nodejs",
+      "box": {
+        "x": 1095,
+        "y": 454,
+        "w": 62,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'nodejs', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "nodejs"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'nodejs', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "nodejs"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('nodejs', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "nodejs"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(11)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(11)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "programming",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/programming",
+      "box": {
+        "x": 971,
+        "y": 493,
+        "w": 99,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'programming', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "programming"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'programming', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "programming"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('programming', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "programming"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(12)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(12)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "python",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/python",
+      "box": {
+        "x": 1078,
+        "y": 493,
+        "w": 64,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'python', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "python"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'python', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "python"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('python', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "python"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(13)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(13)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "react",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/react",
+      "box": {
+        "x": 971,
+        "y": 531,
+        "w": 53,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'react', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "react"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'react', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "react"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('react', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "react"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(14)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(14)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "webdev",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/tag/webdev",
+      "box": {
+        "x": 1032,
+        "y": 531,
+        "w": 68,
+        "h": 31
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'webdev', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "webdev"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'webdev', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "webdev"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('webdev', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "webdev"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(15)')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page:nth-of-type(2) > div.row > div:nth-of-type(2) > div.sidebar > div.tag-list:nth-of-type(1) > a.tag-default.tag-pill:nth-of-type(15)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Conduit",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "footer",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/",
+      "box": {
+        "x": 295,
+        "y": 686,
+        "w": 70,
+        "h": 16
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('body > app-root > app-layout-footer > footer > div.container > a.logo-font')",
+        "matchCount": 1,
+        "args": [
+          "body > app-root > app-layout-footer > footer > div.container > a.logo-font"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Conduit', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "link",
+            "Conduit"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('body > app-root > app-layout-footer > footer > div.container > a.logo-font')",
+          "matchCount": 1,
+          "args": [
+            "body > app-root > app-layout-footer > footer > div.container > a.logo-font"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "RealWorld OSS Project",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "footer",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://github.com/gothinkster/realworld",
+      "box": {
+        "x": 601,
+        "y": 686,
+        "w": 116,
+        "h": 16
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'RealWorld OSS Project', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "RealWorld OSS Project"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'RealWorld OSS Project', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "RealWorld OSS Project"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('RealWorld OSS Project', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "RealWorld OSS Project"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('app-root > app-layout-footer > footer > div.container > span.attribution > a')",
+          "matchCount": 1,
+          "args": [
+            "app-root > app-layout-footer > footer > div.container > span.attribution > a"
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "href": "/",
+      "resolved": "https://demo.realworld.show/",
+      "text": ""
+    },
+    {
+      "href": "/",
+      "resolved": "https://demo.realworld.show/",
+      "text": "Home"
+    },
+    {
+      "href": "/login",
+      "resolved": "https://demo.realworld.show/login",
+      "text": "Sign in"
+    },
+    {
+      "href": "/register",
+      "resolved": "https://demo.realworld.show/register",
+      "text": "Sign up"
+    },
+    {
+      "href": "https://github.com/realworld-apps/angular-realworld-example-app",
+      "resolved": "https://github.com/realworld-apps/angular-realworld-example-app",
+      "text": "Angular frontend"
+    },
+    {
+      "href": "https://github.com/realworld-apps/realworld",
+      "resolved": "https://github.com/realworld-apps/realworld",
+      "text": "Realworld"
+    },
+    {
+      "href": "/",
+      "resolved": "https://demo.realworld.show/",
+      "text": "Global Feed"
+    },
+    {
+      "href": "/profile/sarahchen",
+      "resolved": "https://demo.realworld.show/profile/sarahchen",
+      "text": ""
+    },
+    {
+      "href": "/profile/sarahchen",
+      "resolved": "https://demo.realworld.show/profile/sarahchen",
+      "text": "sarahchen"
+    },
+    {
+      "href": "/article/introduction-to-machine-learning-for-developers",
+      "resolved": "https://demo.realworld.show/article/introduction-to-machine-learning-for-developers",
+      "text": "Introduction to Machine Learning for DevelopersGetting started with ML concepts "
+    },
+    {
+      "href": "/tag/ai",
+      "resolved": "https://demo.realworld.show/tag/ai",
+      "text": "ai"
+    },
+    {
+      "href": "/tag/api",
+      "resolved": "https://demo.realworld.show/tag/api",
+      "text": "api"
+    },
+    {
+      "href": "/tag/architecture",
+      "resolved": "https://demo.realworld.show/tag/architecture",
+      "text": "architecture"
+    },
+    {
+      "href": "/tag/backend",
+      "resolved": "https://demo.realworld.show/tag/backend",
+      "text": "backend"
+    },
+    {
+      "href": "/tag/beginners",
+      "resolved": "https://demo.realworld.show/tag/beginners",
+      "text": "beginners"
+    },
+    {
+      "href": "/tag/datascience",
+      "resolved": "https://demo.realworld.show/tag/datascience",
+      "text": "datascience"
+    },
+    {
+      "href": "/tag/frontend",
+      "resolved": "https://demo.realworld.show/tag/frontend",
+      "text": "frontend"
+    },
+    {
+      "href": "/tag/hooks",
+      "resolved": "https://demo.realworld.show/tag/hooks",
+      "text": "hooks"
+    },
+    {
+      "href": "/tag/javascript",
+      "resolved": "https://demo.realworld.show/tag/javascript",
+      "text": "javascript"
+    },
+    {
+      "href": "/tag/machinelearning",
+      "resolved": "https://demo.realworld.show/tag/machinelearning",
+      "text": "machinelearning"
+    },
+    {
+      "href": "/tag/nodejs",
+      "resolved": "https://demo.realworld.show/tag/nodejs",
+      "text": "nodejs"
+    },
+    {
+      "href": "/tag/programming",
+      "resolved": "https://demo.realworld.show/tag/programming",
+      "text": "programming"
+    },
+    {
+      "href": "/tag/python",
+      "resolved": "https://demo.realworld.show/tag/python",
+      "text": "python"
+    },
+    {
+      "href": "/tag/react",
+      "resolved": "https://demo.realworld.show/tag/react",
+      "text": "react"
+    },
+    {
+      "href": "/tag/webdev",
+      "resolved": "https://demo.realworld.show/tag/webdev",
+      "text": "webdev"
+    },
+    {
+      "href": "/",
+      "resolved": "https://demo.realworld.show/",
+      "text": ""
+    },
+    {
+      "href": "https://github.com/gothinkster/realworld",
+      "resolved": "https://github.com/gothinkster/realworld",
+      "text": "RealWorld OSS Project"
+    }
+  ],
+  "stats": {
+    "elements": 29,
+    "visible": 29,
+    "hidden": 0,
+    "semantic": 24,
+    "fragile": 5,
+    "ambiguous": 0,
+    "withTestId": 0
+  }
+}

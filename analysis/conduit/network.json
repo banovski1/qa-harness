@@ -1,0 +1,544 @@
+[
+  {
+    "screen": "root",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles?limit=10&offset=0",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "articles": [
+        {
+          "slug": "string",
+          "title": "string",
+          "description": "string",
+          "tagList": [
+            "…"
+          ],
+          "createdAt": "string",
+          "updatedAt": "string",
+          "favorited": "boolean",
+          "favoritesCount": "number",
+          "author": {
+            "username": "…",
+            "bio": "…",
+            "image": "…",
+            "following": "…"
+          }
+        }
+      ],
+      "articlesCount": "number"
+    }
+  },
+  {
+    "screen": "root",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/tags",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "tags": [
+        "string"
+      ]
+    }
+  },
+  {
+    "screen": "article-how-to-train-your-dragon",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles/how-to-train-your-dragon",
+    "status": 404,
+    "requestShape": null,
+    "responseShape": {
+      "errors": {
+        "article": [
+          "string"
+        ]
+      }
+    }
+  },
+  {
+    "screen": "profile-johndoe",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/profiles/johndoe",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "profile": {
+        "username": "string",
+        "bio": "string",
+        "image": "string",
+        "following": "boolean"
+      }
+    }
+  },
+  {
+    "screen": "profile-johndoe",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/profiles/johndoe",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "profile": {
+        "username": "string",
+        "bio": "string",
+        "image": "string",
+        "following": "boolean"
+      }
+    }
+  },
+  {
+    "screen": "profile-johndoe",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles?author=johndoe&limit=10&offset=0",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "articles": [
+        {
+          "slug": "string",
+          "title": "string",
+          "description": "string",
+          "tagList": [
+            "…"
+          ],
+          "createdAt": "string",
+          "updatedAt": "string",
+          "favorited": "boolean",
+          "favoritesCount": "number",
+          "author": {
+            "username": "…",
+            "bio": "…",
+            "image": "…",
+            "following": "…"
+          }
+        }
+      ],
+      "articlesCount": "number"
+    }
+  },
+  {
+    "screen": "article-how-to-learn-javascript-efficiently",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles/how-to-learn-javascript-efficiently",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "article": {
+        "slug": "string",
+        "title": "string",
+        "description": "string",
+        "body": "string",
+        "tagList": [
+          "string"
+        ],
+        "createdAt": "string",
+        "updatedAt": "string",
+        "favorited": "boolean",
+        "favoritesCount": "number",
+        "author": {
+          "username": "string",
+          "bio": "string",
+          "image": "string",
+          "following": "boolean"
+        }
+      }
+    }
+  },
+  {
+    "screen": "article-how-to-learn-javascript-efficiently",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles/how-to-learn-javascript-efficiently/comments",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "comments": [
+        {
+          "id": "number",
+          "createdAt": "string",
+          "updatedAt": "string",
+          "body": "string",
+          "author": {
+            "username": "…",
+            "bio": "…",
+            "image": "…",
+            "following": "…"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "screen": "profile-janesmith",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/profiles/janesmith",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "profile": {
+        "username": "string",
+        "bio": "string",
+        "image": "string",
+        "following": "boolean"
+      }
+    }
+  },
+  {
+    "screen": "profile-janesmith",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/profiles/janesmith",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "profile": {
+        "username": "string",
+        "bio": "string",
+        "image": "string",
+        "following": "boolean"
+      }
+    }
+  },
+  {
+    "screen": "profile-janesmith",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles?author=janesmith&limit=10&offset=0",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "articles": [
+        {
+          "slug": "string",
+          "title": "string",
+          "description": "string",
+          "tagList": [
+            "…"
+          ],
+          "createdAt": "string",
+          "updatedAt": "string",
+          "favorited": "boolean",
+          "favoritesCount": "number",
+          "author": {
+            "username": "…",
+            "bio": "…",
+            "image": "…",
+            "following": "…"
+          }
+        }
+      ],
+      "articlesCount": "number"
+    }
+  },
+  {
+    "screen": "article-react-hooks-best-practices",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles/react-hooks-best-practices",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "article": {
+        "slug": "string",
+        "title": "string",
+        "description": "string",
+        "body": "string",
+        "tagList": [
+          "string"
+        ],
+        "createdAt": "string",
+        "updatedAt": "string",
+        "favorited": "boolean",
+        "favoritesCount": "number",
+        "author": {
+          "username": "string",
+          "bio": "string",
+          "image": "string",
+          "following": "boolean"
+        }
+      }
+    }
+  },
+  {
+    "screen": "article-react-hooks-best-practices",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles/react-hooks-best-practices/comments",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "comments": [
+        {
+          "id": "number",
+          "createdAt": "string",
+          "updatedAt": "string",
+          "body": "string",
+          "author": {
+            "username": "…",
+            "bio": "…",
+            "image": "…",
+            "following": "…"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "screen": "profile-mikewilson",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/profiles/mikewilson",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "profile": {
+        "username": "string",
+        "bio": "string",
+        "image": "string",
+        "following": "boolean"
+      }
+    }
+  },
+  {
+    "screen": "profile-mikewilson",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/profiles/mikewilson",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "profile": {
+        "username": "string",
+        "bio": "string",
+        "image": "string",
+        "following": "boolean"
+      }
+    }
+  },
+  {
+    "screen": "profile-mikewilson",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles?author=mikewilson&limit=10&offset=0",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "articles": [
+        {
+          "slug": "string",
+          "title": "string",
+          "description": "string",
+          "tagList": [
+            "…"
+          ],
+          "createdAt": "string",
+          "updatedAt": "string",
+          "favorited": "boolean",
+          "favoritesCount": "number",
+          "author": {
+            "username": "…",
+            "bio": "…",
+            "image": "…",
+            "following": "…"
+          }
+        }
+      ],
+      "articlesCount": "number"
+    }
+  },
+  {
+    "screen": "article-building-scalable-apis-with-node-js",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles/building-scalable-apis-with-node-js",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "article": {
+        "slug": "string",
+        "title": "string",
+        "description": "string",
+        "body": "string",
+        "tagList": [
+          "string"
+        ],
+        "createdAt": "string",
+        "updatedAt": "string",
+        "favorited": "boolean",
+        "favoritesCount": "number",
+        "author": {
+          "username": "string",
+          "bio": "string",
+          "image": "string",
+          "following": "boolean"
+        }
+      }
+    }
+  },
+  {
+    "screen": "article-building-scalable-apis-with-node-js",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles/building-scalable-apis-with-node-js/comments",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "comments": [
+        {
+          "id": "number",
+          "createdAt": "string",
+          "updatedAt": "string",
+          "body": "string",
+          "author": {
+            "username": "…",
+            "bio": "…",
+            "image": "…",
+            "following": "…"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "screen": "profile-sarahchen",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/profiles/sarahchen",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "profile": {
+        "username": "string",
+        "bio": "string",
+        "image": "string",
+        "following": "boolean"
+      }
+    }
+  },
+  {
+    "screen": "profile-sarahchen",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/profiles/sarahchen",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "profile": {
+        "username": "string",
+        "bio": "string",
+        "image": "string",
+        "following": "boolean"
+      }
+    }
+  },
+  {
+    "screen": "profile-sarahchen",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles?author=sarahchen&limit=10&offset=0",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "articles": [
+        {
+          "slug": "string",
+          "title": "string",
+          "description": "string",
+          "tagList": [
+            "…"
+          ],
+          "createdAt": "string",
+          "updatedAt": "string",
+          "favorited": "boolean",
+          "favoritesCount": "number",
+          "author": {
+            "username": "…",
+            "bio": "…",
+            "image": "…",
+            "following": "…"
+          }
+        }
+      ],
+      "articlesCount": "number"
+    }
+  },
+  {
+    "screen": "article-introduction-to-machine-learning-for-developers",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles/introduction-to-machine-learning-for-developers",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "article": {
+        "slug": "string",
+        "title": "string",
+        "description": "string",
+        "body": "string",
+        "tagList": [
+          "string"
+        ],
+        "createdAt": "string",
+        "updatedAt": "string",
+        "favorited": "boolean",
+        "favoritesCount": "number",
+        "author": {
+          "username": "string",
+          "bio": "string",
+          "image": "string",
+          "following": "boolean"
+        }
+      }
+    }
+  },
+  {
+    "screen": "article-introduction-to-machine-learning-for-developers",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles/introduction-to-machine-learning-for-developers/comments",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "comments": [
+        {
+          "id": "number",
+          "createdAt": "string",
+          "updatedAt": "string",
+          "body": "string",
+          "author": {
+            "username": "…",
+            "bio": "…",
+            "image": "…",
+            "following": "…"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "screen": "tag-ai",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/articles?tag=ai&limit=10&offset=0",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "articles": [
+        {
+          "slug": "string",
+          "title": "string",
+          "description": "string",
+          "tagList": [
+            "…"
+          ],
+          "createdAt": "string",
+          "updatedAt": "string",
+          "favorited": "boolean",
+          "favoritesCount": "number",
+          "author": {
+            "username": "…",
+            "bio": "…",
+            "image": "…",
+            "following": "…"
+          }
+        }
+      ],
+      "articlesCount": "number"
+    }
+  },
+  {
+    "screen": "tag-ai",
+    "method": "GET",
+    "url": "https://api.realworld.show/api/tags",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "tags": [
+        "string"
+      ]
+    }
+  }
+]

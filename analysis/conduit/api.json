@@ -1,0 +1,191 @@
+{
+  "app": "conduit",
+  "generatedAt": "2026-09-12T21:37:01+00:00",
+  "repoCommit": "dd99ed2cf39c805d719f943c5d7061a5683d98a8",
+  "baseUrl": "https://api.realworld.show",
+  "apiPrefix": "/api",
+  "tiers": {
+    "A": 0,
+    "B": 0,
+    "C": 13
+  },
+  "auth": {
+    "kind": "token",
+    "scheme": "JWT in an Authorization: Token <jwt> header",
+    "loginEndpoint": {
+      "method": "POST",
+      "path": "/api/users/login",
+      "auth": null,
+      "request": {
+        "user": {
+          "email": "string",
+          "password": "string"
+        }
+      },
+      "source": "src/app/core/auth/services/user.service.ts:74"
+    },
+    "success": {
+      "status": 200,
+      "body": {
+        "user": {
+          "token": "string",
+          "username": "string",
+          "email": "string"
+        }
+      },
+      "source": "src/app/core/auth/services/user.service.ts:76"
+    },
+    "csrf": null,
+    "users": [
+      {
+        "role": "user",
+        "username": "env:APP_USERNAME",
+        "password": "env:APP_PASSWORD",
+        "note": "the demo allows self-registration via POST /api/users, so a test user is created rather than shared. This is the only corpus app where a test can make its own account."
+      }
+    ],
+    "header": {
+      "name": "Authorization",
+      "value": "Token {jwt}",
+      "source": "src/app/core/interceptors/token.interceptor.ts:10"
+    }
+  },
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/api/users",
+      "summary": "register \u2014 creates a test user",
+      "tier": "C",
+      "auth": false,
+      "request": {
+        "user": {
+          "username": "string",
+          "email": "string",
+          "password": "string"
+        }
+      },
+      "source": "src/app/core/auth/services/user.service.ts",
+      "confidence": "observed-in-client"
+    },
+    {
+      "method": "POST",
+      "path": "/api/users/login",
+      "summary": "log in",
+      "tier": "C",
+      "auth": false,
+      "source": "src/app/core/auth/services/user.service.ts:74",
+      "confidence": "observed-in-client"
+    },
+    {
+      "method": "GET",
+      "path": "/api/user",
+      "summary": "the current user",
+      "tier": "C",
+      "auth": true,
+      "source": "src/app/core/auth/services/user.service.ts",
+      "confidence": "observed-in-client"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/user",
+      "summary": "update settings",
+      "tier": "C",
+      "auth": true,
+      "source": "src/app/core/auth/services/user.service.ts",
+      "confidence": "observed-in-client"
+    },
+    {
+      "method": "POST",
+      "path": "/api/articles",
+      "summary": "create an article \u2014 the precondition workhorse",
+      "tier": "C",
+      "auth": true,
+      "request": {
+        "article": {
+          "title": "string",
+          "description": "string",
+          "body": "string",
+          "tagList": "string[]"
+        }
+      },
+      "source": "src/app/features/article/services/articles.service.ts",
+      "confidence": "observed-in-client"
+    },
+    {
+      "method": "GET",
+      "path": "/api/articles",
+      "summary": "the feed, filtered by tag/author/favorited",
+      "tier": "C",
+      "auth": false,
+      "source": "src/app/features/article/services/articles.service.ts",
+      "confidence": "observed-in-client"
+    },
+    {
+      "method": "GET",
+      "path": "/api/articles/{slug}",
+      "summary": "one article",
+      "tier": "C",
+      "auth": false,
+      "source": "src/app/features/article/services/articles.service.ts",
+      "confidence": "observed-in-client"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/articles/{slug}",
+      "summary": "delete an article \u2014 use for cleanup",
+      "tier": "C",
+      "auth": true,
+      "source": "src/app/features/article/services/articles.service.ts",
+      "confidence": "observed-in-client"
+    },
+    {
+      "method": "POST",
+      "path": "/api/articles/{slug}/favorite",
+      "summary": "favourite an article",
+      "tier": "C",
+      "auth": true,
+      "source": "src/app/features/article/services/articles.service.ts",
+      "confidence": "observed-in-client"
+    },
+    {
+      "method": "GET",
+      "path": "/api/articles/{slug}/comments",
+      "summary": "comments on an article",
+      "tier": "C",
+      "auth": false,
+      "source": "src/app/features/article/services/comments.service.ts",
+      "confidence": "observed-in-client"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/articles/{slug}/comments/{id}",
+      "summary": "delete a comment",
+      "tier": "C",
+      "auth": true,
+      "source": "src/app/features/article/services/comments.service.ts",
+      "confidence": "observed-in-client"
+    },
+    {
+      "method": "GET",
+      "path": "/api/profiles/{username}",
+      "summary": "a user profile",
+      "tier": "C",
+      "auth": false,
+      "source": "src/app/features/profile/services/profile.service.ts",
+      "confidence": "observed-in-client"
+    },
+    {
+      "method": "GET",
+      "path": "/api/tags",
+      "summary": "the tag cloud",
+      "tier": "C",
+      "auth": false,
+      "source": "src/app/features/article/services/tags.service.ts",
+      "confidence": "observed-in-client"
+    }
+  ],
+  "notes": [
+    "Every row is Tier C: this clone contains no backend and no specification, so these endpoints are what the Angular services call, not what the server promises. The RealWorld API is specified publicly \u2014 if a precondition needs a guarantee, read that spec rather than trusting this file.",
+    "The API is shared and world-writable. Create what you assert on."
+  ]
+}

@@ -1,0 +1,765 @@
+{
+  "url": "https://demo.realworld.show/register",
+  "path": "/register",
+  "title": "Conduit",
+  "headings": [
+    {
+      "level": 1,
+      "text": "Sign up"
+    }
+  ],
+  "tables": [],
+  "regions": {
+    "navigation": 4,
+    "body": 1,
+    "form": 4,
+    "footer": 2
+  },
+  "elements": [
+    {
+      "index": 0,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Conduit",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/",
+      "box": {
+        "x": 85,
+        "y": 8,
+        "w": 88,
+        "h": 40
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('body > app-root > app-layout-header > nav.navbar.navbar-light > div.container > a.navbar-brand')",
+        "matchCount": 1,
+        "args": [
+          "body > app-root > app-layout-header > nav.navbar.navbar-light > div.container > a.navbar-brand"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Conduit', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "link",
+            "Conduit"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('body > app-root > app-layout-header > nav.navbar.navbar-light > div.container > a.navbar-brand')",
+          "matchCount": 1,
+          "args": [
+            "body > app-root > app-layout-header > nav.navbar.navbar-light > div.container > a.navbar-brand"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Home",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/",
+      "box": {
+        "x": 1011,
+        "y": 9,
+        "w": 40,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Home', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Home"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Home', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Home"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Home', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Home"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(1) > a.nav-link')",
+          "matchCount": 1,
+          "args": [
+            "app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(1) > a.nav-link"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Sign in",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/login",
+      "box": {
+        "x": 1067,
+        "y": 9,
+        "w": 45,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Sign in', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Sign in"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Sign in', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Sign in"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Sign in', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Sign in"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(2) > a.nav-link')",
+          "matchCount": 1,
+          "args": [
+            "app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(2) > a.nav-link"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Sign up",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/register",
+      "box": {
+        "x": 1128,
+        "y": 12,
+        "w": 67,
+        "h": 32
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Sign up', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Sign up"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Sign up', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Sign up"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Sign up', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "Sign up"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(3) > a.nav-link.nav-signup')",
+          "matchCount": 1,
+          "args": [
+            "app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(3) > a.nav-link.nav-signup"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Have an account?",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/login",
+      "box": {
+        "x": 582,
+        "y": 134,
+        "w": 117,
+        "h": 20
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Have an account?', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Have an account?"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Have an account?', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Have an account?"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Have an account?', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Have an account?"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.auth-page > div.container.page > div.row > div > p.text-xs-center > a')",
+          "matchCount": 1,
+          "args": [
+            "div.auth-page > div.container.page > div.row > div > p.text-xs-center > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "tag": "input",
+      "type": "text",
+      "role": "textbox",
+      "name": "Username",
+      "label": null,
+      "placeholder": "Username",
+      "id": null,
+      "nameAttr": "username",
+      "testId": null,
+      "data": {},
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 370,
+        "y": 172,
+        "w": 540,
+        "h": 51
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('textbox', { name: 'Username', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "textbox",
+          "Username"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('textbox', { name: 'Username', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "textbox",
+            "Username"
+          ]
+        },
+        {
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('Username', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Username"
+          ]
+        },
+        {
+          "strategy": "attribute",
+          "expression": "locator('input[name=\\\"username\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "input[name=\"username\"]"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.row > div > form.ng-untouched.ng-pristine > fieldset > fieldset.form-group:nth-of-type(1) > input.form-control.form-control-lg')",
+          "matchCount": 1,
+          "args": [
+            "div.row > div > form.ng-untouched.ng-pristine > fieldset > fieldset.form-group:nth-of-type(1) > input.form-control.form-control-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "tag": "input",
+      "type": "text",
+      "role": "textbox",
+      "name": "Email",
+      "label": null,
+      "placeholder": "Email",
+      "id": null,
+      "nameAttr": "email",
+      "testId": null,
+      "data": {},
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 370,
+        "y": 239,
+        "w": 540,
+        "h": 51
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('textbox', { name: 'Email', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "textbox",
+          "Email"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('textbox', { name: 'Email', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "textbox",
+            "Email"
+          ]
+        },
+        {
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('Email', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Email"
+          ]
+        },
+        {
+          "strategy": "attribute",
+          "expression": "locator('input[name=\\\"email\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "input[name=\"email\"]"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.row > div > form.ng-untouched.ng-pristine > fieldset > fieldset.form-group:nth-of-type(2) > input.form-control.form-control-lg')",
+          "matchCount": 1,
+          "args": [
+            "div.row > div > form.ng-untouched.ng-pristine > fieldset > fieldset.form-group:nth-of-type(2) > input.form-control.form-control-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "tag": "input",
+      "type": "password",
+      "role": "textbox",
+      "name": "Password",
+      "label": null,
+      "placeholder": "Password",
+      "id": null,
+      "nameAttr": "password",
+      "testId": null,
+      "data": {},
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 370,
+        "y": 306,
+        "w": 540,
+        "h": 51
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('textbox', { name: 'Password', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "textbox",
+          "Password"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('textbox', { name: 'Password', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "textbox",
+            "Password"
+          ]
+        },
+        {
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('Password', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Password"
+          ]
+        },
+        {
+          "strategy": "attribute",
+          "expression": "locator('input[name=\\\"password\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "input[name=\"password\"]"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.row > div > form.ng-untouched.ng-pristine > fieldset > fieldset.form-group:nth-of-type(3) > input.form-control.form-control-lg')",
+          "matchCount": 1,
+          "args": [
+            "div.row > div > form.ng-untouched.ng-pristine > fieldset > fieldset.form-group:nth-of-type(3) > input.form-control.form-control-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "tag": "button",
+      "type": "submit",
+      "role": "button",
+      "name": "Sign up",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "form",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 797,
+        "y": 373,
+        "w": 113,
+        "h": 51
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Sign up', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Sign up"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Sign up', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Sign up"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Sign up', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "Sign up"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.container.page > div.row > div > form.ng-untouched.ng-pristine > fieldset > button.btn.btn-lg')",
+          "matchCount": 1,
+          "args": [
+            "div.container.page > div.row > div > form.ng-untouched.ng-pristine > fieldset > button.btn.btn-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Conduit",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "footer",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/",
+      "box": {
+        "x": 295,
+        "y": 686,
+        "w": 70,
+        "h": 16
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('body > app-root > app-layout-footer > footer > div.container > a.logo-font')",
+        "matchCount": 1,
+        "args": [
+          "body > app-root > app-layout-footer > footer > div.container > a.logo-font"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Conduit', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "link",
+            "Conduit"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('body > app-root > app-layout-footer > footer > div.container > a.logo-font')",
+          "matchCount": 1,
+          "args": [
+            "body > app-root > app-layout-footer > footer > div.container > a.logo-font"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "RealWorld OSS Project",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "footer",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://github.com/gothinkster/realworld",
+      "box": {
+        "x": 601,
+        "y": 686,
+        "w": 116,
+        "h": 16
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'RealWorld OSS Project', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "RealWorld OSS Project"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'RealWorld OSS Project', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "RealWorld OSS Project"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('RealWorld OSS Project', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "RealWorld OSS Project"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('app-root > app-layout-footer > footer > div.container > span.attribution > a')",
+          "matchCount": 1,
+          "args": [
+            "app-root > app-layout-footer > footer > div.container > span.attribution > a"
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "href": "/",
+      "resolved": "https://demo.realworld.show/",
+      "text": ""
+    },
+    {
+      "href": "/",
+      "resolved": "https://demo.realworld.show/",
+      "text": "Home"
+    },
+    {
+      "href": "/login",
+      "resolved": "https://demo.realworld.show/login",
+      "text": "Sign in"
+    },
+    {
+      "href": "/register",
+      "resolved": "https://demo.realworld.show/register",
+      "text": "Sign up"
+    },
+    {
+      "href": "/login",
+      "resolved": "https://demo.realworld.show/login",
+      "text": "Have an account?"
+    },
+    {
+      "href": "/",
+      "resolved": "https://demo.realworld.show/",
+      "text": ""
+    },
+    {
+      "href": "https://github.com/gothinkster/realworld",
+      "resolved": "https://github.com/gothinkster/realworld",
+      "text": "RealWorld OSS Project"
+    }
+  ],
+  "stats": {
+    "elements": 11,
+    "visible": 11,
+    "hidden": 0,
+    "semantic": 9,
+    "fragile": 2,
+    "ambiguous": 0,
+    "withTestId": 0
+  }
+}

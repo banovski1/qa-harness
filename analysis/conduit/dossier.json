@@ -1,0 +1,36 @@
+{
+  "app": "conduit",
+  "repoPath": "~/Projects/angular-realworld-example-app",
+  "baseUrl": "https://demo.realworld.show/",
+  "repoCommit": "dd99ed2cf39c805d719f943c5d7061a5683d98a8",
+  "generatedAt": "2026-09-12T21:37:01+00:00",
+  "frontend": {
+    "root": "src/app",
+    "framework": "angular",
+    "version": "21.2.12",
+    "router": "@angular/router (standalone, hash routing on the demo host)",
+    "componentExt": ".ts",
+    "templateExt": ".html",
+    "entry": "src/app/app.config.ts"
+  },
+  "backend": {
+    "root": null,
+    "framework": "none in this repo",
+    "note": "the frontend talks to a hosted RealWorld API at https://api.realworld.show/api (src/app/core/interceptors/api.interceptor.ts:4). There is no backend source to read."
+  },
+  "testId": {
+    "attribute": null,
+    "occurrences": 0,
+    "note": "no test id attributes anywhere. Controls are addressed by placeholder and by visible text."
+  },
+  "mountPrefix": "/",
+  "apiDocs": {
+    "kind": "none",
+    "path": null,
+    "note": "the RealWorld API is specified publicly, but nothing in this clone documents it; endpoints here are read from the Angular services (Tier C)."
+  },
+  "notes": [
+    "The demo host serves plain path routes (/login), matching the route table. An earlier reading assumed a hash fragment; the crawl's own URLs settled it.",
+    "Routes are lazy (loadComponent/loadChildren), so the component of a route is an import path rather than a class reference \u2014 recorded as the module path."
+  ]
+}

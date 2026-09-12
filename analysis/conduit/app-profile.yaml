@@ -3,21 +3,18 @@ baseUrl: https://demo.realworld.show/
 repoPath: ~/Projects/angular-realworld-example-app
 session: conduit
 
-# The demo allows self-registration, so a test user is created rather than shared.
-auth:
-  loginUrl: https://demo.realworld.show/#/login
-  steps:
-    - { action: fill, selector: "input[type='email']", value: "env:APP_USERNAME" }
-    - { action: fill, selector: "input[type='password']", value: "env:APP_PASSWORD" }
-    - { action: click, selector: "button[type='submit']" }
-  readyWhen: "a.nav-link[href*='settings']"
+# The demo allows self-registration (POST /api/users), so a test user is made rather
+# than shared. Left unauthenticated here: the public screens are the ones worth crawling,
+# and a crawl that registers an account is no longer read-only.
+auth: null
 
 seedRoutes:
-  - "/#/"
-  - "/#/login"
-  - "/#/register"
-  - "/#/settings"
-  - "/#/editor"
+  - "/"
+  - "/login"
+  - "/register"
+  - "/settings"
+  - "/editor"
+  - "/article/how-to-train-your-dragon"
 
 exclude:
   - "logout"

@@ -1,0 +1,1027 @@
+{
+  "app": {
+    "name": "conduit",
+    "baseUrl": "https://demo.realworld.show/",
+    "repoPath": "~/Projects/angular-realworld-example-app",
+    "repoCommit": "dd99ed2cf39c805d719f943c5d7061a5683d98a8",
+    "stack": "angular / none in this repo",
+    "generatedAt": "2026-09-12T21:38:47.366Z"
+  },
+  "components": {
+    "NavigationBar": {
+      "kind": "region",
+      "root": {
+        "strategy": "css",
+        "args": [
+          "nav.navbar"
+        ]
+      },
+      "controls": {
+        "conduit": {
+          "strategy": "css",
+          "args": [
+            "body > app-root > app-layout-header > nav.navbar.navbar-light > div.container > a.navbar-brand"
+          ]
+        },
+        "home": {
+          "strategy": "role",
+          "args": [
+            "link",
+            "Home"
+          ]
+        },
+        "signIn": {
+          "strategy": "css",
+          "args": [
+            "app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(2) > a.nav-link"
+          ]
+        },
+        "signUp": {
+          "strategy": "role",
+          "args": [
+            "link",
+            "Sign up"
+          ]
+        }
+      },
+      "seenOn": 15,
+      "description": "navigation region — 4 controls shared across 15 screens",
+      "actions": [
+        {
+          "name": "goToSignIn",
+          "via": "signIn",
+          "leadsTo": "LoginPage"
+        },
+        {
+          "name": "goToSignUp",
+          "via": "signUp",
+          "leadsTo": "RegisterPage"
+        }
+      ]
+    },
+    "TextField": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a text input or textarea, addressed by its label"
+    },
+    "Select": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a select or combobox, addressed by its label"
+    },
+    "Checkbox": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a checkbox, addressed by its label"
+    },
+    "RadioButton": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a radio button, addressed by its label"
+    },
+    "Button": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a button, addressed by its visible text"
+    },
+    "Link": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a link, addressed by its visible text"
+    },
+    "Tab": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a tab, addressed by its visible text"
+    },
+    "MenuItem": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a menu item, addressed by its visible text"
+    },
+    "RecordTable": {
+      "kind": "collection",
+      "root": {
+        "strategy": "css",
+        "args": [
+          "app-article-list"
+        ]
+      },
+      "table": {
+        "row": "app-article-preview",
+        "cell": "a.preview-link"
+      },
+      "seenOn": 0,
+      "description": "a data table whose rows are addressed by the value in their key column"
+    }
+  },
+  "screens": [
+    {
+      "name": "HomePage",
+      "path": "/",
+      "url": "https://demo.realworld.show/",
+      "title": "Conduit",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/",
+        "heading": "How to Learn JavaScript Efficiently"
+      },
+      "source": {
+        "component": "src/app/features/article/pages/home/home.component.ts",
+        "route": "/"
+      },
+      "crawled": true,
+      "uses": [
+        {
+          "component": "NavigationBar",
+          "as": "navigation"
+        },
+        {
+          "component": "Link",
+          "as": "angularFrontend",
+          "label": "Angular frontend"
+        },
+        {
+          "component": "Link",
+          "as": "realworld",
+          "label": "Realworld"
+        },
+        {
+          "component": "Link",
+          "as": "globalFeed",
+          "label": "Global Feed"
+        },
+        {
+          "component": "Link",
+          "as": "johndoe",
+          "label": "johndoe"
+        },
+        {
+          "component": "Button",
+          "as": "control2",
+          "label": "2"
+        },
+        {
+          "component": "Link",
+          "as": "howToLearnJavaScriptEfficientlyAComprehensiveGuideToMasteringJavaScriptFromBeginnerToAdvancedLevelReadMoreBeginnersJavascriptProgrammingWebdev",
+          "label": "How to Learn JavaScript EfficientlyA comprehensive guide to mastering JavaScript from beginner to advanced levelRead more... beginners javascript programming webdev"
+        },
+        {
+          "component": "Link",
+          "as": "janesmith",
+          "label": "janesmith"
+        },
+        {
+          "component": "Button",
+          "as": "control22",
+          "label": "2"
+        },
+        {
+          "component": "Link",
+          "as": "reactHooksBestPracticesAndCommonPitfallsEssentialPatternsAndAntiPatternsWhenWorkingWithReactHooksReadMoreFrontendHooksJavascriptReact",
+          "label": "React Hooks: Best Practices and Common PitfallsEssential patterns and anti-patterns when working with React HooksRead more... frontend hooks javascript react"
+        },
+        {
+          "component": "Link",
+          "as": "mikewilson",
+          "label": "mikewilson"
+        },
+        {
+          "component": "Button",
+          "as": "control1",
+          "label": "1"
+        },
+        {
+          "component": "Link",
+          "as": "buildingScalableAPIsWithNodeJsArchitecturalPatternsAndBestPracticesForCreatingRobustBackendServicesReadMoreApiArchitectureBackendNodejs",
+          "label": "Building Scalable APIs with Node.jsArchitectural patterns and best practices for creating robust backend servicesRead more... api architecture backend nodejs"
+        },
+        {
+          "component": "Link",
+          "as": "sarahchen",
+          "label": "sarahchen"
+        },
+        {
+          "component": "Button",
+          "as": "control12",
+          "label": "1"
+        },
+        {
+          "component": "Link",
+          "as": "introductionToMachineLearningForDevelopersGettingStartedWithMLConceptsAndPracticalApplicationsForSoftwareDevelopersReadMoreAiDatascienceMachinelearningPython",
+          "label": "Introduction to Machine Learning for DevelopersGetting started with ML concepts and practical applications for software developersRead more... ai datascience machinelearning python"
+        },
+        {
+          "component": "Button",
+          "as": "control13",
+          "label": "1"
+        },
+        {
+          "component": "Link",
+          "as": "ai",
+          "label": "ai"
+        },
+        {
+          "component": "Link",
+          "as": "api",
+          "label": "api"
+        },
+        {
+          "component": "Link",
+          "as": "architecture",
+          "label": "architecture"
+        },
+        {
+          "component": "Link",
+          "as": "backend",
+          "label": "backend"
+        },
+        {
+          "component": "Link",
+          "as": "beginners",
+          "label": "beginners"
+        },
+        {
+          "component": "Link",
+          "as": "datascience",
+          "label": "datascience"
+        },
+        {
+          "component": "Link",
+          "as": "frontend",
+          "label": "frontend"
+        },
+        {
+          "component": "Link",
+          "as": "hooks",
+          "label": "hooks"
+        },
+        {
+          "component": "Link",
+          "as": "javascript",
+          "label": "javascript"
+        },
+        {
+          "component": "Link",
+          "as": "machinelearning",
+          "label": "machinelearning"
+        },
+        {
+          "component": "Link",
+          "as": "nodejs",
+          "label": "nodejs"
+        },
+        {
+          "component": "Link",
+          "as": "programming",
+          "label": "programming"
+        },
+        {
+          "component": "Link",
+          "as": "python",
+          "label": "python"
+        },
+        {
+          "component": "Link",
+          "as": "react",
+          "label": "react"
+        },
+        {
+          "component": "Link",
+          "as": "webdev",
+          "label": "webdev"
+        },
+        {
+          "component": "Link",
+          "as": "conduit",
+          "label": "Conduit"
+        },
+        {
+          "component": "Link",
+          "as": "realWorldOSSProject",
+          "label": "RealWorld OSS Project"
+        }
+      ],
+      "actions": [],
+      "unverified": 4
+    },
+    {
+      "name": "ArticlePage",
+      "path": "/article/{slug}",
+      "url": "https://demo.realworld.show/article/building-scalable-apis-with-node-js",
+      "title": "Conduit",
+      "aliases": [
+        "/article/building-scalable-apis-with-node-js",
+        "/article/how-to-learn-javascript-efficiently",
+        "/article/how-to-train-your-dragon",
+        "/article/introduction-to-machine-learning-for-developers",
+        "/article/react-hooks-best-practices"
+      ],
+      "identity": {
+        "urlPattern": "/article/{slug}",
+        "heading": "Building Scalable APIs with Node.js"
+      },
+      "source": {
+        "component": "src/app/features/article/pages/article/article.component.ts",
+        "route": "/article/{slug}"
+      },
+      "crawled": true,
+      "uses": [
+        {
+          "component": "NavigationBar",
+          "as": "navigation"
+        },
+        {
+          "component": "Link",
+          "as": "mikewilson",
+          "label": "mikewilson"
+        },
+        {
+          "component": "Button",
+          "as": "followMikewilson",
+          "label": "Follow mikewilson"
+        },
+        {
+          "component": "Button",
+          "as": "favoriteArticle1",
+          "label": "Favorite Article (1)"
+        },
+        {
+          "component": "Link",
+          "as": "mikewilson2",
+          "label": "mikewilson"
+        },
+        {
+          "component": "Button",
+          "as": "followMikewilson2",
+          "label": "Follow mikewilson"
+        },
+        {
+          "component": "Button",
+          "as": "favoriteArticle12",
+          "label": "Favorite Article (1)"
+        },
+        {
+          "component": "Link",
+          "as": "signIn",
+          "label": "Sign in"
+        },
+        {
+          "component": "Link",
+          "as": "signUp",
+          "label": "sign up"
+        },
+        {
+          "component": "Link",
+          "as": "janesmith",
+          "label": "janesmith"
+        },
+        {
+          "component": "Link",
+          "as": "johndoe",
+          "label": "johndoe"
+        },
+        {
+          "component": "Link",
+          "as": "conduit",
+          "label": "Conduit"
+        },
+        {
+          "component": "Link",
+          "as": "realWorldOSSProject",
+          "label": "RealWorld OSS Project"
+        }
+      ],
+      "actions": [
+        {
+          "name": "goToSignIn",
+          "via": "signIn",
+          "leadsTo": "LoginPage"
+        },
+        {
+          "name": "goToSignUp",
+          "via": "signUp",
+          "leadsTo": "RegisterPage"
+        }
+      ],
+      "unverified": 4
+    },
+    {
+      "name": "EditorPage",
+      "path": "/editor",
+      "url": "https://demo.realworld.show/editor",
+      "title": "/editor",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/editor",
+        "heading": null
+      },
+      "source": {
+        "component": "src/app/features/article/pages/editor/editor.component.ts",
+        "route": "/editor"
+      },
+      "crawled": false,
+      "uses": [],
+      "actions": [],
+      "unverified": 0
+    },
+    {
+      "name": "Editor2Page",
+      "path": "/editor/{slug}",
+      "url": "https://demo.realworld.show/editor/%7Bslug%7D",
+      "title": "/editor/{slug}",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/editor/{slug}",
+        "heading": null
+      },
+      "source": {
+        "component": "src/app/features/article/pages/editor/editor.component.ts",
+        "route": "/editor/{slug}"
+      },
+      "crawled": false,
+      "uses": [],
+      "actions": [],
+      "unverified": 0
+    },
+    {
+      "name": "LoginPage",
+      "path": "/login",
+      "url": "https://demo.realworld.show/login",
+      "title": "Conduit",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/login",
+        "heading": "Sign in"
+      },
+      "source": {
+        "component": "src/app/core/auth/auth.component.ts",
+        "route": "/login"
+      },
+      "crawled": true,
+      "uses": [
+        {
+          "component": "NavigationBar",
+          "as": "navigation"
+        },
+        {
+          "component": "Link",
+          "as": "needAnAccount",
+          "label": "Need an account?"
+        },
+        {
+          "component": "TextField",
+          "as": "email",
+          "label": "Email"
+        },
+        {
+          "component": "TextField",
+          "as": "password",
+          "label": "Password"
+        },
+        {
+          "component": "Button",
+          "as": "signIn",
+          "label": "Sign in"
+        },
+        {
+          "component": "Link",
+          "as": "conduit",
+          "label": "Conduit"
+        },
+        {
+          "component": "Link",
+          "as": "realWorldOSSProject",
+          "label": "RealWorld OSS Project"
+        }
+      ],
+      "actions": [
+        {
+          "name": "goToNeedAnAccount",
+          "via": "needAnAccount",
+          "leadsTo": "RegisterPage"
+        }
+      ],
+      "unverified": 0
+    },
+    {
+      "name": "ProfilePage",
+      "path": "/profile/{username}",
+      "url": "https://demo.realworld.show/profile/janesmith",
+      "title": "Conduit",
+      "aliases": [
+        "/profile/janesmith",
+        "/profile/johndoe",
+        "/profile/mikewilson",
+        "/profile/sarahchen"
+      ],
+      "identity": {
+        "urlPattern": "/profile/{username}",
+        "heading": "React Hooks: Best Practices and Common Pitfalls"
+      },
+      "source": {
+        "component": "src/app/features/profile/pages/profile/profile.component.ts",
+        "route": "/profile/{username}"
+      },
+      "crawled": true,
+      "uses": [
+        {
+          "component": "NavigationBar",
+          "as": "navigation"
+        },
+        {
+          "component": "Button",
+          "as": "followJanesmith",
+          "label": "Follow janesmith"
+        },
+        {
+          "component": "Link",
+          "as": "myPosts",
+          "label": "My Posts"
+        },
+        {
+          "component": "Link",
+          "as": "favoritedPosts",
+          "label": "Favorited Posts"
+        },
+        {
+          "component": "Link",
+          "as": "janesmith",
+          "label": "janesmith"
+        },
+        {
+          "component": "Button",
+          "as": "control2",
+          "label": "2"
+        },
+        {
+          "component": "Link",
+          "as": "reactHooksBestPracticesAndCommonPitfallsEssentialPatternsAndAntiPatternsWhenWorkingWithReactHooksReadMoreFrontendHooksJavascriptReact",
+          "label": "React Hooks: Best Practices and Common PitfallsEssential patterns and anti-patterns when working with React HooksRead more... frontend hooks javascript react"
+        },
+        {
+          "component": "Button",
+          "as": "control1",
+          "label": "1"
+        },
+        {
+          "component": "Link",
+          "as": "conduit",
+          "label": "Conduit"
+        },
+        {
+          "component": "Link",
+          "as": "realWorldOSSProject",
+          "label": "RealWorld OSS Project"
+        }
+      ],
+      "actions": [],
+      "unverified": 1
+    },
+    {
+      "name": "FavoritesPage",
+      "path": "/profile/{username}/favorites",
+      "url": "https://demo.realworld.show/profile/%7Busername%7D/favorites",
+      "title": "/profile/{username}/favorites",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/profile/{username}/favorites",
+        "heading": null
+      },
+      "source": {
+        "component": "src/app/features/profile/components/profile-favorites.component.ts",
+        "route": "/profile/{username}/favorites"
+      },
+      "crawled": false,
+      "uses": [],
+      "actions": [],
+      "unverified": 0
+    },
+    {
+      "name": "RegisterPage",
+      "path": "/register",
+      "url": "https://demo.realworld.show/register",
+      "title": "Conduit",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/register",
+        "heading": "Sign up"
+      },
+      "source": {
+        "component": "src/app/core/auth/auth.component.ts",
+        "route": "/register"
+      },
+      "crawled": true,
+      "uses": [
+        {
+          "component": "NavigationBar",
+          "as": "navigation"
+        },
+        {
+          "component": "Link",
+          "as": "haveAnAccount",
+          "label": "Have an account?"
+        },
+        {
+          "component": "TextField",
+          "as": "username",
+          "label": "Username"
+        },
+        {
+          "component": "TextField",
+          "as": "email",
+          "label": "Email"
+        },
+        {
+          "component": "TextField",
+          "as": "password",
+          "label": "Password"
+        },
+        {
+          "component": "Button",
+          "as": "signUp",
+          "label": "Sign up"
+        },
+        {
+          "component": "Link",
+          "as": "conduit",
+          "label": "Conduit"
+        },
+        {
+          "component": "Link",
+          "as": "realWorldOSSProject",
+          "label": "RealWorld OSS Project"
+        }
+      ],
+      "actions": [
+        {
+          "name": "goToHaveAnAccount",
+          "via": "haveAnAccount",
+          "leadsTo": "LoginPage"
+        }
+      ],
+      "unverified": 0
+    },
+    {
+      "name": "SettingsPage",
+      "path": "/settings",
+      "url": "https://demo.realworld.show/settings",
+      "title": "/settings",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/settings",
+        "heading": null
+      },
+      "source": {
+        "component": "src/app/features/settings/settings.component.ts",
+        "route": "/settings"
+      },
+      "crawled": false,
+      "uses": [],
+      "actions": [],
+      "unverified": 0
+    },
+    {
+      "name": "TagPage",
+      "path": "/tag/{tag}",
+      "url": "https://demo.realworld.show/tag/ai",
+      "title": "Conduit",
+      "aliases": [
+        "/tag/ai"
+      ],
+      "identity": {
+        "urlPattern": "/tag/{tag}",
+        "heading": "Introduction to Machine Learning for Developers"
+      },
+      "source": {
+        "component": "src/app/features/article/pages/home/home.component.ts",
+        "route": "/tag/{tag}"
+      },
+      "crawled": true,
+      "uses": [
+        {
+          "component": "NavigationBar",
+          "as": "navigation"
+        },
+        {
+          "component": "Link",
+          "as": "angularFrontend",
+          "label": "Angular frontend"
+        },
+        {
+          "component": "Link",
+          "as": "realworld",
+          "label": "Realworld"
+        },
+        {
+          "component": "Link",
+          "as": "globalFeed",
+          "label": "Global Feed"
+        },
+        {
+          "component": "Link",
+          "as": "sarahchen",
+          "label": "sarahchen"
+        },
+        {
+          "component": "Button",
+          "as": "control1",
+          "label": "1"
+        },
+        {
+          "component": "Link",
+          "as": "introductionToMachineLearningForDevelopersGettingStartedWithMLConceptsAndPracticalApplicationsForSoftwareDevelopersReadMoreAiDatascienceMachinelearningPython",
+          "label": "Introduction to Machine Learning for DevelopersGetting started with ML concepts and practical applications for software developersRead more... ai datascience machinelearning python"
+        },
+        {
+          "component": "Button",
+          "as": "control12",
+          "label": "1"
+        },
+        {
+          "component": "Link",
+          "as": "ai",
+          "label": "ai"
+        },
+        {
+          "component": "Link",
+          "as": "api",
+          "label": "api"
+        },
+        {
+          "component": "Link",
+          "as": "architecture",
+          "label": "architecture"
+        },
+        {
+          "component": "Link",
+          "as": "backend",
+          "label": "backend"
+        },
+        {
+          "component": "Link",
+          "as": "beginners",
+          "label": "beginners"
+        },
+        {
+          "component": "Link",
+          "as": "datascience",
+          "label": "datascience"
+        },
+        {
+          "component": "Link",
+          "as": "frontend",
+          "label": "frontend"
+        },
+        {
+          "component": "Link",
+          "as": "hooks",
+          "label": "hooks"
+        },
+        {
+          "component": "Link",
+          "as": "javascript",
+          "label": "javascript"
+        },
+        {
+          "component": "Link",
+          "as": "machinelearning",
+          "label": "machinelearning"
+        },
+        {
+          "component": "Link",
+          "as": "nodejs",
+          "label": "nodejs"
+        },
+        {
+          "component": "Link",
+          "as": "programming",
+          "label": "programming"
+        },
+        {
+          "component": "Link",
+          "as": "python",
+          "label": "python"
+        },
+        {
+          "component": "Link",
+          "as": "react",
+          "label": "react"
+        },
+        {
+          "component": "Link",
+          "as": "webdev",
+          "label": "webdev"
+        },
+        {
+          "component": "Link",
+          "as": "conduit",
+          "label": "Conduit"
+        },
+        {
+          "component": "Link",
+          "as": "realWorldOSSProject",
+          "label": "RealWorld OSS Project"
+        }
+      ],
+      "actions": [],
+      "unverified": 1
+    }
+  ],
+  "api": {
+    "endpoints": [
+      {
+        "method": "POST",
+        "path": "/api/users",
+        "summary": "register — creates a test user",
+        "tier": "C",
+        "auth": false,
+        "request": {
+          "user": {
+            "username": "string",
+            "email": "string",
+            "password": "string"
+          }
+        },
+        "source": "src/app/core/auth/services/user.service.ts",
+        "confidence": "observed-in-client"
+      },
+      {
+        "method": "POST",
+        "path": "/api/users/login",
+        "summary": "log in",
+        "tier": "C",
+        "auth": false,
+        "source": "src/app/core/auth/services/user.service.ts:74",
+        "confidence": "observed-in-client"
+      },
+      {
+        "method": "GET",
+        "path": "/api/user",
+        "summary": "the current user",
+        "tier": "C",
+        "auth": true,
+        "source": "src/app/core/auth/services/user.service.ts",
+        "confidence": "observed-in-client"
+      },
+      {
+        "method": "PUT",
+        "path": "/api/user",
+        "summary": "update settings",
+        "tier": "C",
+        "auth": true,
+        "source": "src/app/core/auth/services/user.service.ts",
+        "confidence": "observed-in-client"
+      },
+      {
+        "method": "POST",
+        "path": "/api/articles",
+        "summary": "create an article — the precondition workhorse",
+        "tier": "C",
+        "auth": true,
+        "request": {
+          "article": {
+            "title": "string",
+            "description": "string",
+            "body": "string",
+            "tagList": "string[]"
+          }
+        },
+        "source": "src/app/features/article/services/articles.service.ts",
+        "confidence": "observed-in-client"
+      },
+      {
+        "method": "GET",
+        "path": "/api/articles",
+        "summary": "the feed, filtered by tag/author/favorited",
+        "tier": "C",
+        "auth": false,
+        "source": "src/app/features/article/services/articles.service.ts",
+        "confidence": "observed-in-client"
+      },
+      {
+        "method": "GET",
+        "path": "/api/articles/{slug}",
+        "summary": "one article",
+        "tier": "C",
+        "auth": false,
+        "source": "src/app/features/article/services/articles.service.ts",
+        "confidence": "observed-in-client"
+      },
+      {
+        "method": "DELETE",
+        "path": "/api/articles/{slug}",
+        "summary": "delete an article — use for cleanup",
+        "tier": "C",
+        "auth": true,
+        "source": "src/app/features/article/services/articles.service.ts",
+        "confidence": "observed-in-client"
+      },
+      {
+        "method": "POST",
+        "path": "/api/articles/{slug}/favorite",
+        "summary": "favourite an article",
+        "tier": "C",
+        "auth": true,
+        "source": "src/app/features/article/services/articles.service.ts",
+        "confidence": "observed-in-client"
+      },
+      {
+        "method": "GET",
+        "path": "/api/articles/{slug}/comments",
+        "summary": "comments on an article",
+        "tier": "C",
+        "auth": false,
+        "source": "src/app/features/article/services/comments.service.ts",
+        "confidence": "observed-in-client"
+      },
+      {
+        "method": "DELETE",
+        "path": "/api/articles/{slug}/comments/{id}",
+        "summary": "delete a comment",
+        "tier": "C",
+        "auth": true,
+        "source": "src/app/features/article/services/comments.service.ts",
+        "confidence": "observed-in-client"
+      },
+      {
+        "method": "GET",
+        "path": "/api/profiles/{username}",
+        "summary": "a user profile",
+        "tier": "C",
+        "auth": false,
+        "source": "src/app/features/profile/services/profile.service.ts",
+        "confidence": "observed-in-client"
+      },
+      {
+        "method": "GET",
+        "path": "/api/tags",
+        "summary": "the tag cloud",
+        "tier": "C",
+        "auth": false,
+        "source": "src/app/features/article/services/tags.service.ts",
+        "confidence": "observed-in-client"
+      }
+    ],
+    "auth": {
+      "kind": "token",
+      "scheme": "JWT in an Authorization: Token <jwt> header",
+      "loginEndpoint": {
+        "method": "POST",
+        "path": "/api/users/login",
+        "auth": null,
+        "request": {
+          "user": {
+            "email": "string",
+            "password": "string"
+          }
+        },
+        "source": "src/app/core/auth/services/user.service.ts:74"
+      },
+      "success": {
+        "status": 200,
+        "body": {
+          "user": {
+            "token": "string",
+            "username": "string",
+            "email": "string"
+          }
+        },
+        "source": "src/app/core/auth/services/user.service.ts:76"
+      },
+      "csrf": null,
+      "users": [
+        {
+          "role": "user",
+          "username": "env:APP_USERNAME",
+          "password": "env:APP_PASSWORD",
+          "note": "the demo allows self-registration via POST /api/users, so a test user is created rather than shared. This is the only corpus app where a test can make its own account."
+        }
+      ],
+      "header": {
+        "name": "Authorization",
+        "value": "Token {jwt}",
+        "source": "src/app/core/interceptors/token.interceptor.ts:10"
+      },
+      "uiLogin": null
+    }
+  },
+  "stats": {
+    "screens": 10,
+    "crawled": 6,
+    "declaredOnly": 4,
+    "components": 10,
+    "regions": 1,
+    "uses": 97,
+    "actions": 4,
+    "unverified": 10
+  }
+}
