@@ -12,6 +12,22 @@ install, no build. Read files.
 Inputs: `analysis/<app>/app-profile.yaml` — `repoPath` and `baseUrl` are the only fields
 you need. Outputs: `analysis/<app>/dossier.json` and `routes.json`
 
+## 0. Read what the app already wrote about itself
+
+Do this before any grep. A repo often documents its own conventions, and those documents
+answer this skill's questions directly and correctly:
+
+`AGENTS.md`, `CLAUDE.md`, `.agents/`, `.cursor/rules/`, `.github/copilot-instructions.md`,
+`CONTRIBUTING.md`, `ARCHITECTURE.md`, `docs/`, and the CI workflows in `.github/workflows/`.
+
+CI is the most reliable of them: it names the commands the project considers mandatory,
+which is how you learn that a spec, a schema or a client is *generated* rather than
+committed. A build step you did not know about is the single most common reason an
+analysis is wrong rather than merely incomplete.
+
+Anything you learn here still needs a citation, and still needs to match what the code
+says. A stale `CONTRIBUTING.md` is a lead, not a finding.
+
 ## 1. Find the real roots
 
 A clone is rarely one app. Look for `package.json`, `composer.json`, `pom.xml`,
@@ -73,7 +89,8 @@ Drop API-only routes (`/api/*`, JSON endpoints) — they belong to `app-api`.
   "backend":  { "root": ".", "framework": "php-custom" },
   "testId":   { "attribute": null, "occurrences": 0, "note": "no test ids in markup" },
   "mountPrefix": "/",
-  "apiDocs":  { "kind": "none|openapi|annotations", "path": "..." },
+  "apiDocs":  { "kind": "none|spec-file|spec-route|generated", "path": "...",
+                "generateWith": "the command that produces it, if it is generated" },
   "notes":    ["anything a human should know before trusting this"] }
 
 // routes.json

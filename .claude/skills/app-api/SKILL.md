@@ -13,16 +13,52 @@ Inputs: `analysis/<app>/app-profile.yaml`, `dossier.json`. Output: `analysis/<ap
 
 ## Work the tiers in order and stop when one pays
 
-**Tier A — a specification exists.** Look for `openapi.{json,yaml}`, `swagger.json`,
-`api-docs`, a `.proto`, a GraphQL schema, or a published spec route in the app's own
-config. If you find one, read it and you are largely done. This is the only tier whose
-output needs no hedging.
+**Tier A — a specification exists, or can be produced.**
+
+The mistake to avoid is searching for a *spec file*. A project that takes its API
+seriously usually generates the spec instead of committing it, so the file is a build
+artifact that does not exist in a fresh clone. **Absence of a spec file is not absence of
+a spec.** Look for the spec's *source*, in this order:
+
+1. **A committed spec** — `openapi.{json,yaml}`, `swagger.json`, `api-docs`, `.proto`, a
+   GraphQL SDL file.
+2. **A spec served at runtime** — a documentation route in the app's own routing
+   (`/swagger`, `/api-docs`, `/openapi.json`, `/graphql`, `/redoc`). Reachable later even
+   when nothing is committed.
+3. **A spec generated from annotations in the source.** This is the common case in a
+   mature codebase and the easiest to miss. Detect it by the *annotation marker*, not by
+   the framework name — you will meet frameworks this file does not list:
+
+   | ecosystem | marker to grep for |
+   | --- | --- |
+   | PHP | `@OA\\`, `#[OA\\`, `swagger-php`, `zircote`, `nelmio` |
+   | Java/Kotlin | `@Operation`, `@Schema`, `springdoc`, `swagger-annotations` |
+   | Python | `drf-spectacular`, `apispec`, `FastAPI` (its spec is automatic) |
+   | .NET | `Swashbuckle`, `NSwag`, `[ProducesResponseType]` |
+   | Go | `swaggo`, `// @Router` |
+   | JS/TS | `zod-to-openapi`, `tsoa`, `@nestjs/swagger`, `fastify-swagger` |
+
+   A generic sweep that outlives this table: grep case-insensitively for
+   `open-?api`, `swagger`, `@OA`, `api-?doc` and `schema`, then read what the hits are.
+   Match the hyphenated spellings too — a real project's command was
+   `generate-open-api-doc`, which a search for `openapi` does not find.
+4. **A command that produces one.** Check `package.json` scripts, `composer.json`,
+   `Makefile`, `Rakefile`, `manage.py`, and above all **the CI workflows** — a project
+   that lints its spec in CI has a spec, and the workflow names the exact command.
+
+If the spec is generated and the toolchain is available, run the command and read the
+result. If the toolchain is missing, **read the annotations directly** — they carry the
+same schemas — and record `"tier": "A", "specStatus": "generated-not-run"` with the
+command in `apiDocs.generateWith`, so a human with the toolchain can produce it in one
+step. Never silently downgrade a generated spec to Tier B: an annotated codebase is a
+documented API, and reporting it as undocumented is a false negative that costs far more
+than an incomplete list.
 
 **Tier B — the routes are declared.** Backend route tables and annotations:
 Symfony `#[Route]`, Rails `config/routes.rb`, Laravel `routes/api.php`, Spring
-`@RequestMapping`, Express/Fastify `app.get(...)`, Next.js `app/api/**/route.ts`,
-tRPC routers (`router({ ... })` — each procedure is an endpoint, and its input schema is
-usually a Zod object you can read the payload from).
+`@RequestMapping`, Express/Fastify `app.get(...)`, Next.js `app/api/**/route.ts`, Django
+`urls.py`, tRPC routers (each procedure is an endpoint, and its input schema is usually a
+Zod object you can read the payload from).
 
 **Tier C — the client calls them.** Grep the frontend for its HTTP layer (`axios`,
 `fetch`, a generated client, a `Model.url` convention) and record the endpoints it calls.
@@ -51,6 +87,8 @@ Never put a credential in this file. Reference `env:APP_USERNAME` / `env:APP_PAS
 ```jsonc
 { "app": "espocrm-demo", "generatedAt": "...", "baseUrl": "...", "apiPrefix": "/api/v1",
   "tiers": { "A": 0, "B": 142, "C": 31 },
+  "spec": { "kind": "none|committed|served|generated", "path": "...",
+            "generateWith": "...", "specStatus": "read|generated-not-run" },
   "auth": { "kind": "session|token|basic|none",
             "loginEndpoint": { "method": "POST", "path": "/api/v1/App/user",
                                "auth": "basic", "fields": {} },
@@ -74,5 +112,8 @@ exhaustive coverage of an admin API nothing will call.
 - **Cite a file and line for every endpoint.** No citation, no row.
 - **State the tier and the confidence.** A Tier C guess presented as a contract is worse
   than an omission, because it fails at 3am inside a precondition rather than in review.
+- **Before concluding Tier A is empty, say where you looked.** An empty `spec` block must
+  record the searches that came back nothing — the committed paths, the annotation markers,
+  the CI workflows. "No spec" is a claim, and an unevidenced one is usually wrong.
 - **This file is a reference, not a promise.** An endpoint here may still 403 for the
   test user. Say so in `notes` when you have reason to think it will.
