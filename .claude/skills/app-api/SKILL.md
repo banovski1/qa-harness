@@ -9,8 +9,7 @@ A UI test that creates its preconditions through the UI is slow and tests the wr
 thing twice. This file is what lets a spec set up state directly. Its other job is
 **authentication**: the cheapest possible way to get a logged-in session.
 
-Inputs: `analysis/<app>/app-profile.yaml`, `dossier.json`. Output:
-`analysis/<app>/api.json` + `.md`.
+Inputs: `analysis/<app>/app-profile.yaml`, `dossier.json`. Output: `analysis/<app>/api.json`.
 
 ## Work the tiers in order and stop when one pays
 

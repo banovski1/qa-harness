@@ -10,8 +10,7 @@ comes from the crawl (`app-explorer`), which can prove a locator resolves to one
 source cannot. What source knows, and the crawl does not, is *how this codebase is built* —
 and that is what decides how the generated page objects should address it.
 
-Inputs: `analysis/<app>/app-profile.yaml`, `dossier.json`. Output:
-`analysis/<app>/components.json` + `.md`.
+Inputs: `analysis/<app>/app-profile.yaml`, `dossier.json`. Output: `analysis/<app>/components.json`.
 
 ## What to find out
 

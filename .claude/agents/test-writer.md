@@ -142,7 +142,7 @@ Run `npm run typecheck` in `generated-framework/<app>/`. Report: files created a
 | `wrap-in-component` | a page-object getter returning a bare `Locator` | wrap it in a component |
 | `locator-priority` | `.locator(` or `getByTestId` in a page object with no provenance | `getByRole` > `getByLabel` > `getByPlaceholder` > `getByText`, or mark it `// UNVERIFIED` |
 | `scoped-locator` | `getByRole` with no name, unscoped `getByText` | pass `{ name, exact: true }` or scope it to the dialog/row |
-| `positional-locator` | `nth-child`, `.nth(`, `.first()`, `text=`, framework class selectors | a locator from the ladder — test id, named role, label, or the label template (see `scripts/framework-generator/locator-ladder.ts`) |
+| `positional-locator` | `nth-child`, `.nth(`, `.first()`, `text=`, framework class selectors | a component accessor from the page object — `page.firstName.fill(...)`, `page.contacts.row(key)`. Locators live in `src/components/`, never in a spec |
 | `unstable-getter` | referencing a getter the generator marked `// UNSTABLE` | add a scoped accessor in the protected page object; record the flow with `playwright-codegen` if you need to see how the screen behaves |
 | `comment-budget` | more than one comment line per thirty code lines | delete the comments that restate the code |
 | `no-narration` | `// Step 2`, `// Click the button`, `// Assert …` | name the page-object method after the step |

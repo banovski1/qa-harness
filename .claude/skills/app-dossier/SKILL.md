@@ -10,8 +10,7 @@ You are reading a clone of an application you have never seen, to answer two que
 install, no build. Read files.
 
 Inputs: `analysis/<app>/app-profile.yaml` — `repoPath` and `baseUrl` are the only fields
-you need. Outputs: `analysis/<app>/dossier.json` and `routes.json`, each with a
-`.md` twin for humans.
+you need. Outputs: `analysis/<app>/dossier.json` and `routes.json`
 
 ## 1. Find the real roots
 
