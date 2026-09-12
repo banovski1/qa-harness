@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "backbone": "^1.4.0",
-    "handlebars": "^4.7.8"
-  }
-}

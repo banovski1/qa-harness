@@ -1,4 +1,0 @@
-{
-  "name": "angular-app",
-  "dependencies": {"@angular/core": "^17.3.0", "@angular/router": "^17.3.0"}
-}

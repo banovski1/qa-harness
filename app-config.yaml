@@ -1,9 +1,0 @@
-appPath: ~/Projects/espocrm
-
-# The folder analysis artifacts land in: analysis/<appName>/. Optional — it defaults to
-# the clone directory name (`espocrm`), so set it when the app has a better title.
-appName: espocrm-demo
-
-# The origin only. A deep link here (`/?l=en_GB#Contact`) would be joined in front of every
-# route path, producing URLs that open the wrong screen.
-baseUrl: https://demo.eu.espocrm.com

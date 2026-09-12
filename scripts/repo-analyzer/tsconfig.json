@@ -1,9 +1,0 @@
-{
-  "extends": "../../tsconfig.base.json",
-  "include": [
-    "./*.ts",
-    "./__tests__/*.ts",
-    "./__fixtures__/*.ts",
-    "../project-config.ts"
-  ]
-}

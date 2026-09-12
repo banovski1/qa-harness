@@ -1,0 +1,34 @@
+name: Conduit (RealWorld, Angular)
+baseUrl: https://demo.realworld.show/
+repoPath: ~/Projects/angular-realworld-example-app
+session: conduit
+
+# The demo allows self-registration, so a test user is created rather than shared.
+auth:
+  loginUrl: https://demo.realworld.show/#/login
+  steps:
+    - { action: fill, selector: "input[type='email']", value: "env:APP_USERNAME" }
+    - { action: fill, selector: "input[type='password']", value: "env:APP_PASSWORD" }
+    - { action: click, selector: "button[type='submit']" }
+  readyWhen: "a.nav-link[href*='settings']"
+
+seedRoutes:
+  - "/#/"
+  - "/#/login"
+  - "/#/register"
+  - "/#/settings"
+  - "/#/editor"
+
+exclude:
+  - "logout"
+
+budget:
+  maxScreens: 15
+  maxDepth: 2
+
+settings:
+  testIdAttribute: data-testid
+  contentSelector: "app-root"
+  batchSize: 4
+  settleTimeout: 6000
+  navTimeout: 20000

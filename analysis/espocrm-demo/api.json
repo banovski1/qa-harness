@@ -1,0 +1,153 @@
+{
+  "app": "espocrm-demo",
+  "generatedAt": "2026-09-12T21:16:04+00:00",
+  "repoCommit": "8b4f900085d2e21097b72c8cc27e14cb1de5cbd8",
+  "baseUrl": "https://demo.eu.espocrm.com",
+  "apiPrefix": "/api/v1",
+  "tiers": {
+    "A": 0,
+    "B": 115,
+    "C": 0
+  },
+  "auth": {
+    "kind": "token",
+    "scheme": "Espo auth token over HTTP Basic, or the Authorization-Token-Secret cookie in a browser session",
+    "loginEndpoint": {
+      "method": "GET",
+      "path": "/api/v1/App/user",
+      "auth": "basic",
+      "headers": {
+        "Authorization": "Basic base64(username:password)",
+        "Espo-Authorization": "base64(username:password)"
+      },
+      "source": "application/Espo/Resources/routes.json:2"
+    },
+    "success": {
+      "status": 200,
+      "cookie": "auth-token-secret",
+      "body": {
+        "user": {},
+        "token": "string"
+      },
+      "source": "application/Espo/Core/Authentication/Authentication.php:75"
+    },
+    "csrf": null,
+    "users": [
+      {
+        "role": "admin",
+        "username": "env:APP_USERNAME",
+        "password": "env:APP_PASSWORD",
+        "note": "the public demo gates on a user picker rather than a password \u2014 see app-profile.yaml"
+      }
+    ],
+    "note": "GET /App/user with Basic credentials both authenticates and returns the token to reuse. This is the cheapest possible session: one request, no form, no CSRF."
+  },
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/api/v1/{entityType}",
+      "summary": "list records",
+      "tier": "B",
+      "auth": true,
+      "request": {
+        "where": "array",
+        "maxSize": "int",
+        "offset": "int",
+        "orderBy": "string"
+      },
+      "response": {
+        "total": "int",
+        "list": "array"
+      },
+      "source": "application/Espo/Resources/routes.json (:controller generic CRUD)",
+      "confidence": "declared"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/{entityType}",
+      "summary": "create a record \u2014 the precondition workhorse",
+      "tier": "B",
+      "auth": true,
+      "request": {
+        "<field>": "per entity; see application/Espo/Resources/metadata/entityDefs/<entityType>.json"
+      },
+      "response": {
+        "id": "string"
+      },
+      "source": "application/Espo/Resources/routes.json",
+      "confidence": "declared"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/{entityType}/{id}",
+      "summary": "read one record",
+      "tier": "B",
+      "auth": true,
+      "response": {
+        "id": "string"
+      },
+      "source": "application/Espo/Resources/routes.json",
+      "confidence": "declared"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/{entityType}/{id}",
+      "summary": "update a record",
+      "tier": "B",
+      "auth": true,
+      "source": "application/Espo/Resources/routes.json",
+      "confidence": "declared"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/{entityType}/{id}",
+      "summary": "delete a record \u2014 use for test cleanup",
+      "tier": "B",
+      "auth": true,
+      "source": "application/Espo/Resources/routes.json",
+      "confidence": "declared"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/{entityType}/{id}/{link}",
+      "summary": "list related records",
+      "tier": "B",
+      "auth": true,
+      "source": "application/Espo/Resources/routes.json",
+      "confidence": "declared"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/{entityType}/{id}/{link}",
+      "summary": "relate records",
+      "tier": "B",
+      "auth": true,
+      "source": "application/Espo/Resources/routes.json",
+      "confidence": "declared"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/Metadata",
+      "summary": "the full metadata tree \u2014 field definitions for every entity, i.e. what a create payload may contain",
+      "tier": "B",
+      "auth": true,
+      "source": "application/Espo/Resources/routes.json:6",
+      "confidence": "declared"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/App/destroyAuthToken",
+      "summary": "log out",
+      "tier": "B",
+      "auth": true,
+      "source": "application/Espo/Resources/routes.json:3",
+      "confidence": "declared"
+    }
+  ],
+  "notes": [
+    "The API is generic: one set of CRUD routes serves every entity, with {entityType} taken from the 14 object scopes listed in routes.json. So a precondition for any entity is the same request with a different path segment \u2014 which is why this file lists the shapes rather than 14 copies of each.",
+    "The payload a create accepts is per entity and is declared in application/Espo/Resources/metadata/entityDefs/<entityType>.json. GET /api/v1/Metadata returns the same thing at runtime.",
+    "115 routes are declared in application/Espo/Resources/routes.json. The ones omitted here are admin, mail and stream operations no UI precondition needs; add a row when one does.",
+    "This is a PUBLIC DEMO. It resets periodically and may rate-limit. Treat write endpoints as usable but not guaranteed, and never assume data survives between runs."
+  ]
+}

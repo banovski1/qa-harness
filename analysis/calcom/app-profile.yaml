@@ -1,0 +1,29 @@
+name: Cal.com (booker slice)
+baseUrl: https://cal.com/
+repoPath: ~/Projects/cal.diy
+session: calcom
+
+# No public instance of the authenticated app exists: app.cal.com is the live product.
+# The crawl therefore reaches the public booker only, and every other declared route
+# lands in app-model.json as crawled:false. That asymmetry is the reason Cal.com is in
+# the corpus — nothing else exercises the declared-but-unreached path at scale.
+auth: null
+
+seedRoutes:
+  - "/systemly.app/demo-website"
+  - "/systemly.app"
+
+exclude:
+  - "/auth/"
+  - "/signup"
+
+budget:
+  maxScreens: 8
+  maxDepth: 1
+
+settings:
+  testIdAttribute: data-testid
+  contentSelector: "main"
+  batchSize: 3
+  settleTimeout: 8000
+  navTimeout: 30000

@@ -1,5 +1,5 @@
 // Renders the four markdown reports from screens/*.json and network.json.
-// Nothing under app-analysis/ is hand-written: the fix for a wrong report is to
+// Nothing under analysis/ is hand-written: the fix for a wrong report is to
 // re-run the phase that produced its input.
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync, readFileSync } from 'node:fs';

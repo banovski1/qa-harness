@@ -1,6 +1,6 @@
 ---
 name: app-explorer
-description: Document a running web application from its base URL alone — every screen, the components on it, a proved-unique locator for every control, and the API surface the app actually calls. Use for "analyse the app under test", "document this app", "build the locator strategy", "what screens does the app have", "regenerate app-analysis/<app>/".
+description: Document a running web application from its base URL alone — every screen, the components on it, a proved-unique locator for every control, and the API surface the app actually calls. Use for "analyse the app under test", "document this app", "build the locator strategy", "what screens does the app have", "regenerate analysis/<app>/".
 ---
 
 # app-explorer
@@ -19,7 +19,7 @@ static analysis cannot.
 For an app named `<app>`:
 
 ```
-app-analysis/<app>/
+analysis/<app>/
   app-profile.yaml          the only app-specific file — you write this one
   screens/<Screen>.json     machine inventory: elements, ranked locators, regions
   crawl-state.json          visited / pending / failed, so a crawl resumes
@@ -41,13 +41,13 @@ the phase that wrote it.
 playwright-cli -s=<session> open <baseUrl>
 
 # 2. crawl — logs in, discovers routes, extracts screens, records traffic
-node .claude/skills/app-explorer/lib/explore.mjs --profile app-analysis/<app>/app-profile.yaml
+node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-profile.yaml
 
 # 3. probe for a machine-readable API specification, using the logged-in session
-node .claude/skills/app-explorer/lib/probe-openapi.mjs --profile app-analysis/<app>/app-profile.yaml
+node .claude/skills/app-explorer/lib/probe-openapi.mjs --profile analysis/<app>/app-profile.yaml
 
 # 4. re-render the four reports (folds in whatever step 3 found)
-node .claude/skills/app-explorer/lib/explore.mjs --profile app-analysis/<app>/app-profile.yaml --reports-only
+node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-profile.yaml --reports-only
 ```
 
 Useful flags: `--resume` continues an interrupted crawl from `crawl-state.json`,
@@ -148,8 +148,8 @@ because a locator for something nobody can see is not one a test can act on.
 The claim this tool makes is reproducibility, so check it:
 
 ```bash
-cp -r app-analysis/<app>/screens /tmp/runA
-node .claude/skills/app-explorer/lib/explore.mjs --profile app-analysis/<app>/app-profile.yaml
+cp -r analysis/<app>/screens /tmp/runA
+node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-profile.yaml
 # then diff the chosen locator of every visible element, per screen
 ```
 

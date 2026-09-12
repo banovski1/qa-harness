@@ -1,0 +1,74 @@
+{
+  "app": "espocrm-demo",
+  "generatedAt": "2026-09-12T21:16:04+00:00",
+  "repoCommit": "8b4f900085d2e21097b72c8cc27e14cb1de5cbd8",
+  "library": {
+    "name": "bespoke, on a Bootstrap 3 fork (github:yurikuzn/espo-bootstrap)",
+    "version": "3.x fork",
+    "source": "package.json dependencies"
+  },
+  "labelAssociation": {
+    "kind": "unassociated-sibling",
+    "wrapper": ".cell[data-name]",
+    "labelSelector": "label.control-label[data-name] .label-text",
+    "fieldSelector": ".field[data-name]",
+    "template": ".cell:has(label.control-label .label-text:text-is(\"{label}\")) .field",
+    "preferredTemplate": ".cell[data-name=\"{fieldName}\"] .field",
+    "evidence": "client/res/templates/record/panels/side.tpl:4-17",
+    "note": "No <label for>. Label and field are siblings inside .cell, and BOTH carry data-name with the model's field name. That attribute is the stronger handle: it is the app's own identifier, unaffected by translation, where the visible label is the translated string. Prefer data-name; fall back to the label-anchored template when a field name is unknown."
+  },
+  "regions": [
+    {
+      "name": "RecordTable",
+      "selector": ".list-container table.table",
+      "row": "tr.list-row[data-id]",
+      "cell": "td[data-name]",
+      "headerCell": "thead th[data-name]",
+      "rowKey": "data-id",
+      "evidence": "client/res/templates/record/list.tpl:173-262",
+      "note": "Every row carries data-id (the record id) and every cell data-name (the field). A row is addressable by the text of its key cell without any nth."
+    },
+    {
+      "name": "DetailForm",
+      "selector": ".record .panel .row",
+      "field": ".cell[data-name]",
+      "evidence": "client/res/templates/record/panels/side.tpl:1-20"
+    },
+    {
+      "name": "NavigationBar",
+      "selector": "#navbar",
+      "item": "[data-name] > a",
+      "evidence": "client/res/templates/site/navbar.tpl"
+    },
+    {
+      "name": "ActionsMenu",
+      "selector": ".dropdown-menu.actions-menu",
+      "item": "a[data-action]",
+      "evidence": "client/res/templates/record/list.tpl:11-20"
+    }
+  ],
+  "naming": {
+    "pattern": "kebab-case .js under client/src/views/<scope>/<action>.js, templates mirrored under client/res/templates/",
+    "root": "client/src/views"
+  },
+  "hazards": [
+    {
+      "kind": "no-test-ids",
+      "where": "whole client",
+      "impact": "every locator must come from a role, a visible label, or data-name. Nothing in the markup is test-owned, so a translation change can move a locator."
+    },
+    {
+      "kind": "runtime-view-resolution",
+      "where": "client/src/controller.js",
+      "impact": "a route names no view; the controller picks one from clientDefs metadata at runtime. Source cannot say which elements a route renders \u2014 only the crawl can."
+    },
+    {
+      "kind": "show-more-pagination",
+      "where": "client/res/templates/record/list.tpl:264",
+      "impact": "lists load 20 rows and append on 'Show more'. A row assertion must either search the loaded page or trigger loading; rowCount is not the result count."
+    }
+  ],
+  "notes": [
+    "data-action attributes (215 files) mark every clickable behaviour in the markup. They are the app's own action vocabulary and make excellent scoping selectors inside a component class."
+  ]
+}

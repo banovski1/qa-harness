@@ -32,7 +32,7 @@ const has = (name) => args.includes('--' + name);
 
 const profilePath = flag('profile');
 if (!profilePath) {
-  console.error('usage: explore.mjs --profile <app-analysis/<app>/app-profile.yaml> [--session <name>] [--resume] [--reports-only]');
+  console.error('usage: explore.mjs --profile <analysis/<app>/app-profile.yaml> [--session <name>] [--resume] [--reports-only]');
   process.exit(2);
 }
 
