@@ -5,7 +5,7 @@
     "repoPath": "~/Projects/espocrm",
     "repoCommit": "8b4f900085d2e21097b72c8cc27e14cb1de5cbd8",
     "stack": "backbone / php (bespoke, Slim-like DI container)",
-    "generatedAt": "2026-09-12T21:19:57.520Z"
+    "generatedAt": "2026-09-12T21:25:24.870Z"
   },
   "components": {
     "NavigationBar": {
@@ -725,11 +725,6 @@
           "name": "goToProjects",
           "via": "projects",
           "leadsTo": "ProjectPage"
-        },
-        {
-          "name": "goToJackAdams",
-          "via": "jackAdams10",
-          "leadsTo": "1Page"
         }
       ],
       "unverified": 22
@@ -3394,13 +3389,7 @@
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToJackAdams",
-          "via": "jackAdams21",
-          "leadsTo": "1Page"
-        }
-      ],
+      "actions": [],
       "unverified": 24
     },
     {
@@ -6252,13 +6241,7 @@
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToJackAdams",
-          "via": "jackAdams20",
-          "leadsTo": "1Page"
-        }
-      ],
+      "actions": [],
       "unverified": 24
     },
     {
@@ -7182,18 +7165,20 @@
       "unverified": 0
     },
     {
-      "name": "1Page",
-      "path": "/#User/view/1",
+      "name": "UserViewPage",
+      "path": "/#User/view/{id}",
       "url": "https://demo.eu.espocrm.com/#User/view/1",
       "title": "Jack Adams",
-      "aliases": [],
+      "aliases": [
+        "/#User/view/1"
+      ],
       "identity": {
-        "urlPattern": "/#User/view/1",
+        "urlPattern": "/#User/view/{id}",
         "heading": "UsersJack Adams"
       },
       "source": {
         "component": null,
-        "route": null
+        "route": "/#User/view/{id}"
       },
       "crawled": true,
       "uses": [
@@ -7404,25 +7389,6 @@
         }
       ],
       "unverified": 12
-    },
-    {
-      "name": "UserViewPage",
-      "path": "/#User/view/{id}",
-      "url": "https://demo.eu.espocrm.com/#User/view/{id}",
-      "title": "/#User/view/{id}",
-      "aliases": [],
-      "identity": {
-        "urlPattern": "/#User/view/{id}",
-        "heading": null
-      },
-      "source": {
-        "component": null,
-        "route": "/#User/view/{id}"
-      },
-      "crawled": false,
-      "uses": [],
-      "actions": [],
-      "unverified": 0
     },
     {
       "name": "WarehousePage",
@@ -7751,17 +7717,33 @@
           "note": "the public demo gates on a user picker rather than a password — see app-profile.yaml"
         }
       ],
-      "note": "GET /App/user with Basic credentials both authenticates and returns the token to reuse. This is the cheapest possible session: one request, no form, no CSRF."
+      "note": "GET /App/user with Basic credentials both authenticates and returns the token to reuse. This is the cheapest possible session: one request, no form, no CSRF.",
+      "uiLogin": {
+        "loginUrl": "https://demo.eu.espocrm.com/?l=en_GB",
+        "steps": [
+          {
+            "action": "select",
+            "selector": "#field-userName",
+            "value": "admin"
+          },
+          {
+            "action": "click",
+            "selector": "#btn-login"
+          }
+        ],
+        "readyWhen": "a[href='#Contact']"
+      },
+      "storageStatePath": ".auth/user.json"
     }
   },
   "stats": {
-    "screens": 98,
+    "screens": 97,
     "crawled": 60,
-    "declaredOnly": 38,
+    "declaredOnly": 37,
     "components": 10,
     "regions": 1,
     "uses": 988,
-    "actions": 29,
+    "actions": 26,
     "unverified": 464
   }
 }

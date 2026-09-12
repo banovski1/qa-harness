@@ -4,6 +4,11 @@
 // everything from here down is snapshot-tested code.
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
+// The profile's login steps are the one flow the analysis knows: a crawl cannot run
+// without performing it. Carrying it into the model is what lets the generator emit a
+// working login instead of a placeholder.
+// @ts-ignore -- a deliberately small YAML reader, shared with the explorer
+import { parseYaml } from '../../.claude/skills/app-explorer/lib/yaml-lite.mjs';
 import type { AppModel, ComponentDef, ComponentUse, Screen, LocatorSpec } from './model-types.ts';
 
 /** A region is shared when it recurs on this many screens... */
@@ -87,7 +92,9 @@ export function assignPageNames(paths: string[]): Map<string, string> {
   // Anything still colliding is a genuine ambiguity: two components on one path.
   const final = new Map<string, string>();
   for (const p of paths) {
-    const base = (out.get(p) ?? (pascal(pathIdentity(p)) || 'Home')) + 'Page';
+    let stem = out.get(p) ?? pascal(pathIdentity(p));
+    if (!/^[A-Za-z_]/.test(stem)) stem = 'Record' + stem; // "/#User/view/1" is not a class name
+    const base = (stem || 'Home') + 'Page';
     let name = base; let n = 2;
     while (taken.has(name)) name = base.replace(/Page$/, String(n++) + 'Page');
     taken.add(name); final.set(p, name);
@@ -206,6 +213,8 @@ export function compile(appDir: string, now = new Date().toISOString()): AppMode
   const routes = read('routes.json');
   const conventions = existsSync(join(appDir, 'components.json')) ? read('components.json') : { regions: [] };
   const api = existsSync(join(appDir, 'api.json')) ? read('api.json') : { endpoints: [], auth: null };
+  const profilePath = join(appDir, 'app-profile.yaml');
+  const profile: any = existsSync(profilePath) ? parseYaml(readFileSync(profilePath, 'utf8')) : {};
 
   const screensDir = join(appDir, 'screens');
   const crawled: CrawlScreen[] = existsSync(screensDir)
@@ -250,8 +259,25 @@ export function compile(appDir: string, now = new Date().toISOString()): AppMode
   // Routes are the union: declared + crawled, matched on path.
   const declaredByPath = new Map<string, any>();
   for (const r of routes.routes ?? []) declaredByPath.set(r.path, r);
+  // A crawl reaches concrete records ("/#User/view/1"); the source declares the shape
+  // ("/#User/view/{id}"). They are one screen, and the declared path is its identity —
+  // an id is a record slot, never a page. The concrete URL survives as an alias.
+  const paramRoutes = [...declaredByPath.keys()]
+    .filter(p => /[{:]/.test(p))
+    .map(p => ({
+      path: p,
+      re: new RegExp('^' + p.replace(/[.*+?^$()|[\]\\]/g, '\\$&').replace(/\\?[{:][^/}]*\}?/g, '[^/]+') + '$'),
+    }));
   const crawledByPath = new Map<string, CrawlScreen>();
-  for (const s of crawled) crawledByPath.set(s.path, s);
+  const aliases = new Map<string, string[]>();
+  for (const s of crawled) {
+    const declared = declaredByPath.has(s.path)
+      ? s.path
+      : paramRoutes.find(r => r.re.test(s.path))?.path;
+    const key = declared ?? s.path;
+    if (declared && declared !== s.path) aliases.set(key, [...(aliases.get(key) ?? []), s.path]);
+    if (!crawledByPath.has(key)) crawledByPath.set(key, { ...s, path: key });
+  }
   const allPaths = [...new Set([...declaredByPath.keys(), ...crawledByPath.keys()])].sort();
   const names = assignPageNames(allPaths);
 
@@ -328,7 +354,7 @@ export function compile(appDir: string, now = new Date().toISOString()): AppMode
       path,
       url: crawl?.url ?? new URL(path.replace(/^\//, ''), dossier.baseUrl).toString(),
       title: crawl?.title ?? decl?.path ?? path,
-      aliases: [],
+      aliases: aliases.get(path) ?? [],
       identity: { urlPattern: path, heading: crawl?.headings?.[0]?.text ?? null },
       source: { component: decl?.component ?? null, route: decl?.path ?? null },
       crawled: Boolean(crawl),
@@ -363,7 +389,18 @@ export function compile(appDir: string, now = new Date().toISOString()): AppMode
     },
     components,
     screens,
-    api: { endpoints: api.endpoints ?? [], auth: api.auth ?? null },
+    api: {
+      endpoints: api.endpoints ?? [],
+      auth: api.auth
+        ? {
+            ...api.auth,
+            uiLogin: profile.auth
+              ? { loginUrl: profile.auth.loginUrl, steps: profile.auth.steps ?? [], readyWhen: profile.auth.readyWhen }
+              : null,
+            storageStatePath: profile.auth ? '.auth/user.json' : undefined,
+          }
+        : null,
+    },
     stats: {
       screens: screens.length,
       crawled: screens.filter(s => s.crawled).length,

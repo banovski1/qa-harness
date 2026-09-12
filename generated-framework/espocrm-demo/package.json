@@ -1,6 +1,5 @@
 {
-  "name": "e2e",
-  "version": "1.0.0",
+  "name": "espocrm-demo-tests",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,9 +10,8 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@playwright/test": "^1.49.0",
-    "@types/node": "^22.10.0",
-    "dotenv": "^16.4.7",
-    "typescript": "^5.7.0"
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^22.20.1",
+    "typescript": "^5.9.2"
   }
 }

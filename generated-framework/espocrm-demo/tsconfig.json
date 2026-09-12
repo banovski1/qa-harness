@@ -1,25 +1,19 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": [
-      "ES2022",
-      "DOM"
-    ],
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "strict": true,
-    "noUnusedLocals": false,
-    "esModuleInterop": true,
+    "noEmit": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "types": [
       "node"
-    ],
-    "noEmit": true
+    ]
   },
   "include": [
-    "src/**/*.ts",
-    "tests/**/*.ts",
+    "src",
+    "tests",
     "playwright.config.ts"
   ]
 }
