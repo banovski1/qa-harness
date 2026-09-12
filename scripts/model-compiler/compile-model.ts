@@ -2,7 +2,7 @@
 // No network, no browser, no judgement that is not stated as a constant below. This is
 // the determinism boundary: everything above it is skill output reviewed by eye,
 // everything from here down is snapshot-tested code.
-import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 // The profile's login steps are the one flow the analysis knows: a crawl cannot run
 // without performing it. Carrying it into the model is what lets the generator emit a
@@ -215,7 +215,25 @@ function uniqueProp(taken: Set<string>, raw: string): string {
   return name;
 }
 
-export function compile(appDir: string, now = new Date().toISOString()): AppModel {
+/**
+ * The newest input, not the clock.
+ *
+ * A wall-clock stamp makes every recompile a diff, which is exactly the noise that hides
+ * a real change — and this repo's whole review model is that a model diff means the
+ * output moved. Stamping the newest input keeps the field meaningful (it dates the
+ * analysis) while making a no-op recompile produce no diff at all.
+ */
+export function newestInput(appDir: string): string {
+  const files = ['dossier.json', 'routes.json', 'components.json', 'api.json', 'app-profile.yaml']
+    .map(f => join(appDir, f))
+    .filter(existsSync);
+  const screens = join(appDir, 'screens');
+  if (existsSync(screens)) for (const f of readdirSync(screens)) files.push(join(screens, f));
+  const newest = files.reduce((max, f) => Math.max(max, statSync(f).mtimeMs), 0);
+  return new Date(newest).toISOString();
+}
+
+export function compile(appDir: string, now = newestInput(appDir)): AppModel {
   const read = (f: string) => JSON.parse(readFileSync(join(appDir, f), 'utf8'));
   const dossier = read('dossier.json');
   const routes = read('routes.json');

@@ -5,7 +5,7 @@
     "repoPath": "~/Projects/espocrm",
     "repoCommit": "8b4f900085d2e21097b72c8cc27e14cb1de5cbd8",
     "stack": "backbone / php (bespoke, Slim-like DI container)",
-    "generatedAt": "2026-09-12T21:52:31.911Z"
+    "generatedAt": "2026-09-12T21:16:41.154Z"
   },
   "components": {
     "NavigationBar": {

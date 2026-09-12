@@ -5,7 +5,7 @@
     "repoPath": "~/Projects/cal.diy",
     "repoCommit": "b0a34f21c91ae7803f9b7e2c59c2fbd187cce26f",
     "stack": "next.js / tRPC over Next.js route handlers",
-    "generatedAt": "2026-09-12T21:52:33.303Z"
+    "generatedAt": "2026-09-12T21:47:29.280Z"
   },
   "components": {
     "TextField": {
