@@ -18,7 +18,6 @@ export class OpportunityPageGenerated extends BasePage {
   // a scoped accessor in OpportunityPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'OpportunityPage', expectedUrl: '/#Opportunity', modelPath: MODEL_PATH });
   readonly opportunities = new RecordTable(this.page, 'opportunities', { shape: TABLE_SHAPE, columns: ["Prospecting","Qualification","Proposal","Negotiation","Closed Won"], keyColumn: 'Prospecting', screen: 'OpportunityPage', expectedUrl: '/#Opportunity', modelPath: MODEL_PATH });
-  readonly opportunities2 = new RecordTable(this.page, 'opportunities2', { shape: TABLE_SHAPE, columns: [], keyColumn: null, screen: 'OpportunityPage', expectedUrl: '/#Opportunity', modelPath: MODEL_PATH });
   readonly createOpportunity = new Link(this.page, { label: 'Create Opportunity' }, { screen: 'OpportunityPage', expectedUrl: '/#Opportunity', modelPath: MODEL_PATH });
   readonly all = new Button(this.page, { label: 'All' }, { screen: 'OpportunityPage', expectedUrl: '/#Opportunity', modelPath: MODEL_PATH });
   readonly textFilter = new TextField(this.page, { field: 'textFilter' }, { screen: 'OpportunityPage', expectedUrl: '/#Opportunity', modelPath: MODEL_PATH });

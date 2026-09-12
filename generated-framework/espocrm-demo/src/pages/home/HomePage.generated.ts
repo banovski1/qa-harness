@@ -17,13 +17,8 @@ export class HomePageGenerated extends BasePage {
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in HomePage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly espoCRMDemo = new RecordTable(this.page, 'espoCRMDemo', { shape: TABLE_SHAPE, columns: [], keyColumn: null, screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly espoCRMDemo2 = new RecordTable(this.page, 'espoCRMDemo2', { shape: TABLE_SHAPE, columns: [], keyColumn: null, screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly espoCRMDemo3 = new RecordTable(this.page, 'espoCRMDemo3', { shape: TABLE_SHAPE, columns: ["37Mon 07Tue 08Wed 09Thu 10Fri 11Sat 12Sun 13","37","Mon 07","Tue 08","Wed 09","Thu 10","Fri 11","Sat 12","Sun 13"], keyColumn: '37Mon 07Tue 08Wed 09Thu 10Fri 11Sat 12Sun 13', screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly espoCRMDemo4 = new RecordTable(this.page, 'espoCRMDemo4', { shape: TABLE_SHAPE, columns: ["37","Mon 07","Tue 08","Wed 09","Thu 10","Fri 11","Sat 12","Sun 13"], keyColumn: '37', screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly espoCRMDemo5 = new RecordTable(this.page, 'espoCRMDemo5', { shape: TABLE_SHAPE, columns: [], keyColumn: null, screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly espoCRMDemo6 = new RecordTable(this.page, 'espoCRMDemo6', { shape: TABLE_SHAPE, columns: [], keyColumn: null, screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly espoCRMDemo7 = new RecordTable(this.page, 'espoCRMDemo7', { shape: TABLE_SHAPE, columns: [], keyColumn: null, screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
+  readonly espoCRMDemo = new RecordTable(this.page, 'espoCRMDemo', { shape: TABLE_SHAPE, columns: ["37Mon 07Tue 08Wed 09Thu 10Fri 11Sat 12Sun 13","37","Mon 07","Tue 08","Wed 09","Thu 10","Fri 11","Sat 12","Sun 13"], keyColumn: '37Mon 07Tue 08Wed 09Thu 10Fri 11Sat 12Sun 13', screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
+  readonly espoCRMDemo2 = new RecordTable(this.page, 'espoCRMDemo2', { shape: TABLE_SHAPE, columns: ["37","Mon 07","Tue 08","Wed 09","Thu 10","Fri 11","Sat 12","Sun 13"], keyColumn: '37', screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly homepage = new Button(this.page, { label: 'Homepage' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly sales = new Button(this.page, { label: 'Sales' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly analytics = new Button(this.page, { label: 'Analytics' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });

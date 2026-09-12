@@ -1,0 +1,7037 @@
+{
+  "url": "https://cal.com/pricing",
+  "path": "/pricing",
+  "title": "Pricing | Cal.com",
+  "headings": [
+    {
+      "level": 1,
+      "text": "Choose your Cal.com subscription"
+    },
+    {
+      "level": 3,
+      "text": "Individuals"
+    },
+    {
+      "level": 3,
+      "text": "Free"
+    },
+    {
+      "level": 3,
+      "text": "Teams"
+    },
+    {
+      "level": 3,
+      "text": "$12"
+    },
+    {
+      "level": 3,
+      "text": "Organizations"
+    },
+    {
+      "level": 3,
+      "text": "$28"
+    },
+    {
+      "level": 3,
+      "text": "Enterprise"
+    },
+    {
+      "level": 3,
+      "text": "Custom"
+    },
+    {
+      "level": 3,
+      "text": "Free forever"
+    },
+    {
+      "level": 3,
+      "text": "$12"
+    },
+    {
+      "level": 3,
+      "text": "$28"
+    },
+    {
+      "level": 3,
+      "text": "Custom pricing"
+    },
+    {
+      "level": 2,
+      "text": "Smarter, simpler scheduling"
+    }
+  ],
+  "tables": [],
+  "regions": {
+    "body": 104
+  },
+  "elements": [
+    {
+      "index": 0,
+      "tag": "button",
+      "type": null,
+      "role": "button",
+      "name": "Install App",
+      "label": null,
+      "placeholder": null,
+      "id": "install-btn",
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Install App', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Install App"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 1,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Home Cal.com",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Logo Wrapper"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./",
+      "box": {
+        "x": 96,
+        "y": 26,
+        "w": 101,
+        "h": 22
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(1) > div > a')",
+        "matchCount": 1,
+        "args": [
+          "div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(1) > div > a"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Home Cal.com', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "link",
+            "Home Cal.com"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(1) > div > a')",
+          "matchCount": 1,
+          "args": [
+            "div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(1) > div > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Enterprise",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Link Wrapper"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./enterprise",
+      "box": {
+        "x": 402,
+        "y": 7,
+        "w": 108,
+        "h": 60
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.framer-jNEDA:nth-of-type(1) > div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(2) > a:nth-of-type(1)')",
+        "matchCount": 1,
+        "args": [
+          "div.framer-jNEDA:nth-of-type(1) > div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(2) > a:nth-of-type(1)"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Enterprise', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "link",
+            "Enterprise"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Enterprise', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "Enterprise"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.framer-jNEDA:nth-of-type(1) > div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(2) > a:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div.framer-jNEDA:nth-of-type(1) > div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(2) > a:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Cal.ai",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Link Wrapper"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./ai",
+      "box": {
+        "x": 509,
+        "y": 7,
+        "w": 76,
+        "h": 60
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Cal.ai', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Cal.ai"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Cal.ai', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Cal.ai"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Cal.ai', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Cal.ai"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.framer-jNEDA:nth-of-type(1) > div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(2) > a:nth-of-type(2)')",
+          "matchCount": 1,
+          "args": [
+            "div.framer-jNEDA:nth-of-type(1) > div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(2) > a:nth-of-type(2)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Pricing",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Link Wrapper",
+        "data-framer-page-link-current": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./pricing",
+      "box": {
+        "x": 839,
+        "y": 7,
+        "w": 85,
+        "h": 60
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.framer-jNEDA:nth-of-type(1) > div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(2) > a:nth-of-type(3)')",
+        "matchCount": 1,
+        "args": [
+          "div.framer-jNEDA:nth-of-type(1) > div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(2) > a:nth-of-type(3)"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Pricing', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "link",
+            "Pricing"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Pricing', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "Pricing"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.framer-jNEDA:nth-of-type(1) > div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(2) > a:nth-of-type(3)')",
+          "matchCount": 1,
+          "args": [
+            "div.framer-jNEDA:nth-of-type(1) > div.ssr-variant.hidden-wcozae:nth-of-type(1) > div > div > div:nth-of-type(2) > a:nth-of-type(3)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Sign in",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://app.cal.com/auth/login?_gl=1*1d3xgrt*_gcl_au*MTY1ODY5NjUwMS4xNzQxOTczMzA5*_ga*MTA0ODE0ODU4LjE3NDE5NzMzMTA.*_ga_RX4HHQ613S*MTc0MTk3MzMwOS4xLjEuMTc0MTk3MzY2NC42MC4wLjk4NDg1NDg4",
+      "box": {
+        "x": 1008,
+        "y": 28,
+        "w": 45,
+        "h": 16
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Sign in', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Sign in"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Sign in', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Sign in"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Sign in', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Sign in"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.framer-hpiXs > div > div.framer-owdyO > div:nth-of-type(1) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div.framer-hpiXs > div > div.framer-owdyO > div:nth-of-type(1) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Get started",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Primary",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://app.cal.com/signup",
+      "box": {
+        "x": 1063,
+        "y": 19,
+        "w": 121,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div > div.framer-hpiXs > div > div.framer-owdyO > div:nth-of-type(2) > a')",
+        "matchCount": 1,
+        "args": [
+          "div > div.framer-hpiXs > div > div.framer-owdyO > div:nth-of-type(2) > a"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Get started', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "link",
+            "Get started"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Get started', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "Get started"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div.framer-hpiXs > div > div.framer-owdyO > div:nth-of-type(2) > a')",
+          "matchCount": 1,
+          "args": [
+            "div > div.framer-hpiXs > div > div.framer-owdyO > div:nth-of-type(2) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Talk to sales",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Primary",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./talk-to-sales",
+      "box": {
+        "x": 116,
+        "y": 330,
+        "w": 124,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > a')",
+        "matchCount": 1,
+        "args": [
+          "div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > a"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Talk to sales', exact: true })",
+          "matchCount": 5,
+          "args": [
+            "link",
+            "Talk to sales"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Talk to sales', { exact: true })",
+          "matchCount": 5,
+          "args": [
+            "Talk to sales"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > a')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "See feature breakdown",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Secondary - White",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./pricing#feature-breakdown",
+      "box": {
+        "x": 252,
+        "y": 330,
+        "w": 198,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'See feature breakdown', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "See feature breakdown"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'See feature breakdown', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "See feature breakdown"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('See feature breakdown', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "See feature breakdown"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div.hidden-wcozae:nth-of-type(2) > a.framer-v-fewsea')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div.hidden-wcozae:nth-of-type(2) > a.framer-v-fewsea"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Use for free",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Primary",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://app.cal.com/signup",
+      "box": {
+        "x": 132,
+        "y": 568,
+        "w": 221,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Use for free', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Use for free"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Use for free', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Use for free"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Use for free', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Use for free"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.framer-kBJRh > div.framer-mnipkf:nth-of-type(1) > div.framer-giujab:nth-of-type(1) > div:nth-of-type(3) > div.framer-kukabd-container:nth-of-type(1) > a')",
+          "matchCount": 1,
+          "args": [
+            "div.framer-kBJRh > div.framer-mnipkf:nth-of-type(1) > div.framer-giujab:nth-of-type(1) > div:nth-of-type(3) > div.framer-kukabd-container:nth-of-type(1) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Mobile App",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./app",
+      "box": {
+        "x": 156,
+        "y": 830,
+        "w": 75,
+        "h": 16
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Mobile App', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Mobile App"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Mobile App', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Mobile App"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Mobile App', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Mobile App"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.framer-mnipkf:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(6) > div:nth-of-type(2) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div.framer-mnipkf:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(6) > div:nth-of-type(2) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Browser Extension",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./app",
+      "box": {
+        "x": 156,
+        "y": 861,
+        "w": 118,
+        "h": 16
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Browser Extension', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Browser Extension"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Browser Extension', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Browser Extension"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Browser Extension', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Browser Extension"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.framer-mnipkf:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(7) > div:nth-of-type(2) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div.framer-mnipkf:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(7) > div:nth-of-type(2) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "tag": "div",
+      "type": null,
+      "role": null,
+      "name": "YEARLY",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Yearly Light",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 556,
+        "y": 409,
+        "w": 62,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.framer-kBJRh > div:nth-of-type(2) > div:nth-of-type(1) > div > div:nth-of-type(2) > div.framer-XytfP')",
+        "matchCount": 1,
+        "args": [
+          "div.framer-kBJRh > div:nth-of-type(2) > div:nth-of-type(1) > div > div:nth-of-type(2) > div.framer-XytfP"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "text",
+          "expression": "getByText('YEARLY', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "YEARLY"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.framer-kBJRh > div:nth-of-type(2) > div:nth-of-type(1) > div > div:nth-of-type(2) > div.framer-XytfP')",
+          "matchCount": 1,
+          "args": [
+            "div.framer-kBJRh > div:nth-of-type(2) > div:nth-of-type(1) > div > div:nth-of-type(2) > div.framer-XytfP"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Try for free",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Primary",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://app.cal.com/signup?redirect=https://app.cal.com/settings/teams/new?bp=a",
+      "box": {
+        "x": 397,
+        "y": 568,
+        "w": 221,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.ssr-variant.hidden-wcozae > div.framer-kBJRh > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > a')",
+        "matchCount": 1,
+        "args": [
+          "div.ssr-variant.hidden-wcozae > div.framer-kBJRh > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > a"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Try for free', exact: true })",
+          "matchCount": 5,
+          "args": [
+            "link",
+            "Try for free"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Try for free', { exact: true })",
+          "matchCount": 5,
+          "args": [
+            "Try for free"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.ssr-variant.hidden-wcozae > div.framer-kBJRh > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > a')",
+          "matchCount": 1,
+          "args": [
+            "div.ssr-variant.hidden-wcozae > div.framer-kBJRh > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "tag": "div",
+      "type": null,
+      "role": null,
+      "name": "YEARLY",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Yearly Dark",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 821,
+        "y": 409,
+        "w": 62,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.framer-kBJRh > div:nth-of-type(3) > div:nth-of-type(1) > div > div:nth-of-type(2) > div.framer-XytfP')",
+        "matchCount": 1,
+        "args": [
+          "div.framer-kBJRh > div:nth-of-type(3) > div:nth-of-type(1) > div > div:nth-of-type(2) > div.framer-XytfP"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "text",
+          "expression": "getByText('YEARLY', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "YEARLY"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.framer-kBJRh > div:nth-of-type(3) > div:nth-of-type(1) > div > div:nth-of-type(2) > div.framer-XytfP')",
+          "matchCount": 1,
+          "args": [
+            "div.framer-kBJRh > div:nth-of-type(3) > div:nth-of-type(1) > div > div:nth-of-type(2) > div.framer-XytfP"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Try for free",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Secondary - White",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://app.cal.com/signup?redirect=https://app.cal.com/onboarding/organization/details?migrate=true&bp=a",
+      "box": {
+        "x": 662,
+        "y": 568,
+        "w": 221,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.ssr-variant.hidden-wcozae > div.framer-kBJRh > div:nth-of-type(3) > div:nth-of-type(3) > div:nth-of-type(1) > a.framer-v-fewsea')",
+        "matchCount": 1,
+        "args": [
+          "div.ssr-variant.hidden-wcozae > div.framer-kBJRh > div:nth-of-type(3) > div:nth-of-type(3) > div:nth-of-type(1) > a.framer-v-fewsea"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Try for free', exact: true })",
+          "matchCount": 5,
+          "args": [
+            "link",
+            "Try for free"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Try for free', { exact: true })",
+          "matchCount": 5,
+          "args": [
+            "Try for free"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.ssr-variant.hidden-wcozae > div.framer-kBJRh > div:nth-of-type(3) > div:nth-of-type(3) > div:nth-of-type(1) > a.framer-v-fewsea')",
+          "matchCount": 1,
+          "args": [
+            "div.ssr-variant.hidden-wcozae > div.framer-kBJRh > div:nth-of-type(3) > div:nth-of-type(3) > div:nth-of-type(1) > a.framer-v-fewsea"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Talk to sales",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Primary",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./talk-to-sales",
+      "box": {
+        "x": 927,
+        "y": 568,
+        "w": 221,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.ssr-variant.hidden-wcozae > div.framer-kBJRh > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(1) > a')",
+        "matchCount": 1,
+        "args": [
+          "div.ssr-variant.hidden-wcozae > div.framer-kBJRh > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(1) > a"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Talk to sales', exact: true })",
+          "matchCount": 5,
+          "args": [
+            "link",
+            "Talk to sales"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Talk to sales', { exact: true })",
+          "matchCount": 5,
+          "args": [
+            "Talk to sales"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.ssr-variant.hidden-wcozae > div.framer-kBJRh > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(1) > a')",
+          "matchCount": 1,
+          "args": [
+            "div.ssr-variant.hidden-wcozae > div.framer-kBJRh > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(1) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Try for free",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Primary",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://app.cal.com/signup",
+      "box": {
+        "x": 376,
+        "y": 1537,
+        "w": 170,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(2) > div.framer-bafron:nth-of-type(2) > div:nth-of-type(3) > a')",
+        "matchCount": 1,
+        "args": [
+          "div > div:nth-of-type(1) > div:nth-of-type(2) > div.framer-bafron:nth-of-type(2) > div:nth-of-type(3) > a"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Try for free', exact: true })",
+          "matchCount": 5,
+          "args": [
+            "link",
+            "Try for free"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Try for free', { exact: true })",
+          "matchCount": 5,
+          "args": [
+            "Try for free"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(2) > div.framer-bafron:nth-of-type(2) > div:nth-of-type(3) > a')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(1) > div:nth-of-type(2) > div.framer-bafron:nth-of-type(2) > div:nth-of-type(3) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Try for free",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Primary",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://app.cal.com/signup?redirect=https://app.cal.com/settings/teams/new",
+      "box": {
+        "x": 578,
+        "y": 1537,
+        "w": 170,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3) > a')",
+        "matchCount": 1,
+        "args": [
+          "div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3) > a"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Try for free', exact: true })",
+          "matchCount": 5,
+          "args": [
+            "link",
+            "Try for free"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Try for free', { exact: true })",
+          "matchCount": 5,
+          "args": [
+            "Try for free"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3) > a')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Try for free",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Secondary - White",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://app.cal.com/signup?redirect=https://app.cal.com/settings/organizations/new",
+      "box": {
+        "x": 780,
+        "y": 1537,
+        "w": 170,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > a.framer-v-fewsea')",
+        "matchCount": 1,
+        "args": [
+          "div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > a.framer-v-fewsea"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Try for free', exact: true })",
+          "matchCount": 5,
+          "args": [
+            "link",
+            "Try for free"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Try for free', { exact: true })",
+          "matchCount": 5,
+          "args": [
+            "Try for free"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > a.framer-v-fewsea')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > a.framer-v-fewsea"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Talk to sales",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Primary",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./talk-to-sales",
+      "box": {
+        "x": 982,
+        "y": 1537,
+        "w": 170,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(5) > div:nth-of-type(3) > a')",
+        "matchCount": 1,
+        "args": [
+          "div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(5) > div:nth-of-type(3) > a"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Talk to sales', exact: true })",
+          "matchCount": 5,
+          "args": [
+            "link",
+            "Talk to sales"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Talk to sales', { exact: true })",
+          "matchCount": 5,
+          "args": [
+            "Talk to sales"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(5) > div:nth-of-type(3) > a')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(5) > div:nth-of-type(3) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "tag": "div",
+      "type": null,
+      "role": null,
+      "name": "Set meeting limitsBuffer before & after eventsAutomatically add time before or after meetings to prevent back-to-back bookings.Minimum noticeRequire bookings to be made a set amount of time in advance.Time-slot intervalsControl which time increments are available for bookings (e.g. event length or every 15, 30, or 60 minutes).Limit booking frequencyLimit how many times an event can be booked per day, week, or month.Limit total booking durationLimit the total number of minutes this event can be booked per day, week, or month.Limit number of upcoming bookings per bookerControl how many future meetings a single person can have scheduled at once.Limit future bookingsSet how far in advance people can book meetings.Only show the first slot of each day as availableThis will limit your availability for an event type to one slot per day, scheduled at the earliest available time.",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Closed",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 52,
+        "y": 5121,
+        "w": 1176,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(42) > div')",
+        "matchCount": 1,
+        "args": [
+          "div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(42) > div"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(42) > div')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(42) > div"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "tag": "div",
+      "type": null,
+      "role": null,
+      "name": "Set meeting limits",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Top",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 52,
+        "y": 5121,
+        "w": 1176,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "text",
+        "expression": "getByText('Set meeting limits', { exact: true })",
+        "matchCount": 1,
+        "args": [
+          "Set meeting limits"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "text",
+          "expression": "getByText('Set meeting limits', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Set meeting limits"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(2) > div > div > div:nth-of-type(42) > div > div:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(2) > div > div > div:nth-of-type(42) > div > div:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "tag": "div",
+      "type": null,
+      "role": null,
+      "name": "CustomizationTranslate meeting title & descriptionOffer booking pages and event details in multiple languages.Custom branding on booking pageCustomize brand color, add your logo, and choose between light and dark mode to match your brand.Remove Cal.com brandingRemove Cal.com logos and references from your booking pages.Add your own logoDisplay your company logo on booking pages and email communications.Custom sub-domainHost your booking pages on your Cal.com sub-domain (yourcompany.cal.com.",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Closed",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": true,
+      "href": null,
+      "box": {
+        "x": 52,
+        "y": 5169,
+        "w": 1176,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(43) > div')",
+        "matchCount": 1,
+        "args": [
+          "div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(43) > div"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(43) > div')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(43) > div"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "tag": "div",
+      "type": null,
+      "role": null,
+      "name": "Customization",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Top",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 52,
+        "y": 5169,
+        "w": 1176,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "text",
+        "expression": "getByText('Customization', { exact: true })",
+        "matchCount": 1,
+        "args": [
+          "Customization"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "text",
+          "expression": "getByText('Customization', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Customization"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(2) > div > div > div:nth-of-type(43) > div > div:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(2) > div > div > div:nth-of-type(43) > div > div:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "tag": "div",
+      "type": null,
+      "role": null,
+      "name": "Data management & securityHIPAA complianceSupport HIPAA requirements for handling protected health information (PHI).Roles & permissionsControl who can create, manage, and edit scheduling settings across your organization.SAML Single Sign-On (SSO)Allow secure login through your identity provider (e.g. Okta, Azure AD).User provisioning via SCIMAutomatically create, update, and remove user accounts through your identity provider.Domain wide delegationLet administrators manage scheduling settings across all users in your company domain.SOC 2, ISO 27001, GDRP & CCPA compliance checkMeet enterprise security and data protection standards with audited controls and policies.US & EU hostingChoose where your data is hosted to meet regional data residency requirements.Dedicated databaseIsolate your organization’s data in a dedicated database environment for enhanced security and performance.",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Closed",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": true,
+      "href": null,
+      "box": {
+        "x": 52,
+        "y": 5217,
+        "w": 1176,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(44) > div')",
+        "matchCount": 1,
+        "args": [
+          "div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(44) > div"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(44) > div')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(44) > div"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "tag": "div",
+      "type": null,
+      "role": null,
+      "name": "Data management & security",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Top",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 52,
+        "y": 5217,
+        "w": 1176,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "text",
+        "expression": "getByText('Data management & security', { exact: true })",
+        "matchCount": 1,
+        "args": [
+          "Data management & security"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "text",
+          "expression": "getByText('Data management & security', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Data management & security"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(2) > div > div > div:nth-of-type(44) > div > div:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(2) > div > div > div:nth-of-type(44) > div > div:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "tag": "div",
+      "type": null,
+      "role": null,
+      "name": "IntegrationsGoogle Meet, Microsoft Teams, Zoom, Cal Video and 20+ other conferencing toolsAutomatically add video meeting links to bookings using your preferred conferencing platform.Google Calendar, Outlook, Apple Calendar, Zoho Calendar + moreSync availability and events across all your connected calendars in real time.WebhooksSend booking data instantly to your systems when meetings are created, updated, canceled or choose from our other triggers.SalesforceTwo-way sync meetings and contacts with Salesforce, and route bookings based on CRM data and ownership.HubSpotTwo-way sync with HubSpot and automatically route meetings to the right rep based on account ownership.Stripe & Paypal for booking paymentsRequest payment upfront before someone can complete a booking with you.Mobile app & browser extensionsManage bookings on the go and schedule faster directly from your browser or phone.Zapier & MakeConnect Cal.com to thousands of apps and automate workflows without writing code.100+ other direct integrationsChoose from a growing library of integrations to tailor Cal.com to your workflow.",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Desktop Closed",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 52,
+        "y": 5265,
+        "w": 1176,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(45) > div.framer-pARsT')",
+        "matchCount": 1,
+        "args": [
+          "div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(45) > div.framer-pARsT"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(45) > div.framer-pARsT')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(45) > div.framer-pARsT"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "tag": "div",
+      "type": null,
+      "role": null,
+      "name": "Integrations",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Top",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 52,
+        "y": 5265,
+        "w": 1176,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "text",
+        "expression": "getByText('Integrations', { exact: true })",
+        "matchCount": 1,
+        "args": [
+          "Integrations"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "text",
+          "expression": "getByText('Integrations', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Integrations"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(2) > div > div > div:nth-of-type(45) > div.framer-pARsT > div:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(2) > div > div > div:nth-of-type(45) > div.framer-pARsT > div:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Get started",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Primary",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://app.cal.com/signup",
+      "box": {
+        "x": 512,
+        "y": 5518,
+        "w": 121,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > a')",
+        "matchCount": 1,
+        "args": [
+          "div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > a"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Get started', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "link",
+            "Get started"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Get started', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "Get started"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > a')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Talk to sales",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Secondary - Gray",
+        "data-highlight": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./talk-to-sales",
+      "box": {
+        "x": 644,
+        "y": 5518,
+        "w": 124,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > a')",
+        "matchCount": 1,
+        "args": [
+          "div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > a"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Talk to sales', exact: true })",
+          "matchCount": 5,
+          "args": [
+            "link",
+            "Talk to sales"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Talk to sales', { exact: true })",
+          "matchCount": 5,
+          "args": [
+            "Talk to sales"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > a')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Home Cal.com",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Logo Wrapper"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./",
+      "box": {
+        "x": 40,
+        "y": 5847,
+        "w": 101,
+        "h": 22
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.ssr-variant.hidden-wcozae:nth-of-type(3) > div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > a')",
+        "matchCount": 1,
+        "args": [
+          "div.ssr-variant.hidden-wcozae:nth-of-type(3) > div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > a"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Home Cal.com', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "link",
+            "Home Cal.com"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.ssr-variant.hidden-wcozae:nth-of-type(3) > div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > a')",
+          "matchCount": 1,
+          "args": [
+            "div.ssr-variant.hidden-wcozae:nth-of-type(3) > div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 32,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Read more about Calcom ISO 27001",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Icon Wrapper"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/security",
+      "box": {
+        "x": 40,
+        "y": 5959,
+        "w": 47,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Read more about Calcom ISO 27001', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Read more about Calcom ISO 27001"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Read more about Calcom ISO 27001', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Read more about Calcom ISO 27001"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(2) > a:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(2) > a:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Read more about Calcom SOC 2",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Icon Wrapper"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/security",
+      "box": {
+        "x": 103,
+        "y": 5959,
+        "w": 47,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Read more about Calcom SOC 2', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Read more about Calcom SOC 2"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Read more about Calcom SOC 2', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Read more about Calcom SOC 2"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(2) > a:nth-of-type(2)')",
+          "matchCount": 1,
+          "args": [
+            "div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(2) > a:nth-of-type(2)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Read more about Calcom CCPA",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Icon Wrapper"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/security",
+      "box": {
+        "x": 166,
+        "y": 5959,
+        "w": 33,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Read more about Calcom CCPA', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Read more about Calcom CCPA"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Read more about Calcom CCPA', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Read more about Calcom CCPA"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(2) > a:nth-of-type(3)')",
+          "matchCount": 1,
+          "args": [
+            "div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(2) > a:nth-of-type(3)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Read more about Calcom GDPR",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Icon Wrapper"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/security",
+      "box": {
+        "x": 215,
+        "y": 5959,
+        "w": 35,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Read more about Calcom GDPR', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Read more about Calcom GDPR"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Read more about Calcom GDPR', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Read more about Calcom GDPR"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(2) > a:nth-of-type(4)')",
+          "matchCount": 1,
+          "args": [
+            "div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(2) > a:nth-of-type(4)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Read more about Calcom HIPAA",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-framer-name": "Icon Wrapper"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/security",
+      "box": {
+        "x": 266,
+        "y": 5959,
+        "w": 71,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Read more about Calcom HIPAA', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Read more about Calcom HIPAA"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Read more about Calcom HIPAA', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Read more about Calcom HIPAA"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(2) > a:nth-of-type(5)')",
+          "matchCount": 1,
+          "args": [
+            "div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(2) > a:nth-of-type(5)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "tag": "select",
+      "type": null,
+      "role": "combobox",
+      "name": "Select Language",
+      "label": "Select Language",
+      "placeholder": null,
+      "id": ":Rliplfculp:",
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 40,
+        "y": 6098,
+        "w": 120,
+        "h": 34
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('combobox', { name: 'Select Language', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "combobox",
+          "Select Language"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": []
+    },
+    {
+      "index": 38,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Logo",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Status Wrapper"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://status.cal.com/",
+      "box": {
+        "x": 172,
+        "y": 6097,
+        "w": 182,
+        "h": 35
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Logo', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Logo"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Logo', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Logo"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(4) > a')",
+          "matchCount": 1,
+          "args": [
+            "div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(4) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Android",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Light"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://go.cal.com/android",
+      "box": {
+        "x": 40,
+        "y": 6192,
+        "w": 108,
+        "h": 35
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Android', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Android"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Android', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Android"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Android', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Android"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(1) > a.framer-lBsZX')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(1) > a.framer-lBsZX"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 40,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Chrome",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Light"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://go.cal.com/chrome",
+      "box": {
+        "x": 158,
+        "y": 6192,
+        "w": 108,
+        "h": 35
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Chrome', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Chrome"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Chrome', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Chrome"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Chrome', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Chrome"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(2) > a.framer-lBsZX')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(2) > a.framer-lBsZX"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Safari",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Light"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://go.cal.com/safari",
+      "box": {
+        "x": 277,
+        "y": 6192,
+        "w": 91,
+        "h": 35
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Safari', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Safari"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Safari', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Safari"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Safari', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Safari"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(3) > a.framer-lBsZX')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(3) > a.framer-lBsZX"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 42,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Edge",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Light"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://go.cal.com/edge",
+      "box": {
+        "x": 40,
+        "y": 6237,
+        "w": 91,
+        "h": 35
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Edge', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Edge"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Edge', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Edge"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Edge', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Edge"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(4) > a.framer-lBsZX')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(4) > a.framer-lBsZX"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Firefox",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Light"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://go.cal.com/firefox",
+      "box": {
+        "x": 141,
+        "y": 6237,
+        "w": 100,
+        "h": 35
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Firefox', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Firefox"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Firefox', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Firefox"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Firefox', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Firefox"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(5) > a.framer-lBsZX')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(5) > a.framer-lBsZX"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 44,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "macOS",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Light"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/download",
+      "box": {
+        "x": 250,
+        "y": 6237,
+        "w": 102,
+        "h": 35
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'macOS', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "macOS"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'macOS', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "macOS"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('macOS', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "macOS"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(6) > a.framer-lBsZX')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(6) > a.framer-lBsZX"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 45,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Windows",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Light"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/download",
+      "box": {
+        "x": 40,
+        "y": 6282,
+        "w": 118,
+        "h": 35
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Windows', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Windows"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Windows', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Windows"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Windows', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Windows"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(7) > a.framer-lBsZX')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(7) > a.framer-lBsZX"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 46,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Linux",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-border": "true",
+        "data-framer-name": "Light"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/download",
+      "box": {
+        "x": 168,
+        "y": 6282,
+        "w": 88,
+        "h": 35
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Linux', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Linux"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Linux', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Linux"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Linux', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Linux"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(8) > a.framer-lBsZX')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(8) > a.framer-lBsZX"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 47,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://www.g2.com/products/cal-com/reviews",
+      "box": {
+        "x": 40,
+        "y": 6341,
+        "w": 140,
+        "h": 70
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(6) > a:nth-of-type(1)')",
+        "matchCount": 1,
+        "args": [
+          "div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(6) > a:nth-of-type(1)"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(6) > a:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(6) > a:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 48,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://trustpilot.com/review/cal.com",
+      "box": {
+        "x": 192,
+        "y": 6341,
+        "w": 140,
+        "h": 70
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(6) > a:nth-of-type(2)')",
+        "matchCount": 1,
+        "args": [
+          "div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(6) > a:nth-of-type(2)"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(6) > a:nth-of-type(2)')",
+          "matchCount": 1,
+          "args": [
+            "div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(6) > a:nth-of-type(2)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 49,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "support@cal.com",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "mailto:support@cal.com",
+      "box": {
+        "x": 120,
+        "y": 6437,
+        "w": 118,
+        "h": 16
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'support@cal.com', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "support@cal.com"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'support@cal.com', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "support@cal.com"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('support@cal.com', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "support@cal.com"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(7) > p.framer-text > a.framer-text:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(7) > p.framer-text > a.framer-text:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 50,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "cal.com/help",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/help",
+      "box": {
+        "x": 288,
+        "y": 6437,
+        "w": 86,
+        "h": 16
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'cal.com/help', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "cal.com/help"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'cal.com/help', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "cal.com/help"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('cal.com/help', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "cal.com/help"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(7) > p.framer-text > a.framer-text:nth-of-type(2)')",
+          "matchCount": 1,
+          "args": [
+            "div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) > div:nth-of-type(7) > p.framer-text > a.framer-text:nth-of-type(2)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 51,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "iOS/Android App",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./app",
+      "box": {
+        "x": 464,
+        "y": 5890,
+        "w": 127,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'iOS/Android App', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "iOS/Android App"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'iOS/Android App', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "iOS/Android App"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('iOS/Android App', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "iOS/Android App"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 52,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Self-hosted",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://github.com/calcom/cal.com",
+      "box": {
+        "x": 464,
+        "y": 5930,
+        "w": 89,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Self-hosted', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Self-hosted"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Self-hosted', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Self-hosted"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Self-hosted', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Self-hosted"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 53,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Pricing",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB",
+        "data-framer-page-link-current": "true"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./pricing",
+      "box": {
+        "x": 464,
+        "y": 5970,
+        "w": 52,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > p.framer-text > a.framer-text')",
+        "matchCount": 1,
+        "args": [
+          "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > p.framer-text > a.framer-text"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Pricing', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "link",
+            "Pricing"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Pricing', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "Pricing"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 54,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Docs",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/docs",
+      "box": {
+        "x": 464,
+        "y": 6010,
+        "w": 38,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Docs', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Docs"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Docs', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Docs"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Docs', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Docs"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(5) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(5) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 55,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Cal.ai - AI Phone Agent",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/ai",
+      "box": {
+        "x": 464,
+        "y": 6050,
+        "w": 172,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Cal.ai - AI Phone Agent', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Cal.ai - AI Phone Agent"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Cal.ai - AI Phone Agent', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Cal.ai - AI Phone Agent"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Cal.ai - AI Phone Agent', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Cal.ai - AI Phone Agent"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(6) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(6) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 56,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Enterprise",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./enterprise",
+      "box": {
+        "x": 464,
+        "y": 6090,
+        "w": 77,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(7) > p.framer-text > a.framer-text')",
+        "matchCount": 1,
+        "args": [
+          "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(7) > p.framer-text > a.framer-text"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Enterprise', exact: true })",
+          "matchCount": 2,
+          "args": [
+            "link",
+            "Enterprise"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Enterprise', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "Enterprise"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(7) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(7) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 57,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Integrate Cal.com",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./integrate",
+      "box": {
+        "x": 464,
+        "y": 6130,
+        "w": 135,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Integrate Cal.com', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Integrate Cal.com"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Integrate Cal.com', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Integrate Cal.com"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Integrate Cal.com', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Integrate Cal.com"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(8) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(8) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 58,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Routing",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./routing",
+      "box": {
+        "x": 464,
+        "y": 6170,
+        "w": 59,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Routing', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Routing"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Routing', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Routing"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Routing', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Routing"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(9) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(9) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 59,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Cal.com Atoms",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/atoms",
+      "box": {
+        "x": 464,
+        "y": 6210,
+        "w": 114,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Cal.com Atoms', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Cal.com Atoms"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Cal.com Atoms', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Cal.com Atoms"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Cal.com Atoms', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Cal.com Atoms"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(10) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(10) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 60,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Desktop App",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/download",
+      "box": {
+        "x": 464,
+        "y": 6250,
+        "w": 99,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Desktop App', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Desktop App"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Desktop App', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Desktop App"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Desktop App', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Desktop App"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(11) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(11) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 61,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "FAQ",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./faq",
+      "box": {
+        "x": 464,
+        "y": 6290,
+        "w": 31,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'FAQ', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "FAQ"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'FAQ', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "FAQ"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('FAQ', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "FAQ"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(12) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(12) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 62,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Enterprise API",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/docs/enterprise-features/api",
+      "box": {
+        "x": 464,
+        "y": 6330,
+        "w": 106,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Enterprise API', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Enterprise API"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Enterprise API', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Enterprise API"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Enterprise API', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Enterprise API"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(13) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(13) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 63,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "GitHub",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://github.com/calcom/cal.com",
+      "box": {
+        "x": 464,
+        "y": 6370,
+        "w": 54,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'GitHub', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "GitHub"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'GitHub', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "GitHub"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('GitHub', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "GitHub"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(14) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(14) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 64,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Docker",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/docs/introduction/quick-start/self-hosting/docker",
+      "box": {
+        "x": 464,
+        "y": 6410,
+        "w": 53,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Docker', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Docker"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Docker', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Docker"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Docker', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Docker"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(1) > div.framer-xaeofm:nth-of-type(15) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(1) > div.framer-xaeofm:nth-of-type(15) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 65,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Sales",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./scheduling/sales-teams",
+      "box": {
+        "x": 664,
+        "y": 5890,
+        "w": 39,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Sales', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Sales"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Sales', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Sales"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Sales', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Sales"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 66,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Marketing",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./scheduling/marketing",
+      "box": {
+        "x": 664,
+        "y": 5930,
+        "w": 78,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Marketing', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Marketing"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Marketing', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Marketing"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Marketing', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Marketing"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(3) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(3) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 67,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Talent Acquisition",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./scheduling/talent-acquisition-teams",
+      "box": {
+        "x": 664,
+        "y": 5970,
+        "w": 134,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Talent Acquisition', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Talent Acquisition"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Talent Acquisition', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Talent Acquisition"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Talent Acquisition', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Talent Acquisition"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(4) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(4) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 68,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Customer Support",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./scheduling/customer-support",
+      "box": {
+        "x": 664,
+        "y": 6010,
+        "w": 140,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Customer Support', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Customer Support"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Customer Support', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Customer Support"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Customer Support', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Customer Support"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(5) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(5) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 69,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Higher Education",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./scheduling/higher-education",
+      "box": {
+        "x": 664,
+        "y": 6050,
+        "w": 130,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Higher Education', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Higher Education"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Higher Education', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Higher Education"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Higher Education', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Higher Education"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(6) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(6) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 70,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Telehealth",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./scheduling/telehealth",
+      "box": {
+        "x": 664,
+        "y": 6090,
+        "w": 78,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Telehealth', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Telehealth"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Telehealth', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Telehealth"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Telehealth', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Telehealth"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(7) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(7) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 71,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Professional Services",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./scheduling/professional-services",
+      "box": {
+        "x": 664,
+        "y": 6130,
+        "w": 158,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Professional Services', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Professional Services"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Professional Services', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Professional Services"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Professional Services', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Professional Services"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(8) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(8) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 72,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Hiring Marketplace",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./scheduling/hiring-marketplaces",
+      "box": {
+        "x": 664,
+        "y": 6170,
+        "w": 145,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Hiring Marketplace', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Hiring Marketplace"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Hiring Marketplace', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Hiring Marketplace"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Hiring Marketplace', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Hiring Marketplace"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(9) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(9) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 73,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Human Resources",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./scheduling/people-operations",
+      "box": {
+        "x": 664,
+        "y": 6210,
+        "w": 135,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Human Resources', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Human Resources"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Human Resources', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Human Resources"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Human Resources', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Human Resources"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(10) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(10) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 74,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Tutoring",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./scheduling/higher-education",
+      "box": {
+        "x": 664,
+        "y": 6250,
+        "w": 64,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Tutoring', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Tutoring"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Tutoring', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Tutoring"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Tutoring', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Tutoring"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(11) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(11) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 75,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "C-suite",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./scheduling/c-suite",
+      "box": {
+        "x": 664,
+        "y": 6290,
+        "w": 55,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'C-suite', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "C-suite"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'C-suite', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "C-suite"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('C-suite', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "C-suite"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(12) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(12) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 76,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Law",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./scheduling/law",
+      "box": {
+        "x": 664,
+        "y": 6330,
+        "w": 30,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Law', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Law"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Law', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Law"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Law', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Law"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(2) > div.framer-cveovd:nth-of-type(13) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(2) > div.framer-cveovd:nth-of-type(13) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 77,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Affiliate Program",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./affiliate-program",
+      "box": {
+        "x": 864,
+        "y": 5890,
+        "w": 127,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Affiliate Program', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Affiliate Program"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Affiliate Program', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Affiliate Program"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Affiliate Program', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Affiliate Program"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(2) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(2) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 78,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Help Docs",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/help",
+      "box": {
+        "x": 864,
+        "y": 5930,
+        "w": 77,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Help Docs', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Help Docs"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Help Docs', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Help Docs"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Help Docs', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Help Docs"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 79,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Blog",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./blog/category/all-categories",
+      "box": {
+        "x": 864,
+        "y": 5970,
+        "w": 34,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Blog', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Blog"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Blog', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Blog"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Blog', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Blog"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(4) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 80,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Cal Fonts",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./font",
+      "box": {
+        "x": 864,
+        "y": 6010,
+        "w": 70,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Cal Fonts', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Cal Fonts"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Cal Fonts', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Cal Fonts"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Cal Fonts', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Cal Fonts"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(5) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(5) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 81,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Teams",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./teams",
+      "box": {
+        "x": 864,
+        "y": 6050,
+        "w": 48,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Teams', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Teams"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Teams', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Teams"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Teams', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Teams"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(6) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(6) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 82,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Embed",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./embed",
+      "box": {
+        "x": 864,
+        "y": 6090,
+        "w": 54,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Embed', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Embed"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Embed', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Embed"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Embed', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Embed"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(7) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(7) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 83,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Recurring events",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./features/recurring-events",
+      "box": {
+        "x": 864,
+        "y": 6130,
+        "w": 126,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Recurring events', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Recurring events"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Recurring events', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Recurring events"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Recurring events', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Recurring events"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(8) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(8) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 84,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Developers",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/docs",
+      "box": {
+        "x": 864,
+        "y": 6170,
+        "w": 85,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Developers', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Developers"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Developers', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Developers"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Developers', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Developers"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(9) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(9) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 85,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "OOO",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./features/ooo",
+      "box": {
+        "x": 864,
+        "y": 6210,
+        "w": 39,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'OOO', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "OOO"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'OOO', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "OOO"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('OOO', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "OOO"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(10) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(10) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 86,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Workflows",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./features/workflows",
+      "box": {
+        "x": 864,
+        "y": 6250,
+        "w": 81,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Workflows', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Workflows"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Workflows', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Workflows"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Workflows', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Workflows"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(11) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(11) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 87,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Instant Meetings",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./features/instant-meetings",
+      "box": {
+        "x": 864,
+        "y": 6290,
+        "w": 129,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Instant Meetings', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Instant Meetings"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Instant Meetings', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Instant Meetings"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Instant Meetings', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Instant Meetings"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(12) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(12) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 88,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "App Store",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./features/app-store",
+      "box": {
+        "x": 864,
+        "y": 6330,
+        "w": 76,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'App Store', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "App Store"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'App Store', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "App Store"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('App Store', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "App Store"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(13) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(13) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 89,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Requires confirmation",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./features/requires-confirmation",
+      "box": {
+        "x": 864,
+        "y": 6370,
+        "w": 166,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Requires confirmation', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Requires confirmation"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Requires confirmation', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Requires confirmation"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Requires confirmation', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Requires confirmation"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(14) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(14) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 90,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Payments",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./features/payments",
+      "box": {
+        "x": 864,
+        "y": 6410,
+        "w": 75,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Payments', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Payments"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Payments', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Payments"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Payments', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Payments"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(15) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(15) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 91,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Video Conferencing",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./features/cal-video",
+      "box": {
+        "x": 864,
+        "y": 6450,
+        "w": 150,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Video Conferencing', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Video Conferencing"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Video Conferencing', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Video Conferencing"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Video Conferencing', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Video Conferencing"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(16) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(16) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 92,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Cal.com vs Calendly",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./calcom-vs-calendly",
+      "box": {
+        "x": 864,
+        "y": 6490,
+        "w": 149,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Cal.com vs Calendly', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Cal.com vs Calendly"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Cal.com vs Calendly', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Cal.com vs Calendly"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Cal.com vs Calendly', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Cal.com vs Calendly"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(17) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(17) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 93,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Jobs",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/jobs",
+      "box": {
+        "x": 1064,
+        "y": 5890,
+        "w": 35,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Jobs', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Jobs"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Jobs', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Jobs"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Jobs', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Jobs"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(4) > div.framer-eunkoo:nth-of-type(2) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(4) > div.framer-eunkoo:nth-of-type(2) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 94,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "About",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/about",
+      "box": {
+        "x": 1064,
+        "y": 5930,
+        "w": 48,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'About', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "About"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'About', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "About"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('About', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "About"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 95,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Open Startup",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/open",
+      "box": {
+        "x": 1064,
+        "y": 5970,
+        "w": 103,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Open Startup', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Open Startup"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Open Startup', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Open Startup"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Open Startup', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Open Startup"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(4) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(4) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 96,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Support",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://app.cal.com/support?_gl=1*1tq2plh*_gcl_au*OTk1OTIzMTMyLjE3NDA3NDM3ODI.*_ga*MTU5NzExNTE5My4xNzQwNzQzNzgy*_ga_RX4HHQ613S*MTc0MTc5Mjk5MC40Ni4xLjE3NDE3OTUxNjAuNjAuMC4xNzAxNzQ1ODY0",
+      "box": {
+        "x": 1064,
+        "y": 6010,
+        "w": 62,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Support', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Support"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Support', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Support"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Support', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Support"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(5) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(5) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 97,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Privacy",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./privacy",
+      "box": {
+        "x": 1064,
+        "y": 6050,
+        "w": 54,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Privacy', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Privacy"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Privacy', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Privacy"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Privacy', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Privacy"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(4) > div.framer-tirndt:nth-of-type(6) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(4) > div.framer-tirndt:nth-of-type(6) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 98,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Terms",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./terms",
+      "box": {
+        "x": 1064,
+        "y": 6090,
+        "w": 45,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Terms', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Terms"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Terms', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Terms"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Terms', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Terms"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(7) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(7) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 99,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "License",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://github.com/calcom/cal.com/blob/main/LICENSE",
+      "box": {
+        "x": 1064,
+        "y": 6130,
+        "w": 57,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'License', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "License"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'License', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "License"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('License', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "License"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(8) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(8) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 100,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Security",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./security",
+      "box": {
+        "x": 1064,
+        "y": 6170,
+        "w": 62,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Security', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Security"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Security', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Security"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Security', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Security"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(9) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(9) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 101,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Changelog",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/subscribe",
+      "box": {
+        "x": 1064,
+        "y": 6210,
+        "w": 83,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Changelog', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Changelog"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Changelog', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Changelog"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Changelog', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Changelog"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(10) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(10) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 102,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Get a demo",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./talk-to-sales",
+      "box": {
+        "x": 1064,
+        "y": 6250,
+        "w": 88,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Get a demo', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Get a demo"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Get a demo', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Get a demo"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Get a demo', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Get a demo"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(11) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(11) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 103,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Talk to sales",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-styles-preset": "FS2pLLeiB"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "./talk-to-sales",
+      "box": {
+        "x": 1064,
+        "y": 6290,
+        "w": 90,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(12) > p.framer-text > a.framer-text')",
+        "matchCount": 1,
+        "args": [
+          "div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(12) > p.framer-text > a.framer-text"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Talk to sales', exact: true })",
+          "matchCount": 5,
+          "args": [
+            "link",
+            "Talk to sales"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Talk to sales', { exact: true })",
+          "matchCount": 5,
+          "args": [
+            "Talk to sales"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(12) > p.framer-text > a.framer-text')",
+          "matchCount": 1,
+          "args": [
+            "div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(12) > p.framer-text > a.framer-text"
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "href": "./",
+      "resolved": "https://cal.com/",
+      "text": ""
+    },
+    {
+      "href": "./enterprise",
+      "resolved": "https://cal.com/enterprise",
+      "text": "Enterprise"
+    },
+    {
+      "href": "./ai",
+      "resolved": "https://cal.com/ai",
+      "text": "Cal.ai"
+    },
+    {
+      "href": "./pricing",
+      "resolved": "https://cal.com/pricing",
+      "text": "Pricing"
+    },
+    {
+      "href": "https://app.cal.com/auth/login?_gl=1*1d3xgrt*_gcl_au*MTY1ODY5NjUwMS4xNzQxOTczMzA5*_ga*MTA0ODE0ODU4LjE3NDE5NzMzMTA.*_ga_RX4HHQ613S*MTc0MTk3MzMwOS4xLjEuMTc0MTk3MzY2NC42MC4wLjk4NDg1NDg4",
+      "resolved": "https://app.cal.com/auth/login?_gl=1*1d3xgrt*_gcl_au*MTY1ODY5NjUwMS4xNzQxOTczMzA5*_ga*MTA0ODE0ODU4LjE3NDE5NzMzMTA.*_ga_RX4HHQ613S*MTc0MTk3MzMwOS4xLjEuMTc0MTk3MzY2NC42MC4wLjk4NDg1NDg4",
+      "text": "Sign in"
+    },
+    {
+      "href": "https://app.cal.com/signup",
+      "resolved": "https://app.cal.com/signup",
+      "text": "Get started"
+    },
+    {
+      "href": "./talk-to-sales",
+      "resolved": "https://cal.com/talk-to-sales",
+      "text": "Talk to sales"
+    },
+    {
+      "href": "./pricing#feature-breakdown",
+      "resolved": "https://cal.com/pricing#feature-breakdown",
+      "text": "See feature breakdown"
+    },
+    {
+      "href": "https://app.cal.com/signup",
+      "resolved": "https://app.cal.com/signup",
+      "text": "Use for free"
+    },
+    {
+      "href": "./app",
+      "resolved": "https://cal.com/app",
+      "text": "Mobile App"
+    },
+    {
+      "href": "./app",
+      "resolved": "https://cal.com/app",
+      "text": "Browser Extension"
+    },
+    {
+      "href": "https://app.cal.com/signup?redirect=https://app.cal.com/settings/teams/new?bp=a",
+      "resolved": "https://app.cal.com/signup?redirect=https://app.cal.com/settings/teams/new?bp=a",
+      "text": "Try for free"
+    },
+    {
+      "href": "https://app.cal.com/signup?redirect=https://app.cal.com/onboarding/organization/details?migrate=true&bp=a",
+      "resolved": "https://app.cal.com/signup?redirect=https://app.cal.com/onboarding/organization/details?migrate=true&bp=a",
+      "text": "Try for free"
+    },
+    {
+      "href": "./talk-to-sales",
+      "resolved": "https://cal.com/talk-to-sales",
+      "text": "Talk to sales"
+    },
+    {
+      "href": "https://app.cal.com/signup",
+      "resolved": "https://app.cal.com/signup",
+      "text": "Try for free"
+    },
+    {
+      "href": "https://app.cal.com/signup?redirect=https://app.cal.com/settings/teams/new",
+      "resolved": "https://app.cal.com/signup?redirect=https://app.cal.com/settings/teams/new",
+      "text": "Try for free"
+    },
+    {
+      "href": "https://app.cal.com/signup?redirect=https://app.cal.com/settings/organizations/new",
+      "resolved": "https://app.cal.com/signup?redirect=https://app.cal.com/settings/organizations/new",
+      "text": "Try for free"
+    },
+    {
+      "href": "./talk-to-sales",
+      "resolved": "https://cal.com/talk-to-sales",
+      "text": "Talk to sales"
+    },
+    {
+      "href": "https://app.cal.com/signup",
+      "resolved": "https://app.cal.com/signup",
+      "text": "Get started"
+    },
+    {
+      "href": "./talk-to-sales",
+      "resolved": "https://cal.com/talk-to-sales",
+      "text": "Talk to sales"
+    },
+    {
+      "href": "./",
+      "resolved": "https://cal.com/",
+      "text": ""
+    },
+    {
+      "href": "https://cal.com/security",
+      "resolved": "https://cal.com/security",
+      "text": ""
+    },
+    {
+      "href": "https://cal.com/security",
+      "resolved": "https://cal.com/security",
+      "text": ""
+    },
+    {
+      "href": "https://cal.com/security",
+      "resolved": "https://cal.com/security",
+      "text": ""
+    },
+    {
+      "href": "https://cal.com/security",
+      "resolved": "https://cal.com/security",
+      "text": ""
+    },
+    {
+      "href": "https://cal.com/security",
+      "resolved": "https://cal.com/security",
+      "text": ""
+    },
+    {
+      "href": "https://status.cal.com/",
+      "resolved": "https://status.cal.com/",
+      "text": ""
+    },
+    {
+      "href": "https://go.cal.com/android",
+      "resolved": "https://go.cal.com/android",
+      "text": "Android"
+    },
+    {
+      "href": "https://go.cal.com/chrome",
+      "resolved": "https://go.cal.com/chrome",
+      "text": "Chrome"
+    },
+    {
+      "href": "https://go.cal.com/safari",
+      "resolved": "https://go.cal.com/safari",
+      "text": "Safari"
+    },
+    {
+      "href": "https://go.cal.com/edge",
+      "resolved": "https://go.cal.com/edge",
+      "text": "Edge"
+    },
+    {
+      "href": "https://go.cal.com/firefox",
+      "resolved": "https://go.cal.com/firefox",
+      "text": "Firefox"
+    },
+    {
+      "href": "https://cal.com/download",
+      "resolved": "https://cal.com/download",
+      "text": "macOS"
+    },
+    {
+      "href": "https://cal.com/download",
+      "resolved": "https://cal.com/download",
+      "text": "Windows"
+    },
+    {
+      "href": "https://cal.com/download",
+      "resolved": "https://cal.com/download",
+      "text": "Linux"
+    },
+    {
+      "href": "https://www.g2.com/products/cal-com/reviews",
+      "resolved": "https://www.g2.com/products/cal-com/reviews",
+      "text": ""
+    },
+    {
+      "href": "https://trustpilot.com/review/cal.com",
+      "resolved": "https://trustpilot.com/review/cal.com",
+      "text": ""
+    },
+    {
+      "href": "mailto:support@cal.com",
+      "resolved": "mailto:support@cal.com",
+      "text": "support@cal.com"
+    },
+    {
+      "href": "https://cal.com/help",
+      "resolved": "https://cal.com/help",
+      "text": "cal.com/help"
+    },
+    {
+      "href": "./app",
+      "resolved": "https://cal.com/app",
+      "text": "iOS/Android App"
+    },
+    {
+      "href": "https://github.com/calcom/cal.com",
+      "resolved": "https://github.com/calcom/cal.com",
+      "text": "Self-hosted"
+    },
+    {
+      "href": "./pricing",
+      "resolved": "https://cal.com/pricing",
+      "text": "Pricing"
+    },
+    {
+      "href": "https://cal.com/docs",
+      "resolved": "https://cal.com/docs",
+      "text": "Docs"
+    },
+    {
+      "href": "https://cal.com/ai",
+      "resolved": "https://cal.com/ai",
+      "text": "Cal.ai - AI Phone Agent"
+    },
+    {
+      "href": "./enterprise",
+      "resolved": "https://cal.com/enterprise",
+      "text": "Enterprise"
+    },
+    {
+      "href": "./integrate",
+      "resolved": "https://cal.com/integrate",
+      "text": "Integrate Cal.com"
+    },
+    {
+      "href": "./routing",
+      "resolved": "https://cal.com/routing",
+      "text": "Routing"
+    },
+    {
+      "href": "https://cal.com/atoms",
+      "resolved": "https://cal.com/atoms",
+      "text": "Cal.com Atoms"
+    },
+    {
+      "href": "https://cal.com/download",
+      "resolved": "https://cal.com/download",
+      "text": "Desktop App"
+    },
+    {
+      "href": "./faq",
+      "resolved": "https://cal.com/faq",
+      "text": "FAQ"
+    },
+    {
+      "href": "https://cal.com/docs/enterprise-features/api",
+      "resolved": "https://cal.com/docs/enterprise-features/api",
+      "text": "Enterprise API"
+    },
+    {
+      "href": "https://github.com/calcom/cal.com",
+      "resolved": "https://github.com/calcom/cal.com",
+      "text": "GitHub"
+    },
+    {
+      "href": "https://cal.com/docs/introduction/quick-start/self-hosting/docker",
+      "resolved": "https://cal.com/docs/introduction/quick-start/self-hosting/docker",
+      "text": "Docker"
+    },
+    {
+      "href": "./scheduling/sales-teams",
+      "resolved": "https://cal.com/scheduling/sales-teams",
+      "text": "Sales"
+    },
+    {
+      "href": "./scheduling/marketing",
+      "resolved": "https://cal.com/scheduling/marketing",
+      "text": "Marketing"
+    },
+    {
+      "href": "./scheduling/talent-acquisition-teams",
+      "resolved": "https://cal.com/scheduling/talent-acquisition-teams",
+      "text": "Talent Acquisition"
+    },
+    {
+      "href": "./scheduling/customer-support",
+      "resolved": "https://cal.com/scheduling/customer-support",
+      "text": "Customer Support"
+    },
+    {
+      "href": "./scheduling/higher-education",
+      "resolved": "https://cal.com/scheduling/higher-education",
+      "text": "Higher Education"
+    },
+    {
+      "href": "./scheduling/telehealth",
+      "resolved": "https://cal.com/scheduling/telehealth",
+      "text": "Telehealth"
+    },
+    {
+      "href": "./scheduling/professional-services",
+      "resolved": "https://cal.com/scheduling/professional-services",
+      "text": "Professional Services"
+    },
+    {
+      "href": "./scheduling/hiring-marketplaces",
+      "resolved": "https://cal.com/scheduling/hiring-marketplaces",
+      "text": "Hiring Marketplace"
+    },
+    {
+      "href": "./scheduling/people-operations",
+      "resolved": "https://cal.com/scheduling/people-operations",
+      "text": "Human Resources"
+    },
+    {
+      "href": "./scheduling/higher-education",
+      "resolved": "https://cal.com/scheduling/higher-education",
+      "text": "Tutoring"
+    },
+    {
+      "href": "./scheduling/c-suite",
+      "resolved": "https://cal.com/scheduling/c-suite",
+      "text": "C-suite"
+    },
+    {
+      "href": "./scheduling/law",
+      "resolved": "https://cal.com/scheduling/law",
+      "text": "Law"
+    },
+    {
+      "href": "./affiliate-program",
+      "resolved": "https://cal.com/affiliate-program",
+      "text": "Affiliate Program"
+    },
+    {
+      "href": "https://cal.com/help",
+      "resolved": "https://cal.com/help",
+      "text": "Help Docs"
+    },
+    {
+      "href": "./blog/category/all-categories",
+      "resolved": "https://cal.com/blog/category/all-categories",
+      "text": "Blog"
+    },
+    {
+      "href": "./font",
+      "resolved": "https://cal.com/font",
+      "text": "Cal Fonts"
+    },
+    {
+      "href": "./teams",
+      "resolved": "https://cal.com/teams",
+      "text": "Teams"
+    },
+    {
+      "href": "./embed",
+      "resolved": "https://cal.com/embed",
+      "text": "Embed"
+    },
+    {
+      "href": "./features/recurring-events",
+      "resolved": "https://cal.com/features/recurring-events",
+      "text": "Recurring events"
+    },
+    {
+      "href": "https://cal.com/docs",
+      "resolved": "https://cal.com/docs",
+      "text": "Developers"
+    },
+    {
+      "href": "./features/ooo",
+      "resolved": "https://cal.com/features/ooo",
+      "text": "OOO"
+    },
+    {
+      "href": "./features/workflows",
+      "resolved": "https://cal.com/features/workflows",
+      "text": "Workflows"
+    },
+    {
+      "href": "./features/instant-meetings",
+      "resolved": "https://cal.com/features/instant-meetings",
+      "text": "Instant Meetings"
+    },
+    {
+      "href": "./features/app-store",
+      "resolved": "https://cal.com/features/app-store",
+      "text": "App Store"
+    },
+    {
+      "href": "./features/requires-confirmation",
+      "resolved": "https://cal.com/features/requires-confirmation",
+      "text": "Requires confirmation"
+    },
+    {
+      "href": "./features/payments",
+      "resolved": "https://cal.com/features/payments",
+      "text": "Payments"
+    },
+    {
+      "href": "./features/cal-video",
+      "resolved": "https://cal.com/features/cal-video",
+      "text": "Video Conferencing"
+    },
+    {
+      "href": "./calcom-vs-calendly",
+      "resolved": "https://cal.com/calcom-vs-calendly",
+      "text": "Cal.com vs Calendly"
+    },
+    {
+      "href": "https://cal.com/jobs",
+      "resolved": "https://cal.com/jobs",
+      "text": "Jobs"
+    },
+    {
+      "href": "https://cal.com/about",
+      "resolved": "https://cal.com/about",
+      "text": "About"
+    },
+    {
+      "href": "https://cal.com/open",
+      "resolved": "https://cal.com/open",
+      "text": "Open Startup"
+    },
+    {
+      "href": "https://app.cal.com/support?_gl=1*1tq2plh*_gcl_au*OTk1OTIzMTMyLjE3NDA3NDM3ODI.*_ga*MTU5NzExNTE5My4xNzQwNzQzNzgy*_ga_RX4HHQ613S*MTc0MTc5Mjk5MC40Ni4xLjE3NDE3OTUxNjAuNjAuMC4xNzAxNzQ1ODY0",
+      "resolved": "https://app.cal.com/support?_gl=1*1tq2plh*_gcl_au*OTk1OTIzMTMyLjE3NDA3NDM3ODI.*_ga*MTU5NzExNTE5My4xNzQwNzQzNzgy*_ga_RX4HHQ613S*MTc0MTc5Mjk5MC40Ni4xLjE3NDE3OTUxNjAuNjAuMC4xNzAxNzQ1ODY0",
+      "text": "Support"
+    },
+    {
+      "href": "./privacy",
+      "resolved": "https://cal.com/privacy",
+      "text": "Privacy"
+    },
+    {
+      "href": "./terms",
+      "resolved": "https://cal.com/terms",
+      "text": "Terms"
+    },
+    {
+      "href": "https://github.com/calcom/cal.com/blob/main/LICENSE",
+      "resolved": "https://github.com/calcom/cal.com/blob/main/LICENSE",
+      "text": "License"
+    },
+    {
+      "href": "./security",
+      "resolved": "https://cal.com/security",
+      "text": "Security"
+    },
+    {
+      "href": "https://cal.com/subscribe",
+      "resolved": "https://cal.com/subscribe",
+      "text": "Changelog"
+    },
+    {
+      "href": "./talk-to-sales",
+      "resolved": "https://cal.com/talk-to-sales",
+      "text": "Get a demo"
+    },
+    {
+      "href": "./talk-to-sales",
+      "resolved": "https://cal.com/talk-to-sales",
+      "text": "Talk to sales"
+    }
+  ],
+  "stats": {
+    "elements": 104,
+    "visible": 102,
+    "hidden": 2,
+    "semantic": 72,
+    "fragile": 30,
+    "ambiguous": 0,
+    "withTestId": 0
+  }
+}

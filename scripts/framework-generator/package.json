@@ -1,18 +1,17 @@
 {
   "name": "framework-generator",
   "version": "1.0.0",
-  "description": "Static analysis in, Playwright test framework out. Reads analysis/ and generates a component-object-model framework in a configurable language.",
+  "description": "app-model.json in, a Playwright project out. Knows nothing about any application.",
   "type": "module",
   "bin": {
     "framework-generator": "bin.js"
   },
   "scripts": {
-    "generate": "cd ../.. && tsx scripts/framework-generator/generate.ts",
-    "generate:dry": "cd ../.. && tsx scripts/framework-generator/generate.ts --dry-run",
-    "check-analysis": "cd ../.. && tsx scripts/framework-generator/check-analysis.ts",
-    "check-api-map": "cd ../.. && tsx scripts/framework-generator/check-api-map.ts",
-    "smart-api-map": "cd ../.. && tsx scripts/framework-generator/smart-api-map.ts",
-    "test": "tsx --test __tests__/*.test.ts",
+    "compile": "cd ../.. && tsx scripts/model-compiler/compile-model.ts",
+    "check": "cd ../.. && tsx scripts/model-compiler/check-model.ts",
+    "generate": "cd ../.. && tsx scripts/framework-generator/emit/emit.ts",
+    "generate:dry": "cd ../.. && tsx scripts/framework-generator/emit/emit.ts --dry-run",
+    "test": "cd ../.. && tsx --test scripts/model-compiler/__tests__/*.test.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {

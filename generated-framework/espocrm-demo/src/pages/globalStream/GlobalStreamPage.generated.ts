@@ -6,8 +6,6 @@ import { BasePage } from '../BasePage.ts';
 import { MODEL_PATH } from '../../config/constants.ts';
 import { Button, Link, TextField } from '../../components/fields.ts';
 import { NavigationBar } from '../../components/NavigationBar.generated.ts';
-import { RecordTable } from '../../components/RecordTable.ts';
-import { TABLE_SHAPE } from '../../components/locator-templates.generated.ts';
 
 export class GlobalStreamPageGenerated extends BasePage {
   readonly path = '/#GlobalStream';
@@ -17,10 +15,6 @@ export class GlobalStreamPageGenerated extends BasePage {
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in GlobalStreamPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'GlobalStreamPage', expectedUrl: '/#GlobalStream', modelPath: MODEL_PATH });
-  readonly espoCRMDemo = new RecordTable(this.page, 'espoCRMDemo', { shape: TABLE_SHAPE, columns: [], keyColumn: null, screen: 'GlobalStreamPage', expectedUrl: '/#GlobalStream', modelPath: MODEL_PATH });
-  readonly espoCRMDemo2 = new RecordTable(this.page, 'espoCRMDemo2', { shape: TABLE_SHAPE, columns: [], keyColumn: null, screen: 'GlobalStreamPage', expectedUrl: '/#GlobalStream', modelPath: MODEL_PATH });
-  readonly espoCRMDemo3 = new RecordTable(this.page, 'espoCRMDemo3', { shape: TABLE_SHAPE, columns: [], keyColumn: null, screen: 'GlobalStreamPage', expectedUrl: '/#GlobalStream', modelPath: MODEL_PATH });
-  readonly espoCRMDemo4 = new RecordTable(this.page, 'espoCRMDemo4', { shape: TABLE_SHAPE, columns: [], keyColumn: null, screen: 'GlobalStreamPage', expectedUrl: '/#GlobalStream', modelPath: MODEL_PATH });
   readonly textFilter = new TextField(this.page, { field: 'textFilter' }, { screen: 'GlobalStreamPage', expectedUrl: '/#GlobalStream', modelPath: MODEL_PATH });
   readonly search = new Button(this.page, { label: 'Search' }, { screen: 'GlobalStreamPage', expectedUrl: '/#GlobalStream', modelPath: MODEL_PATH });
   readonly jackAdams = new Link(this.page, { label: 'Jack Adams' }, { screen: 'GlobalStreamPage', expectedUrl: '/#GlobalStream', modelPath: MODEL_PATH });

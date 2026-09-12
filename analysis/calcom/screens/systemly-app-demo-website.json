@@ -1,0 +1,4386 @@
+{
+  "url": "https://cal.com/systemly.app/demo-website",
+  "path": "/systemly.app/demo-website",
+  "title": "Demo Website | Logan | Cal.com",
+  "headings": [
+    {
+      "level": 1,
+      "text": "Demo Website"
+    }
+  ],
+  "tables": [],
+  "regions": {
+    "main": 57,
+    "header": 3
+  },
+  "elements": [
+    {
+      "index": 0,
+      "tag": "button",
+      "type": "button",
+      "role": "switch",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": "radix-_r_1_",
+      "nameAttr": null,
+      "testId": "overlay-calendar-switch",
+      "data": {
+        "data-state": "unchecked",
+        "data-testid": "overlay-calendar-switch"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 960,
+        "y": 21,
+        "w": 44,
+        "h": 24
+      },
+      "locator": {
+        "strategy": "testId",
+        "expression": "getByTestId('overlay-calendar-switch')",
+        "matchCount": 1,
+        "args": [
+          "overlay-calendar-switch"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('overlay-calendar-switch')",
+          "matchCount": 1,
+          "args": [
+            "overlay-calendar-switch"
+          ]
+        },
+        {
+          "strategy": "attribute",
+          "expression": "locator('#radix-_r_1_')",
+          "matchCount": 1,
+          "args": [
+            "#radix-_r_1_"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('#radix-_r_1_')",
+          "matchCount": 1,
+          "args": [
+            "#radix-_r_1_"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "tag": "div",
+      "type": null,
+      "role": "group",
+      "name": "Layout",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-orientation": "horizontal"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1166,
+        "y": 16,
+        "w": 98,
+        "h": 34
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('group', { name: 'Layout', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "group",
+          "Layout"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('group', { name: 'Layout', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "group",
+            "Layout"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('main.flex.h-full > div.main.text-default > div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:header\\\\].fixed:nth-of-type(1) > div.flex > div.bg-muted.rounded-lg:nth-of-type(2)')",
+          "matchCount": 1,
+          "args": [
+            "main.flex.h-full > div.main.text-default > div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:header\\].fixed:nth-of-type(1) > div.flex > div.bg-muted.rounded-lg:nth-of-type(2)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "tag": "button",
+      "type": "button",
+      "role": "radio",
+      "name": "$Switch to monthly view",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "toggle-group-item-month_view",
+      "data": {
+        "data-state": "closed",
+        "data-testid": "toggle-group-item-month_view",
+        "data-orientation": "horizontal",
+        "data-radix-collection-item": ""
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1168,
+        "y": 18,
+        "w": 30,
+        "h": 30
+      },
+      "locator": {
+        "strategy": "testId",
+        "expression": "getByTestId('toggle-group-item-month_view')",
+        "matchCount": 1,
+        "args": [
+          "toggle-group-item-month_view"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('toggle-group-item-month_view')",
+          "matchCount": 1,
+          "args": [
+            "toggle-group-item-month_view"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('radio', { name: '$Switch to monthly view', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "radio",
+            "$Switch to monthly view"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('$Switch to monthly view', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "$Switch to monthly view"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.main.text-default > div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:header\\\\].fixed:nth-of-type(1) > div.flex > div.bg-muted.rounded-lg:nth-of-type(2) > button.aria-checked\\\\:bg-default.aria-checked\\\\:border-subtle:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div.main.text-default > div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:header\\].fixed:nth-of-type(1) > div.flex > div.bg-muted.rounded-lg:nth-of-type(2) > button.aria-checked\\:bg-default.aria-checked\\:border-subtle:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "tag": "button",
+      "type": "button",
+      "role": "radio",
+      "name": "$Switch to weekly view",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "toggle-group-item-week_view",
+      "data": {
+        "data-state": "closed",
+        "data-testid": "toggle-group-item-week_view",
+        "data-orientation": "horizontal",
+        "data-radix-collection-item": ""
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1200,
+        "y": 18,
+        "w": 30,
+        "h": 30
+      },
+      "locator": {
+        "strategy": "testId",
+        "expression": "getByTestId('toggle-group-item-week_view')",
+        "matchCount": 1,
+        "args": [
+          "toggle-group-item-week_view"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('toggle-group-item-week_view')",
+          "matchCount": 1,
+          "args": [
+            "toggle-group-item-week_view"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('radio', { name: '$Switch to weekly view', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "radio",
+            "$Switch to weekly view"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('$Switch to weekly view', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "$Switch to weekly view"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.main.text-default > div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:header\\\\].fixed:nth-of-type(1) > div.flex > div.bg-muted.rounded-lg:nth-of-type(2) > button.aria-checked\\\\:bg-default.aria-checked\\\\:border-subtle:nth-of-type(2)')",
+          "matchCount": 1,
+          "args": [
+            "div.main.text-default > div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:header\\].fixed:nth-of-type(1) > div.flex > div.bg-muted.rounded-lg:nth-of-type(2) > button.aria-checked\\:bg-default.aria-checked\\:border-subtle:nth-of-type(2)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "tag": "button",
+      "type": "button",
+      "role": "radio",
+      "name": "$Switch to column view",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "toggle-group-item-column_view",
+      "data": {
+        "data-state": "closed",
+        "data-testid": "toggle-group-item-column_view",
+        "data-orientation": "horizontal",
+        "data-radix-collection-item": ""
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1232,
+        "y": 18,
+        "w": 30,
+        "h": 30
+      },
+      "locator": {
+        "strategy": "testId",
+        "expression": "getByTestId('toggle-group-item-column_view')",
+        "matchCount": 1,
+        "args": [
+          "toggle-group-item-column_view"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('toggle-group-item-column_view')",
+          "matchCount": 1,
+          "args": [
+            "toggle-group-item-column_view"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('radio', { name: '$Switch to column view', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "radio",
+            "$Switch to column view"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('$Switch to column view', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "$Switch to column view"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.main.text-default > div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:header\\\\].fixed:nth-of-type(1) > div.flex > div.bg-muted.rounded-lg:nth-of-type(2) > button.aria-checked\\\\:bg-default.aria-checked\\\\:border-subtle:nth-of-type(3)')",
+          "matchCount": 1,
+          "args": [
+            "div.main.text-default > div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:header\\].fixed:nth-of-type(1) > div.flex > div.bg-muted.rounded-lg:nth-of-type(2) > button.aria-checked\\:bg-default.aria-checked\\:border-subtle:nth-of-type(3)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Logan",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "avatar-href",
+      "data": {
+        "data-testid": "avatar-href",
+        "data-state": "closed"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://cal.com/systemly.app?redirect=false",
+      "box": {
+        "x": 145,
+        "y": 107,
+        "w": 24,
+        "h": 20
+      },
+      "locator": {
+        "strategy": "testId",
+        "expression": "getByTestId('avatar-href')",
+        "matchCount": 1,
+        "args": [
+          "avatar-href"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('avatar-href')",
+          "matchCount": 1,
+          "args": [
+            "avatar-href"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Logan', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Logan"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.\\\\[grid-area\\\\:meta\\\\].max-w-screen > div.relative > div > ul.flex.items-center > li.inline-block > a')",
+          "matchCount": 1,
+          "args": [
+            "div.\\[grid-area\\:meta\\].max-w-screen > div.relative > div > ul.flex.items-center > li.inline-block > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "tag": "div",
+      "type": null,
+      "role": "region",
+      "name": "Description",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 145,
+        "y": 201,
+        "w": 232,
+        "h": 100
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('region', { name: 'Description', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "region",
+          "Description"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('region', { name: 'Description', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "region",
+            "Description"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.relative > div > div.flex.items-start:nth-of-type(1) > div.relative.max-w-full > div.relative > div.wrap-break-word.scroll-bar')",
+          "matchCount": 1,
+          "args": [
+            "div.relative > div > div.flex.items-start:nth-of-type(1) > div.relative.max-w-full > div.relative > div.wrap-break-word.scroll-bar"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "tag": "input",
+      "type": "text",
+      "role": "combobox",
+      "name": "Timezone Select",
+      "label": null,
+      "placeholder": null,
+      "id": "react-select-2-input",
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 169,
+        "y": 403,
+        "w": 4,
+        "h": 24
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('combobox', { name: 'Timezone Select', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "combobox",
+          "Timezone Select"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('combobox', { name: 'Timezone Select', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "combobox",
+            "Timezone Select"
+          ]
+        },
+        {
+          "strategy": "attribute",
+          "expression": "locator('#react-select-2-input')",
+          "matchCount": 1,
+          "args": [
+            "#react-select-2-input"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('#react-select-2-input')",
+          "matchCount": 1,
+          "args": [
+            "#react-select-2-input"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "View previous month",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "decrementMonth",
+      "data": {
+        "data-testid": "decrementMonth"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 788,
+        "y": 93,
+        "w": 36,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "testId",
+        "expression": "getByTestId('decrementMonth')",
+        "matchCount": 1,
+        "args": [
+          "decrementMonth"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('decrementMonth')",
+          "matchCount": 1,
+          "args": [
+            "decrementMonth"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'View previous month', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "View previous month"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.flex.items-center:nth-of-type(1) > div.text-emphasis > div.flex > button.group.whitespace-nowrap:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.flex.items-center:nth-of-type(1) > div.text-emphasis > div.flex > button.group.whitespace-nowrap:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "View next month",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "incrementMonth",
+      "data": {
+        "data-testid": "incrementMonth"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 824,
+        "y": 93,
+        "w": 36,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "testId",
+        "expression": "getByTestId('incrementMonth')",
+        "matchCount": 1,
+        "args": [
+          "incrementMonth"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('incrementMonth')",
+          "matchCount": 1,
+          "args": [
+            "incrementMonth"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'View next month', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "View next month"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.flex.items-center:nth-of-type(1) > div.text-emphasis > div.flex > button.group.whitespace-nowrap:nth-of-type(2)')",
+          "matchCount": 1,
+          "args": [
+            "div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.flex.items-center:nth-of-type(1) > div.text-emphasis > div.flex > button.group.whitespace-nowrap:nth-of-type(2)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "1",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 548,
+        "y": 181,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '1', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "1"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '1', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "1"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('1', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "1"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(3) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(3) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "2",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 611,
+        "y": 181,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '2', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "2"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '2', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "2"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('2', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "2"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(4) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(4) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "3",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 674,
+        "y": 181,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '3', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "3"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '3', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "3"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('3', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "3"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(5) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(5) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "4",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 737,
+        "y": 181,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '4', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "4"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '4', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "4"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('4', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "4"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(6) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(6) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "5",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 801,
+        "y": 181,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '5', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "5"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '5', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "5"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('5', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "5"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(7) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(7) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "6",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 421,
+        "y": 244,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '6', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "6"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '6', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "6"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('6', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "6"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(8) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(8) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "7",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 484,
+        "y": 244,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '7', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "7"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '7', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "7"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('7', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "7"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(9) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(9) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "8",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 548,
+        "y": 244,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '8', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "8"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '8', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "8"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('8', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "8"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(10) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(10) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "9",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 611,
+        "y": 244,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '9', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "9"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '9', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "9"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('9', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "9"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(11) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(11) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "10",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 674,
+        "y": 244,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '10', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "10"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '10', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "10"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('10', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "10"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(12) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(12) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "11",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 737,
+        "y": 244,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '11', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "11"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '11', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "11"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('11', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "11"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(13) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(13) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "12",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 801,
+        "y": 244,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '12', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "12"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '12', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "12"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('12', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "12"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(14) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(14) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "13Today",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 421,
+        "y": 308,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '13Today', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "13Today"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '13Today', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "13Today"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('13Today', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "13Today"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(15) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(15) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "14",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 484,
+        "y": 308,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '14', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "14"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '14', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "14"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('14', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "14"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(16) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(16) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "15",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 548,
+        "y": 308,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '15', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "15"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '15', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "15"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('15', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "15"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(17) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(17) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "16",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 611,
+        "y": 308,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '16', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "16"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '16', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "16"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('16', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "16"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(18) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(18) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "17",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 674,
+        "y": 308,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '17', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "17"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '17', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "17"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('17', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "17"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(19) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(19) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "18",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 737,
+        "y": 308,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '18', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "18"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '18', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "18"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('18', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "18"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(20) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(20) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "19",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 801,
+        "y": 308,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '19', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "19"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '19', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "19"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('19', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "19"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(21) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(21) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "20",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 421,
+        "y": 371,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '20', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "20"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '20', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "20"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('20', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "20"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(22) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(22) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "21",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 484,
+        "y": 371,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '21', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "21"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '21', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "21"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('21', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "21"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(23) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(23) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "22",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 548,
+        "y": 371,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '22', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "22"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '22', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "22"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('22', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "22"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(24) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(24) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 32,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "23",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 611,
+        "y": 371,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '23', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "23"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '23', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "23"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('23', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "23"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(25) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(25) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "24",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 674,
+        "y": 371,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '24', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "24"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '24', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "24"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('24', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "24"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(26) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(26) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "25",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 737,
+        "y": 371,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '25', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "25"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '25', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "25"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('25', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "25"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(27) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(27) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "26",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 801,
+        "y": 371,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '26', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "26"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '26', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "26"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('26', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "26"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(28) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(28) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "27",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "true"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 421,
+        "y": 434,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '27', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "27"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '27', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "27"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('27', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "27"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(29) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(29) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "28",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 484,
+        "y": 434,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '28', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "28"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '28', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "28"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('28', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "28"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(30) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(30) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 38,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "29",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 548,
+        "y": 434,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '29', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "29"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '29', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "29"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('29', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "29"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(31) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(31) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "30",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "day",
+      "data": {
+        "data-testid": "day",
+        "data-disabled": "false"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 611,
+        "y": 434,
+        "w": 59,
+        "h": 59
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '30', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "30"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('day')",
+          "matchCount": 30,
+          "args": [
+            "day"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '30', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "30"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('30', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "30"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:main\\\\].md\\\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(32) > button.disabled\\\\:text-bookinglighter.absolute')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:main\\].md\\:border-subtle:nth-of-type(3) > div > div.relative.grid:nth-of-type(3) > div.relative.w-full:nth-of-type(32) > button.disabled\\:text-bookinglighter.absolute"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 40,
+      "tag": "div",
+      "type": null,
+      "role": "group",
+      "name": "Time format",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-orientation": "horizontal"
+      },
+      "region": "header",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1057,
+        "y": 93,
+        "w": 83,
+        "h": 32
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('group', { name: 'Time format', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "group",
+          "Time format"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('group', { name: 'Time format', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "group",
+            "Time format"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('12h24h', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "12h24h"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.bg-default.dark\\\\:bg-cal-muted > div.\\\\[grid-area\\\\:timeslots\\\\].flex:nth-of-type(4) > div.flex.undefined:nth-of-type(1) > header.dark\\\\:bg-cal-muted.dark\\\\:before\\\\:bg-cal-muted > div.ml-auto.rtl\\\\:mr-auto > div.bg-muted.rounded-lg')",
+          "matchCount": 1,
+          "args": [
+            "div.bg-default.dark\\:bg-cal-muted > div.\\[grid-area\\:timeslots\\].flex:nth-of-type(4) > div.flex.undefined:nth-of-type(1) > header.dark\\:bg-cal-muted.dark\\:before\\:bg-cal-muted > div.ml-auto.rtl\\:mr-auto > div.bg-muted.rounded-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "tag": "button",
+      "type": "button",
+      "role": "radio",
+      "name": "12h",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "toggle-group-item-h:mma",
+      "data": {
+        "data-state": "on",
+        "data-testid": "toggle-group-item-h:mma",
+        "data-orientation": "horizontal",
+        "data-radix-collection-item": ""
+      },
+      "region": "header",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1059,
+        "y": 95,
+        "w": 37,
+        "h": 28
+      },
+      "locator": {
+        "strategy": "testId",
+        "expression": "getByTestId('toggle-group-item-h:mma')",
+        "matchCount": 1,
+        "args": [
+          "toggle-group-item-h:mma"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('toggle-group-item-h:mma')",
+          "matchCount": 1,
+          "args": [
+            "toggle-group-item-h:mma"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('radio', { name: '12h', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "radio",
+            "12h"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('12h', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "12h"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.\\\\[grid-area\\\\:timeslots\\\\].flex:nth-of-type(4) > div.flex.undefined:nth-of-type(1) > header.dark\\\\:bg-cal-muted.dark\\\\:before\\\\:bg-cal-muted > div.ml-auto.rtl\\\\:mr-auto > div.bg-muted.rounded-lg > button.aria-checked\\\\:bg-default.aria-checked\\\\:border-subtle:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div.\\[grid-area\\:timeslots\\].flex:nth-of-type(4) > div.flex.undefined:nth-of-type(1) > header.dark\\:bg-cal-muted.dark\\:before\\:bg-cal-muted > div.ml-auto.rtl\\:mr-auto > div.bg-muted.rounded-lg > button.aria-checked\\:bg-default.aria-checked\\:border-subtle:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 42,
+      "tag": "button",
+      "type": "button",
+      "role": "radio",
+      "name": "24h",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "toggle-group-item-HH:mm",
+      "data": {
+        "data-state": "off",
+        "data-testid": "toggle-group-item-HH:mm",
+        "data-orientation": "horizontal",
+        "data-radix-collection-item": ""
+      },
+      "region": "header",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1098,
+        "y": 95,
+        "w": 40,
+        "h": 28
+      },
+      "locator": {
+        "strategy": "testId",
+        "expression": "getByTestId('toggle-group-item-HH:mm')",
+        "matchCount": 1,
+        "args": [
+          "toggle-group-item-HH:mm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('toggle-group-item-HH:mm')",
+          "matchCount": 1,
+          "args": [
+            "toggle-group-item-HH:mm"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('radio', { name: '24h', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "radio",
+            "24h"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('24h', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "24h"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.\\\\[grid-area\\\\:timeslots\\\\].flex:nth-of-type(4) > div.flex.undefined:nth-of-type(1) > header.dark\\\\:bg-cal-muted.dark\\\\:before\\\\:bg-cal-muted > div.ml-auto.rtl\\\\:mr-auto > div.bg-muted.rounded-lg > button.aria-checked\\\\:bg-default.aria-checked\\\\:border-subtle:nth-of-type(2)')",
+          "matchCount": 1,
+          "args": [
+            "div.\\[grid-area\\:timeslots\\].flex:nth-of-type(4) > div.flex.undefined:nth-of-type(1) > header.dark\\:bg-cal-muted.dark\\:before\\:bg-cal-muted > div.ml-auto.rtl\\:mr-auto > div.bg-muted.rounded-lg > button.aria-checked\\:bg-default.aria-checked\\:border-subtle:nth-of-type(2)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "4:00pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T13:00:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 137,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '4:00pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "4:00pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '4:00pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "4:00pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('4:00pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "4:00pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(1) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(1) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 44,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "4:30pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T13:30:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 181,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '4:30pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "4:30pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '4:30pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "4:30pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('4:30pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "4:30pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(2) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(2) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 45,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "5:00pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T14:00:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 225,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '5:00pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "5:00pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '5:00pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "5:00pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('5:00pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "5:00pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(3) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(3) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 46,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "5:30pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T14:30:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 269,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '5:30pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "5:30pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '5:30pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "5:30pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('5:30pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "5:30pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(4) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(4) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 47,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "6:00pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T15:00:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 313,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '6:00pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "6:00pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '6:00pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "6:00pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('6:00pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "6:00pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(5) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(5) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 48,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "6:30pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T15:30:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 357,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '6:30pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "6:30pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '6:30pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "6:30pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('6:30pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "6:30pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(6) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(6) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 49,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "7:00pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T16:00:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 401,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '7:00pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "7:00pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '7:00pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "7:00pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('7:00pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "7:00pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(7) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(7) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 50,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "7:30pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T16:30:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 445,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '7:30pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "7:30pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '7:30pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "7:30pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('7:30pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "7:30pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(8) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(8) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 51,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "8:00pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T17:00:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 489,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '8:00pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "8:00pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '8:00pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "8:00pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('8:00pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "8:00pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(9) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(9) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 52,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "8:30pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T17:30:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 533,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '8:30pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "8:30pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '8:30pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "8:30pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('8:30pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "8:30pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(10) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(10) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 53,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "9:00pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T18:00:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 577,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '9:00pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "9:00pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '9:00pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "9:00pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('9:00pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "9:00pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(11) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(11) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 54,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "9:30pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T18:30:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 621,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '9:30pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "9:30pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '9:30pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "9:30pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('9:30pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "9:30pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(12) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(12) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 55,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "10:00pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T19:00:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 665,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '10:00pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "10:00pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '10:00pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "10:00pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('10:00pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "10:00pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(13) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(13) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 56,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "10:30pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T19:30:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 709,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '10:30pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "10:30pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '10:30pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "10:30pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('10:30pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "10:30pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(14) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(14) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 57,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "11:00pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T20:00:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 753,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '11:00pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "11:00pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '11:00pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "11:00pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('11:00pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "11:00pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(15) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(15) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 58,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "11:30pm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": "time",
+      "data": {
+        "data-testid": "time",
+        "data-disabled": "false",
+        "data-time": "2026-09-14T20:30:00.000Z"
+      },
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 901,
+        "y": 797,
+        "w": 239,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '11:30pm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "11:30pm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "testId",
+          "expression": "getByTestId('time')",
+          "matchCount": 16,
+          "args": [
+            "time"
+          ]
+        },
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '11:30pm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "11:30pm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('11:30pm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "11:30pm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(16) > button.group.whitespace-nowrap')",
+          "matchCount": 1,
+          "args": [
+            "div.no-scrollbar.grow:nth-of-type(2) > div.no-scrollbar.overflow-x-hidden\\! > div.text-default.flex > div.h-full > div.flex.items-center:nth-of-type(16) > button.group.whitespace-nowrap"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 59,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Cal.com Logo",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "main",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://go.cal.com/booking",
+      "box": {
+        "x": 606,
+        "y": 602,
+        "w": 69,
+        "h": 15
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Cal.com Logo', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Cal.com Logo"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Cal.com Logo', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Cal.com Logo"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div:nth-of-type(2) > main.flex.h-full > div.main.text-default > span.mt-auto.block > div.text-center.text-xs > a.text-subtle')",
+          "matchCount": 1,
+          "args": [
+            "div:nth-of-type(2) > main.flex.h-full > div.main.text-default > span.mt-auto.block > div.text-center.text-xs > a.text-subtle"
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "href": "https://cal.com/systemly.app?redirect=false",
+      "resolved": "https://cal.com/systemly.app?redirect=false",
+      "text": ""
+    },
+    {
+      "href": "https://go.cal.com/booking",
+      "resolved": "https://go.cal.com/booking",
+      "text": ""
+    }
+  ],
+  "stats": {
+    "elements": 60,
+    "visible": 60,
+    "hidden": 0,
+    "semantic": 60,
+    "fragile": 0,
+    "ambiguous": 0,
+    "withTestId": 55
+  }
+}

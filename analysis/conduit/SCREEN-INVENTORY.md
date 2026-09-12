@@ -4,7 +4,7 @@
 
 - **App:** Conduit (RealWorld, Angular)
 - **Base URL:** https://demo.realworld.show/
-- **Generated:** 2026-09-12T21:38:46.727Z
+- **Generated:** 2026-09-12T21:51:39.410Z
 - **Screens crawled:** 15
 - **Screens failed:** 0
 

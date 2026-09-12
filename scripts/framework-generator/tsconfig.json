@@ -1,9 +1,5 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": [
-    "./**/*.ts",
-    "./bin.js",
-    "../project-config.ts",
-    "../repo-analyzer/types.ts"
-  ]
+  "include": ["./*.ts", "./emit/*.ts", "../model-compiler/*.ts"],
+  "exclude": ["./emit/runtime"]
 }

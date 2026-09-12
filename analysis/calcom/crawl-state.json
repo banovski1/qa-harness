@@ -1,0 +1,139 @@
+{
+  "pending": [],
+  "queued": {
+    "root": true,
+    "systemly-app-demo-website": true,
+    "systemly-app": true,
+    "enterprise": true,
+    "ai": true,
+    "pricing": true,
+    "blog-calcom-v6-8": true,
+    "talk-to-sales": true
+  },
+  "visited": {
+    "root": {
+      "url": "https://cal.com/",
+      "title": "Cal.com | Scheduling Software for Online Bookings",
+      "settled": true,
+      "stats": {
+        "elements": 100,
+        "visible": 96,
+        "hidden": 4,
+        "semantic": 72,
+        "fragile": 18,
+        "ambiguous": 6,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "systemly-app-demo-website": {
+      "url": "https://cal.com/systemly.app/demo-website",
+      "title": "Demo Website | Logan | Cal.com",
+      "settled": true,
+      "stats": {
+        "elements": 60,
+        "visible": 60,
+        "hidden": 0,
+        "semantic": 60,
+        "fragile": 0,
+        "ambiguous": 0,
+        "withTestId": 55
+      },
+      "depth": 0
+    },
+    "systemly-app": {
+      "url": "https://cal.com/systemly.app",
+      "title": "Logan | Cal.com",
+      "settled": true,
+      "stats": {
+        "elements": 5,
+        "visible": 5,
+        "hidden": 0,
+        "semantic": 5,
+        "fragile": 0,
+        "ambiguous": 0,
+        "withTestId": 5
+      },
+      "depth": 0
+    },
+    "enterprise": {
+      "url": "https://cal.com/enterprise",
+      "title": "Cal.com for Enterprise",
+      "settled": true,
+      "stats": {
+        "elements": 102,
+        "visible": 98,
+        "hidden": 4,
+        "semantic": 68,
+        "fragile": 20,
+        "ambiguous": 10,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "ai": {
+      "url": "https://cal.com/ai",
+      "title": "AI-Powered Phone Calls for Automated Scheduling | Cal.ai",
+      "settled": false,
+      "stats": {
+        "elements": 101,
+        "visible": 99,
+        "hidden": 2,
+        "semantic": 74,
+        "fragile": 18,
+        "ambiguous": 7,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "pricing": {
+      "url": "https://cal.com/pricing",
+      "title": "Pricing | Cal.com",
+      "settled": true,
+      "stats": {
+        "elements": 104,
+        "visible": 102,
+        "hidden": 2,
+        "semantic": 72,
+        "fragile": 30,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "blog-calcom-v6-8": {
+      "url": "https://cal.com/blog/calcom-v6-8",
+      "title": "Cal.com v6.8 - Cal Events, New troubleshooter, AI chat in routing forms & more | Cal.com - Scheduling Software for Online Bookings",
+      "settled": true,
+      "stats": {
+        "elements": 91,
+        "visible": 89,
+        "hidden": 2,
+        "semantic": 81,
+        "fragile": 7,
+        "ambiguous": 1,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "talk-to-sales": {
+      "url": "https://cal.com/talk-to-sales",
+      "title": "Talk to Sales | Cal.com",
+      "settled": true,
+      "stats": {
+        "elements": 98,
+        "visible": 85,
+        "hidden": 13,
+        "semantic": 75,
+        "fragile": 10,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    }
+  },
+  "failed": {},
+  "authenticated": true,
+  "startedAt": "2026-09-12T21:46:11.694Z",
+  "finishedAt": "2026-09-12T21:47:29.281Z"
+}

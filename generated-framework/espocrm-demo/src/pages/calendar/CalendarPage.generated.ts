@@ -19,9 +19,6 @@ export class CalendarPageGenerated extends BasePage {
   readonly navigation = new NavigationBar(this.page, { screen: 'CalendarPage', expectedUrl: '/#Calendar', modelPath: MODEL_PATH });
   readonly calendar = new RecordTable(this.page, 'calendar', { shape: TABLE_SHAPE, columns: ["37Mon 07Tue 08Wed 09Thu 10Fri 11Sat 12Sun 13","37","Mon 07","Tue 08","Wed 09","Thu 10","Fri 11","Sat 12","Sun 13"], keyColumn: '37Mon 07Tue 08Wed 09Thu 10Fri 11Sat 12Sun 13', screen: 'CalendarPage', expectedUrl: '/#Calendar', modelPath: MODEL_PATH });
   readonly calendar2 = new RecordTable(this.page, 'calendar2', { shape: TABLE_SHAPE, columns: ["37","Mon 07","Tue 08","Wed 09","Thu 10","Fri 11","Sat 12","Sun 13"], keyColumn: '37', screen: 'CalendarPage', expectedUrl: '/#Calendar', modelPath: MODEL_PATH });
-  readonly calendar3 = new RecordTable(this.page, 'calendar3', { shape: TABLE_SHAPE, columns: [], keyColumn: null, screen: 'CalendarPage', expectedUrl: '/#Calendar', modelPath: MODEL_PATH });
-  readonly calendar4 = new RecordTable(this.page, 'calendar4', { shape: TABLE_SHAPE, columns: [], keyColumn: null, screen: 'CalendarPage', expectedUrl: '/#Calendar', modelPath: MODEL_PATH });
-  readonly calendar5 = new RecordTable(this.page, 'calendar5', { shape: TABLE_SHAPE, columns: [], keyColumn: null, screen: 'CalendarPage', expectedUrl: '/#Calendar', modelPath: MODEL_PATH });
   readonly todayTo = new Button(this.page, { label: 'TodayTo' }, { screen: 'CalendarPage', expectedUrl: '/#Calendar', modelPath: MODEL_PATH });
   readonly monthMo = new Button(this.page, { label: 'MonthMo' }, { screen: 'CalendarPage', expectedUrl: '/#Calendar', modelPath: MODEL_PATH });
   readonly weekWe = new Button(this.page, { label: 'WeekWe' }, { screen: 'CalendarPage', expectedUrl: '/#Calendar', modelPath: MODEL_PATH });

@@ -2,6 +2,18 @@
   {
     "screen": "root",
     "method": "GET",
+    "url": "https://api.realworld.show/api/tags",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "tags": [
+        "string"
+      ]
+    }
+  },
+  {
+    "screen": "root",
+    "method": "GET",
     "url": "https://api.realworld.show/api/articles?limit=10&offset=0",
     "status": 200,
     "requestShape": null,
@@ -30,21 +42,9 @@
     }
   },
   {
-    "screen": "root",
-    "method": "GET",
-    "url": "https://api.realworld.show/api/tags",
-    "status": 200,
-    "requestShape": null,
-    "responseShape": {
-      "tags": [
-        "string"
-      ]
-    }
-  },
-  {
     "screen": "article-how-to-train-your-dragon",
     "method": "GET",
-    "url": "https://api.realworld.show/api/articles/how-to-train-your-dragon",
+    "url": "https://api.realworld.show/api/articles/how-to-train-your-dragon/comments",
     "status": 404,
     "requestShape": null,
     "responseShape": {

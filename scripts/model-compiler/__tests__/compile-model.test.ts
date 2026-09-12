@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, writeFileSync, mkdirSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { compile, assertNoSelectors, pickKeyColumn, assignPageNames, pathIdentity } from '../compile-model.ts';
@@ -144,4 +144,34 @@ test('a declared route the crawl never reached is still a page, flagged', () => 
 test('compiling twice gives byte-identical output', () => {
   const dir = fixture();
   assert.equal(JSON.stringify(compile(dir, 'T')), JSON.stringify(compile(dir, 'T')));
+});
+
+test('a layout table with no header row is not a collection', () => {
+  const dir = fixture();
+  const file = join(dir, 'screens', 'contacts.json');
+  const screen = JSON.parse(readFileSync(file, 'utf8'));
+  screen.tables.push({ columns: [], rowCount: 2 });
+  writeFileSync(file, JSON.stringify(screen));
+  const m = compile(dir, 'T');
+  assert.equal(m.screens.find(s => s.path === '/contacts')!.uses.filter(u => u.component === 'RecordTable').length, 1);
+});
+
+test('a route made only of parameters is still named', () => {
+  const n = assignPageNames(['/{user}/{type}', '/{user}']);
+  assert.equal(n.get('/{user}'), 'UserPage');
+  assert.equal(n.get('/{user}/{type}'), 'TypePage');
+});
+
+test('a crawled record URL folds onto its declared parameterised route', () => {
+  const dir = fixture();
+  writeFileSync(join(dir, 'routes.json'), JSON.stringify({
+    routes: [{ path: '/contacts' }, { path: '/contacts/add' }, { path: '/contacts/{id}' }],
+  }));
+  const screen = JSON.parse(readFileSync(join(dir, 'screens', 'contacts.json'), 'utf8'));
+  writeFileSync(join(dir, 'screens', 'one.json'), JSON.stringify({ ...screen, path: '/contacts/42', title: 'Ada' }));
+  const m = compile(dir, 'T');
+  const detail = m.screens.find(s => s.path === '/contacts/{id}')!;
+  assert.equal(detail.crawled, true);
+  assert.deepEqual(detail.aliases, ['/contacts/42']);
+  assert.ok(!m.screens.some(s => s.path === '/contacts/42'));
 });

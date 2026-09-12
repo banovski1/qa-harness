@@ -9,6 +9,7 @@ import { join } from 'node:path';
 // working login instead of a placeholder.
 // @ts-ignore -- a deliberately small YAML reader, shared with the explorer
 import { parseYaml } from '../../.claude/skills/app-explorer/lib/yaml-lite.mjs';
+import { renderReport } from './render-report.ts';
 import type { AppModel, ComponentDef, ComponentUse, Screen, LocatorSpec } from './model-types.ts';
 
 /** A region is shared when it recurs on this many screens... */
@@ -67,7 +68,14 @@ export function pathIdentity(path: string): string {
 
 /** Named from trailing segments, extended toward the root only while two pages collide. */
 export function assignPageNames(paths: string[]): Map<string, string> {
-  const segs = new Map(paths.map(p => [p, pathIdentity(p).split('/').filter(Boolean)]));
+  // A route made only of parameters ("/{user}/{type}") has no literal segment to be
+  // named from, but the parameter names describe it perfectly well.
+  const nameSegs = (p: string) => {
+    const literal = pathIdentity(p).split('/').filter(Boolean);
+    if (literal.length) return literal;
+    return p.split('/').filter(Boolean).map(seg => seg.replace(/[{:}]/g, ''));
+  };
+  const segs = new Map(paths.map(p => [p, nameSegs(p)]));
   const out = new Map<string, string>();
   const taken = new Set<string>();
   const depthOf = new Map(paths.map(p => [p, 1]));
@@ -294,6 +302,10 @@ export function compile(appDir: string, now = new Date().toISOString()): AppMode
     if (crawl) {
       for (const t of crawl.tables ?? []) {
         if (!components.RecordTable) break;
+        // A <table> with no header row is a layout table: the app is using it to place
+        // things, not to list records. It has no rows to address and no key to address
+        // them by, so it is not a collection.
+        if (pickKeyColumn(t.columns ?? []) === null) continue;
         uses.push({
           component: 'RecordTable',
           as: uniqueProp(taken, camel(crawl.title || 'records') || 'records'),
@@ -422,5 +434,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const model = compile(dir);
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, 'app-model.json'), JSON.stringify(model, null, 2) + '\n');
+  writeFileSync(join(dir, 'ANALYSIS.md'), renderReport(dir, model));
   console.log(`app-model.json  ${JSON.stringify(model.stats)}`);
 }

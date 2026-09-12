@@ -1,0 +1,41 @@
+{
+  "app": "calcom",
+  "generatedAt": "2026-09-12T21:46:09+00:00",
+  "repoCommit": "b0a34f21c91ae7803f9b7e2c59c2fbd187cce26f",
+  "baseUrl": "https://cal.com",
+  "apiPrefix": "/api/trpc",
+  "tiers": {
+    "A": 0,
+    "B": 0,
+    "C": 0
+  },
+  "auth": {
+    "kind": "session",
+    "scheme": "NextAuth session cookie",
+    "loginEndpoint": {
+      "method": "POST",
+      "path": "/api/auth/callback/credentials",
+      "fields": {
+        "email": "env:APP_USERNAME",
+        "password": "env:APP_PASSWORD",
+        "csrfToken": "from /api/auth/csrf"
+      },
+      "source": "apps/web/app/(use-page-wrapper)/auth/login/page.tsx"
+    },
+    "success": {
+      "status": 302,
+      "cookie": "next-auth.session-token"
+    },
+    "csrf": {
+      "field": "csrfToken",
+      "from": "GET /api/auth/csrf"
+    },
+    "users": [],
+    "note": "No account exists on the public instance, so no test authenticates here. The flow is recorded for a self-hosted deployment."
+  },
+  "endpoints": [],
+  "notes": [
+    "Deliberately empty. The API is tRPC (packages/trpc/server/routers/viewer/*), where each procedure's Zod input schema is the payload \u2014 readable, but no test in this corpus can call it without an account. Listing 400 procedures nothing will invoke would be noise, so this file records where to look instead of guessing. Fill it in when a self-hosted instance exists.",
+    "The separate REST API under apps/api is versioned and documented upstream; prefer it over tRPC for preconditions if one is ever needed."
+  ]
+}

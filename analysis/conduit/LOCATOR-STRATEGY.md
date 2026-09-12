@@ -4,7 +4,7 @@
 
 - **App:** Conduit (RealWorld, Angular)
 - **Base URL:** https://demo.realworld.show/
-- **Generated:** 2026-09-12T21:38:46.729Z
+- **Generated:** 2026-09-12T21:51:39.413Z
 - **Visible interactive controls:** 253
 - **Addressable semantically:** 155 (61%)
 - **Needing a CSS path or still ambiguous:** 98

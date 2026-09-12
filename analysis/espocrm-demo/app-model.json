@@ -5,7 +5,7 @@
     "repoPath": "~/Projects/espocrm",
     "repoCommit": "8b4f900085d2e21097b72c8cc27e14cb1de5cbd8",
     "stack": "backbone / php (bespoke, Slim-like DI container)",
-    "generatedAt": "2026-09-12T21:25:24.870Z"
+    "generatedAt": "2026-09-12T21:52:31.911Z"
   },
   "components": {
     "NavigationBar": {
@@ -296,18 +296,6 @@
         {
           "component": "RecordTable",
           "as": "espoCRMDemo",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo2",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo3",
           "columns": [
             "37Mon 07Tue 08Wed 09Thu 10Fri 11Sat 12Sun 13",
             "37",
@@ -323,7 +311,7 @@
         },
         {
           "component": "RecordTable",
-          "as": "espoCRMDemo4",
+          "as": "espoCRMDemo2",
           "columns": [
             "37",
             "Mon 07",
@@ -335,24 +323,6 @@
             "Sun 13"
           ],
           "keyColumn": "37"
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo5",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo6",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo7",
-          "columns": [],
-          "keyColumn": null
         },
         {
           "component": "Button",
@@ -1065,83 +1035,6 @@
           "as": "navigation"
         },
         {
-          "component": "RecordTable",
-          "as": "administration",
-          "heading": "Administration",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "administration2",
-          "heading": "Administration",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "administration3",
-          "heading": "Administration",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "administration4",
-          "heading": "Administration",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "administration5",
-          "heading": "Administration",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "administration6",
-          "heading": "Administration",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "administration7",
-          "heading": "Administration",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "administration8",
-          "heading": "Administration",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "administration9",
-          "heading": "Administration",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "administration10",
-          "heading": "Administration",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "administration11",
-          "heading": "Administration",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
           "component": "TextField",
           "as": "search",
           "label": "Search"
@@ -1318,24 +1211,6 @@
             "Sun 13"
           ],
           "keyColumn": "37"
-        },
-        {
-          "component": "RecordTable",
-          "as": "calendar3",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "calendar4",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "calendar5",
-          "columns": [],
-          "keyColumn": null
         },
         {
           "component": "Button",
@@ -2966,34 +2841,6 @@
           "as": "navigation"
         },
         {
-          "component": "RecordTable",
-          "as": "espoCRMDemo",
-          "heading": "Global Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo2",
-          "heading": "Global Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo3",
-          "heading": "Global Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo4",
-          "heading": "Global Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -4492,13 +4339,6 @@
           "keyColumn": "Prospecting"
         },
         {
-          "component": "RecordTable",
-          "as": "opportunities2",
-          "heading": "Opportunities",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
           "component": "Link",
           "as": "createOpportunity",
           "label": "Create Opportunity"
@@ -5752,83 +5592,6 @@
         {
           "component": "NavigationBar",
           "as": "navigation"
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo",
-          "heading": "Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo2",
-          "heading": "Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo3",
-          "heading": "Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo4",
-          "heading": "Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo5",
-          "heading": "Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo6",
-          "heading": "Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo7",
-          "heading": "Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo8",
-          "heading": "Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo9",
-          "heading": "Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo10",
-          "heading": "Stream",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "espoCRMDemo11",
-          "heading": "Stream",
-          "columns": [],
-          "keyColumn": null
         },
         {
           "component": "Button",
@@ -7187,20 +6950,6 @@
           "as": "navigation"
         },
         {
-          "component": "RecordTable",
-          "as": "jackAdams",
-          "heading": "UsersJack Adams",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
-          "component": "RecordTable",
-          "as": "jackAdams2",
-          "heading": "UsersJack Adams",
-          "columns": [],
-          "keyColumn": null
-        },
-        {
           "component": "Link",
           "as": "users",
           "label": "Users"
@@ -7267,7 +7016,7 @@
         },
         {
           "component": "Link",
-          "as": "jackAdams3",
+          "as": "jackAdams",
           "label": "Jack Adams"
         },
         {
@@ -7282,7 +7031,7 @@
         },
         {
           "component": "Link",
-          "as": "jackAdams4",
+          "as": "jackAdams2",
           "label": "Jack Adams"
         },
         {
@@ -7297,7 +7046,7 @@
         },
         {
           "component": "Link",
-          "as": "jackAdams5",
+          "as": "jackAdams3",
           "label": "Jack Adams"
         },
         {
@@ -7317,7 +7066,7 @@
         },
         {
           "component": "Link",
-          "as": "jackAdams6",
+          "as": "jackAdams4",
           "label": "Jack Adams"
         },
         {
@@ -7337,7 +7086,7 @@
         },
         {
           "component": "Link",
-          "as": "jackAdams7",
+          "as": "jackAdams5",
           "label": "Jack Adams"
         },
         {
@@ -7742,7 +7491,7 @@
     "declaredOnly": 37,
     "components": 10,
     "regions": 1,
-    "uses": 988,
+    "uses": 951,
     "actions": 26,
     "unverified": 464
   }
