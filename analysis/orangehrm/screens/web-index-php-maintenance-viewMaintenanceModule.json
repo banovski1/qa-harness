@@ -1,0 +1,372 @@
+{
+  "url": "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/purgeEmployee",
+  "path": "/web/index.php/maintenance/purgeEmployee",
+  "title": "OrangeHRM",
+  "headings": [],
+  "tables": [],
+  "regions": {
+    "form": 5,
+    "body": 1
+  },
+  "elements": [
+    {
+      "index": 0,
+      "tag": "input",
+      "type": "hidden",
+      "role": null,
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": "_token",
+      "testId": null,
+      "data": {
+        "data-v-68ffc9fb": ""
+      },
+      "region": "form",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "attribute",
+        "expression": "locator('input[name=\\\"_token\\\"]')",
+        "matchCount": 1,
+        "args": [
+          "input[name=\"_token\"]"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": []
+    },
+    {
+      "index": 1,
+      "tag": "input",
+      "type": null,
+      "role": "textbox",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": "username",
+      "testId": null,
+      "data": {
+        "data-v-1f99f73c": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": true,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 440,
+        "y": 307,
+        "w": 400,
+        "h": 45
+      },
+      "locator": {
+        "strategy": "attribute",
+        "expression": "locator('input[name=\\\"username\\\"]')",
+        "matchCount": 1,
+        "args": [
+          "input[name=\"username\"]"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "attribute",
+          "expression": "locator('input[name=\\\"username\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "input[name=\"username\"]"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.orangehrm-card-container:nth-of-type(1) > form.oxd-form > div.oxd-form-row:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
+          "matchCount": 1,
+          "args": [
+            "div.orangehrm-card-container:nth-of-type(1) > form.oxd-form > div.oxd-form-row:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "tag": "input",
+      "type": "password",
+      "role": "textbox",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": "password",
+      "testId": null,
+      "data": {
+        "data-v-1f99f73c": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 440,
+        "y": 392,
+        "w": 400,
+        "h": 45
+      },
+      "locator": {
+        "strategy": "attribute",
+        "expression": "locator('input[name=\\\"password\\\"]')",
+        "matchCount": 1,
+        "args": [
+          "input[name=\"password\"]"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "attribute",
+          "expression": "locator('input[name=\\\"password\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "input[name=\"password\"]"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.orangehrm-card-container:nth-of-type(1) > form.oxd-form > div.oxd-form-row:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--focus')",
+          "matchCount": 1,
+          "args": [
+            "div.orangehrm-card-container:nth-of-type(1) > form.oxd-form > div.oxd-form-row:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--focus"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "Cancel",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-10d463b7": "",
+        "data-v-68ffc9fb": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 440,
+        "y": 453,
+        "w": 197,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Cancel', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Cancel"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Cancel', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Cancel"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Cancel', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Cancel"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('#app > div.orangehrm-admin-access-container:nth-of-type(1) > div.orangehrm-card-container:nth-of-type(1) > form.oxd-form > div.orangehrm-admin-access-button-container:nth-of-type(4) > button.oxd-button.oxd-button--large:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "#app > div.orangehrm-admin-access-container:nth-of-type(1) > div.orangehrm-card-container:nth-of-type(1) > form.oxd-form > div.orangehrm-admin-access-button-container:nth-of-type(4) > button.oxd-button.oxd-button--large:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "tag": "button",
+      "type": "submit",
+      "role": "button",
+      "name": "Confirm",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-10d463b7": "",
+        "data-v-68ffc9fb": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": true,
+      "href": null,
+      "box": {
+        "x": 645,
+        "y": 453,
+        "w": 195,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Confirm', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Confirm"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Confirm', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Confirm"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Confirm', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Confirm"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('#app > div.orangehrm-admin-access-container:nth-of-type(1) > div.orangehrm-card-container:nth-of-type(1) > form.oxd-form > div.orangehrm-admin-access-button-container:nth-of-type(4) > button.oxd-button.oxd-button--large:nth-of-type(2)')",
+          "matchCount": 1,
+          "args": [
+            "#app > div.orangehrm-admin-access-container:nth-of-type(1) > div.orangehrm-card-container:nth-of-type(1) > form.oxd-form > div.orangehrm-admin-access-button-container:nth-of-type(4) > button.oxd-button.oxd-button--large:nth-of-type(2)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "OrangeHRM, Inc",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "http://www.orangehrm.com",
+      "box": {
+        "x": 581,
+        "y": 570,
+        "w": 95,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'OrangeHRM, Inc', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "OrangeHRM, Inc"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'OrangeHRM, Inc', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "OrangeHRM, Inc"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('OrangeHRM, Inc', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "OrangeHRM, Inc"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('#app > div.orangehrm-admin-access-container:nth-of-type(1) > div.orangehrm-copyright-wrapper:nth-of-type(2) > p.oxd-text.oxd-text--p:nth-of-type(2) > a')",
+          "matchCount": 1,
+          "args": [
+            "#app > div.orangehrm-admin-access-container:nth-of-type(1) > div.orangehrm-copyright-wrapper:nth-of-type(2) > p.oxd-text.oxd-text--p:nth-of-type(2) > a"
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "href": "http://www.orangehrm.com",
+      "resolved": "http://www.orangehrm.com/",
+      "text": "OrangeHRM, Inc"
+    }
+  ],
+  "stats": {
+    "elements": 6,
+    "visible": 5,
+    "hidden": 1,
+    "semantic": 3,
+    "fragile": 2,
+    "ambiguous": 0,
+    "withTestId": 0
+  }
+}

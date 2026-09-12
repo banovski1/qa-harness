@@ -1,0 +1,507 @@
+{
+  "pending": [],
+  "queued": {
+    "root": true,
+    "web-index-php-dashboard-index": true,
+    "web-index-php-pim-viewEmployeeList": true,
+    "web-index-php-pim-addEmployee": true,
+    "web-index-php-admin-viewSystemUsers": true,
+    "web-index-php-leave-viewLeaveList": true,
+    "web-index-php-time-viewEmployeeTimesheet": true,
+    "web-index-php-recruitment-viewCandidates": true,
+    "web-index-php-performance-searchEvaluatePerformanceReview": true,
+    "web-index-php-directory-viewDirectory": true,
+    "web-index-php-claim-viewAssignClaim": true,
+    "web-index-php-buzz-viewBuzz": true,
+    "web-index-php-admin-viewAdminModule": true,
+    "web-index-php-pim-viewPimModule": true,
+    "web-index-php-leave-viewLeaveModule": true,
+    "web-index-php-time-viewTimeModule": true,
+    "web-index-php-recruitment-viewRecruitmentModule": true,
+    "web-index-php-pim-viewMyDetails": true,
+    "web-index-php-performance-viewPerformanceModule": true,
+    "web-index-php-maintenance-viewMaintenanceModule": true,
+    "web-index-php-claim-viewClaimModule": true,
+    "web-index-php-pim-viewPersonalDetails-empNumber-7": true,
+    "web-index-php-pim-contactDetails-empNumber-7": true,
+    "web-index-php-pim-viewEmergencyContacts-empNumber-7": true,
+    "web-index-php-pim-viewDependents-empNumber-7": true,
+    "web-index-php-pim-viewImmigration-empNumber-7": true,
+    "web-index-php-pim-viewJobDetails-empNumber-7": true,
+    "web-index-php-pim-viewSalaryList-empNumber-7": true,
+    "web-index-php-pim-viewReportToDetails-empNumber-7": true,
+    "web-index-php-pim-viewQualifications-empNumber-7": true,
+    "web-index-php-pim-viewMemberships-empNumber-7": true
+  },
+  "visited": {
+    "root": {
+      "url": "https://opensource-demo.orangehrmlive.com/",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 29,
+        "visible": 29,
+        "hidden": 0,
+        "semantic": 24,
+        "fragile": 5,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "web-index-php-dashboard-index": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 29,
+        "visible": 29,
+        "hidden": 0,
+        "semantic": 24,
+        "fragile": 5,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "web-index-php-pim-viewEmployeeList": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 188,
+        "visible": 137,
+        "hidden": 51,
+        "semantic": 27,
+        "fragile": 110,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "web-index-php-pim-addEmployee": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 31,
+        "visible": 29,
+        "hidden": 2,
+        "semantic": 26,
+        "fragile": 3,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "web-index-php-admin-viewSystemUsers": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 45,
+        "visible": 39,
+        "hidden": 6,
+        "semantic": 24,
+        "fragile": 15,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "web-index-php-leave-viewLeaveList": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 42,
+        "visible": 37,
+        "hidden": 5,
+        "semantic": 27,
+        "fragile": 10,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "web-index-php-time-viewEmployeeTimesheet": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 24,
+        "visible": 24,
+        "hidden": 0,
+        "semantic": 19,
+        "fragile": 5,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "web-index-php-recruitment-viewCandidates": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 219,
+        "visible": 168,
+        "hidden": 51,
+        "semantic": 29,
+        "fragile": 137,
+        "ambiguous": 2,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "web-index-php-performance-searchEvaluatePerformanceReview": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 32,
+        "visible": 32,
+        "hidden": 0,
+        "semantic": 24,
+        "fragile": 8,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "web-index-php-directory-viewDirectory": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 25,
+        "visible": 25,
+        "hidden": 0,
+        "semantic": 21,
+        "fragile": 4,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "web-index-php-claim-viewAssignClaim": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewAssignClaim",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 39,
+        "visible": 39,
+        "hidden": 0,
+        "semantic": 25,
+        "fragile": 13,
+        "ambiguous": 1,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "web-index-php-buzz-viewBuzz": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 38,
+        "visible": 38,
+        "hidden": 0,
+        "semantic": 25,
+        "fragile": 9,
+        "ambiguous": 4,
+        "withTestId": 0
+      },
+      "depth": 0
+    },
+    "web-index-php-admin-viewAdminModule": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewAdminModule",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 48,
+        "visible": 41,
+        "hidden": 7,
+        "semantic": 24,
+        "fragile": 17,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "web-index-php-pim-viewPimModule": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPimModule",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 188,
+        "visible": 137,
+        "hidden": 51,
+        "semantic": 27,
+        "fragile": 110,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "web-index-php-leave-viewLeaveModule": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveModule",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 42,
+        "visible": 37,
+        "hidden": 5,
+        "semantic": 27,
+        "fragile": 10,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "web-index-php-time-viewTimeModule": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewTimeModule",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 24,
+        "visible": 24,
+        "hidden": 0,
+        "semantic": 19,
+        "fragile": 5,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "web-index-php-recruitment-viewRecruitmentModule": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewRecruitmentModule",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 219,
+        "visible": 168,
+        "hidden": 51,
+        "semantic": 29,
+        "fragile": 137,
+        "ambiguous": 2,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "web-index-php-pim-viewMyDetails": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewMyDetails",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 61,
+        "visible": 57,
+        "hidden": 4,
+        "semantic": 42,
+        "fragile": 15,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "web-index-php-performance-viewPerformanceModule": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/viewPerformanceModule",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 32,
+        "visible": 32,
+        "hidden": 0,
+        "semantic": 24,
+        "fragile": 8,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "web-index-php-maintenance-viewMaintenanceModule": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/viewMaintenanceModule",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 6,
+        "visible": 5,
+        "hidden": 1,
+        "semantic": 3,
+        "fragile": 2,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "web-index-php-claim-viewClaimModule": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewClaimModule",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 39,
+        "visible": 39,
+        "hidden": 0,
+        "semantic": 25,
+        "fragile": 13,
+        "ambiguous": 1,
+        "withTestId": 0
+      },
+      "depth": 1
+    },
+    "web-index-php-pim-viewPersonalDetails-empNumber-7": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 61,
+        "visible": 57,
+        "hidden": 4,
+        "semantic": 42,
+        "fragile": 15,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 2
+    },
+    "web-index-php-pim-contactDetails-empNumber-7": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/contactDetails/empNumber/7",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 53,
+        "visible": 52,
+        "hidden": 1,
+        "semantic": 40,
+        "fragile": 12,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 2
+    },
+    "web-index-php-pim-viewEmergencyContacts-empNumber-7": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmergencyContacts/empNumber/7",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 43,
+        "visible": 41,
+        "hidden": 2,
+        "semantic": 38,
+        "fragile": 3,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 2
+    },
+    "web-index-php-pim-viewDependents-empNumber-7": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewDependents/empNumber/7",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 43,
+        "visible": 41,
+        "hidden": 2,
+        "semantic": 38,
+        "fragile": 3,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 2
+    },
+    "web-index-php-pim-viewImmigration-empNumber-7": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewImmigration/empNumber/7",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 50,
+        "visible": 46,
+        "hidden": 4,
+        "semantic": 38,
+        "fragile": 8,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 2
+    },
+    "web-index-php-pim-viewJobDetails-empNumber-7": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewJobDetails/empNumber/7",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 41,
+        "visible": 40,
+        "hidden": 1,
+        "semantic": 39,
+        "fragile": 1,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 2
+    },
+    "web-index-php-pim-viewSalaryList-empNumber-7": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewSalaryList/empNumber/7",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 39,
+        "visible": 39,
+        "hidden": 0,
+        "semantic": 38,
+        "fragile": 1,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 2
+    },
+    "web-index-php-pim-viewReportToDetails-empNumber-7": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewReportToDetails/empNumber/7",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 39,
+        "visible": 39,
+        "hidden": 0,
+        "semantic": 38,
+        "fragile": 1,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 2
+    },
+    "web-index-php-pim-viewQualifications-empNumber-7": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewQualifications/empNumber/7",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 60,
+        "visible": 51,
+        "hidden": 9,
+        "semantic": 38,
+        "fragile": 13,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 2
+    },
+    "web-index-php-pim-viewMemberships-empNumber-7": {
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewMemberships/empNumber/7",
+      "title": "OrangeHRM",
+      "settled": true,
+      "stats": {
+        "elements": 75,
+        "visible": 65,
+        "hidden": 10,
+        "semantic": 38,
+        "fragile": 27,
+        "ambiguous": 0,
+        "withTestId": 0
+      },
+      "depth": 2
+    }
+  },
+  "failed": {},
+  "authenticated": true,
+  "startedAt": "2026-09-12T21:40:46.900Z",
+  "finishedAt": "2026-09-12T21:42:29.411Z"
+}

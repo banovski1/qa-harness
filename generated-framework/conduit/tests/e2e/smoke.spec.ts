@@ -7,7 +7,7 @@ test('the home feed loads and the navigation is shared', async ({ page }) => {
   const home = new HomePage(page);
   await home.goto();
   await home.expectHeading();
-  expect(await home.navigation.isVisible()).toBe(true);
+  await home.navigation.expectVisible();
 });
 
 test('the sign-in form is addressed by its placeholders, which is all this app gives', async ({ page }) => {

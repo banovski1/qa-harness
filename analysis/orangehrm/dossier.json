@@ -1,0 +1,37 @@
+{
+  "app": "orangehrm",
+  "repoPath": "~/Projects/orangehrm",
+  "baseUrl": "https://opensource-demo.orangehrmlive.com/",
+  "repoCommit": "56e23b3b09e7af29317a0943523b825843fff527",
+  "generatedAt": "2026-09-12T21:40:38+00:00",
+  "frontend": {
+    "root": "src/client",
+    "framework": "vue",
+    "version": "3.x",
+    "router": "none \u2014 each URL is a server-rendered page that mounts a Vue app",
+    "componentExt": ".vue",
+    "templateExt": ".vue",
+    "entry": "src/client/src/main.ts"
+  },
+  "backend": {
+    "root": "src/plugins",
+    "framework": "symfony",
+    "version": "5.x-style routing (config/routes.yaml per plugin)"
+  },
+  "testId": {
+    "attribute": null,
+    "occurrences": 0,
+    "note": "no test id attributes in src/client. Controls carry oxd design-system classes instead."
+  },
+  "mountPrefix": "/web/index.php",
+  "apiDocs": {
+    "kind": "annotations",
+    "path": "src/plugins/*/config/routes.yaml",
+    "note": "283 REST routes are declared alongside the UI routes, each naming the API class that serves it."
+  },
+  "notes": [
+    "There is no client-side router. Symfony serves a page per URL and each page mounts a Vue app, so the route list is the backend's \u2014 224 GET routes across 20 plugin route files.",
+    "A route names a PHP controller, never a Vue component, so no route can be joined to a component file. The elements on a screen come from the crawl.",
+    "The UI is built on @ohrm/oxd, an external design-system package. Its markup is not in this clone (node_modules is not installed), so how a label attaches to an input cannot be read from source here \u2014 the crawl settles it."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "app": "orangehrm",
+  "generatedAt": "2026-09-12T21:40:38+00:00",
+  "repoCommit": "56e23b3b09e7af29317a0943523b825843fff527",
+  "library": {
+    "name": "@ohrm/oxd",
+    "version": "see src/client/package.json dependencies",
+    "source": "src/client/package.json"
+  },
+  "labelAssociation": {
+    "kind": "unassociated-sibling",
+    "wrapper": ".oxd-input-group",
+    "labelSelector": ".oxd-label",
+    "fieldSelector": ".oxd-input, .oxd-select-text",
+    "template": ".oxd-input-group:has(label:text-is(\"{label}\")) input",
+    "preferredTemplate": ".oxd-input-group:has(label:text-is(\"{label}\")) input",
+    "evidence": "@ohrm/oxd (external package; the pattern is confirmed by the crawl's own DOM, not by this clone)",
+    "note": "An oxd input group renders a .oxd-label beside its input with no for= association, so getByLabel does not work. This is the case the label-anchored template exists for. It is marked as external evidence on purpose: the markup is in a package, not in this repo."
+  },
+  "regions": [
+    {
+      "name": "NavigationBar",
+      "selector": ".oxd-sidepanel",
+      "item": ".oxd-main-menu-item",
+      "evidence": "observed on every crawled screen"
+    },
+    {
+      "name": "RecordTable",
+      "selector": ".oxd-table",
+      "row": ".oxd-table-card",
+      "cell": ".oxd-table-cell",
+      "headerCell": ".oxd-table-header-cell",
+      "evidence": "observed on every list screen"
+    },
+    {
+      "name": "Toast",
+      "selector": ".oxd-toast",
+      "evidence": "observed after every save"
+    }
+  ],
+  "naming": {
+    "pattern": "PascalCase.vue under each plugin's components/ and pages/",
+    "root": "src/client/src/orangehrm*Plugin"
+  },
+  "hazards": [
+    {
+      "kind": "external-design-system",
+      "where": "@ohrm/oxd",
+      "impact": "the markup of every control lives outside this clone, so source analysis cannot see it. Everything about the DOM here comes from the crawl."
+    },
+    {
+      "kind": "no-test-ids",
+      "where": "whole client",
+      "impact": "locators rest on roles, labels and oxd class names."
+    },
+    {
+      "kind": "public-demo-resets",
+      "where": "opensource-demo.orangehrmlive.com",
+      "impact": "the demo resets on a schedule and is shared. Assert only on records the test created."
+    }
+  ],
+  "notes": []
+}

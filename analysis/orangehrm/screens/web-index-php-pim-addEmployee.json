@@ -1,0 +1,2030 @@
+{
+  "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee",
+  "path": "/web/index.php/pim/addEmployee",
+  "title": "OrangeHRM",
+  "headings": [],
+  "tables": [],
+  "regions": {
+    "navigation": 19,
+    "header": 2,
+    "form": 9,
+    "body": 1
+  },
+  "elements": [
+    {
+      "index": 0,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "client brand logo",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-16e446b0": "",
+        "data-v-5b6b3cf3": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://www.orangehrm.com/",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 256,
+        "h": 103
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'client brand logo', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "client brand logo"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'client brand logo', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "client brand logo"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-layout.orangehrm-upgrade-layout:nth-of-type(1) > div.oxd-layout-navigation:nth-of-type(1) > aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-header:nth-of-type(1) > a.oxd-brand')",
+          "matchCount": 1,
+          "args": [
+            "div.oxd-layout.orangehrm-upgrade-layout:nth-of-type(1) > div.oxd-layout-navigation:nth-of-type(1) > aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-header:nth-of-type(1) > a.oxd-brand"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "tag": "input",
+      "type": null,
+      "role": "textbox",
+      "name": "Search",
+      "label": null,
+      "placeholder": "Search",
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-1f99f73c": "",
+        "data-v-636d6b87": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 46,
+        "y": 119,
+        "w": 163,
+        "h": 20
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('textbox', { name: 'Search', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "textbox",
+          "Search"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('textbox', { name: 'Search', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "textbox",
+            "Search"
+          ]
+        },
+        {
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('Search', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Search"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > div.oxd-main-menu.--fixed > div.oxd-main-menu-search > input.oxd-input.oxd-input--active')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > div.oxd-main-menu.--fixed > div.oxd-main-menu-search > input.oxd-input.oxd-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "tag": "button",
+      "type": "button",
+      "role": "none",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-f5c763eb": "",
+        "data-v-636d6b87": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 243,
+        "y": 110,
+        "w": 25,
+        "h": 25
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > div.oxd-main-menu.--fixed > div.oxd-main-menu-search > button.oxd-icon-button.oxd-main-menu-button')",
+        "matchCount": 1,
+        "args": [
+          "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > div.oxd-main-menu.--fixed > div.oxd-main-menu-search > button.oxd-icon-button.oxd-main-menu-button"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > div.oxd-main-menu.--fixed > div.oxd-main-menu-search > button.oxd-icon-button.oxd-main-menu-button')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > div.oxd-main-menu.--fixed > div.oxd-main-menu-search > button.oxd-icon-button.oxd-main-menu-button"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Admin",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6475d26d": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/web/index.php/admin/viewAdminModule",
+      "box": {
+        "x": 0,
+        "y": 158,
+        "w": 246,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Admin', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Admin"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Admin', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Admin"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Admin', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Admin"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(1) > a.oxd-main-menu-item')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(1) > a.oxd-main-menu-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "PIM",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6475d26d": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/web/index.php/pim/viewPimModule",
+      "box": {
+        "x": 0,
+        "y": 196,
+        "w": 246,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'PIM', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "PIM"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'PIM', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "PIM"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('PIM', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "PIM"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(2) > a.oxd-main-menu-item.active')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(2) > a.oxd-main-menu-item.active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Leave",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6475d26d": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/web/index.php/leave/viewLeaveModule",
+      "box": {
+        "x": 0,
+        "y": 234,
+        "w": 246,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Leave', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Leave"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Leave', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Leave"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Leave', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Leave"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(3) > a.oxd-main-menu-item')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(3) > a.oxd-main-menu-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Time",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6475d26d": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/web/index.php/time/viewTimeModule",
+      "box": {
+        "x": 0,
+        "y": 272,
+        "w": 246,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Time', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Time"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Time', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Time"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Time', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Time"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(4) > a.oxd-main-menu-item')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(4) > a.oxd-main-menu-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Recruitment",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6475d26d": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/web/index.php/recruitment/viewRecruitmentModule",
+      "box": {
+        "x": 0,
+        "y": 310,
+        "w": 246,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Recruitment', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Recruitment"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Recruitment', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Recruitment"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Recruitment', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Recruitment"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(5) > a.oxd-main-menu-item')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(5) > a.oxd-main-menu-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "My Info",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6475d26d": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/web/index.php/pim/viewMyDetails",
+      "box": {
+        "x": 0,
+        "y": 348,
+        "w": 246,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'My Info', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "My Info"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'My Info', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "My Info"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('My Info', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "My Info"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(6) > a.oxd-main-menu-item')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(6) > a.oxd-main-menu-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Performance",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6475d26d": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/web/index.php/performance/viewPerformanceModule",
+      "box": {
+        "x": 0,
+        "y": 386,
+        "w": 246,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Performance', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Performance"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Performance', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Performance"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Performance', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Performance"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(7) > a.oxd-main-menu-item')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(7) > a.oxd-main-menu-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Dashboard",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6475d26d": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/web/index.php/dashboard/index",
+      "box": {
+        "x": 0,
+        "y": 424,
+        "w": 246,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Dashboard', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Dashboard"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Dashboard', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Dashboard"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Dashboard', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Dashboard"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(8) > a.oxd-main-menu-item')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(8) > a.oxd-main-menu-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Directory",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6475d26d": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/web/index.php/directory/viewDirectory",
+      "box": {
+        "x": 0,
+        "y": 462,
+        "w": 246,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Directory', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Directory"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Directory', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Directory"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Directory', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Directory"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(9) > a.oxd-main-menu-item')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(9) > a.oxd-main-menu-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Maintenance",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6475d26d": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/web/index.php/maintenance/viewMaintenanceModule",
+      "box": {
+        "x": 0,
+        "y": 500,
+        "w": 246,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Maintenance', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Maintenance"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Maintenance', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Maintenance"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Maintenance', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Maintenance"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(10) > a.oxd-main-menu-item')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(10) > a.oxd-main-menu-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Claim",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6475d26d": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/web/index.php/claim/viewClaimModule",
+      "box": {
+        "x": 0,
+        "y": 538,
+        "w": 246,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Claim', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Claim"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Claim', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Claim"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Claim', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Claim"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(11) > a.oxd-main-menu-item')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(11) > a.oxd-main-menu-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Buzz",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6475d26d": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "/web/index.php/buzz/viewBuzz",
+      "box": {
+        "x": 0,
+        "y": 576,
+        "w": 246,
+        "h": 38
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Buzz', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Buzz"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Buzz', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Buzz"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Buzz', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Buzz"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(12) > a.oxd-main-menu-item')",
+          "matchCount": 1,
+          "args": [
+            "aside.oxd-sidepanel > nav.oxd-navbar-nav > div.oxd-sidepanel-body:nth-of-type(2) > ul.oxd-main-menu > li.oxd-main-menu-item-wrapper:nth-of-type(12) > a.oxd-main-menu-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Upgrade",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-e60dde10": ""
+      },
+      "region": "header",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "https://orangehrm.com/open-source/upgrade-to-advanced",
+      "box": {
+        "x": 946,
+        "y": 10,
+        "w": 116,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Upgrade', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Upgrade"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Upgrade', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Upgrade"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Upgrade', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "Upgrade"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-layout.orangehrm-upgrade-layout:nth-of-type(1) > div.oxd-layout-navigation:nth-of-type(1) > header.oxd-topbar > div.oxd-topbar-header:nth-of-type(1) > div.orangehrm-upgrade-container:nth-of-type(2) > a.orangehrm-upgrade-link')",
+          "matchCount": 1,
+          "args": [
+            "div.oxd-layout.orangehrm-upgrade-layout:nth-of-type(1) > div.oxd-layout-navigation:nth-of-type(1) > header.oxd-topbar > div.oxd-topbar-header:nth-of-type(1) > div.orangehrm-upgrade-container:nth-of-type(2) > a.orangehrm-upgrade-link"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "Upgrade",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-78cde31a": "",
+        "data-v-e60dde10": ""
+      },
+      "region": "header",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 946,
+        "y": 10,
+        "w": 116,
+        "h": 48
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Upgrade', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Upgrade"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Upgrade', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Upgrade"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Upgrade', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "Upgrade"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-layout-navigation:nth-of-type(1) > header.oxd-topbar > div.oxd-topbar-header:nth-of-type(1) > div.orangehrm-upgrade-container:nth-of-type(2) > a.orangehrm-upgrade-link > button.oxd-glass-button.orangehrm-upgrade-button')",
+          "matchCount": 1,
+          "args": [
+            "div.oxd-layout-navigation:nth-of-type(1) > header.oxd-topbar > div.oxd-topbar-header:nth-of-type(1) > div.orangehrm-upgrade-container:nth-of-type(2) > a.orangehrm-upgrade-link > button.oxd-glass-button.orangehrm-upgrade-button"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Employee List",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#",
+      "box": {
+        "x": 444,
+        "y": 84,
+        "w": 76,
+        "h": 16
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Employee List', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Employee List"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Employee List', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Employee List"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Employee List', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Employee List"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('header.oxd-topbar > div.oxd-topbar-body:nth-of-type(2) > nav.oxd-topbar-body-nav > ul > li.oxd-topbar-body-nav-tab:nth-of-type(2) > a.oxd-topbar-body-nav-tab-item')",
+          "matchCount": 1,
+          "args": [
+            "header.oxd-topbar > div.oxd-topbar-body:nth-of-type(2) > nav.oxd-topbar-body-nav > ul > li.oxd-topbar-body-nav-tab:nth-of-type(2) > a.oxd-topbar-body-nav-tab-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Add Employee",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#",
+      "box": {
+        "x": 559,
+        "y": 84,
+        "w": 79,
+        "h": 16
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Add Employee', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Add Employee"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Add Employee', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Add Employee"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Add Employee', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Add Employee"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('header.oxd-topbar > div.oxd-topbar-body:nth-of-type(2) > nav.oxd-topbar-body-nav > ul > li.oxd-topbar-body-nav-tab.--visited:nth-of-type(3) > a.oxd-topbar-body-nav-tab-item')",
+          "matchCount": 1,
+          "args": [
+            "header.oxd-topbar > div.oxd-topbar-body:nth-of-type(2) > nav.oxd-topbar-body-nav > ul > li.oxd-topbar-body-nav-tab.--visited:nth-of-type(3) > a.oxd-topbar-body-nav-tab-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "Reports",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#",
+      "box": {
+        "x": 677,
+        "y": 84,
+        "w": 43,
+        "h": 16
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Reports', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "Reports"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'Reports', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "Reports"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Reports', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Reports"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('header.oxd-topbar > div.oxd-topbar-body:nth-of-type(2) > nav.oxd-topbar-body-nav > ul > li.oxd-topbar-body-nav-tab:nth-of-type(4) > a.oxd-topbar-body-nav-tab-item')",
+          "matchCount": 1,
+          "args": [
+            "header.oxd-topbar > div.oxd-topbar-body:nth-of-type(2) > nav.oxd-topbar-body-nav > ul > li.oxd-topbar-body-nav-tab:nth-of-type(4) > a.oxd-topbar-body-nav-tab-item"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "Help",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-f5c763eb": ""
+      },
+      "region": "navigation",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1196,
+        "y": 74,
+        "w": 36,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Help', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Help"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Help', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Help"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('header.oxd-topbar > div.oxd-topbar-body:nth-of-type(2) > nav.oxd-topbar-body-nav > ul > div.oxd-topbar-body-nav-slot > button.oxd-icon-button')",
+          "matchCount": 1,
+          "args": [
+            "header.oxd-topbar > div.oxd-topbar-body:nth-of-type(2) > nav.oxd-topbar-body-nav > ul > div.oxd-topbar-body-nav-slot > button.oxd-icon-button"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "tag": "input",
+      "type": "file",
+      "role": "textbox",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-1b0f05a0": ""
+      },
+      "region": "form",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 329,
+        "y": 242,
+        "w": 0,
+        "h": 21
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('form.oxd-form > div.orangehrm-employee-container:nth-of-type(1) > div.orangehrm-employee-image:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-file-input')",
+        "matchCount": 1,
+        "args": [
+          "form.oxd-form > div.orangehrm-employee-container:nth-of-type(1) > div.orangehrm-employee-image:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-file-input"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": []
+    },
+    {
+      "index": 22,
+      "tag": "button",
+      "type": "button",
+      "role": "none",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-f5c763eb": "",
+        "data-v-91a700da": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 478,
+        "y": 333,
+        "w": 36,
+        "h": 36
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.orangehrm-employee-container:nth-of-type(1) > div.orangehrm-employee-image:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-file-div.oxd-file-div--active > button.oxd-icon-button.oxd-icon-button--solid-main')",
+        "matchCount": 1,
+        "args": [
+          "div.orangehrm-employee-container:nth-of-type(1) > div.orangehrm-employee-image:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-file-div.oxd-file-div--active > button.oxd-icon-button.oxd-icon-button--solid-main"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.orangehrm-employee-container:nth-of-type(1) > div.orangehrm-employee-image:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-file-div.oxd-file-div--active > button.oxd-icon-button.oxd-icon-button--solid-main')",
+          "matchCount": 1,
+          "args": [
+            "div.orangehrm-employee-container:nth-of-type(1) > div.orangehrm-employee-image:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-file-div.oxd-file-div--active > button.oxd-icon-button.oxd-icon-button--solid-main"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "tag": "input",
+      "type": null,
+      "role": "textbox",
+      "name": "First Name",
+      "label": null,
+      "placeholder": "First Name",
+      "id": null,
+      "nameAttr": "firstName",
+      "testId": null,
+      "data": {
+        "data-v-1f99f73c": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 575,
+        "y": 249,
+        "w": 210,
+        "h": 45
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('textbox', { name: 'First Name', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "textbox",
+          "First Name"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('textbox', { name: 'First Name', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "textbox",
+            "First Name"
+          ]
+        },
+        {
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('First Name', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "First Name"
+          ]
+        },
+        {
+          "strategy": "attribute",
+          "expression": "locator('input[name=\\\"firstName\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "input[name=\"firstName\"]"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters > div.oxd-input-group > div.--name-grouped-field:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space:nth-of-type(1) > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
+          "matchCount": 1,
+          "args": [
+            "div.oxd-grid-item.oxd-grid-item--gutters > div.oxd-input-group > div.--name-grouped-field:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space:nth-of-type(1) > div:nth-of-type(2) > input.oxd-input.oxd-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "tag": "input",
+      "type": null,
+      "role": "textbox",
+      "name": "Middle Name",
+      "label": null,
+      "placeholder": "Middle Name",
+      "id": null,
+      "nameAttr": "middleName",
+      "testId": null,
+      "data": {
+        "data-v-1f99f73c": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 785,
+        "y": 249,
+        "w": 210,
+        "h": 45
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('textbox', { name: 'Middle Name', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "textbox",
+          "Middle Name"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('textbox', { name: 'Middle Name', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "textbox",
+            "Middle Name"
+          ]
+        },
+        {
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('Middle Name', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Middle Name"
+          ]
+        },
+        {
+          "strategy": "attribute",
+          "expression": "locator('input[name=\\\"middleName\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "input[name=\"middleName\"]"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters > div.oxd-input-group > div.--name-grouped-field:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space:nth-of-type(2) > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
+          "matchCount": 1,
+          "args": [
+            "div.oxd-grid-item.oxd-grid-item--gutters > div.oxd-input-group > div.--name-grouped-field:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space:nth-of-type(2) > div:nth-of-type(2) > input.oxd-input.oxd-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "tag": "input",
+      "type": null,
+      "role": "textbox",
+      "name": "Last Name",
+      "label": null,
+      "placeholder": "Last Name",
+      "id": null,
+      "nameAttr": "lastName",
+      "testId": null,
+      "data": {
+        "data-v-1f99f73c": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 995,
+        "y": 249,
+        "w": 210,
+        "h": 45
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('textbox', { name: 'Last Name', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "textbox",
+          "Last Name"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('textbox', { name: 'Last Name', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "textbox",
+            "Last Name"
+          ]
+        },
+        {
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('Last Name', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Last Name"
+          ]
+        },
+        {
+          "strategy": "attribute",
+          "expression": "locator('input[name=\\\"lastName\\\"]')",
+          "matchCount": 1,
+          "args": [
+            "input[name=\"lastName\"]"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters > div.oxd-input-group > div.--name-grouped-field:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space:nth-of-type(3) > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
+          "matchCount": 1,
+          "args": [
+            "div.oxd-grid-item.oxd-grid-item--gutters > div.oxd-input-group > div.--name-grouped-field:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space:nth-of-type(3) > div:nth-of-type(2) > input.oxd-input.oxd-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "tag": "input",
+      "type": null,
+      "role": "textbox",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-1f99f73c": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 575,
+        "y": 332,
+        "w": 303,
+        "h": 45
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.oxd-form-row:nth-of-type(1) > div.orangehrm-full-width-grid:nth-of-type(2) > div.oxd-grid-item.oxd-grid-item--gutters > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
+        "matchCount": 1,
+        "args": [
+          "div.oxd-form-row:nth-of-type(1) > div.orangehrm-full-width-grid:nth-of-type(2) > div.oxd-grid-item.oxd-grid-item--gutters > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-form-row:nth-of-type(1) > div.orangehrm-full-width-grid:nth-of-type(2) > div.oxd-grid-item.oxd-grid-item--gutters > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
+          "matchCount": 1,
+          "args": [
+            "div.oxd-form-row:nth-of-type(1) > div.orangehrm-full-width-grid:nth-of-type(2) > div.oxd-grid-item.oxd-grid-item--gutters > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "tag": "input",
+      "type": "checkbox",
+      "role": "checkbox",
+      "name": "",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-8e4757dc": ""
+      },
+      "region": "form",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 708,
+        "y": 429,
+        "w": 13,
+        "h": 13
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.orangehrm-employee-container:nth-of-type(1) > div.orangehrm-employee-form:nth-of-type(2) > div.oxd-form-row.user-form-header:nth-of-type(2) > div.oxd-switch-wrapper > label > input')",
+        "matchCount": 1,
+        "args": [
+          "div.orangehrm-employee-container:nth-of-type(1) > div.orangehrm-employee-form:nth-of-type(2) > div.oxd-form-row.user-form-header:nth-of-type(2) > div.oxd-switch-wrapper > label > input"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": []
+    },
+    {
+      "index": 28,
+      "tag": "button",
+      "type": "button",
+      "role": "button",
+      "name": "Cancel",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-10d463b7": "",
+        "data-v-304890b0": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 989,
+        "y": 483,
+        "w": 108,
+        "h": 32
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Cancel', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Cancel"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Cancel', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Cancel"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Cancel', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Cancel"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-layout-context:nth-of-type(2) > div.orangehrm-background-container > div.orangehrm-card-container > form.oxd-form > div.oxd-form-actions:nth-of-type(2) > button.oxd-button.oxd-button--medium:nth-of-type(1)')",
+          "matchCount": 1,
+          "args": [
+            "div.oxd-layout-context:nth-of-type(2) > div.orangehrm-background-container > div.orangehrm-card-container > form.oxd-form > div.oxd-form-actions:nth-of-type(2) > button.oxd-button.oxd-button--medium:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "tag": "button",
+      "type": "submit",
+      "role": "button",
+      "name": "Save",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-10d463b7": "",
+        "data-v-304890b0": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": true,
+      "href": null,
+      "box": {
+        "x": 1107,
+        "y": 483,
+        "w": 100,
+        "h": 32
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: 'Save', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "Save"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: 'Save', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "Save"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Save', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Save"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-layout-context:nth-of-type(2) > div.orangehrm-background-container > div.orangehrm-card-container > form.oxd-form > div.oxd-form-actions:nth-of-type(2) > button.oxd-button.oxd-button--medium:nth-of-type(2)')",
+          "matchCount": 1,
+          "args": [
+            "div.oxd-layout-context:nth-of-type(2) > div.orangehrm-background-container > div.orangehrm-card-container > form.oxd-form > div.oxd-form-actions:nth-of-type(2) > button.oxd-button.oxd-button--medium:nth-of-type(2)"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "OrangeHRM, Inc",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "http://www.orangehrm.com",
+      "box": {
+        "x": 709,
+        "y": 722,
+        "w": 95,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'OrangeHRM, Inc', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "link",
+          "OrangeHRM, Inc"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: 'OrangeHRM, Inc', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "link",
+            "OrangeHRM, Inc"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('OrangeHRM, Inc', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "OrangeHRM, Inc"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('#app > div.oxd-layout.orangehrm-upgrade-layout:nth-of-type(1) > div.oxd-layout-container:nth-of-type(2) > div.oxd-layout-footer:nth-of-type(3) > p.oxd-text.oxd-text--p:nth-of-type(2) > a')",
+          "matchCount": 1,
+          "args": [
+            "#app > div.oxd-layout.orangehrm-upgrade-layout:nth-of-type(1) > div.oxd-layout-container:nth-of-type(2) > div.oxd-layout-footer:nth-of-type(3) > p.oxd-text.oxd-text--p:nth-of-type(2) > a"
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "href": "https://www.orangehrm.com/",
+      "resolved": "https://www.orangehrm.com/",
+      "text": ""
+    },
+    {
+      "href": "/web/index.php/admin/viewAdminModule",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewAdminModule",
+      "text": "Admin"
+    },
+    {
+      "href": "/web/index.php/pim/viewPimModule",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPimModule",
+      "text": "PIM"
+    },
+    {
+      "href": "/web/index.php/leave/viewLeaveModule",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveModule",
+      "text": "Leave"
+    },
+    {
+      "href": "/web/index.php/time/viewTimeModule",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewTimeModule",
+      "text": "Time"
+    },
+    {
+      "href": "/web/index.php/recruitment/viewRecruitmentModule",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewRecruitmentModule",
+      "text": "Recruitment"
+    },
+    {
+      "href": "/web/index.php/pim/viewMyDetails",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewMyDetails",
+      "text": "My Info"
+    },
+    {
+      "href": "/web/index.php/performance/viewPerformanceModule",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/viewPerformanceModule",
+      "text": "Performance"
+    },
+    {
+      "href": "/web/index.php/dashboard/index",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index",
+      "text": "Dashboard"
+    },
+    {
+      "href": "/web/index.php/directory/viewDirectory",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory",
+      "text": "Directory"
+    },
+    {
+      "href": "/web/index.php/maintenance/viewMaintenanceModule",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/viewMaintenanceModule",
+      "text": "Maintenance"
+    },
+    {
+      "href": "/web/index.php/claim/viewClaimModule",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewClaimModule",
+      "text": "Claim"
+    },
+    {
+      "href": "/web/index.php/buzz/viewBuzz",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz",
+      "text": "Buzz"
+    },
+    {
+      "href": "https://orangehrm.com/open-source/upgrade-to-advanced",
+      "resolved": "https://orangehrm.com/open-source/upgrade-to-advanced",
+      "text": "Upgrade"
+    },
+    {
+      "href": "#",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee#",
+      "text": "Employee List"
+    },
+    {
+      "href": "#",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee#",
+      "text": "Add Employee"
+    },
+    {
+      "href": "#",
+      "resolved": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee#",
+      "text": "Reports"
+    },
+    {
+      "href": "http://www.orangehrm.com",
+      "resolved": "http://www.orangehrm.com/",
+      "text": "OrangeHRM, Inc"
+    }
+  ],
+  "stats": {
+    "elements": 31,
+    "visible": 29,
+    "hidden": 2,
+    "semantic": 26,
+    "fragile": 3,
+    "ambiguous": 0,
+    "withTestId": 0
+  }
+}

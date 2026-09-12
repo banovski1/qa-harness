@@ -1,0 +1,1685 @@
+{
+  "app": "orangehrm",
+  "mountPrefix": "/web/index.php",
+  "strategy": "server-side routes (Symfony routes.yaml per plugin)",
+  "generatedAt": "2026-09-12T21:40:38+00:00",
+  "repoCommit": "56e23b3b09e7af29317a0943523b825843fff527",
+  "routes": [
+    {
+      "path": "/web/index.php/",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAuthenticationPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Authentication\\Controller\\RootController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/addTheme",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmCorporateBrandingPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\CorporateBranding\\Controller\\CorporateBrandingController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/editOAuthClient",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmCoreOAuthPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\OAuth\\Controller\\SaveOAuthClientController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/employmentStatus",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\EmploymentStatusController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/fixLanguageStringErrors/{languageId}",
+      "component": null,
+      "params": [
+        "languageId"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\FixLanguageStringErrorsController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/jobCategory",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\JobCategoryController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/languageCustomization/{languageId}",
+      "component": null,
+      "params": [
+        "languageId"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\LanguageTranslationController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/languageImport/{languageId}",
+      "component": null,
+      "params": [
+        "languageId"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\LanguageImportController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/languagePackage",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\LanguagePackageController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/ldapConfiguration",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\LdapConfigurationController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/listMailConfiguration",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\ViewEmailConfigurationController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/localization",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\LocalizationController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/membership",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\QualificationMembershipController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/nationality",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\NationalityController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/openIdProvider",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\OpenidAuthentication\\Controller\\SocialMediaAuthenticationController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/payGrade",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SavePayGradeController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/payGrade/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SavePayGradeController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/registerOAuthClient",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmCoreOAuthPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\OAuth\\Controller\\OAuthClientController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveEducation",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveQualificationEducationController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveEducation/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveQualificationEducationController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveEmploymentStatus",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveEmploymentStatusController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveEmploymentStatus/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveEmploymentStatusController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveJobCategory",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveJobCategoryController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveJobCategory/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveJobCategoryController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveJobTitle",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveJobTitleController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveJobTitle/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveJobTitleController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveLanguages",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveQualificationLanguageController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveLanguages/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveQualificationLanguageController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveLicenses",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveQualificationLicenseController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveLicenses/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveQualificationLicenseController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveLocation",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveLocationController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveLocation/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveLocationController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveMemberships",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveQualificationMembershipController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveMemberships/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveQualificationMembershipController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveNationality",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveNationalityController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveNationality/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveNationalityController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveOAuthClient",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmCoreOAuthPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\OAuth\\Controller\\SaveOAuthClientController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveSkills",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveQualificationSkillController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveSkills/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveQualificationSkillController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveSubscriber/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveEmailSubscriptionController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveSystemUser",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveSystemUserController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveSystemUser/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveSystemUserController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveWorkShifts",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveWorkShiftController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/saveWorkShifts/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveWorkShiftController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/theme/attachments/image/{imageName}",
+      "component": null,
+      "params": [
+        "imageName"
+      ],
+      "source": "src/plugins/orangehrmCorporateBrandingPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\CorporateBranding\\Controller\\File\\ImageAttachmentController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/theme/image/{imageName}",
+      "component": null,
+      "params": [
+        "imageName"
+      ],
+      "source": "src/plugins/orangehrmCorporateBrandingPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\CorporateBranding\\Controller\\File\\ImageController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewAdminModule",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\AdminModuleController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewCompanyStructure",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\OrganizationStructureController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewEducation",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\QualificationEducationController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewEmailNotification",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\EmailSubscriptionController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewJobSpecification/attachId/{attachId}",
+      "component": null,
+      "params": [
+        "attachId"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\File\\JobSpecification::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewJobTitleList",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\JobTitleController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewLanguagePackage/languageId/{languageId}",
+      "component": null,
+      "params": [
+        "languageId"
+      ],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\File\\LanguagePackage::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewLanguages",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\QualificationLanguageController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewLicenses",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\QualificationLicenseController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewLocations",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\ViewLocationController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewModules",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SaveModuleConfigurationController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewOrganizationGeneralInformation",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\ViewOrganizationGeneralInformationController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewPayGrades",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\PayGradeController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewSkills",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\QualificationSkillController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/viewSystemUsers",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\SystemUserController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/workShift",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\WorkShiftController::handle"
+    },
+    {
+      "path": "/web/index.php/admin/workspaceNotificationConfiguration",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAdminPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Admin\\Controller\\WorkspaceNotificationConfigurationController::handle"
+    },
+    {
+      "path": "/web/index.php/attendance/configure",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAttendancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Attendance\\Controller\\AttendanceConfigurationController::handle"
+    },
+    {
+      "path": "/web/index.php/attendance/editAttendanceRecord/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAttendancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Attendance\\Controller\\EditAttendanceController::handle"
+    },
+    {
+      "path": "/web/index.php/attendance/editEmployeeAttendanceRecord/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmAttendancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Attendance\\Controller\\EditEmployeeAttendanceController::handle"
+    },
+    {
+      "path": "/web/index.php/attendance/proxyPunchInPunchOut",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAttendancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Attendance\\Controller\\EmployeePunchInOutController::handle"
+    },
+    {
+      "path": "/web/index.php/attendance/punchIn",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAttendancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Attendance\\Controller\\PunchInController::handle"
+    },
+    {
+      "path": "/web/index.php/attendance/punchOut",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAttendancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Attendance\\Controller\\PunchOutController::handle"
+    },
+    {
+      "path": "/web/index.php/attendance/viewAttendanceRecord",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAttendancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Attendance\\Controller\\ViewEmployeeAttendanceController::handle"
+    },
+    {
+      "path": "/web/index.php/attendance/viewMyAttendanceRecord",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAttendancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Attendance\\Controller\\ViewMyAttendanceController::handle"
+    },
+    {
+      "path": "/web/index.php/auth/changeWeakPassword/resetCode/{resetCode}",
+      "component": null,
+      "params": [
+        "resetCode"
+      ],
+      "source": "src/plugins/orangehrmAuthenticationPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Authentication\\Controller\\WeakPasswordResetController::handle"
+    },
+    {
+      "path": "/web/index.php/auth/login",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAuthenticationPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Authentication\\Controller\\LoginController::handle"
+    },
+    {
+      "path": "/web/index.php/auth/logout",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAuthenticationPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Authentication\\Controller\\LogoutController::handle"
+    },
+    {
+      "path": "/web/index.php/auth/requestPasswordResetCode",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAuthenticationPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Authentication\\Controller\\RequestPasswordController::handle"
+    },
+    {
+      "path": "/web/index.php/auth/resetPassword/resetCode/{resetCode}",
+      "component": null,
+      "params": [
+        "resetCode"
+      ],
+      "source": "src/plugins/orangehrmAuthenticationPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Authentication\\Controller\\ResetCodeController::handle"
+    },
+    {
+      "path": "/web/index.php/auth/sendPasswordReset",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAuthenticationPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Authentication\\Controller\\RequestPasswordSuccessController::handle"
+    },
+    {
+      "path": "/web/index.php/auth/sendPasswordResetFailure",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAuthenticationPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Authentication\\Controller\\RequestPasswordFailureController::handle"
+    },
+    {
+      "path": "/web/index.php/buzz/photo/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmBuzzPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Buzz\\Controller\\File\\BuzzPhotoController::handle"
+    },
+    {
+      "path": "/web/index.php/buzz/viewBuzz",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmBuzzPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Buzz\\Controller\\BuzzController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/assignClaim",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\AssignClaimController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/assignClaim/id/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\AssignClaimRequestController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/requests/{requestId}/attachId/{attachId}",
+      "component": null,
+      "params": [
+        "requestId",
+        "attachId"
+      ],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\ClaimAttachmentController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/saveEvents",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\SaveClaimController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/saveEvents/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\SaveClaimController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/saveExpense",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\SaveClaimExpenseTypeController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/saveExpense/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\SaveClaimExpenseTypeController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/submitClaim",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\SubmitClaimController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/submitClaim/id/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\SubmitClaimRequestController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/viewAssignClaim",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\ViewAssignClaimController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/viewClaim",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\ViewMyClaimController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/viewClaimModule",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\ClaimModuleController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/viewEvents",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\ClaimController::handle"
+    },
+    {
+      "path": "/web/index.php/claim/viewExpense",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmClaimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Claim\\Controller\\ClaimExpenseTypeController::handle"
+    },
+    {
+      "path": "/web/index.php/core/i18n/messages",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmI18NPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\I18N\\Controller\\I18NMessagesController::handle"
+    },
+    {
+      "path": "/web/index.php/core/system-check",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmSystemCheckPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\SystemCheck\\Controller\\SystemCheckController::handle"
+    },
+    {
+      "path": "/web/index.php/dashboard/index",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmDashboardPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Dashboard\\Controller\\DashboardController::handle"
+    },
+    {
+      "path": "/web/index.php/directory/viewDirectory",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmCorporateDirectoryPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\CorporateDirectory\\Controller\\CorporateDirectoryModuleController::handle"
+    },
+    {
+      "path": "/web/index.php/help/help",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmHelpPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Help\\Controller\\HelpController::handle"
+    },
+    {
+      "path": "/web/index.php/help/support",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmHelpPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Help\\Controller\\ViewSupportController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/addLeaveEntitlement",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\SaveLeaveEntitlementController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/applyLeave",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\ApplyLeaveController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/assignLeave",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\AssignLeaveController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/defineLeavePeriod",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\LeavePeriodController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/defineLeaveType",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\SaveLeaveTypeController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/defineLeaveType/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\SaveLeaveTypeController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/defineWorkWeek",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\WorkWeekController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/editLeaveEntitlement/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\SaveLeaveEntitlementController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/leaveTypeList",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\LeaveTypeController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/saveHolidays",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\SaveHolidayController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/saveHolidays/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\SaveHolidayController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/viewHolidayList",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\HolidayController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/viewLeaveBalanceReport",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\LeaveEntitlementReport::handle"
+    },
+    {
+      "path": "/web/index.php/leave/viewLeaveEntitlements",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\ViewLeaveEntitlementController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/viewLeaveList",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\LeaveListController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/viewLeaveModule",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\LeaveModuleController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/viewLeaveRequest/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\LeaveRequestController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/viewMyLeaveBalanceReport",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\MyLeaveEntitlementReport::handle"
+    },
+    {
+      "path": "/web/index.php/leave/viewMyLeaveEntitlements",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\ViewMyLeaveEntitlementController::handle"
+    },
+    {
+      "path": "/web/index.php/leave/viewMyLeaveList",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmLeavePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Leave\\Controller\\MyLeaveListController::handle"
+    },
+    {
+      "path": "/web/index.php/maintenance/accessEmployeeData",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmMaintenancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Maintenance\\Controller\\AccessEmployeeController::handle"
+    },
+    {
+      "path": "/web/index.php/maintenance/accessEmployeeData/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmMaintenancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Maintenance\\Controller\\File\\AccessEmployeeFileController::handle"
+    },
+    {
+      "path": "/web/index.php/maintenance/purgeCandidateData",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmMaintenancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Maintenance\\Controller\\PurgeCandidateController::handle"
+    },
+    {
+      "path": "/web/index.php/maintenance/purgeEmployee",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmMaintenancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Maintenance\\Controller\\PurgeEmployeeController::handle"
+    },
+    {
+      "path": "/web/index.php/maintenance/viewMaintenanceModule",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmMaintenancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Maintenance\\Controller\\MaintenanceModuleController::handle"
+    },
+    {
+      "path": "/web/index.php/oauth2/authorize",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmCoreOAuthPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\OAuth\\Controller\\AuthorizationController::handle"
+    },
+    {
+      "path": "/web/index.php/oauth2/authorize/consent",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmCoreOAuthPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\OAuth\\Controller\\OAuth2\\AuthorizationController::handle"
+    },
+    {
+      "path": "/web/index.php/openidauth/openIdCredentials",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmOpenidAuthenticationPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\OpenidAuthentication\\Controller\\OpenIdConnectRedirectController::handle"
+    },
+    {
+      "path": "/web/index.php/openidauth/openIdCredentials/{providerId}",
+      "component": null,
+      "params": [
+        "providerId"
+      ],
+      "source": "src/plugins/orangehrmOpenidAuthenticationPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\OpenidAuthentication\\Controller\\OpenIdConnectLoginController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/addPerformanceTracker",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\SavePerformanceTrackerController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/addPerformanceTracker/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\SavePerformanceTrackerController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/addPerformanceTrackerLog/trackId/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\EmployeeTrackerLogsController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/myPerformanceReview",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\MyReviewController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/reviewEvaluate/id/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\SelfEvaluationController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/reviewEvaluateByAdmin/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\AdminEvaluationController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/saveKpi",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\KpiSaveController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/saveKpi/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\KpiSaveController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/saveReview",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\PerformanceReviewSaveController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/saveReview/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\PerformanceReviewSaveController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/searchEvaluatePerformanceReview",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\ReviewListController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/searchKpi",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\KpiSearchController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/searchPerformanceReview",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\ReviewSearchController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/viewEmployeePerformanceTrackerList",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\EmployeeTrackerController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/viewMyPerformanceTrackerList",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\MyTrackerController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/viewPerformanceModule",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\PerformanceModuleController::handle"
+    },
+    {
+      "path": "/web/index.php/performance/viewPerformanceTracker",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Performance\\Controller\\TrackerListController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/addEmployee",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\SaveEmployeeController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/configurePim",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\OptionalFieldController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/contactDetails/empNumber/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeContactDetailsController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/definePredefinedReport",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\SaveEmployeeReportController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/definePredefinedReport/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\SaveEmployeeReportController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/displayPredefinedReport/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeReportController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/listCustomFields",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\CustomFieldController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/pimCsvImport",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeCsvImportController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/sampleCsvDownload",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\File\\EmployeeCsvImportSampleAttachmentController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/saveCustomFields",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\SaveCustomFieldController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/saveCustomFields/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\SaveCustomFieldController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/saveReportingMethod",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\SaveReportingMethodController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/saveReportingMethod/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\SaveReportingMethodController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/saveTerminationReasons",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\SaveTerminationReasonController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/saveTerminationReasons/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\SaveTerminationReasonController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/updatePassword",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\UpdatePasswordController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewAttachment/empNumber/{empNumber}/attachId/{attachId}",
+      "component": null,
+      "params": [
+        "empNumber",
+        "attachId"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\File\\EmployeeAttachmentController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewDefinedPredefinedReports",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeReportController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewDependents/empNumber/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeDependentsController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewEmergencyContacts/empNumber/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeEmergencyContactsController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewEmployeeList",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewImmigration/empNumber/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeImmigrationController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewJobDetails/empNumber/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeJobController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewMemberships/empNumber/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeMembershipController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewMyDetails",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\ViewMyDetailsController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeePersonalDetailController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewPhoto/empNumber/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\File\\EmployeePictureController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewPhotograph/empNumber/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeProfilePictureController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewPimModule",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\PimModuleController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewQualifications/empNumber/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeQualificationsController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewReportToDetails/empNumber/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeReportToController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewReportingMethods",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\ReportingMethodController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewSalaryList/empNumber/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmployeeSalaryController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewTerminationReasons",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\TerminationReasonController::handle"
+    },
+    {
+      "path": "/web/index.php/pim/viewUsTaxExemptions/empNumber/{empNumber}",
+      "component": null,
+      "params": [
+        "empNumber"
+      ],
+      "source": "src/plugins/orangehrmPimPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Pim\\Controller\\EmpUsTaxExemptionController::handle"
+    },
+    {
+      "path": "/web/index.php/recruitment/addCandidate",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\SaveCandidateController::handle"
+    },
+    {
+      "path": "/web/index.php/recruitment/addCandidate/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\SaveCandidateController::handle"
+    },
+    {
+      "path": "/web/index.php/recruitment/addJobVacancy",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\AddJobVacancyController::handle"
+    },
+    {
+      "path": "/web/index.php/recruitment/addJobVacancy/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\EditJobVacancyController::handle"
+    },
+    {
+      "path": "/web/index.php/recruitment/candidateHistory/{candidateId}/{historyId}",
+      "component": null,
+      "params": [
+        "candidateId",
+        "historyId"
+      ],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\WorkflowActionHistoryController::handle"
+    },
+    {
+      "path": "/web/index.php/recruitment/changeCandidateVacancyStatus",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\CandidateActionController::handle"
+    },
+    {
+      "path": "/web/index.php/recruitment/interviewAttachments/{interviewId}",
+      "component": null,
+      "params": [
+        "interviewId"
+      ],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\InterviewAttachmentsController::handle"
+    },
+    {
+      "path": "/web/index.php/recruitment/viewCandidateAttachment/candidateId/{candidateId}",
+      "component": null,
+      "params": [
+        "candidateId"
+      ],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\File\\CandidateAttachment::handle"
+    },
+    {
+      "path": "/web/index.php/recruitment/viewCandidates",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\ViewCandidateController::handle"
+    },
+    {
+      "path": "/web/index.php/recruitment/viewInterviewAttachment/interview/{interviewId}/attachment/{attachmentId}",
+      "component": null,
+      "params": [
+        "interviewId",
+        "attachmentId"
+      ],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\File\\InterviewAttachment::handle"
+    },
+    {
+      "path": "/web/index.php/recruitment/viewJobVacancy",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\ViewJobVacancyController::handle"
+    },
+    {
+      "path": "/web/index.php/recruitment/viewRecruitmentModule",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\RecruitmentModuleController::handle"
+    },
+    {
+      "path": "/web/index.php/recruitment/viewVacancyAttachment/attachId/{attachId}",
+      "component": null,
+      "params": [
+        "attachId"
+      ],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\File\\VacancyAttachment::handle"
+    },
+    {
+      "path": "/web/index.php/recruitmentApply/applyVacancy/id/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\PublicController\\ApplyJobVacancyViewController::handle"
+    },
+    {
+      "path": "/web/index.php/recruitmentApply/jobs.html",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\PublicController\\VacancyListViewController::handle"
+    },
+    {
+      "path": "/web/index.php/recruitmentApply/jobs.rss",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmRecruitmentPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Recruitment\\Controller\\PublicController\\VacancyListRSSController::handle"
+    },
+    {
+      "path": "/web/index.php/time/addCustomer",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\SaveCustomerController::handle"
+    },
+    {
+      "path": "/web/index.php/time/addCustomer/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\SaveCustomerController::handle"
+    },
+    {
+      "path": "/web/index.php/time/defineTimesheetPeriod",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\TimesheetPeriodConfigController::handle"
+    },
+    {
+      "path": "/web/index.php/time/displayAttendanceSummaryReportCriteria",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmAttendancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Attendance\\Controller\\AttendanceSummaryReportController::handle"
+    },
+    {
+      "path": "/web/index.php/time/displayEmployeeReportCriteria",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\EmployeeTimeReportController::handle"
+    },
+    {
+      "path": "/web/index.php/time/displayProjectActivityDetailsReport",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\ActivityDetailsReportController::handle"
+    },
+    {
+      "path": "/web/index.php/time/displayProjectReportCriteria",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\ProjectActivityReportController::handle"
+    },
+    {
+      "path": "/web/index.php/time/editTimesheet/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\EditTimesheetController::handle"
+    },
+    {
+      "path": "/web/index.php/time/saveProject",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\SaveProjectController::handle"
+    },
+    {
+      "path": "/web/index.php/time/saveProject/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\SaveProjectController::handle"
+    },
+    {
+      "path": "/web/index.php/time/viewCustomers",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\CustomerController::handle"
+    },
+    {
+      "path": "/web/index.php/time/viewEmployeeTimesheet",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\EmployeeTimesheetController::handle"
+    },
+    {
+      "path": "/web/index.php/time/viewMyTimesheet",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\MyTimesheetController::handle"
+    },
+    {
+      "path": "/web/index.php/time/viewProjects",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\ProjectController::handle"
+    },
+    {
+      "path": "/web/index.php/time/viewTimeModule",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\TimeModuleController::handle"
+    },
+    {
+      "path": "/web/index.php/time/viewTimesheet/employeeId/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmTimePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Time\\Controller\\EmployeeTimesheetController::handle"
+    },
+    {
+      "path": "/web/index.phpadmin/addAuthProvider",
+      "component": null,
+      "params": [],
+      "source": "src/plugins/orangehrmOpenidAuthenticationPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\OpenidAuthentication\\Controller\\SaveSocialMediaAuthProviderController::handle"
+    },
+    {
+      "path": "/web/index.phpadmin/editAuthProvider/{id}",
+      "component": null,
+      "params": [
+        "id"
+      ],
+      "source": "src/plugins/orangehrmOpenidAuthenticationPlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\OpenidAuthentication\\Controller\\EditSocialMediaAuthProviderController::handle"
+    },
+    {
+      "path": "/web/index.phpapi/v2/performance/trackers/{trackerId}/logs/{id}",
+      "component": null,
+      "params": [
+        "trackerId",
+        "id"
+      ],
+      "source": "src/plugins/orangehrmPerformancePlugin/config/routes.yaml",
+      "controller": "OrangeHRM\\Core\\Controller\\Rest\\V2\\GenericRestController::handle"
+    }
+  ],
+  "skipped": [
+    {
+      "path": "/api/v2/**",
+      "reason": "REST API, not a screen \u2014 recorded in api.json instead",
+      "count": 283
+    }
+  ]
+}
