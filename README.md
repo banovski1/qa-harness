@@ -40,21 +40,88 @@ A note on the running instance: **the crawl is read-only.** It follows menus and
 never presses a button that could create or change data. It is safe to point at an
 environment you care about — but point it at staging first anyway.
 
-## Setup — once
+## Get started
+
+Three steps. The third one does everything else.
+
+### 1. Install
 
 ```bash
 git clone <this repo> && cd qa-micro-agents
-npm install          # the root toolchain
-npm run setup        # the generator's toolchain
+npm install             # the root toolchain
+npm run setup           # the generator's toolchain
 npm run pipeline:test   # 51 tests. If these pass, the pipeline itself is sound
 ```
 
-Nothing is configured yet. That is the next step.
+### 2. Fill in `.env` — the only file you write by hand
+
+```bash
+cp .env.example .env
+$EDITOR .env
+```
+
+It is commented line by line. Five things have to be right:
+
+| | |
+| --- | --- |
+| `APP_BASE_URL` | where the running app lives |
+| `APP_REPO_PATH` | where you cloned its source |
+| `APP_USERNAME` / `APP_PASSWORD` | a test account. Without these the crawl sees only a login page |
+| `AUTH_*_SELECTOR` | the username field, the password field, the submit button |
+| `AUTH_READY_WHEN` | something **visible** that exists only once you are logged in |
+
+That last one earns its own sentence. Without it nothing can tell a successful login
+from a re-rendered login page, and you get an analysis full of screens that were never
+reached. Pick something you can see — a container with zero height proves nothing.
+
+**`.env` is gitignored. `.env.example` is committed and must never hold a real password.**
+
+### 3. Say `/setup` in Claude Code
+
+```
+/setup
+```
+
+That is the whole of it. The skill installs what is missing, reads your source, proves
+the login works, crawls the running app twice, compiles, gates the result and generates
+the framework — then tells you how many screens you can write tests against today.
+
+It takes a few minutes, mostly the crawl. It reports each phase as it goes.
+
+**If something is wrong, it stops and names it.** Before doing any work `/setup` runs a
+preflight you can also run yourself:
+
+```bash
+npm run preflight
+```
+
+Every line is `ok`, `warn` or `FIX`, and each `FIX` carries the one thing to change:
+
+```
+ok   APP_BASE_URL           https://staging.example.com/
+FIX  source clone           /Users/you/Projects/my-app does not exist
+                            -> Clone the application's source there, or point
+                               APP_REPO_PATH at where it already is.
+warn APP_USERNAME           not set - the crawl only sees what a logged-out visitor sees
+```
+
+`FIX` stops the run — those are decisions only you can make. `warn` continues, but means
+a degraded result. It also catches the failure that otherwise looks like success: an
+`analysis.json` left over from a *different* application, which compile and generate
+would both happily run against.
+
+### Then what?
+
+You have `analysis.json` and a `generated-framework/` project. Skip to
+[Now write a test](#now-write-a-test).
+
+One app per checkout. To analyse a second application, give it its own worktree —
+`npm run app:worktree -- <slug>` — rather than a second config here.
 
 ## Try it on an app that already works
 
-OrangeHRM is committed with its analysis and its framework. Start here — you will see what
-"done" looks like before you aim at your own app.
+OrangeHRM is committed with its analysis and its framework, so you can see what "done"
+looks like before aiming at your own app.
 
 ```bash
 cd generated-framework
@@ -65,110 +132,7 @@ npx tsc --noEmit
 Now open any `src/pages/**/*.generated.ts` and notice there is not a single CSS selector
 in it — just named controls. That is the point of the whole repo.
 
-To actually run the tests you need credentials in the root `.env` (below).
-
-## Aim it at your own app
-
-### 1. Write the .env — the only file you write by hand
-
-```bash
-cp .env.example .env
-$EDITOR .env
-```
-
-`.env.example` is commented line by line. You need four things to be right:
-`APP_BASE_URL`, `APP_REPO_PATH`, the `AUTH_*` selectors, and `AUTH_READY_WHEN` — something
-genuinely visible once you are logged in.
-
-`APP_USERNAME` and `APP_PASSWORD` go in `.env` too. **`.env` is gitignored; `.env.example`
-is committed and must never hold a real password.**
-
-One app per checkout. To analyse a second application, give it its own worktree —
-`npm run app:worktree -- <slug>` — rather than a second config here.
-
-### 2. Say `/setup` in Claude Code
-
-That is the whole of it. The `setup` skill runs everything below — installs what is
-missing, reads your source, proves the login, crawls the running app, compiles, gates and
-generates — and reports how many screens you can write tests against.
-
-It starts by checking your `.env` and your machine:
-
-```bash
-npm run preflight     # what /setup runs first; safe to run yourself any time
-```
-
-Every line is `ok`, `warn` or `FIX`. **`/setup` stops on any `FIX`** and tells you the one
-thing to change — a missing `AUTH_READY_WHEN`, a clone that is not where you said, an
-`analysis.json` left over from a different application. `warn` lines are degraded results,
-not blockers: the loudest is a missing `APP_USERNAME`, which means the crawl sees only what
-a logged-out visitor sees.
-
-The rest of this section is what `/setup` does for you. Read it when you want to run a
-phase again on its own, or when something went wrong.
-
----
-
-### The phases, by hand
-
-#### Read the source — three skills
-
-Ask Claude Code to run them by name, in this order. Each writes one section of
-`analysis.json` and nothing else:
-
-```
-run the app-dossier skill       # stack, declared routes, entities
-run the app-components skill    # the UI library, how labels attach to inputs
-run the app-api skill           # endpoints, and how to log in
-```
-
-`app-dossier` must go first; the other two read what it wrote.
-
-#### Prove the login actually works
-
-```bash
-npm run verify-auth -- --write
-```
-
-This runs the login the skill *read out of your source* against the running app, then
-calls a protected endpoint twice — once anonymously, once with the credential — and only
-says `verified` if the first is refused and the second admitted. A citation is a
-hypothesis; this makes it a fact. Until it says `verified`, no agent will build test setup
-on that login.
-
-#### Crawl the running app — two passes
-
-```bash
-playwright-cli -s=myapp open https://staging.example.com/
-
-npm run crawl:map     # minutes: menus, buttons, tables
-npm run crawl:deep    # longer: every control, proved unique
-```
-
-The **map** walks the application's own menus — because most business software does not
-link its screens — and answers "where is everything?": every module, and per screen its
-buttons, fields and tables. Read the `map` section of `analysis.json` afterwards; it is
-the quickest picture of an app this repo produces. The **deep crawl** is what proves a
-locator resolves to exactly one element.
-
-#### Compile, gate, generate
-
-```bash
-npm run compile     # joins source + crawl, scores every screen
-npm run check       # tells you what is missing and who has not run
-npm run generate    # writes generated-framework/
-```
-
-`check` is the one to read. `0 error(s)` means the contract is complete. Warnings name the
-step you skipped.
-
-#### Run what came out
-
-```bash
-cd generated-framework
-npm install && npx playwright install chromium
-npx tsc --noEmit && npx playwright test   # credentials come from the root .env
-```
+To actually *run* those tests you need credentials in the root `.env`.
 
 ## Now write a test
 
@@ -224,10 +188,82 @@ somebody already shipped:
 
 `.claude/hooks/rules/` is the full list, and the rejection message always names the fix.
 
+## Appendix: running a phase by hand
+
+`/setup` runs all of these in order. Reach for one directly when you are re-running a
+single phase — a fresh crawl after the app changed, say — or when you want to see what
+failed.
+
+### Read the source — three skills
+
+Ask Claude Code to run them by name, in this order. Each writes one section of
+`analysis.json` and nothing else:
+
+```
+run the app-dossier skill       # stack, declared routes, entities
+run the app-components skill    # the UI library, how labels attach to inputs
+run the app-api skill           # endpoints, and how to log in
+```
+
+`app-dossier` must go first; the other two read what it wrote.
+
+### Prove the login actually works
+
+```bash
+npm run verify-auth -- --write
+```
+
+This runs the login the skill *read out of your source* against the running app, then
+calls a protected endpoint twice — once anonymously, once with the credential — and only
+says `verified` if the first is refused and the second admitted. A citation is a
+hypothesis; this makes it a fact. Until it says `verified`, no agent will build test setup
+on that login.
+
+### Crawl the running app — two passes
+
+```bash
+playwright-cli -s=myapp open https://staging.example.com/
+
+npm run crawl:map     # minutes: menus, buttons, tables
+npm run crawl:deep    # longer: every control, proved unique
+```
+
+The **map** walks the application's own menus — because most business software does not
+link its screens — and answers "where is everything?": every module, and per screen its
+buttons, fields and tables. Read the `map` section of `analysis.json` afterwards; it is
+the quickest picture of an app this repo produces. The **deep crawl** is what proves a
+locator resolves to exactly one element.
+
+### Compile, gate, generate
+
+```bash
+npm run compile     # joins source + crawl, scores every screen
+npm run check       # tells you what is missing and who has not run
+npm run generate    # writes generated-framework/
+```
+
+`check` is the one to read. `0 error(s)` means the contract is complete. Warnings name the
+step you skipped.
+
+### Run what came out
+
+```bash
+cd generated-framework
+npm install && npx playwright install chromium
+npx tsc --noEmit && npx playwright test   # credentials come from the root .env
+```
+
+---
+
 ## When something goes wrong
+
+**Start with `npm run preflight`.** Most setup failures are a `.env` value, a missing
+clone or a missing tool, and it names them directly.
 
 | symptom | what it means |
 | --- | --- |
+| `/setup` stopped on a `FIX` line | that one is yours to fix — the line says what and how |
+| the crawl found 0 modules | it is not logged in. Check the `AUTH_*` values, especially `AUTH_READY_WHEN` |
 | `check` says a section is missing | that skill has not run. It names which one |
 | `verify-auth` says `failed` | the login in the analysis is wrong. The observations show which step broke |
 | a test fails with `AMBIGUOUS` | the locator matches more than one element — add a scoped accessor in the protected page object |
@@ -242,3 +278,4 @@ to `test-results/diagnostics.jsonl` as well as the terminal.
 - **`CLAUDE.md`** — the architecture, and every rule with the reason it exists.
 - **`scripts/analysis/README.md`** — the `analysis.json` contract, section by section.
 - **`.claude/agents/`** — exactly what each agent will and will not do.
+- **`.claude/skills/setup/SKILL.md`** — what `/setup` actually does, phase by phase.
