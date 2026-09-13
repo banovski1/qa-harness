@@ -324,10 +324,26 @@ function renderResources(model: AppModel): string {
     }
     if (ops.update) body.push(`${doc(ops.update)}  async update<T = any>(params: Record<string, string | number>, data: Record<string, unknown>): Promise<T> {\n    return this.api.${ops.update.method === 'PATCH' ? 'patch' : 'put'}<T>(fillPath(${q(ops.update.path)}, params), data);\n  }`);
     if (ops.delete) body.push(`${doc(ops.delete)}  async remove(params: Record<string, string | number>): Promise<void> {\n    await this.api.delete(fillPath(${q(ops.delete.path)}, params));\n  }`);
+    // An action's name has to survive two endpoints that differ only by a trailing
+    // id: /candidates/{id}/history and /candidates/{id}/history/{historyId} are a
+    // list and a fetch, and naming both getHistory does not compile.
+    const takenNames = new Set(['list', 'get', 'create', 'update', 'remove']);
     for (const action of (ops.actions ?? []).slice(0, 12)) {
-      const verb = action.path.split('/').filter((seg: string) => seg && !/^[{:]/.test(seg)).pop() ?? 'act';
-      const method = camel(`${action.method.toLowerCase()} ${verb}`);
-      body.push(`${doc(action)}  async ${method}<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {\n    return this.api.call<T>(${q(action.method)}, fillPath(${q(action.path)}, params), { data });\n  }`);
+      const segments = action.path.split('/').filter(Boolean);
+      const firstParam = segments.findIndex((seg: string) => /^[{:]/.test(seg));
+      const trailing = firstParam === -1 ? segments : segments.slice(firstParam + 1);
+      const literals = trailing.filter((seg: string) => !/^[{:]/.test(seg));
+      const endsWithParam = /^[{:]/.test(trailing[trailing.length - 1] ?? '');
+      const base = camel([
+        action.method.toLowerCase(),
+        ...(literals.length ? literals : ['record']),
+        ...(endsWithParam && literals.length ? ['by', 'id'] : []),
+      ].join(' '));
+      // Still a last resort: two different paths can reduce to the same words.
+      let name = base;
+      for (let n = 2; takenNames.has(name); n++) name = `${base}${n}`;
+      takenNames.add(name);
+      body.push(`${doc(action)}  async ${name}<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {\n    return this.api.call<T>(${q(action.method)}, fillPath(${q(action.path)}, params), { data });\n  }`);
     }
 
     lines.push(
@@ -344,16 +360,26 @@ function renderResources(model: AppModel): string {
     );
   }
 
+  // An API can declare a resource called Client — Cal.com does — so the raw client
+  // cannot occupy an obvious name, and a resource that still collides is suffixed
+  // rather than silently shadowing it.
+  const RESERVED = new Set(['http', 'constructor']);
   const names = Object.keys(resources);
+  const property = new Map<string, string>();
+  for (const name of names) {
+    let candidate = camel(name);
+    while (RESERVED.has(candidate) || [...property.values()].includes(candidate)) candidate += 'Resource';
+    property.set(name, candidate);
+  }
   lines.push(
     `/** Every resource the API declares, on one object. */`,
     `export class Api {`,
-    `  readonly client: ApiClient;`,
-    ...names.map(n => `  readonly ${camel(n)}: ${n}Api;`),
+    `  readonly http: ApiClient;`,
+    ...names.map(n => `  readonly ${property.get(n)}: ${n}Api;`),
     '',
     `  constructor(request: APIRequestContext, baseUrl = BASE_URL) {`,
-    `    this.client = new ApiClient(request, baseUrl);`,
-    ...names.map(n => `    this.${camel(n)} = new ${n}Api(this.client);`),
+    `    this.http = new ApiClient(request, baseUrl);`,
+    ...names.map(n => `    this.${property.get(n)} = new ${n}Api(this.http);`),
     `  }`,
     `}`,
     '',
@@ -368,6 +394,15 @@ function renderPreconditions(model: AppModel): string {
   const resources = (model.api as any).resources as Record<string, any>;
   // Only resources whose creation can be observed afterwards. A login is not a fixture.
   const creatable = Object.entries(resources).filter(([, r]) => (r as any).establishes);
+  // Must match the property names Api actually exposes, collisions included.
+  const RESERVED = new Set(['http', 'constructor']);
+  const property = new Map<string, string>();
+  for (const name of Object.keys(resources)) {
+    let candidate = camel(name);
+    while (RESERVED.has(candidate) || [...property.values()].includes(candidate)) candidate += 'Resource';
+    property.set(name, candidate);
+  }
+  const prop = (name: string) => property.get(name) ?? camel(name);
   const lines: string[] = [
     HEADER(model),
     `import { Api, idOf } from './resources.generated.ts';`,
@@ -399,13 +434,13 @@ function renderPreconditions(model: AppModel): string {
     const keys = (deleteOp?.path.match(/\{(\w+)\}/g) ?? []).map((s: string) => s.slice(1, -1));
     const idField = keys[keys.length - 1] ?? 'id';
     const undo = deleteOp
-      ? `    this.created.push({\n      label: \`${name} \${id}\`,\n      undo: () => this.api.${camel(name)}.remove({ ${keys.map(k => `${k}: id`).join(', ')} }),\n    });`
+      ? `    this.created.push({\n      label: \`${name} \${id}\`,\n      undo: () => this.api.${prop(name)}.remove({ ${keys.map(k => `${k}: id`).join(', ')} }),\n    });`
       : `    // The API declares no delete for ${name}: this record cannot be cleaned up.`;
     lines.push(
       `  /** Makes true: ${res.establishes}.${res.requires.length ? ` Needs an existing ${res.requires.join(' and ')} — pass their ids in overrides.` : ''} */`,
       `  async ${camel(name)}(overrides: Record<string, unknown> = {}): Promise<{ id: string | number; data: any }> {`,
       `    const payload = ${defaults};`,
-      `    const response = await this.api.${camel(name)}.create(payload);`,
+      `    const response = await this.api.${prop(name)}.create(payload);`,
       `    const id = idOf(response, ${q(idField)});`,
       undo,
       `    return { id, data: response };`,

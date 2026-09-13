@@ -40,12 +40,12 @@ export class BookingApi {
   }
 
   /** Remove an attendee from a booking. */
-  async deleteAttendees<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async deleteAttendeesById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('DELETE', fillPath('/v2/bookings/{bookingUid}/attendees/{attendeeId}', params), { data });
   }
 
   /** Get a specific attendee for a booking. */
-  async getAttendees<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getAttendeesById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/v2/bookings/{bookingUid}/attendees/{attendeeId}', params), { data });
   }
 
@@ -143,12 +143,12 @@ export class CalendarApi {
   }
 
   /** Get meeting details from calendar. */
-  async getEvent<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getEventById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/v2/calendars/{calendar}/event/{eventUid}', params), { data });
   }
 
   /** Update meeting details in calendar. */
-  async patchEvent<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async patchEventById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PATCH', fillPath('/v2/calendars/{calendar}/event/{eventUid}', params), { data });
   }
 
@@ -163,17 +163,17 @@ export class CalendarApi {
   }
 
   /** Delete a calendar event. */
-  async deleteEvents<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async deleteEventsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('DELETE', fillPath('/v2/calendars/{calendar}/events/{eventUid}', params), { data });
   }
 
   /** Get meeting details from calendar. */
-  async getEvents<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getEventsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/v2/calendars/{calendar}/events/{eventUid}', params), { data });
   }
 
   /** Update meeting details in calendar. */
-  async patchEvents<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async patchEventsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PATCH', fillPath('/v2/calendars/{calendar}/events/{eventUid}', params), { data });
   }
 
@@ -231,12 +231,12 @@ export class ConferencingApi {
   }
 
   /** Get OAuth conferencing app auth URL. */
-  async getAuthUrl<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getOauthAuthUrl<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/v2/conferencing/{app}/oauth/auth-url', params), { data });
   }
 
   /** Conferencing app OAuth callback. */
-  async getCallback<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getOauthCallback<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/v2/conferencing/{app}/oauth/callback', params), { data });
   }
 }
@@ -273,17 +273,17 @@ export class ConnectionApi {
   }
 
   /** Delete event for a connection. */
-  async deleteEvents<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async deleteEventsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('DELETE', fillPath('/v2/calendars/connections/{connectionId}/events/{eventId}', params), { data });
   }
 
   /** Get event for a connection. */
-  async getEvents<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getEventsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/v2/calendars/connections/{connectionId}/events/{eventId}', params), { data });
   }
 
   /** Update event for a connection. */
-  async patchEvents<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async patchEventsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PATCH', fillPath('/v2/calendars/connections/{connectionId}/events/{eventId}', params), { data });
   }
 
@@ -377,12 +377,12 @@ export class EventTypeApi {
   }
 
   /** Delete a private link for an event type. */
-  async deletePrivateLinks<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async deletePrivateLinksById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('DELETE', fillPath('/v2/event-types/{eventTypeId}/private-links/{linkId}', params), { data });
   }
 
   /** Update a private link for an event type. */
-  async patchPrivateLinks<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async patchPrivateLinksById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PATCH', fillPath('/v2/event-types/{eventTypeId}/private-links/{linkId}', params), { data });
   }
 
@@ -402,17 +402,17 @@ export class EventTypeApi {
   }
 
   /** Delete a webhook. */
-  async deleteWebhooks<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async deleteWebhooksById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('DELETE', fillPath('/v2/event-types/{eventTypeId}/webhooks/{webhookId}', params), { data });
   }
 
   /** Get a webhook. */
-  async getWebhooks<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getWebhooksById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/v2/event-types/{eventTypeId}/webhooks/{webhookId}', params), { data });
   }
 
   /** Update a webhook. */
-  async patchWebhooks<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async patchWebhooksById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PATCH', fillPath('/v2/event-types/{eventTypeId}/webhooks/{webhookId}', params), { data });
   }
 }
@@ -490,22 +490,22 @@ export class OauthClientApi {
   }
 
   /** Delete a managed user. */
-  async deleteUsers<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async deleteUsersById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('DELETE', fillPath('/v2/oauth-clients/{clientId}/users/{userId}', params), { data });
   }
 
   /** Get a managed user. */
-  async getUsers<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getUsersById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/v2/oauth-clients/{clientId}/users/{userId}', params), { data });
   }
 
   /** Update a managed user. */
-  async patchUsers<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async patchUsersById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PATCH', fillPath('/v2/oauth-clients/{clientId}/users/{userId}', params), { data });
   }
 
   /** Force refresh tokens. */
-  async postForceRefresh<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async postUsersForceRefresh<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('POST', fillPath('/v2/oauth-clients/{clientId}/users/{userId}/force-refresh', params), { data });
   }
 
@@ -525,17 +525,17 @@ export class OauthClientApi {
   }
 
   /** Delete a webhook. */
-  async deleteWebhooks<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async deleteWebhooksById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('DELETE', fillPath('/v2/oauth-clients/{clientId}/webhooks/{webhookId}', params), { data });
   }
 
   /** Get a webhook. */
-  async getWebhooks<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getWebhooksById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/v2/oauth-clients/{clientId}/webhooks/{webhookId}', params), { data });
   }
 
   /** Update a webhook. */
-  async patchWebhooks<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async patchWebhooksById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PATCH', fillPath('/v2/oauth-clients/{clientId}/webhooks/{webhookId}', params), { data });
   }
 }
@@ -777,7 +777,7 @@ export class WebhookApi {
 
 /** Every resource the API declares, on one object. */
 export class Api {
-  readonly client: ApiClient;
+  readonly http: ApiClient;
   readonly booking: BookingApi;
   readonly busyTime: BusyTimeApi;
   readonly bySeat: BySeatApi;
@@ -807,34 +807,34 @@ export class Api {
   readonly webhook: WebhookApi;
 
   constructor(request: APIRequestContext, baseUrl = BASE_URL) {
-    this.client = new ApiClient(request, baseUrl);
-    this.booking = new BookingApi(this.client);
-    this.busyTime = new BusyTimeApi(this.client);
-    this.bySeat = new BySeatApi(this.client);
-    this.calendar = new CalendarApi(this.client);
-    this.check = new CheckApi(this.client);
-    this.client = new ClientApi(this.client);
-    this.conferencing = new ConferencingApi(this.client);
-    this.connect = new ConnectApi(this.client);
-    this.connection = new ConnectionApi(this.client);
-    this.default = new DefaultApi(this.client);
-    this.destinationCalendar = new DestinationCalendarApi(this.client);
-    this.email = new EmailApi(this.client);
-    this.eventType = new EventTypeApi(this.client);
-    this.me = new MeApi(this.client);
-    this.oauth = new OauthApi(this.client);
-    this.oauthClient = new OauthClientApi(this.client);
-    this.phone = new PhoneApi(this.client);
-    this.refresh = new RefreshApi(this.client);
-    this.request = new RequestApi(this.client);
-    this.reservation = new ReservationApi(this.client);
-    this.save = new SaveApi(this.client);
-    this.schedule = new ScheduleApi(this.client);
-    this.selectedCalendar = new SelectedCalendarApi(this.client);
-    this.slot = new SlotApi(this.client);
-    this.token = new TokenApi(this.client);
-    this.verify = new VerifyApi(this.client);
-    this.webhook = new WebhookApi(this.client);
+    this.http = new ApiClient(request, baseUrl);
+    this.booking = new BookingApi(this.http);
+    this.busyTime = new BusyTimeApi(this.http);
+    this.bySeat = new BySeatApi(this.http);
+    this.calendar = new CalendarApi(this.http);
+    this.check = new CheckApi(this.http);
+    this.client = new ClientApi(this.http);
+    this.conferencing = new ConferencingApi(this.http);
+    this.connect = new ConnectApi(this.http);
+    this.connection = new ConnectionApi(this.http);
+    this.default = new DefaultApi(this.http);
+    this.destinationCalendar = new DestinationCalendarApi(this.http);
+    this.email = new EmailApi(this.http);
+    this.eventType = new EventTypeApi(this.http);
+    this.me = new MeApi(this.http);
+    this.oauth = new OauthApi(this.http);
+    this.oauthClient = new OauthClientApi(this.http);
+    this.phone = new PhoneApi(this.http);
+    this.refresh = new RefreshApi(this.http);
+    this.request = new RequestApi(this.http);
+    this.reservation = new ReservationApi(this.http);
+    this.save = new SaveApi(this.http);
+    this.schedule = new ScheduleApi(this.http);
+    this.selectedCalendar = new SelectedCalendarApi(this.http);
+    this.slot = new SlotApi(this.http);
+    this.token = new TokenApi(this.http);
+    this.verify = new VerifyApi(this.http);
+    this.webhook = new WebhookApi(this.http);
   }
 }
 

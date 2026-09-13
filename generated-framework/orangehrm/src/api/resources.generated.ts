@@ -127,12 +127,12 @@ export class CandidateApi {
   }
 
   /** Update a Candidate's Interview. */
-  async putInterview<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putInterviewById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/recruitment/candidate/{candidateId}/interview/{interviewId}', params), { data });
   }
 
   /** Get Allowed Actions for Candidate. */
-  async getAllowed<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getActionsAllowed<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/recruitment/candidates/{candidateId}/actions/allowed', params), { data });
   }
 
@@ -147,32 +147,32 @@ export class CandidateApi {
   }
 
   /** Get a Candidate's History Record. */
-  async getHistory<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getHistoryById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/recruitment/candidates/{candidateId}/history/{historyId}', params), { data });
   }
 
   /** Update a Candidate's History Record. */
-  async putHistory<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putHistoryById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/recruitment/candidates/{candidateId}/history/{historyId}', params), { data });
   }
 
   /** Get a Candidate's Inteview. */
-  async getInterview<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getInterviewById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/recruitment/candidates/{candidateId}/interview/{interviewId}', params), { data });
   }
 
   /** Mark Candidate Interview as Failed. */
-  async putFail<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putInterviewsFail<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/recruitment/candidates/{candidateId}/interviews/{interviewId}/fail', params), { data });
   }
 
   /** Mark Candidate Interview as Passed. */
-  async putPass<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putInterviewsPass<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/recruitment/candidates/{candidateId}/interviews/{interviewId}/pass', params), { data });
   }
 
   /** Decline Job Offer for Candidate. */
-  async putDecline<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putJobDecline<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/recruitment/candidates/{candidateId}/job/decline', params), { data });
   }
 }
@@ -482,12 +482,12 @@ export class EmailSubscriptionApi {
   }
 
   /** Get an Email Subscriber. */
-  async getSubscribers<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getSubscribersById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/admin/email-subscriptions/{emailSubscriptionId}/subscribers/{id}', params), { data });
   }
 
   /** Update an Email Susbcriber. */
-  async putSubscribers<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putSubscribersById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/admin/email-subscriptions/{emailSubscriptionId}/subscribers/{id}', params), { data });
   }
 }
@@ -548,7 +548,7 @@ export class EmployeeApi {
   }
 
   /** Get an Employee's Claim Request. */
-  async getRequests<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getRequestsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/claim/employees/{empNumber}/requests/{id}', params), { data });
   }
 
@@ -568,12 +568,12 @@ export class EmployeeApi {
   }
 
   /** Validate an Employee's Other Email. */
-  async getOtherEmails<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getContactDetailsValidationOtherEmails<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/pim/employees/{empNumber}/contact-details/validation/other-emails', params), { data });
   }
 
   /** Validate an Employee's Work Email. */
-  async getWorkEmails<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getContactDetailsValidationWorkEmails<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/pim/employees/{empNumber}/contact-details/validation/work-emails', params), { data });
   }
 
@@ -761,12 +761,12 @@ export class InterviewApi {
   }
 
   /** Get an Interview Attachment. */
-  async getAttachments<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getAttachmentsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/recruitment/interviews/{interviewId}/attachments/{attachmentId}', params), { data });
   }
 
   /** Update an Interview Attachment. */
-  async putAttachments<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putAttachmentsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/recruitment/interviews/{interviewId}/attachments/{attachmentId}', params), { data });
   }
 }
@@ -941,12 +941,12 @@ export class LanguageApi {
   }
 
   /** Bulk Update I18N Translations. */
-  async putBulk<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putTranslationsBulk<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/admin/i18n/languages/{languageId}/translations/bulk', params), { data });
   }
 
   /** List I18N Import Errors. */
-  async getErrors<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getTranslationsErrors<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/admin/i18n/languages/{languageId}/translations/errors', params), { data });
   }
 }
@@ -1067,7 +1067,7 @@ export class LeaveEntitlementApi {
   }
 
   /** Validate Leave Entitlement. */
-  async getEntitlements<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getValidationEntitlements<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/leave/leave-entitlements/{id}/validation/entitlements', params), { data });
   }
 }
@@ -1567,17 +1567,17 @@ export class PayGradeApi {
   }
 
   /** List Allowed Currencies for Pay Grade. */
-  async getAllowed<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getCurrenciesAllowed<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/admin/pay-grades/{payGradeId}/currencies/allowed', params), { data });
   }
 
   /** Get a Pay Grade Currency. */
-  async getCurrencies<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getCurrenciesById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/admin/pay-grades/{payGradeId}/currencies/{id}', params), { data });
   }
 
   /** Update a Pay Grade Currency. */
-  async putCurrencies<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putCurrenciesById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/admin/pay-grades/{payGradeId}/currencies/{id}', params), { data });
   }
 }
@@ -1679,22 +1679,22 @@ export class ProjectApi {
   }
 
   /** Get a Project's Activity. */
-  async getActivities<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getActivitiesById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/time/project/{projectId}/activities/{id}', params), { data });
   }
 
   /** Update a Project's Activity. */
-  async putActivities<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putActivitiesById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/time/project/{projectId}/activities/{id}', params), { data });
   }
 
   /** List Copyable Activities Between Two Projects. */
-  async getCopy<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getActivitiesCopyById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/time/projects/{toProjectId}/activities/copy/{fromProjectId}', params), { data });
   }
 
   /** Copy Activities From One Project. */
-  async postCopy<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async postActivitiesCopyById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('POST', fillPath('/web/index.php/api/v2/time/projects/{toProjectId}/activities/copy/{fromProjectId}', params), { data });
   }
 }
@@ -1904,12 +1904,12 @@ export class RequestApi {
   }
 
   /** View an Attachment on a Claim. */
-  async getAttachments<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getAttachmentsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/claim/requests/{requestId}/attachments/{id}', params), { data });
   }
 
   /** Update an Attachment on a Claim. */
-  async putAttachments<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putAttachmentsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/claim/requests/{requestId}/attachments/{id}', params), { data });
   }
 
@@ -1929,12 +1929,12 @@ export class RequestApi {
   }
 
   /** Get an Expense from a Claim. */
-  async getExpenses<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getExpensesById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/claim/requests/{requestId}/expenses/{id}', params), { data });
   }
 
   /** Update an Expense from a Claim. */
-  async putExpenses<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putExpensesById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/claim/requests/{requestId}/expenses/{id}', params), { data });
   }
 }
@@ -1975,37 +1975,37 @@ export class ReviewApi {
   }
 
   /** Get Allowed Actions for Review. */
-  async getAllowed<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getActionsAllowed<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/performance/reviews/{reviewId}/actions/allowed', params), { data });
   }
 
   /** Get the Employee's Evaluation in a Review. */
-  async getEmployee<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getEvaluationEmployee<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/performance/reviews/{reviewId}/evaluation/employee', params), { data });
   }
 
   /** Update the Employee's Evaluation in a Review. */
-  async putEmployee<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putEvaluationEmployee<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/performance/reviews/{reviewId}/evaluation/employee', params), { data });
   }
 
   /** Get a Finalized Performance Review. */
-  async getFinal<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getEvaluationFinal<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/performance/reviews/{reviewId}/evaluation/final', params), { data });
   }
 
   /** Finalize Performance Review. */
-  async putFinal<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putEvaluationFinal<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/performance/reviews/{reviewId}/evaluation/final', params), { data });
   }
 
   /** Get the Supervisor's Evaluation in a Review. */
-  async getSupervisor<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getEvaluationSupervisor<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/performance/reviews/{reviewId}/evaluation/supervisor', params), { data });
   }
 
   /** Update the Supervisor's Evaluation in a Review. */
-  async putSupervisor<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putEvaluationSupervisor<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/performance/reviews/{reviewId}/evaluation/supervisor', params), { data });
   }
 
@@ -2062,17 +2062,17 @@ export class ShareApi {
   }
 
   /** Delete a Comment on a Post. */
-  async deleteComments<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async deleteCommentsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('DELETE', fillPath('/web/index.php/api/v2/buzz/shares/{shareId}/comments/{commentId}', params), { data });
   }
 
   /** Get a Comment on a Post. */
-  async getComments<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getCommentsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/buzz/shares/{shareId}/comments/{commentId}', params), { data });
   }
 
   /** Edit a Comment on a Post. */
-  async putComments<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putCommentsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/buzz/shares/{shareId}/comments/{commentId}', params), { data });
   }
 
@@ -2324,22 +2324,22 @@ export class TimesheetApi {
   }
 
   /** List My Timesheet Entries. */
-  async getEntries<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getEntries2<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/time/timesheets/{timesheetId}/entries', params), { data });
   }
 
   /** Update My Timesheet Entries. */
-  async putEntries<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putEntries2<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/time/timesheets/{timesheetId}/entries', params), { data });
   }
 
   /** Update a Timesheet Comment. */
-  async putComment<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putEntriesComment<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/time/timesheets/{timesheetId}/entries/comment', params), { data });
   }
 
   /** Get a Timesheet Comment. */
-  async getComment<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getEntriesComment<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/time/timesheets/{timesheetId}/entries/{id}/comment', params), { data });
   }
 }
@@ -2422,12 +2422,12 @@ export class TrackerApi {
   }
 
   /** Get a Log from a Performance Tracker. */
-  async getLogs<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async getLogsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('GET', fillPath('/web/index.php/api/v2/performance/trackers/{trackerId}/logs/{id}', params), { data });
   }
 
   /** Update a Log from a Performance Tracker. */
-  async putLogs<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putLogsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/performance/trackers/{trackerId}/logs/{id}', params), { data });
   }
 }
@@ -2620,7 +2620,7 @@ export class VacancyApi {
   }
 
   /** Update a Vacancy Attachment. */
-  async putAttachments<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async putAttachmentsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('PUT', fillPath('/web/index.php/api/v2/recruitment/vacancies/{vacancyId}/attachments/{attachmentId}', params), { data });
   }
 }
@@ -2690,7 +2690,7 @@ export class WorkweekApi {
 
 /** Every resource the API declares, on one object. */
 export class Api {
-  readonly client: ApiClient;
+  readonly http: ApiClient;
   readonly about: AboutApi;
   readonly actionSummary: ActionSummaryApi;
   readonly activityName: ActivityNameApi;
@@ -2798,112 +2798,112 @@ export class Api {
   readonly workweek: WorkweekApi;
 
   constructor(request: APIRequestContext, baseUrl = BASE_URL) {
-    this.client = new ApiClient(request, baseUrl);
-    this.about = new AboutApi(this.client);
-    this.actionSummary = new ActionSummaryApi(this.client);
-    this.activityName = new ActivityNameApi(this.client);
-    this.anniversary = new AnniversaryApi(this.client);
-    this.attachment = new AttachmentApi(this.client);
-    this.bulk = new BulkApi(this.client);
-    this.candidate = new CandidateApi(this.client);
-    this.comment = new CommentApi(this.client);
-    this.config = new ConfigApi(this.client);
-    this.count = new CountApi(this.client);
-    this.csvImport = new CsvImportApi(this.client);
-    this.currentDatetime = new CurrentDatetimeApi(this.client);
-    this.customer = new CustomerApi(this.client);
-    this.customerName = new CustomerNameApi(this.client);
-    this.customField = new CustomFieldApi(this.client);
-    this.datum = new DatumApi(this.client);
-    this.default = new DefaultApi(this.client);
-    this.defined = new DefinedApi(this.client);
-    this.education = new EducationApi(this.client);
-    this.eligible = new EligibleApi(this.client);
-    this.emailConfiguration = new EmailConfigurationApi(this.client);
-    this.emailSubscription = new EmailSubscriptionApi(this.client);
-    this.employee = new EmployeeApi(this.client);
-    this.employeeOnLeaveToday = new EmployeeOnLeaveTodayApi(this.client);
-    this.employmentStatus = new EmploymentStatusApi(this.client);
-    this.event = new EventApi(this.client);
-    this.feed = new FeedApi(this.client);
-    this.group = new GroupApi(this.client);
-    this.hiringManager = new HiringManagerApi(this.client);
-    this.holiday = new HolidayApi(this.client);
-    this.interview = new InterviewApi(this.client);
-    this.interviwer = new InterviwerApi(this.client);
-    this.jobCategory = new JobCategoryApi(this.client);
-    this.jobTitle = new JobTitleApi(this.client);
-    this.kpis = new KpisApi(this.client);
-    this.language = new LanguageApi(this.client);
-    this.latest = new LatestApi(this.client);
-    this.ldapConfig = new LdapConfigApi(this.client);
-    this.ldapTestConnection = new LdapTestConnectionApi(this.client);
-    this.leave = new LeaveApi(this.client);
-    this.leaveBalance = new LeaveBalanceApi(this.client);
-    this.leaveEntitlement = new LeaveEntitlementApi(this.client);
-    this.leavePeriod = new LeavePeriodApi(this.client);
-    this.leaveRequest = new LeaveRequestApi(this.client);
-    this.leaveType = new LeaveTypeApi(this.client);
-    this.licens = new LicensApi(this.client);
-    this.link = new LinkApi(this.client);
-    this.list = new ListApi(this.client);
-    this.localization = new LocalizationApi(this.client);
-    this.location = new LocationApi(this.client);
-    this.membership = new MembershipApi(this.client);
-    this.menus = new MenusApi(this.client);
-    this.module = new ModuleApi(this.client);
-    this.myself = new MyselfApi(this.client);
-    this.nationality = new NationalityApi(this.client);
-    this.oauthClient = new OauthClientApi(this.client);
-    this.openidProvider = new OpenidProviderApi(this.client);
-    this.optionalField = new OptionalFieldApi(this.client);
-    this.organization = new OrganizationApi(this.client);
-    this.overlap = new OverlapApi(this.client);
-    this.overlapLeave = new OverlapLeaveApi(this.client);
-    this.payGrade = new PayGradeApi(this.client);
-    this.post = new PostApi(this.client);
-    this.preview = new PreviewApi(this.client);
-    this.project = new ProjectApi(this.client);
-    this.projectAdmin = new ProjectAdminApi(this.client);
-    this.projectName = new ProjectNameApi(this.client);
-    this.punchInOverlap = new PunchInOverlapApi(this.client);
-    this.punchOutOverlap = new PunchOutOverlapApi(this.client);
-    this.purge = new PurgeApi(this.client);
-    this.record = new RecordApi(this.client);
-    this.registration = new RegistrationApi(this.client);
-    this.report = new ReportApi(this.client);
-    this.reportingMethod = new ReportingMethodApi(this.client);
-    this.request = new RequestApi(this.client);
-    this.review = new ReviewApi(this.client);
-    this.reviewer = new ReviewerApi(this.client);
-    this.share = new ShareApi(this.client);
-    this.shortcut = new ShortcutApi(this.client);
-    this.skill = new SkillApi(this.client);
-    this.status = new StatusApi(this.client);
-    this.subunit = new SubunitApi(this.client);
-    this.summary = new SummaryApi(this.client);
-    this.supervisor = new SupervisorApi(this.client);
-    this.terminationReason = new TerminationReasonApi(this.client);
-    this.test = new TestApi(this.client);
-    this.theme = new ThemeApi(this.client);
-    this.timeAtWork = new TimeAtWorkApi(this.client);
-    this.timeFormat = new TimeFormatApi(this.client);
-    this.timesheet = new TimesheetApi(this.client);
-    this.timeSheetPeriod = new TimeSheetPeriodApi(this.client);
-    this.timezone = new TimezoneApi(this.client);
-    this.tracker = new TrackerApi(this.client);
-    this.trackers = new TrackersApi(this.client);
-    this.translation = new TranslationApi(this.client);
-    this.type = new TypeApi(this.client);
-    this.unique = new UniqueApi(this.client);
-    this.updatePassword = new UpdatePasswordApi(this.client);
-    this.user = new UserApi(this.client);
-    this.userName = new UserNameApi(this.client);
-    this.userSync = new UserSyncApi(this.client);
-    this.vacancy = new VacancyApi(this.client);
-    this.validation = new ValidationApi(this.client);
-    this.workShift = new WorkShiftApi(this.client);
-    this.workweek = new WorkweekApi(this.client);
+    this.http = new ApiClient(request, baseUrl);
+    this.about = new AboutApi(this.http);
+    this.actionSummary = new ActionSummaryApi(this.http);
+    this.activityName = new ActivityNameApi(this.http);
+    this.anniversary = new AnniversaryApi(this.http);
+    this.attachment = new AttachmentApi(this.http);
+    this.bulk = new BulkApi(this.http);
+    this.candidate = new CandidateApi(this.http);
+    this.comment = new CommentApi(this.http);
+    this.config = new ConfigApi(this.http);
+    this.count = new CountApi(this.http);
+    this.csvImport = new CsvImportApi(this.http);
+    this.currentDatetime = new CurrentDatetimeApi(this.http);
+    this.customer = new CustomerApi(this.http);
+    this.customerName = new CustomerNameApi(this.http);
+    this.customField = new CustomFieldApi(this.http);
+    this.datum = new DatumApi(this.http);
+    this.default = new DefaultApi(this.http);
+    this.defined = new DefinedApi(this.http);
+    this.education = new EducationApi(this.http);
+    this.eligible = new EligibleApi(this.http);
+    this.emailConfiguration = new EmailConfigurationApi(this.http);
+    this.emailSubscription = new EmailSubscriptionApi(this.http);
+    this.employee = new EmployeeApi(this.http);
+    this.employeeOnLeaveToday = new EmployeeOnLeaveTodayApi(this.http);
+    this.employmentStatus = new EmploymentStatusApi(this.http);
+    this.event = new EventApi(this.http);
+    this.feed = new FeedApi(this.http);
+    this.group = new GroupApi(this.http);
+    this.hiringManager = new HiringManagerApi(this.http);
+    this.holiday = new HolidayApi(this.http);
+    this.interview = new InterviewApi(this.http);
+    this.interviwer = new InterviwerApi(this.http);
+    this.jobCategory = new JobCategoryApi(this.http);
+    this.jobTitle = new JobTitleApi(this.http);
+    this.kpis = new KpisApi(this.http);
+    this.language = new LanguageApi(this.http);
+    this.latest = new LatestApi(this.http);
+    this.ldapConfig = new LdapConfigApi(this.http);
+    this.ldapTestConnection = new LdapTestConnectionApi(this.http);
+    this.leave = new LeaveApi(this.http);
+    this.leaveBalance = new LeaveBalanceApi(this.http);
+    this.leaveEntitlement = new LeaveEntitlementApi(this.http);
+    this.leavePeriod = new LeavePeriodApi(this.http);
+    this.leaveRequest = new LeaveRequestApi(this.http);
+    this.leaveType = new LeaveTypeApi(this.http);
+    this.licens = new LicensApi(this.http);
+    this.link = new LinkApi(this.http);
+    this.list = new ListApi(this.http);
+    this.localization = new LocalizationApi(this.http);
+    this.location = new LocationApi(this.http);
+    this.membership = new MembershipApi(this.http);
+    this.menus = new MenusApi(this.http);
+    this.module = new ModuleApi(this.http);
+    this.myself = new MyselfApi(this.http);
+    this.nationality = new NationalityApi(this.http);
+    this.oauthClient = new OauthClientApi(this.http);
+    this.openidProvider = new OpenidProviderApi(this.http);
+    this.optionalField = new OptionalFieldApi(this.http);
+    this.organization = new OrganizationApi(this.http);
+    this.overlap = new OverlapApi(this.http);
+    this.overlapLeave = new OverlapLeaveApi(this.http);
+    this.payGrade = new PayGradeApi(this.http);
+    this.post = new PostApi(this.http);
+    this.preview = new PreviewApi(this.http);
+    this.project = new ProjectApi(this.http);
+    this.projectAdmin = new ProjectAdminApi(this.http);
+    this.projectName = new ProjectNameApi(this.http);
+    this.punchInOverlap = new PunchInOverlapApi(this.http);
+    this.punchOutOverlap = new PunchOutOverlapApi(this.http);
+    this.purge = new PurgeApi(this.http);
+    this.record = new RecordApi(this.http);
+    this.registration = new RegistrationApi(this.http);
+    this.report = new ReportApi(this.http);
+    this.reportingMethod = new ReportingMethodApi(this.http);
+    this.request = new RequestApi(this.http);
+    this.review = new ReviewApi(this.http);
+    this.reviewer = new ReviewerApi(this.http);
+    this.share = new ShareApi(this.http);
+    this.shortcut = new ShortcutApi(this.http);
+    this.skill = new SkillApi(this.http);
+    this.status = new StatusApi(this.http);
+    this.subunit = new SubunitApi(this.http);
+    this.summary = new SummaryApi(this.http);
+    this.supervisor = new SupervisorApi(this.http);
+    this.terminationReason = new TerminationReasonApi(this.http);
+    this.test = new TestApi(this.http);
+    this.theme = new ThemeApi(this.http);
+    this.timeAtWork = new TimeAtWorkApi(this.http);
+    this.timeFormat = new TimeFormatApi(this.http);
+    this.timesheet = new TimesheetApi(this.http);
+    this.timeSheetPeriod = new TimeSheetPeriodApi(this.http);
+    this.timezone = new TimezoneApi(this.http);
+    this.tracker = new TrackerApi(this.http);
+    this.trackers = new TrackersApi(this.http);
+    this.translation = new TranslationApi(this.http);
+    this.type = new TypeApi(this.http);
+    this.unique = new UniqueApi(this.http);
+    this.updatePassword = new UpdatePasswordApi(this.http);
+    this.user = new UserApi(this.http);
+    this.userName = new UserNameApi(this.http);
+    this.userSync = new UserSyncApi(this.http);
+    this.vacancy = new VacancyApi(this.http);
+    this.validation = new ValidationApi(this.http);
+    this.workShift = new WorkShiftApi(this.http);
+    this.workweek = new WorkweekApi(this.http);
   }
 }
 

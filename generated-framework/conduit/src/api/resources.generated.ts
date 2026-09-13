@@ -46,7 +46,7 @@ export class ArticleApi {
   }
 
   /** delete a comment. */
-  async deleteComments<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
+  async deleteCommentsById<T = any>(params: Record<string, string | number>, data?: Record<string, unknown>): Promise<T> {
     return this.api.call<T>('DELETE', fillPath('/api/articles/{slug}/comments/{id}', params), { data });
   }
 }
@@ -116,7 +116,7 @@ export class UserApi {
 
 /** Every resource the API declares, on one object. */
 export class Api {
-  readonly client: ApiClient;
+  readonly http: ApiClient;
   readonly article: ArticleApi;
   readonly login: LoginApi;
   readonly profile: ProfileApi;
@@ -124,12 +124,12 @@ export class Api {
   readonly user: UserApi;
 
   constructor(request: APIRequestContext, baseUrl = BASE_URL) {
-    this.client = new ApiClient(request, baseUrl);
-    this.article = new ArticleApi(this.client);
-    this.login = new LoginApi(this.client);
-    this.profile = new ProfileApi(this.client);
-    this.tag = new TagApi(this.client);
-    this.user = new UserApi(this.client);
+    this.http = new ApiClient(request, baseUrl);
+    this.article = new ArticleApi(this.http);
+    this.login = new LoginApi(this.http);
+    this.profile = new ProfileApi(this.http);
+    this.tag = new TagApi(this.http);
+    this.user = new UserApi(this.http);
   }
 }
 

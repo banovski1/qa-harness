@@ -33,14 +33,14 @@ export class MetadataApi {
 
 /** Every resource the API declares, on one object. */
 export class Api {
-  readonly client: ApiClient;
+  readonly http: ApiClient;
   readonly destroyAuthToken: DestroyAuthTokenApi;
   readonly metadata: MetadataApi;
 
   constructor(request: APIRequestContext, baseUrl = BASE_URL) {
-    this.client = new ApiClient(request, baseUrl);
-    this.destroyAuthToken = new DestroyAuthTokenApi(this.client);
-    this.metadata = new MetadataApi(this.client);
+    this.http = new ApiClient(request, baseUrl);
+    this.destroyAuthToken = new DestroyAuthTokenApi(this.http);
+    this.metadata = new MetadataApi(this.http);
   }
 }
 

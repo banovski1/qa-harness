@@ -122,3 +122,23 @@ test('the article follows sound, not spelling', () => {
   assert.equal(article('Employee'), 'an');
   assert.equal(article('Booking'), 'a');
 });
+
+// Names the generator has to survive. Both of these shipped broken code once.
+test('two actions differing only by a trailing id are different operations', () => {
+  const r = deriveResources([
+    { method: 'GET', path: '/api/candidates' },
+    { method: 'GET', path: '/api/candidates/{id}/history' },
+    { method: 'GET', path: '/api/candidates/{id}/history/{historyId}' },
+  ]);
+  const paths = r.Candidate.ops.actions!.map((a) => a.path);
+  assert.equal(paths.length, 2);
+  assert.notEqual(paths[0], paths[1]);
+});
+
+test('a resource may be called Client without colliding with the API client', () => {
+  const r = deriveResources([
+    { method: 'GET', path: '/api/clients' },
+    { method: 'POST', path: '/api/clients' },
+  ]);
+  assert.equal(r.Client.establishes, 'a Client exists');
+});
