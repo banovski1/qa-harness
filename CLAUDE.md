@@ -10,16 +10,23 @@ test framework whose page objects contain no locators at all.
 ```
 analysis/<app>/app-profile.yaml     the only hand-written file: repoPath, baseUrl, auth, seeds, budget
         │
-        ├─► app-dossier ─────► dossier.json + routes.json     what the source declares
-        ├─► app-components ──► components.json                how the app is built
-        ├─► app-api ─────────► api.json                       endpoints, and how to log in
-        └─► app-explorer ────► screens/*.json                 what the running app presents
-                    │
+        │   four skills, one artifact — each owns one section of analysis.json
+        ├─► app-dossier ─────► app, source      what the source declares
+        ├─► app-components ──► components       how the app is built
+        ├─► app-api ─────────► api              endpoints, and how to log in
+        └─► app-explorer ────► map, screens     what the running app presents
+                    │                           (and renders app-map.yaml from `map`)
         compile-model.ts ◄──┘   deterministic, pure, snapshot-tested
                     │
                     ├─► app-model.json  ──► emit.ts ──► generated-framework/<app>/
-                    └─► ANALYSIS.md         (page objects, components, diagnostics)
+                    └─► analysis.json § testability   what can be tested, and what needs recording
 ```
+
+Four files per app and no more: `app-profile.yaml` (yours), `analysis.json` (every
+finding, one section per skill), `app-map.yaml` (the menu map, for people), and
+`app-model.json` (the compiled contract). There were sixteen, and a change meant reading
+a diff spread across all of them.
+
 
 The two halves answer different questions, and tests need both. **Source** knows every route the
 app declares, how a label attaches to an input, and which endpoint creates a record. **The running
@@ -32,8 +39,9 @@ by side, and adding a fifth is a new profile, never a code change.
 ## Commands
 
 ```bash
-# 1. Analysis — the three skills read the clone. Invoke them by name; they write JSON.
-#    app-dossier → app-components and app-api (both read the dossier) → app-explorer.
+# 1. Analysis — the three skills read the clone. Invoke them by name; each writes its
+#    own section via scripts/analysis/write-section.ts.
+#    app-dossier → app-components and app-api (both read `source`) → app-explorer.
 
 # 2. Crawl the running app. Two crawls, two questions.
 playwright-cli -s=<session> open <baseUrl>
@@ -44,7 +52,7 @@ node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-pr
 APP_USERNAME=... APP_PASSWORD=... npx tsx scripts/api-auth/verify-auth.ts --app <app> --write
 
 # 4. Compile the model, then gate it
-npx tsx scripts/model-compiler/compile-model.ts --app <app>     # writes app-model.json + ANALYSIS.md
+npx tsx scripts/model-compiler/compile-model.ts --app <app>     # app-model.json + the testability section
 npx tsx scripts/model-compiler/check-model.ts --app <app>       # staleness, naming, addressability
 
 # 5. Generate the framework
@@ -124,6 +132,22 @@ Four tables, and **only `components` holds a locator**.
   page object with a URL and nothing else, flagged `crawled: false`.
 - **Actions are crawl-proven; navigation is universal.** A typed method only where the crawl proved
   the transition through a control the screen owns. Every route still has `goto()`.
+
+## Testability: write it, or record it first
+
+`compile-model.ts` writes the one section no skill owns. For every screen — crawled or
+merely declared — `testability.screens[path]` carries a confidence between 0 and 1, the
+count of controls that can and cannot be addressed, and a `missing` list saying what
+would raise it.
+
+The number answers one question: *is there enough here to address the controls a test
+would touch?* **≥ 0.7 — write the test. 0.3 to 0.7 — ask for the flow to be recorded
+first. Below 0.3 — the screen is a URL and little else.** A low score is a request for
+evidence, not a defect in the app.
+
+A recording is the one thing a crawl cannot substitute for: it says what a click leads
+to, not merely what is on the page. Recording a flow with the `playwright-codegen` skill
+adds it to `testability.recordings` and lifts every screen it covers.
 
 ## Authentication is verified, never asserted
 

@@ -42,121 +42,103 @@ test('a label containing a dot or a bracket is not mistaken for a selector', () 
 });
 
 // A miniature app, so the joining rules are tested on data small enough to read.
+// One file, the shape a skill writes: `matches` is how many elements the control's
+// semantic handle addresses, and 1 is the only value that makes it usable.
+function control(over: Record<string, unknown>) {
+  return {
+    role: null, name: '', nameSource: null, label: null, placeholder: null, field: null,
+    region: 'body', visible: true, disabled: false, href: null, matches: 1, y: 0, ...over,
+  };
+}
+
 function fixture(): string {
   const dir = mkdtempSync(join(tmpdir(), 'model-'));
-  mkdirSync(join(dir, 'screens'));
-  writeFileSync(join(dir, 'dossier.json'), JSON.stringify({
-    app: 'demo', baseUrl: 'https://demo.test/', repoPath: '/r', repoCommit: 'abc',
-    frontend: { framework: 'vue' }, backend: { framework: 'symfony' },
-  }));
-  writeFileSync(join(dir, 'routes.json'), JSON.stringify({
-    routes: [{ path: '/contacts' }, { path: '/contacts/add' }, { path: '/reports' }],
-  }));
-  writeFileSync(join(dir, 'components.json'), JSON.stringify({
-    regions: [
-      { name: 'NavigationBar', selector: '#nav' },
-      { name: 'RecordTable', selector: '.tbl', row: 'tr', cell: 'td', rowKey: 'data-id' },
-    ],
-    labelAssociation: { preferredTemplate: '[data-name="{fieldName}"]' },
-  }));
-  writeFileSync(join(dir, 'api.json'), JSON.stringify({ endpoints: [], auth: { kind: 'token' } }));
-
-  const nav = ['Contacts', 'Reports', 'Settings'].map((t, i) => ({
-    tag: 'a', role: 'link', name: t, label: null, placeholder: null, id: null, nameAttr: null,
-    testId: null, data: {}, region: 'navigation', visible: true, disabled: false,
-    href: '#', locator: { strategy: 'role', args: ['link', t], matchCount: 1 }, unique: true, fragile: false, type: null,
-  }));
+  const nav = ['Contacts', 'Reports', 'Settings'].map(t =>
+    control({ role: 'link', name: t, nameSource: 'accessible', region: 'navigation', href: '#' }));
   const screen = (path: string, title: string, extra: any[] = [], tables: any[] = []) => ({
-    url: 'https://demo.test' + path, path, title,
-    headings: [{ level: 1, text: title }], tables,
-    elements: [...nav, ...extra],
+    path, url: 'https://demo.test' + path, title,
+    headings: [{ level: 1, text: title, y: 0 }], tables,
+    controls: [...nav, ...extra],
     links: [{ href: '/contacts/add', resolved: 'https://demo.test/contacts/add', text: 'Add Contact' }],
   });
-  const addLink = {
-    tag: 'a', role: 'link', name: 'Add Contact', label: null, placeholder: null, id: null, nameAttr: null,
-    testId: null, data: {}, region: 'body', visible: true, disabled: false, href: '/contacts/add',
-    locator: { strategy: 'role', args: ['link', 'Add Contact'], matchCount: 1 }, unique: true, fragile: false, type: null,
-  };
-  const rowCheckbox = {
-    tag: 'input', role: 'checkbox', name: '', label: null, placeholder: null, id: null, nameAttr: null,
-    testId: null, data: {}, region: 'table', visible: true, disabled: false, href: null,
-    locator: { strategy: 'css', args: ['tr td input'], matchCount: 1 }, unique: true, fragile: true, type: 'checkbox',
-  };
-  const firstName = {
-    tag: 'input', role: 'textbox', name: 'First Name', label: null, placeholder: null, id: null, nameAttr: null,
-    testId: null, data: {}, region: 'body', visible: true, disabled: false, href: null,
-    locator: { strategy: 'role', args: ['textbox', 'First Name'], matchCount: 1 }, unique: true, fragile: false, type: 'text',
-  };
-  writeFileSync(join(dir, 'screens', 'contacts.json'), JSON.stringify(
-    screen('/contacts', 'Contacts', [addLink, rowCheckbox], [{ columns: ['Select All Results', 'Name', 'Email'], rowCount: 3 }])));
-  writeFileSync(join(dir, 'screens', 'add.json'), JSON.stringify(screen('/contacts/add', 'Add Contact', [firstName])));
+  const addLink = control({ role: 'link', name: 'Add Contact', nameSource: 'accessible', href: '/contacts/add' });
+  const rowCheckbox = control({ role: 'checkbox', name: '', region: 'table', matches: -1 });
+  const firstName = control({ role: 'textbox', name: 'First Name', nameSource: 'accessible' });
+
+  writeFileSync(join(dir, 'analysis.json'), JSON.stringify({
+    app: { name: 'demo', baseUrl: 'https://demo.test/', repoPath: '/r', repoCommit: 'abc', generatedAt: '' },
+    source: {
+      stack: { frontend: { framework: 'vue' }, backend: { framework: 'symfony' } },
+      routes: [{ path: '/contacts' }, { path: '/contacts/add' }, { path: '/reports' }],
+      entities: [], existingTests: [], docs: {}, dependencies: {},
+    },
+    components: {
+      regions: [
+        { name: 'NavigationBar', selector: '#nav' },
+        { name: 'RecordTable', selector: '.tbl', row: 'tr', cell: 'td', rowKey: 'data-id' },
+      ],
+      labelAssociation: { preferredTemplate: '[data-name="{fieldName}"]' },
+    },
+    api: { apiPrefix: null, tiers: {}, spec: {}, auth: { kind: 'token' }, endpoints: [] },
+    screens: [
+      screen('/contacts', 'Contacts', [addLink, rowCheckbox],
+        [{ columns: ['Select All Results', 'Name', 'Email'], rowCount: 3 }]),
+      screen('/contacts/add', 'Add Contact', [firstName]),
+    ],
+    testability: { screens: {}, recordings: [] },
+  }, null, 2));
+  return dir;
+}
+
+/** Add a screen to a fixture that already exists. */
+function addScreen(dir: string, screen: Record<string, unknown>): string {
+  const analysis = JSON.parse(readFileSync(join(dir, 'analysis.json'), 'utf8'));
+  analysis.screens.push(screen);
+  writeFileSync(join(dir, 'analysis.json'), JSON.stringify(analysis, null, 2));
   return dir;
 }
 
 /** Two controls a screen names identically, and one named only by a rendered label. */
-function ambiguous(extra: any[] = []) {
+function ambiguous(): string {
   const dir = fixture();
-  const twin = (y: number) => ({
-    tag: 'input', role: 'textbox', name: 'Type for hints...', nameSource: 'accessible',
-    label: null, placeholder: 'Type for hints...', id: null, nameAttr: null,
-    testId: null, data: {}, region: 'form', visible: true, disabled: false, href: null,
-    box: { x: 0, y, w: 100, h: 20 },
-    locator: { strategy: 'css', args: ['div:nth-of-type(' + y + ') input'], matchCount: 1 },
-    candidates: [
-      { strategy: 'role', args: ['textbox', 'Type for hints...'], matchCount: 2 },
-      { strategy: 'placeholder', args: ['Type for hints...'], matchCount: 2 },
-      { strategy: 'css', args: ['div:nth-of-type(' + y + ') input'], matchCount: 1 },
-    ],
-    unique: true, fragile: true, type: 'text',
+  const twin = (y: number) => control({
+    role: 'textbox', name: 'Type for hints...', nameSource: 'accessible',
+    placeholder: 'Type for hints...', region: 'form', y, matches: 2,
   });
-  const nearLabelled = {
-    tag: 'div', role: 'combobox', name: 'Sub Unit', nameSource: 'proximity',
-    label: null, placeholder: null, id: null, nameAttr: null,
-    testId: null, data: {}, region: 'form', visible: true, disabled: false, href: null,
-    box: { x: 0, y: 300, w: 100, h: 20 },
-    locator: { strategy: 'proximity', args: ['Sub Unit', 'div'], matchCount: 1 },
-    candidates: [{ strategy: 'proximity', args: ['Sub Unit', 'div'], matchCount: 1 }],
-    unique: true, fragile: false, type: null,
-  };
-  writeFileSync(join(dir, 'screens', 'search.json'), JSON.stringify({
-    url: 'https://demo.test/reports', path: '/reports', title: 'Reports',
+  const nearLabelled = control({
+    role: 'combobox', name: 'Sub Unit', nameSource: 'proximity', region: 'form', y: 300,
+  });
+  return addScreen(dir, {
+    path: '/reports', url: 'https://demo.test/reports', title: 'Reports',
     headings: [{ level: 1, text: 'Reports', y: 0 }], tables: [],
-    elements: [twin(100), twin(200), nearLabelled, ...extra], links: [],
-  }));
-  return dir;
+    controls: [twin(100), twin(200), nearLabelled], links: [],
+  });
 }
 
 test('a handle that addresses two elements is emitted for neither', () => {
-  const m = compile(ambiguous(), 'T');
-  const reports = m.screens.find(s => s.path === '/reports')!;
+  const reports = compile(ambiguous(), 'T').screens.find(s => s.path === '/reports')!;
   assert.equal(reports.uses.filter(u => u.label === 'Type for hints...').length, 0);
   assert.ok(reports.unverified >= 2, 'both twins are reported as unverified, not dropped silently');
 });
 
 test('a heading that separates two same-named controls is used to scope them', () => {
-  const dir = fixture();
-  const field = (y: number, heading: string) => ({
-    tag: 'input', role: 'textbox', name: 'Name', nameSource: 'accessible',
-    label: null, placeholder: null, id: null, nameAttr: null, testId: null, data: {},
-    region: 'form', visible: true, disabled: false, href: null,
-    box: { x: 0, y, w: 100, h: 20 },
-    locator: { strategy: 'css', args: [heading], matchCount: 1 },
-    candidates: [{ strategy: 'role', args: ['textbox', 'Name'], matchCount: 2 }],
-    unique: true, fragile: true, type: 'text',
-  });
-  writeFileSync(join(dir, 'screens', 'scoped.json'), JSON.stringify({
-    url: 'https://demo.test/reports', path: '/reports', title: 'Reports',
+  const dir = addScreen(fixture(), {
+    path: '/reports', url: 'https://demo.test/reports', title: 'Reports',
     headings: [{ level: 2, text: 'Billing', y: 50 }, { level: 2, text: 'Shipping', y: 250 }],
-    tables: [], elements: [field(100, 'Billing'), field(300, 'Shipping')], links: [],
-  }));
+    tables: [],
+    controls: [
+      control({ role: 'textbox', name: 'Name', nameSource: 'accessible', region: 'form', y: 100, matches: 2 }),
+      control({ role: 'textbox', name: 'Name', nameSource: 'accessible', region: 'form', y: 300, matches: 2 }),
+    ],
+    links: [],
+  });
   const reports = compile(dir, 'T').screens.find(s => s.path === '/reports')!;
-  const names = reports.uses.filter(u => u.label === 'Name').map(u => u.within).sort();
-  assert.deepEqual(names, ['Billing', 'Shipping']);
+  assert.deepEqual(reports.uses.filter(u => u.label === 'Name').map(u => u.within).sort(), ['Billing', 'Shipping']);
 });
 
 test('a proximity label is marked so the runtime repeats the same walk', () => {
-  const reports = compile(ambiguous(), 'T').screens.find(s => s.path === '/reports')!;
-  const subUnit = reports.uses.find(u => u.label === 'Sub Unit')!;
+  const subUnit = compile(ambiguous(), 'T').screens
+    .find(s => s.path === '/reports')!.uses.find(u => u.label === 'Sub Unit')!;
   assert.equal(subUnit.via, 'proximity');
   assert.equal(subUnit.component, 'Select');
 });
@@ -226,10 +208,9 @@ test('compiling twice gives byte-identical output', () => {
 
 test('a layout table with no header row is not a collection', () => {
   const dir = fixture();
-  const file = join(dir, 'screens', 'contacts.json');
-  const screen = JSON.parse(readFileSync(file, 'utf8'));
-  screen.tables.push({ columns: [], rowCount: 2 });
-  writeFileSync(file, JSON.stringify(screen));
+  const analysis = JSON.parse(readFileSync(join(dir, 'analysis.json'), 'utf8'));
+  analysis.screens.find((s: any) => s.path === '/contacts').tables.push({ columns: [], rowCount: 2 });
+  writeFileSync(join(dir, 'analysis.json'), JSON.stringify(analysis));
   const m = compile(dir, 'T');
   assert.equal(m.screens.find(s => s.path === '/contacts')!.uses.filter(u => u.component === 'RecordTable').length, 1);
 });
@@ -242,11 +223,11 @@ test('a route made only of parameters is still named', () => {
 
 test('a crawled record URL folds onto its declared parameterised route', () => {
   const dir = fixture();
-  writeFileSync(join(dir, 'routes.json'), JSON.stringify({
-    routes: [{ path: '/contacts' }, { path: '/contacts/add' }, { path: '/contacts/{id}' }],
-  }));
-  const screen = JSON.parse(readFileSync(join(dir, 'screens', 'contacts.json'), 'utf8'));
-  writeFileSync(join(dir, 'screens', 'one.json'), JSON.stringify({ ...screen, path: '/contacts/42', title: 'Ada' }));
+  const analysis = JSON.parse(readFileSync(join(dir, 'analysis.json'), 'utf8'));
+  analysis.source.routes = [{ path: '/contacts' }, { path: '/contacts/add' }, { path: '/contacts/{id}' }];
+  const contacts = analysis.screens.find((s: any) => s.path === '/contacts');
+  analysis.screens.push({ ...contacts, path: '/contacts/42', title: 'Ada' });
+  writeFileSync(join(dir, 'analysis.json'), JSON.stringify(analysis));
   const m = compile(dir, 'T');
   const detail = m.screens.find(s => s.path === '/contacts/{id}')!;
   assert.equal(detail.crawled, true);

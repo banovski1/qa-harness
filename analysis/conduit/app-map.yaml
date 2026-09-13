@@ -1,9 +1,9 @@
 # Conduit (RealWorld, Angular) — application map
-# 3 modules, 5 screens, crawled in 12s
+# 3 modules, 5 screens, crawled in 11s
 # Menus and surfaces only. Nothing here was created, updated or deleted.
 app: "Conduit (RealWorld, Angular)"
 baseUrl: "https://demo.realworld.show/"
-generatedAt: "2026-09-13T00:45:33.415Z"
+generatedAt: "2026-09-13T10:19:59.254Z"
 modules:
   - module: Home
     menu:

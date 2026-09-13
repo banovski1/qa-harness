@@ -1,6 +1,6 @@
 ---
 name: app-components
-description: Read a local clone of the app under test and write down its component conventions — the UI library, how labels attach to controls, what a form/table/dialog looks like in this codebase. Use for "what components does the app use", "how are labels wired", "regenerate components.json". Runs after app-dossier.
+description: Read a local clone of the app under test and write down its component conventions — the UI library, how labels attach to controls, what a form/table/dialog looks like in this codebase. Use for "what components does the app use", "how are labels wired", "regenerate the components section". Runs after app-dossier.
 ---
 
 # app-components
@@ -10,7 +10,7 @@ comes from the crawl (`app-explorer`), which can prove a locator resolves to one
 source cannot. What source knows, and the crawl does not, is *how this codebase is built* —
 and that is what decides how the generated page objects should address it.
 
-Inputs: `analysis/<app>/app-profile.yaml`, `dossier.json`. Output: `analysis/<app>/components.json`.
+Inputs: `analysis/<app>/app-profile.yaml`, `dossier.json`. Output: the `components` section of `analysis/<app>/analysis.json`.
 
 ## What to find out
 
@@ -74,3 +74,16 @@ is allowed to exist, and it never reaches a page object.
 - **Do not enumerate components.** A 1,485-row list of every file is what the previous
   analyzer produced, and nothing consumed it. Three well-evidenced conventions beat it.
 - **An app with no convention is a finding.** Say `"kind": "mixed"` and give two examples.
+
+## Where this goes
+
+One artifact per app. You own the `components` section of `analysis/<app>/analysis.json` and
+write no other — write your JSON to a scratch file, then hand it over:
+
+```bash
+npx tsx scripts/analysis/write-section.ts --app <app> --section components --file /tmp/components.json
+```
+
+The tool replaces that one key and leaves every other byte alone, so a re-run of this
+skill produces a diff confined to your own work. Never edit `analysis.json` directly:
+you would be rewriting three other skills' findings from whatever you happened to read.

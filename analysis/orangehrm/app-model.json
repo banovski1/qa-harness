@@ -5,7 +5,7 @@
     "repoPath": "~/Projects/orangehrm",
     "repoCommit": "56e23b3b09e7af29317a0943523b825843fff527",
     "stack": "vue / symfony",
-    "generatedAt": "2026-09-13T09:39:24.908Z"
+    "generatedAt": "2026-09-13T10:17:50.661Z"
   },
   "components": {
     "NavigationBar": {
@@ -1846,7 +1846,7 @@
         }
       ],
       "actions": [],
-      "unverified": 9
+      "unverified": 13
     },
     {
       "name": "AssignClaimPage",
@@ -21236,7 +21236,7 @@
     "regions": 1,
     "uses": 459,
     "actions": 0,
-    "unverified": 62,
+    "unverified": 66,
     "endpoints": 490,
     "resources": 105,
     "creatable": 44,

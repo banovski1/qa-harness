@@ -5,7 +5,7 @@
     "repoPath": "~/Projects/angular-realworld-example-app",
     "repoCommit": "dd99ed2cf39c805d719f943c5d7061a5683d98a8",
     "stack": "angular / none in this repo",
-    "generatedAt": "2026-09-13T09:40:25.629Z"
+    "generatedAt": "2026-09-13T10:19:59.262Z"
   },
   "components": {
     "NavigationBar": {
@@ -18,9 +18,10 @@
       },
       "controls": {
         "conduit": {
-          "strategy": "css",
+          "strategy": "role",
           "args": [
-            "body > app-root > app-layout-header > nav.navbar.navbar-light > div.container > a.navbar-brand"
+            "link",
+            "Conduit"
           ]
         },
         "home": {
@@ -31,9 +32,10 @@
           ]
         },
         "signIn": {
-          "strategy": "css",
+          "strategy": "role",
           "args": [
-            "app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(2) > a.nav-link"
+            "link",
+            "Sign in"
           ]
         },
         "signUp": {

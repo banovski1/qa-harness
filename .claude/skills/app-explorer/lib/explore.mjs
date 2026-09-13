@@ -9,7 +9,7 @@ import { join, dirname } from 'node:path';
 import { promisify } from 'node:util';
 import { parseYaml } from './yaml-lite.mjs';
 import { buildBundle } from './build-bundle.mjs';
-import { renderReports } from './render-reports.mjs';
+import { writeScreensSection } from './write-screens.mjs';
 
 const run = promisify(execFile);
 
@@ -38,9 +38,13 @@ if (!profilePath) {
 
 const profile = parseYaml(await readFile(profilePath, 'utf8'));
 const outDir = dirname(profilePath);
-const screensDir = join(outDir, 'screens');
-const statePath = join(outDir, 'crawl-state.json');
-const networkPath = join(outDir, 'network.json');
+// Raw crawl output is working material, not an artifact: it carries a candidate ladder
+// and a bounding box per element, which was fifteen megabytes for one app and unreadable
+// at any size. It stays out of analysis/ and is distilled into analysis.json at the end.
+const scratchDir = join(outDir, '.crawl');
+const screensDir = join(scratchDir, 'screens');
+const statePath = join(scratchDir, 'crawl-state.json');
+const networkPath = join(scratchDir, 'network.json');
 const session = flag('session', profile.session || 'app-explorer');
 const budget = profile.budget || {};
 const maxScreens = Number(flag('max-screens', budget.maxScreens || 60));
@@ -129,8 +133,8 @@ async function runBatch(config) {
 await mkdir(screensDir, { recursive: true });
 
 if (has('reports-only')) {
-  await renderReports({ outDir, profile });
-  log('reports rendered from existing screens/');
+  await writeScreensSection({ outDir, screensDir });
+  log('screens section rewritten from the existing crawl');
   process.exit(0);
 }
 
@@ -233,5 +237,5 @@ await saveState(state);
 await writeFile(networkPath, JSON.stringify(network, null, 2));
 log(`crawled ${Object.keys(state.visited).length} screens, ${Object.keys(state.failed).length} failed`);
 
-await renderReports({ outDir, profile });
-log('reports written to', outDir);
+await writeScreensSection({ outDir, screensDir });
+log('screens written to', join(outDir, 'analysis.json'));

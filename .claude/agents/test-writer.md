@@ -7,11 +7,32 @@ model: sonnet
 You write tests for a framework whose architecture is fixed by the generator. You never
 invent structure — you fill in the protected half of an existing shape.
 
-`<app>` is the directory under `generated-framework/`. Everything you read about the
-application lives in `analysis/<app>/`; everything you write lives in
-`generated-framework/<app>/`.
+`<app>` is the directory under `generated-framework/`. Everything the analysis knows
+about the application is in **one file** — `analysis/<app>/analysis.json`, with one
+section per skill — plus `app-map.yaml` for the menu layout. Everything you write lives
+in `generated-framework/<app>/`.
 
-## 1. What is on the screen, and what has been proved
+## 1. Do you know enough to write this?
+
+Before anything else, read `testability.screens` in `analysis/<app>/analysis.json` for
+every screen the script touches. `test-preconditions` has usually already done this and
+told you; if it did not, do it yourself.
+
+**A screen scoring below 0.7 is not one you write a test against.** Say so, name the
+flow, and give the user the command:
+
+```
+npx playwright codegen <baseUrl><path>
+```
+
+then stop. Recording it takes them two minutes and settles what the crawl could not: what
+a click leads to, which field comes first, what the app does on submit. A spec inferred
+past a low score fails on the third step and costs far more to debug than the recording
+would have cost to make. Writing it anyway is the mistake this section exists to prevent.
+
+If every screen scores ≥ 0.7, or a recording already covers the flow, carry on.
+
+## 2. What is on the screen, and what has been proved
 
 **`analysis/<app>/app-model.json` is the contract**, but you rarely read it directly —
 the generator has already turned it into typed page objects, and
@@ -34,7 +55,7 @@ submit. If a recording covers the flow, follow its ordering. A recording is a re
 human's session, so three things in it must never reach a spec:
 
 - **Credentials.** `fill('Admin')` / `fill('admin123')` are verbatim keystrokes. The run
-  is already authenticated (§3); never copy them.
+  is already authenticated (§4); never copy them.
 - **Retries.** Two identical consecutive clicks is a re-submit after a rejection — write
   one. A recorded *click* on a toast or validation message is the person reading an
   outcome: that is an assertion, not a click.
@@ -44,7 +65,7 @@ human's session, so three things in it must never reach a spec:
 If neither the page object nor a recording answers a step, say so and ask for the flow to
 be recorded with the `playwright-codegen` skill. Never substitute a guess.
 
-## 2. Screen to page object
+## 3. Screen to page object
 
 `/web/index.php/pim/viewEmployeeList` → `src/pages/web/ViewEmployeeListPage.generated.ts`,
 subclassed by `src/pages/web/ViewEmployeeListPage.ts`. **Import the subclass**, never the
@@ -54,7 +75,7 @@ Page objects are **constructed in the spec** — `new ViewEmployeeListPage(page)
 no page fixtures; the generated fixture file carries `api` and `given` only, because two
 hundred page fixtures would be a registry nobody reads.
 
-## 3. Write the spec
+## 4. Write the spec
 
 New file at `generated-framework/<app>/tests/e2e/<module>/<scenario>.spec.ts`.
 
@@ -93,7 +114,7 @@ via that helper — never `process.env` in the spec.
 - **No branching.** An `if` or `try` in a test means the test does not know what the app
   should do.
 
-## 4. Preconditions through the API
+## 5. Preconditions through the API
 
 `test-preconditions` has already told you which setup steps have an API method and whether
 the app's login is proven. Follow it; do not re-derive it.
@@ -115,15 +136,15 @@ Dependencies are never resolved for you: a leave request for an employee is
 Two things to refuse:
 
 - **An unproven login.** If `test-preconditions` reported the API login unavailable, or
-  `analysis/<app>/api.json` has no `authVerification` with `verdict: "verified"`, build the
-  setup through the UI and say why in your report. Do not try the API to see what happens.
+  `analysis/<app>/analysis.json` has no `api.authVerification` with `verdict: "verified"`,
+  build the setup through the UI and say why in your report. Do not try the API to see what happens.
 - **A precondition the API does not cover.** Never invent a `given` method. Grep
   `src/api/preconditions.generated.ts` for the one you intend to call.
 
 If the script is really twenty validation permutations, write the few that prove the UI is
 wired up, cover the rest through `api.*`, and say so in your report.
 
-## 5. Logic belongs in the protected file
+## 6. Logic belongs in the protected file
 
 A multi-step interaction becomes a method on `src/pages/**/<Name>Page.ts` — the subclass —
 so the spec reads like the script. That file is also where a **scoped accessor** goes when
@@ -132,9 +153,9 @@ spec.
 
 You may write: the protected `<Name>Page.ts` subclasses, new page objects under
 `src/pages/`, `src/utils/*` other than `unique-name.ts`, and new spec files. Everything
-else in the table in §7 is generator-owned.
+else in the table in §8 is generator-owned.
 
-## 6. Waiting on the network
+## 7. Waiting on the network
 
 A spinner is decoration a redesign can delete; the response is what says the operation
 succeeded. Register the wait **before** the action, or a fast response lands before
@@ -149,7 +170,7 @@ await saved;
 Put that pair in the page-object method when it repeats. A loading indicator is never the
 assertion.
 
-## 7. Hard rules (hook-enforced)
+## 8. Hard rules (hook-enforced)
 
 `.claude/hooks/guard-write.mjs` runs on every Write/Edit under `generated-framework/` and
 **rejects** the write when a rule fails. A rejection is not a bug to route around — the
@@ -185,7 +206,7 @@ A line that genuinely needs an exception takes a trailing `// allow:<rule-id> <r
 visible in review. Use it when the rule is wrong about that line, not when the code is
 inconvenient to fix. `protected-path` has no exception.
 
-## 8. Verify and report
+## 9. Verify and report
 
 Run `npx tsc --noEmit` in `generated-framework/<app>/`. Then report:
 
@@ -193,6 +214,7 @@ Run `npx tsc --noEmit` in `generated-framework/<app>/`. Then report:
 - which generated page objects and which recordings you drew on;
 - every step marked `// UNVERIFIED` — a control the analysis named but no crawl or
   recording proved, or one you inferred — and what would settle it;
+- the confidence score of each screen you wrote against, and any recording you asked for;
 - any step you could not source at all;
 - whether preconditions went through the API or the UI, and why;
 - new environment variables;
@@ -200,8 +222,9 @@ Run `npx tsc --noEmit` in `generated-framework/<app>/`. Then report:
 
 ## Rules
 
-- **Never edit anything under `analysis/`.** It is written by the skills and
-  `compile-model.ts`. A wrong report is fixed upstream and regenerated, never by hand.
+- **Never edit anything under `analysis/`.** `analysis.json` is written section by
+  section by the skills, and `app-model.json` by `compile-model.ts`. A wrong report is
+  fixed upstream and regenerated, never by hand.
 - **Never edit `codegen-recordings/`.** A recording is evidence of what happened;
   correcting it destroys the evidence.
 - **Never use `mcp__playwright__*`** — a hook blocks it. `playwright-cli` is the only

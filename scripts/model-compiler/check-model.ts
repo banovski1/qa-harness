@@ -9,6 +9,7 @@ import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { homedir } from 'node:os';
 import type { AppModel } from './model-types.ts';
+import { SECTION_OWNER, type Section } from '../analysis/analysis-types.ts';
 
 interface Finding { level: 'error' | 'warning'; message: string }
 
@@ -31,9 +32,28 @@ export function checkModel(appDir: string, model: AppModel): Finding[] {
     warn(`could not read ${model.app.repoPath} to compare commits; the analysis may be stale`);
   }
 
-  // 2. Are the reports the model was built from still there, and newer than it?
-  for (const report of ['dossier.json', 'routes.json', 'components.json', 'api.json']) {
-    if (!existsSync(join(appDir, report))) err(`${report} is missing — a skill has not run`);
+  // 2. Is the analysis there, and has every skill filled in its section?
+  const analysisPath = join(appDir, 'analysis.json');
+  if (!existsSync(analysisPath)) {
+    err('analysis.json is missing — no skill has run');
+  } else {
+    const analysis = JSON.parse(readFileSync(analysisPath, 'utf8'));
+    const empty: Record<string, boolean> = {
+      source: !analysis.source?.routes?.length,
+      components: !analysis.components?.regions?.length,
+      api: !analysis.api?.endpoints?.length,
+      screens: !analysis.screens?.length,
+    };
+    for (const [section, isEmpty] of Object.entries(empty)) {
+      if (isEmpty) err(`analysis.json has no "${section}" — ${SECTION_OWNER[section as Section]} has not run`);
+    }
+    if (!analysis.map?.modules?.length) {
+      warn('analysis.json has no "map" — run map.mjs for the menu-level inventory');
+    }
+    if (analysis.api?.authVerification?.verdict !== 'verified') {
+      warn(`the API login is ${analysis.api?.authVerification?.verdict ?? 'unproven'} — ` +
+           'run scripts/api-auth/verify-auth.ts before building a precondition on it');
+    }
   }
 
   // 3. Every page must be reachable and legally named.
@@ -68,8 +88,8 @@ export function checkModel(appDir: string, model: AppModel): Finding[] {
   }
 
   // 6. The crawl is what makes a locator real. A model with none is a route list.
-  if (!existsSync(join(appDir, 'screens')) || !readdirSync(join(appDir, 'screens')).length) {
-    warn('no screens/ — nothing was crawled, so every page object is a URL and nothing else');
+  if (!model.stats.crawled) {
+    warn('nothing was crawled, so every page object is a URL and nothing else');
   }
 
   const unverifiedRatio = model.stats.uses ? model.stats.unverified / (model.stats.uses + model.stats.unverified) : 0;

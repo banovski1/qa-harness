@@ -5,7 +5,7 @@
     "repoPath": "~/Projects/cal.diy",
     "repoCommit": "b0a34f21c91ae7803f9b7e2c59c2fbd187cce26f",
     "stack": "next.js / tRPC over Next.js route handlers",
-    "generatedAt": "2026-09-13T09:41:40.944Z"
+    "generatedAt": "2026-09-13T10:17:52.018Z"
   },
   "components": {
     "TextField": {
@@ -116,8 +116,26 @@
         },
         {
           "component": "Link",
+          "as": "bookADemo",
+          "label": "Book a demo",
+          "within": "With us, appointment scheduling is easy"
+        },
+        {
+          "component": "Link",
+          "as": "bookADemo2",
+          "label": "Book a demo",
+          "within": "Your all-purpose scheduling app"
+        },
+        {
+          "component": "Link",
           "as": "exploreApps",
           "label": "Explore apps"
+        },
+        {
+          "component": "Link",
+          "as": "bookADemo3",
+          "label": "Book a demo",
+          "within": "See why our users love Cal.com"
         },
         {
           "component": "Link",
@@ -451,7 +469,7 @@
         }
       ],
       "actions": [],
-      "unverified": 18
+      "unverified": 21
     },
     {
       "name": "AppsPage",
@@ -1343,7 +1361,7 @@
         }
       ],
       "actions": [],
-      "unverified": 20
+      "unverified": 30
     },
     {
       "name": "EventTypesPage",
@@ -2230,6 +2248,12 @@
         },
         {
           "component": "Link",
+          "as": "tryAIScheduling2",
+          "label": "Try AI scheduling",
+          "within": "See the AI phone agent in action"
+        },
+        {
+          "component": "Link",
           "as": "seeCalAiInLiveAction",
           "label": "See Cal.ai in live action"
         },
@@ -2240,13 +2264,37 @@
         },
         {
           "component": "Link",
-          "as": "tryAIScheduling2",
+          "as": "tryAIScheduling3",
+          "label": "Try AI scheduling",
+          "within": "Set up your Agent in minutes without a PhD degree"
+        },
+        {
+          "component": "Link",
+          "as": "tryAIScheduling4",
+          "label": "Try AI scheduling",
+          "within": "Why Cal.ai's AI phone calls transform your scheduling"
+        },
+        {
+          "component": "Link",
+          "as": "tryAIScheduling5",
+          "label": "Try AI scheduling",
+          "within": "Automated AI calls that fill calendars and reduce no-shows"
+        },
+        {
+          "component": "Link",
+          "as": "tryAIScheduling6",
           "label": "Try AI scheduling",
           "within": "Not to mention everything else you could need in a scheduling app"
         },
         {
           "component": "Link",
-          "as": "tryAIScheduling3",
+          "as": "tryAIScheduling7",
+          "label": "Try AI scheduling",
+          "within": "Frequently asked questions about Cal.ai"
+        },
+        {
+          "component": "Link",
+          "as": "tryAIScheduling8",
           "label": "Try AI scheduling",
           "within": "Empower your receptionist. Let AI handle the scheduling"
         },
@@ -2592,7 +2640,7 @@
         }
       ],
       "actions": [],
-      "unverified": 15
+      "unverified": 17
     },
     {
       "name": "EmbedPage",
@@ -3039,7 +3087,7 @@
         }
       ],
       "actions": [],
-      "unverified": 7
+      "unverified": 8
     },
     {
       "name": "Embed2Page",
@@ -6373,9 +6421,9 @@
     "declaredOnly": 74,
     "components": 9,
     "regions": 0,
-    "uses": 298,
+    "uses": 306,
     "actions": 0,
-    "unverified": 60,
+    "unverified": 76,
     "endpoints": 121,
     "resources": 27,
     "creatable": 12,

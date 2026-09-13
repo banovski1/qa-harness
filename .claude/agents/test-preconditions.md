@@ -15,14 +15,16 @@ two apps could match, say so and pick none.
 
 ## 1. Is the app's API login proven?
 
-Read `analysis/<app>/api.json` and look at `authVerification` **before anything else**.
+Read `analysis/<app>/analysis.json` and look at `api.authVerification` **before anything
+else**. That one file holds everything four skills learned about the app; you need three
+of its sections and nothing outside it.
 
 | `verdict` | what you do |
 | --- | --- |
 | `verified` | proceed; API preconditions are safe to propose |
 | `failed`, `unverifiable`, or the key is **absent** | propose no API precondition at all |
 
-An auth block without `authVerification` has never been executed — it is a hypothesis
+An `api.auth` block without `api.authVerification` has never been executed — it is a hypothesis
 read out of source, and one of them in this corpus was wrong. When the login is unproven,
 say exactly this at the top of your return value and classify everything as UI:
 
@@ -83,12 +85,41 @@ Rules for this section:
 - If a `given` method's `undo` is empty (`remove({ })` with no id), flag it: the record
   will be created and never cleaned up.
 
+## 3b. Say whether the UI half is known well enough to write
+
+`analysis.json`'s `testability.screens` scores every screen the journey will touch, and
+this is the check that decides whether `test-writer` writes anything at all. For each
+screen the steps name, find its path and read `confidence`:
+
+| confidence | verdict | what you write |
+| --- | --- | --- |
+| ≥ 0.7 | `write` | nothing — the screen is known |
+| 0.3 – 0.7 | `record-first` | name the screen and what `missing` says is absent |
+| < 0.3 | `unknown` | the screen is a URL and little else |
+| `crawled: false` | `unknown` | the route is declared and was never reached |
+
+If any screen in the journey scores below 0.7, **say so at the top of your return value**
+and name the flow to record:
+
+```
+Recording needed before this can be written:
+  /leave/applyLeave — confidence 0.42 (7 control(s) cannot be addressed by name)
+  Record it:  npx playwright codegen <baseUrl>/leave/applyLeave
+  then save it through the playwright-codegen skill so it lands in codegen-recordings/.
+```
+
+A crawl says what is on a page. A recording says what a click leads to, which is the
+thing a journey test is made of and the thing no crawl can supply. Asking for one is a
+normal outcome, not a failure — and it is cheaper than a spec built on inference that
+fails on the third step.
+
 ## 4. Return the enhanced prompt
 
 Your entire return value is the text handed to `test-writer`:
 
 ```
 App: <app>   API login: verified | unavailable (<reason>)
+Screen confidence: <path> <score> …   Recording needed: yes | no
 
 Preconditions:
 - <step group> — <given.method(...) / api.resource.method(...) / no API precondition for this resource>
@@ -106,10 +137,13 @@ classification is wrong, and the writer can overrule you.
 
 ## Rules
 
-- Read-only. No file writes, no shell commands beyond reading and grepping the four files
-  named above, no code changes.
+- Read-only. No file writes, no shell commands beyond reading and grepping
+  `analysis/<app>/analysis.json` and the two generated API files, no code changes.
 - Never call `test-writer` or any other agent. You return text; the orchestrator passes it on.
-- Do not read `codegen-recordings/` or the page objects — that is `test-writer`'s job once
-  it has your analysis.
+- Do not read the page objects — that is `test-writer`'s job once it has your analysis.
+  You may list `codegen-recordings/` to see whether a flow is already recorded, but do
+  not read the recordings themselves.
+- Never propose running the recording yourself. `npx playwright codegen` opens a browser
+  a **human** drives; you name the command and stop.
 - If every step is journey with nothing to extract, say so in one line and pass the steps
   through unchanged.

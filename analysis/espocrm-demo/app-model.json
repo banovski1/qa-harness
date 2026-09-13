@@ -5,7 +5,7 @@
     "repoPath": "~/Projects/espocrm",
     "repoCommit": "8b4f900085d2e21097b72c8cc27e14cb1de5cbd8",
     "stack": "backbone / php (bespoke, Slim-like DI container)",
-    "generatedAt": "2026-09-13T09:43:35.656Z"
+    "generatedAt": "2026-09-13T10:17:51.167Z"
   },
   "components": {
     "NavigationBar": {
@@ -152,7 +152,14 @@
         }
       },
       "seenOn": 60,
-      "description": "navigation region — 19 controls shared across 60 screens"
+      "description": "navigation region — 19 controls shared across 60 screens",
+      "actions": [
+        {
+          "name": "goToCalendar",
+          "via": "calendar",
+          "leadsTo": "CalendarPage"
+        }
+      ]
     },
     "TextField": {
       "kind": "field",
@@ -500,7 +507,7 @@
           "leadsTo": "ProjectPage"
         }
       ],
-      "unverified": 53
+      "unverified": 67
     },
     {
       "name": "AboutPage",
@@ -1024,7 +1031,7 @@
         }
       ],
       "actions": [],
-      "unverified": 27
+      "unverified": 28
     },
     {
       "name": "CallEditPage",
@@ -1473,7 +1480,7 @@
         }
       ],
       "actions": [],
-      "unverified": 23
+      "unverified": 24
     },
     {
       "name": "ContactEditPage",
@@ -2578,7 +2585,7 @@
         }
       ],
       "actions": [],
-      "unverified": 26
+      "unverified": 28
     },
     {
       "name": "LeadEditPage",
@@ -2756,7 +2763,7 @@
         }
       ],
       "actions": [],
-      "unverified": 26
+      "unverified": 27
     },
     {
       "name": "MeetingEditPage",
@@ -2958,7 +2965,7 @@
         }
       ],
       "actions": [],
-      "unverified": 19
+      "unverified": 21
     },
     {
       "name": "OpportunityEditPage",
@@ -3404,7 +3411,7 @@
         }
       ],
       "actions": [],
-      "unverified": 13
+      "unverified": 17
     },
     {
       "name": "PurchaseOrderPage",
@@ -4214,7 +4221,7 @@
         }
       ],
       "actions": [],
-      "unverified": 21
+      "unverified": 25
     },
     {
       "name": "TaskEditPage",
@@ -4474,6 +4481,11 @@
           "label": "External Accounts"
         },
         {
+          "component": "Link",
+          "as": "calendar",
+          "label": "Calendar"
+        },
+        {
           "component": "Button",
           "as": "edit",
           "label": "Edit"
@@ -4556,12 +4568,17 @@
       ],
       "actions": [
         {
+          "name": "goToCalendar",
+          "via": "calendar",
+          "leadsTo": "CalendarPage"
+        },
+        {
           "name": "goToTeams",
           "via": "teams",
           "leadsTo": "TeamPage"
         }
       ],
-      "unverified": 31
+      "unverified": 30
     },
     {
       "name": "WarehousePage",
@@ -4926,9 +4943,9 @@
     "declaredOnly": 37,
     "components": 10,
     "regions": 1,
-    "uses": 451,
-    "actions": 11,
-    "unverified": 679,
+    "uses": 452,
+    "actions": 12,
+    "unverified": 707,
     "endpoints": 9,
     "resources": 2,
     "creatable": 1,

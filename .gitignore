@@ -18,3 +18,7 @@ generated-framework/**/node_modules/
 generated-framework/**/test-results/
 generated-framework/**/playwright-report/
 generated-framework/**/.auth/
+
+# Raw crawl output. Working material for the explorer, distilled into analysis.json's
+# `screens` section — the ladder and boxes it carries are megabytes nothing reads twice.
+analysis/*/.crawl/

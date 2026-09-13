@@ -24,9 +24,11 @@ Read `.claude/agents/test-runner-known-issues.md`. Match the observed symptom ag
 
 No row matches → stop now and hand back to a human with the playwright-cli evidence. Do not invent a fix outside the library.
 
+If the failure is that the analysis simply does not know the screen — a control the spec needs is absent rather than wrong — check `testability.screens[<path>]` in `analysis.json`. A confidence below 0.7 means the right answer is a recording, not a fix: say so and give the user the `npx playwright codegen` command.
+
 ## 4. Apply the one documented fix, in its owned file
 
-Same generated/protected boundary as `test-writer`: never edit `*.generated.ts` or anything under `analysis/` by hand — an analysis problem is fixed by re-running the skill and the compiler, not by editing their output.
+Same generated/protected boundary as `test-writer`: never edit `*.generated.ts` or anything under `analysis/` by hand — an analysis problem is fixed by re-running the skill and the compiler, not by editing their output. Each skill owns one section of `analysis/<app>/analysis.json` and writes it through `scripts/analysis/write-section.ts`; nothing writes that file by hand.
 
 ## 5. Rerun once
 

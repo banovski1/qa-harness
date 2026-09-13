@@ -10,7 +10,7 @@ You are reading a clone of an application you have never seen, to answer two que
 install, no build. Read files.
 
 Inputs: `analysis/<app>/app-profile.yaml` — `repoPath` and `baseUrl` are the only fields
-you need. Outputs: `analysis/<app>/dossier.json` and `routes.json`
+you need. Outputs: the `app` and `source` sections of `analysis/<app>/analysis.json`
 
 ## 0. Read what the app already wrote about itself
 
@@ -82,7 +82,7 @@ Drop API-only routes (`/api/*`, JSON endpoints) — they belong to `app-api`.
 ## 4. Write the output
 
 ```jsonc
-// dossier.json
+// the `app` and `source` sections
 { "app": "espocrm-demo", "repoPath": "...", "repoCommit": "8b4f900085",
   "generatedAt": "...",
   "frontend": { "root": "client", "framework": "backbone", "version": "1.8",
@@ -94,7 +94,7 @@ Drop API-only routes (`/api/*`, JSON endpoints) — they belong to `app-api`.
                 "generateWith": "the command that produces it, if it is generated" },
   "notes":    ["anything a human should know before trusting this"] }
 
-// routes.json
+// source.routes
 { "app": "espocrm-demo", "mountPrefix": "/", "strategy": "hash-router",
   "routes": [ { "path": "/#Contact", "component": null, "params": [], "source": "client/src/router.js:88" } ],
   "skipped": [ { "path": "*actions", "reason": "splat fallback, not a screen" } ] }
@@ -110,3 +110,28 @@ Drop API-only routes (`/api/*`, JSON endpoints) — they belong to `app-api`.
 - **Do not run the app**, install dependencies, or read `node_modules/` and `vendor/`.
 - Prefer `rg`/`grep` with a pattern over reading whole trees. Large monorepos will not
   fit in context and do not need to.
+
+## Where this goes
+
+One artifact per app. You own the `source` section of `analysis/<app>/analysis.json` and
+write no other — write your JSON to a scratch file, then hand it over:
+
+```bash
+npx tsx scripts/analysis/write-section.ts --app <app> --section source --file /tmp/source.json
+```
+
+The tool replaces that one key and leaves every other byte alone, so a re-run of this
+skill produces a diff confined to your own work. Never edit `analysis.json` directly:
+you would be rewriting three other skills' findings from whatever you happened to read.
+
+`app` is the smaller of the two and goes the same way:
+
+```jsonc
+// --section app
+{ "name": "orangehrm", "baseUrl": "https://…", "repoPath": "~/Projects/orangehrm",
+  "repoCommit": "56e23b3b…", "generatedAt": "2026-09-13T…" }
+```
+
+`source` carries `stack`, `routes`, `entities`, `existingTests`, `docs` and
+`dependencies`. `entities` is the one most easily skipped and the one preconditions
+depend on: a domain object the app persists is a record a test may need to exist.

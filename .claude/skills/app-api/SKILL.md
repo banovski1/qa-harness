@@ -1,6 +1,6 @@
 ---
 name: app-api
-description: Document the API surface of a local clone of the app under test so preconditions and test data have real endpoints instead of guesses — including how a test user authenticates. Use for "what APIs does the app have", "document the API", "how do I log in via API", "regenerate api.json". Runs after app-dossier.
+description: Document the API surface of a local clone of the app under test so preconditions and test data have real endpoints instead of guesses — including how a test user authenticates. Use for "what APIs does the app have", "document the API", "how do I log in via API", "regenerate the api section". Runs after app-dossier.
 ---
 
 # app-api
@@ -9,7 +9,7 @@ A UI test that creates its preconditions through the UI is slow and tests the wr
 thing twice. This file is what lets a spec set up state directly. Its other job is
 **authentication**: the cheapest possible way to get a logged-in session.
 
-Inputs: `analysis/<app>/app-profile.yaml`, `dossier.json`. Output: `analysis/<app>/api.json`.
+Inputs: `analysis/<app>/app-profile.yaml`, `dossier.json`. Output: the `api` section of `analysis/<app>/analysis.json`.
 
 ## Work the tiers in order and stop when one pays
 
@@ -91,7 +91,7 @@ so the documented flow could not have worked.
 
 ```bash
 npx tsx scripts/api-auth/verify-auth.ts --app <app>          # look
-npx tsx scripts/api-auth/verify-auth.ts --app <app> --write  # stamp api.json
+npx tsx scripts/api-auth/verify-auth.ts --app <app> --write  # stamp the api section
 ```
 
 It runs the login you recorded against the running instance, then calls a parameter-free
@@ -112,7 +112,7 @@ Read the verdict as instructions:
 
 **Rule: never hand-edit `authVerification`.** It is written by the verifier or it is
 absent. An auth block with no `authVerification` is unproven, and any skill reading
-`api.json` — `test-preconditions` above all — must treat it that way.
+the `api` section — `test-preconditions` above all — must treat it that way.
 
 If the tool cannot express the app's flow, **fix the tool, not the app's entry**. It
 knows token, Basic and form-session logins and no application names; a new shape belongs
@@ -163,3 +163,16 @@ exhaustive coverage of an admin API nothing will call.
 - **Run the verifier before you report.** An `api.json` whose `auth` block has never been
   executed is a draft. `verified` is the only state that entitles a downstream skill to
   build a precondition on that login.
+
+## Where this goes
+
+One artifact per app. You own the `api` section of `analysis/<app>/analysis.json` and
+write no other — write your JSON to a scratch file, then hand it over:
+
+```bash
+npx tsx scripts/analysis/write-section.ts --app <app> --section api --file /tmp/api.json
+```
+
+The tool replaces that one key and leaves every other byte alone, so a re-run of this
+skill produces a diff confined to your own work. Never edit `analysis.json` directly:
+you would be rewriting three other skills' findings from whatever you happened to read.

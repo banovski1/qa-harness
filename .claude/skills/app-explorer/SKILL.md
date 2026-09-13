@@ -20,16 +20,21 @@ For an app named `<app>`:
 
 ```
 analysis/<app>/
-  app-profile.yaml          the only app-specific file — you write this one
-  screens/<Screen>.json     machine inventory: elements, ranked locators, regions
-  crawl-state.json          visited / pending / failed, so a crawl resumes
-  network.json              every XHR the app made, attributed to a screen
-  openapi-discovery.json    what answered at the probed specification paths
-  SCREEN-INVENTORY.md       every screen, its controls, its tables
-  COMPONENT-ANALYSIS.md     regions that recur across screens vs. screen-specific ones
-  LOCATOR-STRATEGY.md       the ladder, the tallies, and every weak locator by name
-  API-DOCUMENTATION.md      observed endpoints, payload shapes, triggering screen
+  app-profile.yaml   the only app-specific file — you write this one
+  analysis.json      every skill's findings, one section each. You own `map` and `screens`
+  app-map.yaml       the menu map, rendered from analysis.json's `map` for people to read
+  app-model.json     the compiled contract, written by compile-model.ts
+  .crawl/            raw crawl output — working material, gitignored, never an artifact
 ```
+
+Four files. There were sixteen, and reviewing a change meant reading a diff spread
+across all of them.
+
+The raw crawl carries a ranked candidate ladder and a bounding box for every element on
+every screen — fifteen megabytes for one app, none of it readable, and none of it read
+again once uniqueness has been decided. It stays in `.crawl/` and is distilled into the
+`screens` section: how to name each control, whether that name resolves to exactly one
+element, and where the name came from.
 
 Everything except `app-profile.yaml` is generated. Never hand-edit it — re-run
 the phase that wrote it.
@@ -48,7 +53,8 @@ node .claude/skills/app-explorer/lib/map.mjs --profile analysis/<app>/app-profil
   [--only Leave,Time] [--budget-min 15] [--per-module-seconds 90] [--max-per-module 12]
 ```
 
-It writes `app-map.yaml` (read by people) and `app-map.json` (read by tools): every module in the
+It writes the `map` section of `analysis.json` (read by tools) and renders `app-map.yaml`
+from it (read by people) — one object, two views, so they cannot drift apart. Every module in the
 primary menu, every entry in each module's own menu including the ones that only open a submenu,
 and for each screen its heading, its buttons, its fields with their types, and its tables with
 their columns. **Minutes, not hours** — the budget is enforced per module, and a module cut short
@@ -76,7 +82,7 @@ node .claude/skills/app-explorer/lib/probe-openapi.mjs --profile analysis/<app>/
 node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-profile.yaml --reports-only
 ```
 
-Useful flags: `--resume` continues an interrupted crawl from `crawl-state.json`,
+Useful flags: `--resume` continues an interrupted crawl from `.crawl/crawl-state.json`,
 `--max-screens N` and `--batch-size N` override the profile's budget.
 
 ## Targeting a new app
@@ -159,8 +165,9 @@ Each of these cost a wrong run, and each is now a comment in the code that expla
   `extract-screen.js` rejects those wherever a locator might anchor to one — this
   was the single largest source of run-to-run drift.
 - **Failures are recorded, never skipped.** A screen that will not yield is
-  retried once, then written to `crawl-state.json` with its reason and listed in
-  `SCREEN-INVENTORY.md`. A missing screen is always visible.
+  retried once, then written to `.crawl/crawl-state.json` with its reason. A screen that
+  was never reached still appears in `testability` with `crawled: false`, so a missing
+  screen is visible rather than absent.
 - **Read-only.** The crawl navigates and reads. It opens create and edit screens
   because they are routes, but never activates a control, so nothing is saved,
   sent or deleted. Controls whose name matches the destructive pattern are
@@ -187,12 +194,12 @@ it breaks only when the field is renamed, so it counts as semantic. It is the
 answer for a form-heavy app whose inputs carry no `for`-associated label.
 
 A bare `css` path always resolves to one element, so it is never counted as a
-semantic win. Those rows are listed by name in `LOCATOR-STRATEGY.md`: they are
+semantic win. Those controls carry `matches: -1` in the `screens` section: they are
 the locators that will break first, and the controls worth fixing upstream.
 
 ## Using the output
 
-`screens/*.json` is the contract; the markdown is its summary. Each element
+The `screens` section is the contract. Each control
 carries `locator` (the chosen one), `candidates` (all of them, with match
 counts), `unique`, `fragile`, `region`, `visible` and `destructive`. A framework
 generator should read the JSON; a human should read the markdown.

@@ -4,6 +4,7 @@
 // deep crawl and the user's own recordings sharpen it later.
 import { execFile } from 'node:child_process';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
@@ -138,8 +139,21 @@ const map = {
   notes: allNotes,
   errors: allErrors,
 };
+const SECTIONS = ['app', 'source', 'components', 'api', 'map', 'screens', 'testability'];
+
+async function writeMapSection(dir, value) {
+  const path = join(dir, 'analysis.json');
+  const current = existsSync(path) ? JSON.parse(await readFile(path, 'utf8')) : {};
+  current.map = value;
+  const ordered = {};
+  for (const key of SECTIONS) if (key in current) ordered[key] = current[key];
+  await writeFile(path, JSON.stringify(ordered, null, 2) + '\n');
+}
+
 await mkdir(outDir, { recursive: true });
-await writeFile(join(outDir, 'app-map.json'), JSON.stringify(map, null, 2) + '\n');
+// Two views of one thing: the section is what an agent reads, the YAML is what a person
+// reads, and both are written from the same object so they cannot drift apart.
+await writeMapSection(outDir, map);
 await writeFile(join(outDir, 'app-map.yaml'), renderYaml(map));
 log(`${allResults.length} modules, ${screens} screens, ${allNotes.length} skipped, ${allErrors.length} errors in ${elapsed}s`);
 log('written to', join(outDir, 'app-map.yaml'));

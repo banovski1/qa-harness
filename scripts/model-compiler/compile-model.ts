@@ -9,7 +9,8 @@ import { join } from 'node:path';
 // working login instead of a placeholder.
 // @ts-ignore -- a deliberately small YAML reader, shared with the explorer
 import { parseYaml } from '../../.claude/skills/app-explorer/lib/yaml-lite.mjs';
-import { renderReport } from './render-report.ts';
+import { readAnalysis, writeSection } from '../analysis/analysis-file.ts';
+import { computeTestability, verdictFor } from '../analysis/testability.ts';
 import { deriveResources, tagEndpoints } from './api-resources.ts';
 import type { AppModel, ComponentDef, ComponentUse, Screen, LocatorSpec } from './model-types.ts';
 
@@ -378,29 +379,47 @@ function uniqueProp(taken: Set<string>, raw: string): string {
  * analysis) while making a no-op recompile produce no diff at all.
  */
 export function newestInput(appDir: string): string {
-  const files = ['dossier.json', 'routes.json', 'components.json', 'api.json', 'app-profile.yaml']
+  const files = ['analysis.json', 'app-map.yaml', 'app-profile.yaml']
     .map(f => join(appDir, f))
     .filter(existsSync);
-  const screens = join(appDir, 'screens');
-  if (existsSync(screens)) for (const f of readdirSync(screens)) files.push(join(screens, f));
   const newest = files.reduce((max, f) => Math.max(max, statSync(f).mtimeMs), 0);
   return new Date(newest).toISOString();
 }
 
 export function compile(appDir: string, now = newestInput(appDir)): AppModel {
-  const read = (f: string) => JSON.parse(readFileSync(join(appDir, f), 'utf8'));
-  const dossier = read('dossier.json');
-  const routes = read('routes.json');
-  const conventions = existsSync(join(appDir, 'components.json')) ? read('components.json') : { regions: [] };
-  const api = existsSync(join(appDir, 'api.json')) ? read('api.json') : { endpoints: [], auth: null };
+  // One input file. Each skill owns one section of it, and the compiler reads all of them.
+  const analysis: any = JSON.parse(readFileSync(join(appDir, 'analysis.json'), 'utf8'));
+  const dossier = { ...analysis.app, ...analysis.source.stack };
+  const routes = { routes: analysis.source.routes ?? [] };
+  const conventions = analysis.components ?? { regions: [] };
+  const api = analysis.api ?? { endpoints: [], auth: null };
   const profilePath = join(appDir, 'app-profile.yaml');
   const profile: any = existsSync(profilePath) ? parseYaml(readFileSync(profilePath, 'utf8')) : {};
 
-  const screensDir = join(appDir, 'screens');
-  const crawled: CrawlScreen[] = existsSync(screensDir)
-    ? readdirSync(screensDir).filter(f => f.endsWith('.json')).sort()
-        .map(f => JSON.parse(readFileSync(join(screensDir, f), 'utf8')))
-    : [];
+  // The distilled screen carries `controls` and a per-control `matches`; the compiler's
+  // own vocabulary is `elements` with a candidate ladder, so translate once here rather
+  // than teaching every function downstream about both shapes.
+  const crawled: CrawlScreen[] = (analysis.screens ?? []).map((s: any) => ({
+    ...s,
+    elements: (s.controls ?? []).map((c: any) => ({
+      tag: '', type: null, role: c.role, name: c.name, nameSource: c.nameSource,
+      label: c.label, placeholder: c.placeholder, id: null, nameAttr: c.field,
+      testId: null, data: {}, region: c.region, visible: c.visible, disabled: c.disabled,
+      href: c.href, box: { x: 0, y: c.y, w: 0, h: 0 },
+      // The region component is emitted from these args, so they have to be the same
+      // pair the crawl chose: role and accessible name, or the field identifier.
+      locator: c.name
+        ? { strategy: 'role', args: [c.role ?? '', c.name], matchCount: c.matches }
+        : { strategy: 'scoped', args: [c.field ?? ''], matchCount: c.matches },
+      candidates: [{ strategy: 'role', args: [c.name], matchCount: c.matches < 0 ? Infinity : c.matches }],
+      // Every control in the section is one the crawl resolved; `matches` says whether
+      // it did so semantically. `-1` — no semantic handle at all — must still reach the
+      // screen loop, or a control the crawl saw and could not name vanishes from the
+      // report instead of being counted in `unverified`.
+      unique: true,
+      fragile: c.matches !== 1,
+    })),
+  }));
 
   const { components, regionClassOf, sharedKeys } = discoverRegions(crawled, conventions);
 
@@ -576,7 +595,7 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
 
   return {
     app: {
-      name: dossier.app,
+      name: dossier.name ?? dossier.app,
       baseUrl: dossier.baseUrl,
       repoPath: dossier.repoPath,
       repoCommit: dossier.repoCommit,
@@ -623,6 +642,17 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const model = compile(dir);
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, 'app-model.json'), JSON.stringify(model, null, 2) + '\n');
-  writeFileSync(join(dir, 'ANALYSIS.md'), renderReport(dir, model));
+
+  // The compiler is the only thing that has seen both what the crawl found and which
+  // routes were declared, so it is where "can a test be written against this screen?"
+  // is answered. It writes the one section no skill owns.
+  const analysis = readAnalysis(app);
+  const declared = (analysis.source.routes ?? []).map(r => r.path);
+  const testability = computeTestability(analysis, declared, analysis.testability?.recordings ?? []);
+  writeSection(app, 'testability', testability);
+
+  const scored = Object.values(testability.screens);
+  const writeable = scored.filter(v => verdictFor(v.confidence) === 'write').length;
   console.log(`app-model.json  ${JSON.stringify(model.stats)}`);
+  console.log(`analysis.json   testability: ${writeable}/${scored.length} screens ready to write against`);
 }
