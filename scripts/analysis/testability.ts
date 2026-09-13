@@ -74,6 +74,31 @@ export const RECORDED_ONLY: ScreenTestability = {
   missing: ['no crawl reached this route — everything known about it comes from the recording'],
 };
 
+/**
+ * A route only the recorder reached, scored on what the recorder actually saw.
+ *
+ * `RECORDED_ONLY` below is the flat answer for a screen whose recording was registered
+ * by name and nothing more. Once the recording's evidence has been merged in, the screen
+ * carries real controls, and a flat 0.7 would throw that away in both directions: it
+ * would under-report a screen whose every control is addressable, and over-report one
+ * where half of them are not. So score it like any other screen, and keep `crawled:
+ * false` — the controls are observations, not proofs of uniqueness.
+ */
+function recordedOnlyScore(screen: AnalysisScreen): ScreenTestability {
+  if (!(screen.controls ?? []).length) return { ...RECORDED_ONLY };
+  const scored = scoreScreen(screen, true);
+  return {
+    ...scored,
+    crawled: false,
+    // Never above the threshold, however clean the recorded controls look. Every one of
+    // them resolved once, for one person, on one visit; a crawled screen at 1.0 has had
+    // each of its handles counted against the whole page. "Enough to write the test" is
+    // the most a recording can honestly claim, and it is also all a test-writer needs.
+    confidence: Math.min(scored.confidence, CONFIDENT),
+    missing: [...scored.missing, 'the crawl has not proved these locators unique — only the recording resolved them'],
+  };
+}
+
 /** Declared but never reached: a URL and nothing behind it. */
 export const UNCRAWLED: ScreenTestability = {
   confidence: 0,
@@ -101,7 +126,7 @@ export function scoreScreens(
   for (const screen of screens) {
     const wasRecorded = recorded.has(screen.path);
     screen.testability = screen.crawled === false
-      ? (wasRecorded ? { ...RECORDED_ONLY } : { ...UNCRAWLED })
+      ? (wasRecorded ? recordedOnlyScore(screen) : { ...UNCRAWLED })
       : scoreScreen(screen, wasRecorded);
     const verdict = verdictFor(screen.testability.confidence);
     if (verdict === 'write') summary.write += 1;

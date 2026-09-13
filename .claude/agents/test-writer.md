@@ -8,7 +8,7 @@ You write tests for a framework whose architecture is fixed by the generator. Yo
 invent structure — you fill in the protected half of an existing shape.
 
 The project is `generated-framework/`. Everything the analysis knows
-about the application is in **one file** — `analysis.json`, nine sections,
+about the application is in **one file** — `analysis.json`, ten sections,
 one contract. Everything you write lives in `generated-framework/`.
 
 The sections you will want: `screens` (one entry per screen, holding both the controls
@@ -30,7 +30,7 @@ flow, and give the user the command:
 npx playwright codegen <baseUrl><path>
 ```
 
-then stop — the `playwright-codegen` skill shapes the result and registers it, which is
+then stop — the `app-recorder` skill shapes the result and ingests it, which is
 what moves the score. Recording takes them two minutes and settles what the crawl could
 not: what a click leads to, which field comes first, what the app does on submit.
 
@@ -59,7 +59,7 @@ Two things in a generated page object are load-bearing:
   label, role name or field identifier"* — means the crawl saw controls it could not name.
   If your step needs one, say so in your report rather than reaching past the page object.
 
-**`codegen-recordings/<flow>-<timestamp>.md`, when one exists**, is the only evidence of
+**`recordings/<flow>-<timestamp>.md`, when one exists**, is the only evidence of
 *behaviour* you have: what a click leads to, which field comes first, what the app does on
 submit. If a recording covers the flow, follow its ordering. A recording is a record of a
 human's session, so three things in it must never reach a spec:
@@ -73,7 +73,7 @@ human's session, so three things in it must never reach a spec:
   view. Fill the date field directly.
 
 If neither the page object nor a recording answers a step, say so and ask for the flow to
-be recorded with the `playwright-codegen` skill. Never substitute a guess.
+be recorded with the `app-recorder` skill. Never substitute a guess.
 
 ## 3. Screen to page object
 
@@ -235,7 +235,7 @@ Run `npx tsc --noEmit` in `generated-framework/`. Then report:
 - **Never edit anything under `analysis/`.** `analysis.json` is written section by
   section by the skills and by `compile-model.ts`. A wrong report is
   fixed upstream and regenerated, never by hand.
-- **Never edit `codegen-recordings/`.** A recording is evidence of what happened;
+- **Never edit `recordings/`.** A recording is evidence of what happened;
   correcting it destroys the evidence.
 - **Never use `mcp__playwright__*`** — a hook blocks it. `playwright-cli` is the only
   browser driver here, and it is `test-runner`'s to use, not yours.

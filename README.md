@@ -18,7 +18,7 @@ Two ideas are worth knowing before you start.
 **The analysis is one file.** `analysis.json`, at the root, holds everything known about
 your app: its declared routes, its API endpoints, every screen and control a crawl found,
 and — critically — whether each control can be addressed reliably. `CLAUDE.md` documents
-its nine sections.
+its ten sections.
 
 **The pipeline knows what it does not know.** Every screen carries a confidence score. If
 it is low, the agents will refuse to write a test and ask you to record the flow instead.
@@ -170,17 +170,33 @@ Three agents run in order, automatically:
 Sometimes you will get this back:
 
 ```
-Recording needed before this can be written:
-  /customers/new — confidence 0.42 (7 control(s) cannot be addressed by name)
-  Record it:  npx playwright codegen https://staging.example.com/customers/new
+RECORDING REQUIRED: 1 screen(s) this script touches cannot be addressed yet.
+
+  /customers/new   0.42  (record-first)
+    7 control(s) cannot be addressed by name
+
+Record the flow, and the analysis will learn it:
+
+  Use the app-recorder skill, flow slug customers-new
 ```
 
 A crawl can see what is *on* a page. It cannot see what a click *leads to*, which field
 must be filled first, or what the app does on submit. When the score is low, two minutes
-of recording settles what no amount of guessing will. Run the command, click through the
-flow once, and the `playwright-codegen` skill turns it into evidence the agents can use —
-including registering it against the screens it covers, which is what raises the score.
-A recording that is saved but never registered changes nothing.
+of recording settles what no amount of guessing will.
+
+Ask for the `app-recorder` skill. It opens your app, logs you in, and hands you the
+browser — you click through the flow once and say when you are done. What it captures is
+not just the clicks: the requests your app made while you worked are captured from the
+same session, so the endpoints behind the flow are learned too.
+
+**Each recording makes the next one smaller.** The routes, controls, transitions and API
+calls one recording proved go into `analysis.json` permanently, so the screens it touched
+stop asking — and the endpoints it revealed become preconditions the agents can set up in
+one call instead of clicking through.
+
+One thing to know: a screen still below 0.7 *after* being recorded is not asking to be
+recorded again. Its controls have no addressable names, and the fix is `npm run
+crawl:deep`. The report says so when that is the case.
 
 **This is the most important habit to build.** A spec written past a low score fails on
 its third step and costs an hour to debug.

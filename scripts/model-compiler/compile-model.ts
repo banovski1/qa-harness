@@ -13,6 +13,7 @@ import { loadProfile, ROOT as REPO_ROOT } from '../config/profile.mjs';
 import { readAnalysis, writeSection } from '../analysis/analysis-file.ts';
 import { scoreScreens, verdictFor } from '../analysis/testability.ts';
 import { deriveResources, tagEndpoints } from './api-resources.ts';
+import { mergeRecordings } from './merge-recordings.ts';
 import type { AppModel, ComponentDef, ComponentUse, Screen, LocatorSpec } from './model-types.ts';
 
 /** A region is shared when it recurs on this many screens... */
@@ -389,7 +390,17 @@ export function newestInput(appDir: string): string {
 
 export function compile(appDir: string, now = newestInput(appDir)): AppModel {
   // One input file. Each skill owns one section of it, and the compiler reads all of them.
-  const analysis: any = JSON.parse(readFileSync(join(appDir, 'analysis.json'), 'utf8'));
+  const raw: any = JSON.parse(readFileSync(join(appDir, 'analysis.json'), 'utf8'));
+  // What a human recorded joins what the crawl found before anything is derived from
+  // either, so a recorded control takes part in recurrence detection like any other. A
+  // merge that ran afterwards would contribute controls to screens and never to
+  // components, which is half the point of recording.
+  const analysis: any = mergeRecordings(raw);
+  // Kept aside because the model's own `stats` is built at the very end, from the
+  // compiled screens, and would otherwise replace these wholesale.
+  const recordingStats = Object.fromEntries(
+    Object.entries(analysis.stats ?? {}).filter(([k]) => k.startsWith('record')),
+  );
   const dossier = { ...analysis.app, ...analysis.source.stack };
   const routes = { routes: analysis.source.routes ?? [] };
   const conventions = analysis.conventions ?? { regions: [] };
@@ -407,27 +418,33 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
   // screen it added last run must not be mistaken for something a crawl found this run.
   // `crawled: false` is the marker the compiler itself put there; a screen the explorer
   // just wrote carries no such key at all.
-  const crawled: CrawlScreen[] = (analysis.screens ?? []).filter((s: any) => s.crawled !== false).map((s: any) => ({
-    ...s,
-    elements: (s.controls ?? []).map((c: any) => ({
-      tag: '', type: null, role: c.role, name: c.name, nameSource: c.nameSource,
-      label: c.label, placeholder: c.placeholder, id: null, nameAttr: c.field,
-      testId: null, data: {}, region: c.region, visible: c.visible, disabled: c.disabled,
-      href: c.href, box: { x: 0, y: c.y, w: 0, h: 0 },
-      // The region component is emitted from these args, so they have to be the same
-      // pair the crawl chose: role and accessible name, or the field identifier.
-      locator: c.name
-        ? { strategy: 'role', args: [c.role ?? '', c.name], matchCount: c.matches }
-        : { strategy: 'scoped', args: [c.field ?? ''], matchCount: c.matches },
-      candidates: [{ strategy: 'role', args: [c.name], matchCount: c.matches < 0 ? Infinity : c.matches }],
-      // Every control in the section is one the crawl resolved; `matches` says whether
-      // it did so semantically. `-1` — no semantic handle at all — must still reach the
-      // screen loop, or a control the crawl saw and could not name vanishes from the
-      // report instead of being counted in `unverified`.
-      unique: true,
-      fragile: c.matches !== 1,
-    })),
-  }));
+  // A recorded-only screen also carries `crawled: false` — the crawl really never
+  // reached it — but its controls are observations a human made, not the empty shell the
+  // compiler leaves behind for a declared route. Excluding it here would merge a
+  // recording's controls into the file and then compile as though they were not there.
+  const crawled: CrawlScreen[] = (analysis.screens ?? [])
+    .filter((s: any) => s.crawled !== false || s.recordedOnly === true)
+    .map((s: any) => ({
+      ...s,
+      elements: (s.controls ?? []).map((c: any) => ({
+        tag: '', type: null, role: c.role, name: c.name, nameSource: c.nameSource,
+        label: c.label, placeholder: c.placeholder, id: null, nameAttr: c.field,
+        testId: null, data: {}, region: c.region, visible: c.visible, disabled: c.disabled,
+        href: c.href, box: { x: 0, y: c.y, w: 0, h: 0 },
+        // The region component is emitted from these args, so they have to be the same
+        // pair the crawl chose: role and accessible name, or the field identifier.
+        locator: c.name
+          ? { strategy: 'role', args: [c.role ?? '', c.name], matchCount: c.matches }
+          : { strategy: 'scoped', args: [c.field ?? ''], matchCount: c.matches },
+        candidates: [{ strategy: 'role', args: [c.name], matchCount: c.matches < 0 ? Infinity : c.matches }],
+        // Every control in the section is one the crawl resolved; `matches` says whether
+        // it did so semantically. `-1` — no semantic handle at all — must still reach the
+        // screen loop, or a control the crawl saw and could not name vanishes from the
+        // report instead of being counted in `unverified`.
+        unique: true,
+        fragile: c.matches !== 1,
+      })),
+    }));
 
   const { components, regionClassOf, sharedKeys } = discoverRegions(crawled, conventions);
 
@@ -577,7 +594,10 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
       aliases: aliases.get(path) ?? [],
       identity: { urlPattern: path, heading: crawl?.headings?.[0]?.text ?? null },
       source: { component: decl?.component ?? null, route: decl?.path ?? null },
-      crawled: Boolean(crawl),
+      // A recorded-only screen is in the crawl set so its controls compile, but no crawl
+      // reached it and saying otherwise would let `stats.crawled` count a screen whose
+      // locators nothing has proved unique.
+      crawled: Boolean(crawl) && (crawl as any).recordedOnly !== true,
       uses,
       actions,
       unverified,
@@ -643,6 +663,11 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
         : null,
     },
     stats: {
+      // What the merge counted comes first, and the compiler's own counts follow. Both
+      // are written in one place: `check-model.ts` reads `stats.recordings` to tell a
+      // recording that has been ingested and compiled from one that was ingested and
+      // left, and dropping these here would make every recording look like the latter.
+      ...recordingStats,
       screens: screens.length,
       crawled: screens.filter(s => s.crawled).length,
       declaredOnly: screens.filter(s => !s.crawled).length,
@@ -669,8 +694,16 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
  * overwrites an observation, it adds what it derived to the entry that holds it.
  */
 export function foldIntoAnalysis(model: AppModel): { write: number; total: number } {
-  const analysis = readAnalysis();
+  // The same merge the compile ran, over the file as it stands. Without it the recorded
+  // controls take part in deriving components and are then dropped on the way back out —
+  // `observed` below is what gets written, and it would be the pre-merge screens.
+  // The merge is idempotent, which is what makes running it twice the simple answer.
+  const analysis = mergeRecordings(readAnalysis());
   const observed = new Map(analysis.screens.map(s => [s.path, s]));
+  // Both directions of the same fact: a recorded action names a path, an emitted one
+  // names a class, and nothing else in the file translates between them.
+  const byPath = new Map(model.screens.map(s => [s.path, s]));
+  const known = new Set(model.screens.map(s => s.name));
 
   const screens = model.screens.map(page => {
     const seen = observed.get(page.path) ?? observed.get(page.aliases?.[0] ?? '');
@@ -684,6 +717,7 @@ export function foldIntoAnalysis(model: AppModel): { write: number; total: numbe
       hiddenControls: seen?.hiddenControls,
       controls: seen?.controls ?? [],
       links: seen?.links ?? [],
+      recordedOnly: seen?.recordedOnly,
       // derived
       name: page.name,
       aliases: page.aliases,
@@ -691,7 +725,22 @@ export function foldIntoAnalysis(model: AppModel): { write: number; total: numbe
       source: page.source,
       crawled: page.crawled,
       uses: page.uses as unknown as Record<string, unknown>[],
-      actions: page.actions,
+      // The compiler derives actions from transitions the crawl took. A recording proves
+      // transitions a crawl never could — "clicking Apply lands you on the leave list" —
+      // and rebuilding `actions` from the crawl alone would discard them every compile.
+      // A recording names its destination by path, because when the merge ran no page
+      // had a class name yet. `leadsTo` in an emitted action is a page-object name, so
+      // resolve it here — the one place both are in hand. An action whose destination is
+      // not a known screen is dropped: the generator would emit a wait on a page object
+      // that does not exist.
+      actions: [
+        ...page.actions,
+        ...(seen?.actions ?? [])
+          .filter(a => a.provenBy === 'recording')
+          .map(a => ({ ...a, leadsTo: byPath.get(a.leadsTo)?.name ?? a.leadsTo }))
+          .filter(a => known.has(a.leadsTo))
+          .filter(a => !page.actions.some(p => p.via === a.via && p.leadsTo === a.leadsTo)),
+      ],
       unverified: page.unverified,
     };
   });

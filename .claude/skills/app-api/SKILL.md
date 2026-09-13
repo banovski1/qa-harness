@@ -179,7 +179,7 @@ you would be rewriting three other skills' findings from whatever you happened t
 
 ## The contract
 
-`analysis.json` has nine sections and always all nine. You own **`api`**
+`analysis.json` has ten sections and always all ten. You own **`api`**
 and write no other.
 
 | section | owner |

@@ -48,7 +48,7 @@ test('a declared route the crawl never reached scores zero and says so', () => {
 test('a recording is matched to the screens it covers, not to all of them', () => {
   const screens: any[] = [screen([named(2)], { path: '/a' }), screen([named(2)], { path: '/b' })];
   scoreScreens(screens, [
-    { flow: 'apply', path: 'codegen-recordings/apply.md', recordedAt: '', screens: ['/a'] },
+    { flow: 'apply', path: 'recordings/apply.md', recordedAt: '', screens: ['/a'] },
   ]);
   assert.equal(screens[0].testability.recorded, true);
   assert.equal(screens[1].testability.recorded, false);

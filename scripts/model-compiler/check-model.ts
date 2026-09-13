@@ -56,6 +56,24 @@ export function checkModel(appDir: string, model: AppModel): Finding[] {
     if (!analysis.map?.modules?.length) {
       warn('analysis.json has no "map" — run map.mjs for the menu-level inventory');
     }
+    // A recording is optional — plenty of apps are crawlable enough without one — so an
+    // empty `recordings` is not an error. A recording that has been ingested and never
+    // compiled is, though: the evidence is in the file and nothing has been derived from
+    // it, which reads exactly like a recording that did not help.
+    const recordings = analysis.recordings ?? [];
+    if (recordings.length && analysis.stats?.recordings !== recordings.length) {
+      err(`analysis.json holds ${recordings.length} recording(s) the compiler has not merged — ` +
+          'run compile-model.ts, or their routes, controls and endpoints count for nothing');
+    }
+    const flows = new Set((analysis.testability?.recordings ?? []).map((r: { flow: string }) => r.flow));
+    for (const r of recordings as { flow: string }[]) {
+      // The two lists are written together by ingest-recording.ts. One without the other
+      // means something hand-edited the file, which is the one thing nothing may do.
+      if (!flows.has(r.flow)) {
+        err(`recording "${r.flow}" is evidence no screen is scored against — ` +
+            're-run ingest-recording.ts rather than editing analysis.json');
+      }
+    }
     if (analysis.api?.authVerification?.verdict !== 'verified') {
       warn(`the API login is ${analysis.api?.authVerification?.verdict ?? 'unproven'} — ` +
            'run scripts/api-auth/verify-auth.ts before building a precondition on it');

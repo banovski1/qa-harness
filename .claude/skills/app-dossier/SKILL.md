@@ -138,7 +138,7 @@ depend on: a domain object the app persists is a record a test may need to exist
 
 ## The contract
 
-`analysis.json` has nine sections and always all nine. You own **`app` and `source`**
+`analysis.json` has ten sections and always all ten. You own **`app` and `source`**
 and write no other.
 
 | section | owner |
