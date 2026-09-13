@@ -8,7 +8,7 @@ import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
-import { parseYaml } from './yaml-lite.mjs';
+import { loadProfile, ROOT } from '../../../../scripts/config/profile.mjs';
 
 const run = promisify(execFile);
 const here = dirname(fileURLToPath(import.meta.url));
@@ -16,14 +16,8 @@ const here = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
 const flag = (name, fallback) => { const at = args.indexOf('--' + name); return at === -1 ? fallback : args[at + 1]; };
 
-const profilePath = flag('profile');
-if (!profilePath) {
-  console.error('usage: map.mjs --profile <analysis/<app>/app-profile.yaml> [--session <name>] [--budget-min 8] [--modules-per-batch 3]');
-  process.exit(2);
-}
-
-const profile = parseYaml(await readFile(profilePath, 'utf8'));
-const outDir = dirname(profilePath);
+const profile = loadProfile();
+const outDir = ROOT;
 const session = flag('session', profile.session || 'app-map');
 const budgetMin = Number(flag('budget-min', (profile.budget || {}).mapMinutes || 8));
 const modulesPerBatch = Number(flag('modules-per-batch', 3));

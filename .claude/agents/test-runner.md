@@ -8,7 +8,7 @@ You run a spec until it passes or you hit a failure this repo has never seen bef
 
 ## 1. Run the spec
 
-`cd generated-framework/<app> && npx playwright test <path> --reporter=line` — `<app>` is the directory under `generated-framework/`.
+`cd generated-framework && npx playwright test <path> --reporter=line`.
 
 A failure classified by `BaseComponent.act()` writes its evidence to `test-results/diagnostics.jsonl`: the kind (`NOT_FOUND`, `AMBIGUOUS`, `HIDDEN`, `DISABLED`, `COVERED`, `DETACHED`, `TIMED_OUT`), the component and screen that produced it, and the model file to re-crawl. Read that before the stack trace — it has already done the classification step for you.
 
@@ -28,7 +28,7 @@ If the failure is that the analysis simply does not know the screen — a contro
 
 ## 4. Apply the one documented fix, in its owned file
 
-Same generated/protected boundary as `test-writer`: never edit `*.generated.ts` or anything under `analysis/` by hand — an analysis problem is fixed by re-running the skill and the compiler, not by editing their output. Each skill owns one section of `analysis/<app>/analysis.json` and writes it through `scripts/analysis/write-section.ts`; nothing writes that file by hand.
+Same generated/protected boundary as `test-writer`: never edit `*.generated.ts` or anything under `analysis/` by hand — an analysis problem is fixed by re-running the skill and the compiler, not by editing their output. Each skill owns one section of `analysis.json` and writes it through `scripts/analysis/write-section.ts`; nothing writes that file by hand.
 
 ## 5. Rerun once
 

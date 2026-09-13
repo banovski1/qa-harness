@@ -11,6 +11,7 @@ import { homedir } from 'node:os';
 import type { AppModel } from './model-types.ts';
 import { SECTION_OWNER, type Section } from '../analysis/analysis-types.ts';
 import { modelFromAnalysis } from '../framework-generator/emit/emit.ts';
+import { ROOT } from '../config/profile.mjs';
 
 interface Finding { level: 'error' | 'warning'; message: string }
 
@@ -106,14 +107,11 @@ export function checkModel(appDir: string, model: AppModel): Finding[] {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const app = process.argv[process.argv.indexOf('--app') + 1];
-  if (!app || app.startsWith('--')) { console.error('usage: check-model.ts --app <name>'); process.exit(2); }
-  const dir = join('analysis', app);
-  const model: AppModel = modelFromAnalysis(app);
-  const findings = checkModel(dir, model);
+  const model: AppModel = modelFromAnalysis();
+  const findings = checkModel(ROOT, model);
   for (const f of findings) console.log(`${f.level === 'error' ? 'ERROR  ' : 'warning'} ${f.message}`);
   const errors = findings.filter(f => f.level === 'error').length;
-  console.log(`${app}: ${errors} error(s), ${findings.length - errors} warning(s), ` +
+  console.log(`${model.app.name}: ${errors} error(s), ${findings.length - errors} warning(s), ` +
               `${model.stats.screens} screens, ${model.stats.crawled} crawled`);
   process.exit(errors ? 1 : 0);
 }

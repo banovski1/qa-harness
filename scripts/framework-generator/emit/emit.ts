@@ -4,6 +4,7 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { FileWriter } from '../file-writer.js';
+import { ROOT } from '../../config/profile.mjs';
 import type { AppModel, Screen, ComponentUse } from '../../model-compiler/model-types.ts';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -16,7 +17,7 @@ const q = (s: string) => `'${String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'
 
 const HEADER = (model: AppModel) =>
   `// GENERATED — rewritten on every run. Put nothing here you want to keep.\n` +
-  `// Source: analysis/${model.app.name}/analysis.json (${model.app.repoCommit.slice(0, 10)})\n`;
+  `// Source: analysis.json (${model.app.repoCommit.slice(0, 10)})\n`;
 
 /** Every file under emit/runtime/ is copied verbatim: it is ordinary, reviewable code. */
 function runtimeFiles(dir = RUNTIME, prefix = 'src'): { path: string; contents: string }[] {
@@ -255,7 +256,7 @@ function staticProject(model: AppModel): { path: string; contents: string; kind:
         `export const APP_NAME = ${q(model.app.name)};`,
         `export const BASE_URL = ${q(model.app.baseUrl)};`,
         `/** Every diagnostic names this file, so a failure can be traced to its analysis. */`,
-        `export const MODEL_PATH = ${q(`analysis/${model.app.name}/analysis.json`)};`,
+        `export const MODEL_PATH = ${q('analysis.json')};`,
         `export const ANALYSED_COMMIT = ${q(model.app.repoCommit)};`,
         '',
       ].join('\n'),
@@ -273,7 +274,7 @@ function staticProject(model: AppModel): { path: string; contents: string; kind:
       contents: [
         HEADER(model),
         `// Logs in once per run and saves the session, so no spec pays for a login.`,
-        `// The steps come from analysis/${model.app.name}/app-profile.yaml; credentials never do.`,
+        `// The steps come from the root .env; credentials never do.`,
         `import { test as setup, expect } from '@playwright/test';`,
         '',
         `setup('authenticate', async ({ page }) => {`,
@@ -534,8 +535,8 @@ export function emit(model: AppModel, conventions: any, outputDir: string, { dry
  * back into the shape the emitter has always used rather than teaching every render
  * function about controls it does not emit.
  */
-export function modelFromAnalysis(app: string): AppModel {
-  const analysis = JSON.parse(readFileSync(join('analysis', app, 'analysis.json'), 'utf8'));
+export function modelFromAnalysis(): AppModel {
+  const analysis = JSON.parse(readFileSync(join(ROOT, 'analysis.json'), 'utf8'));
   return {
     app: analysis.app,
     components: analysis.components,
@@ -551,12 +552,9 @@ export function modelFromAnalysis(app: string): AppModel {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const appIdx = process.argv.indexOf('--app');
-  if (appIdx < 0) { console.error('usage: emit.ts --app <name> [--dry-run]'); process.exit(2); }
-  const app = process.argv[appIdx + 1];
   const dryRun = process.argv.includes('--dry-run');
-  const model: AppModel = modelFromAnalysis(app);
-  const analysis = JSON.parse(readFileSync(join('analysis', app, 'analysis.json'), 'utf8'));
-  const writer = emit(model, analysis.conventions, join('generated-framework', app), { dryRun });
+  const model: AppModel = modelFromAnalysis();
+  const analysis = JSON.parse(readFileSync(join(ROOT, 'analysis.json'), 'utf8'));
+  const writer = emit(model, analysis.conventions, join(ROOT, 'generated-framework'), { dryRun });
   console.log(`${dryRun ? '[dry run] ' : ''}${writer.summary()}`);
 }

@@ -6,7 +6,7 @@
  * whose screens score below 0.7 and asks for a recording; without this, the recording is
  * made, saved, and never counted — the score stays where it was and the agent asks again.
  *
- *   npx tsx scripts/analysis/register-recording.ts --app <app> \
+ *   npx tsx scripts/analysis/register-recording.ts \
  *     --flow apply-leave \
  *     --file codegen-recordings/apply-leave-2026-09-13.md \
  *     --screens /leave/applyLeave,/leave/viewMyLeaveList
@@ -25,13 +25,12 @@ function arg(flag: string): string | undefined {
 }
 
 function main(): void {
-  const app = arg('--app');
   const flow = arg('--flow');
   const file = arg('--file');
   const screens = (arg('--screens') ?? '').split(',').map(s => s.trim()).filter(Boolean);
 
-  if (!app || !flow || !file || !screens.length) {
-    console.error('usage: register-recording.ts --app <app> --flow <slug> --file <path> --screens <path,path>');
+  if (!flow || !file || !screens.length) {
+    console.error('usage: register-recording.ts --flow <slug> --file <path> --screens <path,path>');
     console.error('  --screens are the app paths the recording covers, as they appear in analysis.json');
     process.exit(2);
   }
@@ -40,12 +39,12 @@ function main(): void {
     process.exit(1);
   }
 
-  const analysis = readAnalysis(app);
+  const analysis = readAnalysis();
   const known = new Set(analysis.screens.map(s => s.path));
   const unknown = screens.filter(p => !known.has(p));
   if (unknown.length) {
     // A path that matches nothing raises no score and would look like it had.
-    console.error(`these paths are not screens in analysis/${app}/analysis.json:\n  ${unknown.join('\n  ')}`);
+    console.error(`these paths are not screens in analysis.json:\n  ${unknown.join('\n  ')}`);
     console.error('Use the `path` exactly as the screen carries it. Nothing was written.');
     process.exit(1);
   }
@@ -60,8 +59,8 @@ function main(): void {
   ].sort((a, b) => a.flow.localeCompare(b.flow));
 
   const testability = scoreScreens(analysis.screens, recordings);
-  writeSection(app, 'screens', analysis.screens);
-  writeSection(app, 'testability', testability);
+  writeSection('screens', analysis.screens);
+  writeSection('testability', testability);
 
   console.log(`registered ${flow} → ${file}`);
   for (const [path, was] of before) {

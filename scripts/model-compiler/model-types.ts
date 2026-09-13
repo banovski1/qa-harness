@@ -32,7 +32,6 @@ export interface ComponentDef {
   /** Region components only: controls discovered on every instance of the region. */
   controls?: Record<string, LocatorSpec>;
   /** Field components: the selector shape used when an identity gives `field`. */
-  fieldTemplate?: string;
   /** Collection components: the app's table shape. */
   table?: {
     row: string;

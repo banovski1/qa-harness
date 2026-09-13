@@ -26,7 +26,7 @@ const FORBIDDEN = [
   },
   {
     match: (p) => /(^|\/)tests\/auth\.setup\.ts$/.test(p),
-    fix: 'Generated from the profile\'s auth: block. Change analysis/<app>/app-profile.yaml and regenerate.',
+    fix: 'Generated from the AUTH_* settings. Change .env at the repository root and regenerate.',
   },
 ];
 

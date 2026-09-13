@@ -1,4 +1,4 @@
-// A deliberately small YAML reader for app-profile.yaml: nested maps, lists of
+// A deliberately small YAML reader (kept for OpenAPI documents): nested maps, lists of
 // scalars, and lists of inline maps. Anything richer belongs in the profile's
 // documentation, not in this parser.
 const scalar = raw => {

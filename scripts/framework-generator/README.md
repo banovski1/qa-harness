@@ -4,7 +4,7 @@
 repo: every decision was made by `scripts/model-compiler/compile-model.ts`.
 
 ```bash
-npx tsx scripts/framework-generator/emit/emit.ts --app <app> [--dry-run]
+npx tsx scripts/framework-generator/emit/emit.ts [--dry-run]
 ```
 
 - `emit/emit.ts` renders page objects, region components and the project scaffold.

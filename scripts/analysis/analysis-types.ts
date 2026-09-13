@@ -1,5 +1,5 @@
 /**
- * `analysis/<app>/analysis.json` — everything the four skills learn about one
+ * `analysis.json` — everything the four skills learn about one
  * application, in one file.
  *
  * There were eleven files and five reports here, and reviewing a change meant reading

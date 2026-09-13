@@ -6,7 +6,7 @@ describe a test in plain English, and an agent writes it.
 
 ```
 your app's source ──┐
-                    ├──► analysis/<app>/analysis.json ──► generated-framework/<app>/
+                    ├──►     analysis.json      ──►   generated-framework/
 your app running ───┘                                            │
                                                     you paste numbered steps
                                                             │
@@ -15,7 +15,7 @@ your app running ───┘                                            │
 
 Two ideas are worth knowing before you start.
 
-**The analysis is one file.** `analysis/<app>/analysis.json` holds everything known about
+**The analysis is one file.** `analysis.json`, at the root, holds everything known about
 your app: its declared routes, its API endpoints, every screen and control a crawl found,
 and — critically — whether each control can be addressed reliably. `CLAUDE.md` documents
 its nine sections.
@@ -53,49 +53,48 @@ Nothing is configured yet. That is the next step.
 
 ## Try it on an app that already works
 
-Four applications are committed with their analysis and their framework. Start here — you
-will see what "done" looks like before you aim at your own app.
+OrangeHRM is committed with its analysis and its framework. Start here — you will see what
+"done" looks like before you aim at your own app.
 
 ```bash
-cd generated-framework/conduit
+cd generated-framework
 npm install && npx playwright install chromium
-npx playwright test
+npx tsc --noEmit
 ```
 
-Three tests should pass against a public demo. Now open
-`src/pages/home/HomePage.generated.ts` and notice there is not a single CSS selector in
-it — just named controls. That is the point of the whole repo.
+Now open any `src/pages/**/*.generated.ts` and notice there is not a single CSS selector
+in it — just named controls. That is the point of the whole repo.
+
+To actually run the tests you need credentials in the root `.env` (below).
 
 ## Aim it at your own app
 
-### 1. Write the profile — the only file you write by hand
+### 1. Write the .env — the only file you write by hand
 
 ```bash
-mkdir -p analysis/my-app
-cp analysis/_template/app-profile.yaml analysis/my-app/app-profile.yaml
-$EDITOR analysis/my-app/app-profile.yaml
+cp .env.example .env
+$EDITOR .env
 ```
 
-The template is commented line by line. You need four things to be right: `baseUrl`,
-`repoPath`, the `auth` steps, and a `readyWhen` selector that is genuinely visible once
-you are logged in.
+`.env.example` is commented line by line. You need four things to be right:
+`APP_BASE_URL`, `APP_REPO_PATH`, the `AUTH_*` selectors, and `AUTH_READY_WHEN` — something
+genuinely visible once you are logged in.
 
-Credentials never go in this file. They come from the environment:
+`APP_USERNAME` and `APP_PASSWORD` go in `.env` too. **`.env` is gitignored; `.env.example`
+is committed and must never hold a real password.**
 
-```bash
-export APP_USERNAME='your.test.user'
-export APP_PASSWORD='...'
-```
+One app per checkout. To analyse a second application, give it its own worktree —
+`npm run app:worktree -- <slug>` — rather than a second config here.
 
 ### 2. Read the source — three skills, in Claude Code
 
 Ask Claude Code to run them by name, in this order. Each writes one section of
-`analysis/my-app/analysis.json` and nothing else:
+`analysis.json` and nothing else:
 
 ```
-run the app-dossier skill for my-app       # stack, declared routes, entities
-run the app-components skill for my-app    # the UI library, how labels attach to inputs
-run the app-api skill for my-app           # endpoints, and how to log in
+run the app-dossier skill       # stack, declared routes, entities
+run the app-components skill    # the UI library, how labels attach to inputs
+run the app-api skill           # endpoints, and how to log in
 ```
 
 `app-dossier` must go first; the other two read what it wrote.
@@ -103,7 +102,7 @@ run the app-api skill for my-app           # endpoints, and how to log in
 ### 3. Prove the login actually works
 
 ```bash
-npm run verify-auth -- --app my-app --write
+npm run verify-auth -- --write
 ```
 
 This runs the login the skill *read out of your source* against the running app, then
@@ -117,8 +116,8 @@ on that login.
 ```bash
 playwright-cli -s=myapp open https://staging.example.com/
 
-npm run crawl:map  -- analysis/my-app/app-profile.yaml    # minutes: menus, buttons, tables
-npm run crawl:deep -- analysis/my-app/app-profile.yaml    # longer: every control, proved unique
+npm run crawl:map     # minutes: menus, buttons, tables
+npm run crawl:deep    # longer: every control, proved unique
 ```
 
 The **map** walks the application's own menus — because most business software does not
@@ -130,9 +129,9 @@ locator resolves to exactly one element.
 ### 5. Compile, gate, generate
 
 ```bash
-npm run compile  -- --app my-app    # joins source + crawl, scores every screen
-npm run check    -- --app my-app    # tells you what is missing and who has not run
-npm run generate -- --app my-app    # writes generated-framework/my-app/
+npm run compile     # joins source + crawl, scores every screen
+npm run check       # tells you what is missing and who has not run
+npm run generate    # writes generated-framework/
 ```
 
 `check` is the one to read. `0 error(s)` means the contract is complete. Warnings name the
@@ -141,7 +140,7 @@ step you skipped.
 ### 6. Run what came out
 
 ```bash
-cd generated-framework/my-app
+cd generated-framework
 npm install && npx playwright install chromium
 cp .env.example .env      # APP_USERNAME / APP_PASSWORD again, for the tests
 npx tsc --noEmit && npx playwright test
@@ -196,7 +195,7 @@ somebody already shipped:
 - **No `waitForTimeout`.** Wait for evidence — an assertion, or the response itself.
 - **No fixed names for created records.** `uniqueName('Customer')` — two test runs in the
   same second must not collide.
-- **Never edit anything under `analysis/` or any `*.generated.ts`.** Both are rewritten.
+- **Never edit `analysis.json` or any `*.generated.ts`.** Both are rewritten.
   A wrong report is fixed by re-running the skill that wrote it.
 
 `.claude/hooks/rules/` is the full list, and the rejection message always names the fix.

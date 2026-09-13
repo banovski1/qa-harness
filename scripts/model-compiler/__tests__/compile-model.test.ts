@@ -267,3 +267,31 @@ test('a declared screen the crawl never reached scores zero, whatever its contro
   assert.equal(screens[1].testability.crawled, false);
   assert.equal(summary.summary.total, 2);
 });
+
+test('every component reports the number of screens that actually map onto it', () => {
+  // A parameterised field class is built before any screen has been mapped onto it, so
+  // the count it is born with is zero. Reporting that zero is worse than reporting
+  // nothing: it says a class nothing uses and a class every screen uses are the same.
+  const model = compile(fixture(), 'T');
+  const expected = new Map<string, Set<string>>();
+  for (const s of model.screens) {
+    for (const u of s.uses) {
+      if (!expected.has(u.component)) expected.set(u.component, new Set());
+      expected.get(u.component)!.add(s.name);
+    }
+  }
+  for (const [name, component] of Object.entries(model.components)) {
+    assert.equal(component.seenOn, expected.get(name)?.size ?? 0, `${name}.seenOn`);
+  }
+  assert.ok([...expected.keys()].length > 0, 'the fixture maps at least one component');
+});
+
+test('no component carries the app-wide field template', () => {
+  // How a label reaches an input is one fact and lives in `conventions`; a copy on each
+  // component is a second place to keep honest, and was wrong on every component that
+  // addresses its control by visible text rather than by a label beside an input.
+  const model = compile(fixture(), 'T');
+  for (const [name, component] of Object.entries(model.components)) {
+    assert.ok(!('fieldTemplate' in component), `${name} carries a fieldTemplate`);
+  }
+});

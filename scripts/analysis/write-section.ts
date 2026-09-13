@@ -1,8 +1,8 @@
 #!/usr/bin/env -S npx tsx
 /**
- * Put one skill's findings into analysis/<app>/analysis.json.
+ * Put one skill's findings into the root analysis.json.
  *
- *   npx tsx scripts/analysis/write-section.ts --app <app> --section source --file out.json
+ *   npx tsx scripts/analysis/write-section.ts --section source --file out.json
  *   … --section api --stdin < out.json
  *
  * A skill writes its own section and no other. This exists so that four writers can
@@ -18,12 +18,11 @@ function main(): void {
     const i = argv.indexOf(flag);
     return i >= 0 ? argv[i + 1] : undefined;
   };
-  const app = arg('--app');
   const section = arg('--section') as Section | undefined;
   const file = arg('--file');
 
-  if (!app || !section) {
-    console.error('usage: write-section.ts --app <app> --section <section> (--file <json> | --stdin)');
+  if (!section) {
+    console.error('usage: write-section.ts --section <section> (--file <json> | --stdin)');
     console.error(`sections: ${SECTIONS.join(', ')}`);
     process.exit(2);
   }
@@ -41,7 +40,7 @@ function main(): void {
     process.exit(1);
   }
 
-  const path = writeSection(app, section, value);
+  const path = writeSection(section, value);
   console.error(`${path}  ${section} (owner: ${SECTION_OWNER[section]})`);
 }
 

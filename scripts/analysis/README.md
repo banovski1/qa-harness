@@ -1,6 +1,6 @@
 # analysis
 
-`analysis/<app>/analysis.json` — everything known about one application, in one file.
+`analysis.json` — everything known about one application, in one file.
 
 There were sixteen files here, five of them markdown reports, plus a separate
 `app-model.json` holding the compiled half. Answering "what can I address on this
@@ -25,7 +25,7 @@ A section present but empty means its skill has not run. `check-model.ts` names 
 ## Writing a section
 
 ```bash
-npx tsx scripts/analysis/write-section.ts --app <app> --section api --file /tmp/api.json
+npx tsx scripts/analysis/write-section.ts --section api --file /tmp/api.json
 ```
 
 One key is replaced; every other byte is left alone. That is what lets four writers share

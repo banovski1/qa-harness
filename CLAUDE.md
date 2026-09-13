@@ -8,7 +8,7 @@ A pipeline that turns an application — its source *and* its running instance �
 test framework whose page objects contain no locators at all.
 
 ```
-analysis/<app>/app-profile.yaml     the only hand-written file: repoPath, baseUrl, auth, seeds, budget
+.env                                the only hand-written file: repoPath, baseUrl, auth, seeds, budget
         │
         │   four skills, one artifact — each owns one section of analysis.json
         ├─► app-dossier ─────► app, source        what the source declares
@@ -20,14 +20,15 @@ analysis/<app>/app-profile.yaml     the only hand-written file: repoPath, baseUr
                     │
                     └─► components, screens[].uses, api.resources, testability, stats
                                     │
-                                    └─► emit.ts ──► generated-framework/<app>/
+                                    └─► emit.ts ──► generated-framework/
 ```
 
-**One artifact per app**, plus the profile you write:
+**One app per checkout**, and at its root two files: the one you write and the one the
+pipeline produces.
 
 | file | what it is |
 | --- | --- |
-| `app-profile.yaml` | yours. The only app-specific thing anyone writes by hand |
+| `.env` | yours. The only app-specific thing anyone writes by hand. `.env.example` is its committed template |
 | `analysis.json` | everything known about the app: nine sections, one contract |
 
 There were sixteen files, then four. Anything derived from `analysis.json` and committed
@@ -71,16 +72,23 @@ app declares, how a label attaches to an input, and which endpoint creates a rec
 app** is the only thing that can prove a locator resolves to exactly one element. Neither replaces
 the other, and the compiler is where they join.
 
-Every command takes `--app <name>`. There is no global "current app": four apps are analysed side
-by side, and adding a fifth is a new profile, never a code change.
+**No command takes `--app`.** There is one application per checkout — the one `.env` describes —
+so nothing in a path or a command line has to name it. Analysing a second application is a second
+git worktree, never a second directory here: `npm run app:worktree -- <slug>`, and the
+`app-worktree` skill explains the rest.
+
+The cost is real and worth stating. Four apps side by side used to mean a change shaped around one
+of them showed up as a diff in the other three, for free. Now that cross-check is a deliberate act:
+make the worktrees, regenerate in each, compare. **A generator change validated against a single
+application has not been validated.**
 
 ## Commands
 
-`package.json` at the root wraps each of these (`npm run compile -- --app <app>`, and
-likewise `check`, `generate`, `verify-auth`, `crawl:map`, `crawl:deep`). The `npx tsx`
-forms below are canonical; the aliases exist so a newcomer following README.md does not
-have to know the paths. `npm run setup` installs the generator's toolchain, and
-`analysis/_template/app-profile.yaml` is the file a new app is copied from.
+`package.json` at the root wraps each of these (`npm run compile`, and likewise `check`,
+`generate`, `verify-auth`, `crawl:map`, `crawl:deep`). The `npx tsx` forms below are
+canonical; the aliases exist so a newcomer following README.md does not have to know the
+paths. `npm run setup` installs the generator's toolchain, and `cp .env.example .env` is
+the first thing anyone does.
 
 ```bash
 # 1. Analysis — the three skills read the clone. Invoke them by name; each writes its
@@ -89,18 +97,18 @@ have to know the paths. `npm run setup` installs the generator's toolchain, and
 
 # 2. Crawl the running app. Two crawls, two questions.
 playwright-cli -s=<session> open <baseUrl>
-node .claude/skills/app-explorer/lib/map.mjs --profile analysis/<app>/app-profile.yaml     # menus, minutes
-node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-profile.yaml # controls, deep
+node .claude/skills/app-explorer/lib/map.mjs      # menus, minutes
+node .claude/skills/app-explorer/lib/explore.mjs  # controls, deep
 
 # 3. Prove the documented API login actually works (stamps api.json)
-APP_USERNAME=... APP_PASSWORD=... npx tsx scripts/api-auth/verify-auth.ts --app <app> --write
+npx tsx scripts/api-auth/verify-auth.ts --write   # credentials come from .env
 
 # 4. Compile, then gate the contract
-npx tsx scripts/model-compiler/compile-model.ts --app <app>     # fills in the compiler's five sections
-npx tsx scripts/model-compiler/check-model.ts --app <app>       # staleness, naming, addressability
+npx tsx scripts/model-compiler/compile-model.ts   # fills in the compiler's five sections
+npx tsx scripts/model-compiler/check-model.ts     # staleness, naming, addressability
 
 # 5. Generate the framework
-npx tsx scripts/framework-generator/emit/emit.ts --app <app> [--dry-run]
+npx tsx scripts/framework-generator/emit/emit.ts [--dry-run]
 
 # 6. The tests of the pipeline itself
 npm test --prefix scripts/framework-generator          # compile-model's unit + fixture suite
@@ -108,25 +116,26 @@ npm run typecheck --prefix scripts/framework-generator
 node .claude/hooks/__fixtures__/run.mjs                # the write-guard rule set
 
 # 7. The generated project
-cd generated-framework/<app> && npm install && npx playwright install chromium
-cp .env.example .env      # APP_USERNAME / APP_PASSWORD
-npx tsc --noEmit && npx playwright test
+cd generated-framework && npm install && npx playwright install chromium
+npx tsc --noEmit && npx playwright test   # credentials come from the root .env
 ```
 
 ## The corpus
 
-Four apps on four stacks, each committed with its analysis and its framework. The point is that a
-change shaped around one of them shows up as a diff in the other three.
+`orangehrm` (`~/Projects/orangehrm`, Vue 3 + Symfony) — labels with no `for=`, and a design system
+outside the clone. It is the app this checkout describes.
 
-| app | clone | stack | what it proves |
+Three others were analysed side by side until the layout went flat, and each still names a problem
+the generator had to solve. They live in git history at `3a108e0`, and a worktree brings any of
+them back:
+
+| app | clone | stack | what it proved |
 | --- | --- | --- | --- |
 | `espocrm-demo` | `~/Projects/espocrm` | Backbone + PHP | hash routes; a router that names no component; no test ids |
-| `orangehrm` | `~/Projects/orangehrm` | Vue 3 + Symfony | labels with no `for=`; a design system outside the clone |
 | `conduit` | `~/Projects/angular-realworld-example-app` | Angular | no labels at all — placeholders are the whole vocabulary |
 | `calcom` | `~/Projects/cal.diy` | Next.js app-router + tRPC | 78 declared routes, 4 crawlable: the declared-but-unreached path |
 
-Retargeting to a new app is a new profile, never a code change. Proving that needs an app outside
-these four; none is chosen yet.
+Retargeting to a new app is a new `.env`, never a code change.
 
 ## The map
 

@@ -10,7 +10,7 @@ comes from the crawl (`app-explorer`), which can prove a locator resolves to one
 source cannot. What source knows, and the crawl does not, is *how this codebase is built* —
 and that is what decides how the generated page objects should address it.
 
-Inputs: `analysis/<app>/app-profile.yaml`, and the `source` section written by app-dossier. Output: the `conventions` section of `analysis/<app>/analysis.json`.
+Inputs: `.env`, and the `source` section written by app-dossier. Output: the `conventions` section of `analysis.json`.
 
 ## What to find out
 
@@ -77,11 +77,11 @@ is allowed to exist, and it never reaches a page object.
 
 ## Where this goes
 
-One artifact per app. You own the `conventions` section of `analysis/<app>/analysis.json` and
+One artifact per app. You own the `conventions` section of `analysis.json` and
 write no other — write your JSON to a scratch file, then hand it over:
 
 ```bash
-npx tsx scripts/analysis/write-section.ts --app <app> --section conventions --file /tmp/components.json
+npx tsx scripts/analysis/write-section.ts --section conventions --file /tmp/components.json
 ```
 
 The tool replaces that one key and leaves every other byte alone, so a re-run of this
@@ -90,7 +90,7 @@ you would be rewriting three other skills' findings from whatever you happened t
 
 ## The contract
 
-`analysis/<app>/analysis.json` has nine sections and always all nine. You own **`conventions`**
+`analysis.json` has nine sections and always all nine. You own **`conventions`**
 and write no other.
 
 | section | owner |

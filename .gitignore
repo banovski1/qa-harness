@@ -22,3 +22,7 @@ generated-framework/**/.auth/
 # Raw crawl output. Working material for the explorer, distilled into analysis.json's
 # `screens` section — the ladder and boxes it carries are megabytes nothing reads twice.
 analysis/*/.crawl/
+
+# The hand-written config. .env.example is the committed template.
+.env
+docs/

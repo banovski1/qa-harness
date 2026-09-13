@@ -1,47 +1,34 @@
 #!/usr/bin/env -S npx tsx
 /**
- * Prove that the login recorded in analysis/<app>/api.json actually works against
+ * Prove that the login recorded in analysis.json actually works against
  * the running instance — and that the credential it yields opens a protected read.
  *
  * A citation to a source file is a hypothesis. This turns it into a fact, and
  * stamps the fact back into api.json as `authVerification`.
  *
- *   npx tsx scripts/api-auth/verify-auth.ts --app <app> [--write] [--json]
+ *   npx tsx scripts/api-auth/verify-auth.ts [--write] [--json]
  *   npx tsx scripts/api-auth/verify-auth.ts --all
  */
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { resolve as resolvePath, join } from 'node:path';
 // @ts-ignore - the explorer's yaml reader is plain JS shared across the pipeline
-import { parseYaml } from '../../.claude/skills/app-explorer/lib/yaml-lite.mjs';
+import { loadProfile, ANALYSIS_PATH } from '../config/profile.mjs';
 import { Jar, send } from './http.ts';
 import { tokenLogin, basicLogin, sessionLogin, credentialsFromEnv, type Credential } from './strategies.ts';
 import type { AuthBlock, Endpoint, Observation, VerifyResult, Verdict } from './types.ts';
 
-const ROOT = resolvePath(import.meta.dirname, '../..');
-const ANALYSIS = join(ROOT, 'analysis');
-
 /** How many candidate endpoints to try before giving up on finding a protected one. */
 const MAX_PROBES = 6;
 
-interface Args { apps: string[]; write: boolean; json: boolean }
+interface Args { write: boolean; json: boolean }
 
 function parseArgs(argv: string[]): Args {
-  const args: Args = { apps: [], write: false, json: false };
-  for (let i = 0; i < argv.length; i++) {
-    if (argv[i] === '--app') args.apps.push(argv[++i]);
-    else if (argv[i] === '--all') args.apps = listApps();
-    else if (argv[i] === '--write') args.write = true;
-    else if (argv[i] === '--json') args.json = true;
+  const args: Args = { write: false, json: false };
+  for (const a of argv) {
+    if (a === '--write') args.write = true;
+    else if (a === '--json') args.json = true;
   }
-  if (args.apps.length === 0) args.apps = listApps();
   return args;
-}
-
-function listApps(): string[] {
-  return readdirSync(ANALYSIS, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory() && existsSync(join(ANALYSIS, entry.name, 'analysis.json')))
-    .map((entry) => entry.name)
-    .sort();
 }
 
 /**
@@ -56,17 +43,16 @@ function probeCandidates(endpoints: Endpoint[]): Endpoint[] {
     .slice(0, MAX_PROBES);
 }
 
-async function verify(app: string): Promise<VerifyResult> {
-  const analysis = JSON.parse(readFileSync(join(ANALYSIS, app, 'analysis.json'), 'utf8')) as {
-    app?: { baseUrl?: string }; api?: { auth?: AuthBlock; endpoints?: Endpoint[] };
+async function verify(): Promise<VerifyResult> {
+  const analysis = JSON.parse(readFileSync(ANALYSIS_PATH, 'utf8')) as {
+    app?: { baseUrl?: string; name?: string }; api?: { auth?: AuthBlock; endpoints?: Endpoint[] };
   };
   const api = { ...analysis.api, baseUrl: analysis.app?.baseUrl } as {
     baseUrl?: string; auth?: AuthBlock; endpoints?: Endpoint[];
   };
-  const profilePath = join(ANALYSIS, app, 'app-profile.yaml');
-  const profile = existsSync(profilePath)
-    ? (parseYaml(readFileSync(profilePath, 'utf8')) as { baseUrl?: string; auth?: { loginUrl?: string } | null })
-    : {};
+  let profile: { baseUrl?: string; auth?: { loginUrl?: string } | null } = {};
+  try { profile = loadProfile(); } catch { profile = {}; }
+  const app = analysis.app?.name ?? 'app';
 
   const baseUrl = api.baseUrl ?? profile.baseUrl;
   const auth = api.auth ?? {};
@@ -181,8 +167,8 @@ async function proveCredential(
   };
 }
 
-function stamp(app: string, result: VerifyResult): void {
-  const path = join(ANALYSIS, app, 'analysis.json');
+function stamp(result: VerifyResult): void {
+  const path = ANALYSIS_PATH;
   const analysis = JSON.parse(readFileSync(path, 'utf8')) as Record<string, any>;
   analysis.api = analysis.api ?? {};
   analysis.api.authVerification = {
@@ -214,9 +200,9 @@ function report(result: VerifyResult): void {
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
   const results: VerifyResult[] = [];
-  for (const app of args.apps) {
-    const result = await verify(app).catch((error: unknown) => ({
-      app,
+  {
+    const result = await verify().catch((error: unknown) => ({
+      app: 'app',
       kind: 'none' as const,
       verdict: 'failed' as const,
       reason: `the verifier itself threw: ${error instanceof Error ? error.message : String(error)}`,
@@ -224,7 +210,7 @@ async function main(): Promise<void> {
       checkedAt: new Date().toISOString(),
     }));
     results.push(result);
-    if (args.write) stamp(app, result);
+    if (args.write) stamp(result);
     if (!args.json) report(result);
   }
 

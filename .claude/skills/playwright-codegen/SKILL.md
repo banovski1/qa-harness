@@ -12,7 +12,7 @@ TypeScript. `playwright-cli` stays the tool for every agent-driven browser task 
 repo — this skill exists only to capture a human-driven recording and shape its output
 into something reusable.
 
-A recording is one of the two inputs `test-writer` reads. `analysis/<app>/analysis.json`
+A recording is one of the two inputs `test-writer` reads. `analysis.json`
 says what is on each screen; a recording is the only record of what the app *does* — the
 order of steps, what a click leads to, what the app accepts. The two compose, and shaping
 (step 3) is where they meet: an unstable recorded locator is repaired against the
@@ -26,10 +26,10 @@ writes to `generated-framework/`, and it never edits an analysis section by hand
 
 Read, in order, stopping at the first that exists:
 
-1. `generated-framework/<app>/.env` — `BASE_URL=`
-2. `generated-framework/<app>/.env.example` — `BASE_URL=` (warn: using the example default,
+1. `generated-framework/.env` — `BASE_URL=`
+2. `generated-framework/.env.example` — `BASE_URL=` (warn: using the example default,
    suggest `cp .env.example .env`)
-3. `analysis/<app>/app-profile.yaml` — `baseUrl:`
+3. `.env` — `baseUrl:`
 
 Never hardcode an app URL. If none of the three resolve, stop and ask the user for one.
 
@@ -136,7 +136,7 @@ Shaping rules:
   with the reason `classify` gives (positional, unnamed role, raw CSS, text-only).
 - **Repair each flagged step against the `screens` section.** Take the route from the most
   recent `goto` (or the URL the step ran against), strip the `/web/index.php` prefix, and look
-  it up in `analysis/<app>/analysis.json` — the `screens` entry whose `path` matches, then its
+  it up in `analysis.json` — the `screens` entry whose `path` matches, then its
   `controls`. Match the flagged element to a control by
   position in the form and by kind, and record the resolved element — its `name`, `label` and
   rung — as the substitute. Write what it *is*, not what it might be:
@@ -176,13 +176,13 @@ Tell the user:
 - Never write under `generated-framework/` — it's hook-protected and this output isn't
   generator input anyway.
 - Never invent or hardcode BASE_URL or credentials; read them from `.env` /
-  `analysis/<app>/app-profile.yaml` per step 1.
+  `.env` per step 1.
 - Raw codegen output stays under `.playwright-cli/codegen/` (already gitignored); only
   the shaped Markdown file is committed, under `codegen-recordings/`.
 - Every shaped file gets a unique `<content-slug>-<timestamp>.md` name (step 3) —
   never reuse the launch-time slug as the final filename, so recordings accumulate as
   a library instead of overwriting each other.
-- This skill reads `analysis/<app>/analysis.json` and writes only its `testability.recordings`. The analysis is
+- This skill reads `analysis.json` and writes only its `testability.recordings`. The analysis is
   the repo analyzer's output; a recording that disagrees with it is a reason to re-run the
   analyzer, not to edit its report.
 - Once BASE_URL resolves and a slug is chosen (from the request, or the `recording`
@@ -196,7 +196,7 @@ refuses a journey whose screens fall below 0.7 and asks for a recording; if noth
 records that one was made, it asks again for the same flow, for ever.
 
 ```bash
-npx tsx scripts/analysis/register-recording.ts --app <app> \
+npx tsx scripts/analysis/register-recording.ts \
   --flow <slug> \
   --file codegen-recordings/<slug>-<timestamp>.md \
   --screens /leave/applyLeave,/leave/viewMyLeaveList

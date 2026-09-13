@@ -9,8 +9,8 @@ You are reading a clone of an application you have never seen, to answer two que
 **what is this built with**, and **what screens does its source declare**. No browser, no
 install, no build. Read files.
 
-Inputs: `analysis/<app>/app-profile.yaml` — `repoPath` and `baseUrl` are the only fields
-you need. Outputs: the `app` and `source` sections of `analysis/<app>/analysis.json`
+Inputs: `.env` — `repoPath` and `baseUrl` are the only fields
+you need. Outputs: the `app` and `source` sections of `analysis.json`
 
 ## 0. Read what the app already wrote about itself
 
@@ -113,11 +113,11 @@ Drop API-only routes (`/api/*`, JSON endpoints) — they belong to `app-api`.
 
 ## Where this goes
 
-One artifact per app. You own the `source` section of `analysis/<app>/analysis.json` and
+One artifact per app. You own the `source` section of `analysis.json` and
 write no other — write your JSON to a scratch file, then hand it over:
 
 ```bash
-npx tsx scripts/analysis/write-section.ts --app <app> --section source --file /tmp/source.json
+npx tsx scripts/analysis/write-section.ts --section source --file /tmp/source.json
 ```
 
 The tool replaces that one key and leaves every other byte alone, so a re-run of this
@@ -138,7 +138,7 @@ depend on: a domain object the app persists is a record a test may need to exist
 
 ## The contract
 
-`analysis/<app>/analysis.json` has nine sections and always all nine. You own **`app` and `source`**
+`analysis.json` has nine sections and always all nine. You own **`app` and `source`**
 and write no other.
 
 | section | owner |

@@ -2,7 +2,7 @@
 
 export type AuthKind = 'token' | 'session' | 'basic' | 'undocumented-in-spec' | 'none';
 
-/** The `auth` block an app-api run writes into analysis/<app>/api.json. */
+/** The `auth` block an app-api run writes into the `api` section of analysis.json. */
 export interface AuthBlock {
   kind?: string;
   scheme?: string;

@@ -1,4 +1,4 @@
-// Raw crawl output -> the `screens` section of analysis/<app>/analysis.json.
+// Raw crawl output -> the `screens` section of analysis.json.
 //
 // The crawl records, per element, a ranked ladder of locator candidates and a bounding
 // box. That is the evidence uniqueness is decided from, and once it has been decided

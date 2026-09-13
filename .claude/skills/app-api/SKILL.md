@@ -9,7 +9,7 @@ A UI test that creates its preconditions through the UI is slow and tests the wr
 thing twice. This file is what lets a spec set up state directly. Its other job is
 **authentication**: the cheapest possible way to get a logged-in session.
 
-Inputs: `analysis/<app>/app-profile.yaml`, and the `source` section written by app-dossier. Output: the `api` section of `analysis/<app>/analysis.json`.
+Inputs: `.env`, and the `source` section written by app-dossier. Output: the `api` section of `analysis.json`.
 
 ## Work the tiers in order and stop when one pays
 
@@ -90,8 +90,8 @@ form field calls `_token` was published on the page as an entity-encoded compone
 so the documented flow could not have worked.
 
 ```bash
-npx tsx scripts/api-auth/verify-auth.ts --app <app>          # look
-npx tsx scripts/api-auth/verify-auth.ts --app <app> --write  # stamp the api section
+npx tsx scripts/api-auth/verify-auth.ts          # look
+npx tsx scripts/api-auth/verify-auth.ts --write  # stamp the api section
 ```
 
 It runs the login you recorded against the running instance, then calls a parameter-free
@@ -166,11 +166,11 @@ exhaustive coverage of an admin API nothing will call.
 
 ## Where this goes
 
-One artifact per app. You own the `api` section of `analysis/<app>/analysis.json` and
+One artifact per app. You own the `api` section of `analysis.json` and
 write no other — write your JSON to a scratch file, then hand it over:
 
 ```bash
-npx tsx scripts/analysis/write-section.ts --app <app> --section api --file /tmp/api.json
+npx tsx scripts/analysis/write-section.ts --section api --file /tmp/api.json
 ```
 
 The tool replaces that one key and leaves every other byte alone, so a re-run of this
@@ -179,7 +179,7 @@ you would be rewriting three other skills' findings from whatever you happened t
 
 ## The contract
 
-`analysis/<app>/analysis.json` has nine sections and always all nine. You own **`api`**
+`analysis.json` has nine sections and always all nine. You own **`api`**
 and write no other.
 
 | section | owner |

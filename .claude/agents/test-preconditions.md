@@ -10,12 +10,12 @@ plain-text analysis that names, for each setup step, **the API method that alrea
 exists** to satisfy it — so `test-writer` never builds through the UI what the API can
 establish in one call.
 
-Work out `<app>` from the message, or from the single app the steps clearly belong to. If
+There is one app per checkout: it is whatever the root `.env` and `analysis.json` describe. If
 two apps could match, say so and pick none.
 
 ## 1. Is the app's API login proven?
 
-Read `analysis/<app>/analysis.json` and look at `api.authVerification` **before anything
+Read `analysis.json` and look at `api.authVerification` **before anything
 else**. That one file is the whole analysis — nine sections, one contract. You need three
 of them and nothing outside the file:
 
@@ -33,9 +33,9 @@ read out of source, and one of them in this corpus was wrong. When the login is 
 say exactly this at the top of your return value and classify everything as UI:
 
 ```
-API preconditions unavailable: <app> has no verified login
+API preconditions unavailable: this app has no verified login
 (authVerification: <verdict or "absent">). Run
-npx tsx scripts/api-auth/verify-auth.ts --app <app> --write to settle it.
+npx tsx scripts/api-auth/verify-auth.ts --write to settle it.
 ```
 
 Never propose verifying it yourself, and never suggest the writer "try the API anyway".
@@ -59,7 +59,7 @@ starts authenticated. Only a step that switches to a *different* user is setup.
 
 Two generated files hold everything you may propose. Read them; propose nothing else.
 
-**`generated-framework/<app>/src/api/preconditions.generated.ts`** — one method per
+**`generated-framework/src/api/preconditions.generated.ts`** — one method per
 resource the API can both create and read back, named after the sentence it makes true.
 `given.employee()` returns `{ id, data }`, takes an `overrides` object, and its record is
 deleted after the test. Its doc comment states dependencies explicitly:
@@ -75,7 +75,7 @@ is two calls, in order, and you say so:
 - given.employee() → then given.leaveRequest({ empNumber: <employee id> })
 ```
 
-**`generated-framework/<app>/src/api/resources.generated.ts`** — the typed client behind
+**`generated-framework/src/api/resources.generated.ts`** — the typed client behind
 it, as `api.<resource>.list/get/create/update/remove`. Propose `api.*` only for a read a
 precondition needs (looking up an existing leave type's id) — never to create a record
 `given` already covers, because `given` is the half that cleans up.
@@ -132,7 +132,7 @@ fails on the third step. Asking twice for the same one is a bug.
 Your entire return value is the text handed to `test-writer`:
 
 ```
-App: <app>   API login: verified | unavailable (<reason>)
+App: <name from analysis.app.name>   API login: verified | unavailable (<reason>)
 Screen confidence: <path> <score> …   Recording needed: yes | no
 
 Preconditions:
@@ -152,7 +152,7 @@ classification is wrong, and the writer can overrule you.
 ## Rules
 
 - Read-only. No file writes, no shell commands beyond reading and grepping
-  `analysis/<app>/analysis.json` and the two generated API files, no code changes.
+  `analysis.json` and the two generated API files, no code changes.
 - Never call `test-writer` or any other agent. You return text; the orchestrator passes it on.
 - Do not read the page objects — that is `test-writer`'s job once it has your analysis.
   You may list `codegen-recordings/` to see whether a flow is already recorded, but do

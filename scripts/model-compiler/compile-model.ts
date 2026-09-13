@@ -9,7 +9,7 @@ import { join } from 'node:path';
 // without performing it. Carrying it into the model is what lets the generator emit a
 // working login instead of a placeholder.
 // @ts-ignore -- a deliberately small YAML reader, shared with the explorer
-import { parseYaml } from '../../.claude/skills/app-explorer/lib/yaml-lite.mjs';
+import { loadProfile, ROOT as REPO_ROOT } from '../config/profile.mjs';
 import { readAnalysis, writeSection } from '../analysis/analysis-file.ts';
 import { scoreScreens, verdictFor } from '../analysis/testability.ts';
 import { deriveResources, tagEndpoints } from './api-resources.ts';
@@ -380,7 +380,7 @@ function uniqueProp(taken: Set<string>, raw: string): string {
  * analysis) while making a no-op recompile produce no diff at all.
  */
 export function newestInput(appDir: string): string {
-  const files = ['analysis.json', 'app-profile.yaml']
+  const files = ['analysis.json', '.env']
     .map(f => join(appDir, f))
     .filter(existsSync);
   const newest = files.reduce((max, f) => Math.max(max, statSync(f).mtimeMs), 0);
@@ -394,8 +394,11 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
   const routes = { routes: analysis.source.routes ?? [] };
   const conventions = analysis.conventions ?? { regions: [] };
   const api = analysis.api ?? { endpoints: [], auth: null };
-  const profilePath = join(appDir, 'app-profile.yaml');
-  const profile: any = existsSync(profilePath) ? parseYaml(readFileSync(profilePath, 'utf8')) : {};
+  // The hand-written configuration now lives in one flat `.env` at the root rather than a
+  // YAML profile beside the artifact. A fixture directory has no `.env` and needs none —
+  // only the UI-login block is read from here — so a missing one is not an error.
+  let profile: any = {};
+  try { profile = loadProfile(); } catch { profile = {}; }
 
   // The distilled screen carries `controls` and a per-control `matches`; the compiler's
   // own vocabulary is `elements` with a candidate ladder, so translate once here rather
@@ -429,8 +432,10 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
   const { components, regionClassOf, sharedKeys } = discoverRegions(crawled, conventions);
 
   // Field components are parameterised and always present: one class per role, not per element.
-  const labelConv = conventions?.labelAssociation ?? {};
-  const fieldTemplate: string | undefined = labelConv.preferredTemplate ?? labelConv.template;
+  // None of them carries a selector. How a label reaches an input is one app-wide fact, it is
+  // `conventions.labelAssociation`, and the runtime reads it from there as FIELD_TEMPLATE —
+  // copying it onto eight components said the same thing eight times and said it wrongly on
+  // the four that address their control by visible text, not by a label beside an input.
   for (const [name, desc] of Object.entries({
     TextField: 'a text input or textarea, addressed by its label',
     Select: 'a select or combobox, addressed by its label',
@@ -441,7 +446,7 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
     Tab: 'a tab, addressed by its visible text',
     MenuItem: 'a menu item, addressed by its visible text',
   })) {
-    components[name] = { kind: 'field', fieldTemplate, seenOn: 0, description: desc };
+    components[name] = { kind: 'field', seenOn: 0, description: desc };
   }
 
   const tableConv = (conventions?.regions ?? []).find((r: any) => r.row && r.cell);
@@ -598,6 +603,21 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
 
   assertNoSelectors(screens);
 
+  // `seenOn` is a count of screens, and only the region discovery could fill it in at the
+  // point the component was built — a parameterised field class is created before any screen
+  // has been mapped onto it. Counting here, from the mappings themselves, is the only place
+  // the number is true for every kind of component at once.
+  const screensPerComponent = new Map<string, Set<string>>();
+  for (const s of screens) {
+    for (const u of s.uses) {
+      if (!screensPerComponent.has(u.component)) screensPerComponent.set(u.component, new Set());
+      screensPerComponent.get(u.component)!.add(s.name);
+    }
+  }
+  for (const [name, component] of Object.entries(components)) {
+    component.seenOn = screensPerComponent.get(name)?.size ?? 0;
+  }
+
   return {
     app: {
       name: dossier.name ?? dossier.app,
@@ -648,8 +668,8 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
  * joining them by path. The compiler is the last writer in the pipeline — it never
  * overwrites an observation, it adds what it derived to the entry that holds it.
  */
-export function foldIntoAnalysis(app: string, model: AppModel): { write: number; total: number } {
-  const analysis = readAnalysis(app);
+export function foldIntoAnalysis(model: AppModel): { write: number; total: number } {
+  const analysis = readAnalysis();
   const observed = new Map(analysis.screens.map(s => [s.path, s]));
 
   const screens = model.screens.map(page => {
@@ -678,29 +698,25 @@ export function foldIntoAnalysis(app: string, model: AppModel): { write: number;
 
   const testability = scoreScreens(screens, analysis.testability?.recordings ?? []);
 
-  writeSection(app, 'app', { ...analysis.app, ...model.app });
+  writeSection('app', { ...analysis.app, ...model.app });
   // `model.api.auth` is the skill's auth block plus the UI login the profile declares
   // and the storage-state path the generator writes to — dropping it here leaves the
   // emitted project with no setup project and every spec starting logged out.
-  writeSection(app, 'api', {
+  writeSection('api', {
     ...analysis.api,
     auth: model.api.auth ?? analysis.api.auth,
     resources: model.api.resources,
   });
-  writeSection(app, 'components', model.components);
-  writeSection(app, 'screens', screens);
-  writeSection(app, 'testability', testability);
-  writeSection(app, 'stats', model.stats);
+  writeSection('components', model.components);
+  writeSection('screens', screens);
+  writeSection('testability', testability);
+  writeSection('stats', model.stats);
   return { write: testability.summary.write, total: testability.summary.total };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const appIdx = process.argv.indexOf('--app');
-  if (appIdx < 0) { console.error('usage: compile-model.ts --app <name>'); process.exit(2); }
-  const app = process.argv[appIdx + 1];
-  const dir = join('analysis', app);
-  const model = compile(dir);
-  const { write, total } = foldIntoAnalysis(app, model);
+  const model = compile(REPO_ROOT);
+  const { write, total } = foldIntoAnalysis(model);
   console.log(`analysis.json  ${JSON.stringify(model.stats)}`);
   console.log(`               ${write}/${total} screens ready to write a test against`);
 }

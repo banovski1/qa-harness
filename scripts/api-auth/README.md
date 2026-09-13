@@ -1,11 +1,11 @@
 # api-auth
 
-Turns the `auth` block in `analysis/<app>/api.json` from a citation into a fact.
+Turns the `auth` block in `api.json` from a citation into a fact.
 
 ```bash
-npx tsx scripts/api-auth/verify-auth.ts --app orangehrm            # look
+npx tsx scripts/api-auth/verify-auth.ts            # look
 npx tsx scripts/api-auth/verify-auth.ts --all --write              # stamp every app
-npx tsx scripts/api-auth/verify-auth.ts --app conduit --json       # for an agent
+npx tsx scripts/api-auth/verify-auth.ts --json       # for an agent
 ```
 
 `APP_USERNAME` and `APP_PASSWORD` come from the environment. Nothing here names an

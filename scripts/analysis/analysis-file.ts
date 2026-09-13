@@ -1,11 +1,13 @@
-/** Read and write analysis/<app>/analysis.json, one section at a time. */
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+/** Read and write the root analysis.json, one section at a time. */
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { SECTIONS, type Analysis, type Section } from './analysis-types.ts';
 
 export const ROOT = resolve(import.meta.dirname, '../..');
 
-export const analysisPath = (app: string) => join(ROOT, 'analysis', app, 'analysis.json');
+// One app per checkout, one artifact beside the .env that describes it. Testing a
+// second app is a second worktree, not a second directory here.
+export const analysisPath = () => join(ROOT, 'analysis.json');
 
 const EMPTY: Analysis = {
   app: { name: '', baseUrl: '', repoPath: '', repoCommit: null, generatedAt: '' },
@@ -19,8 +21,8 @@ const EMPTY: Analysis = {
   stats: {},
 };
 
-export function readAnalysis(app: string): Analysis {
-  const path = analysisPath(app);
+export function readAnalysis(): Analysis {
+  const path = analysisPath();
   if (!existsSync(path)) return structuredClone(EMPTY);
   return { ...structuredClone(EMPTY), ...JSON.parse(readFileSync(path, 'utf8')) };
 }
@@ -32,8 +34,8 @@ export function readAnalysis(app: string): Analysis {
  * confined to its own work — a file whose key order depends on who wrote last would
  * make every run look like a change.
  */
-export function writeSection(app: string, section: Section, value: unknown): string {
-  const current = readAnalysis(app) as unknown as Record<string, unknown>;
+export function writeSection(section: Section, value: unknown): string {
+  const current = readAnalysis() as unknown as Record<string, unknown>;
   current[section] = value;
   // Ordered first, then anything this file does not know about. A writer that dropped an
   // unrecognised key would delete another skill's section the moment the contract grew —
@@ -41,8 +43,7 @@ export function writeSection(app: string, section: Section, value: unknown): str
   const ordered: Record<string, unknown> = {};
   for (const key of SECTIONS) if (key in current) ordered[key] = current[key];
   for (const key of Object.keys(current)) if (!(key in ordered)) ordered[key] = current[key];
-  const path = analysisPath(app);
-  mkdirSync(join(ROOT, 'analysis', app), { recursive: true });
+  const path = analysisPath();
   writeFileSync(path, `${JSON.stringify(ordered, null, 2)}\n`);
   return path;
 }

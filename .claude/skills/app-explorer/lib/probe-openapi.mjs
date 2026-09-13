@@ -8,7 +8,7 @@ import { readFile, writeFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { promisify } from 'node:util';
-import { parseYaml } from './yaml-lite.mjs';
+import { loadProfile, ROOT } from '../../../../scripts/config/profile.mjs';
 
 const run = promisify(execFile);
 
@@ -24,14 +24,8 @@ const flag = (name, fallback) => {
   return at === -1 ? fallback : args[at + 1];
 };
 
-const profilePath = flag('profile');
-if (!profilePath) {
-  console.error('usage: probe-openapi.mjs --profile <app-profile.yaml> [--session <name>]');
-  process.exit(2);
-}
-
-const profile = parseYaml(await readFile(profilePath, 'utf8'));
-const outDir = dirname(profilePath);
+const profile = loadProfile();
+const outDir = ROOT;
 const session = flag('session', profile.session || 'app-explorer');
 const candidates = [...CANDIDATES, ...(profile.specCandidates || [])];
 

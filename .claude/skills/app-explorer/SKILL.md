@@ -1,6 +1,6 @@
 ---
 name: app-explorer
-description: Document a running web application from its base URL alone — every screen, the components on it, a proved-unique locator for every control, and the API surface the app actually calls. Use for "analyse the app under test", "document this app", "build the locator strategy", "what screens does the app have", "regenerate analysis/<app>/".
+description: Document a running web application from its base URL alone — every screen, the components on it, a proved-unique locator for every control, and the API surface the app actually calls. Use for "analyse the app under test", "document this app", "build the locator strategy", "what screens does the app have", "regenerate ".
 ---
 
 # app-explorer
@@ -16,11 +16,11 @@ static analysis cannot.
 
 ## What it produces
 
-For an app named `<app>`:
+The app is whatever the root `.env` describes:
 
 ```
-analysis/<app>/
-  app-profile.yaml   the only app-specific file — you write this one
+
+  .env   the only app-specific file — you write this one
   analysis.json      every skill's findings, one section each. You own `map` and `screens`
   .crawl/            raw crawl output — working material, gitignored, never an artifact
 ```
@@ -34,7 +34,7 @@ again once uniqueness has been decided. It stays in `.crawl/` and is distilled i
 `screens` section: how to name each control, whether that name resolves to exactly one
 element, and where the name came from.
 
-Everything except `app-profile.yaml` is generated. Never hand-edit it — re-run
+Everything except `.env` is generated. Never hand-edit it — re-run
 the phase that wrote it.
 
 ## Two crawls, two questions
@@ -47,7 +47,7 @@ open on a click, and half their screens have no inbound link anywhere in the DOM
 So there is a second, coarser crawl that navigates the way a person does.
 
 ```bash
-node .claude/skills/app-explorer/lib/map.mjs --profile analysis/<app>/app-profile.yaml \
+node .claude/skills/app-explorer/lib/map.mjs \
   [--only Leave,Time] [--budget-min 15] [--per-module-seconds 90] [--max-per-module 12]
 ```
 
@@ -70,13 +70,13 @@ session sharpens them further still.
 playwright-cli -s=<session> open <baseUrl>
 
 # 2. crawl — logs in, discovers routes, extracts screens, records traffic
-node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-profile.yaml
+node .claude/skills/app-explorer/lib/explore.mjs
 
 # 3. probe for a machine-readable API specification, using the logged-in session
-node .claude/skills/app-explorer/lib/probe-openapi.mjs --profile analysis/<app>/app-profile.yaml
+node .claude/skills/app-explorer/lib/probe-openapi.mjs
 
 # 4. re-render the four reports (folds in whatever step 3 found)
-node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-profile.yaml --reports-only
+node .claude/skills/app-explorer/lib/explore.mjs --reports-only
 ```
 
 Useful flags: `--resume` continues an interrupted crawl from `.crawl/crawl-state.json`,
@@ -210,8 +210,8 @@ because a locator for something nobody can see is not one a test can act on.
 The claim this tool makes is reproducibility, so check it:
 
 ```bash
-cp -r analysis/<app>/screens /tmp/runA
-node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-profile.yaml
+cp -r screens /tmp/runA
+node .claude/skills/app-explorer/lib/explore.mjs
 # then diff the chosen locator of every visible element, per screen
 ```
 
@@ -220,7 +220,7 @@ is a finding: either genuinely live content, or a stability bug worth fixing her
 
 ## The contract
 
-`analysis/<app>/analysis.json` has nine sections and always all nine. You own **`map` and `screens`**
+`analysis.json` has nine sections and always all nine. You own **`map` and `screens`**
 and write no other.
 
 | section | owner |

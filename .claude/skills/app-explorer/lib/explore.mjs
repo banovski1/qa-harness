@@ -7,7 +7,7 @@ import { mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { promisify } from 'node:util';
-import { parseYaml } from './yaml-lite.mjs';
+import { loadProfile, ROOT } from '../../../../scripts/config/profile.mjs';
 import { buildBundle } from './build-bundle.mjs';
 import { writeScreensSection } from './write-screens.mjs';
 
@@ -30,14 +30,8 @@ const flag = (name, fallback) => {
 };
 const has = (name) => args.includes('--' + name);
 
-const profilePath = flag('profile');
-if (!profilePath) {
-  console.error('usage: explore.mjs --profile <analysis/<app>/app-profile.yaml> [--session <name>] [--resume] [--reports-only]');
-  process.exit(2);
-}
-
-const profile = parseYaml(await readFile(profilePath, 'utf8'));
-const outDir = dirname(profilePath);
+const profile = loadProfile();
+const outDir = ROOT;
 // Raw crawl output is working material, not an artifact: it carries a candidate ladder
 // and a bounding box per element, which was fifteen megabytes for one app and unreadable
 // at any size. It stays out of analysis/ and is distilled into analysis.json at the end.
