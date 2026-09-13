@@ -13,19 +13,15 @@ export class ProjectPageGenerated extends BasePage {
   readonly path = '/#Project';
   readonly heading = 'Projects';
 
-  // 7 element(s) on this screen carry no label, role name or field
+  // 11 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in ProjectPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'ProjectPage', expectedUrl: '/#Project', modelPath: MODEL_PATH });
   readonly projects = new RecordTable(this.page, 'projects', { shape: TABLE_SHAPE, columns: ["Select All Results","Name","Status","Date Start","Date End"], keyColumn: 'Name', screen: 'ProjectPage', expectedUrl: '/#Project', modelPath: MODEL_PATH });
   readonly createProject = new Link(this.page, { label: 'Create Project' }, { screen: 'ProjectPage', expectedUrl: '/#Project', modelPath: MODEL_PATH });
-  readonly all = new Button(this.page, { label: 'All' }, { screen: 'ProjectPage', expectedUrl: '/#Project', modelPath: MODEL_PATH });
   readonly textFilter = new TextField(this.page, { field: 'textFilter' }, { screen: 'ProjectPage', expectedUrl: '/#Project', modelPath: MODEL_PATH });
   readonly search = new Button(this.page, { label: 'Search' }, { screen: 'ProjectPage', expectedUrl: '/#Project', modelPath: MODEL_PATH });
   readonly marketing = new Link(this.page, { label: 'Marketing' }, { screen: 'ProjectPage', expectedUrl: '/#Project', modelPath: MODEL_PATH });
-  readonly control133 = new Button(this.page, { label: '1–3 / 3' }, { screen: 'ProjectPage', expectedUrl: '/#Project', modelPath: MODEL_PATH });
-  readonly previousPage = new Button(this.page, { label: 'Previous Page' }, { screen: 'ProjectPage', expectedUrl: '/#Project', modelPath: MODEL_PATH });
-  readonly nextPage = new Button(this.page, { label: 'Next Page' }, { screen: 'ProjectPage', expectedUrl: '/#Project', modelPath: MODEL_PATH });
   readonly espoCRMInc = new Link(this.page, { label: 'EspoCRM, Inc.' }, { screen: 'ProjectPage', expectedUrl: '/#Project', modelPath: MODEL_PATH });
 
 

@@ -4,9 +4,9 @@
 
 - **App:** OrangeHRM (open-source demo)
 - **Base URL:** https://opensource-demo.orangehrmlive.com/
-- **Generated:** 2026-09-12T21:42:29.436Z
-- **Recurring components:** 24
-- **Screen-specific regions:** 12
+- **Generated:** 2026-09-13T09:39:24.937Z
+- **Recurring components:** 25
+- **Screen-specific regions:** 16
 - **Screens covered:** 31
 
 A component here is a region whose *shape* recurs across screens — the roles it
@@ -58,11 +58,11 @@ Elements below are from `root`; the other screens carry the same controls with t
 | Buzz | link | `getByRole('link', { name: 'Buzz', exact: true })` | semantic |
 | Help | button | `getByRole('button', { name: 'Help', exact: true })` | semantic |
 
-### body — the same shape on 10 screens
+### body — the same shape on 12 screens
 
 Shape: 2× button, 1× link
 
-Screens: `web-index-php-admin-viewAdminModule`, `web-index-php-admin-viewSystemUsers`, `web-index-php-claim-viewAssignClaim`, `web-index-php-claim-viewClaimModule`, `web-index-php-performance-searchEvaluatePerformanceReview`, `web-index-php-performance-viewPerformanceModule`, `web-index-php-pim-viewEmployeeList`, `web-index-php-pim-viewPimModule`, `web-index-php-recruitment-viewCandidates`, `web-index-php-recruitment-viewRecruitmentModule`
+Screens: `web-index-php-admin-viewAdminModule`, `web-index-php-admin-viewSystemUsers`, `web-index-php-claim-viewAssignClaim`, `web-index-php-claim-viewClaimModule`, `web-index-php-leave-viewLeaveList`, `web-index-php-leave-viewLeaveModule`, `web-index-php-performance-searchEvaluatePerformanceReview`, `web-index-php-performance-viewPerformanceModule`, `web-index-php-pim-viewEmployeeList`, `web-index-php-pim-viewPimModule`, `web-index-php-recruitment-viewCandidates`, `web-index-php-recruitment-viewRecruitmentModule`
 
 Elements below are from `web-index-php-admin-viewAdminModule`; the other screens carry the same controls with their own names.
 
@@ -71,22 +71,6 @@ Elements below are from `web-index-php-admin-viewAdminModule`; the other screens
 | button | button | `locator('div.orangehrm-background-container > div.oxd-table-filter:nth-of-type(1) > div.oxd-table-filter-header:nth-of-t` | css fallback |
 | Add | button | `getByRole('button', { name: 'Add', exact: true })` | semantic |
 | OrangeHRM, Inc | link | `getByRole('link', { name: 'OrangeHRM, Inc', exact: true })` | semantic |
-
-### table — the same shape on 5 screens
-
-Shape: 5× button
-
-Screens: `web-index-php-claim-viewAssignClaim`, `web-index-php-claim-viewClaimModule`, `web-index-php-leave-viewLeaveList`, `web-index-php-leave-viewLeaveModule`, `web-index-php-pim-viewImmigration-empNumber-7`
-
-Elements below are from `web-index-php-claim-viewAssignClaim`; the other screens carry the same controls with their own names.
-
-| Element | Role | Locator | Quality |
-| --- | --- | --- | --- |
-| View Details | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| View Details | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| View Details | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| View Details | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| View Details | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 
 ### navigation — the same shape on 4 screens
 
@@ -162,7 +146,7 @@ Elements below are from `web-index-php-maintenance-viewMaintenanceModule`; the o
 
 ### form — the same shape on 4 screens
 
-Shape: 2× button, 4× div, 3× textbox
+Shape: 2× button, 4× combobox, 3× textbox
 
 Screens: `web-index-php-performance-searchEvaluatePerformanceReview`, `web-index-php-performance-viewPerformanceModule`, `web-index-php-pim-viewEmployeeList`, `web-index-php-pim-viewPimModule`
 
@@ -170,13 +154,13 @@ Elements below are from `web-index-php-performance-searchEvaluatePerformanceRevi
 
 | Element | Role | Locator | Quality |
 | --- | --- | --- | --- |
-| Type for hints... | textbox | `getByRole('textbox', { name: 'Type for hints...', exact: true })` | semantic |
-| -- Select -- | div | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| -- Select -- | div | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| Current Employees Only | div | `getByText('Current Employees Only', { exact: true })` | css fallback |
-| -- Select -- | div | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(5) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| yyyy-dd-mm | textbox | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(6) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| yyyy-dd-mm | textbox | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(7) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
+| Employee Name | textbox | `getByPlaceholder('Type for hints...', { exact: true })` | semantic |
+| Job Title | combobox | `label('Job Title') >> div` | semantic |
+| Sub Unit | combobox | `label('Sub Unit') >> div` | semantic |
+| Include | combobox | `label('Include') >> div` | semantic |
+| Review Status | combobox | `label('Review Status') >> div` | semantic |
+| From Date | textbox | `label('From Date') >> input` | semantic |
+| To Date | textbox | `label('To Date') >> input` | semantic |
 | Reset | button | `getByRole('button', { name: 'Reset', exact: true })` | semantic |
 | Search | button | `getByRole('button', { name: 'Search', exact: true })` | semantic |
 
@@ -214,20 +198,6 @@ Elements below are from `web-index-php-pim-viewDependents-empNumber-7`; the othe
 | Add | button | `locator('div.orangehrm-edit-employee > div.orangehrm-edit-employee-content:nth-of-type(2) > div.orangehrm-attachment:nth` | css fallback |
 | OrangeHRM, Inc | link | `getByRole('link', { name: 'OrangeHRM, Inc', exact: true })` | semantic |
 
-### table — the same shape on 4 screens
-
-Shape: 3× button
-
-Screens: `web-index-php-pim-viewMyDetails`, `web-index-php-pim-viewPersonalDetails-empNumber-7`, `web-index-php-time-viewEmployeeTimesheet`, `web-index-php-time-viewTimeModule`
-
-Elements below are from `web-index-php-pim-viewMyDetails`; the other screens carry the same controls with their own names.
-
-| Element | Role | Locator | Quality |
-| --- | --- | --- | --- |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd` | css fallback |
-
 ### form — the same shape on 3 screens
 
 Shape: 1× button, 1× textbox
@@ -241,18 +211,17 @@ Elements below are from `web-index-php-buzz-viewBuzz`; the other screens carry t
 | What's on your mind? | textbox | `getByRole('textbox', { name: 'What's on your mind?', exact: true })` | semantic |
 | Post | button | `getByRole('button', { name: 'Post', exact: true })` | semantic |
 
-### body — the same shape on 3 screens
+### table — the same shape on 3 screens
 
-Shape: 1× button, 1× link
+Shape: 1× checkbox
 
-Screens: `web-index-php-directory-viewDirectory`, `web-index-php-leave-viewLeaveList`, `web-index-php-leave-viewLeaveModule`
+Screens: `web-index-php-leave-viewLeaveList`, `web-index-php-leave-viewLeaveModule`, `web-index-php-pim-contactDetails-empNumber-7`
 
-Elements below are from `web-index-php-directory-viewDirectory`; the other screens carry the same controls with their own names.
+Elements below are from `web-index-php-leave-viewLeaveList`; the other screens carry the same controls with their own names.
 
 | Element | Role | Locator | Quality |
 | --- | --- | --- | --- |
-| button | button | `locator('div.orangehrm-background-container > div.oxd-table-filter:nth-of-type(1) > div.oxd-table-filter-header:nth-of-t` | css fallback |
-| OrangeHRM, Inc | link | `getByRole('link', { name: 'OrangeHRM, Inc', exact: true })` | semantic |
+| span | checkbox | `locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.` | css fallback |
 
 ### body — the same shape on 3 screens
 
@@ -321,7 +290,7 @@ Elements below are from `web-index-php-pim-viewJobDetails-empNumber-7`; the othe
 
 ### body — the same shape on 2 screens
 
-Shape: 10× button, 1× link
+Shape: 9× button, 1× link
 
 Screens: `root`, `web-index-php-dashboard-index`
 
@@ -330,7 +299,6 @@ Elements below are from `root`; the other screens carry the same controls with t
 | Element | Role | Locator | Quality |
 | --- | --- | --- | --- |
 | button | button | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dash` | css fallback |
-| button | button | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dash` | css fallback |
 | button | button | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dash` | css fallback |
 | button | button | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dash` | css fallback |
 | Assign Leave | button | `getByRole('button', { name: 'Assign Leave', exact: true })` | semantic |
@@ -343,7 +311,7 @@ Elements below are from `root`; the other screens carry the same controls with t
 
 ### form — the same shape on 2 screens
 
-Shape: 2× button, 2× div, 2× textbox
+Shape: 2× button, 2× combobox, 2× textbox
 
 Screens: `web-index-php-admin-viewAdminModule`, `web-index-php-admin-viewSystemUsers`
 
@@ -351,16 +319,16 @@ Elements below are from `web-index-php-admin-viewAdminModule`; the other screens
 
 | Element | Role | Locator | Quality |
 | --- | --- | --- | --- |
-| input | textbox | `locator('div.oxd-form-row:nth-of-type(1) > div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-` | css fallback |
-| -- Select -- | div | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| Type for hints... | textbox | `getByRole('textbox', { name: 'Type for hints...', exact: true })` | semantic |
-| -- Select -- | div | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
+| Username | textbox | `label('Username') >> input` | semantic |
+| User Role | combobox | `label('User Role') >> div` | semantic |
+| Employee Name | textbox | `getByPlaceholder('Type for hints...', { exact: true })` | semantic |
+| Status | combobox | `label('Status') >> div` | semantic |
 | Reset | button | `getByRole('button', { name: 'Reset', exact: true })` | semantic |
 | Search | button | `getByRole('button', { name: 'Search', exact: true })` | semantic |
 
 ### form — the same shape on 2 screens
 
-Shape: 2× button, 3× div, 4× textbox
+Shape: 2× button, 3× combobox, 4× textbox
 
 Screens: `web-index-php-claim-viewAssignClaim`, `web-index-php-claim-viewClaimModule`
 
@@ -368,19 +336,38 @@ Elements below are from `web-index-php-claim-viewAssignClaim`; the other screens
 
 | Element | Role | Locator | Quality |
 | --- | --- | --- | --- |
-| Type for hints... | textbox | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| Type for hints... | textbox | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| -- Select -- | div | `getByText('-- Select --', { exact: true })` | ambiguous |
-| -- Select -- | div | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| yyyy-dd-mm | textbox | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| yyyy-dd-mm | textbox | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| Current Employees Only | div | `getByText('Current Employees Only', { exact: true })` | css fallback |
+| Employee Name | textbox | `label('Employee Name') >> input` | semantic |
+| Reference Id | textbox | `label('Reference Id') >> input` | semantic |
+| Event Name | combobox | `label('Event Name') >> div` | semantic |
+| Status | combobox | `label('Status') >> div` | semantic |
+| From Date | textbox | `label('From Date') >> input` | semantic |
+| To Date | textbox | `label('To Date') >> input` | semantic |
+| Include | combobox | `label('Include') >> div` | semantic |
 | Reset | button | `getByRole('button', { name: 'Reset', exact: true })` | semantic |
 | Search | button | `getByRole('button', { name: 'Search', exact: true })` | semantic |
 
+### table — the same shape on 2 screens
+
+Shape: 8× button
+
+Screens: `web-index-php-claim-viewAssignClaim`, `web-index-php-claim-viewClaimModule`
+
+Elements below are from `web-index-php-claim-viewAssignClaim`; the other screens carry the same controls with their own names.
+
+| Element | Role | Locator | Quality |
+| --- | --- | --- | --- |
+| View Details | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| View Details | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| View Details | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| View Details | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| View Details | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| View Details | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| View Details | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| View Details | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+
 ### form — the same shape on 2 screens
 
-Shape: 2× button, 3× div, 3× textbox
+Shape: 2× button, 3× combobox, 1× switch, 3× textbox
 
 Screens: `web-index-php-leave-viewLeaveList`, `web-index-php-leave-viewLeaveModule`
 
@@ -388,18 +375,19 @@ Elements below are from `web-index-php-leave-viewLeaveList`; the other screens c
 
 | Element | Role | Locator | Quality |
 | --- | --- | --- | --- |
-| yyyy-dd-mm | textbox | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| yyyy-dd-mm | textbox | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| -- Select -- | div | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| -- Select -- | div | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| Type for hints... | textbox | `getByRole('textbox', { name: 'Type for hints...', exact: true })` | semantic |
-| -- Select -- | div | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
+| From Date | textbox | `label('From Date') >> input` | semantic |
+| To Date | textbox | `label('To Date') >> input` | semantic |
+| Show Leave with Status | combobox | `label('Show Leave with Status') >> div` | semantic |
+| Leave Type | combobox | `label('Leave Type') >> div` | semantic |
+| Employee Name | textbox | `getByPlaceholder('Type for hints...', { exact: true })` | semantic |
+| Sub Unit | combobox | `label('Sub Unit') >> div` | semantic |
+| span | switch | `locator('div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-` | css fallback |
 | Reset | button | `getByRole('button', { name: 'Reset', exact: true })` | semantic |
 | Search | button | `getByRole('button', { name: 'Search', exact: true })` | semantic |
 
 ### navigation — the same shape on 2 screens
 
-Shape: 5× button, 16× link, 1× none, 1× textbox
+Shape: 6× button, 16× link, 1× none, 1× textbox
 
 Screens: `web-index-php-pim-viewEmployeeList`, `web-index-php-pim-viewPimModule`
 
@@ -429,11 +417,12 @@ Elements below are from `web-index-php-pim-viewEmployeeList`; the other screens 
 | 1 | button | `getByRole('button', { name: '1', exact: true })` | semantic |
 | 2 | button | `getByRole('button', { name: '2', exact: true })` | semantic |
 | 3 | button | `getByRole('button', { name: '3', exact: true })` | semantic |
+| 4 | button | `getByRole('button', { name: '4', exact: true })` | semantic |
 | button | button | `locator('div.orangehrm-paper-container:nth-of-type(2) > div.orangehrm-bottom-container:nth-of-type(4) > nav > ul.oxd-pag` | css fallback |
 
 ### table — the same shape on 2 screens
 
-Shape: 100× button
+Shape: 99× button, 51× checkbox
 
 Screens: `web-index-php-pim-viewEmployeeList`, `web-index-php-pim-viewPimModule`
 
@@ -441,35 +430,35 @@ Elements below are from `web-index-php-pim-viewEmployeeList`; the other screens 
 
 | Element | Role | Locator | Quality |
 | --- | --- | --- | --- |
+| span | checkbox | `locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(9) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(9) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(10) > div.oxd-table-row.oxd-table-row--with-` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(10) > div.oxd-table-row.oxd-table-row--with-` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(11) > div.oxd-table-row.oxd-table-row--with-` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(11) > div.oxd-table-row.oxd-table-row--with-` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(12) > div.oxd-table-row.oxd-table-row--with-` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(12) > div.oxd-table-row.oxd-table-row--with-` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(13) > div.oxd-table-row.oxd-table-row--with-` | css fallback |
 
 ### form — the same shape on 2 screens
 
-Shape: 2× button, 3× div, 9× textbox
+Shape: 2× button, 3× combobox, 9× textbox
 
 Screens: `web-index-php-pim-viewMyDetails`, `web-index-php-pim-viewPersonalDetails-empNumber-7`
 
@@ -480,17 +469,33 @@ Elements below are from `web-index-php-pim-viewMyDetails`; the other screens car
 | First Name | textbox | `getByRole('textbox', { name: 'First Name', exact: true })` | semantic |
 | Middle Name | textbox | `getByRole('textbox', { name: 'Middle Name', exact: true })` | semantic |
 | Last Name | textbox | `getByRole('textbox', { name: 'Last Name', exact: true })` | semantic |
-| input | textbox | `locator('div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-ite` | css fallback |
-| input | textbox | `locator('div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-ite` | css fallback |
-| input | textbox | `locator('div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid:nth-of-type(2) > div.oxd-grid-item.oxd-grid-ite` | css fallback |
-| yyyy-dd-mm | textbox | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| American | div | `getByText('American', { exact: true })` | css fallback |
-| Single | div | `getByText('Single', { exact: true })` | css fallback |
-| yyyy-dd-mm | textbox | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
+| Employee Id | textbox | `label('Employee Id') >> input` | semantic |
+| Other Id | textbox | `label('Other Id') >> input` | semantic |
+| Driver's License Number | textbox | `label('Driver's License Number') >> input` | semantic |
+| License Expiry Date | textbox | `label('License Expiry Date') >> input` | semantic |
+| Nationality | combobox | `label('Nationality') >> div` | semantic |
+| Marital Status | combobox | `label('Marital Status') >> div` | semantic |
+| Date of Birth | textbox | `label('Date of Birth') >> input` | semantic |
 | Save | button | `locator('div.orangehrm-edit-employee > div.orangehrm-edit-employee-content:nth-of-type(2) > div.orangehrm-horizontal-pad` | css fallback |
-| A+ | div | `getByText('A+', { exact: true })` | css fallback |
-| input | textbox | `locator('div.oxd-form-row:nth-of-type(1) > div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-` | css fallback |
+| Blood Type | combobox | `label('Blood Type') >> div` | semantic |
+| Test_Field | textbox | `label('Test_Field') >> input` | semantic |
 | Save | button | `locator('div.orangehrm-edit-employee-content:nth-of-type(2) > div.orangehrm-custom-fields:nth-of-type(2) > div.orangehrm` | css fallback |
+
+### table — the same shape on 2 screens
+
+Shape: 3× button, 2× checkbox
+
+Screens: `web-index-php-pim-viewMyDetails`, `web-index-php-pim-viewPersonalDetails-empNumber-7`
+
+Elements below are from `web-index-php-pim-viewMyDetails`; the other screens carry the same controls with their own names.
+
+| Element | Role | Locator | Quality |
+| --- | --- | --- | --- |
+| span | checkbox | `locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | css fallback |
+| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd` | css fallback |
+| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd` | css fallback |
+| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd` | css fallback |
 
 ### navigation — the same shape on 2 screens
 
@@ -526,7 +531,7 @@ Elements below are from `web-index-php-recruitment-viewCandidates`; the other sc
 
 ### form — the same shape on 2 screens
 
-Shape: 2× button, 5× div, 4× textbox
+Shape: 2× button, 5× combobox, 4× textbox
 
 Screens: `web-index-php-recruitment-viewCandidates`, `web-index-php-recruitment-viewRecruitmentModule`
 
@@ -534,21 +539,21 @@ Elements below are from `web-index-php-recruitment-viewCandidates`; the other sc
 
 | Element | Role | Locator | Quality |
 | --- | --- | --- | --- |
-| -- Select -- | div | `getByText('-- Select --', { exact: true })` | ambiguous |
-| -- Select -- | div | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| -- Select -- | div | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| -- Select -- | div | `locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > di` | css fallback |
-| Type for hints... | textbox | `getByRole('textbox', { name: 'Type for hints...', exact: true })` | semantic |
-| Enter comma seperated words... | textbox | `getByRole('textbox', { name: 'Enter comma seperated words...', exact: true })` | semantic |
-| From | textbox | `getByRole('textbox', { name: 'From', exact: true })` | semantic |
+| Job Title | combobox | `label('Job Title') >> div` | semantic |
+| Vacancy | combobox | `label('Vacancy') >> div` | semantic |
+| Hiring Manager | combobox | `label('Hiring Manager') >> div` | semantic |
+| Status | combobox | `label('Status') >> div` | semantic |
+| Candidate Name | textbox | `getByPlaceholder('Type for hints...', { exact: true })` | semantic |
+| Keywords | textbox | `getByPlaceholder('Enter comma seperated words...', { exact: true })` | semantic |
+| Date of Application | textbox | `getByPlaceholder('From', { exact: true })` | semantic |
 | To | textbox | `getByRole('textbox', { name: 'To', exact: true })` | semantic |
-| -- Select -- | div | `getByText('-- Select --', { exact: true })` | ambiguous |
+| Method of Application | combobox | `label('Method of Application') >> div` | semantic |
 | Reset | button | `getByRole('button', { name: 'Reset', exact: true })` | semantic |
 | Search | button | `getByRole('button', { name: 'Search', exact: true })` | semantic |
 
 ### table — the same shape on 2 screens
 
-Shape: 131× button
+Shape: 134× button, 51× checkbox
 
 Screens: `web-index-php-recruitment-viewCandidates`, `web-index-php-recruitment-viewRecruitmentModule`
 
@@ -556,45 +561,63 @@ Elements below are from `web-index-php-recruitment-viewCandidates`; the other sc
 
 | Element | Role | Locator | Quality |
 | --- | --- | --- | --- |
+| span | checkbox | `locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| span | checkbox | `locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-tab` | ambiguous |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 | button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(9) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(9) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(9) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
-| button | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(10) > div.oxd-table-row.oxd-table-row--with-` | css fallback |
+
+### table — the same shape on 2 screens
+
+Shape: 3× button
+
+Screens: `web-index-php-time-viewEmployeeTimesheet`, `web-index-php-time-viewTimeModule`
+
+Elements below are from `web-index-php-time-viewEmployeeTimesheet`; the other screens carry the same controls with their own names.
+
+| Element | Role | Locator | Quality |
+| --- | --- | --- | --- |
+| View | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| View | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
+| View | button | `locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-b` | css fallback |
 
 ## Screen-specific regions
 
 | Screen | Region | Elements |
 | --- | --- | ---: |
-| `web-index-php-admin-viewAdminModule` | table | 12 |
-| `web-index-php-admin-viewSystemUsers` | table | 10 |
+| `web-index-php-admin-viewAdminModule` | table | 118 |
+| `web-index-php-admin-viewSystemUsers` | table | 115 |
 | `web-index-php-buzz-viewBuzz` | body | 18 |
+| `web-index-php-directory-viewDirectory` | body | 2 |
 | `web-index-php-directory-viewDirectory` | form | 5 |
 | `web-index-php-maintenance-viewMaintenanceModule` | form | 4 |
 | `web-index-php-pim-addEmployee` | navigation | 19 |
-| `web-index-php-pim-addEmployee` | form | 7 |
+| `web-index-php-pim-addEmployee` | form | 8 |
 | `web-index-php-pim-contactDetails-empNumber-7` | form | 12 |
-| `web-index-php-pim-viewJobDetails-empNumber-7` | form | 1 |
-| `web-index-php-pim-viewMemberships-empNumber-7` | table | 24 |
+| `web-index-php-pim-viewDependents-empNumber-7` | table | 2 |
+| `web-index-php-pim-viewEmergencyContacts-empNumber-7` | table | 5 |
+| `web-index-php-pim-viewImmigration-empNumber-7` | table | 9 |
+| `web-index-php-pim-viewJobDetails-empNumber-7` | form | 7 |
+| `web-index-php-pim-viewMemberships-empNumber-7` | table | 6 |
 | `web-index-php-pim-viewQualifications-empNumber-7` | body | 27 |
-| `web-index-php-pim-viewQualifications-empNumber-7` | table | 6 |
+| `web-index-php-pim-viewQualifications-empNumber-7` | table | 15 |

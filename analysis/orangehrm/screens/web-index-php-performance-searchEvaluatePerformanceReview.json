@@ -3,7 +3,20 @@
   "path": "/web/index.php/performance/searchEvaluatePerformanceReview",
   "title": "OrangeHRM",
   "headings": [],
-  "tables": [],
+  "tables": [
+    {
+      "columns": [
+        "EmployeeAscendingDescending",
+        "Job Title",
+        "Sub Unit",
+        "Review PeriodAscendingDescending",
+        "Due DateAscendingDescending",
+        "Review StatusAscendingDescending",
+        "Actions"
+      ],
+      "rowCount": 1
+    }
+  ],
   "regions": {
     "navigation": 18,
     "header": 2,
@@ -17,6 +30,7 @@
       "type": null,
       "role": "link",
       "name": "client brand logo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -75,6 +89,7 @@
       "type": null,
       "role": "textbox",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Search",
       "id": null,
@@ -141,6 +156,7 @@
       "type": "button",
       "role": "none",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -189,6 +205,7 @@
       "type": null,
       "role": "link",
       "name": "Admin",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -254,6 +271,7 @@
       "type": null,
       "role": "link",
       "name": "PIM",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -319,6 +337,7 @@
       "type": null,
       "role": "link",
       "name": "Leave",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -384,6 +403,7 @@
       "type": null,
       "role": "link",
       "name": "Time",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -449,6 +469,7 @@
       "type": null,
       "role": "link",
       "name": "Recruitment",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -514,6 +535,7 @@
       "type": null,
       "role": "link",
       "name": "My Info",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -579,6 +601,7 @@
       "type": null,
       "role": "link",
       "name": "Performance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -644,6 +667,7 @@
       "type": null,
       "role": "link",
       "name": "Dashboard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -709,6 +733,7 @@
       "type": null,
       "role": "link",
       "name": "Directory",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -774,6 +799,7 @@
       "type": null,
       "role": "link",
       "name": "Maintenance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -839,6 +865,7 @@
       "type": null,
       "role": "link",
       "name": "Claim",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -904,6 +931,7 @@
       "type": null,
       "role": "link",
       "name": "Buzz",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -969,6 +997,7 @@
       "type": null,
       "role": "link",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1034,6 +1063,7 @@
       "type": "button",
       "role": "button",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1100,6 +1130,7 @@
       "type": null,
       "role": "link",
       "name": "My Trackers",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1163,6 +1194,7 @@
       "type": null,
       "role": "link",
       "name": "Employee Trackers",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1226,6 +1258,7 @@
       "type": "button",
       "role": "button",
       "name": "Help",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1283,6 +1316,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1330,7 +1364,8 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "Type for hints...",
+      "name": "Employee Name",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": "Type for hints...",
       "id": null,
@@ -1351,11 +1386,10 @@
         "h": 40
       },
       "locator": {
-        "strategy": "role",
-        "expression": "getByRole('textbox', { name: 'Type for hints...', exact: true })",
+        "strategy": "placeholder",
+        "expression": "getByPlaceholder('Type for hints...', { exact: true })",
         "matchCount": 1,
         "args": [
-          "textbox",
           "Type for hints..."
         ]
       },
@@ -1364,20 +1398,20 @@
       "ambiguityReason": null,
       "candidates": [
         {
-          "strategy": "role",
-          "expression": "getByRole('textbox', { name: 'Type for hints...', exact: true })",
-          "matchCount": 1,
-          "args": [
-            "textbox",
-            "Type for hints..."
-          ]
-        },
-        {
           "strategy": "placeholder",
           "expression": "getByPlaceholder('Type for hints...', { exact: true })",
           "matchCount": 1,
           "args": [
             "Type for hints..."
+          ]
+        },
+        {
+          "strategy": "proximity",
+          "expression": "label('Employee Name') >> input",
+          "matchCount": 1,
+          "args": [
+            "Employee Name",
+            "input"
           ]
         },
         {
@@ -1394,15 +1428,17 @@
       "index": 22,
       "tag": "div",
       "type": null,
-      "role": null,
-      "name": "-- Select --",
+      "role": "combobox",
+      "name": "Job Title",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-v-67d2aedf": ""
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
       },
       "region": "form",
       "visible": true,
@@ -1410,23 +1446,33 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 557,
-        "y": 258,
-        "w": 160,
-        "h": 18
+        "x": 556,
+        "y": 244,
+        "w": 201,
+        "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+        "strategy": "proximity",
+        "expression": "label('Job Title') >> div",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+          "Job Title",
+          "div"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Job Title') >> div",
+          "matchCount": 1,
+          "args": [
+            "Job Title",
+            "div"
+          ]
+        },
         {
           "strategy": "text",
           "expression": "getByText('-- Select --', { exact: true })",
@@ -1437,10 +1483,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+          "expression": "locator('div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
           "matchCount": 1,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+            "div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
           ]
         }
       ]
@@ -1449,15 +1495,17 @@
       "index": 23,
       "tag": "div",
       "type": null,
-      "role": null,
-      "name": "-- Select --",
+      "role": "combobox",
+      "name": "Sub Unit",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-v-67d2aedf": ""
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
       },
       "region": "form",
       "visible": true,
@@ -1465,23 +1513,33 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 781,
-        "y": 258,
-        "w": 160,
-        "h": 18
+        "x": 780,
+        "y": 244,
+        "w": 201,
+        "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+        "strategy": "proximity",
+        "expression": "label('Sub Unit') >> div",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+          "Sub Unit",
+          "div"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Sub Unit') >> div",
+          "matchCount": 1,
+          "args": [
+            "Sub Unit",
+            "div"
+          ]
+        },
         {
           "strategy": "text",
           "expression": "getByText('-- Select --', { exact: true })",
@@ -1492,10 +1550,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+          "expression": "locator('div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
           "matchCount": 1,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+            "div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
           ]
         }
       ]
@@ -1504,15 +1562,17 @@
       "index": 24,
       "tag": "div",
       "type": null,
-      "role": null,
-      "name": "Current Employees Only",
+      "role": "combobox",
+      "name": "Include",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-v-67d2aedf": ""
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
       },
       "region": "form",
       "visible": true,
@@ -1520,23 +1580,33 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 1006,
-        "y": 258,
-        "w": 160,
-        "h": 18
+        "x": 1005,
+        "y": 244,
+        "w": 201,
+        "h": 45
       },
       "locator": {
-        "strategy": "text",
-        "expression": "getByText('Current Employees Only', { exact: true })",
+        "strategy": "proximity",
+        "expression": "label('Include') >> div",
         "matchCount": 1,
         "args": [
-          "Current Employees Only"
+          "Include",
+          "div"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Include') >> div",
+          "matchCount": 1,
+          "args": [
+            "Include",
+            "div"
+          ]
+        },
         {
           "strategy": "text",
           "expression": "getByText('Current Employees Only', { exact: true })",
@@ -1547,10 +1617,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+          "expression": "locator('div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
           "matchCount": 1,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+            "div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
           ]
         }
       ]
@@ -1559,15 +1629,17 @@
       "index": 25,
       "tag": "div",
       "type": null,
-      "role": null,
-      "name": "-- Select --",
+      "role": "combobox",
+      "name": "Review Status",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-v-67d2aedf": ""
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
       },
       "region": "form",
       "visible": true,
@@ -1575,23 +1647,33 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 332,
-        "y": 341,
-        "w": 160,
-        "h": 18
+        "x": 331,
+        "y": 328,
+        "w": 201,
+        "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(5) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+        "strategy": "proximity",
+        "expression": "label('Review Status') >> div",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(5) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+          "Review Status",
+          "div"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Review Status') >> div",
+          "matchCount": 1,
+          "args": [
+            "Review Status",
+            "div"
+          ]
+        },
         {
           "strategy": "text",
           "expression": "getByText('-- Select --', { exact: true })",
@@ -1602,10 +1684,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(5) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+          "expression": "locator('div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(5) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
           "matchCount": 1,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(5) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+            "div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(5) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
           ]
         }
       ]
@@ -1615,9 +1697,10 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "yyyy-dd-mm",
+      "name": "From Date",
+      "nameSource": "proximity",
       "label": null,
-      "placeholder": "yyyy-dd-mm",
+      "placeholder": "yyyy-mm-dd",
       "id": null,
       "nameAttr": null,
       "testId": null,
@@ -1637,32 +1720,33 @@
         "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(6) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-date-wrapper > div.oxd-date-input > input.oxd-input.oxd-input--active')",
+        "strategy": "proximity",
+        "expression": "label('From Date') >> input",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(6) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-date-wrapper > div.oxd-date-input > input.oxd-input.oxd-input--active"
+          "From Date",
+          "input"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
         {
-          "strategy": "role",
-          "expression": "getByRole('textbox', { name: 'yyyy-dd-mm', exact: true })",
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('yyyy-mm-dd', { exact: true })",
           "matchCount": 2,
           "args": [
-            "textbox",
-            "yyyy-dd-mm"
+            "yyyy-mm-dd"
           ]
         },
         {
-          "strategy": "placeholder",
-          "expression": "getByPlaceholder('yyyy-dd-mm', { exact: true })",
-          "matchCount": 2,
+          "strategy": "proximity",
+          "expression": "label('From Date') >> input",
+          "matchCount": 1,
           "args": [
-            "yyyy-dd-mm"
+            "From Date",
+            "input"
           ]
         },
         {
@@ -1680,9 +1764,10 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "yyyy-dd-mm",
+      "name": "To Date",
+      "nameSource": "proximity",
       "label": null,
-      "placeholder": "yyyy-dd-mm",
+      "placeholder": "yyyy-mm-dd",
       "id": null,
       "nameAttr": null,
       "testId": null,
@@ -1702,32 +1787,33 @@
         "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(7) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-date-wrapper > div.oxd-date-input > input.oxd-input.oxd-input--active')",
+        "strategy": "proximity",
+        "expression": "label('To Date') >> input",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(7) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-date-wrapper > div.oxd-date-input > input.oxd-input.oxd-input--active"
+          "To Date",
+          "input"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
         {
-          "strategy": "role",
-          "expression": "getByRole('textbox', { name: 'yyyy-dd-mm', exact: true })",
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('yyyy-mm-dd', { exact: true })",
           "matchCount": 2,
           "args": [
-            "textbox",
-            "yyyy-dd-mm"
+            "yyyy-mm-dd"
           ]
         },
         {
-          "strategy": "placeholder",
-          "expression": "getByPlaceholder('yyyy-dd-mm', { exact: true })",
-          "matchCount": 2,
+          "strategy": "proximity",
+          "expression": "label('To Date') >> input",
+          "matchCount": 1,
           "args": [
-            "yyyy-dd-mm"
+            "To Date",
+            "input"
           ]
         },
         {
@@ -1746,6 +1832,7 @@
       "type": "reset",
       "role": "button",
       "name": "Reset",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1812,6 +1899,7 @@
       "type": "submit",
       "role": "button",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1878,6 +1966,7 @@
       "type": null,
       "role": "link",
       "name": "OrangeHRM, Inc",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1941,6 +2030,7 @@
       "type": null,
       "role": "button",
       "name": "×",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2092,8 +2182,8 @@
     "elements": 32,
     "visible": 32,
     "hidden": 0,
-    "semantic": 24,
-    "fragile": 8,
+    "semantic": 30,
+    "fragile": 2,
     "ambiguous": 0,
     "withTestId": 0
   }

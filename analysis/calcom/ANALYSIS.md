@@ -9,9 +9,9 @@ re-run the skills, then `compile-model.ts`, to change it.
 | clone | `~/Projects/cal.diy` at `b0a34f21c9` |
 | base URL | https://cal.com/ |
 | screens | 78 (4 crawled, 74 declared only) |
-| controls | 336 named, 22 unnamed |
+| controls | 298 named, 60 unnamed |
 | components | 9 (0 shared regions) |
-| proved transitions | 3 |
+| proved transitions | 0 |
 
 ## Components
 
@@ -22,10 +22,10 @@ re-run the skills, then `compile-model.ts`, to change it.
 
 | screen | path | controls | unnamed | actions |
 | --- | --- | --- | --- | --- |
-| TypePage | `/{user}/{type}` | 86 | 2 | 1 |
-| HomePage | `/` | 85 | 5 | 1 |
-| UserPage | `/{user}` | 83 | 9 | 1 |
-| EnterprisePage | `/enterprise` | 82 | 6 | 0 |
+| TypePage | `/{user}/{type}` | 81 | 7 | 0 |
+| UserPage | `/{user}` | 77 | 15 | 0 |
+| HomePage | `/` | 72 | 18 | 0 |
+| EnterprisePage | `/enterprise` | 68 | 20 | 0 |
 | AppsPage | `/apps` | 0 | 0 | 0 |
 | AppsCategoriesPage | `/apps/categories` | 0 | 0 | 0 |
 | AppsCategories2Page | `/apps/categories/{category}` | 0 | 0 | 0 |

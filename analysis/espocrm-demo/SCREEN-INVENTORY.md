@@ -4,7 +4,7 @@
 
 - **App:** EspoCRM demo (EU)
 - **Base URL:** https://demo.eu.espocrm.com/
-- **Generated:** 2026-09-11T06:45:10.203Z
+- **Generated:** 2026-09-13T09:43:35.703Z
 - **Screens crawled:** 60
 - **Screens failed:** 0
 
@@ -20,7 +20,7 @@ because a locator for something the user cannot see is not one a test can act on
 | `Admin` | Administration | https://demo.eu.espocrm.com/#Admin | 95 | 85 | 3 | 7 | 52 | yes |
 | `BpmnFlowchart` | Flowcharts | https://demo.eu.espocrm.com/#BpmnFlowchart | 30 | 23 | 7 | 0 | 78 | yes |
 | `BpmnProcess` | Processes | https://demo.eu.espocrm.com/#BpmnProcess | 33 | 23 | 10 | 0 | 88 | yes |
-| `Calendar` | Calendar | https://demo.eu.espocrm.com/#Calendar | 52 | 24 | 28 | 0 | 59 | yes |
+| `Calendar` | Calendar | https://demo.eu.espocrm.com/#Calendar | 51 | 24 | 27 | 0 | 59 | yes |
 | `Call-create` | Create Call | https://demo.eu.espocrm.com/#Call/create | 56 | 42 | 13 | 1 | 60 | yes |
 | `Call` | Calls | https://demo.eu.espocrm.com/#Call | 138 | 78 | 60 | 0 | 198 | yes |
 | `Campaign` | Campaigns | https://demo.eu.espocrm.com/#Campaign | 46 | 29 | 17 | 0 | 102 | yes |
@@ -33,7 +33,7 @@ because a locator for something the user cannot see is not one a test can act on
 | `Document` | Documents | https://demo.eu.espocrm.com/#Document | 46 | 30 | 16 | 0 | 103 | yes |
 | `Email-create` | Create Email | https://demo.eu.espocrm.com/#Email/create | 65 | 52 | 13 | 0 | 282 | yes |
 | `Email` | Emails | https://demo.eu.espocrm.com/#Email | 43 | 33 | 10 | 0 | 129 | yes |
-| `GlobalStream` | EspoCRM Demo | https://demo.eu.espocrm.com/#GlobalStream | 122 | 37 | 85 | 0 | 143 | yes |
+| `GlobalStream` | EspoCRM Demo | https://demo.eu.espocrm.com/#GlobalStream | 124 | 37 | 87 | 0 | 143 | yes |
 | `InventoryAdjustment` | Inventory Adjustments | https://demo.eu.espocrm.com/#InventoryAdjustment | 48 | 28 | 20 | 0 | 106 | yes |
 | `InventoryNumber` | Inventory Numbers | https://demo.eu.espocrm.com/#InventoryNumber | 119 | 66 | 53 | 0 | 154 | yes |
 | `InventoryTransaction` | Inventory Transactions | https://demo.eu.espocrm.com/#InventoryTransaction | 141 | 44 | 97 | 0 | 151 | yes |
@@ -58,7 +58,7 @@ because a locator for something the user cannot see is not one a test can act on
 | `Report` | Reports | https://demo.eu.espocrm.com/#Report | 69 | 43 | 26 | 0 | 126 | yes |
 | `ReturnOrder` | Return Orders | https://demo.eu.espocrm.com/#ReturnOrder | 33 | 23 | 10 | 0 | 110 | yes |
 | `SalesOrder` | Sales Orders | https://demo.eu.espocrm.com/#SalesOrder | 44 | 29 | 15 | 0 | 119 | yes |
-| `Stream` | EspoCRM Demo | https://demo.eu.espocrm.com/#Stream | 125 | 46 | 79 | 0 | 119 | yes |
+| `Stream` | EspoCRM Demo | https://demo.eu.espocrm.com/#Stream | 126 | 44 | 82 | 0 | 119 | yes |
 | `Subscription` | Subscription | https://demo.eu.espocrm.com/#Subscription | 33 | 23 | 10 | 0 | 107 | yes |
 | `Supplier` | Suppliers | https://demo.eu.espocrm.com/#Supplier | 42 | 26 | 16 | 0 | 87 | yes |
 | `SupplierBill` | Bills | https://demo.eu.espocrm.com/#SupplierBill | 33 | 23 | 10 | 0 | 110 | yes |
@@ -68,12 +68,12 @@ because a locator for something the user cannot see is not one a test can act on
 | `Task` | Tasks | https://demo.eu.espocrm.com/#Task | 117 | 62 | 55 | 0 | 180 | yes |
 | `Team` | Teams | https://demo.eu.espocrm.com/#Team | 36 | 27 | 9 | 0 | 75 | yes |
 | `TransferOrder` | Transfer Orders | https://demo.eu.espocrm.com/#TransferOrder | 60 | 33 | 27 | 0 | 127 | yes |
-| `User-view-1` | Jack Adams | https://demo.eu.espocrm.com/#User/view/1 | 65 | 38 | 27 | 0 | 124 | yes |
+| `User-view-1` | Jack Adams | https://demo.eu.espocrm.com/#User/view/1 | 67 | 38 | 29 | 0 | 126 | yes |
 | `User` | Users | https://demo.eu.espocrm.com/#User | 59 | 34 | 25 | 0 | 108 | yes |
 | `Warehouse` | Warehouses | https://demo.eu.espocrm.com/#Warehouse | 50 | 33 | 17 | 0 | 95 | yes |
 | `Workflow` | Workflows | https://demo.eu.espocrm.com/#Workflow | 30 | 23 | 7 | 0 | 80 | yes |
 | `WorkingTimeCalendar` | Working Time Calendars | https://demo.eu.espocrm.com/#WorkingTimeCalendar | 39 | 27 | 12 | 0 | 71 | yes |
-| `root` | EspoCRM Demo | https://demo.eu.espocrm.com/ | 150 | 62 | 74 | 14 | 163 | yes |
+| `root` | EspoCRM Demo | https://demo.eu.espocrm.com/ | 151 | 63 | 74 | 14 | 163 | yes |
 
 ## Screens that did not yield
 
@@ -121,9 +121,9 @@ None. Every queued screen was extracted.
 ### `Calendar`
 
 - URL: https://demo.eu.espocrm.com/#Calendar
-- Regions: navigation (74), body (14), table (22), footer (1)
+- Regions: navigation (74), body (14), table (21), footer (1)
 - Table columns: `37Mon 07Tue 08Wed 09Thu 10Fri 11Sat 12Sun 13`, `37`, `Mon 07`, `Tue 08`, `Wed 09`, `Thu 10`, `Fri 11`, `Sat 12`, `Sun 13` — 53 rows
-- Table columns: `37`, `Mon 07`, `Tue 08`, `Wed 09`, `Thu 10`, `Fri 11`, `Sat 12`, `Sun 13` — 0 rows
+- Table columns: `37`, `Mon 07`, `Tue 08`, `Wed 09`, `Thu 10`, `Fri 11`, `Sat 12`, `Sun 13` — 1 rows
 
 ### `Call-create`
 
@@ -207,7 +207,7 @@ None. Every queued screen was extracted.
 
 - URL: https://demo.eu.espocrm.com/#GlobalStream
 - Headings: `Global Stream`
-- Regions: navigation (74), body (190), footer (1)
+- Regions: navigation (74), body (192), footer (1)
 
 ### `InventoryAdjustment`
 
@@ -373,7 +373,7 @@ None. Every queued screen was extracted.
 
 - URL: https://demo.eu.espocrm.com/#Stream
 - Headings: `Stream`
-- Regions: navigation (74), body (169), footer (1)
+- Regions: navigation (74), body (170), footer (1)
 
 ### `Subscription`
 
@@ -438,7 +438,7 @@ None. Every queued screen was extracted.
 
 - URL: https://demo.eu.espocrm.com/#User/view/1
 - Headings: `UsersJack Adams`
-- Regions: navigation (74), body (114), footer (1)
+- Regions: navigation (74), body (118), footer (1)
 
 ### `User`
 
@@ -470,7 +470,7 @@ None. Every queued screen was extracted.
 ### `root`
 
 - URL: https://demo.eu.espocrm.com/
-- Regions: navigation (74), body (216), table (22), footer (1)
+- Regions: navigation (74), body (218), table (21), footer (1)
 - Table columns: `37Mon 07Tue 08Wed 09Thu 10Fri 11Sat 12Sun 13`, `37`, `Mon 07`, `Tue 08`, `Wed 09`, `Thu 10`, `Fri 11`, `Sat 12`, `Sun 13` — 53 rows
-- Table columns: `37`, `Mon 07`, `Tue 08`, `Wed 09`, `Thu 10`, `Fri 11`, `Sat 12`, `Sun 13` — 0 rows
+- Table columns: `37`, `Mon 07`, `Tue 08`, `Wed 09`, `Thu 10`, `Fri 11`, `Sat 12`, `Sun 13` — 1 rows
 

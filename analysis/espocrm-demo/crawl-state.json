@@ -68,10 +68,10 @@
       "title": "EspoCRM Demo",
       "settled": true,
       "stats": {
-        "elements": 313,
-        "visible": 150,
+        "elements": 314,
+        "visible": 151,
         "hidden": 163,
-        "semantic": 62,
+        "semantic": 63,
         "fragile": 74,
         "ambiguous": 14,
         "withTestId": 0
@@ -203,11 +203,11 @@
       "title": "Calendar",
       "settled": true,
       "stats": {
-        "elements": 111,
-        "visible": 52,
+        "elements": 110,
+        "visible": 51,
         "hidden": 59,
         "semantic": 24,
-        "fragile": 28,
+        "fragile": 27,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -518,11 +518,11 @@
       "title": "EspoCRM Demo",
       "settled": true,
       "stats": {
-        "elements": 244,
-        "visible": 125,
+        "elements": 245,
+        "visible": 126,
         "hidden": 119,
-        "semantic": 46,
-        "fragile": 79,
+        "semantic": 44,
+        "fragile": 82,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -788,11 +788,11 @@
       "title": "EspoCRM Demo",
       "settled": true,
       "stats": {
-        "elements": 265,
-        "visible": 122,
+        "elements": 267,
+        "visible": 124,
         "hidden": 143,
         "semantic": 37,
-        "fragile": 85,
+        "fragile": 87,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -923,11 +923,11 @@
       "title": "Jack Adams",
       "settled": true,
       "stats": {
-        "elements": 189,
-        "visible": 65,
-        "hidden": 124,
+        "elements": 193,
+        "visible": 67,
+        "hidden": 126,
         "semantic": 38,
-        "fragile": 27,
+        "fragile": 29,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -966,6 +966,6 @@
   },
   "failed": {},
   "authenticated": true,
-  "startedAt": "2026-09-11T06:42:47.130Z",
-  "finishedAt": "2026-09-11T06:44:32.034Z"
+  "startedAt": "2026-09-13T09:41:50.769Z",
+  "finishedAt": "2026-09-13T09:43:35.658Z"
 }

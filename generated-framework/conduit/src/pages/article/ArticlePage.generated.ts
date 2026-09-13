@@ -11,28 +11,20 @@ export class ArticlePageGenerated extends BasePage {
   readonly path = '/article/{slug}';
   readonly heading = 'Building Scalable APIs with Node.js';
 
-  // 4 element(s) on this screen carry no label, role name or field
+  // 6 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in ArticlePage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
-  readonly mikewilson = new Link(this.page, { label: 'mikewilson' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
-  readonly followMikewilson = new Button(this.page, { label: 'Follow mikewilson' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
-  readonly favoriteArticle1 = new Button(this.page, { label: 'Favorite Article (1)' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
-  readonly mikewilson2 = new Link(this.page, { label: 'mikewilson' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
-  readonly followMikewilson2 = new Button(this.page, { label: 'Follow mikewilson' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
-  readonly favoriteArticle12 = new Button(this.page, { label: 'Favorite Article (1)' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
-  readonly signIn = new Link(this.page, { label: 'Sign in' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
+  readonly mikewilson = new Link(this.page, { label: 'mikewilson', within: 'Building Scalable APIs with Node.js' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
+  readonly followMikewilson = new Button(this.page, { label: 'Follow mikewilson', within: 'Building Scalable APIs with Node.js' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
+  readonly favoriteArticle1 = new Button(this.page, { label: 'Favorite Article (1)', within: 'Building Scalable APIs with Node.js' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
+  readonly mikewilson2 = new Link(this.page, { label: 'mikewilson', within: 'Database Optimization' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
+  readonly followMikewilson2 = new Button(this.page, { label: 'Follow mikewilson', within: 'Database Optimization' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
+  readonly favoriteArticle12 = new Button(this.page, { label: 'Favorite Article (1)', within: 'Database Optimization' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
   readonly signUp = new Link(this.page, { label: 'sign up' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
   readonly janesmith = new Link(this.page, { label: 'janesmith' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
   readonly johndoe = new Link(this.page, { label: 'johndoe' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
-  readonly conduit = new Link(this.page, { label: 'Conduit' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
   readonly realWorldOSSProject = new Link(this.page, { label: 'RealWorld OSS Project' }, { screen: 'ArticlePage', expectedUrl: '/article/{slug}', modelPath: MODEL_PATH });
-
-  /** Proved by the crawl: this control leads to LoginPage. */
-  async goToSignIn(): Promise<void> {
-    await this.signIn.click();
-    await this.page.waitForURL(url => url.href.includes('/login'));
-  }
 
   /** Proved by the crawl: this control leads to RegisterPage. */
   async goToSignUp(): Promise<void> {

@@ -8,6 +8,10 @@ var LADDER = [
   'role',
   'label',
   'placeholder',
+  // A label the app renders next to a control but never associated with it. Semantic —
+  // it is the word a person reads — but resolved by walking the DOM, not by asking the
+  // accessibility tree, so it ranks below the associations the app actually declared.
+  'proximity',
   'scoped',
   'attribute',
   'text',
@@ -18,7 +22,7 @@ var LADDER = [
 // application put there on purpose (`[data-name="firstName"] input`), so it
 // breaks only when that name does. It is the rung for an app whose inputs carry
 // no label association — which, on a form-heavy CRM, is most of them.
-var SEMANTIC_STRATEGIES = ['testId', 'role', 'label', 'placeholder', 'scoped'];
+var SEMANTIC_STRATEGIES = ['testId', 'role', 'label', 'placeholder', 'proximity', 'scoped'];
 
 function rankOf(strategy) {
   var i = LADDER.indexOf(strategy);

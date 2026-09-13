@@ -4,7 +4,7 @@
 
 - **App:** Cal.com (booker slice)
 - **Base URL:** https://cal.com/
-- **Generated:** 2026-09-12T21:47:29.290Z
+- **Generated:** 2026-09-13T09:41:40.955Z
 - **Recurring components:** 0
 - **Screen-specific regions:** 10
 - **Screens covered:** 8
@@ -26,7 +26,7 @@ No region signature recurred across screens.
 | `ai` | body | 99 |
 | `blog-calcom-v6-8` | body | 89 |
 | `enterprise` | body | 98 |
-| `pricing` | body | 102 |
+| `pricing` | body | 98 |
 | `root` | body | 96 |
 | `systemly-app-demo-website` | main | 57 |
 | `systemly-app-demo-website` | header | 3 |

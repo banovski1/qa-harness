@@ -91,11 +91,11 @@
       "title": "Pricing | Cal.com",
       "settled": true,
       "stats": {
-        "elements": 104,
-        "visible": 102,
+        "elements": 100,
+        "visible": 98,
         "hidden": 2,
         "semantic": 72,
-        "fragile": 30,
+        "fragile": 26,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -134,6 +134,6 @@
   },
   "failed": {},
   "authenticated": true,
-  "startedAt": "2026-09-12T21:46:11.694Z",
-  "finishedAt": "2026-09-12T21:47:29.281Z"
+  "startedAt": "2026-09-13T09:40:25.703Z",
+  "finishedAt": "2026-09-13T09:41:40.945Z"
 }

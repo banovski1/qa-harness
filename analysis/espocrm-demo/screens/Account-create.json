@@ -5,7 +5,8 @@
   "headings": [
     {
       "level": 3,
-      "text": "Accountscreate"
+      "text": "Accountscreate",
+      "y": 47
     }
   ],
   "tables": [],
@@ -21,6 +22,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -59,6 +61,7 @@
       "type": null,
       "role": "link",
       "name": "logo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -96,6 +99,7 @@
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -141,6 +145,7 @@
       "type": null,
       "role": "link",
       "name": "Home",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -212,6 +217,7 @@
       "type": null,
       "role": "link",
       "name": "Accounts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -282,6 +288,7 @@
       "type": null,
       "role": "link",
       "name": "Contacts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -353,6 +360,7 @@
       "type": null,
       "role": "link",
       "name": "Leads",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -424,6 +432,7 @@
       "type": null,
       "role": "link",
       "name": "Opportunities",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -495,6 +504,7 @@
       "type": null,
       "role": "link",
       "name": "Emails",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -566,6 +576,7 @@
       "type": null,
       "role": "link",
       "name": "Calendar",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -637,6 +648,7 @@
       "type": null,
       "role": "link",
       "name": "Meetings",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -708,6 +720,7 @@
       "type": null,
       "role": "link",
       "name": "Calls",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -779,6 +792,7 @@
       "type": null,
       "role": "link",
       "name": "Tasks",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -850,6 +864,7 @@
       "type": null,
       "role": "link",
       "name": "Cases",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -921,6 +936,7 @@
       "type": null,
       "role": "link",
       "name": "Knowledge Base",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -992,6 +1008,7 @@
       "type": null,
       "role": "link",
       "name": "Documents",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1063,6 +1080,7 @@
       "type": null,
       "role": "button",
       "name": "Sales & Purchases",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-tab-group-group-17",
@@ -1136,6 +1154,7 @@
       "type": null,
       "role": "link",
       "name": "Products",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1173,6 +1192,7 @@
       "type": null,
       "role": "link",
       "name": "Quotes",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1210,6 +1230,7 @@
       "type": null,
       "role": "link",
       "name": "Sales Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1247,6 +1268,7 @@
       "type": null,
       "role": "link",
       "name": "Invoices",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1284,6 +1306,7 @@
       "type": null,
       "role": "link",
       "name": "Delivery Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1321,6 +1344,7 @@
       "type": null,
       "role": "link",
       "name": "Return Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1358,6 +1382,7 @@
       "type": null,
       "role": "link",
       "name": "Credit Notes",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1395,6 +1420,7 @@
       "type": null,
       "role": "link",
       "name": "Suppliers",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1432,6 +1458,7 @@
       "type": null,
       "role": "link",
       "name": "Purchase Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1469,6 +1496,7 @@
       "type": null,
       "role": "link",
       "name": "Receipt Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1506,6 +1534,7 @@
       "type": null,
       "role": "link",
       "name": "Bills",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1543,6 +1572,7 @@
       "type": null,
       "role": "link",
       "name": "Bill Credits",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1580,6 +1610,7 @@
       "type": null,
       "role": "link",
       "name": "Payments",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1617,6 +1648,7 @@
       "type": null,
       "role": "link",
       "name": "Payment Requests",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1654,6 +1686,7 @@
       "type": null,
       "role": "link",
       "name": "Subscription",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1691,6 +1724,7 @@
       "type": null,
       "role": "link",
       "name": "Transfer Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1728,6 +1762,7 @@
       "type": null,
       "role": "link",
       "name": "Inventory Adjustments",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1765,6 +1800,7 @@
       "type": null,
       "role": "link",
       "name": "Warehouses",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1802,6 +1838,7 @@
       "type": null,
       "role": "link",
       "name": "Inventory Numbers",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1839,6 +1876,7 @@
       "type": null,
       "role": "link",
       "name": "Inventory Transactions",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1876,6 +1914,7 @@
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": "nav-more-tabs-dropdown",
@@ -1931,6 +1970,7 @@
       "type": null,
       "role": "link",
       "name": "Campaigns",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1968,6 +2008,7 @@
       "type": null,
       "role": "link",
       "name": "Target Lists",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2005,6 +2046,7 @@
       "type": null,
       "role": "link",
       "name": "Reports",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2042,6 +2084,7 @@
       "type": null,
       "role": "link",
       "name": "Projects",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2079,6 +2122,7 @@
       "type": null,
       "role": "link",
       "name": "Project Tasks",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2116,6 +2160,7 @@
       "type": null,
       "role": "button",
       "name": "Organization",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-tab-group-group-28",
@@ -2155,6 +2200,7 @@
       "type": null,
       "role": "link",
       "name": "Users",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2192,6 +2238,7 @@
       "type": null,
       "role": "link",
       "name": "Teams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2229,6 +2276,7 @@
       "type": null,
       "role": "link",
       "name": "Stream",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2266,6 +2314,7 @@
       "type": null,
       "role": "link",
       "name": "Global Stream",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2303,6 +2352,7 @@
       "type": null,
       "role": "link",
       "name": "Working Time Calendars",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2340,6 +2390,7 @@
       "type": null,
       "role": "button",
       "name": "Automation",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-tab-group-group-29",
@@ -2379,6 +2430,7 @@
       "type": null,
       "role": "link",
       "name": "Workflows",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2416,6 +2468,7 @@
       "type": null,
       "role": "link",
       "name": "Flowcharts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2453,6 +2506,7 @@
       "type": null,
       "role": "link",
       "name": "Processes",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2490,6 +2544,7 @@
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2535,6 +2590,7 @@
       "type": "search",
       "role": "searchbox",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Search",
       "id": null,
@@ -2598,6 +2654,7 @@
       "type": null,
       "role": "button",
       "name": "Last Viewed",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2655,6 +2712,7 @@
       "type": null,
       "role": "button",
       "name": "Create",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-quick-create-dropdown",
@@ -2720,6 +2778,7 @@
       "type": null,
       "role": "link",
       "name": "Account",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2760,6 +2819,7 @@
       "type": null,
       "role": "link",
       "name": "Contact",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2800,6 +2860,7 @@
       "type": null,
       "role": "link",
       "name": "Lead",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2840,6 +2901,7 @@
       "type": null,
       "role": "link",
       "name": "Opportunity",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2880,6 +2942,7 @@
       "type": null,
       "role": "link",
       "name": "Meeting",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2920,6 +2983,7 @@
       "type": null,
       "role": "link",
       "name": "Call",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2960,6 +3024,7 @@
       "type": null,
       "role": "link",
       "name": "Task",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3000,6 +3065,7 @@
       "type": null,
       "role": "link",
       "name": "Case",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3040,6 +3106,7 @@
       "type": null,
       "role": "link",
       "name": "Email",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3080,6 +3147,7 @@
       "type": null,
       "role": "link",
       "name": "Project Task",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3120,6 +3188,7 @@
       "type": null,
       "role": "button",
       "name": "Notifications",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3177,6 +3246,7 @@
       "type": null,
       "role": "button",
       "name": "Menu",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-menu-dropdown",
@@ -3242,6 +3312,7 @@
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3279,6 +3350,7 @@
       "type": null,
       "role": "link",
       "name": "Administration",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3318,6 +3390,7 @@
       "type": null,
       "role": "link",
       "name": "Preferences",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3357,6 +3430,7 @@
       "type": null,
       "role": "link",
       "name": "About",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3396,6 +3470,7 @@
       "type": null,
       "role": "button",
       "name": "Log Out",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3435,6 +3510,7 @@
       "type": null,
       "role": "link",
       "name": "Accounts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3499,6 +3575,7 @@
       "type": "button",
       "role": "button",
       "name": "Save",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3573,6 +3650,7 @@
       "type": "button",
       "role": "button",
       "name": "Cancel",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3647,6 +3725,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3694,6 +3773,7 @@
       "type": null,
       "role": "button",
       "name": "Save & Continue Editing",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3734,6 +3814,7 @@
       "type": null,
       "role": "button",
       "name": "Save & New",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3773,7 +3854,8 @@
       "tag": "input",
       "type": "text",
       "role": "textbox",
-      "name": "",
+      "name": "Name *",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3790,21 +3872,31 @@
       "box": {
         "x": 80,
         "y": 189,
-        "w": 369,
+        "w": 365,
         "h": 36
       },
       "locator": {
-        "strategy": "scoped",
-        "expression": "locator('input[data-name=\\\"name\\\"]')",
+        "strategy": "proximity",
+        "expression": "label('Name *') >> input",
         "matchCount": 1,
         "args": [
-          "input[data-name=\"name\"]"
+          "Name *",
+          "input"
         ]
       },
       "unique": true,
       "fragile": false,
       "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Name *') >> input",
+          "matchCount": 1,
+          "args": [
+            "Name *",
+            "input"
+          ]
+        },
         {
           "strategy": "scoped",
           "expression": "locator('input[data-name=\\\"name\\\"]')",
@@ -3828,14 +3920,6 @@
           "args": [
             "[data-name=\"name\"] input"
           ]
-        },
-        {
-          "strategy": "css",
-          "expression": "locator('div.panel.panel-default:nth-of-type(1) > div.panel-body.panel-body-form > div.row:nth-of-type(1) > div.cell.form-group:nth-of-type(1) > div.field > input.main-element.form-control')",
-          "matchCount": 1,
-          "args": [
-            "div.panel.panel-default:nth-of-type(1) > div.panel-body.panel-body-form > div.row:nth-of-type(1) > div.cell.form-group:nth-of-type(1) > div.field > input.main-element.form-control"
-          ]
         }
       ]
     },
@@ -3844,7 +3928,8 @@
       "tag": "input",
       "type": "text",
       "role": "textbox",
-      "name": "",
+      "name": "Website",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3859,23 +3944,33 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 465,
+        "x": 461,
         "y": 189,
-        "w": 369,
+        "w": 365,
         "h": 36
       },
       "locator": {
-        "strategy": "scoped",
-        "expression": "locator('input[data-name=\\\"website\\\"]')",
+        "strategy": "proximity",
+        "expression": "label('Website') >> input",
         "matchCount": 1,
         "args": [
-          "input[data-name=\"website\"]"
+          "Website",
+          "input"
         ]
       },
       "unique": true,
       "fragile": false,
       "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Website') >> input",
+          "matchCount": 1,
+          "args": [
+            "Website",
+            "input"
+          ]
+        },
         {
           "strategy": "scoped",
           "expression": "locator('input[data-name=\\\"website\\\"]')",
@@ -3899,14 +3994,6 @@
           "args": [
             "[data-name=\"website\"] input"
           ]
-        },
-        {
-          "strategy": "css",
-          "expression": "locator('div.panel.panel-default:nth-of-type(1) > div.panel-body.panel-body-form > div.row:nth-of-type(1) > div.cell.form-group:nth-of-type(2) > div.field > input.main-element.form-control')",
-          "matchCount": 1,
-          "args": [
-            "div.panel.panel-default:nth-of-type(1) > div.panel-body.panel-body-form > div.row:nth-of-type(1) > div.cell.form-group:nth-of-type(2) > div.field > input.main-element.form-control"
-          ]
         }
       ]
     },
@@ -3916,6 +4003,7 @@
       "type": "email",
       "role": "textbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3930,7 +4018,7 @@
       "box": {
         "x": 80,
         "y": 264,
-        "w": 299,
+        "w": 295,
         "h": 36
       },
       "locator": {
@@ -3977,6 +4065,7 @@
       "type": "button",
       "role": "button",
       "name": "Primary",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4018,6 +4107,7 @@
       "type": "button",
       "role": "button",
       "name": "Opted Out",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4035,7 +4125,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 378,
+        "x": 374,
         "y": 264,
         "w": 36,
         "h": 36
@@ -4093,6 +4183,7 @@
       "type": "button",
       "role": "button",
       "name": "Invalid",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4110,7 +4201,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 413,
+        "x": 409,
         "y": 264,
         "w": 36,
         "h": 36
@@ -4168,6 +4259,7 @@
       "type": "button",
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4208,6 +4300,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4271,6 +4364,7 @@
       "type": null,
       "role": "combobox",
       "name": "Office",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4310,6 +4404,7 @@
       "type": "text",
       "role": "textbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4322,7 +4417,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 534,
+        "x": 529,
         "y": 271,
         "w": 4,
         "h": 22
@@ -4355,6 +4450,7 @@
       "type": "text",
       "role": "textbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4367,9 +4463,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 553,
+        "x": 548,
         "y": 264,
-        "w": 211,
+        "w": 208,
         "h": 36
       },
       "locator": {
@@ -4416,6 +4512,7 @@
       "type": "button",
       "role": "button",
       "name": "Primary",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4457,6 +4554,7 @@
       "type": "button",
       "role": "button",
       "name": "Opted Out",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4474,7 +4572,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 762,
+        "x": 755,
         "y": 264,
         "w": 36,
         "h": 36
@@ -4532,6 +4630,7 @@
       "type": "button",
       "role": "button",
       "name": "Invalid",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4549,7 +4648,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 797,
+        "x": 790,
         "y": 264,
         "w": 36,
         "h": 36
@@ -4607,6 +4706,7 @@
       "type": "button",
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4647,6 +4747,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4661,7 +4762,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 465,
+        "x": 461,
         "y": 303,
         "w": 36,
         "h": 36
@@ -4710,6 +4811,7 @@
       "type": null,
       "role": "textbox",
       "name": "Street",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Street",
       "id": null,
@@ -4726,7 +4828,7 @@
       "box": {
         "x": 80,
         "y": 378,
-        "w": 369,
+        "w": 365,
         "h": 36
       },
       "locator": {
@@ -4782,6 +4884,7 @@
       "type": "text",
       "role": "textbox",
       "name": "City",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "City",
       "id": null,
@@ -4798,7 +4901,7 @@
       "box": {
         "x": 80,
         "y": 417,
-        "w": 119,
+        "w": 118,
         "h": 36
       },
       "locator": {
@@ -4854,6 +4957,7 @@
       "type": "text",
       "role": "textbox",
       "name": "County",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "County",
       "id": null,
@@ -4868,9 +4972,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 205,
+        "x": 204,
         "y": 417,
-        "w": 119,
+        "w": 118,
         "h": 36
       },
       "locator": {
@@ -4926,6 +5030,7 @@
       "type": "text",
       "role": "textbox",
       "name": "Postal Code",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Postal Code",
       "id": null,
@@ -4940,9 +5045,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 330,
+        "x": 328,
         "y": 417,
-        "w": 119,
+        "w": 118,
         "h": 36
       },
       "locator": {
@@ -4998,6 +5103,7 @@
       "type": "text",
       "role": "textbox",
       "name": "Country",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Country",
       "id": null,
@@ -5014,7 +5120,7 @@
       "box": {
         "x": 80,
         "y": 456,
-        "w": 369,
+        "w": 365,
         "h": 36
       },
       "locator": {
@@ -5070,6 +5176,7 @@
       "type": null,
       "role": "textbox",
       "name": "Street",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Street",
       "id": null,
@@ -5084,9 +5191,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 465,
+        "x": 461,
         "y": 378,
-        "w": 369,
+        "w": 365,
         "h": 36
       },
       "locator": {
@@ -5142,6 +5249,7 @@
       "type": "text",
       "role": "textbox",
       "name": "City",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "City",
       "id": null,
@@ -5156,9 +5264,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 465,
+        "x": 461,
         "y": 417,
-        "w": 119,
+        "w": 118,
         "h": 36
       },
       "locator": {
@@ -5214,6 +5322,7 @@
       "type": "text",
       "role": "textbox",
       "name": "County",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "County",
       "id": null,
@@ -5228,9 +5337,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 590,
+        "x": 585,
         "y": 417,
-        "w": 119,
+        "w": 118,
         "h": 36
       },
       "locator": {
@@ -5286,6 +5395,7 @@
       "type": "text",
       "role": "textbox",
       "name": "Postal Code",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Postal Code",
       "id": null,
@@ -5300,9 +5410,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 715,
+        "x": 709,
         "y": 417,
-        "w": 119,
+        "w": 118,
         "h": 36
       },
       "locator": {
@@ -5358,6 +5468,7 @@
       "type": "text",
       "role": "textbox",
       "name": "Country",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Country",
       "id": null,
@@ -5372,9 +5483,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 465,
+        "x": 461,
         "y": 456,
-        "w": 369,
+        "w": 365,
         "h": 36
       },
       "locator": {
@@ -5430,6 +5541,7 @@
       "type": null,
       "role": "button",
       "name": "Copy Billing",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5469,6 +5581,7 @@
       "type": null,
       "role": "combobox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5507,6 +5620,7 @@
       "type": "text",
       "role": "textbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5519,7 +5633,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 429,
+        "x": 425,
         "y": 586,
         "w": 4,
         "h": 22
@@ -5568,6 +5682,7 @@
       "type": null,
       "role": "combobox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5606,6 +5721,7 @@
       "type": "text",
       "role": "textbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5618,7 +5734,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 814,
+        "x": 807,
         "y": 586,
         "w": 4,
         "h": 22
@@ -5666,7 +5782,8 @@
       "tag": "textarea",
       "type": null,
       "role": "textbox",
-      "name": "",
+      "name": "Description",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5683,21 +5800,31 @@
       "box": {
         "x": 80,
         "y": 654,
-        "w": 754,
+        "w": 747,
         "h": 58
       },
       "locator": {
-        "strategy": "scoped",
-        "expression": "locator('textarea[data-name=\\\"description\\\"]')",
+        "strategy": "proximity",
+        "expression": "label('Description') >> textarea",
         "matchCount": 1,
         "args": [
-          "textarea[data-name=\"description\"]"
+          "Description",
+          "textarea"
         ]
       },
       "unique": true,
       "fragile": false,
       "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Description') >> textarea",
+          "matchCount": 1,
+          "args": [
+            "Description",
+            "textarea"
+          ]
+        },
         {
           "strategy": "scoped",
           "expression": "locator('textarea[data-name=\\\"description\\\"]')",
@@ -5721,14 +5848,6 @@
           "args": [
             "[data-name=\"description\"] textarea"
           ]
-        },
-        {
-          "strategy": "css",
-          "expression": "locator('div.panel.panel-default:nth-of-type(2) > div.panel-body.panel-body-form:nth-of-type(2) > div.row:nth-of-type(2) > div.cell.form-group > div.field > textarea.main-element.form-control')",
-          "matchCount": 1,
-          "args": [
-            "div.panel.panel-default:nth-of-type(2) > div.panel-body.panel-body-form:nth-of-type(2) > div.row:nth-of-type(2) > div.cell.form-group > div.field > textarea.main-element.form-control"
-          ]
         }
       ]
     },
@@ -5738,6 +5857,7 @@
       "type": "text",
       "role": "textbox",
       "name": "Select",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Select",
       "id": null,
@@ -5752,9 +5872,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 879,
+        "x": 872,
         "y": 189,
-        "w": 301,
+        "w": 297,
         "h": 36
       },
       "locator": {
@@ -5810,6 +5930,7 @@
       "type": "button",
       "role": "button",
       "name": "Select",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5824,7 +5945,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 1179,
+        "x": 1168,
         "y": 189,
         "w": 36,
         "h": 36
@@ -5882,6 +6003,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5896,7 +6018,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 1214,
+        "x": 1203,
         "y": 189,
         "w": 36,
         "h": 36
@@ -5945,6 +6067,7 @@
       "type": "hidden",
       "role": null,
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5983,6 +6106,7 @@
       "type": "text",
       "role": "textbox",
       "name": "Select",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Select",
       "id": null,
@@ -5995,9 +6119,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 879,
+        "x": 872,
         "y": 264,
-        "w": 336,
+        "w": 332,
         "h": 36
       },
       "locator": {
@@ -6053,6 +6177,7 @@
       "type": "button",
       "role": "button",
       "name": "Select",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6067,7 +6192,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 1214,
+        "x": 1203,
         "y": 264,
         "w": 36,
         "h": 36
@@ -6125,6 +6250,7 @@
       "type": null,
       "role": "link",
       "name": "EspoCRM, Inc.",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,

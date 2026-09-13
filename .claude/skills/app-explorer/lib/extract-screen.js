@@ -2,13 +2,38 @@
 // nothing about the inventory depends on how much of a snapshot fitted in an
 // agent's context.
 
+// Native elements and ARIA roles are the controls an app *declares*. A design system
+// that builds its dropdowns and toggles out of divs declares nothing, and the crawl
+// used to see none of them: OrangeHRM's entire select vocabulary was invisible here
+// while the map extractor, which carries these class shapes, listed every one. The
+// class patterns are conventions, not app names — `select-text`, `dropdown-toggle` and
+// `switch` are what component libraries call these things across ecosystems.
 var INTERACTIVE_SELECTOR = [
   'a[href]', 'button', 'input', 'select', 'textarea',
   '[role="button"]', '[role="link"]', '[role="checkbox"]', '[role="radio"]',
   '[role="tab"]', '[role="menuitem"]', '[role="combobox"]', '[role="switch"]',
   '[role="option"]', '[role="searchbox"]', '[role="textbox"]',
   '[contenteditable="true"]', '[tabindex]:not([tabindex="-1"])',
+  '[class*="select-text" i]', '[class*="dropdown-toggle" i]',
+  '[class*="switch-input" i]', '[class*="checkbox-input" i]',
 ].join(',');
+
+// A composite control is a cluster of divs: the outermost one is the thing a user
+// clicks, the inner ones are its parts. Keeping both would inventory one control
+// several times, so an element that contains another match is kept and the parts are
+// dropped — unless the inner one is a native control, which always wins because it is
+// the element that actually takes the input.
+function outermostOnly(nodes) {
+  var natives = { INPUT: 1, SELECT: 1, TEXTAREA: 1, BUTTON: 1, A: 1 };
+  return nodes.filter(function (el) {
+    if (natives[el.tagName]) return true;
+    for (var i = 0; i < nodes.length; i++) {
+      var other = nodes[i];
+      if (other !== el && !natives[other.tagName] && other.contains(el)) return false;
+    }
+    return true;
+  });
+}
 
 var DESTRUCTIVE = /\b(save|delete|remove|submit|send|apply|confirm|deactivate|merge|convert|import|export|reset password)\b/i;
 
@@ -59,6 +84,13 @@ function roleOf(el) {
     if (type === 'hidden') return null;
     return 'textbox';
   }
+  // A div that a component library built into a control. Its role has to be inferred
+  // from the convention it was built to, because the app declared none — and without a
+  // role the control has no component class and drops out of the model entirely.
+  var cls = (el.getAttribute('class') || '').toLowerCase();
+  if (/select-text|dropdown-toggle/.test(cls)) return 'combobox';
+  if (/switch-input/.test(cls)) return 'switch';
+  if (/checkbox-input/.test(cls)) return 'checkbox';
   return null;
 }
 
@@ -80,20 +112,88 @@ function labelTextFor(el) {
   return '';
 }
 
-function accessibleName(el) {
-  var aria = el.getAttribute('aria-label');
-  if (aria && aria.trim()) return aria.trim();
-  var label = labelTextFor(el);
-  if (label) return label;
-  var own = textOf(el);
-  if (own) return own;
-  var placeholder = el.getAttribute('placeholder');
-  if (placeholder && placeholder.trim()) return placeholder.trim();
-  var title = el.getAttribute('title');
-  if (title && title.trim()) return title.trim();
-  var alt = el.querySelector && el.querySelector('img[alt]');
-  if (alt) return alt.getAttribute('alt').trim();
+var LABEL_SELECTOR = 'label,[class*="label" i],dt,legend';
+
+/**
+ * The label a person reads, for an app that never wrote `for=`.
+ *
+ * Walk out from the control until a label appears in the same wrapper. The guard is
+ * what makes this safe rather than a guess: stop as soon as the wrapper also covers a
+ * *different* control, because then the label it holds belongs to that one and not to
+ * this. Without the guard the walk reaches a form and calls every field by the form's
+ * legend; with it, an unlabelled control stays unlabelled and is reported as such.
+ */
+function proximityLabel(el) {
+  var node = el.parentElement;
+  for (var up = 0; up < 4 && node; up++, node = node.parentElement) {
+    var siblings = Array.prototype.slice.call(node.querySelectorAll(INTERACTIVE_SELECTOR))
+      .filter(function (other) {
+        return other !== el && !other.contains(el) && !el.contains(other);
+      });
+    if (siblings.length) return '';
+    var label = node.querySelector(LABEL_SELECTOR);
+    if (label && !label.contains(el)) {
+      var text = textOf(label);
+      if (text) return text;
+    }
+  }
   return '';
+}
+
+/**
+ * The name, and where it came from.
+ *
+ * The source matters downstream: a name the browser computes is one a test can ask for
+ * by role, and a name inferred from a nearby label is not. Emitting the second as
+ * though it were the first produces a page object whose getters all fail with
+ * NOT_FOUND — the app never associated the two, so nothing but this walk connects them.
+ */
+function namedBy(el) {
+  var aria = el.getAttribute('aria-label');
+  if (aria && aria.trim()) return { name: aria.trim(), source: 'accessible' };
+  var byAttr = el.getAttribute('aria-labelledby');
+  if (byAttr) {
+    var linked = labelTextFor(el);
+    if (linked) return { name: linked, source: 'accessible' };
+  }
+  if (el.id) {
+    var explicit = document.querySelector('label[for="' + esc(el.id) + '"]');
+    if (explicit) {
+      var t = textOf(explicit);
+      if (t) return { name: t, source: 'accessible' };
+    }
+  }
+  var wrapping = el.closest('label');
+  if (wrapping) {
+    var w = textOf(wrapping);
+    if (w) return { name: w, source: 'accessible' };
+  }
+  // For a control that *takes* input, the label rendered beside it beats its own
+  // contents and its placeholder. Both of those are the accessible name by spec, and
+  // both are useless as handles: a date field's name is "yyyy-mm-dd" and a custom
+  // select's is "-- Select --", so a screen with three of each has three controls with
+  // one name. The label next to them is what a person calls them and what tells them
+  // apart. For a button or a link the opposite holds — their content *is* their name,
+  // and a nearby label belongs to something else.
+  if (TAKES_INPUT.test(roleOf(el) || '') || /^(input|select|textarea)$/.test(el.tagName.toLowerCase())) {
+    var near = proximityLabel(el);
+    if (near) return { name: near, source: 'proximity' };
+  }
+  var own = textOf(el);
+  if (own) return { name: own, source: 'accessible' };
+  var placeholder = el.getAttribute('placeholder');
+  if (placeholder && placeholder.trim()) return { name: placeholder.trim(), source: 'accessible' };
+  var title = el.getAttribute('title');
+  if (title && title.trim()) return { name: title.trim(), source: 'accessible' };
+  var alt = el.querySelector && el.querySelector('img[alt]');
+  if (alt) return { name: alt.getAttribute('alt').trim(), source: 'accessible' };
+  return { name: '', source: null };
+}
+
+var TAKES_INPUT = /^(textbox|searchbox|combobox|listbox|checkbox|radio|switch|spinbutton|slider)$/;
+
+function accessibleName(el) {
+  return namedBy(el).name;
 }
 
 function dataAttributes(el) {
@@ -197,10 +297,21 @@ function buildCandidates(el, meta, index, testIdAttribute) {
       [meta.testId]);
   }
   if (meta.role && meta.name) {
-    push('role',
-      "getByRole('" + meta.role + "', { name: '" + esc(meta.name) + "', exact: true })",
-      countRoleName(meta.role, meta.name, index.roleName),
-      [meta.role, meta.name]);
+    // A name the browser did not compute cannot be asked for by role: `getByRole` reads
+    // the accessibility tree, and a label sitting next to an input is not in it. It is
+    // still a real handle — the one a person reads — so it is recorded as its own
+    // strategy rather than being dressed up as an accessible name.
+    if (meta.nameSource === 'proximity') {
+      push('proximity',
+        "label('" + esc(meta.name) + "') >> " + meta.tag,
+        index.proximity[meta.name] || 0,
+        [meta.name, meta.tag]);
+    } else {
+      push('role',
+        "getByRole('" + meta.role + "', { name: '" + esc(meta.name) + "', exact: true })",
+        countRoleName(meta.role, meta.name, index.roleName),
+        [meta.role, meta.name]);
+    }
   }
   if (meta.label) {
     push('label',
@@ -257,16 +368,72 @@ function buildCandidates(el, meta, index, testIdAttribute) {
   return out;
 }
 
+/**
+ * Every collection on the screen, however it is built.
+ *
+ * `document.querySelectorAll('table')` finds the ones written as a `<table>` and nothing
+ * else. A modern list is a grid of divs with `role="table"` if you are lucky and with a
+ * class if you are not — OrangeHRM's 52 tables were all invisible here for that reason.
+ * A header row is still required: a table with no header is the app placing things, not
+ * listing records, and has no column to address a row by.
+ */
+function collectTables() {
+  var out = [];
+  var seen = [];
+  var roots = Array.prototype.slice.call(
+    document.querySelectorAll('table,[role="table"],[role="grid"],[role="treegrid"]'),
+  );
+  for (var i = 0; i < roots.length; i++) {
+    var t = roots[i];
+    var headerCells = Array.prototype.slice.call(t.querySelectorAll('th,[role="columnheader"]'))
+      .map(textOf).filter(Boolean);
+    if (!headerCells.length) continue;
+    var bodyRows = t.querySelectorAll('tbody tr').length ||
+      t.querySelectorAll('[role="row"]').length ||
+      Math.max(0, t.querySelectorAll('tr').length - 1);
+    out.push({ columns: headerCells, rowCount: bodyRows });
+    seen.push(t);
+  }
+  if (out.length) return out;
+
+  // Nothing declared itself a table. Fall back to the shape a div grid takes: a row of
+  // header cells, and repeated sibling rows under a shared container.
+  var headers = Array.prototype.slice.call(
+    document.querySelectorAll('[class*="table-header" i],[class*="grid-header" i],[class*="list-header" i]'),
+  );
+  for (var h = 0; h < headers.length && out.length < 4; h++) {
+    var header = headers[h];
+    if (!isVisible(header)) continue;
+    var cells = Array.prototype.slice.call(
+      header.querySelectorAll('[class*="cell" i],[class*="col" i],[role="columnheader"]'),
+    ).map(textOf).filter(Boolean);
+    if (cells.length < 2) {
+      cells = Array.prototype.slice.call(header.children).map(textOf).filter(Boolean);
+    }
+    if (cells.length < 2) continue;
+    var container = header.closest('[class*="table" i],[class*="grid" i],[class*="list" i]') || header.parentElement;
+    var rows = container
+      ? container.querySelectorAll('[role="row"],[class*="table-row" i],[class*="table-card" i],[class*="list-row" i]')
+      : [];
+    out.push({ columns: cells, rowCount: rows.length });
+  }
+  return out;
+}
+
 function __extractScreen(options) {
   var opts = options || {};
   var testIdAttribute = opts.testIdAttribute || 'data-testid';
-  var elements = Array.prototype.slice.call(document.querySelectorAll(INTERACTIVE_SELECTOR));
+  var elements = outermostOnly(
+    Array.prototype.slice.call(document.querySelectorAll(INTERACTIVE_SELECTOR)),
+  );
 
   var metas = elements.map(function (el) {
     var role = roleOf(el);
-    var name = accessibleName(el);
+    var named = namedBy(el);
+    var name = named.name;
     return {
       el: el,
+      nameSource: named.source,
       tag: el.tagName.toLowerCase(),
       type: el.getAttribute('type') || null,
       role: role,
@@ -291,9 +458,11 @@ function __extractScreen(options) {
 
   // Match counts are computed against the live document, which is the whole
   // point of running here rather than over source: uniqueness is proved.
-  var index = { roleName: {}, label: {}, text: {} };
+  var index = { roleName: {}, label: {}, text: {}, proximity: {} };
   metas.forEach(function (m) {
-    if (m.role && m.name) {
+    if (m.role && m.name && m.nameSource === 'proximity') {
+      index.proximity[m.name] = (index.proximity[m.name] || 0) + 1;
+    } else if (m.role && m.name) {
       var key = m.role + '\u0000' + m.name;
       index.roleName[key] = (index.roleName[key] || 0) + 1;
     }
@@ -310,6 +479,7 @@ function __extractScreen(options) {
       type: m.type,
       role: m.role,
       name: m.name,
+      nameSource: m.nameSource,
       label: m.label || null,
       placeholder: m.placeholder || null,
       id: m.id || null,
@@ -351,17 +521,12 @@ function __extractScreen(options) {
     // innerText, not textContent: a breadcrumb heading built from two spans yields
     // "Contactscreate" under textContent, which is a heading no assertion can use.
     var text = (h.innerText || h.textContent || '').replace(/\s+/g, ' ').trim();
-    return { level: Number(h.tagName.slice(1)), text: text.slice(0, 120) };
+    // The y coordinate is what lets the compiler say which section a repeated label
+    // sits in — the disambiguator a person uses, and the only evidence of it here.
+    return { level: Number(h.tagName.slice(1)), text: text.slice(0, 120), y: Math.round(h.getBoundingClientRect().y) };
   }).filter(function (h) { return h.text; });
 
-  var tables = Array.prototype.slice.call(document.querySelectorAll('table')).map(function (t) {
-    return {
-      columns: Array.prototype.slice.call(t.querySelectorAll('thead th, tr:first-child th')).map(function (th) {
-        return textOf(th);
-      }).filter(Boolean),
-      rowCount: t.querySelectorAll('tbody tr').length || Math.max(0, t.querySelectorAll('tr').length - 1),
-    };
-  });
+  var tables = collectTables();
 
   var regionCounts = {};
   out.forEach(function (e) { regionCounts[e.region] = (regionCounts[e.region] || 0) + 1; });

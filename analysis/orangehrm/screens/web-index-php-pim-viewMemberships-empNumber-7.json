@@ -3,12 +3,37 @@
   "path": "/web/index.php/pim/viewMemberships/empNumber/7",
   "title": "OrangeHRM",
   "headings": [],
-  "tables": [],
+  "tables": [
+    {
+      "columns": [
+        "Membership",
+        "Subscription Paid By",
+        "Subscription Amount",
+        "Currency",
+        "Subscription Commence Date",
+        "Subscription Renewal Date",
+        "Actions"
+      ],
+      "rowCount": 1
+    },
+    {
+      "columns": [
+        "File Name",
+        "Description",
+        "Size",
+        "Type",
+        "Date Added",
+        "Added By",
+        "Actions"
+      ],
+      "rowCount": 2
+    }
+  ],
   "regions": {
     "navigation": 16,
     "header": 2,
     "body": 23,
-    "table": 34
+    "table": 9
   },
   "elements": [
     {
@@ -17,6 +42,7 @@
       "type": null,
       "role": "link",
       "name": "client brand logo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -75,6 +101,7 @@
       "type": null,
       "role": "textbox",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Search",
       "id": null,
@@ -141,6 +168,7 @@
       "type": "button",
       "role": "none",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -189,6 +217,7 @@
       "type": null,
       "role": "link",
       "name": "Admin",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -254,6 +283,7 @@
       "type": null,
       "role": "link",
       "name": "PIM",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -319,6 +349,7 @@
       "type": null,
       "role": "link",
       "name": "Leave",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -384,6 +415,7 @@
       "type": null,
       "role": "link",
       "name": "Time",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -449,6 +481,7 @@
       "type": null,
       "role": "link",
       "name": "Recruitment",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -514,6 +547,7 @@
       "type": null,
       "role": "link",
       "name": "My Info",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -579,6 +613,7 @@
       "type": null,
       "role": "link",
       "name": "Performance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -644,6 +679,7 @@
       "type": null,
       "role": "link",
       "name": "Dashboard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -709,6 +745,7 @@
       "type": null,
       "role": "link",
       "name": "Directory",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -774,6 +811,7 @@
       "type": null,
       "role": "link",
       "name": "Maintenance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -839,6 +877,7 @@
       "type": null,
       "role": "link",
       "name": "Claim",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -904,6 +943,7 @@
       "type": null,
       "role": "link",
       "name": "Buzz",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -969,6 +1009,7 @@
       "type": null,
       "role": "link",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1034,6 +1075,7 @@
       "type": "button",
       "role": "button",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1100,6 +1142,7 @@
       "type": "button",
       "role": "button",
       "name": "Help",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1157,6 +1200,7 @@
       "type": null,
       "role": "tab",
       "name": "Personal Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1222,6 +1266,7 @@
       "type": null,
       "role": "link",
       "name": "Personal Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1287,6 +1332,7 @@
       "type": null,
       "role": "tab",
       "name": "Contact Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1352,6 +1398,7 @@
       "type": null,
       "role": "link",
       "name": "Contact Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1417,6 +1464,7 @@
       "type": null,
       "role": "tab",
       "name": "Emergency Contacts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1482,6 +1530,7 @@
       "type": null,
       "role": "link",
       "name": "Emergency Contacts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1547,6 +1596,7 @@
       "type": null,
       "role": "tab",
       "name": "Dependents",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1612,6 +1662,7 @@
       "type": null,
       "role": "link",
       "name": "Dependents",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1677,6 +1728,7 @@
       "type": null,
       "role": "tab",
       "name": "Immigration",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1742,6 +1794,7 @@
       "type": null,
       "role": "link",
       "name": "Immigration",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1807,6 +1860,7 @@
       "type": null,
       "role": "tab",
       "name": "Job",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1872,6 +1926,7 @@
       "type": null,
       "role": "link",
       "name": "Job",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1937,6 +1992,7 @@
       "type": null,
       "role": "tab",
       "name": "Salary",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2002,6 +2058,7 @@
       "type": null,
       "role": "link",
       "name": "Salary",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2067,6 +2124,7 @@
       "type": null,
       "role": "tab",
       "name": "Report-to",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2132,6 +2190,7 @@
       "type": null,
       "role": "link",
       "name": "Report-to",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2197,6 +2256,7 @@
       "type": null,
       "role": "tab",
       "name": "Qualifications",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2262,6 +2322,7 @@
       "type": null,
       "role": "link",
       "name": "Qualifications",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2327,6 +2388,7 @@
       "type": null,
       "role": "tab",
       "name": "Memberships",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2392,6 +2454,7 @@
       "type": null,
       "role": "link",
       "name": "Memberships",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2457,6 +2520,7 @@
       "type": "button",
       "role": "button",
       "name": "Add",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2522,6 +2586,7 @@
       "type": "checkbox",
       "role": "checkbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2556,10 +2621,59 @@
     },
     {
       "index": 40,
+      "tag": "span",
+      "type": null,
+      "role": "checkbox",
+      "name": "",
+      "nameSource": null,
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6179b72a": ""
+      },
+      "region": "table",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 555,
+        "y": 338,
+        "w": 18,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+        "matchCount": 2,
+        "args": [
+          "div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+        ]
+      },
+      "unique": false,
+      "fragile": true,
+      "ambiguityReason": "no candidate resolved to exactly one element (best matches 2)",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+          "matchCount": 2,
+          "args": [
+            "div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 41,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "Add",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2620,11 +2734,12 @@
       ]
     },
     {
-      "index": 41,
+      "index": 42,
       "tag": "input",
       "type": "checkbox",
       "role": "checkbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2658,11 +2773,60 @@
       "candidates": []
     },
     {
-      "index": 42,
+      "index": 43,
+      "tag": "span",
+      "type": null,
+      "role": "checkbox",
+      "name": "",
+      "nameSource": null,
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6179b72a": ""
+      },
+      "region": "table",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 555,
+        "y": 603,
+        "w": 18,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+        "matchCount": 2,
+        "args": [
+          "div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+        ]
+      },
+      "unique": false,
+      "fragile": true,
+      "ambiguityReason": "no candidate resolved to exactly one element (best matches 2)",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+          "matchCount": 2,
+          "args": [
+            "div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 44,
       "tag": "input",
       "type": "checkbox",
       "role": "checkbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2685,22 +2849,71 @@
       "locator": {
         "strategy": "css",
         "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input')",
-        "matchCount": 8,
+        "matchCount": 1,
         "args": [
           "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input"
         ]
       },
-      "unique": false,
+      "unique": true,
       "fragile": true,
-      "ambiguityReason": "no candidate resolved to exactly one element (best matches 8)",
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
       "candidates": []
     },
     {
-      "index": 43,
+      "index": 45,
+      "tag": "span",
+      "type": null,
+      "role": "checkbox",
+      "name": "",
+      "nameSource": null,
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6179b72a": ""
+      },
+      "region": "table",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 555,
+        "y": 660,
+        "w": 18,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+        "matchCount": 1,
+        "args": [
+          "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+          "matchCount": 1,
+          "args": [
+            "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 46,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2723,10 +2936,10 @@
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
+        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
         "matchCount": 1,
         "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
+          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
         ]
       },
       "unique": true,
@@ -2735,20 +2948,21 @@
       "candidates": [
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
+          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
           "matchCount": 1,
           "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
+            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
           ]
         }
       ]
     },
     {
-      "index": 44,
+      "index": 47,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2771,10 +2985,10 @@
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
+        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
         "matchCount": 1,
         "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
+          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
         ]
       },
       "unique": true,
@@ -2783,20 +2997,21 @@
       "candidates": [
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
+          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
           "matchCount": 1,
           "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
+            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
           ]
         }
       ]
     },
     {
-      "index": 45,
+      "index": 48,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2819,10 +3034,10 @@
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
+        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
         "matchCount": 1,
         "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
+          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
         ]
       },
       "unique": true,
@@ -2831,1294 +3046,21 @@
       "candidates": [
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
+          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
           "matchCount": 1,
           "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 46,
-      "tag": "input",
-      "type": "checkbox",
-      "role": "checkbox",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-6179b72a": ""
-      },
-      "region": "table",
-      "visible": false,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 559,
-        "y": 773,
-        "w": 13,
-        "h": 13
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input')",
-        "matchCount": 8,
-        "args": [
-          "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input"
-        ]
-      },
-      "unique": false,
-      "fragile": true,
-      "ambiguityReason": "no candidate resolved to exactly one element (best matches 8)",
-      "candidates": []
-    },
-    {
-      "index": 47,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 740,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 48,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1174,
-        "y": 740,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
+            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
           ]
         }
       ]
     },
     {
       "index": 49,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 781,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 50,
-      "tag": "input",
-      "type": "checkbox",
-      "role": "checkbox",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-6179b72a": ""
-      },
-      "region": "table",
-      "visible": false,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 559,
-        "y": 882,
-        "w": 13,
-        "h": 13
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input')",
-        "matchCount": 8,
-        "args": [
-          "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input"
-        ]
-      },
-      "unique": false,
-      "fragile": true,
-      "ambiguityReason": "no candidate resolved to exactly one element (best matches 8)",
-      "candidates": []
-    },
-    {
-      "index": 51,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 850,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 52,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1174,
-        "y": 850,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 53,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 891,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 54,
-      "tag": "input",
-      "type": "checkbox",
-      "role": "checkbox",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-6179b72a": ""
-      },
-      "region": "table",
-      "visible": false,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 559,
-        "y": 992,
-        "w": 13,
-        "h": 13
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input')",
-        "matchCount": 8,
-        "args": [
-          "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input"
-        ]
-      },
-      "unique": false,
-      "fragile": true,
-      "ambiguityReason": "no candidate resolved to exactly one element (best matches 8)",
-      "candidates": []
-    },
-    {
-      "index": 55,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 959,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 56,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1174,
-        "y": 959,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 57,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 1000,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(4) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 58,
-      "tag": "input",
-      "type": "checkbox",
-      "role": "checkbox",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-6179b72a": ""
-      },
-      "region": "table",
-      "visible": false,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 559,
-        "y": 1119,
-        "w": 13,
-        "h": 13
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input')",
-        "matchCount": 8,
-        "args": [
-          "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input"
-        ]
-      },
-      "unique": false,
-      "fragile": true,
-      "ambiguityReason": "no candidate resolved to exactly one element (best matches 8)",
-      "candidates": []
-    },
-    {
-      "index": 59,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 1086,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 60,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1174,
-        "y": 1086,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 61,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 1127,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(5) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 62,
-      "tag": "input",
-      "type": "checkbox",
-      "role": "checkbox",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-6179b72a": ""
-      },
-      "region": "table",
-      "visible": false,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 559,
-        "y": 1246,
-        "w": 13,
-        "h": 13
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input')",
-        "matchCount": 8,
-        "args": [
-          "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input"
-        ]
-      },
-      "unique": false,
-      "fragile": true,
-      "ambiguityReason": "no candidate resolved to exactly one element (best matches 8)",
-      "candidates": []
-    },
-    {
-      "index": 63,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 1213,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 64,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1174,
-        "y": 1213,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 65,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 1254,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(6) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 66,
-      "tag": "input",
-      "type": "checkbox",
-      "role": "checkbox",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-6179b72a": ""
-      },
-      "region": "table",
-      "visible": false,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 559,
-        "y": 1373,
-        "w": 13,
-        "h": 13
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input')",
-        "matchCount": 8,
-        "args": [
-          "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input"
-        ]
-      },
-      "unique": false,
-      "fragile": true,
-      "ambiguityReason": "no candidate resolved to exactly one element (best matches 8)",
-      "candidates": []
-    },
-    {
-      "index": 67,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 1340,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 68,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1174,
-        "y": 1340,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 69,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 1381,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(7) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 70,
-      "tag": "input",
-      "type": "checkbox",
-      "role": "checkbox",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-6179b72a": ""
-      },
-      "region": "table",
-      "visible": false,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 559,
-        "y": 1500,
-        "w": 13,
-        "h": 13
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input')",
-        "matchCount": 8,
-        "args": [
-          "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input"
-        ]
-      },
-      "unique": false,
-      "fragile": true,
-      "ambiguityReason": "no candidate resolved to exactly one element (best matches 8)",
-      "candidates": []
-    },
-    {
-      "index": 71,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 1467,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(1)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 72,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1174,
-        "y": 1467,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(2)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 73,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1133,
-        "y": 1508,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(8) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(8) > div.oxd-table-cell-actions > button.oxd-icon-button.oxd-table-cell-action-space:nth-of-type(3)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 74,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "OrangeHRM, Inc",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4132,7 +3074,7 @@
       "href": "http://www.orangehrm.com",
       "box": {
         "x": 709,
-        "y": 1649,
+        "y": 836,
         "w": 95,
         "h": 18
       },
@@ -4305,12 +3247,12 @@
     }
   ],
   "stats": {
-    "elements": 75,
-    "visible": 65,
-    "hidden": 10,
+    "elements": 50,
+    "visible": 47,
+    "hidden": 3,
     "semantic": 38,
-    "fragile": 27,
-    "ambiguous": 0,
+    "fragile": 7,
+    "ambiguous": 2,
     "withTestId": 0
   }
 }

@@ -6,15 +6,19 @@ import { BasePage } from '../BasePage.ts';
 import { MODEL_PATH } from '../../config/constants.ts';
 import { Button, Link, Tab } from '../../components/fields.ts';
 import { NavigationBar } from '../../components/NavigationBar.generated.ts';
+import { RecordTable } from '../../components/RecordTable.ts';
+import { TABLE_SHAPE } from '../../components/locator-templates.generated.ts';
 
 export class ViewDependentsEmpNumberPageGenerated extends BasePage {
   readonly path = '/web/index.php/pim/viewDependents/empNumber/{empNumber}';
   readonly heading = null;
 
-  // 1 element(s) on this screen carry no label, role name or field
+  // 3 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in ViewDependentsEmpNumberPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'ViewDependentsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewDependents/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly dependentsEmpNumber = new RecordTable(this.page, 'dependentsEmpNumber', { shape: TABLE_SHAPE, columns: ["Name","Relationship","Date of Birth","Actions"], keyColumn: 'Name', screen: 'ViewDependentsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewDependents/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly dependentsEmpNumber2 = new RecordTable(this.page, 'dependentsEmpNumber2', { shape: TABLE_SHAPE, columns: ["File Name","Description","Size","Type","Date Added","Added By","Actions"], keyColumn: 'File Name', screen: 'ViewDependentsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewDependents/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly upgrade = new Link(this.page, { label: 'Upgrade' }, { screen: 'ViewDependentsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewDependents/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly upgrade2 = new Button(this.page, { label: 'Upgrade' }, { screen: 'ViewDependentsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewDependents/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly personalDetails = new Tab(this.page, { label: 'Personal Details' }, { screen: 'ViewDependentsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewDependents/empNumber/{empNumber}', modelPath: MODEL_PATH });
@@ -37,8 +41,6 @@ export class ViewDependentsEmpNumberPageGenerated extends BasePage {
   readonly qualifications2 = new Link(this.page, { label: 'Qualifications' }, { screen: 'ViewDependentsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewDependents/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly memberships = new Tab(this.page, { label: 'Memberships' }, { screen: 'ViewDependentsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewDependents/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly memberships2 = new Link(this.page, { label: 'Memberships' }, { screen: 'ViewDependentsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewDependents/empNumber/{empNumber}', modelPath: MODEL_PATH });
-  readonly add = new Button(this.page, { label: 'Add' }, { screen: 'ViewDependentsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewDependents/empNumber/{empNumber}', modelPath: MODEL_PATH });
-  readonly add2 = new Button(this.page, { label: 'Add' }, { screen: 'ViewDependentsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewDependents/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly orangeHRMInc = new Link(this.page, { label: 'OrangeHRM, Inc' }, { screen: 'ViewDependentsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewDependents/empNumber/{empNumber}', modelPath: MODEL_PATH });
 
 

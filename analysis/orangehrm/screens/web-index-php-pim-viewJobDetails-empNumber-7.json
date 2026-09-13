@@ -3,12 +3,25 @@
   "path": "/web/index.php/pim/viewJobDetails/empNumber/7",
   "title": "OrangeHRM",
   "headings": [],
-  "tables": [],
+  "tables": [
+    {
+      "columns": [
+        "File Name",
+        "Description",
+        "Size",
+        "Type",
+        "Date Added",
+        "Added By",
+        "Actions"
+      ],
+      "rowCount": 1
+    }
+  ],
   "regions": {
     "navigation": 16,
     "header": 2,
     "body": 21,
-    "form": 2
+    "form": 8
   },
   "elements": [
     {
@@ -17,6 +30,7 @@
       "type": null,
       "role": "link",
       "name": "client brand logo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -75,6 +89,7 @@
       "type": null,
       "role": "textbox",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Search",
       "id": null,
@@ -141,6 +156,7 @@
       "type": "button",
       "role": "none",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -189,6 +205,7 @@
       "type": null,
       "role": "link",
       "name": "Admin",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -254,6 +271,7 @@
       "type": null,
       "role": "link",
       "name": "PIM",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -319,6 +337,7 @@
       "type": null,
       "role": "link",
       "name": "Leave",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -384,6 +403,7 @@
       "type": null,
       "role": "link",
       "name": "Time",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -449,6 +469,7 @@
       "type": null,
       "role": "link",
       "name": "Recruitment",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -514,6 +535,7 @@
       "type": null,
       "role": "link",
       "name": "My Info",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -579,6 +601,7 @@
       "type": null,
       "role": "link",
       "name": "Performance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -644,6 +667,7 @@
       "type": null,
       "role": "link",
       "name": "Dashboard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -709,6 +733,7 @@
       "type": null,
       "role": "link",
       "name": "Directory",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -774,6 +799,7 @@
       "type": null,
       "role": "link",
       "name": "Maintenance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -839,6 +865,7 @@
       "type": null,
       "role": "link",
       "name": "Claim",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -904,6 +931,7 @@
       "type": null,
       "role": "link",
       "name": "Buzz",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -969,6 +997,7 @@
       "type": null,
       "role": "link",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1034,6 +1063,7 @@
       "type": "button",
       "role": "button",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1100,6 +1130,7 @@
       "type": "button",
       "role": "button",
       "name": "Help",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1157,6 +1188,7 @@
       "type": null,
       "role": "tab",
       "name": "Personal Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1222,6 +1254,7 @@
       "type": null,
       "role": "link",
       "name": "Personal Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1287,6 +1320,7 @@
       "type": null,
       "role": "tab",
       "name": "Contact Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1352,6 +1386,7 @@
       "type": null,
       "role": "link",
       "name": "Contact Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1417,6 +1452,7 @@
       "type": null,
       "role": "tab",
       "name": "Emergency Contacts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1482,6 +1518,7 @@
       "type": null,
       "role": "link",
       "name": "Emergency Contacts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1547,6 +1584,7 @@
       "type": null,
       "role": "tab",
       "name": "Dependents",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1612,6 +1650,7 @@
       "type": null,
       "role": "link",
       "name": "Dependents",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1677,6 +1716,7 @@
       "type": null,
       "role": "tab",
       "name": "Immigration",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1742,6 +1782,7 @@
       "type": null,
       "role": "link",
       "name": "Immigration",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1807,6 +1848,7 @@
       "type": null,
       "role": "tab",
       "name": "Job",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1872,6 +1914,7 @@
       "type": null,
       "role": "link",
       "name": "Job",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1937,6 +1980,7 @@
       "type": null,
       "role": "tab",
       "name": "Salary",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2002,6 +2046,7 @@
       "type": null,
       "role": "link",
       "name": "Salary",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2067,6 +2112,7 @@
       "type": null,
       "role": "tab",
       "name": "Report-to",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2132,6 +2178,7 @@
       "type": null,
       "role": "link",
       "name": "Report-to",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2197,6 +2244,7 @@
       "type": null,
       "role": "tab",
       "name": "Qualifications",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2262,6 +2310,7 @@
       "type": null,
       "role": "link",
       "name": "Qualifications",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2327,6 +2376,7 @@
       "type": null,
       "role": "tab",
       "name": "Memberships",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2392,6 +2442,7 @@
       "type": null,
       "role": "link",
       "name": "Memberships",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2456,9 +2507,10 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "yyyy-dd-mm",
+      "name": "Joined Date",
+      "nameSource": "proximity",
       "label": null,
-      "placeholder": "yyyy-dd-mm",
+      "placeholder": "yyyy-mm-dd",
       "id": null,
       "nameAttr": null,
       "testId": null,
@@ -2478,12 +2530,11 @@
         "h": 45
       },
       "locator": {
-        "strategy": "role",
-        "expression": "getByRole('textbox', { name: 'yyyy-dd-mm', exact: true })",
+        "strategy": "placeholder",
+        "expression": "getByPlaceholder('yyyy-mm-dd', { exact: true })",
         "matchCount": 1,
         "args": [
-          "textbox",
-          "yyyy-dd-mm"
+          "yyyy-mm-dd"
         ]
       },
       "unique": true,
@@ -2491,20 +2542,20 @@
       "ambiguityReason": null,
       "candidates": [
         {
-          "strategy": "role",
-          "expression": "getByRole('textbox', { name: 'yyyy-dd-mm', exact: true })",
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('yyyy-mm-dd', { exact: true })",
           "matchCount": 1,
           "args": [
-            "textbox",
-            "yyyy-dd-mm"
+            "yyyy-mm-dd"
           ]
         },
         {
-          "strategy": "placeholder",
-          "expression": "getByPlaceholder('yyyy-dd-mm', { exact: true })",
+          "strategy": "proximity",
+          "expression": "label('Joined Date') >> input",
           "matchCount": 1,
           "args": [
-            "yyyy-dd-mm"
+            "Joined Date",
+            "input"
           ]
         },
         {
@@ -2519,10 +2570,346 @@
     },
     {
       "index": 39,
+      "tag": "div",
+      "type": null,
+      "role": "combobox",
+      "name": "Job Title",
+      "nameSource": "proximity",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 778,
+        "y": 242,
+        "w": 202,
+        "h": 45
+      },
+      "locator": {
+        "strategy": "proximity",
+        "expression": "label('Job Title') >> div",
+        "matchCount": 1,
+        "args": [
+          "Job Title",
+          "div"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Job Title') >> div",
+          "matchCount": 1,
+          "args": [
+            "Job Title",
+            "div"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('HR Manager', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "HR Manager"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
+          "matchCount": 1,
+          "args": [
+            "div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 40,
+      "tag": "div",
+      "type": null,
+      "role": "combobox",
+      "name": "Job Category",
+      "nameSource": "proximity",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 552,
+        "y": 326,
+        "w": 202,
+        "h": 45
+      },
+      "locator": {
+        "strategy": "proximity",
+        "expression": "label('Job Category') >> div",
+        "matchCount": 1,
+        "args": [
+          "Job Category",
+          "div"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Job Category') >> div",
+          "matchCount": 1,
+          "args": [
+            "Job Category",
+            "div"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Officials and Managers', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Officials and Managers"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
+          "matchCount": 1,
+          "args": [
+            "div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "tag": "div",
+      "type": null,
+      "role": "combobox",
+      "name": "Sub Unit",
+      "nameSource": "proximity",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 778,
+        "y": 326,
+        "w": 202,
+        "h": 45
+      },
+      "locator": {
+        "strategy": "proximity",
+        "expression": "label('Sub Unit') >> div",
+        "matchCount": 1,
+        "args": [
+          "Sub Unit",
+          "div"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Sub Unit') >> div",
+          "matchCount": 1,
+          "args": [
+            "Sub Unit",
+            "div"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Human Resources', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Human Resources"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(5) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
+          "matchCount": 1,
+          "args": [
+            "div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(5) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 42,
+      "tag": "div",
+      "type": null,
+      "role": "combobox",
+      "name": "Location",
+      "nameSource": "proximity",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 1003,
+        "y": 326,
+        "w": 202,
+        "h": 45
+      },
+      "locator": {
+        "strategy": "proximity",
+        "expression": "label('Location') >> div",
+        "matchCount": 1,
+        "args": [
+          "Location",
+          "div"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Location') >> div",
+          "matchCount": 1,
+          "args": [
+            "Location",
+            "div"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Texas R&D', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Texas R&D"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(6) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
+          "matchCount": 1,
+          "args": [
+            "div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(6) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "tag": "div",
+      "type": null,
+      "role": "combobox",
+      "name": "Employment Status",
+      "nameSource": "proximity",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 552,
+        "y": 409,
+        "w": 202,
+        "h": 45
+      },
+      "locator": {
+        "strategy": "proximity",
+        "expression": "label('Employment Status') >> div",
+        "matchCount": 1,
+        "args": [
+          "Employment Status",
+          "div"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Employment Status') >> div",
+          "matchCount": 1,
+          "args": [
+            "Employment Status",
+            "div"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('Full-Time Permanent', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "Full-Time Permanent"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(7) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
+          "matchCount": 1,
+          "args": [
+            "div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(7) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 44,
       "tag": "input",
       "type": "checkbox",
       "role": "checkbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2556,11 +2943,60 @@
       "candidates": []
     },
     {
-      "index": 40,
+      "index": 45,
+      "tag": "span",
+      "type": null,
+      "role": "switch",
+      "name": "",
+      "nameSource": null,
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-8e4757dc": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 777,
+        "y": 503,
+        "w": 34,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.orangehrm-horizontal-padding.orangehrm-vertical-padding:nth-of-type(1) > form.oxd-form > div.oxd-form-row.user-form-header:nth-of-type(2) > div.oxd-switch-wrapper > label > span.oxd-switch-input.oxd-switch-input--active')",
+        "matchCount": 1,
+        "args": [
+          "div.orangehrm-horizontal-padding.orangehrm-vertical-padding:nth-of-type(1) > form.oxd-form > div.oxd-form-row.user-form-header:nth-of-type(2) > div.oxd-switch-wrapper > label > span.oxd-switch-input.oxd-switch-input--active"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.orangehrm-horizontal-padding.orangehrm-vertical-padding:nth-of-type(1) > form.oxd-form > div.oxd-form-row.user-form-header:nth-of-type(2) > div.oxd-switch-wrapper > label > span.oxd-switch-input.oxd-switch-input--active')",
+          "matchCount": 1,
+          "args": [
+            "div.orangehrm-horizontal-padding.orangehrm-vertical-padding:nth-of-type(1) > form.oxd-form > div.oxd-form-row.user-form-header:nth-of-type(2) > div.oxd-switch-wrapper > label > span.oxd-switch-input.oxd-switch-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 46,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "OrangeHRM, Inc",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2747,11 +3183,11 @@
     }
   ],
   "stats": {
-    "elements": 41,
-    "visible": 40,
+    "elements": 47,
+    "visible": 46,
     "hidden": 1,
-    "semantic": 39,
-    "fragile": 1,
+    "semantic": 44,
+    "fragile": 2,
     "ambiguous": 0,
     "withTestId": 0
   }

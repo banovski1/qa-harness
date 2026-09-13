@@ -24,8 +24,11 @@ interface CrawlElement {
   tag: string; type: string | null; role: string | null; name: string;
   label: string | null; placeholder: string | null; id: string | null;
   nameAttr: string | null; testId: string | null; data: Record<string, string>;
+  nameSource?: 'accessible' | 'proximity' | null;
   region: string; visible: boolean; disabled: boolean; href: string | null;
   locator: { strategy: string; args: string[]; matchCount: number };
+  candidates?: { strategy: string; args: string[]; matchCount: number }[];
+  box?: { x: number; y: number; w: number; h: number };
   unique: boolean; fragile: boolean;
 }
 interface CrawlScreen {
@@ -119,16 +122,45 @@ function fieldComponentFor(el: CrawlElement): string | null {
   if (r === 'checkbox') return 'Checkbox';
   if (r === 'radio') return 'RadioButton';
   if (r === 'combobox' || el.tag === 'select') return 'Select';
+  // A switch is a checkbox that renders as a slider; it answers check/uncheck the same way.
+  if (r === 'switch') return 'Checkbox';
   if (r === 'searchbox' || r === 'textbox') return 'TextField';
   if (r === 'tab') return 'Tab';
   if (r === 'menuitem') return 'MenuItem';
   return null;
 }
 
+/**
+ * Strategies whose expression is a sentence about the app rather than about the DOM's
+ * current shape. The ladder itself lives in the crawler (rank-locators.js); this is the
+ * compiler's copy of where the semantic half of it ends.
+ */
+const SEMANTIC_STRATEGIES = new Set(['testId', 'role', 'label', 'placeholder', 'proximity', 'scoped']);
+
+/**
+ * How many elements the crawl saw for this element's *semantic* handle.
+ *
+ * The crawl records `unique: true` whenever some candidate resolved to one element —
+ * including a positional CSS path, which always does. That is structural luck, and it
+ * was being read as a semantic result: two fields sharing a placeholder both came out
+ * as `{ label: 'Type for hints...' }`, each resolving to two elements at run time.
+ * `fragile` already marks the difference; this reads the count behind it.
+ */
+function semanticMatches(el: CrawlElement, id: { label?: string; field?: string; via?: string }): number {
+  const value = id.label ?? id.field ?? '';
+  const semantic = (el.candidates ?? []).filter(c => SEMANTIC_STRATEGIES.has(c.strategy));
+  const forThisHandle = semantic.filter(c => c.args?.includes(value));
+  const pool = forThisHandle.length ? forThisHandle : semantic;
+  if (!pool.length) return el.fragile ? Infinity : 1;
+  return Math.min(...pool.map(c => c.matchCount));
+}
+
 /** The element's English handle, preferring what a human would recognise. */
-function identityOf(el: CrawlElement): { label?: string; field?: string } | null {
+function identityOf(el: CrawlElement): { label?: string; field?: string; via?: 'proximity' } | null {
   const name = (el.name || '').trim();
-  if (name) return { label: name };
+  // A proximity name has to be marked, or the runtime asks the accessibility tree for a
+  // name the app never put there and every getter on the screen fails with NOT_FOUND.
+  if (name) return el.nameSource === 'proximity' ? { label: name, via: 'proximity' } : { label: name };
   const label = (el.label || el.placeholder || '').trim();
   if (label) return { label };
   const dataName = el.data?.['data-name'] ?? el.nameAttr ?? null;
@@ -137,7 +169,128 @@ function identityOf(el: CrawlElement): { label?: string; field?: string } | null
   return null;
 }
 
+/**
+ * Decide, for one screen, which controls a test can actually address.
+ *
+ * This is a screen-level question, not an element-level one, and treating it as the
+ * latter is what produced `select, select2, select4, select5` — four getters carrying
+ * one identical locator between them. A handle that addresses two elements is not made
+ * safe by a numeric suffix on the property name: both getters resolve to both elements,
+ * and the failure surfaces as AMBIGUOUS inside a test instead of here.
+ *
+ * So: group the screen's controls by the handle they would be emitted with. A group of
+ * one is addressable. A larger group is retried with the heading each control sits
+ * under, which is the disambiguator a person would reach for — and it is accepted only
+ * when it genuinely separates every member. Whatever is still ambiguous is unverified,
+ * and the page object says how many rather than pretending.
+ */
+function addressableIdentities(
+  els: CrawlElement[],
+  headingFor: (el: CrawlElement) => string | undefined,
+): Map<CrawlElement, { label?: string; field?: string; within?: string; via?: 'proximity' }> {
+  const out = new Map<CrawlElement, { label?: string; field?: string; within?: string; via?: 'proximity' }>();
+  const groups = new Map<string, { el: CrawlElement; id: { label?: string; field?: string; via?: 'proximity' } }[]>();
+
+  for (const el of els) {
+    const id = identityOf(el);
+    if (!id) continue;
+    const key = `${fieldComponentFor(el)}|${id.label ?? ''}|${id.field ?? ''}`;
+    groups.set(key, [...(groups.get(key) ?? []), { el, id }]);
+  }
+
+  for (const members of groups.values()) {
+    if (members.length === 1) {
+      const [{ el, id }] = members;
+      // One on this screen, but the crawl may still have seen the same handle resolve
+      // to several elements — a control the crawl skipped, or one outside its region.
+      if (semanticMatches(el, id) <= 1) out.set(el, id);
+      continue;
+    }
+    const headings = members.map(m => headingFor(m.el));
+    const distinct = new Set(headings.filter(Boolean));
+    if (headings.every(Boolean) && distinct.size === members.length) {
+      members.forEach((m, i) => out.set(m.el, { ...m.id, within: headings[i] as string }));
+    }
+    // Otherwise every member stays out. Four controls called "Select" under one heading
+    // cannot be told apart by anything this analysis holds, and saying so is the result.
+  }
+  return out;
+}
+
+/**
+ * The heading a control sits under: the nearest one above it on the page.
+ *
+ * Two "Type for hints..." fields on one screen are told apart by the section each
+ * belongs to, which is what a person reads to tell them apart too. Geometry is the only
+ * evidence the crawl keeps about that relationship, so this uses the vertical order the
+ * crawl recorded rather than the DOM tree it did not.
+ */
+function headingResolver(crawl: CrawlScreen): (el: CrawlElement) => string | undefined {
+  const headings = (crawl.headings ?? [])
+    .map(h => ({ text: h.text?.trim() ?? '', y: (h as { y?: number }).y ?? -1 }))
+    .filter(h => h.text && h.y >= 0)
+    .sort((a, b) => a.y - b.y);
+  if (!headings.length) return () => undefined;
+  return (el: CrawlElement) => {
+    const y = el.box?.y;
+    if (y === undefined) return undefined;
+    let found: string | undefined;
+    for (const h of headings) {
+      if (h.y <= y) found = h.text;
+      else break;
+    }
+    return found;
+  };
+}
+
 const controlKey = (el: CrawlElement) => `${el.role ?? el.tag}|${(el.name || '').trim()}`;
+
+
+/**
+ * Regions that are really table rows.
+ *
+ * A list of fifty records puts a hundred nameless action buttons on the page, all in
+ * one region and each addressable only by its position in the list. They are the
+ * collection's business, not the screen's — but only when the crawl actually found the
+ * table. When it did not, they used to arrive as `control1 … control102` on the page
+ * object. Their shape gives them away without needing the table: a region whose
+ * controls are overwhelmingly unnamed and positionally addressed is a row region.
+ */
+const ROW_REGION_MIN_CONTROLS = 8;
+const ROW_REGION_MIN_ANONYMOUS = 0.8;
+
+function collectionRegionsOf(crawl: CrawlScreen): Set<string> {
+  const byRegion = new Map<string, CrawlElement[]>();
+  for (const el of crawl.elements) {
+    if (!el.visible) continue;
+    byRegion.set(el.region, [...(byRegion.get(el.region) ?? []), el]);
+  }
+  const out = new Set<string>();
+  for (const [region, els] of byRegion) {
+    if (els.length < ROW_REGION_MIN_CONTROLS) continue;
+    const anonymous = els.filter(e => !(e.name || '').trim() || e.fragile).length;
+    if (anonymous / els.length >= ROW_REGION_MIN_ANONYMOUS) out.add(region);
+  }
+  return out;
+}
+
+
+/**
+ * What to call a collection on a page object.
+ *
+ * `document.title` was the old answer, which on any app with a constant title names
+ * every table after the product — `leaveList.orangeHRM.expectRow(...)` reads as nonsense.
+ * The heading above the list is what a person would say, and it is already plural; the
+ * screen's own name is next; `records` is the honest fallback.
+ */
+function collectionName(pageName: string | undefined, crawl: CrawlScreen): string {
+  // The heading first: it is the word the app itself puts above the list, and it is
+  // already plural where the screen name is not — "Contacts", not "contact".
+  const heading = camel(crawl.headings?.[0]?.text ?? '');
+  if (heading) return heading;
+  const fromPage = camel((pageName ?? '').replace(/Page$/, '').replace(/^View/, ''));
+  return fromPage || 'records';
+}
 
 /** Rule 3: a region recurring on >=N screens with >=M of its controls shared is a class. */
 function discoverRegions(screens: CrawlScreen[], conventions: any) {
@@ -327,24 +480,31 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
         if (pickKeyColumn(t.columns ?? []) === null) continue;
         uses.push({
           component: 'RecordTable',
-          as: uniqueProp(taken, camel(crawl.title || 'records') || 'records'),
+          as: uniqueProp(taken, collectionName(names.get(path), crawl)),
           heading: crawl.headings?.[0]?.text,
           columns: t.columns,
           keyColumn: pickKeyColumn(t.columns),
         } as ComponentUse);
       }
-      for (const el of crawl.elements) {
-        if (!el.visible || !el.unique) continue;
+      const headingFor = headingResolver(crawl);
+      const rowRegions = collectionRegionsOf(crawl);
+      // Owned elsewhere, so not this screen's to name and not a gap in it either: a
+      // control the shared region carries, and a row control the collection carries.
+      const owned = (el: CrawlElement) => {
         const regionClass = regionClassOf.get(el.region);
-        if (regionClass && sharedKeys.get(el.region)?.has(controlKey(el))) continue; // owned by the region
-        // Controls inside a table are the collection's business: a row checkbox or a
-        // row action has no page-level identity and never should.
-        if (collectionRegion && el.region === collectionRegion) continue;
-        const cls = fieldComponentFor(el);
-        const id = identityOf(el);
-        if (!cls || !id) { unverified++; continue; }
+        if (regionClass && sharedKeys.get(el.region)?.has(controlKey(el))) return true;
+        if (collectionRegion && el.region === collectionRegion) return true;
+        return rowRegions.has(el.region);
+      };
+      const mine = crawl.elements.filter(el => el.visible && el.unique && !owned(el));
+      const candidates = mine.filter(el => fieldComponentFor(el) !== null);
+      unverified += mine.length - candidates.length;
+      const identities = addressableIdentities(candidates, headingFor);
+      for (const el of candidates) {
+        const id = identities.get(el);
+        if (!id) { unverified++; continue; }
         const base = camel(id.label ?? id.field ?? '') || 'control';
-        uses.push({ component: cls, as: uniqueProp(taken, base), ...id });
+        uses.push({ component: fieldComponentFor(el)!, as: uniqueProp(taken, base), ...id });
       }
       for (const region of new Set(crawl.elements.map(e => e.region))) {
         const cls = regionClassOf.get(region);

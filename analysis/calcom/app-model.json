@@ -5,7 +5,7 @@
     "repoPath": "~/Projects/cal.diy",
     "repoCommit": "b0a34f21c91ae7803f9b7e2c59c2fbd187cce26f",
     "stack": "next.js / tRPC over Next.js route handlers",
-    "generatedAt": "2026-09-12T22:51:29.379Z"
+    "generatedAt": "2026-09-13T09:41:40.944Z"
   },
   "components": {
     "TextField": {
@@ -91,33 +91,13 @@
       "uses": [
         {
           "component": "Link",
-          "as": "homeCalCom",
-          "label": "Home Cal.com"
-        },
-        {
-          "component": "Link",
-          "as": "enterprise",
-          "label": "Enterprise"
-        },
-        {
-          "component": "Link",
           "as": "calAi",
           "label": "Cal.ai"
         },
         {
           "component": "Link",
-          "as": "pricing",
-          "label": "Pricing"
-        },
-        {
-          "component": "Link",
           "as": "signIn",
           "label": "Sign in"
-        },
-        {
-          "component": "Link",
-          "as": "getStarted",
-          "label": "Get started"
         },
         {
           "component": "Link",
@@ -136,38 +116,8 @@
         },
         {
           "component": "Link",
-          "as": "getStarted2",
-          "label": "Get started"
-        },
-        {
-          "component": "Link",
-          "as": "getStarted3",
-          "label": "Get started"
-        },
-        {
-          "component": "Link",
           "as": "exploreApps",
           "label": "Explore apps"
-        },
-        {
-          "component": "Link",
-          "as": "bookADemo",
-          "label": "Book a demo"
-        },
-        {
-          "component": "Link",
-          "as": "getStarted4",
-          "label": "Get started"
-        },
-        {
-          "component": "Link",
-          "as": "talkToSales",
-          "label": "Talk to sales"
-        },
-        {
-          "component": "Link",
-          "as": "homeCalCom2",
-          "label": "Home Cal.com"
         },
         {
           "component": "Link",
@@ -261,11 +211,6 @@
         },
         {
           "component": "Link",
-          "as": "pricing2",
-          "label": "Pricing"
-        },
-        {
-          "component": "Link",
           "as": "docs",
           "label": "Docs"
         },
@@ -273,11 +218,6 @@
           "component": "Link",
           "as": "calAiAIPhoneAgent",
           "label": "Cal.ai - AI Phone Agent"
-        },
-        {
-          "component": "Link",
-          "as": "enterprise2",
-          "label": "Enterprise"
         },
         {
           "component": "Link",
@@ -508,21 +448,10 @@
           "component": "Link",
           "as": "getADemo",
           "label": "Get a demo"
-        },
-        {
-          "component": "Link",
-          "as": "talkToSales2",
-          "label": "Talk to sales"
         }
       ],
-      "actions": [
-        {
-          "name": "goToEnterprise",
-          "via": "enterprise2",
-          "leadsTo": "EnterprisePage"
-        }
-      ],
-      "unverified": 5
+      "actions": [],
+      "unverified": 18
     },
     {
       "name": "AppsPage",
@@ -1074,68 +1003,13 @@
       "uses": [
         {
           "component": "Link",
-          "as": "homeCalCom",
-          "label": "Home Cal.com"
-        },
-        {
-          "component": "Link",
-          "as": "enterprise",
-          "label": "Enterprise"
-        },
-        {
-          "component": "Link",
           "as": "calAi",
           "label": "Cal.ai"
         },
         {
           "component": "Link",
-          "as": "pricing",
-          "label": "Pricing"
-        },
-        {
-          "component": "Link",
           "as": "signIn",
           "label": "Sign in"
-        },
-        {
-          "component": "Link",
-          "as": "getStarted",
-          "label": "Get started"
-        },
-        {
-          "component": "Link",
-          "as": "talkToSales",
-          "label": "Talk to sales"
-        },
-        {
-          "component": "Link",
-          "as": "getStarted2",
-          "label": "Get started"
-        },
-        {
-          "component": "Link",
-          "as": "talkToSales2",
-          "label": "Talk to sales"
-        },
-        {
-          "component": "Link",
-          "as": "getStarted3",
-          "label": "Get started"
-        },
-        {
-          "component": "Link",
-          "as": "talkToSales3",
-          "label": "Talk to sales"
-        },
-        {
-          "component": "Link",
-          "as": "getStarted4",
-          "label": "Get started"
-        },
-        {
-          "component": "Link",
-          "as": "homeCalCom2",
-          "label": "Home Cal.com"
         },
         {
           "component": "Link",
@@ -1229,11 +1103,6 @@
         },
         {
           "component": "Link",
-          "as": "pricing2",
-          "label": "Pricing"
-        },
-        {
-          "component": "Link",
           "as": "docs",
           "label": "Docs"
         },
@@ -1241,11 +1110,6 @@
           "component": "Link",
           "as": "calAiAIPhoneAgent",
           "label": "Cal.ai - AI Phone Agent"
-        },
-        {
-          "component": "Link",
-          "as": "enterprise2",
-          "label": "Enterprise"
         },
         {
           "component": "Link",
@@ -1476,15 +1340,10 @@
           "component": "Link",
           "as": "getADemo",
           "label": "Get a demo"
-        },
-        {
-          "component": "Link",
-          "as": "talkToSales4",
-          "label": "Talk to sales"
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 20
     },
     {
       "name": "EventTypesPage",
@@ -2345,23 +2204,8 @@
       "uses": [
         {
           "component": "Link",
-          "as": "homeCalCom",
-          "label": "Home Cal.com"
-        },
-        {
-          "component": "Link",
-          "as": "enterprise",
-          "label": "Enterprise"
-        },
-        {
-          "component": "Link",
           "as": "calAi",
           "label": "Cal.ai"
-        },
-        {
-          "component": "Link",
-          "as": "pricing",
-          "label": "Pricing"
         },
         {
           "component": "Link",
@@ -2381,7 +2225,8 @@
         {
           "component": "Link",
           "as": "tryAIScheduling",
-          "label": "Try AI scheduling"
+          "label": "Try AI scheduling",
+          "within": "AI-powered calls"
         },
         {
           "component": "Link",
@@ -2396,22 +2241,19 @@
         {
           "component": "Link",
           "as": "tryAIScheduling2",
-          "label": "Try AI scheduling"
+          "label": "Try AI scheduling",
+          "within": "Not to mention everything else you could need in a scheduling app"
         },
         {
           "component": "Link",
           "as": "tryAIScheduling3",
-          "label": "Try AI scheduling"
+          "label": "Try AI scheduling",
+          "within": "Empower your receptionist. Let AI handle the scheduling"
         },
         {
           "component": "Link",
           "as": "calAiPhoneAgentSuperchargedSchedulingWithAIPoweredCallsProductHunt",
           "label": "Cal.ai Phone Agent - Supercharged scheduling with AI-powered calls | Product Hunt"
-        },
-        {
-          "component": "Link",
-          "as": "homeCalCom2",
-          "label": "Home Cal.com"
         },
         {
           "component": "Link",
@@ -2505,11 +2347,6 @@
         },
         {
           "component": "Link",
-          "as": "pricing2",
-          "label": "Pricing"
-        },
-        {
-          "component": "Link",
           "as": "docs",
           "label": "Docs"
         },
@@ -2517,11 +2354,6 @@
           "component": "Link",
           "as": "calAiAIPhoneAgent",
           "label": "Cal.ai - AI Phone Agent"
-        },
-        {
-          "component": "Link",
-          "as": "enterprise2",
-          "label": "Enterprise"
         },
         {
           "component": "Link",
@@ -2759,14 +2591,8 @@
           "label": "Talk to sales"
         }
       ],
-      "actions": [
-        {
-          "name": "goToEnterprise",
-          "via": "enterprise2",
-          "leadsTo": "EnterprisePage"
-        }
-      ],
-      "unverified": 9
+      "actions": [],
+      "unverified": 15
     },
     {
       "name": "EmbedPage",
@@ -2808,18 +2634,8 @@
       "uses": [
         {
           "component": "Link",
-          "as": "enterprise",
-          "label": "Enterprise"
-        },
-        {
-          "component": "Link",
           "as": "calAi",
           "label": "Cal.ai"
-        },
-        {
-          "component": "Link",
-          "as": "pricing",
-          "label": "Pricing"
         },
         {
           "component": "Link",
@@ -2888,11 +2704,6 @@
         },
         {
           "component": "Link",
-          "as": "homeCalCom",
-          "label": "Home Cal.com"
-        },
-        {
-          "component": "Link",
           "as": "readMoreAboutCalcomISO27001",
           "label": "Read more about Calcom ISO 27001"
         },
@@ -2983,11 +2794,6 @@
         },
         {
           "component": "Link",
-          "as": "pricing2",
-          "label": "Pricing"
-        },
-        {
-          "component": "Link",
           "as": "docs",
           "label": "Docs"
         },
@@ -2995,11 +2801,6 @@
           "component": "Link",
           "as": "calAiAIPhoneAgent",
           "label": "Cal.ai - AI Phone Agent"
-        },
-        {
-          "component": "Link",
-          "as": "enterprise2",
-          "label": "Enterprise"
         },
         {
           "component": "Link",
@@ -3237,14 +3038,8 @@
           "label": "Talk to sales"
         }
       ],
-      "actions": [
-        {
-          "name": "goToEnterprise",
-          "via": "enterprise2",
-          "leadsTo": "EnterprisePage"
-        }
-      ],
-      "unverified": 2
+      "actions": [],
+      "unverified": 7
     },
     {
       "name": "Embed2Page",
@@ -6578,9 +6373,9 @@
     "declaredOnly": 74,
     "components": 9,
     "regions": 0,
-    "uses": 336,
-    "actions": 3,
-    "unverified": 22,
+    "uses": 298,
+    "actions": 0,
+    "unverified": 60,
     "endpoints": 121,
     "resources": 27,
     "creatable": 12,

@@ -4,9 +4,9 @@
 
 - **App:** OrangeHRM (open-source demo)
 - **Base URL:** https://opensource-demo.orangehrmlive.com/
-- **Generated:** 2026-09-12T21:42:29.448Z
+- **Generated:** 2026-09-13T09:39:24.947Z
 - **Endpoints observed:** 59
-- **Calls recorded:** 198
+- **Calls recorded:** 203
 - **Specification discovered:** none
 
 Every endpoint here was observed being called by the application itself while
@@ -23,15 +23,15 @@ no value from the app reaches this file.
 | `GET` | `/web/index.php/api/v2/admin/subunits` | 4 | 200 | — | `web-index-php-pim-viewEmployeeList`, `web-index-php-performance-searchEvaluatePerformanceReview`, `web-index-php-pim-viewPimModule`, `web-index-php-performance-viewPerformanceModule` |
 | `GET` | `/web/index.php/api/v2/admin/users` | 2 | 200 | `limit`, `offset`, `sortField`, `sortOrder` | `web-index-php-admin-viewSystemUsers`, `web-index-php-admin-viewAdminModule` |
 | `GET` | `/web/index.php/api/v2/buzz/anniversaries` | 1 | 200 | `limit` | `web-index-php-buzz-viewBuzz` |
-| `GET` | `/web/index.php/api/v2/buzz/feed` | 5 | 200 | `limit`, `offset`, `sortOrder`, `sortField` | `root`, `web-index-php-dashboard-index`, `web-index-php-buzz-viewBuzz` |
+| `GET` | `/web/index.php/api/v2/buzz/feed` | 6 | 200 | `limit`, `offset`, `sortOrder`, `sortField` | `__auth__`, `root`, `web-index-php-dashboard-index`, `web-index-php-buzz-viewBuzz` |
 | `GET` | `/web/index.php/api/v2/claim/employees/requests` | 2 | 200 | `limit`, `offset`, `includeEmployees`, `sortField`, `sortOrder` | `web-index-php-claim-viewAssignClaim`, `web-index-php-claim-viewClaimModule` |
 | `GET` | `/web/index.php/api/v2/claim/events` | 2 | 200 | `limit`, `status` | `web-index-php-claim-viewAssignClaim`, `web-index-php-claim-viewClaimModule` |
-| `GET` | `/web/index.php/api/v2/dashboard/employees/action-summary` | 4 | 200 | — | `root`, `web-index-php-dashboard-index` |
-| `GET` | `/web/index.php/api/v2/dashboard/employees/leaves` | 3 | 200 | `date` | `root`, `web-index-php-dashboard-index` |
-| `GET` | `/web/index.php/api/v2/dashboard/employees/locations` | 3 | 200 | — | `root`, `web-index-php-dashboard-index` |
-| `GET` | `/web/index.php/api/v2/dashboard/employees/subunit` | 3 | 200 | — | `root`, `web-index-php-dashboard-index` |
-| `GET` | `/web/index.php/api/v2/dashboard/employees/time-at-work` | 3 | 200 | `timezoneOffset`, `currentDate`, `currentTime` | `root`, `web-index-php-dashboard-index` |
-| `GET` | `/web/index.php/api/v2/dashboard/shortcuts` | 3 | 200 | — | `root`, `web-index-php-dashboard-index` |
+| `GET` | `/web/index.php/api/v2/dashboard/employees/action-summary` | 4 | 200 | — | `__auth__`, `root`, `web-index-php-dashboard-index` |
+| `GET` | `/web/index.php/api/v2/dashboard/employees/leaves` | 4 | 200 | `date` | `__auth__`, `root`, `web-index-php-dashboard-index` |
+| `GET` | `/web/index.php/api/v2/dashboard/employees/locations` | 4 | 200 | — | `__auth__`, `root`, `web-index-php-dashboard-index` |
+| `GET` | `/web/index.php/api/v2/dashboard/employees/subunit` | 4 | 200 | — | `__auth__`, `root`, `web-index-php-dashboard-index` |
+| `GET` | `/web/index.php/api/v2/dashboard/employees/time-at-work` | 4 | 200 | `timezoneOffset`, `currentDate`, `currentTime` | `__auth__`, `root`, `web-index-php-dashboard-index` |
+| `GET` | `/web/index.php/api/v2/dashboard/shortcuts` | 4 | 200 | — | `__auth__`, `root`, `web-index-php-dashboard-index` |
 | `GET` | `/web/index.php/api/v2/directory/employees` | 1 | 200 | `limit`, `offset` | `web-index-php-directory-viewDirectory` |
 | `GET` | `/web/index.php/api/v2/leave/employees/leave-requests` | 2 | 200 | `limit`, `offset`, `includeEmployees` | `web-index-php-leave-viewLeaveList`, `web-index-php-leave-viewLeaveModule` |
 | `GET` | `/web/index.php/api/v2/leave/holidays` | 21 | 200 | `fromDate`, `toDate` | `web-index-php-leave-viewLeaveList`, `web-index-php-recruitment-viewCandidates`, `web-index-php-performance-searchEvaluatePerformanceReview`, `web-index-php-claim-viewAssignClaim`, … |
@@ -74,8 +74,8 @@ no value from the app reaches this file.
 | `GET` | `/web/index.php/api/v2/recruitment/hiring-managers` | 2 | 200 | `limit` | `web-index-php-recruitment-viewCandidates`, `web-index-php-recruitment-viewRecruitmentModule` |
 | `GET` | `/web/index.php/api/v2/recruitment/vacancies` | 2 | 200 | `model`, `limit`, `excludeInterviewers` | `web-index-php-recruitment-viewCandidates`, `web-index-php-recruitment-viewRecruitmentModule` |
 | `GET` | `/web/index.php/api/v2/time/employees/timesheets/list` | 2 | 200 | `limit`, `offset` | `web-index-php-time-viewEmployeeTimesheet`, `web-index-php-time-viewTimeModule` |
-| `GET` | `/web/index.php/core/i18n/messages` | 34 | 304 | — | `__auth__`, `root`, `web-index-php-dashboard-index`, `web-index-php-pim-viewEmployeeList`, … |
-| `POST` | `/web/index.php/events/push` | 3 | 200 | — | `root`, `web-index-php-dashboard-index` |
+| `GET` | `/web/index.php/core/i18n/messages` | 33 | 304 | — | `__auth__`, `root`, `web-index-php-dashboard-index`, `web-index-php-pim-viewEmployeeList`, … |
+| `POST` | `/web/index.php/events/push` | 3 | 200 | — | `__auth__`, `root`, `web-index-php-dashboard-index` |
 
 ## Payload shapes
 
@@ -96,7 +96,7 @@ Response:
 ```
 data[].id: number
 data[].title: string
-data[].description: string
+data[].description: null
 data[].note: string
 meta.total: number
 ```
@@ -170,7 +170,7 @@ data[].referenceId: string
 data[].description: string
 data[].status: string
 data[].amount: number
-data[].submittedDate: string
+data[].submittedDate: null
 meta.total: number
 ```
 
@@ -276,10 +276,6 @@ meta.total: number
 Response:
 
 ```
-data[].id: number
-data[].noOfDays: number
-data[].multiPeriod: boolean
-data[].hasMultipleStatus: boolean
 meta.total: number
 ```
 
@@ -348,17 +344,17 @@ meta.total: number
 Response:
 
 ```
-data.street1: null
-data.street2: null
-data.city: null
-data.province: null
-data.zipCode: null
-data.countryCode: null
-data.homeTelephone: null
+data.street1: string
+data.street2: string
+data.city: string
+data.province: string
+data.zipCode: string
+data.countryCode: string
+data.homeTelephone: string
 data.workTelephone: string
-data.mobile: null
+data.mobile: string
 data.workEmail: string
-data.otherEmail: null
+data.otherEmail: string
 ```
 
 ### `GET /web/index.php/api/v2/pim/employees`
@@ -436,6 +432,12 @@ meta.total: number
 Response:
 
 ```
+data[].id: string
+data[].name: string
+data[].relationship: string
+data[].homePhone: string
+data[].officePhone: string
+data[].mobilePhone: string
 meta.empNumber: number
 meta.total: number
 ```
@@ -737,6 +739,8 @@ data[].firstName: string
 data[].middleName: null
 data[].lastName: string
 data[].dateOfApplication: string
+data[].vacancy: null
+data[].status: null
 data[].hasAttachment: boolean
 data[].deletable: boolean
 meta.total: number

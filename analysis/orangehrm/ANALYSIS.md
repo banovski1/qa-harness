@@ -9,7 +9,7 @@ re-run the skills, then `compile-model.ts`, to change it.
 | clone | `~/Projects/orangehrm` at `56e23b3b09` |
 | base URL | https://opensource-demo.orangehrmlive.com/ |
 | screens | 216 (22 crawled, 194 declared only) |
-| controls | 396 named, 84 unnamed |
+| controls | 459 named, 62 unnamed |
 | components | 10 (1 shared regions) |
 | proved transitions | 0 |
 
@@ -22,16 +22,16 @@ re-run the skills, then `compile-model.ts`, to change it.
 
 | screen | path | controls | unnamed | actions |
 | --- | --- | --- | --- | --- |
-| ViewPersonalDetailsEmpNumberPage | `/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}` | 32 | 8 | 0 |
-| ViewQualificationsEmpNumberPage | `/web/index.php/pim/viewQualifications/empNumber/{empNumber}` | 30 | 1 | 0 |
-| ContactDetailsEmpNumberPage | `/web/index.php/pim/contactDetails/empNumber/{empNumber}` | 26 | 12 | 0 |
-| ViewDependentsEmpNumberPage | `/web/index.php/pim/viewDependents/empNumber/{empNumber}` | 26 | 1 | 0 |
-| ViewEmergencyContactsEmpNumberPage | `/web/index.php/pim/viewEmergencyContacts/empNumber/{empNumber}` | 26 | 1 | 0 |
-| ViewImmigrationEmpNumberPage | `/web/index.php/pim/viewImmigration/empNumber/{empNumber}` | 26 | 1 | 0 |
-| ViewMembershipsEmpNumberPage | `/web/index.php/pim/viewMemberships/empNumber/{empNumber}` | 26 | 1 | 0 |
-| ViewJobDetailsEmpNumberPage | `/web/index.php/pim/viewJobDetails/empNumber/{empNumber}` | 25 | 1 | 0 |
-| ViewReportToDetailsEmpNumberPage | `/web/index.php/pim/viewReportToDetails/empNumber/{empNumber}` | 24 | 1 | 0 |
-| ViewSalaryListEmpNumberPage | `/web/index.php/pim/viewSalaryList/empNumber/{empNumber}` | 24 | 1 | 0 |
+| ContactDetailsEmpNumberPage | `/web/index.php/pim/contactDetails/empNumber/{empNumber}` | 38 | 1 | 0 |
+| ViewPersonalDetailsEmpNumberPage | `/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}` | 38 | 3 | 0 |
+| ViewJobDetailsEmpNumberPage | `/web/index.php/pim/viewJobDetails/empNumber/{empNumber}` | 31 | 2 | 0 |
+| ViewQualificationsEmpNumberPage | `/web/index.php/pim/viewQualifications/empNumber/{empNumber}` | 30 | 7 | 0 |
+| ViewReportToDetailsEmpNumberPage | `/web/index.php/pim/viewReportToDetails/empNumber/{empNumber}` | 27 | 1 | 0 |
+| ViewDependentsEmpNumberPage | `/web/index.php/pim/viewDependents/empNumber/{empNumber}` | 26 | 3 | 0 |
+| ViewEmergencyContactsEmpNumberPage | `/web/index.php/pim/viewEmergencyContacts/empNumber/{empNumber}` | 26 | 3 | 0 |
+| ViewImmigrationEmpNumberPage | `/web/index.php/pim/viewImmigration/empNumber/{empNumber}` | 26 | 3 | 0 |
+| ViewMembershipsEmpNumberPage | `/web/index.php/pim/viewMemberships/empNumber/{empNumber}` | 26 | 3 | 0 |
+| ViewSalaryListEmpNumberPage | `/web/index.php/pim/viewSalaryList/empNumber/{empNumber}` | 26 | 1 | 0 |
 
 ## Declared but never crawled
 

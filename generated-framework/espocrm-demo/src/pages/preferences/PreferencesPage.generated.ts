@@ -11,7 +11,7 @@ export class PreferencesPageGenerated extends BasePage {
   readonly path = '/#Preferences';
   readonly heading = 'PreferencesJack Adams';
 
-  // 9 element(s) on this screen carry no label, role name or field
+  // 10 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in PreferencesPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'PreferencesPage', expectedUrl: '/#Preferences', modelPath: MODEL_PATH });
@@ -20,9 +20,8 @@ export class PreferencesPageGenerated extends BasePage {
   readonly locale = new Button(this.page, { label: 'Locale' }, { screen: 'PreferencesPage', expectedUrl: '/#Preferences', modelPath: MODEL_PATH });
   readonly general = new Button(this.page, { label: 'General' }, { screen: 'PreferencesPage', expectedUrl: '/#Preferences', modelPath: MODEL_PATH });
   readonly userInterface = new Button(this.page, { label: 'User Interface' }, { screen: 'PreferencesPage', expectedUrl: '/#Preferences', modelPath: MODEL_PATH });
-  readonly notifications = new Button(this.page, { label: 'Notifications' }, { screen: 'PreferencesPage', expectedUrl: '/#Preferences', modelPath: MODEL_PATH });
-  readonly thousandSeparator = new TextField(this.page, { field: 'thousandSeparator' }, { screen: 'PreferencesPage', expectedUrl: '/#Preferences', modelPath: MODEL_PATH });
-  readonly decimalMark = new TextField(this.page, { field: 'decimalMark' }, { screen: 'PreferencesPage', expectedUrl: '/#Preferences', modelPath: MODEL_PATH });
+  readonly thousandSeparator = new TextField(this.page, { label: 'Thousand Separator', via: 'proximity' }, { screen: 'PreferencesPage', expectedUrl: '/#Preferences', modelPath: MODEL_PATH });
+  readonly decimalMark = new TextField(this.page, { label: 'Decimal Mark *', via: 'proximity' }, { screen: 'PreferencesPage', expectedUrl: '/#Preferences', modelPath: MODEL_PATH });
   readonly espoCRMInc = new Link(this.page, { label: 'EspoCRM, Inc.' }, { screen: 'PreferencesPage', expectedUrl: '/#Preferences', modelPath: MODEL_PATH });
 
 

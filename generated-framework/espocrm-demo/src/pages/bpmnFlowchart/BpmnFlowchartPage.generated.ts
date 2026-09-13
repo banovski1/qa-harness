@@ -11,12 +11,11 @@ export class BpmnFlowchartPageGenerated extends BasePage {
   readonly path = '/#BpmnFlowchart';
   readonly heading = 'Flowcharts';
 
-  // 6 element(s) on this screen carry no label, role name or field
+  // 7 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in BpmnFlowchartPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'BpmnFlowchartPage', expectedUrl: '/#BpmnFlowchart', modelPath: MODEL_PATH });
   readonly createFlowchart = new Link(this.page, { label: 'Create Flowchart' }, { screen: 'BpmnFlowchartPage', expectedUrl: '/#BpmnFlowchart', modelPath: MODEL_PATH });
-  readonly all = new Button(this.page, { label: 'All' }, { screen: 'BpmnFlowchartPage', expectedUrl: '/#BpmnFlowchart', modelPath: MODEL_PATH });
   readonly textFilter = new TextField(this.page, { field: 'textFilter' }, { screen: 'BpmnFlowchartPage', expectedUrl: '/#BpmnFlowchart', modelPath: MODEL_PATH });
   readonly search = new Button(this.page, { label: 'Search' }, { screen: 'BpmnFlowchartPage', expectedUrl: '/#BpmnFlowchart', modelPath: MODEL_PATH });
   readonly espoCRMInc = new Link(this.page, { label: 'EspoCRM, Inc.' }, { screen: 'BpmnFlowchartPage', expectedUrl: '/#BpmnFlowchart', modelPath: MODEL_PATH });

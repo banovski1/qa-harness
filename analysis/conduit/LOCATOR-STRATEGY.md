@@ -4,7 +4,7 @@
 
 - **App:** Conduit (RealWorld, Angular)
 - **Base URL:** https://demo.realworld.show/
-- **Generated:** 2026-09-12T21:51:39.413Z
+- **Generated:** 2026-09-13T09:40:25.636Z
 - **Visible interactive controls:** 253
 - **Addressable semantically:** 155 (61%)
 - **Needing a CSS path or still ambiguous:** 98
@@ -25,10 +25,16 @@ markup around them is rearranged, and they are listed in full below.
 | 2 | `role` | yes | 155 |
 | 3 | `label` | yes | 0 |
 | 4 | `placeholder` | yes | 0 |
-| 5 | `scoped` | yes | 0 |
-| 6 | `attribute` | no | 0 |
-| 7 | `text` | no | 0 |
-| 8 | `css` | no | 98 |
+| 5 | `// A label the app renders next to a control but never associated with it. Semantic —
+  // it is the word a person reads — but resolved by walking the DOM` | no | 0 |
+| 6 | `not by asking the
+  // accessibility tree` | no | 0 |
+| 7 | `so it ranks below the associations the app actually declared.
+  'proximity` | no | 0 |
+| 8 | `scoped` | yes | 0 |
+| 9 | `attribute` | no | 0 |
+| 10 | `text` | no | 0 |
+| 11 | `css` | no | 98 |
 
 ## Recommendation
 

@@ -11,7 +11,7 @@ export class IndexPageGenerated extends BasePage {
   readonly path = '/web/index.php/dashboard/index';
   readonly heading = null;
 
-  // 5 element(s) on this screen carry no label, role name or field
+  // 4 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in IndexPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'IndexPage', expectedUrl: '/web/index.php/dashboard/index', modelPath: MODEL_PATH });

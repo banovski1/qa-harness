@@ -5,115 +5,143 @@
   "headings": [
     {
       "level": 1,
-      "text": "The better way to schedule your meetings"
+      "text": "The better way to schedule your meetings",
+      "y": 253
     },
     {
       "level": 2,
-      "text": "With us, appointment scheduling is easy"
+      "text": "With us, appointment scheduling is easy",
+      "y": 1070
     },
     {
       "level": 3,
-      "text": "Connect your calendar"
+      "text": "Connect your calendar",
+      "y": 1351
     },
     {
       "level": 2,
-      "text": "Cal.com"
+      "text": "Cal.com",
+      "y": 1573
     },
     {
       "level": 3,
-      "text": "Set your availability"
+      "text": "Set your availability",
+      "y": 1351
     },
     {
       "level": 3,
-      "text": "Choose how to meet"
+      "text": "Choose how to meet",
+      "y": 1351
     },
     {
       "level": 2,
-      "text": "Your all-purpose scheduling app"
+      "text": "Your all-purpose scheduling app",
+      "y": 1970
     },
     {
       "level": 3,
-      "text": "Avoid meeting overload"
+      "text": "Avoid meeting overload",
+      "y": 2183
     },
     {
       "level": 3,
-      "text": "Stand out with a custom booking link"
+      "text": "Stand out with a custom booking link",
+      "y": 2183
     },
     {
       "level": 3,
-      "text": "Streamline your bookers’ experience"
+      "text": "Streamline your bookers’ experience",
+      "y": 2645
     },
     {
       "level": 3,
-      "text": "Reduce no-shows with automated meeting reminders"
+      "text": "Reduce no-shows with automated meeting reminders",
+      "y": 2645
     },
     {
       "level": 3,
-      "text": "Meeting starts in 15 mins"
+      "text": "Meeting starts in 15 mins",
+      "y": 2888
     },
     {
       "level": 3,
-      "text": "Booking rescheduled"
+      "text": "Booking rescheduled",
+      "y": 2873
     },
     {
       "level": 3,
-      "text": "New booking confirmed"
+      "text": "New booking confirmed",
+      "y": 2872
     },
     {
       "level": 2,
-      "text": "…and so much more!"
+      "text": "…and so much more!",
+      "y": 3072
     },
     {
       "level": 3,
-      "text": "Accept payments"
+      "text": "Accept payments",
+      "y": 3289
     },
     {
       "level": 3,
-      "text": "Built-in video conferencing"
+      "text": "Built-in video conferencing",
+      "y": 3289
     },
     {
       "level": 3,
-      "text": "Short booking links"
+      "text": "Short booking links",
+      "y": 3289
     },
     {
       "level": 3,
-      "text": "Privacy first"
+      "text": "Privacy first",
+      "y": 3289
     },
     {
       "level": 3,
-      "text": "65+ languages"
+      "text": "65+ languages",
+      "y": 3481
     },
     {
       "level": 3,
-      "text": "Easy embeds"
+      "text": "Easy embeds",
+      "y": 3481
     },
     {
       "level": 3,
-      "text": "All your favorite apps"
+      "text": "All your favorite apps",
+      "y": 3481
     },
     {
       "level": 3,
-      "text": "Simple customization"
+      "text": "Simple customization",
+      "y": 3481
     },
     {
       "level": 2,
-      "text": "Don’t just take our word for it"
+      "text": "Don’t just take our word for it",
+      "y": 3809
     },
     {
       "level": 2,
-      "text": "All your key tools in sync with your meetings"
+      "text": "All your key tools in sync with your meetings",
+      "y": 4532
     },
     {
       "level": 2,
-      "text": "See why our users love Cal.com"
+      "text": "See why our users love Cal.com",
+      "y": 5014
     },
     {
       "level": 2,
-      "text": "Frequently asked questions"
+      "text": "Frequently asked questions",
+      "y": 6384
     },
     {
       "level": 2,
-      "text": "Smarter, simpler scheduling"
+      "text": "Smarter, simpler scheduling",
+      "y": 7134
     }
   ],
   "tables": [],
@@ -127,6 +155,7 @@
       "type": null,
       "role": "button",
       "name": "Install App",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "install-btn",
@@ -164,6 +193,7 @@
       "type": null,
       "role": "link",
       "name": "Home Cal.com",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -221,6 +251,7 @@
       "type": null,
       "role": "link",
       "name": "Enterprise",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -285,6 +316,7 @@
       "type": null,
       "role": "link",
       "name": "Cal.ai",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -350,6 +382,7 @@
       "type": null,
       "role": "link",
       "name": "Pricing",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -414,6 +447,7 @@
       "type": null,
       "role": "link",
       "name": "Sign in",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -479,6 +513,7 @@
       "type": null,
       "role": "link",
       "name": "Get started",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -545,6 +580,7 @@
       "type": null,
       "role": "link",
       "name": "Cal.com launches v6.8",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -611,6 +647,7 @@
       "type": null,
       "role": "link",
       "name": "Sign up with Google",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -677,6 +714,7 @@
       "type": null,
       "role": "link",
       "name": "Sign up with email",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -744,6 +782,7 @@
       "type": null,
       "role": "link",
       "name": "Get started",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -811,6 +850,7 @@
       "type": null,
       "role": "link",
       "name": "Book a demo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -878,6 +918,7 @@
       "type": null,
       "role": "link",
       "name": "Get started",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -944,6 +985,7 @@
       "type": null,
       "role": "link",
       "name": "Book a demo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1011,6 +1053,7 @@
       "type": "button",
       "role": "button",
       "name": "Previous",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1048,6 +1091,7 @@
       "type": "button",
       "role": "button",
       "name": "Next",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1085,6 +1129,7 @@
       "type": null,
       "role": "link",
       "name": "Get started",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1151,6 +1196,7 @@
       "type": null,
       "role": "link",
       "name": "Explore apps",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1218,6 +1264,7 @@
       "type": null,
       "role": "link",
       "name": "Get started",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1285,6 +1332,7 @@
       "type": null,
       "role": "link",
       "name": "Book a demo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1351,6 +1399,7 @@
       "type": null,
       "role": "link",
       "name": "Talk to sales",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1368,7 +1417,7 @@
       "href": "./talk-to-sales",
       "box": {
         "x": 512,
-        "y": 6513,
+        "y": 6489,
         "w": 124,
         "h": 36
       },
@@ -1418,6 +1467,7 @@
       "type": null,
       "role": "link",
       "name": "Get started",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1435,7 +1485,7 @@
       "href": "https://app.cal.com/signup",
       "box": {
         "x": 648,
-        "y": 6513,
+        "y": 6489,
         "w": 121,
         "h": 36
       },
@@ -1485,6 +1535,7 @@
       "type": null,
       "role": null,
       "name": "How much does Cal.com cost and what's included in each plan?Cal.com's free plan includes unlimited event types, calendar syncing, workflow automation, Stripe payments, and Cal Video, making it one of the most fully featured free scheduling tools on the market. For teams, the booking software scales across four tiers. Teams ($16/user/month) adds round-robin scheduling, shared availability, and team workflows, making it ideal scheduling software for small business. Organizations ($37/user/month) include org-wide admin controls and centralized management for larger companies using Cal.com’s scheduler as their meeting scheduling software. Enterprise offers custom pricing with priority support, dedicated database, and higher SLAs. This is crucial for industries that require a secure online booking system.",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1501,7 +1552,7 @@
       "href": null,
       "box": {
         "x": 116,
-        "y": 6597,
+        "y": 6573,
         "w": 1048,
         "h": 77
       },
@@ -1533,6 +1584,7 @@
       "type": null,
       "role": null,
       "name": "What are Cal.com's pricing plans, and is it good scheduling software for small businesses?Cal.com is one of the best options for scheduling software for small business thanks to a free tier that includes unlimited event types, workflow automation, Stripe payments, and Cal Video, making it the most generous free scheduling tool available. Small businesses needing booking software with team features can upgrade to Teams at $16/user/month for round-robin scheduling and shared availability. It also works as an online booking system for small businesses with embeddable booking pages. Organizations ($37/user/month) adds admin controls for mid-size to large companies. Enterprise offers custom pricing with priority support, dedicated database, and higher SLAs. The enterprise plan features are crucial for industries that require a secure meeting scheduling software with a secure database.",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1549,7 +1601,7 @@
       "href": null,
       "box": {
         "x": 116,
-        "y": 6674,
+        "y": 6650,
         "w": 1048,
         "h": 77
       },
@@ -1581,6 +1633,7 @@
       "type": null,
       "role": null,
       "name": "Can Cal.com be used as scheduling software for Healthcare, Sales, Support, and B2B teams?Yes. Cal.com adapts as scheduling software across industries and team structures. Healthcare practices use it as patient scheduling software and physician scheduling software with HIPAA compliance, SOC 2 Type II certification, and encrypted storage. Thanks to the flexibility of Cal.com it is widely used by sales teams across industries. Support teams use the round-robin scheduling feature of Cal.com to fairly distribute workload among team members. For B2B sales teams, Cal.com works as booking software with attribute-based routing, round-robin lead distribution, and CRM updates in Salesforce or HubSpot on every booking. It's a complete automated scheduling system, online booking system, and scheduler for any vertical.",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1597,7 +1650,7 @@
       "href": null,
       "box": {
         "x": 116,
-        "y": 6751,
+        "y": 6727,
         "w": 1048,
         "h": 77
       },
@@ -1629,6 +1682,7 @@
       "type": null,
       "role": "link",
       "name": "Get started",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1646,7 +1700,7 @@
       "href": "https://app.cal.com/signup",
       "box": {
         "x": 512,
-        "y": 7235,
+        "y": 7211,
         "w": 121,
         "h": 36
       },
@@ -1695,6 +1749,7 @@
       "type": null,
       "role": "link",
       "name": "Talk to sales",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1712,7 +1767,7 @@
       "href": "./talk-to-sales",
       "box": {
         "x": 644,
-        "y": 7235,
+        "y": 7211,
         "w": 124,
         "h": 36
       },
@@ -1761,6 +1816,7 @@
       "type": null,
       "role": "link",
       "name": "Home Cal.com",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1777,7 +1833,7 @@
       "href": "./",
       "box": {
         "x": 40,
-        "y": 7564,
+        "y": 7540,
         "w": 101,
         "h": 22
       },
@@ -1818,6 +1874,7 @@
       "type": null,
       "role": "link",
       "name": "Read more about Calcom ISO 27001",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1833,7 +1890,7 @@
       "href": "https://cal.com/security",
       "box": {
         "x": 40,
-        "y": 7676,
+        "y": 7652,
         "w": 47,
         "h": 48
       },
@@ -1875,6 +1932,7 @@
       "type": null,
       "role": "link",
       "name": "Read more about Calcom SOC 2",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1890,7 +1948,7 @@
       "href": "https://cal.com/security",
       "box": {
         "x": 103,
-        "y": 7676,
+        "y": 7652,
         "w": 47,
         "h": 48
       },
@@ -1932,6 +1990,7 @@
       "type": null,
       "role": "link",
       "name": "Read more about Calcom CCPA",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1947,7 +2006,7 @@
       "href": "https://cal.com/security",
       "box": {
         "x": 166,
-        "y": 7676,
+        "y": 7652,
         "w": 33,
         "h": 48
       },
@@ -1989,6 +2048,7 @@
       "type": null,
       "role": "link",
       "name": "Read more about Calcom GDPR",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2004,7 +2064,7 @@
       "href": "https://cal.com/security",
       "box": {
         "x": 215,
-        "y": 7676,
+        "y": 7652,
         "w": 35,
         "h": 48
       },
@@ -2046,6 +2106,7 @@
       "type": null,
       "role": "link",
       "name": "Read more about Calcom HIPAA",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2061,7 +2122,7 @@
       "href": "https://cal.com/security",
       "box": {
         "x": 266,
-        "y": 7676,
+        "y": 7652,
         "w": 71,
         "h": 48
       },
@@ -2103,6 +2164,7 @@
       "type": null,
       "role": "combobox",
       "name": "Select Language",
+      "nameSource": "accessible",
       "label": "Select Language",
       "placeholder": null,
       "id": ":Rliplfculp:",
@@ -2116,7 +2178,7 @@
       "href": null,
       "box": {
         "x": 40,
-        "y": 7815,
+        "y": 7791,
         "w": 120,
         "h": 34
       },
@@ -2140,6 +2202,7 @@
       "type": null,
       "role": "link",
       "name": "Logo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2156,7 +2219,7 @@
       "href": "https://status.cal.com/",
       "box": {
         "x": 172,
-        "y": 7814,
+        "y": 7790,
         "w": 182,
         "h": 35
       },
@@ -2198,6 +2261,7 @@
       "type": null,
       "role": "link",
       "name": "Android",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2214,7 +2278,7 @@
       "href": "https://go.cal.com/android",
       "box": {
         "x": 40,
-        "y": 7909,
+        "y": 7885,
         "w": 108,
         "h": 35
       },
@@ -2264,6 +2328,7 @@
       "type": null,
       "role": "link",
       "name": "Chrome",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2280,7 +2345,7 @@
       "href": "https://go.cal.com/chrome",
       "box": {
         "x": 158,
-        "y": 7909,
+        "y": 7885,
         "w": 108,
         "h": 35
       },
@@ -2330,6 +2395,7 @@
       "type": null,
       "role": "link",
       "name": "Safari",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2346,7 +2412,7 @@
       "href": "https://go.cal.com/safari",
       "box": {
         "x": 277,
-        "y": 7909,
+        "y": 7885,
         "w": 91,
         "h": 35
       },
@@ -2396,6 +2462,7 @@
       "type": null,
       "role": "link",
       "name": "Edge",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2412,7 +2479,7 @@
       "href": "https://go.cal.com/edge",
       "box": {
         "x": 40,
-        "y": 7954,
+        "y": 7930,
         "w": 91,
         "h": 35
       },
@@ -2462,6 +2529,7 @@
       "type": null,
       "role": "link",
       "name": "Firefox",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2478,7 +2546,7 @@
       "href": "https://go.cal.com/firefox",
       "box": {
         "x": 141,
-        "y": 7954,
+        "y": 7930,
         "w": 100,
         "h": 35
       },
@@ -2528,6 +2596,7 @@
       "type": null,
       "role": "link",
       "name": "macOS",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2544,7 +2613,7 @@
       "href": "https://cal.com/download",
       "box": {
         "x": 250,
-        "y": 7954,
+        "y": 7930,
         "w": 102,
         "h": 35
       },
@@ -2594,6 +2663,7 @@
       "type": null,
       "role": "link",
       "name": "Windows",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2610,7 +2680,7 @@
       "href": "https://cal.com/download",
       "box": {
         "x": 40,
-        "y": 7999,
+        "y": 7975,
         "w": 118,
         "h": 35
       },
@@ -2660,6 +2730,7 @@
       "type": null,
       "role": "link",
       "name": "Linux",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2676,7 +2747,7 @@
       "href": "https://cal.com/download",
       "box": {
         "x": 168,
-        "y": 7999,
+        "y": 7975,
         "w": 88,
         "h": 35
       },
@@ -2726,6 +2797,7 @@
       "type": null,
       "role": "link",
       "name": "",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2739,7 +2811,7 @@
       "href": "https://www.g2.com/products/cal-com/reviews",
       "box": {
         "x": 40,
-        "y": 8058,
+        "y": 8034,
         "w": 140,
         "h": 70
       },
@@ -2771,6 +2843,7 @@
       "type": null,
       "role": "link",
       "name": "",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2784,7 +2857,7 @@
       "href": "https://trustpilot.com/review/cal.com",
       "box": {
         "x": 192,
-        "y": 8058,
+        "y": 8034,
         "w": 140,
         "h": 70
       },
@@ -2816,6 +2889,7 @@
       "type": null,
       "role": "link",
       "name": "support@cal.com",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2829,7 +2903,7 @@
       "href": "mailto:support@cal.com",
       "box": {
         "x": 120,
-        "y": 8154,
+        "y": 8130,
         "w": 118,
         "h": 16
       },
@@ -2879,6 +2953,7 @@
       "type": null,
       "role": "link",
       "name": "cal.com/help",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2892,7 +2967,7 @@
       "href": "https://cal.com/help",
       "box": {
         "x": 288,
-        "y": 8154,
+        "y": 8130,
         "w": 86,
         "h": 16
       },
@@ -2942,6 +3017,7 @@
       "type": null,
       "role": "link",
       "name": "iOS/Android App",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2957,7 +3033,7 @@
       "href": "./app",
       "box": {
         "x": 464,
-        "y": 7607,
+        "y": 7583,
         "w": 127,
         "h": 18
       },
@@ -3007,6 +3083,7 @@
       "type": null,
       "role": "link",
       "name": "Self-hosted",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3022,7 +3099,7 @@
       "href": "https://github.com/calcom/cal.com",
       "box": {
         "x": 464,
-        "y": 7647,
+        "y": 7623,
         "w": 89,
         "h": 18
       },
@@ -3072,6 +3149,7 @@
       "type": null,
       "role": "link",
       "name": "Pricing",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3087,7 +3165,7 @@
       "href": "./pricing",
       "box": {
         "x": 464,
-        "y": 7687,
+        "y": 7663,
         "w": 52,
         "h": 18
       },
@@ -3136,6 +3214,7 @@
       "type": null,
       "role": "link",
       "name": "Docs",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3151,7 +3230,7 @@
       "href": "https://cal.com/docs",
       "box": {
         "x": 464,
-        "y": 7727,
+        "y": 7703,
         "w": 38,
         "h": 18
       },
@@ -3201,6 +3280,7 @@
       "type": null,
       "role": "link",
       "name": "Cal.ai - AI Phone Agent",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3216,7 +3296,7 @@
       "href": "https://cal.com/ai",
       "box": {
         "x": 464,
-        "y": 7767,
+        "y": 7743,
         "w": 172,
         "h": 18
       },
@@ -3266,6 +3346,7 @@
       "type": null,
       "role": "link",
       "name": "Enterprise",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3281,7 +3362,7 @@
       "href": "./enterprise",
       "box": {
         "x": 464,
-        "y": 7807,
+        "y": 7783,
         "w": 77,
         "h": 18
       },
@@ -3330,6 +3411,7 @@
       "type": null,
       "role": "link",
       "name": "Integrate Cal.com",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3345,7 +3427,7 @@
       "href": "./integrate",
       "box": {
         "x": 464,
-        "y": 7847,
+        "y": 7823,
         "w": 135,
         "h": 18
       },
@@ -3395,6 +3477,7 @@
       "type": null,
       "role": "link",
       "name": "Routing",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3410,7 +3493,7 @@
       "href": "./routing",
       "box": {
         "x": 464,
-        "y": 7887,
+        "y": 7863,
         "w": 59,
         "h": 18
       },
@@ -3460,6 +3543,7 @@
       "type": null,
       "role": "link",
       "name": "Cal.com Atoms",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3475,7 +3559,7 @@
       "href": "https://cal.com/atoms",
       "box": {
         "x": 464,
-        "y": 7927,
+        "y": 7903,
         "w": 114,
         "h": 18
       },
@@ -3525,6 +3609,7 @@
       "type": null,
       "role": "link",
       "name": "Desktop App",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3540,7 +3625,7 @@
       "href": "https://cal.com/download",
       "box": {
         "x": 464,
-        "y": 7967,
+        "y": 7943,
         "w": 99,
         "h": 18
       },
@@ -3590,6 +3675,7 @@
       "type": null,
       "role": "link",
       "name": "FAQ",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3605,7 +3691,7 @@
       "href": "./faq",
       "box": {
         "x": 464,
-        "y": 8007,
+        "y": 7983,
         "w": 31,
         "h": 18
       },
@@ -3655,6 +3741,7 @@
       "type": null,
       "role": "link",
       "name": "Enterprise API",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3670,7 +3757,7 @@
       "href": "https://cal.com/docs/enterprise-features/api",
       "box": {
         "x": 464,
-        "y": 8047,
+        "y": 8023,
         "w": 106,
         "h": 18
       },
@@ -3720,6 +3807,7 @@
       "type": null,
       "role": "link",
       "name": "GitHub",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3735,7 +3823,7 @@
       "href": "https://github.com/calcom/cal.com",
       "box": {
         "x": 464,
-        "y": 8087,
+        "y": 8063,
         "w": 54,
         "h": 18
       },
@@ -3785,6 +3873,7 @@
       "type": null,
       "role": "link",
       "name": "Docker",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3800,7 +3889,7 @@
       "href": "https://cal.com/docs/introduction/quick-start/self-hosting/docker",
       "box": {
         "x": 464,
-        "y": 8127,
+        "y": 8103,
         "w": 53,
         "h": 18
       },
@@ -3850,6 +3939,7 @@
       "type": null,
       "role": "link",
       "name": "Sales",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3865,7 +3955,7 @@
       "href": "./scheduling/sales-teams",
       "box": {
         "x": 664,
-        "y": 7607,
+        "y": 7583,
         "w": 39,
         "h": 18
       },
@@ -3915,6 +4005,7 @@
       "type": null,
       "role": "link",
       "name": "Marketing",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3930,7 +4021,7 @@
       "href": "./scheduling/marketing",
       "box": {
         "x": 664,
-        "y": 7647,
+        "y": 7623,
         "w": 78,
         "h": 18
       },
@@ -3980,6 +4071,7 @@
       "type": null,
       "role": "link",
       "name": "Talent Acquisition",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3995,7 +4087,7 @@
       "href": "./scheduling/talent-acquisition-teams",
       "box": {
         "x": 664,
-        "y": 7687,
+        "y": 7663,
         "w": 134,
         "h": 18
       },
@@ -4045,6 +4137,7 @@
       "type": null,
       "role": "link",
       "name": "Customer Support",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4060,7 +4153,7 @@
       "href": "./scheduling/customer-support",
       "box": {
         "x": 664,
-        "y": 7727,
+        "y": 7703,
         "w": 140,
         "h": 18
       },
@@ -4110,6 +4203,7 @@
       "type": null,
       "role": "link",
       "name": "Higher Education",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4125,7 +4219,7 @@
       "href": "./scheduling/higher-education",
       "box": {
         "x": 664,
-        "y": 7767,
+        "y": 7743,
         "w": 130,
         "h": 18
       },
@@ -4175,6 +4269,7 @@
       "type": null,
       "role": "link",
       "name": "Telehealth",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4190,7 +4285,7 @@
       "href": "./scheduling/telehealth",
       "box": {
         "x": 664,
-        "y": 7807,
+        "y": 7783,
         "w": 78,
         "h": 18
       },
@@ -4240,6 +4335,7 @@
       "type": null,
       "role": "link",
       "name": "Professional Services",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4255,7 +4351,7 @@
       "href": "./scheduling/professional-services",
       "box": {
         "x": 664,
-        "y": 7847,
+        "y": 7823,
         "w": 158,
         "h": 18
       },
@@ -4305,6 +4401,7 @@
       "type": null,
       "role": "link",
       "name": "Hiring Marketplace",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4320,7 +4417,7 @@
       "href": "./scheduling/hiring-marketplaces",
       "box": {
         "x": 664,
-        "y": 7887,
+        "y": 7863,
         "w": 145,
         "h": 18
       },
@@ -4370,6 +4467,7 @@
       "type": null,
       "role": "link",
       "name": "Human Resources",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4385,7 +4483,7 @@
       "href": "./scheduling/people-operations",
       "box": {
         "x": 664,
-        "y": 7927,
+        "y": 7903,
         "w": 135,
         "h": 18
       },
@@ -4435,6 +4533,7 @@
       "type": null,
       "role": "link",
       "name": "Tutoring",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4450,7 +4549,7 @@
       "href": "./scheduling/higher-education",
       "box": {
         "x": 664,
-        "y": 7967,
+        "y": 7943,
         "w": 64,
         "h": 18
       },
@@ -4500,6 +4599,7 @@
       "type": null,
       "role": "link",
       "name": "C-suite",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4515,7 +4615,7 @@
       "href": "./scheduling/c-suite",
       "box": {
         "x": 664,
-        "y": 8007,
+        "y": 7983,
         "w": 55,
         "h": 18
       },
@@ -4565,6 +4665,7 @@
       "type": null,
       "role": "link",
       "name": "Law",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4580,7 +4681,7 @@
       "href": "./scheduling/law",
       "box": {
         "x": 664,
-        "y": 8047,
+        "y": 8023,
         "w": 30,
         "h": 18
       },
@@ -4630,6 +4731,7 @@
       "type": null,
       "role": "link",
       "name": "Affiliate Program",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4645,7 +4747,7 @@
       "href": "./affiliate-program",
       "box": {
         "x": 864,
-        "y": 7607,
+        "y": 7583,
         "w": 127,
         "h": 18
       },
@@ -4695,6 +4797,7 @@
       "type": null,
       "role": "link",
       "name": "Help Docs",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4710,7 +4813,7 @@
       "href": "https://cal.com/help",
       "box": {
         "x": 864,
-        "y": 7647,
+        "y": 7623,
         "w": 77,
         "h": 18
       },
@@ -4760,6 +4863,7 @@
       "type": null,
       "role": "link",
       "name": "Blog",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4775,7 +4879,7 @@
       "href": "./blog/category/all-categories",
       "box": {
         "x": 864,
-        "y": 7687,
+        "y": 7663,
         "w": 34,
         "h": 18
       },
@@ -4825,6 +4929,7 @@
       "type": null,
       "role": "link",
       "name": "Cal Fonts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4840,7 +4945,7 @@
       "href": "./font",
       "box": {
         "x": 864,
-        "y": 7727,
+        "y": 7703,
         "w": 70,
         "h": 18
       },
@@ -4890,6 +4995,7 @@
       "type": null,
       "role": "link",
       "name": "Teams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4905,7 +5011,7 @@
       "href": "./teams",
       "box": {
         "x": 864,
-        "y": 7767,
+        "y": 7743,
         "w": 48,
         "h": 18
       },
@@ -4955,6 +5061,7 @@
       "type": null,
       "role": "link",
       "name": "Embed",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4970,7 +5077,7 @@
       "href": "./embed",
       "box": {
         "x": 864,
-        "y": 7807,
+        "y": 7783,
         "w": 54,
         "h": 18
       },
@@ -5020,6 +5127,7 @@
       "type": null,
       "role": "link",
       "name": "Recurring events",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5035,7 +5143,7 @@
       "href": "./features/recurring-events",
       "box": {
         "x": 864,
-        "y": 7847,
+        "y": 7823,
         "w": 126,
         "h": 18
       },
@@ -5085,6 +5193,7 @@
       "type": null,
       "role": "link",
       "name": "Developers",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5100,7 +5209,7 @@
       "href": "https://cal.com/docs",
       "box": {
         "x": 864,
-        "y": 7887,
+        "y": 7863,
         "w": 85,
         "h": 18
       },
@@ -5150,6 +5259,7 @@
       "type": null,
       "role": "link",
       "name": "OOO",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5165,7 +5275,7 @@
       "href": "./features/ooo",
       "box": {
         "x": 864,
-        "y": 7927,
+        "y": 7903,
         "w": 39,
         "h": 18
       },
@@ -5215,6 +5325,7 @@
       "type": null,
       "role": "link",
       "name": "Workflows",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5230,7 +5341,7 @@
       "href": "./features/workflows",
       "box": {
         "x": 864,
-        "y": 7967,
+        "y": 7943,
         "w": 81,
         "h": 18
       },
@@ -5280,6 +5391,7 @@
       "type": null,
       "role": "link",
       "name": "Instant Meetings",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5295,7 +5407,7 @@
       "href": "./features/instant-meetings",
       "box": {
         "x": 864,
-        "y": 8007,
+        "y": 7983,
         "w": 129,
         "h": 18
       },
@@ -5345,6 +5457,7 @@
       "type": null,
       "role": "link",
       "name": "App Store",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5360,7 +5473,7 @@
       "href": "./features/app-store",
       "box": {
         "x": 864,
-        "y": 8047,
+        "y": 8023,
         "w": 76,
         "h": 18
       },
@@ -5410,6 +5523,7 @@
       "type": null,
       "role": "link",
       "name": "Requires confirmation",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5425,7 +5539,7 @@
       "href": "./features/requires-confirmation",
       "box": {
         "x": 864,
-        "y": 8087,
+        "y": 8063,
         "w": 166,
         "h": 18
       },
@@ -5475,6 +5589,7 @@
       "type": null,
       "role": "link",
       "name": "Payments",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5490,7 +5605,7 @@
       "href": "./features/payments",
       "box": {
         "x": 864,
-        "y": 8127,
+        "y": 8103,
         "w": 75,
         "h": 18
       },
@@ -5540,6 +5655,7 @@
       "type": null,
       "role": "link",
       "name": "Video Conferencing",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5555,7 +5671,7 @@
       "href": "./features/cal-video",
       "box": {
         "x": 864,
-        "y": 8167,
+        "y": 8143,
         "w": 150,
         "h": 18
       },
@@ -5605,6 +5721,7 @@
       "type": null,
       "role": "link",
       "name": "Cal.com vs Calendly",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5620,7 +5737,7 @@
       "href": "./calcom-vs-calendly",
       "box": {
         "x": 864,
-        "y": 8207,
+        "y": 8183,
         "w": 149,
         "h": 18
       },
@@ -5670,6 +5787,7 @@
       "type": null,
       "role": "link",
       "name": "Jobs",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5685,7 +5803,7 @@
       "href": "https://cal.com/jobs",
       "box": {
         "x": 1064,
-        "y": 7607,
+        "y": 7583,
         "w": 35,
         "h": 18
       },
@@ -5735,6 +5853,7 @@
       "type": null,
       "role": "link",
       "name": "About",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5750,7 +5869,7 @@
       "href": "https://cal.com/about",
       "box": {
         "x": 1064,
-        "y": 7647,
+        "y": 7623,
         "w": 48,
         "h": 18
       },
@@ -5800,6 +5919,7 @@
       "type": null,
       "role": "link",
       "name": "Open Startup",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5815,7 +5935,7 @@
       "href": "https://cal.com/open",
       "box": {
         "x": 1064,
-        "y": 7687,
+        "y": 7663,
         "w": 103,
         "h": 18
       },
@@ -5865,6 +5985,7 @@
       "type": null,
       "role": "link",
       "name": "Support",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5880,7 +6001,7 @@
       "href": "https://app.cal.com/support?_gl=1*1tq2plh*_gcl_au*OTk1OTIzMTMyLjE3NDA3NDM3ODI.*_ga*MTU5NzExNTE5My4xNzQwNzQzNzgy*_ga_RX4HHQ613S*MTc0MTc5Mjk5MC40Ni4xLjE3NDE3OTUxNjAuNjAuMC4xNzAxNzQ1ODY0",
       "box": {
         "x": 1064,
-        "y": 7727,
+        "y": 7703,
         "w": 62,
         "h": 18
       },
@@ -5930,6 +6051,7 @@
       "type": null,
       "role": "link",
       "name": "Privacy",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5945,7 +6067,7 @@
       "href": "./privacy",
       "box": {
         "x": 1064,
-        "y": 7767,
+        "y": 7743,
         "w": 54,
         "h": 18
       },
@@ -5995,6 +6117,7 @@
       "type": null,
       "role": "link",
       "name": "Terms",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6010,7 +6133,7 @@
       "href": "./terms",
       "box": {
         "x": 1064,
-        "y": 7807,
+        "y": 7783,
         "w": 45,
         "h": 18
       },
@@ -6060,6 +6183,7 @@
       "type": null,
       "role": "link",
       "name": "License",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6075,7 +6199,7 @@
       "href": "https://github.com/calcom/cal.com/blob/main/LICENSE",
       "box": {
         "x": 1064,
-        "y": 7847,
+        "y": 7823,
         "w": 57,
         "h": 18
       },
@@ -6125,6 +6249,7 @@
       "type": null,
       "role": "link",
       "name": "Security",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6140,7 +6265,7 @@
       "href": "./security",
       "box": {
         "x": 1064,
-        "y": 7887,
+        "y": 7863,
         "w": 62,
         "h": 18
       },
@@ -6190,6 +6315,7 @@
       "type": null,
       "role": "link",
       "name": "Changelog",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6205,7 +6331,7 @@
       "href": "https://cal.com/subscribe",
       "box": {
         "x": 1064,
-        "y": 7927,
+        "y": 7903,
         "w": 83,
         "h": 18
       },
@@ -6255,6 +6381,7 @@
       "type": null,
       "role": "link",
       "name": "Get a demo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6270,7 +6397,7 @@
       "href": "./talk-to-sales",
       "box": {
         "x": 1064,
-        "y": 7967,
+        "y": 7943,
         "w": 88,
         "h": 18
       },
@@ -6320,6 +6447,7 @@
       "type": null,
       "role": "link",
       "name": "Talk to sales",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6335,7 +6463,7 @@
       "href": "./talk-to-sales",
       "box": {
         "x": 1064,
-        "y": 8007,
+        "y": 7983,
         "w": 90,
         "h": 18
       },

@@ -5,7 +5,7 @@
     "repoPath": "~/Projects/espocrm",
     "repoCommit": "8b4f900085d2e21097b72c8cc27e14cb1de5cbd8",
     "stack": "backbone / php (bespoke, Slim-like DI container)",
-    "generatedAt": "2026-09-12T21:16:41.154Z"
+    "generatedAt": "2026-09-13T09:43:35.656Z"
   },
   "components": {
     "NavigationBar": {
@@ -152,59 +152,7 @@
         }
       },
       "seenOn": 60,
-      "description": "navigation region — 19 controls shared across 60 screens",
-      "actions": [
-        {
-          "name": "goToAccounts",
-          "via": "accounts",
-          "leadsTo": "AccountPage"
-        },
-        {
-          "name": "goToContacts",
-          "via": "contacts",
-          "leadsTo": "ContactPage"
-        },
-        {
-          "name": "goToLeads",
-          "via": "leads",
-          "leadsTo": "LeadPage"
-        },
-        {
-          "name": "goToOpportunities",
-          "via": "opportunities",
-          "leadsTo": "OpportunityPage"
-        },
-        {
-          "name": "goToEmails",
-          "via": "emails",
-          "leadsTo": "EmailPage"
-        },
-        {
-          "name": "goToCalendar",
-          "via": "calendar",
-          "leadsTo": "CalendarPage"
-        },
-        {
-          "name": "goToMeetings",
-          "via": "meetings",
-          "leadsTo": "MeetingPage"
-        },
-        {
-          "name": "goToCalls",
-          "via": "calls",
-          "leadsTo": "CallPage"
-        },
-        {
-          "name": "goToTasks",
-          "via": "tasks",
-          "leadsTo": "TaskPage"
-        },
-        {
-          "name": "goToCases",
-          "via": "cases",
-          "leadsTo": "CasePage"
-        }
-      ]
+      "description": "navigation region — 19 controls shared across 60 screens"
     },
     "TextField": {
       "kind": "field",
@@ -295,7 +243,7 @@
         },
         {
           "component": "RecordTable",
-          "as": "espoCRMDemo",
+          "as": "home",
           "columns": [
             "37Mon 07Tue 08Wed 09Thu 10Fri 11Sat 12Sun 13",
             "37",
@@ -311,7 +259,7 @@
         },
         {
           "component": "RecordTable",
-          "as": "espoCRMDemo2",
+          "as": "home2",
           "columns": [
             "37",
             "Mon 07",
@@ -356,58 +304,8 @@
         },
         {
           "component": "Link",
-          "as": "jackAdams",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "correctDiscountAmount",
-          "label": "Correct Discount Amount"
-        },
-        {
-          "component": "Link",
-          "as": "control0629",
-          "label": "06:29"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams2",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "prepareProductPresentation",
-          "label": "Prepare product presentation"
-        },
-        {
-          "component": "Link",
-          "as": "control06292",
-          "label": "06:29"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams3",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
           "as": "pT00001",
           "label": "PT-00001"
-        },
-        {
-          "component": "Link",
-          "as": "intelacard",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control0600",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams4",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
@@ -416,38 +314,8 @@
         },
         {
           "component": "Link",
-          "as": "intelacard2",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06002",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams5",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
           "as": "i00018",
           "label": "I-00018"
-        },
-        {
-          "component": "Link",
-          "as": "intelacard3",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06003",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams6",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
@@ -456,38 +324,8 @@
         },
         {
           "component": "Link",
-          "as": "intelacard4",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06004",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams7",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
           "as": "sO00015",
           "label": "SO-00015"
-        },
-        {
-          "component": "Link",
-          "as": "intelacard5",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06005",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams8",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
@@ -496,33 +334,8 @@
         },
         {
           "component": "Link",
-          "as": "intelacard6",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06006",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams9",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
           "as": "rootURLIsNotUpdated",
           "label": "Root URL is not updated"
-        },
-        {
-          "component": "Link",
-          "as": "control06007",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams10",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
@@ -531,8 +344,13 @@
         },
         {
           "component": "Link",
-          "as": "control06008",
-          "label": "06:00"
+          "as": "refactorACLFramework",
+          "label": "Refactor ACL framework"
+        },
+        {
+          "component": "Link",
+          "as": "roleUIImprovement",
+          "label": "Role UI improvement"
         },
         {
           "component": "Button",
@@ -586,11 +404,6 @@
         },
         {
           "component": "Link",
-          "as": "intelacard7",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
           "as": "prepareAnnualRevenueReportForInvestors",
           "label": "Prepare annual revenue report for investors"
         },
@@ -603,11 +416,6 @@
           "component": "Link",
           "as": "discountDiscussionWithMrBrenson",
           "label": "Discount discussion with Mr. Brenson"
-        },
-        {
-          "component": "Link",
-          "as": "easyReservations",
-          "label": "EasyReservations"
         },
         {
           "component": "Link",
@@ -671,11 +479,6 @@
         },
         {
           "component": "Link",
-          "as": "easyReservations2",
-          "label": "EasyReservations"
-        },
-        {
-          "component": "Link",
           "as": "warrantyCoverageQuestion",
           "label": "Warranty Coverage Question"
         },
@@ -697,7 +500,7 @@
           "leadsTo": "ProjectPage"
         }
       ],
-      "unverified": 22
+      "unverified": 53
     },
     {
       "name": "AboutPage",
@@ -777,11 +580,6 @@
           "label": "Create Account"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -790,21 +588,6 @@
           "component": "Button",
           "as": "search",
           "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control11212",
-          "label": "1–12 / 12"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
         },
         {
           "component": "Link",
@@ -819,7 +602,7 @@
           "leadsTo": "AccountCreatePage"
         }
       ],
-      "unverified": 5
+      "unverified": 9
     },
     {
       "name": "AccountCreatePage",
@@ -842,11 +625,6 @@
           "as": "navigation"
         },
         {
-          "component": "Link",
-          "as": "accounts",
-          "label": "Accounts"
-        },
-        {
           "component": "Button",
           "as": "save",
           "label": "Save"
@@ -859,107 +637,20 @@
         {
           "component": "TextField",
           "as": "name",
-          "field": "name"
+          "label": "Name *",
+          "via": "proximity"
         },
         {
           "component": "TextField",
           "as": "website",
-          "field": "website"
-        },
-        {
-          "component": "Button",
-          "as": "optedOut",
-          "label": "Opted Out"
-        },
-        {
-          "component": "Button",
-          "as": "invalid",
-          "label": "Invalid"
-        },
-        {
-          "component": "Button",
-          "as": "optedOut2",
-          "label": "Opted Out"
-        },
-        {
-          "component": "Button",
-          "as": "invalid2",
-          "label": "Invalid"
-        },
-        {
-          "component": "TextField",
-          "as": "street",
-          "label": "Street"
-        },
-        {
-          "component": "TextField",
-          "as": "city",
-          "label": "City"
-        },
-        {
-          "component": "TextField",
-          "as": "county",
-          "label": "County"
-        },
-        {
-          "component": "TextField",
-          "as": "postalCode",
-          "label": "Postal Code"
-        },
-        {
-          "component": "TextField",
-          "as": "country",
-          "label": "Country"
-        },
-        {
-          "component": "TextField",
-          "as": "street2",
-          "label": "Street"
-        },
-        {
-          "component": "TextField",
-          "as": "city2",
-          "label": "City"
-        },
-        {
-          "component": "TextField",
-          "as": "county2",
-          "label": "County"
-        },
-        {
-          "component": "TextField",
-          "as": "postalCode2",
-          "label": "Postal Code"
-        },
-        {
-          "component": "TextField",
-          "as": "country2",
-          "label": "Country"
+          "label": "Website",
+          "via": "proximity"
         },
         {
           "component": "TextField",
           "as": "description",
-          "field": "description"
-        },
-        {
-          "component": "TextField",
-          "as": "select",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select2",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select3",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select4",
-          "label": "Select"
+          "label": "Description",
+          "via": "proximity"
         },
         {
           "component": "Link",
@@ -967,14 +658,8 @@
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToAccounts",
-          "via": "accounts",
-          "leadsTo": "AccountPage"
-        }
-      ],
-      "unverified": 12
+      "actions": [],
+      "unverified": 31
     },
     {
       "name": "AccountEditPage",
@@ -1074,11 +759,6 @@
           "label": "Create Flowchart"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -1095,7 +775,7 @@
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 7
     },
     {
       "name": "BpmnProcessPage",
@@ -1119,47 +799,12 @@
         },
         {
           "component": "Link",
-          "as": "startProcess",
-          "label": "Start Process"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control00",
-          "label": "0 / 0"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "CalendarPage",
@@ -1281,11 +926,6 @@
           "label": "Create Call"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -1294,21 +934,6 @@
           "component": "Button",
           "as": "search",
           "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control12036",
-          "label": "1–20 / 36"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
         },
         {
           "component": "Button",
@@ -1328,7 +953,7 @@
           "leadsTo": "CallCreatePage"
         }
       ],
-      "unverified": 5
+      "unverified": 9
     },
     {
       "name": "CallCreatePage",
@@ -1351,11 +976,6 @@
           "as": "navigation"
         },
         {
-          "component": "Link",
-          "as": "calls",
-          "label": "Calls"
-        },
-        {
           "component": "Button",
           "as": "save",
           "label": "Save"
@@ -1368,17 +988,8 @@
         {
           "component": "TextField",
           "as": "name",
-          "field": "name"
-        },
-        {
-          "component": "TextField",
-          "as": "select",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select2",
-          "label": "Select"
+          "label": "Name *",
+          "via": "proximity"
         },
         {
           "component": "TextField",
@@ -1403,52 +1014,8 @@
         {
           "component": "TextField",
           "as": "description",
-          "field": "description"
-        },
-        {
-          "component": "TextField",
-          "as": "select3",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select4",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select5",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select6",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select7",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select8",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select9",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select10",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select11",
-          "label": "Select"
+          "label": "Description",
+          "via": "proximity"
         },
         {
           "component": "Link",
@@ -1456,14 +1023,8 @@
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToCalls",
-          "via": "calls",
-          "leadsTo": "CallPage"
-        }
-      ],
-      "unverified": 15
+      "actions": [],
+      "unverified": 27
     },
     {
       "name": "CallEditPage",
@@ -1538,58 +1099,12 @@
         },
         {
           "component": "Link",
-          "as": "createCampaign",
-          "label": "Create Campaign"
-        },
-        {
-          "component": "Link",
-          "as": "targetLists",
-          "label": "Target Lists"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control122",
-          "label": "1–2 / 2"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToTargetLists",
-          "via": "targetLists",
-          "leadsTo": "TargetListPage"
-        }
-      ],
-      "unverified": 6
+      "actions": [],
+      "unverified": 3
     },
     {
       "name": "CampaignCreatePage",
@@ -1689,11 +1204,6 @@
           "label": "Create Case"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -1702,21 +1212,6 @@
           "component": "Button",
           "as": "search",
           "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control11111",
-          "label": "1–11 / 11"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
         },
         {
           "component": "Link",
@@ -1731,7 +1226,7 @@
           "leadsTo": "CaseCreatePage"
         }
       ],
-      "unverified": 5
+      "unverified": 9
     },
     {
       "name": "CaseCreatePage",
@@ -1754,11 +1249,6 @@
           "as": "navigation"
         },
         {
-          "component": "Link",
-          "as": "cases",
-          "label": "Cases"
-        },
-        {
           "component": "Button",
           "as": "save",
           "label": "Save"
@@ -1771,27 +1261,8 @@
         {
           "component": "TextField",
           "as": "name",
-          "field": "name"
-        },
-        {
-          "component": "TextField",
-          "as": "select",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select2",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select3",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select4",
-          "label": "Select"
+          "label": "Name *",
+          "via": "proximity"
         },
         {
           "component": "TextField",
@@ -1799,39 +1270,10 @@
           "field": "description"
         },
         {
-          "component": "TextField",
-          "as": "select5",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select6",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select7",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select8",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select9",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select10",
-          "label": "Select"
-        },
-        {
           "component": "Checkbox",
-          "as": "isInternal",
-          "field": "isInternal"
+          "as": "hiddenFromPortal",
+          "label": "Hidden from Portal",
+          "via": "proximity"
         },
         {
           "component": "Link",
@@ -1839,14 +1281,8 @@
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToCases",
-          "via": "cases",
-          "leadsTo": "CasePage"
-        }
-      ],
-      "unverified": 10
+      "actions": [],
+      "unverified": 21
     },
     {
       "name": "CaseEditPage",
@@ -1925,11 +1361,6 @@
           "label": "Create Contact"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -1938,21 +1369,6 @@
           "component": "Button",
           "as": "search",
           "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control120",
-          "label": "1–20"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
         },
         {
           "component": "Button",
@@ -1972,7 +1388,7 @@
           "leadsTo": "ContactCreatePage"
         }
       ],
-      "unverified": 5
+      "unverified": 9
     },
     {
       "name": "ContactCreatePage",
@@ -1995,11 +1411,6 @@
           "as": "navigation"
         },
         {
-          "component": "Link",
-          "as": "contacts",
-          "label": "Contacts"
-        },
-        {
           "component": "Button",
           "as": "save",
           "label": "Save"
@@ -2018,36 +1429,6 @@
           "component": "TextField",
           "as": "lastName",
           "label": "Last Name"
-        },
-        {
-          "component": "TextField",
-          "as": "select",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select2",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "optedOut",
-          "label": "Opted Out"
-        },
-        {
-          "component": "Button",
-          "as": "invalid",
-          "label": "Invalid"
-        },
-        {
-          "component": "Button",
-          "as": "optedOut2",
-          "label": "Opted Out"
-        },
-        {
-          "component": "Button",
-          "as": "invalid2",
-          "label": "Invalid"
         },
         {
           "component": "TextField",
@@ -2082,22 +1463,8 @@
         {
           "component": "TextField",
           "as": "description",
-          "field": "description"
-        },
-        {
-          "component": "TextField",
-          "as": "select3",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select4",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select5",
-          "label": "Select"
+          "label": "Description",
+          "via": "proximity"
         },
         {
           "component": "Link",
@@ -2105,14 +1472,8 @@
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToContacts",
-          "via": "contacts",
-          "leadsTo": "ContactPage"
-        }
-      ],
-      "unverified": 13
+      "actions": [],
+      "unverified": 23
     },
     {
       "name": "ContactEditPage",
@@ -2174,47 +1535,12 @@
         },
         {
           "component": "Link",
-          "as": "createCreditNote",
-          "label": "Create Credit Note"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control00",
-          "label": "0 / 0"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "DeliveryOrderPage",
@@ -2252,47 +1578,12 @@
         },
         {
           "component": "Link",
-          "as": "createDeliveryOrder",
-          "label": "Create Delivery Order"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control111",
-          "label": "1–1 / 1"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "DocumentPage",
@@ -2333,11 +1624,6 @@
           "label": "Create Document"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -2359,43 +1645,12 @@
         },
         {
           "component": "Link",
-          "as": "quotes",
-          "label": "Quotes"
-        },
-        {
-          "component": "Link",
-          "as": "quotes2",
-          "label": "Quotes"
-        },
-        {
-          "component": "Button",
-          "as": "control111",
-          "label": "1–1 / 1"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToQuotes",
-          "via": "quotes2",
-          "leadsTo": "QuotePage"
-        }
-      ],
-      "unverified": 6
+      "actions": [],
+      "unverified": 12
     },
     {
       "name": "DocumentCreatePage",
@@ -2540,28 +1795,13 @@
           "label": "Trash"
         },
         {
-          "component": "Button",
-          "as": "control0",
-          "label": "0"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
           "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 7
+      "unverified": 10
     },
     {
       "name": "EmailCreatePage",
@@ -2582,11 +1822,6 @@
         {
           "component": "NavigationBar",
           "as": "navigation"
-        },
-        {
-          "component": "Link",
-          "as": "emails",
-          "label": "Emails"
         },
         {
           "component": "Button",
@@ -2611,27 +1846,14 @@
         {
           "component": "TextField",
           "as": "from",
-          "field": "from"
-        },
-        {
-          "component": "TextField",
-          "as": "select",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select2",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select3",
-          "label": "Select"
+          "label": "From *",
+          "via": "proximity"
         },
         {
           "component": "TextField",
           "as": "subject",
-          "field": "subject"
+          "label": "Subject *",
+          "via": "proximity"
         },
         {
           "component": "Button",
@@ -2695,11 +1917,6 @@
         },
         {
           "component": "Button",
-          "as": "table",
-          "label": "Table"
-        },
-        {
-          "component": "Button",
           "as": "linkCMDK",
           "label": "Link (CMD+K)"
         },
@@ -2735,18 +1952,9 @@
         },
         {
           "component": "Checkbox",
-          "as": "isHtml",
-          "field": "isHtml"
-        },
-        {
-          "component": "TextField",
-          "as": "select4",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select5",
-          "label": "Select"
+          "as": "hTML",
+          "label": "HTML",
+          "via": "proximity"
         },
         {
           "component": "Link",
@@ -2754,14 +1962,8 @@
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToEmails",
-          "via": "emails",
-          "leadsTo": "EmailPage"
-        }
-      ],
-      "unverified": 12
+      "actions": [],
+      "unverified": 19
     },
     {
       "name": "EmailEditPage",
@@ -2841,403 +2043,13 @@
           "as": "navigation"
         },
         {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "correctDiscountAmount",
-          "label": "Correct Discount Amount"
-        },
-        {
-          "component": "Link",
-          "as": "control0629",
-          "label": "06:29"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams2",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "prepareProductPresentation",
-          "label": "Prepare product presentation"
-        },
-        {
-          "component": "Link",
-          "as": "control06292",
-          "label": "06:29"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams3",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "pT00001",
-          "label": "PT-00001"
-        },
-        {
-          "component": "Link",
-          "as": "intelacard",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control0600",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams4",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "pR00001",
-          "label": "PR-00001"
-        },
-        {
-          "component": "Link",
-          "as": "intelacard2",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06002",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams5",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "i00018",
-          "label": "I-00018"
-        },
-        {
-          "component": "Link",
-          "as": "intelacard3",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06003",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams6",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "dO00004",
-          "label": "DO-00004"
-        },
-        {
-          "component": "Link",
-          "as": "intelacard4",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06004",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams7",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "sO00015",
-          "label": "SO-00015"
-        },
-        {
-          "component": "Link",
-          "as": "intelacard5",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06005",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams8",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "q00018",
-          "label": "Q-00018"
-        },
-        {
-          "component": "Link",
-          "as": "intelacard6",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06006",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams9",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "rootURLIsNotUpdated",
-          "label": "Root URL is not updated"
-        },
-        {
-          "component": "Link",
-          "as": "qualityAssurance",
-          "label": "Quality Assurance"
-        },
-        {
-          "component": "Link",
-          "as": "control06007",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams10",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "rootURLIsNotUpdated2",
-          "label": "Root URL is not updated"
-        },
-        {
-          "component": "Link",
-          "as": "control06008",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams11",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "labelIsNotTranslated",
-          "label": "Label is not translated"
-        },
-        {
-          "component": "Link",
-          "as": "qualityAssurance2",
-          "label": "Quality Assurance"
-        },
-        {
-          "component": "Link",
-          "as": "control06009",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams12",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "labelIsNotTranslated2",
-          "label": "Label is not translated"
-        },
-        {
-          "component": "Link",
-          "as": "control060010",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams13",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "cathyBush",
-          "label": "Cathy Bush"
-        },
-        {
-          "component": "Link",
-          "as": "qualityAssurance3",
-          "label": "Quality Assurance"
-        },
-        {
-          "component": "Link",
-          "as": "control060011",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams14",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "adamPowers",
-          "label": "Adam Powers"
-        },
-        {
-          "component": "Link",
-          "as": "qualityAssurance4",
-          "label": "Quality Assurance"
-        },
-        {
-          "component": "Link",
-          "as": "control060012",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams15",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "emilyShelter",
-          "label": "Emily Shelter"
-        },
-        {
-          "component": "Link",
-          "as": "qualityAssurance5",
-          "label": "Quality Assurance"
-        },
-        {
-          "component": "Link",
-          "as": "control060013",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams16",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "benSmith",
-          "label": "Ben Smith"
-        },
-        {
-          "component": "Link",
-          "as": "qualityAssurance6",
-          "label": "Quality Assurance"
-        },
-        {
-          "component": "Link",
-          "as": "control060014",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams17",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams18",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "qualityAssurance7",
-          "label": "Quality Assurance"
-        },
-        {
-          "component": "Link",
-          "as": "control060015",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams19",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "qualityAssurance8",
-          "label": "Quality Assurance"
-        },
-        {
-          "component": "Link",
-          "as": "control060016",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams20",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "refactorACLFramework",
-          "label": "Refactor ACL framework"
-        },
-        {
-          "component": "Button",
-          "as": "points",
-          "label": "Points"
-        },
-        {
-          "component": "Link",
-          "as": "control060017",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams21",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "roleUIImprovement",
-          "label": "Role UI improvement"
-        },
-        {
-          "component": "Button",
-          "as": "points2",
-          "label": "Points"
-        },
-        {
-          "component": "Link",
-          "as": "control060018",
-          "label": "06:00"
-        },
-        {
-          "component": "Button",
-          "as": "showMore",
-          "label": "Show more"
-        },
-        {
           "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 24
+      "unverified": 3
     },
     {
       "name": "ImportPage",
@@ -3294,47 +2106,12 @@
         },
         {
           "component": "Link",
-          "as": "createAdjustment",
-          "label": "Create Adjustment"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control122",
-          "label": "1–2 / 2"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "InventoryNumberPage",
@@ -3375,11 +2152,6 @@
           "label": "Create Number"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -3388,21 +2160,6 @@
           "component": "Button",
           "as": "search",
           "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control12040",
-          "label": "1–20 / 40"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
         },
         {
           "component": "Button",
@@ -3416,7 +2173,7 @@
         }
       ],
       "actions": [],
-      "unverified": 5
+      "unverified": 9
     },
     {
       "name": "InventoryTransactionPage",
@@ -3471,21 +2228,6 @@
         },
         {
           "component": "Button",
-          "as": "control120111",
-          "label": "1–20 / 111"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Button",
           "as": "control91ShowMore",
           "label": "91 Show more"
         },
@@ -3496,7 +2238,7 @@
         }
       ],
       "actions": [],
-      "unverified": 5
+      "unverified": 8
     },
     {
       "name": "InvoicePage",
@@ -3534,47 +2276,12 @@
         },
         {
           "component": "Link",
-          "as": "createInvoice",
-          "label": "Create Invoice"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control111",
-          "label": "1–1 / 1"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "KnowledgeBaseArticlePage",
@@ -3602,11 +2309,6 @@
           "label": "Create Article"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -3628,48 +2330,12 @@
         },
         {
           "component": "Link",
-          "as": "userGuide",
-          "label": "User Guide"
-        },
-        {
-          "component": "Link",
-          "as": "administration",
-          "label": "Administration"
-        },
-        {
-          "component": "Link",
-          "as": "extensions",
-          "label": "Extensions"
-        },
-        {
-          "component": "Link",
-          "as": "userGuide2",
-          "label": "User Guide"
-        },
-        {
-          "component": "Link",
-          "as": "administration2",
-          "label": "Administration"
-        },
-        {
-          "component": "Link",
-          "as": "extensions2",
-          "label": "Extensions"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToAdministration",
-          "via": "administration2",
-          "leadsTo": "AdminPage"
-        }
-      ],
-      "unverified": 6
+      "actions": [],
+      "unverified": 13
     },
     {
       "name": "KnowledgeBaseArticleCreatePage",
@@ -3787,11 +2453,6 @@
           "label": "Create Lead"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -3800,21 +2461,6 @@
           "component": "Button",
           "as": "search",
           "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control12020",
-          "label": "1–20 / 20"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
         },
         {
           "component": "Link",
@@ -3829,7 +2475,7 @@
           "leadsTo": "LeadCreatePage"
         }
       ],
-      "unverified": 5
+      "unverified": 9
     },
     {
       "name": "LeadCreatePage",
@@ -3850,11 +2496,6 @@
         {
           "component": "NavigationBar",
           "as": "navigation"
-        },
-        {
-          "component": "Link",
-          "as": "leads",
-          "label": "Leads"
         },
         {
           "component": "Button",
@@ -3879,37 +2520,20 @@
         {
           "component": "TextField",
           "as": "accountName",
-          "field": "accountName"
-        },
-        {
-          "component": "Button",
-          "as": "optedOut",
-          "label": "Opted Out"
-        },
-        {
-          "component": "Button",
-          "as": "invalid",
-          "label": "Invalid"
-        },
-        {
-          "component": "Button",
-          "as": "optedOut2",
-          "label": "Opted Out"
-        },
-        {
-          "component": "Button",
-          "as": "invalid2",
-          "label": "Invalid"
+          "label": "Account Name",
+          "via": "proximity"
         },
         {
           "component": "TextField",
           "as": "title",
-          "field": "title"
+          "label": "Title",
+          "via": "proximity"
         },
         {
           "component": "TextField",
           "as": "website",
-          "field": "website"
+          "label": "Website",
+          "via": "proximity"
         },
         {
           "component": "TextField",
@@ -3943,33 +2567,9 @@
         },
         {
           "component": "TextField",
-          "as": "select",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select2",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
           "as": "description",
-          "field": "description"
-        },
-        {
-          "component": "TextField",
-          "as": "select3",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select4",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select5",
-          "label": "Select"
+          "label": "Description",
+          "via": "proximity"
         },
         {
           "component": "Link",
@@ -3977,14 +2577,8 @@
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToLeads",
-          "via": "leads",
-          "leadsTo": "LeadPage"
-        }
-      ],
-      "unverified": 16
+      "actions": [],
+      "unverified": 26
     },
     {
       "name": "LeadEditPage",
@@ -4064,11 +2658,6 @@
           "label": "Create Meeting"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -4077,21 +2666,6 @@
           "component": "Button",
           "as": "search",
           "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control12027",
-          "label": "1–20 / 27"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
         },
         {
           "component": "Button",
@@ -4111,7 +2685,7 @@
           "leadsTo": "MeetingCreatePage"
         }
       ],
-      "unverified": 5
+      "unverified": 9
     },
     {
       "name": "MeetingCreatePage",
@@ -4134,11 +2708,6 @@
           "as": "navigation"
         },
         {
-          "component": "Link",
-          "as": "meetings",
-          "label": "Meetings"
-        },
-        {
           "component": "Button",
           "as": "save",
           "label": "Save"
@@ -4151,17 +2720,8 @@
         {
           "component": "TextField",
           "as": "name",
-          "field": "name"
-        },
-        {
-          "component": "TextField",
-          "as": "select",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select2",
-          "label": "Select"
+          "label": "Name *",
+          "via": "proximity"
         },
         {
           "component": "TextField",
@@ -4186,52 +2746,8 @@
         {
           "component": "TextField",
           "as": "description",
-          "field": "description"
-        },
-        {
-          "component": "TextField",
-          "as": "select3",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select4",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select5",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select6",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select7",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select8",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select9",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select10",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select11",
-          "label": "Select"
+          "label": "Description",
+          "via": "proximity"
         },
         {
           "component": "Link",
@@ -4239,14 +2755,8 @@
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToMeetings",
-          "via": "meetings",
-          "leadsTo": "MeetingPage"
-        }
-      ],
-      "unverified": 14
+      "actions": [],
+      "unverified": 26
     },
     {
       "name": "MeetingEditPage",
@@ -4344,11 +2854,6 @@
           "label": "Create Opportunity"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -4381,7 +2886,7 @@
           "leadsTo": "OpportunityCreatePage"
         }
       ],
-      "unverified": 5
+      "unverified": 6
     },
     {
       "name": "OpportunityCreatePage",
@@ -4404,11 +2909,6 @@
           "as": "navigation"
         },
         {
-          "component": "Link",
-          "as": "opportunities",
-          "label": "Opportunities"
-        },
-        {
           "component": "Button",
           "as": "save",
           "label": "Save"
@@ -4421,12 +2921,8 @@
         {
           "component": "TextField",
           "as": "name",
-          "field": "name"
-        },
-        {
-          "component": "TextField",
-          "as": "select",
-          "label": "Select"
+          "label": "Name *",
+          "via": "proximity"
         },
         {
           "component": "TextField",
@@ -4436,7 +2932,8 @@
         {
           "component": "TextField",
           "as": "probability",
-          "field": "probability"
+          "label": "Probability, %",
+          "via": "proximity"
         },
         {
           "component": "TextField",
@@ -4445,18 +2942,9 @@
         },
         {
           "component": "TextField",
-          "as": "select2",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select3",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
           "as": "description",
-          "field": "description"
+          "label": "Description",
+          "via": "proximity"
         },
         {
           "component": "Button",
@@ -4464,34 +2952,13 @@
           "label": "Add Item"
         },
         {
-          "component": "TextField",
-          "as": "select4",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select5",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select6",
-          "label": "Select"
-        },
-        {
           "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToOpportunities",
-          "via": "opportunities",
-          "leadsTo": "OpportunityPage"
-        }
-      ],
-      "unverified": 12
+      "actions": [],
+      "unverified": 19
     },
     {
       "name": "OpportunityEditPage",
@@ -4568,47 +3035,12 @@
         },
         {
           "component": "Link",
-          "as": "createPayment",
-          "label": "Create Payment"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control111",
-          "label": "1–1 / 1"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "PaymentRequestPage",
@@ -4646,47 +3078,12 @@
         },
         {
           "component": "Link",
-          "as": "createPaymentRequest",
-          "label": "Create Payment Request"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control111",
-          "label": "1–1 / 1"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "PreferencesPage",
@@ -4734,19 +3131,16 @@
           "label": "User Interface"
         },
         {
-          "component": "Button",
-          "as": "notifications",
-          "label": "Notifications"
-        },
-        {
           "component": "TextField",
           "as": "thousandSeparator",
-          "field": "thousandSeparator"
+          "label": "Thousand Separator",
+          "via": "proximity"
         },
         {
           "component": "TextField",
           "as": "decimalMark",
-          "field": "decimalMark"
+          "label": "Decimal Mark *",
+          "via": "proximity"
         },
         {
           "component": "Link",
@@ -4755,7 +3149,7 @@
         }
       ],
       "actions": [],
-      "unverified": 9
+      "unverified": 10
     },
     {
       "name": "ProductPage",
@@ -4781,11 +3175,6 @@
           "component": "Button",
           "as": "createProduct",
           "label": "Create Product"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
         },
         {
           "component": "TextField",
@@ -4824,7 +3213,7 @@
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 7
     },
     {
       "name": "ProjectPage",
@@ -4865,11 +3254,6 @@
           "label": "Create Project"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -4885,28 +3269,13 @@
           "label": "Marketing"
         },
         {
-          "component": "Button",
-          "as": "control133",
-          "label": "1–3 / 3"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
           "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 7
+      "unverified": 11
     },
     {
       "name": "ProjectTaskPage",
@@ -4948,11 +3317,6 @@
           "label": "Create Task"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -4961,21 +3325,6 @@
           "component": "Button",
           "as": "search",
           "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control12023",
-          "label": "1–20 / 23"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
         },
         {
           "component": "Button",
@@ -4995,7 +3344,7 @@
           "leadsTo": "ProjectTaskCreatePage"
         }
       ],
-      "unverified": 5
+      "unverified": 9
     },
     {
       "name": "ProjectTaskCreatePage",
@@ -5018,11 +3367,6 @@
           "as": "navigation"
         },
         {
-          "component": "Link",
-          "as": "projectTasks",
-          "label": "Project Tasks"
-        },
-        {
           "component": "Button",
           "as": "save",
           "label": "Save"
@@ -5035,12 +3379,8 @@
         {
           "component": "TextField",
           "as": "name",
-          "field": "name"
-        },
-        {
-          "component": "TextField",
-          "as": "select",
-          "label": "Select"
+          "label": "Name *",
+          "via": "proximity"
         },
         {
           "component": "TextField",
@@ -5058,34 +3398,13 @@
           "field": "description"
         },
         {
-          "component": "TextField",
-          "as": "select2",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select3",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select4",
-          "label": "Select"
-        },
-        {
           "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToProjectTasks",
-          "via": "projectTasks",
-          "leadsTo": "ProjectTaskPage"
-        }
-      ],
-      "unverified": 8
+      "actions": [],
+      "unverified": 13
     },
     {
       "name": "PurchaseOrderPage",
@@ -5123,47 +3442,12 @@
         },
         {
           "component": "Link",
-          "as": "createPurchaseOrder",
-          "label": "Create Purchase Order"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control155",
-          "label": "1–5 / 5"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "QuotePage",
@@ -5201,47 +3485,12 @@
         },
         {
           "component": "Link",
-          "as": "createQuote",
-          "label": "Create Quote"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control111",
-          "label": "1–1 / 1"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "ReceiptOrderPage",
@@ -5279,47 +3528,12 @@
         },
         {
           "component": "Link",
-          "as": "createReceiptOrder",
-          "label": "Create Receipt Order"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control144",
-          "label": "1–4 / 4"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "ReportPage",
@@ -5359,11 +3573,6 @@
           "label": "Create Report"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -5389,28 +3598,13 @@
           "label": "Sales & Purchase"
         },
         {
-          "component": "Button",
-          "as": "control199",
-          "label": "1–9 / 9"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
           "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 7
+      "unverified": 11
     },
     {
       "name": "ReturnOrderPage",
@@ -5434,47 +3628,12 @@
         },
         {
           "component": "Link",
-          "as": "createReturnOrder",
-          "label": "Create Return Order"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control00",
-          "label": "0 / 0"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "RolePage",
@@ -5531,47 +3690,12 @@
         },
         {
           "component": "Link",
-          "as": "createSalesOrder",
-          "label": "Create Sales Order"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control111",
-          "label": "1–1 / 1"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "StreamPage",
@@ -5620,58 +3744,8 @@
         },
         {
           "component": "Link",
-          "as": "jackAdams",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "correctDiscountAmount",
-          "label": "Correct Discount Amount"
-        },
-        {
-          "component": "Link",
-          "as": "control0629",
-          "label": "06:29"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams2",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "prepareProductPresentation",
-          "label": "Prepare product presentation"
-        },
-        {
-          "component": "Link",
-          "as": "control06292",
-          "label": "06:29"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams3",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
           "as": "pT00001",
           "label": "PT-00001"
-        },
-        {
-          "component": "Link",
-          "as": "intelacard",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control0600",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams4",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
@@ -5680,38 +3754,8 @@
         },
         {
           "component": "Link",
-          "as": "intelacard2",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06002",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams5",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
           "as": "i00018",
           "label": "I-00018"
-        },
-        {
-          "component": "Link",
-          "as": "intelacard3",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06003",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams6",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
@@ -5720,38 +3764,8 @@
         },
         {
           "component": "Link",
-          "as": "intelacard4",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06004",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams7",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
           "as": "sO00015",
           "label": "SO-00015"
-        },
-        {
-          "component": "Link",
-          "as": "intelacard5",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06005",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams8",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
@@ -5760,33 +3774,8 @@
         },
         {
           "component": "Link",
-          "as": "intelacard6",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06006",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams9",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
           "as": "rootURLIsNotUpdated",
           "label": "Root URL is not updated"
-        },
-        {
-          "component": "Link",
-          "as": "control06007",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams10",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
@@ -5795,33 +3784,8 @@
         },
         {
           "component": "Link",
-          "as": "control06008",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams11",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
           "as": "refactorACLFramework",
           "label": "Refactor ACL framework"
-        },
-        {
-          "component": "Button",
-          "as": "points",
-          "label": "Points"
-        },
-        {
-          "component": "Link",
-          "as": "control06009",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams12",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
@@ -5829,39 +3793,9 @@
           "label": "Role UI improvement"
         },
         {
-          "component": "Button",
-          "as": "points2",
-          "label": "Points"
-        },
-        {
-          "component": "Link",
-          "as": "control060010",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams13",
-          "label": "Jack Adams"
-        },
-        {
           "component": "Link",
           "as": "themeFramework",
           "label": "Theme framework"
-        },
-        {
-          "component": "Button",
-          "as": "points3",
-          "label": "Points"
-        },
-        {
-          "component": "Link",
-          "as": "control060011",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams14",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
@@ -5869,39 +3803,9 @@
           "label": "Light theme"
         },
         {
-          "component": "Button",
-          "as": "points4",
-          "label": "Points"
-        },
-        {
-          "component": "Link",
-          "as": "control060012",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams15",
-          "label": "Jack Adams"
-        },
-        {
           "component": "Link",
           "as": "refactorStylesheets",
           "label": "Refactor stylesheets"
-        },
-        {
-          "component": "Button",
-          "as": "points5",
-          "label": "Points"
-        },
-        {
-          "component": "Link",
-          "as": "control060013",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams16",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
@@ -5909,39 +3813,9 @@
           "label": "OIDC authentication"
         },
         {
-          "component": "Button",
-          "as": "points6",
-          "label": "Points"
-        },
-        {
-          "component": "Link",
-          "as": "control060014",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams17",
-          "label": "Jack Adams"
-        },
-        {
           "component": "Link",
           "as": "teamManagement",
           "label": "Team management"
-        },
-        {
-          "component": "Button",
-          "as": "points7",
-          "label": "Points"
-        },
-        {
-          "component": "Link",
-          "as": "control060015",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams18",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
@@ -5950,48 +3824,13 @@
         },
         {
           "component": "Link",
-          "as": "control060016",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams19",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
           "as": "bulkOrder482",
           "label": "Bulk Order #482"
-        },
-        {
-          "component": "Button",
-          "as": "amount",
-          "label": "Amount"
-        },
-        {
-          "component": "Link",
-          "as": "control060017",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams20",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
           "as": "callCenterEquipmentOrder",
           "label": "Call Center Equipment Order"
-        },
-        {
-          "component": "Button",
-          "as": "amount2",
-          "label": "Amount"
-        },
-        {
-          "component": "Link",
-          "as": "control060018",
-          "label": "06:00"
         },
         {
           "component": "Button",
@@ -6005,7 +3844,7 @@
         }
       ],
       "actions": [],
-      "unverified": 24
+      "unverified": 82
     },
     {
       "name": "SubscriptionPage",
@@ -6029,47 +3868,12 @@
         },
         {
           "component": "Link",
-          "as": "createSubscription",
-          "label": "Create Subscription"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control00",
-          "label": "0 / 0"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "SupplierPage",
@@ -6105,47 +3909,12 @@
         },
         {
           "component": "Link",
-          "as": "createSupplier",
-          "label": "Create Supplier"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control111",
-          "label": "1–1 / 1"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "SupplierBillPage",
@@ -6169,47 +3938,12 @@
         },
         {
           "component": "Link",
-          "as": "createBill",
-          "label": "Create Bill"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control00",
-          "label": "0 / 0"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "SupplierCreditPage",
@@ -6233,47 +3967,12 @@
         },
         {
           "component": "Link",
-          "as": "createBillCredit",
-          "label": "Create Bill Credit"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control00",
-          "label": "0 / 0"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "TargetListPage",
@@ -6308,48 +4007,13 @@
           "keyColumn": "Name"
         },
         {
-          "component": "Button",
-          "as": "createTargetList",
-          "label": "Create Target List"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control122",
-          "label": "1–2 / 2"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
           "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "TargetListCreatePage",
@@ -6448,11 +4112,6 @@
           "label": "Create Task"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -6473,21 +4132,6 @@
           "label": "Kanban"
         },
         {
-          "component": "Button",
-          "as": "control11919",
-          "label": "1–19 / 19"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
           "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
@@ -6500,7 +4144,7 @@
           "leadsTo": "TaskCreatePage"
         }
       ],
-      "unverified": 5
+      "unverified": 9
     },
     {
       "name": "TaskCreatePage",
@@ -6523,11 +4167,6 @@
           "as": "navigation"
         },
         {
-          "component": "Link",
-          "as": "tasks",
-          "label": "Tasks"
-        },
-        {
           "component": "Button",
           "as": "save",
           "label": "Save"
@@ -6540,17 +4179,8 @@
         {
           "component": "TextField",
           "as": "name",
-          "field": "name"
-        },
-        {
-          "component": "TextField",
-          "as": "select",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select2",
-          "label": "Select"
+          "label": "Name *",
+          "via": "proximity"
         },
         {
           "component": "TextField",
@@ -6578,49 +4208,13 @@
           "field": "description"
         },
         {
-          "component": "TextField",
-          "as": "select3",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select4",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select5",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select6",
-          "label": "Select"
-        },
-        {
-          "component": "TextField",
-          "as": "select7",
-          "label": "Select"
-        },
-        {
-          "component": "Button",
-          "as": "select8",
-          "label": "Select"
-        },
-        {
           "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
-      "actions": [
-        {
-          "name": "goToTasks",
-          "via": "tasks",
-          "leadsTo": "TaskPage"
-        }
-      ],
-      "unverified": 12
+      "actions": [],
+      "unverified": 21
     },
     {
       "name": "TaskEditPage",
@@ -6695,11 +4289,6 @@
           "label": "Create Team"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -6710,28 +4299,13 @@
           "label": "Search"
         },
         {
-          "component": "Button",
-          "as": "control111",
-          "label": "1–1 / 1"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
           "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 4
+      "unverified": 8
     },
     {
       "name": "TransferOrderPage",
@@ -6769,47 +4343,12 @@
         },
         {
           "component": "Link",
-          "as": "createTransferOrder",
-          "label": "Create Transfer Order"
-        },
-        {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
-          "component": "TextField",
-          "as": "textFilter",
-          "field": "textFilter"
-        },
-        {
-          "component": "Button",
-          "as": "search",
-          "label": "Search"
-        },
-        {
-          "component": "Button",
-          "as": "control144",
-          "label": "1–4 / 4"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
-          "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "UserPage",
@@ -6851,11 +4390,6 @@
           "label": "Create User"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -6866,28 +4400,13 @@
           "label": "Search"
         },
         {
-          "component": "Button",
-          "as": "control155",
-          "label": "1–5 / 5"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
           "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 5
+      "unverified": 9
     },
     {
       "name": "UserCreatePage",
@@ -6951,18 +4470,8 @@
         },
         {
           "component": "Link",
-          "as": "users",
-          "label": "Users"
-        },
-        {
-          "component": "Link",
           "as": "externalAccounts",
           "label": "External Accounts"
-        },
-        {
-          "component": "Link",
-          "as": "calendar",
-          "label": "Calendar"
         },
         {
           "component": "Button",
@@ -7016,58 +4525,8 @@
         },
         {
           "component": "Link",
-          "as": "jackAdams",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "correctDiscountAmount",
-          "label": "Correct Discount Amount"
-        },
-        {
-          "component": "Link",
-          "as": "control0629",
-          "label": "06:29"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams2",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
-          "as": "prepareProductPresentation",
-          "label": "Prepare product presentation"
-        },
-        {
-          "component": "Link",
-          "as": "control06292",
-          "label": "06:29"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams3",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
           "as": "pT00001",
           "label": "PT-00001"
-        },
-        {
-          "component": "Link",
-          "as": "intelacard",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control0600",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams4",
-          "label": "Jack Adams"
         },
         {
           "component": "Link",
@@ -7076,43 +4535,18 @@
         },
         {
           "component": "Link",
-          "as": "intelacard2",
-          "label": "Intelacard"
-        },
-        {
-          "component": "Link",
-          "as": "control06002",
-          "label": "06:00"
-        },
-        {
-          "component": "Link",
-          "as": "jackAdams5",
-          "label": "Jack Adams"
-        },
-        {
-          "component": "Link",
           "as": "i00018",
           "label": "I-00018"
         },
         {
           "component": "Link",
-          "as": "intelacard3",
-          "label": "Intelacard"
+          "as": "dO00004",
+          "label": "DO-00004"
         },
         {
           "component": "Link",
-          "as": "control06003",
-          "label": "06:00"
-        },
-        {
-          "component": "Button",
-          "as": "showMore",
-          "label": "Show more"
-        },
-        {
-          "component": "Button",
-          "as": "showMore2",
-          "label": "Show more"
+          "as": "sO00015",
+          "label": "SO-00015"
         },
         {
           "component": "Link",
@@ -7122,22 +4556,12 @@
       ],
       "actions": [
         {
-          "name": "goToCalendar",
-          "via": "calendar",
-          "leadsTo": "CalendarPage"
-        },
-        {
-          "name": "goToUsers",
-          "via": "users",
-          "leadsTo": "UserPage"
-        },
-        {
           "name": "goToTeams",
           "via": "teams",
           "leadsTo": "TeamPage"
         }
       ],
-      "unverified": 12
+      "unverified": 31
     },
     {
       "name": "WarehousePage",
@@ -7178,11 +4602,6 @@
           "label": "Create Warehouse"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -7193,28 +4612,13 @@
           "label": "Search"
         },
         {
-          "component": "Button",
-          "as": "control133",
-          "label": "1–3 / 3"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
           "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 5
+      "unverified": 9
     },
     {
       "name": "WorkflowPage",
@@ -7242,11 +4646,6 @@
           "label": "Create Rule"
         },
         {
-          "component": "Button",
-          "as": "all",
-          "label": "All"
-        },
-        {
           "component": "TextField",
           "as": "textFilter",
           "field": "textFilter"
@@ -7263,7 +4662,7 @@
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 7
     },
     {
       "name": "WorkingTimeCalendarPage",
@@ -7308,28 +4707,13 @@
           "label": "Exceptions"
         },
         {
-          "component": "Button",
-          "as": "control122",
-          "label": "1–2 / 2"
-        },
-        {
-          "component": "Button",
-          "as": "previousPage",
-          "label": "Previous Page"
-        },
-        {
-          "component": "Button",
-          "as": "nextPage",
-          "label": "Next Page"
-        },
-        {
           "component": "Link",
           "as": "espoCRMInc",
           "label": "EspoCRM, Inc."
         }
       ],
       "actions": [],
-      "unverified": 3
+      "unverified": 6
     }
   ],
   "api": {
@@ -7542,9 +4926,9 @@
     "declaredOnly": 37,
     "components": 10,
     "regions": 1,
-    "uses": 951,
-    "actions": 26,
-    "unverified": 464,
+    "uses": 451,
+    "actions": 11,
+    "unverified": 679,
     "endpoints": 9,
     "resources": 2,
     "creatable": 1,

@@ -4,10 +4,10 @@
 
 - **App:** Cal.com (booker slice)
 - **Base URL:** https://cal.com/
-- **Generated:** 2026-09-12T21:47:29.291Z
-- **Visible interactive controls:** 634
+- **Generated:** 2026-09-13T09:41:40.955Z
+- **Visible interactive controls:** 630
 - **Addressable semantically:** 507 (80%)
-- **Needing a CSS path or still ambiguous:** 127
+- **Needing a CSS path or still ambiguous:** 123
 
 Every candidate below was counted against the live DOM at extraction time, so
 "resolves uniquely" means exactly one element on the rendered page answered to
@@ -25,14 +25,20 @@ markup around them is rearranged, and they are listed in full below.
 | 2 | `role` | yes | 522 |
 | 3 | `label` | yes | 0 |
 | 4 | `placeholder` | yes | 0 |
-| 5 | `scoped` | yes | 0 |
-| 6 | `attribute` | no | 0 |
-| 7 | `text` | no | 4 |
-| 8 | `css` | no | 99 |
+| 5 | `// A label the app renders next to a control but never associated with it. Semantic —
+  // it is the word a person reads — but resolved by walking the DOM` | no | 0 |
+| 6 | `not by asking the
+  // accessibility tree` | no | 0 |
+| 7 | `so it ranks below the associations the app actually declared.
+  'proximity` | no | 0 |
+| 8 | `scoped` | yes | 0 |
+| 9 | `attribute` | no | 0 |
+| 10 | `text` | no | 0 |
+| 11 | `css` | no | 99 |
 
 ## Recommendation
 
-Only 9 of 634 visible controls carry a test id, so the working default is `getByRole` with an exact accessible name (522 controls), falling back to `getByLabel` inside forms (0) and `getByPlaceholder` (0).
+Only 9 of 630 visible controls carry a test id, so the working default is `getByRole` with an exact accessible name (522 controls), falling back to `getByLabel` inside forms (0) and `getByPlaceholder` (0).
 
 Where a control has no name of its own, 0 were reachable through an ancestor the application names deliberately — `[data-name="…"] input` and the like. That is a CSS expression anchored to a semantic attribute, so it survives restyling and breaks only when the field is renamed. Prefer it over a markup path every time.
 
@@ -120,13 +126,9 @@ A bare markup path was the only option left for 99 controls. Each is a control w
 | `pricing` | Try for free | link | `locator('div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > a.framer-v-fewsea')` | 1 | no semantic candidate resolved uniquely; fell back to css |
 | `pricing` | Talk to sales | link | `locator('div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(5) > div:nth-of-type(3) > a')` | 1 | no semantic candidate resolved uniquely; fell back to css |
 | `pricing` | Set meeting limitsBuffer before & after eventsAutomatically add time before or after meetings to prevent back-to-back bo | div | `locator('div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(42) > div')` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
-| `pricing` | Set meeting limits | div | `getByText('Set meeting limits', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `pricing` | CustomizationTranslate meeting title & descriptionOffer booking pages and event details in multiple languages.Custom bra | div | `locator('div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(43) > div')` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
-| `pricing` | Customization | div | `getByText('Customization', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `pricing` | Data management & securityHIPAA complianceSupport HIPAA requirements for handling protected health information (PHI).Rol | div | `locator('div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(44) > div')` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
-| `pricing` | Data management & security | div | `getByText('Data management & security', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `pricing` | IntegrationsGoogle Meet, Microsoft Teams, Zoom, Cal Video and 20+ other conferencing toolsAutomatically add video meetin | div | `locator('div:nth-of-type(2) > div:nth-of-type(2) > div > div > div:nth-of-type(45) > div.framer-pARsT')` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
-| `pricing` | Integrations | div | `getByText('Integrations', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `pricing` | Get started | link | `locator('div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > a')` | 1 | no semantic candidate resolved uniquely; fell back to css |
 | `pricing` | Talk to sales | link | `locator('div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > a')` | 1 | no semantic candidate resolved uniquely; fell back to css |
 | `pricing` | Home Cal.com | link | `locator('div.ssr-variant.hidden-wcozae:nth-of-type(3) > div > div.framer-YAKWS.framer-lBsZX > div > div:nth-of-type(1) >` | 1 | no semantic candidate resolved uniquely; fell back to css |

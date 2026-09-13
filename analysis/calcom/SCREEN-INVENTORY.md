@@ -4,7 +4,7 @@
 
 - **App:** Cal.com (booker slice)
 - **Base URL:** https://cal.com/
-- **Generated:** 2026-09-12T21:47:29.289Z
+- **Generated:** 2026-09-13T09:41:40.954Z
 - **Screens crawled:** 8
 - **Screens failed:** 0
 
@@ -17,7 +17,7 @@ because a locator for something the user cannot see is not one a test can act on
 | `ai` | AI-Powered Phone Calls for Automated Scheduling \| Cal.ai | https://cal.com/ai | 99 | 74 | 18 | 7 | 2 | no |
 | `blog-calcom-v6-8` | Cal.com v6.8 - Cal Events, New troubleshooter, AI chat in routing forms & more \| Cal.com - Scheduling Software for Onli | https://cal.com/blog/calcom-v6-8 | 89 | 81 | 7 | 1 | 2 | yes |
 | `enterprise` | Cal.com for Enterprise | https://cal.com/enterprise | 98 | 68 | 20 | 10 | 4 | yes |
-| `pricing` | Pricing \| Cal.com | https://cal.com/pricing | 102 | 72 | 30 | 0 | 2 | yes |
+| `pricing` | Pricing \| Cal.com | https://cal.com/pricing | 98 | 72 | 26 | 0 | 2 | yes |
 | `root` | Cal.com \| Scheduling Software for Online Bookings | https://cal.com/ | 96 | 72 | 18 | 6 | 4 | yes |
 | `systemly-app-demo-website` | Demo Website \| Logan \| Cal.com | https://cal.com/systemly.app/demo-website | 60 | 60 | 0 | 0 | 0 | yes |
 | `systemly-app` | Logan \| Cal.com | https://cal.com/systemly.app | 5 | 5 | 0 | 0 | 0 | yes |
@@ -51,7 +51,7 @@ None. Every queued screen was extracted.
 
 - URL: https://cal.com/pricing
 - Headings: `Choose your Cal.com subscription`, `Individuals`, `Free`, `Teams`, `$12`, `Organizations`, `$28`, `Enterprise`, `Custom`, `Free forever`, `$12`, `$28`, `Custom pricing`, `Smarter, simpler scheduling`
-- Regions: body (104)
+- Regions: body (100)
 
 ### `root`
 

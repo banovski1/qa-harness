@@ -4,7 +4,7 @@
 
 - **App:** EspoCRM demo (EU)
 - **Base URL:** https://demo.eu.espocrm.com/
-- **Generated:** 2026-09-11T06:45:10.206Z
+- **Generated:** 2026-09-13T09:43:35.705Z
 - **Recurring components:** 12
 - **Screen-specific regions:** 50
 - **Screens covered:** 60
@@ -146,7 +146,7 @@ Elements below are from `BpmnFlowchart`; the other screens carry the same contro
 
 ### table — the same shape on 2 screens
 
-Shape: 22× a
+Shape: 21× a
 
 Screens: `Calendar`, `root`
 
@@ -154,28 +154,27 @@ Elements below are from `Calendar`; the other screens carry the same controls wi
 
 | Element | Role | Locator | Quality |
 | --- | --- | --- | --- |
-| Prepare product presentation | a | `getByText('Prepare product presentation', { exact: true })` | css fallback |
+| Prepare product presentation | a | `locator('tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-d` | css fallback |
+| Prepare product presentation | a | `locator('tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-d` | css fallback |
 | Organize trade show | a | `getByText('Organize trade show', { exact: true })` | css fallback |
 | Review report for Top Management | a | `getByText('Review report for Top Management', { exact: true })` | css fallback |
 | Sales Plan | a | `getByText('Sales Plan', { exact: true })` | css fallback |
 | Packaging Sales Order for Speakers 30 | a | `getByText('Packaging Sales Order for Speakers 30', { exact: true })` | css fallback |
 | Prepare annual revenue report for investors | a | `getByText('Prepare annual revenue report for investors', { exact: true })` | css fallback |
 | Send sales order draft to A.Beike | a | `getByText('Send sales order draft to A.Beike', { exact: true })` | css fallback |
-| Review & approve marketing budget | a | `getByText('Review & approve marketing budget', { exact: true })` | css fallback |
-| Write emails to potential suppliers | a | `getByText('Write emails to potential suppliers', { exact: true })` | css fallback |
+| 10:00 – 10:10Delivery Address Correction | a | `getByText('10:00 – 10:10Delivery Address Correction', { exact: true })` | css fallback |
+| 11:00 – 12:00Video call with investors | a | `getByText('11:00 – 12:00Video call with investors', { exact: true })` | css fallback |
+| 13:30 – 14:15Delivery issue | a | `locator('tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2` | css fallback |
+| 10:00 – 10:15Delivery issue discussion | a | `getByText('10:00 – 10:15Delivery issue discussion', { exact: true })` | css fallback |
+| 11:00 – 13:00Lunch with top management | a | `getByText('11:00 – 13:00Lunch with top management', { exact: true })` | css fallback |
 | 12:00 – 13:00Smart Laser demonstration | a | `getByText('12:00 – 13:00Smart Laser demonstration', { exact: true })` | css fallback |
 | 13:30 – 14:00Agree upon Mr. Thompson's sales order | a | `getByText('13:30 – 14:00Agree upon Mr. Thompson's sales order', { exact: true })` | css fallback |
 | 09:00 – 11:00Team Meeting | a | `getByText('09:00 – 11:00Team Meeting', { exact: true })` | css fallback |
-| 13:30 – 14:15Delivery issue | a | `getByText('13:30 – 14:15Delivery issue', { exact: true })` | css fallback |
+| 13:30 – 14:15Delivery issue | a | `locator('tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2` | css fallback |
 | 14:00 – 14:45Discount discussion | a | `getByText('14:00 – 14:45Discount discussion', { exact: true })` | css fallback |
 | 14:30 – 15:00Conference call with partners | a | `getByText('14:30 – 15:00Conference call with partners', { exact: true })` | css fallback |
 | 11:00 – 12:00Meeting with stakeholder | a | `getByText('11:00 – 12:00Meeting with stakeholder', { exact: true })` | css fallback |
 | 12:00 – 13:00Product Presentation Discussion | a | `getByText('12:00 – 13:00Product Presentation Discussion', { exact: true })` | css fallback |
-| 10:30 – 11:15Discount discussion with Mr. Brenson | a | `getByText('10:30 – 11:15Discount discussion with Mr. Brenson', { exact: true })` | css fallback |
-| 11:00 – 13:00Discuss plans | a | `getByText('11:00 – 13:00Discuss plans', { exact: true })` | css fallback |
-| 14:00 – 16:00Review work done | a | `getByText('14:00 – 16:00Review work done', { exact: true })` | css fallback |
-| 10:00 – 10:30Daily meeting | a | `getByText('10:00 – 10:30Daily meeting', { exact: true })` | css fallback |
-| 11:30 – 13:30Warm calls to repeat customers | a | `getByText('11:30 – 13:30Warm calls to repeat customers', { exact: true })` | css fallback |
 
 ### table — the same shape on 2 screens
 
@@ -321,7 +320,7 @@ Elements below are from `ReceiptOrder`; the other screens carry the same control
 | `Email-create` | body | 22 |
 | `Email-create` | toolbar | 20 |
 | `Email` | body | 20 |
-| `GlobalStream` | body | 99 |
+| `GlobalStream` | body | 101 |
 | `InventoryAdjustment` | table | 15 |
 | `InventoryNumber` | table | 86 |
 | `InventoryTransaction` | table | 109 |
@@ -341,16 +340,16 @@ Elements below are from `ReceiptOrder`; the other screens carry the same control
 | `ProjectTask` | table | 87 |
 | `PurchaseOrder` | table | 27 |
 | `Report` | table | 32 |
-| `Stream` | body | 102 |
+| `Stream` | body | 103 |
 | `TargetList` | body | 10 |
 | `TargetList` | table | 10 |
 | `Task-create` | body | 30 |
 | `Task` | body | 11 |
 | `Task` | table | 83 |
 | `Team` | table | 5 |
-| `User-view-1` | body | 42 |
+| `User-view-1` | body | 44 |
 | `User` | table | 27 |
 | `Warehouse` | table | 18 |
 | `WorkingTimeCalendar` | body | 5 |
 | `WorkingTimeCalendar` | table | 11 |
-| `root` | body | 105 |
+| `root` | body | 107 |

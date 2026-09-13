@@ -10,25 +10,15 @@ export class HomePageGenerated extends BasePage {
   readonly path = '/';
   readonly heading = 'The better way to schedule your meetings';
 
-  // 5 element(s) on this screen carry no label, role name or field
+  // 18 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in HomePage.ts.
-  readonly homeCalCom = new Link(this.page, { label: 'Home Cal.com' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly enterprise = new Link(this.page, { label: 'Enterprise' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly calAi = new Link(this.page, { label: 'Cal.ai' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly pricing = new Link(this.page, { label: 'Pricing' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly signIn = new Link(this.page, { label: 'Sign in' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly getStarted = new Link(this.page, { label: 'Get started' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly calComLaunchesV68 = new Link(this.page, { label: 'Cal.com launches v6.8' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly signUpWithGoogle = new Link(this.page, { label: 'Sign up with Google' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly signUpWithEmail = new Link(this.page, { label: 'Sign up with email' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly getStarted2 = new Link(this.page, { label: 'Get started' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly getStarted3 = new Link(this.page, { label: 'Get started' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly exploreApps = new Link(this.page, { label: 'Explore apps' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly bookADemo = new Link(this.page, { label: 'Book a demo' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly getStarted4 = new Link(this.page, { label: 'Get started' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly talkToSales = new Link(this.page, { label: 'Talk to sales' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly homeCalCom2 = new Link(this.page, { label: 'Home Cal.com' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly readMoreAboutCalcomISO27001 = new Link(this.page, { label: 'Read more about Calcom ISO 27001' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly readMoreAboutCalcomSOC2 = new Link(this.page, { label: 'Read more about Calcom SOC 2' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly readMoreAboutCalcomCCPA = new Link(this.page, { label: 'Read more about Calcom CCPA' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
@@ -47,10 +37,8 @@ export class HomePageGenerated extends BasePage {
   readonly calComHelp = new Link(this.page, { label: 'cal.com/help' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly iOSAndroidApp = new Link(this.page, { label: 'iOS/Android App' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly selfHosted = new Link(this.page, { label: 'Self-hosted' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly pricing2 = new Link(this.page, { label: 'Pricing' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly docs = new Link(this.page, { label: 'Docs' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly calAiAIPhoneAgent = new Link(this.page, { label: 'Cal.ai - AI Phone Agent' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly enterprise2 = new Link(this.page, { label: 'Enterprise' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly integrateCalCom = new Link(this.page, { label: 'Integrate Cal.com' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly routing = new Link(this.page, { label: 'Routing' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly calComAtoms = new Link(this.page, { label: 'Cal.com Atoms' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
@@ -97,13 +85,8 @@ export class HomePageGenerated extends BasePage {
   readonly security = new Link(this.page, { label: 'Security' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly changelog = new Link(this.page, { label: 'Changelog' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly getADemo = new Link(this.page, { label: 'Get a demo' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
-  readonly talkToSales2 = new Link(this.page, { label: 'Talk to sales' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
 
-  /** Proved by the crawl: this control leads to EnterprisePage. */
-  async goToEnterprise(): Promise<void> {
-    await this.enterprise2.click();
-    await this.page.waitForURL(url => url.href.includes('/enterprise'));
-  }
+
 
   constructor(page: Page) {
     super(page);

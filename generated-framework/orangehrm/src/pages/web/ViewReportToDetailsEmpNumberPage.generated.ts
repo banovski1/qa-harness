@@ -6,6 +6,8 @@ import { BasePage } from '../BasePage.ts';
 import { MODEL_PATH } from '../../config/constants.ts';
 import { Button, Link, Tab } from '../../components/fields.ts';
 import { NavigationBar } from '../../components/NavigationBar.generated.ts';
+import { RecordTable } from '../../components/RecordTable.ts';
+import { TABLE_SHAPE } from '../../components/locator-templates.generated.ts';
 
 export class ViewReportToDetailsEmpNumberPageGenerated extends BasePage {
   readonly path = '/web/index.php/pim/viewReportToDetails/empNumber/{empNumber}';
@@ -15,6 +17,9 @@ export class ViewReportToDetailsEmpNumberPageGenerated extends BasePage {
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in ViewReportToDetailsEmpNumberPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'ViewReportToDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewReportToDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly reportToDetailsEmpNumber = new RecordTable(this.page, 'reportToDetailsEmpNumber', { shape: TABLE_SHAPE, columns: ["Name","Reporting Method"], keyColumn: 'Name', screen: 'ViewReportToDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewReportToDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly reportToDetailsEmpNumber2 = new RecordTable(this.page, 'reportToDetailsEmpNumber2', { shape: TABLE_SHAPE, columns: ["Name","Reporting Method"], keyColumn: 'Name', screen: 'ViewReportToDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewReportToDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly reportToDetailsEmpNumber3 = new RecordTable(this.page, 'reportToDetailsEmpNumber3', { shape: TABLE_SHAPE, columns: ["File Name","Description","Size","Type","Date Added","Added By","Actions"], keyColumn: 'File Name', screen: 'ViewReportToDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewReportToDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly upgrade = new Link(this.page, { label: 'Upgrade' }, { screen: 'ViewReportToDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewReportToDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly upgrade2 = new Button(this.page, { label: 'Upgrade' }, { screen: 'ViewReportToDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewReportToDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly personalDetails = new Tab(this.page, { label: 'Personal Details' }, { screen: 'ViewReportToDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewReportToDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });

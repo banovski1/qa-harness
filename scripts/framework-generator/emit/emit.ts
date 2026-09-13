@@ -48,6 +48,7 @@ function useExpression(use: ComponentUse, model: AppModel, screen: Screen): stri
   if (use.label) identity.push(`label: ${q(use.label)}`);
   if (use.field) identity.push(`field: ${q(use.field)}`);
   if (use.within) identity.push(`within: ${q(use.within)}`);
+  if (use.via) identity.push(`via: ${q(use.via)}`);
   return `new ${use.component}(this.page, { ${identity.join(', ')} }, ${ctx})`;
 }
 

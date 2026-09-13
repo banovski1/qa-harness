@@ -39,11 +39,11 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 29,
-        "visible": 29,
+        "elements": 28,
+        "visible": 28,
         "hidden": 0,
         "semantic": 24,
-        "fragile": 5,
+        "fragile": 4,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -54,11 +54,11 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 29,
-        "visible": 29,
+        "elements": 28,
+        "visible": 28,
         "hidden": 0,
         "semantic": 24,
-        "fragile": 5,
+        "fragile": 4,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -69,12 +69,12 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 188,
-        "visible": 137,
+        "elements": 239,
+        "visible": 188,
         "hidden": 51,
-        "semantic": 27,
-        "fragile": 110,
-        "ambiguous": 0,
+        "semantic": 35,
+        "fragile": 104,
+        "ambiguous": 49,
         "withTestId": 0
       },
       "depth": 0
@@ -84,10 +84,10 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 31,
-        "visible": 29,
+        "elements": 32,
+        "visible": 30,
         "hidden": 2,
-        "semantic": 26,
+        "semantic": 27,
         "fragile": 3,
         "ambiguous": 0,
         "withTestId": 0
@@ -99,12 +99,12 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 45,
-        "visible": 39,
-        "hidden": 6,
-        "semantic": 24,
-        "fragile": 15,
-        "ambiguous": 0,
+        "elements": 183,
+        "visible": 144,
+        "hidden": 39,
+        "semantic": 27,
+        "fragile": 80,
+        "ambiguous": 37,
         "withTestId": 0
       },
       "depth": 0
@@ -114,11 +114,11 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 42,
-        "visible": 37,
-        "hidden": 5,
-        "semantic": 27,
-        "fragile": 10,
+        "elements": 37,
+        "visible": 35,
+        "hidden": 2,
+        "semantic": 31,
+        "fragile": 4,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -144,12 +144,12 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 219,
-        "visible": 168,
+        "elements": 273,
+        "visible": 222,
         "hidden": 51,
-        "semantic": 29,
-        "fragile": 137,
-        "ambiguous": 2,
+        "semantic": 34,
+        "fragile": 138,
+        "ambiguous": 50,
         "withTestId": 0
       },
       "depth": 0
@@ -162,8 +162,8 @@
         "elements": 32,
         "visible": 32,
         "hidden": 0,
-        "semantic": 24,
-        "fragile": 8,
+        "semantic": 30,
+        "fragile": 2,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -177,8 +177,8 @@
         "elements": 25,
         "visible": 25,
         "hidden": 0,
-        "semantic": 21,
-        "fragile": 4,
+        "semantic": 23,
+        "fragile": 2,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -189,12 +189,12 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 39,
-        "visible": 39,
+        "elements": 42,
+        "visible": 42,
         "hidden": 0,
-        "semantic": 25,
-        "fragile": 13,
-        "ambiguous": 1,
+        "semantic": 32,
+        "fragile": 10,
+        "ambiguous": 0,
         "withTestId": 0
       },
       "depth": 0
@@ -219,12 +219,12 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 48,
-        "visible": 41,
-        "hidden": 7,
-        "semantic": 24,
-        "fragile": 17,
-        "ambiguous": 0,
+        "elements": 187,
+        "visible": 147,
+        "hidden": 40,
+        "semantic": 27,
+        "fragile": 82,
+        "ambiguous": 38,
         "withTestId": 0
       },
       "depth": 1
@@ -234,12 +234,12 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 188,
-        "visible": 137,
+        "elements": 239,
+        "visible": 188,
         "hidden": 51,
-        "semantic": 27,
-        "fragile": 110,
-        "ambiguous": 0,
+        "semantic": 35,
+        "fragile": 104,
+        "ambiguous": 49,
         "withTestId": 0
       },
       "depth": 1
@@ -249,11 +249,11 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 42,
-        "visible": 37,
-        "hidden": 5,
-        "semantic": 27,
-        "fragile": 10,
+        "elements": 37,
+        "visible": 35,
+        "hidden": 2,
+        "semantic": 31,
+        "fragile": 4,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -279,12 +279,12 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 219,
-        "visible": 168,
+        "elements": 273,
+        "visible": 222,
         "hidden": 51,
-        "semantic": 29,
-        "fragile": 137,
-        "ambiguous": 2,
+        "semantic": 34,
+        "fragile": 138,
+        "ambiguous": 50,
         "withTestId": 0
       },
       "depth": 1
@@ -294,11 +294,11 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 61,
-        "visible": 57,
+        "elements": 63,
+        "visible": 59,
         "hidden": 4,
-        "semantic": 42,
-        "fragile": 15,
+        "semantic": 51,
+        "fragile": 8,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -312,8 +312,8 @@
         "elements": 32,
         "visible": 32,
         "hidden": 0,
-        "semantic": 24,
-        "fragile": 8,
+        "semantic": 30,
+        "fragile": 2,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -327,8 +327,8 @@
         "elements": 6,
         "visible": 5,
         "hidden": 1,
-        "semantic": 3,
-        "fragile": 2,
+        "semantic": 5,
+        "fragile": 0,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -339,12 +339,12 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 39,
-        "visible": 39,
+        "elements": 42,
+        "visible": 42,
         "hidden": 0,
-        "semantic": 25,
-        "fragile": 13,
-        "ambiguous": 1,
+        "semantic": 32,
+        "fragile": 10,
+        "ambiguous": 0,
         "withTestId": 0
       },
       "depth": 1
@@ -354,11 +354,11 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 61,
-        "visible": 57,
+        "elements": 63,
+        "visible": 59,
         "hidden": 4,
-        "semantic": 42,
-        "fragile": 15,
+        "semantic": 51,
+        "fragile": 8,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -369,11 +369,11 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 53,
-        "visible": 52,
+        "elements": 54,
+        "visible": 53,
         "hidden": 1,
-        "semantic": 40,
-        "fragile": 12,
+        "semantic": 51,
+        "fragile": 2,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -384,12 +384,12 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 43,
-        "visible": 41,
-        "hidden": 2,
+        "elements": 49,
+        "visible": 46,
+        "hidden": 3,
         "semantic": 38,
-        "fragile": 3,
-        "ambiguous": 0,
+        "fragile": 6,
+        "ambiguous": 2,
         "withTestId": 0
       },
       "depth": 2
@@ -399,12 +399,12 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 43,
-        "visible": 41,
+        "elements": 45,
+        "visible": 43,
         "hidden": 2,
         "semantic": 38,
         "fragile": 3,
-        "ambiguous": 0,
+        "ambiguous": 2,
         "withTestId": 0
       },
       "depth": 2
@@ -414,12 +414,12 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 50,
-        "visible": 46,
+        "elements": 54,
+        "visible": 50,
         "hidden": 4,
         "semantic": 38,
         "fragile": 8,
-        "ambiguous": 0,
+        "ambiguous": 4,
         "withTestId": 0
       },
       "depth": 2
@@ -429,11 +429,11 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 41,
-        "visible": 40,
+        "elements": 47,
+        "visible": 46,
         "hidden": 1,
-        "semantic": 39,
-        "fragile": 1,
+        "semantic": 44,
+        "fragile": 2,
         "ambiguous": 0,
         "withTestId": 0
       },
@@ -474,12 +474,12 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 60,
-        "visible": 51,
+        "elements": 69,
+        "visible": 60,
         "hidden": 9,
         "semantic": 38,
         "fragile": 13,
-        "ambiguous": 0,
+        "ambiguous": 9,
         "withTestId": 0
       },
       "depth": 2
@@ -489,12 +489,12 @@
       "title": "OrangeHRM",
       "settled": true,
       "stats": {
-        "elements": 75,
-        "visible": 65,
-        "hidden": 10,
+        "elements": 50,
+        "visible": 47,
+        "hidden": 3,
         "semantic": 38,
-        "fragile": 27,
-        "ambiguous": 0,
+        "fragile": 7,
+        "ambiguous": 2,
         "withTestId": 0
       },
       "depth": 2
@@ -502,6 +502,6 @@
   },
   "failed": {},
   "authenticated": true,
-  "startedAt": "2026-09-12T21:40:46.900Z",
-  "finishedAt": "2026-09-12T21:42:29.411Z"
+  "startedAt": "2026-09-13T09:37:25.639Z",
+  "finishedAt": "2026-09-13T09:39:24.910Z"
 }

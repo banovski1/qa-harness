@@ -4,17 +4,20 @@
 import type { Page } from '@playwright/test';
 import { BasePage } from '../BasePage.ts';
 import { MODEL_PATH } from '../../config/constants.ts';
-import { Button, Link, Tab, TextField } from '../../components/fields.ts';
+import { Button, Link, Select, Tab, TextField } from '../../components/fields.ts';
 import { NavigationBar } from '../../components/NavigationBar.generated.ts';
+import { RecordTable } from '../../components/RecordTable.ts';
+import { TABLE_SHAPE } from '../../components/locator-templates.generated.ts';
 
 export class ViewPersonalDetailsEmpNumberPageGenerated extends BasePage {
   readonly path = '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}';
   readonly heading = null;
 
-  // 8 element(s) on this screen carry no label, role name or field
+  // 3 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in ViewPersonalDetailsEmpNumberPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly personalDetailsEmpNumber = new RecordTable(this.page, 'personalDetailsEmpNumber', { shape: TABLE_SHAPE, columns: ["File Name","Description","Size","Type","Date Added","Added By","Actions"], keyColumn: 'File Name', screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly upgrade = new Link(this.page, { label: 'Upgrade' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly upgrade2 = new Button(this.page, { label: 'Upgrade' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly personalDetails = new Tab(this.page, { label: 'Personal Details' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
@@ -40,10 +43,15 @@ export class ViewPersonalDetailsEmpNumberPageGenerated extends BasePage {
   readonly firstName = new TextField(this.page, { label: 'First Name' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly middleName = new TextField(this.page, { label: 'Middle Name' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly lastName = new TextField(this.page, { label: 'Last Name' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
-  readonly yyyyDdMm = new TextField(this.page, { label: 'yyyy-dd-mm' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
-  readonly yyyyDdMm2 = new TextField(this.page, { label: 'yyyy-dd-mm' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
-  readonly save = new Button(this.page, { label: 'Save' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
-  readonly save2 = new Button(this.page, { label: 'Save' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly employeeId = new TextField(this.page, { label: 'Employee Id', via: 'proximity' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly otherId = new TextField(this.page, { label: 'Other Id', via: 'proximity' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly driverSLicenseNumber = new TextField(this.page, { label: 'Driver\'s License Number', via: 'proximity' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly licenseExpiryDate = new TextField(this.page, { label: 'License Expiry Date', via: 'proximity' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly nationality = new Select(this.page, { label: 'Nationality', via: 'proximity' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly maritalStatus = new Select(this.page, { label: 'Marital Status', via: 'proximity' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly dateOfBirth = new TextField(this.page, { label: 'Date of Birth', via: 'proximity' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly bloodType = new Select(this.page, { label: 'Blood Type', via: 'proximity' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
+  readonly testField = new TextField(this.page, { label: 'Test_Field', via: 'proximity' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly add = new Button(this.page, { label: 'Add' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
   readonly orangeHRMInc = new Link(this.page, { label: 'OrangeHRM, Inc' }, { screen: 'ViewPersonalDetailsEmpNumberPage', expectedUrl: '/web/index.php/pim/viewPersonalDetails/empNumber/{empNumber}', modelPath: MODEL_PATH });
 

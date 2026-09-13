@@ -11,7 +11,7 @@ export class EmailPageGenerated extends BasePage {
   readonly path = '/#Email';
   readonly heading = 'Emails';
 
-  // 7 element(s) on this screen carry no label, role name or field
+  // 10 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in EmailPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'EmailPage', expectedUrl: '/#Email', modelPath: MODEL_PATH });
@@ -28,9 +28,6 @@ export class EmailPageGenerated extends BasePage {
   readonly control2 = new Link(this.page, { label: '2' }, { screen: 'EmailPage', expectedUrl: '/#Email', modelPath: MODEL_PATH });
   readonly drafts = new Link(this.page, { label: 'Drafts' }, { screen: 'EmailPage', expectedUrl: '/#Email', modelPath: MODEL_PATH });
   readonly trash = new Link(this.page, { label: 'Trash' }, { screen: 'EmailPage', expectedUrl: '/#Email', modelPath: MODEL_PATH });
-  readonly control0 = new Button(this.page, { label: '0' }, { screen: 'EmailPage', expectedUrl: '/#Email', modelPath: MODEL_PATH });
-  readonly previousPage = new Button(this.page, { label: 'Previous Page' }, { screen: 'EmailPage', expectedUrl: '/#Email', modelPath: MODEL_PATH });
-  readonly nextPage = new Button(this.page, { label: 'Next Page' }, { screen: 'EmailPage', expectedUrl: '/#Email', modelPath: MODEL_PATH });
   readonly espoCRMInc = new Link(this.page, { label: 'EspoCRM, Inc.' }, { screen: 'EmailPage', expectedUrl: '/#Email', modelPath: MODEL_PATH });
 
 

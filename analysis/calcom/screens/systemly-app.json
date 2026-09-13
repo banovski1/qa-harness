@@ -5,27 +5,33 @@
   "headings": [
     {
       "level": 1,
-      "text": "Logan"
+      "text": "Logan",
+      "y": 145
     },
     {
       "level": 2,
-      "text": "Scope Call"
+      "text": "Scope Call",
+      "y": 247
     },
     {
       "level": 2,
-      "text": "System Diagnostic"
+      "text": "System Diagnostic",
+      "y": 416
     },
     {
       "level": 2,
-      "text": "Free Consultation"
+      "text": "Free Consultation",
+      "y": 509
     },
     {
       "level": 2,
-      "text": "Personal Call"
+      "text": "Personal Call",
+      "y": 678
     },
     {
       "level": 2,
-      "text": "Demo Website"
+      "text": "Demo Website",
+      "y": 771
     }
   ],
   "tables": [],
@@ -39,6 +45,7 @@
       "type": null,
       "role": "link",
       "name": "Scope CallA quick call to map out your project before we dive in. We'll cover what you're building, what's included in the engagement, timeline expectations, and any open questions — so we both leave with a clear picture of how to move forward. Usually wraps up in 45 minutes or less. 60mRequires confirmation1",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -104,6 +111,7 @@
       "type": null,
       "role": "link",
       "name": "System Diagnostic90m",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -177,6 +185,7 @@
       "type": null,
       "role": "link",
       "name": "Free ConsultationIn this FREE 30‑minute call, we’ll walk through your intake, confirm what’s happening across your website/CRM/follow‑up, and flag the highest‑impact fixes. We’ll also help you choose the right solution option, then follow up with a proposal in 1–3 business days if it’s a fit. 30m60m",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -242,6 +251,7 @@
       "type": null,
       "role": "link",
       "name": "Personal Call60m",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -315,6 +325,7 @@
       "type": null,
       "role": "link",
       "name": "Demo WebsiteTest out the demo website booking feature! Submit a booking to see how our appointment confirmation and reminder is set up! 30m",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,

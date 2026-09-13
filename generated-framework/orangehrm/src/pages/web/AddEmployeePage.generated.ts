@@ -23,6 +23,7 @@ export class AddEmployeePageGenerated extends BasePage {
   readonly firstName = new TextField(this.page, { label: 'First Name' }, { screen: 'AddEmployeePage', expectedUrl: '/web/index.php/pim/addEmployee', modelPath: MODEL_PATH });
   readonly middleName = new TextField(this.page, { label: 'Middle Name' }, { screen: 'AddEmployeePage', expectedUrl: '/web/index.php/pim/addEmployee', modelPath: MODEL_PATH });
   readonly lastName = new TextField(this.page, { label: 'Last Name' }, { screen: 'AddEmployeePage', expectedUrl: '/web/index.php/pim/addEmployee', modelPath: MODEL_PATH });
+  readonly employeeId = new TextField(this.page, { label: 'Employee Id', via: 'proximity' }, { screen: 'AddEmployeePage', expectedUrl: '/web/index.php/pim/addEmployee', modelPath: MODEL_PATH });
   readonly cancel = new Button(this.page, { label: 'Cancel' }, { screen: 'AddEmployeePage', expectedUrl: '/web/index.php/pim/addEmployee', modelPath: MODEL_PATH });
   readonly save = new Button(this.page, { label: 'Save' }, { screen: 'AddEmployeePage', expectedUrl: '/web/index.php/pim/addEmployee', modelPath: MODEL_PATH });
   readonly orangeHRMInc = new Link(this.page, { label: 'OrangeHRM, Inc' }, { screen: 'AddEmployeePage', expectedUrl: '/web/index.php/pim/addEmployee', modelPath: MODEL_PATH });

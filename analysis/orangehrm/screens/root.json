@@ -7,7 +7,7 @@
   "regions": {
     "navigation": 16,
     "header": 2,
-    "body": 11
+    "body": 10
   },
   "elements": [
     {
@@ -16,6 +16,7 @@
       "type": null,
       "role": "link",
       "name": "client brand logo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -74,6 +75,7 @@
       "type": null,
       "role": "textbox",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Search",
       "id": null,
@@ -140,6 +142,7 @@
       "type": "button",
       "role": "none",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -188,6 +191,7 @@
       "type": null,
       "role": "link",
       "name": "Admin",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -253,6 +257,7 @@
       "type": null,
       "role": "link",
       "name": "PIM",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -318,6 +323,7 @@
       "type": null,
       "role": "link",
       "name": "Leave",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -383,6 +389,7 @@
       "type": null,
       "role": "link",
       "name": "Time",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -448,6 +455,7 @@
       "type": null,
       "role": "link",
       "name": "Recruitment",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -513,6 +521,7 @@
       "type": null,
       "role": "link",
       "name": "My Info",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -578,6 +587,7 @@
       "type": null,
       "role": "link",
       "name": "Performance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -643,6 +653,7 @@
       "type": null,
       "role": "link",
       "name": "Dashboard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -708,6 +719,7 @@
       "type": null,
       "role": "link",
       "name": "Directory",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -773,6 +785,7 @@
       "type": null,
       "role": "link",
       "name": "Maintenance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -838,6 +851,7 @@
       "type": null,
       "role": "link",
       "name": "Claim",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -903,6 +917,7 @@
       "type": null,
       "role": "link",
       "name": "Buzz",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -968,6 +983,7 @@
       "type": null,
       "role": "link",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1033,6 +1049,7 @@
       "type": "button",
       "role": "button",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1099,6 +1116,7 @@
       "type": "button",
       "role": "button",
       "name": "Help",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1156,6 +1174,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1204,6 +1223,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1226,10 +1246,10 @@
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(1) > button.oxd-icon-button.oxd-icon-button--success')",
+        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(1) > button.oxd-icon-button.oxd-icon-button--danger')",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(1) > button.oxd-icon-button.oxd-icon-button--success"
+          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(1) > button.oxd-icon-button.oxd-icon-button--danger"
         ]
       },
       "unique": true,
@@ -1238,10 +1258,10 @@
       "candidates": [
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(1) > button.oxd-icon-button.oxd-icon-button--success')",
+          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(1) > button.oxd-icon-button.oxd-icon-button--danger')",
           "matchCount": 1,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(1) > button.oxd-icon-button.oxd-icon-button--success"
+            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(1) > button.oxd-icon-button.oxd-icon-button--danger"
           ]
         }
       ]
@@ -1252,6 +1272,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1274,10 +1295,10 @@
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(2) > button.oxd-icon-button.oxd-icon-button--danger')",
+        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(2) > button.oxd-icon-button.oxd-icon-button--info')",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(2) > button.oxd-icon-button.oxd-icon-button--danger"
+          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(2) > button.oxd-icon-button.oxd-icon-button--info"
         ]
       },
       "unique": true,
@@ -1286,10 +1307,10 @@
       "candidates": [
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(2) > button.oxd-icon-button.oxd-icon-button--danger')",
+          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(2) > button.oxd-icon-button.oxd-icon-button--info')",
           "matchCount": 1,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(2) > button.oxd-icon-button.oxd-icon-button--danger"
+            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(2) > button.oxd-icon-button.oxd-icon-button--info"
           ]
         }
       ]
@@ -1299,55 +1320,8 @@
       "tag": "button",
       "type": "button",
       "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-93929af6": ""
-      },
-      "region": "body",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 837,
-        "y": 276,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(3) > button.oxd-icon-button.oxd-icon-button--info')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(3) > button.oxd-icon-button.oxd-icon-button--info"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(3) > button.oxd-icon-button.oxd-icon-button--info')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-sheet.oxd-sheet--rounded > div.orangehrm-dashboard-widget-body:nth-of-type(2) > div.orangehrm-todo-list > div.orangehrm-todo-list-item:nth-of-type(3) > button.oxd-icon-button.oxd-icon-button--info"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 22,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
       "name": "Assign Leave",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1401,11 +1375,12 @@
       ]
     },
     {
-      "index": 23,
+      "index": 22,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "Leave List",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1459,11 +1434,12 @@
       ]
     },
     {
-      "index": 24,
+      "index": 23,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "Timesheets",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1517,11 +1493,12 @@
       ]
     },
     {
-      "index": 25,
+      "index": 24,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "Apply Leave",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1575,11 +1552,12 @@
       ]
     },
     {
-      "index": 26,
+      "index": 25,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "My Leave",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1633,11 +1611,12 @@
       ]
     },
     {
-      "index": 27,
+      "index": 26,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "My Timesheet",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1691,11 +1670,12 @@
       ]
     },
     {
-      "index": 28,
+      "index": 27,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "OrangeHRM, Inc",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1832,11 +1812,11 @@
     }
   ],
   "stats": {
-    "elements": 29,
-    "visible": 29,
+    "elements": 28,
+    "visible": 28,
     "hidden": 0,
     "semantic": 24,
-    "fragile": 5,
+    "fragile": 4,
     "ambiguous": 0,
     "withTestId": 0
   }

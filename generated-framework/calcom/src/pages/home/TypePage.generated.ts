@@ -10,12 +10,10 @@ export class TypePageGenerated extends BasePage {
   readonly path = '/{user}/{type}';
   readonly heading = 'Changelog: Cal.com v6.8 - Cal Events, New troubleshooter, AI chat in routing forms & more';
 
-  // 2 element(s) on this screen carry no label, role name or field
+  // 7 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in TypePage.ts.
-  readonly enterprise = new Link(this.page, { label: 'Enterprise' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly calAi = new Link(this.page, { label: 'Cal.ai' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
-  readonly pricing = new Link(this.page, { label: 'Pricing' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly signIn = new Link(this.page, { label: 'Sign in' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly getStarted = new Link(this.page, { label: 'Get started' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly updates = new Link(this.page, { label: 'Updates' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
@@ -29,7 +27,6 @@ export class TypePageGenerated extends BasePage {
   readonly fixes = new Link(this.page, { label: 'Fixes' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly signUpForFree = new Link(this.page, { label: 'Sign up for free' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly bookADemo = new Link(this.page, { label: 'Book a demo' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
-  readonly homeCalCom = new Link(this.page, { label: 'Home Cal.com' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly readMoreAboutCalcomISO27001 = new Link(this.page, { label: 'Read more about Calcom ISO 27001' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly readMoreAboutCalcomSOC2 = new Link(this.page, { label: 'Read more about Calcom SOC 2' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly readMoreAboutCalcomCCPA = new Link(this.page, { label: 'Read more about Calcom CCPA' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
@@ -48,10 +45,8 @@ export class TypePageGenerated extends BasePage {
   readonly calComHelp = new Link(this.page, { label: 'cal.com/help' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly iOSAndroidApp = new Link(this.page, { label: 'iOS/Android App' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly selfHosted = new Link(this.page, { label: 'Self-hosted' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
-  readonly pricing2 = new Link(this.page, { label: 'Pricing' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly docs = new Link(this.page, { label: 'Docs' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly calAiAIPhoneAgent = new Link(this.page, { label: 'Cal.ai - AI Phone Agent' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
-  readonly enterprise2 = new Link(this.page, { label: 'Enterprise' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly integrateCalCom = new Link(this.page, { label: 'Integrate Cal.com' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly routing = new Link(this.page, { label: 'Routing' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly calComAtoms = new Link(this.page, { label: 'Cal.com Atoms' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
@@ -100,11 +95,7 @@ export class TypePageGenerated extends BasePage {
   readonly getADemo = new Link(this.page, { label: 'Get a demo' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
   readonly talkToSales = new Link(this.page, { label: 'Talk to sales' }, { screen: 'TypePage', expectedUrl: '/{user}/{type}', modelPath: MODEL_PATH });
 
-  /** Proved by the crawl: this control leads to EnterprisePage. */
-  async goToEnterprise(): Promise<void> {
-    await this.enterprise2.click();
-    await this.page.waitForURL(url => url.href.includes('/enterprise'));
-  }
+
 
   constructor(page: Page) {
     super(page);

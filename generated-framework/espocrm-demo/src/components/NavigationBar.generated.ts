@@ -97,43 +97,4 @@ export class NavigationBar extends BaseComponent {
     });
   }
 
-  async goToAccounts(): Promise<void> {
-    await this.click('accounts');
-  }
-
-  async goToContacts(): Promise<void> {
-    await this.click('contacts');
-  }
-
-  async goToLeads(): Promise<void> {
-    await this.click('leads');
-  }
-
-  async goToOpportunities(): Promise<void> {
-    await this.click('opportunities');
-  }
-
-  async goToEmails(): Promise<void> {
-    await this.click('emails');
-  }
-
-  async goToCalendar(): Promise<void> {
-    await this.click('calendar');
-  }
-
-  async goToMeetings(): Promise<void> {
-    await this.click('meetings');
-  }
-
-  async goToCalls(): Promise<void> {
-    await this.click('calls');
-  }
-
-  async goToTasks(): Promise<void> {
-    await this.click('tasks');
-  }
-
-  async goToCases(): Promise<void> {
-    await this.click('cases');
-  }
 }

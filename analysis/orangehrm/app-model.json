@@ -5,7 +5,7 @@
     "repoPath": "~/Projects/orangehrm",
     "repoCommit": "56e23b3b09e7af29317a0943523b825843fff527",
     "stack": "vue / symfony",
-    "generatedAt": "2026-09-12T22:50:48.151Z"
+    "generatedAt": "2026-09-13T09:39:24.908Z"
   },
   "components": {
     "NavigationBar": {
@@ -1353,6 +1353,18 @@
           "as": "navigation"
         },
         {
+          "component": "RecordTable",
+          "as": "systemUsers",
+          "columns": [
+            "UsernameAscendingDescending",
+            "User RoleAscendingDescending",
+            "Employee NameAscendingDescending",
+            "StatusAscendingDescending",
+            "Actions"
+          ],
+          "keyColumn": "UsernameAscendingDescending"
+        },
+        {
           "component": "Link",
           "as": "upgrade",
           "label": "Upgrade"
@@ -1374,8 +1386,27 @@
         },
         {
           "component": "TextField",
-          "as": "typeForHints",
-          "label": "Type for hints..."
+          "as": "username",
+          "label": "Username",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "userRole",
+          "label": "User Role",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "employeeName",
+          "label": "Employee Name",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "status",
+          "label": "Status",
+          "via": "proximity"
         },
         {
           "component": "Button",
@@ -1399,7 +1430,7 @@
         }
       ],
       "actions": [],
-      "unverified": 5
+      "unverified": 2
     },
     {
       "name": "WorkShiftPage",
@@ -2009,6 +2040,22 @@
           "as": "navigation"
         },
         {
+          "component": "RecordTable",
+          "as": "assignClaim",
+          "columns": [
+            "Reference IdAscendingDescending",
+            "Employee NameAscendingDescending",
+            "Event NameAscendingDescending",
+            "Description",
+            "Currency",
+            "Submitted DateAscendingDescending",
+            "StatusAscendingDescending",
+            "Amount",
+            "Actions"
+          ],
+          "keyColumn": "Reference IdAscendingDescending"
+        },
+        {
           "component": "Link",
           "as": "upgrade",
           "label": "Upgrade"
@@ -2035,28 +2082,50 @@
         },
         {
           "component": "Link",
-          "as": "assignClaim",
+          "as": "assignClaim2",
           "label": "Assign Claim"
         },
         {
           "component": "TextField",
-          "as": "typeForHints",
-          "label": "Type for hints..."
+          "as": "employeeName",
+          "label": "Employee Name",
+          "via": "proximity"
         },
         {
           "component": "TextField",
-          "as": "typeForHints2",
-          "label": "Type for hints..."
+          "as": "referenceId",
+          "label": "Reference Id",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "eventName",
+          "label": "Event Name",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "status",
+          "label": "Status",
+          "via": "proximity"
         },
         {
           "component": "TextField",
-          "as": "yyyyDdMm",
-          "label": "yyyy-dd-mm"
+          "as": "fromDate",
+          "label": "From Date",
+          "via": "proximity"
         },
         {
           "component": "TextField",
-          "as": "yyyyDdMm2",
-          "label": "yyyy-dd-mm"
+          "as": "toDate",
+          "label": "To Date",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "include",
+          "label": "Include",
+          "via": "proximity"
         },
         {
           "component": "Button",
@@ -2070,7 +2139,7 @@
         },
         {
           "component": "Button",
-          "as": "assignClaim2",
+          "as": "assignClaim3",
           "label": "Assign Claim"
         },
         {
@@ -2080,7 +2149,7 @@
         }
       ],
       "actions": [],
-      "unverified": 4
+      "unverified": 2
     },
     {
       "name": "ViewClaimPage",
@@ -2263,7 +2332,7 @@
         }
       ],
       "actions": [],
-      "unverified": 5
+      "unverified": 4
     },
     {
       "name": "ViewDirectoryPage",
@@ -2297,8 +2366,21 @@
         },
         {
           "component": "TextField",
-          "as": "typeForHints",
-          "label": "Type for hints..."
+          "as": "employeeName",
+          "label": "Employee Name",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "jobTitle",
+          "label": "Job Title",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "location",
+          "label": "Location",
+          "via": "proximity"
         },
         {
           "component": "Button",
@@ -2317,7 +2399,7 @@
         }
       ],
       "actions": [],
-      "unverified": 4
+      "unverified": 2
     },
     {
       "name": "HelpPage",
@@ -2644,6 +2726,21 @@
           "as": "navigation"
         },
         {
+          "component": "RecordTable",
+          "as": "leaveList",
+          "columns": [
+            "Date",
+            "Employee Name",
+            "Leave Type",
+            "Leave Balance (Days)",
+            "Number of Days",
+            "Status",
+            "Comments",
+            "Actions"
+          ],
+          "keyColumn": "Date"
+        },
+        {
           "component": "Link",
           "as": "upgrade",
           "label": "Upgrade"
@@ -2665,7 +2762,7 @@
         },
         {
           "component": "Link",
-          "as": "leaveList",
+          "as": "leaveList2",
           "label": "Leave List"
         },
         {
@@ -2675,18 +2772,39 @@
         },
         {
           "component": "TextField",
-          "as": "yyyyDdMm",
-          "label": "yyyy-dd-mm"
+          "as": "fromDate",
+          "label": "From Date",
+          "via": "proximity"
         },
         {
           "component": "TextField",
-          "as": "yyyyDdMm2",
-          "label": "yyyy-dd-mm"
+          "as": "toDate",
+          "label": "To Date",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "showLeaveWithStatus",
+          "label": "Show Leave with Status",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "leaveType",
+          "label": "Leave Type",
+          "via": "proximity"
         },
         {
           "component": "TextField",
-          "as": "typeForHints",
-          "label": "Type for hints..."
+          "as": "employeeName",
+          "label": "Employee Name",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "subUnit",
+          "label": "Sub Unit",
+          "via": "proximity"
         },
         {
           "component": "Button",
@@ -2702,10 +2820,15 @@
           "component": "Link",
           "as": "orangeHRMInc",
           "label": "OrangeHRM, Inc"
+        },
+        {
+          "component": "Button",
+          "as": "control",
+          "label": "×"
         }
       ],
       "actions": [],
-      "unverified": 5
+      "unverified": 3
     },
     {
       "name": "ViewLeaveModulePage",
@@ -2878,12 +3001,14 @@
         {
           "component": "TextField",
           "as": "username",
-          "field": "username"
+          "label": "Username",
+          "via": "proximity"
         },
         {
           "component": "TextField",
           "as": "password",
-          "field": "password"
+          "label": "Password",
+          "via": "proximity"
         },
         {
           "component": "Button",
@@ -3210,6 +3335,20 @@
           "as": "navigation"
         },
         {
+          "component": "RecordTable",
+          "as": "searchEvaluatePerformanceReview",
+          "columns": [
+            "EmployeeAscendingDescending",
+            "Job Title",
+            "Sub Unit",
+            "Review PeriodAscendingDescending",
+            "Due DateAscendingDescending",
+            "Review StatusAscendingDescending",
+            "Actions"
+          ],
+          "keyColumn": "EmployeeAscendingDescending"
+        },
+        {
           "component": "Link",
           "as": "upgrade",
           "label": "Upgrade"
@@ -3231,18 +3370,45 @@
         },
         {
           "component": "TextField",
-          "as": "typeForHints",
-          "label": "Type for hints..."
+          "as": "employeeName",
+          "label": "Employee Name",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "jobTitle",
+          "label": "Job Title",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "subUnit",
+          "label": "Sub Unit",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "include",
+          "label": "Include",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "reviewStatus",
+          "label": "Review Status",
+          "via": "proximity"
         },
         {
           "component": "TextField",
-          "as": "yyyyDdMm",
-          "label": "yyyy-dd-mm"
+          "as": "fromDate",
+          "label": "From Date",
+          "via": "proximity"
         },
         {
           "component": "TextField",
-          "as": "yyyyDdMm2",
-          "label": "yyyy-dd-mm"
+          "as": "toDate",
+          "label": "To Date",
+          "via": "proximity"
         },
         {
           "component": "Button",
@@ -3266,7 +3432,7 @@
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 2
     },
     {
       "name": "SearchKpiPage",
@@ -3443,6 +3609,12 @@
           "label": "Last Name"
         },
         {
+          "component": "TextField",
+          "as": "employeeId",
+          "label": "Employee Id",
+          "via": "proximity"
+        },
+        {
           "component": "Button",
           "as": "cancel",
           "label": "Cancel"
@@ -3501,6 +3673,20 @@
         {
           "component": "NavigationBar",
           "as": "navigation"
+        },
+        {
+          "component": "RecordTable",
+          "as": "contactDetailsEmpNumber",
+          "columns": [
+            "File Name",
+            "Description",
+            "Size",
+            "Type",
+            "Date Added",
+            "Added By",
+            "Actions"
+          ],
+          "keyColumn": "File Name"
         },
         {
           "component": "Link",
@@ -3613,6 +3799,72 @@
           "label": "Memberships"
         },
         {
+          "component": "TextField",
+          "as": "street1",
+          "label": "Street 1",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "street2",
+          "label": "Street 2",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "city",
+          "label": "City",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "stateProvince",
+          "label": "State/Province",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "zipPostalCode",
+          "label": "Zip/Postal Code",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "country",
+          "label": "Country",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "home",
+          "label": "Home",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "mobile",
+          "label": "Mobile",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "work",
+          "label": "Work",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "workEmail",
+          "label": "Work Email",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "otherEmail",
+          "label": "Other Email",
+          "via": "proximity"
+        },
+        {
           "component": "Button",
           "as": "save",
           "label": "Save"
@@ -3629,7 +3881,7 @@
         }
       ],
       "actions": [],
-      "unverified": 12
+      "unverified": 1
     },
     {
       "name": "WebIndexPhpPimDefinePredefinedReportPage",
@@ -3939,6 +4191,31 @@
           "as": "navigation"
         },
         {
+          "component": "RecordTable",
+          "as": "dependentsEmpNumber",
+          "columns": [
+            "Name",
+            "Relationship",
+            "Date of Birth",
+            "Actions"
+          ],
+          "keyColumn": "Name"
+        },
+        {
+          "component": "RecordTable",
+          "as": "dependentsEmpNumber2",
+          "columns": [
+            "File Name",
+            "Description",
+            "Size",
+            "Type",
+            "Date Added",
+            "Added By",
+            "Actions"
+          ],
+          "keyColumn": "File Name"
+        },
+        {
           "component": "Link",
           "as": "upgrade",
           "label": "Upgrade"
@@ -4049,23 +4326,13 @@
           "label": "Memberships"
         },
         {
-          "component": "Button",
-          "as": "add",
-          "label": "Add"
-        },
-        {
-          "component": "Button",
-          "as": "add2",
-          "label": "Add"
-        },
-        {
           "component": "Link",
           "as": "orangeHRMInc",
           "label": "OrangeHRM, Inc"
         }
       ],
       "actions": [],
-      "unverified": 1
+      "unverified": 3
     },
     {
       "name": "ViewEmergencyContactsEmpNumberPage",
@@ -4090,6 +4357,33 @@
           "as": "navigation"
         },
         {
+          "component": "RecordTable",
+          "as": "emergencyContactsEmpNumber",
+          "columns": [
+            "Name",
+            "Relationship",
+            "Home Telephone",
+            "Mobile",
+            "Work Telephone",
+            "Actions"
+          ],
+          "keyColumn": "Name"
+        },
+        {
+          "component": "RecordTable",
+          "as": "emergencyContactsEmpNumber2",
+          "columns": [
+            "File Name",
+            "Description",
+            "Size",
+            "Type",
+            "Date Added",
+            "Added By",
+            "Actions"
+          ],
+          "keyColumn": "File Name"
+        },
+        {
           "component": "Link",
           "as": "upgrade",
           "label": "Upgrade"
@@ -4200,23 +4494,13 @@
           "label": "Memberships"
         },
         {
-          "component": "Button",
-          "as": "add",
-          "label": "Add"
-        },
-        {
-          "component": "Button",
-          "as": "add2",
-          "label": "Add"
-        },
-        {
           "component": "Link",
           "as": "orangeHRMInc",
           "label": "OrangeHRM, Inc"
         }
       ],
       "actions": [],
-      "unverified": 1
+      "unverified": 3
     },
     {
       "name": "ViewEmployeeListPage",
@@ -4239,6 +4523,21 @@
           "as": "navigation"
         },
         {
+          "component": "RecordTable",
+          "as": "employeeList",
+          "columns": [
+            "IdAscendingDescending",
+            "First (& Middle) NameAscendingDescending",
+            "Last NameAscendingDescending",
+            "Job TitleAscendingDescending",
+            "Employment StatusAscendingDescending",
+            "Sub UnitAscendingDescending",
+            "SupervisorAscendingDescending",
+            "Actions"
+          ],
+          "keyColumn": "IdAscendingDescending"
+        },
+        {
           "component": "Link",
           "as": "upgrade",
           "label": "Upgrade"
@@ -4250,7 +4549,7 @@
         },
         {
           "component": "Link",
-          "as": "employeeList",
+          "as": "employeeList2",
           "label": "Employee List"
         },
         {
@@ -4265,13 +4564,45 @@
         },
         {
           "component": "TextField",
-          "as": "typeForHints",
-          "label": "Type for hints..."
+          "as": "employeeName",
+          "label": "Employee Name",
+          "via": "proximity"
         },
         {
           "component": "TextField",
-          "as": "typeForHints2",
-          "label": "Type for hints..."
+          "as": "employeeId",
+          "label": "Employee Id",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "employmentStatus",
+          "label": "Employment Status",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "include",
+          "label": "Include",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "supervisorName",
+          "label": "Supervisor Name",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "jobTitle",
+          "label": "Job Title",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "subUnit",
+          "label": "Sub Unit",
+          "via": "proximity"
         },
         {
           "component": "Button",
@@ -4304,13 +4635,18 @@
           "label": "3"
         },
         {
+          "component": "Button",
+          "as": "control4",
+          "label": "4"
+        },
+        {
           "component": "Link",
           "as": "orangeHRMInc",
           "label": "OrangeHRM, Inc"
         }
       ],
       "actions": [],
-      "unverified": 8
+      "unverified": 3
     },
     {
       "name": "ViewImmigrationEmpNumberPage",
@@ -4333,6 +4669,33 @@
         {
           "component": "NavigationBar",
           "as": "navigation"
+        },
+        {
+          "component": "RecordTable",
+          "as": "immigrationEmpNumber",
+          "columns": [
+            "Document",
+            "Number",
+            "Issued By",
+            "Issued Date",
+            "Expiry Date",
+            "Actions"
+          ],
+          "keyColumn": "Document"
+        },
+        {
+          "component": "RecordTable",
+          "as": "immigrationEmpNumber2",
+          "columns": [
+            "File Name",
+            "Description",
+            "Size",
+            "Type",
+            "Date Added",
+            "Added By",
+            "Actions"
+          ],
+          "keyColumn": "File Name"
         },
         {
           "component": "Link",
@@ -4445,23 +4808,13 @@
           "label": "Memberships"
         },
         {
-          "component": "Button",
-          "as": "add",
-          "label": "Add"
-        },
-        {
-          "component": "Button",
-          "as": "add2",
-          "label": "Add"
-        },
-        {
           "component": "Link",
           "as": "orangeHRMInc",
           "label": "OrangeHRM, Inc"
         }
       ],
       "actions": [],
-      "unverified": 1
+      "unverified": 3
     },
     {
       "name": "ViewJobDetailsEmpNumberPage",
@@ -4484,6 +4837,20 @@
         {
           "component": "NavigationBar",
           "as": "navigation"
+        },
+        {
+          "component": "RecordTable",
+          "as": "jobDetailsEmpNumber",
+          "columns": [
+            "File Name",
+            "Description",
+            "Size",
+            "Type",
+            "Date Added",
+            "Added By",
+            "Actions"
+          ],
+          "keyColumn": "File Name"
         },
         {
           "component": "Link",
@@ -4597,8 +4964,39 @@
         },
         {
           "component": "TextField",
-          "as": "yyyyDdMm",
-          "label": "yyyy-dd-mm"
+          "as": "joinedDate",
+          "label": "Joined Date",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "jobTitle",
+          "label": "Job Title",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "jobCategory",
+          "label": "Job Category",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "subUnit",
+          "label": "Sub Unit",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "location",
+          "label": "Location",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "employmentStatus",
+          "label": "Employment Status",
+          "via": "proximity"
         },
         {
           "component": "Link",
@@ -4607,7 +5005,7 @@
         }
       ],
       "actions": [],
-      "unverified": 1
+      "unverified": 2
     },
     {
       "name": "ViewMembershipsEmpNumberPage",
@@ -4630,6 +5028,34 @@
         {
           "component": "NavigationBar",
           "as": "navigation"
+        },
+        {
+          "component": "RecordTable",
+          "as": "membershipsEmpNumber",
+          "columns": [
+            "Membership",
+            "Subscription Paid By",
+            "Subscription Amount",
+            "Currency",
+            "Subscription Commence Date",
+            "Subscription Renewal Date",
+            "Actions"
+          ],
+          "keyColumn": "Membership"
+        },
+        {
+          "component": "RecordTable",
+          "as": "membershipsEmpNumber2",
+          "columns": [
+            "File Name",
+            "Description",
+            "Size",
+            "Type",
+            "Date Added",
+            "Added By",
+            "Actions"
+          ],
+          "keyColumn": "File Name"
         },
         {
           "component": "Link",
@@ -4742,23 +5168,13 @@
           "label": "Memberships"
         },
         {
-          "component": "Button",
-          "as": "add",
-          "label": "Add"
-        },
-        {
-          "component": "Button",
-          "as": "add2",
-          "label": "Add"
-        },
-        {
           "component": "Link",
           "as": "orangeHRMInc",
           "label": "OrangeHRM, Inc"
         }
       ],
       "actions": [],
-      "unverified": 1
+      "unverified": 3
     },
     {
       "name": "ViewMyDetailsPage",
@@ -4801,6 +5217,20 @@
         {
           "component": "NavigationBar",
           "as": "navigation"
+        },
+        {
+          "component": "RecordTable",
+          "as": "personalDetailsEmpNumber",
+          "columns": [
+            "File Name",
+            "Description",
+            "Size",
+            "Type",
+            "Date Added",
+            "Added By",
+            "Actions"
+          ],
+          "keyColumn": "File Name"
         },
         {
           "component": "Link",
@@ -4929,23 +5359,57 @@
         },
         {
           "component": "TextField",
-          "as": "yyyyDdMm",
-          "label": "yyyy-dd-mm"
+          "as": "employeeId",
+          "label": "Employee Id",
+          "via": "proximity"
         },
         {
           "component": "TextField",
-          "as": "yyyyDdMm2",
-          "label": "yyyy-dd-mm"
+          "as": "otherId",
+          "label": "Other Id",
+          "via": "proximity"
         },
         {
-          "component": "Button",
-          "as": "save",
-          "label": "Save"
+          "component": "TextField",
+          "as": "driverSLicenseNumber",
+          "label": "Driver's License Number",
+          "via": "proximity"
         },
         {
-          "component": "Button",
-          "as": "save2",
-          "label": "Save"
+          "component": "TextField",
+          "as": "licenseExpiryDate",
+          "label": "License Expiry Date",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "nationality",
+          "label": "Nationality",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "maritalStatus",
+          "label": "Marital Status",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "dateOfBirth",
+          "label": "Date of Birth",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "bloodType",
+          "label": "Blood Type",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "testField",
+          "label": "Test_Field",
+          "via": "proximity"
         },
         {
           "component": "Button",
@@ -4959,7 +5423,7 @@
         }
       ],
       "actions": [],
-      "unverified": 8
+      "unverified": 3
     },
     {
       "name": "ViewPhotoEmpNumberPage",
@@ -5039,6 +5503,77 @@
         {
           "component": "NavigationBar",
           "as": "navigation"
+        },
+        {
+          "component": "RecordTable",
+          "as": "qualificationsEmpNumber",
+          "columns": [
+            "Company",
+            "Job Title",
+            "From",
+            "To",
+            "Comment",
+            "Actions"
+          ],
+          "keyColumn": "Company"
+        },
+        {
+          "component": "RecordTable",
+          "as": "qualificationsEmpNumber2",
+          "columns": [
+            "Level",
+            "Year",
+            "GPA/Score",
+            "Actions"
+          ],
+          "keyColumn": "Level"
+        },
+        {
+          "component": "RecordTable",
+          "as": "qualificationsEmpNumber3",
+          "columns": [
+            "Skill",
+            "Years of Experience",
+            "Actions"
+          ],
+          "keyColumn": "Skill"
+        },
+        {
+          "component": "RecordTable",
+          "as": "qualificationsEmpNumber4",
+          "columns": [
+            "Language",
+            "Fluency",
+            "Competency",
+            "Comments",
+            "Actions"
+          ],
+          "keyColumn": "Language"
+        },
+        {
+          "component": "RecordTable",
+          "as": "qualificationsEmpNumber5",
+          "columns": [
+            "License Type",
+            "Issued Date",
+            "Expiry Date",
+            "Actions"
+          ],
+          "keyColumn": "License Type"
+        },
+        {
+          "component": "RecordTable",
+          "as": "qualificationsEmpNumber6",
+          "columns": [
+            "File Name",
+            "Description",
+            "Size",
+            "Type",
+            "Date Added",
+            "Added By",
+            "Actions"
+          ],
+          "keyColumn": "File Name"
         },
         {
           "component": "Link",
@@ -5151,43 +5686,13 @@
           "label": "Memberships"
         },
         {
-          "component": "Button",
-          "as": "add",
-          "label": "Add"
-        },
-        {
-          "component": "Button",
-          "as": "add2",
-          "label": "Add"
-        },
-        {
-          "component": "Button",
-          "as": "add3",
-          "label": "Add"
-        },
-        {
-          "component": "Button",
-          "as": "add4",
-          "label": "Add"
-        },
-        {
-          "component": "Button",
-          "as": "add5",
-          "label": "Add"
-        },
-        {
-          "component": "Button",
-          "as": "add6",
-          "label": "Add"
-        },
-        {
           "component": "Link",
           "as": "orangeHRMInc",
           "label": "OrangeHRM, Inc"
         }
       ],
       "actions": [],
-      "unverified": 1
+      "unverified": 7
     },
     {
       "name": "ViewReportToDetailsEmpNumberPage",
@@ -5210,6 +5715,38 @@
         {
           "component": "NavigationBar",
           "as": "navigation"
+        },
+        {
+          "component": "RecordTable",
+          "as": "reportToDetailsEmpNumber",
+          "columns": [
+            "Name",
+            "Reporting Method"
+          ],
+          "keyColumn": "Name"
+        },
+        {
+          "component": "RecordTable",
+          "as": "reportToDetailsEmpNumber2",
+          "columns": [
+            "Name",
+            "Reporting Method"
+          ],
+          "keyColumn": "Name"
+        },
+        {
+          "component": "RecordTable",
+          "as": "reportToDetailsEmpNumber3",
+          "columns": [
+            "File Name",
+            "Description",
+            "Size",
+            "Type",
+            "Date Added",
+            "Added By",
+            "Actions"
+          ],
+          "keyColumn": "File Name"
         },
         {
           "component": "Link",
@@ -5370,6 +5907,32 @@
         {
           "component": "NavigationBar",
           "as": "navigation"
+        },
+        {
+          "component": "RecordTable",
+          "as": "salaryListEmpNumber",
+          "columns": [
+            "Salary Component",
+            "Amount",
+            "Currency",
+            "Pay Frequency",
+            "Direct Deposit Amount"
+          ],
+          "keyColumn": "Salary Component"
+        },
+        {
+          "component": "RecordTable",
+          "as": "salaryListEmpNumber2",
+          "columns": [
+            "File Name",
+            "Description",
+            "Size",
+            "Type",
+            "Date Added",
+            "Added By",
+            "Actions"
+          ],
+          "keyColumn": "File Name"
         },
         {
           "component": "Link",
@@ -5701,6 +6264,19 @@
           "as": "navigation"
         },
         {
+          "component": "RecordTable",
+          "as": "candidates",
+          "columns": [
+            "VacancyAscendingDescending",
+            "CandidateAscendingDescending",
+            "Hiring ManagerAscendingDescending",
+            "Date of ApplicationAscendingDescending",
+            "StatusAscendingDescending",
+            "Actions"
+          ],
+          "keyColumn": "VacancyAscendingDescending"
+        },
+        {
           "component": "Link",
           "as": "upgrade",
           "label": "Upgrade"
@@ -5712,7 +6288,7 @@
         },
         {
           "component": "Link",
-          "as": "candidates",
+          "as": "candidates2",
           "label": "Candidates"
         },
         {
@@ -5721,24 +6297,57 @@
           "label": "Vacancies"
         },
         {
-          "component": "TextField",
-          "as": "typeForHints",
-          "label": "Type for hints..."
+          "component": "Select",
+          "as": "jobTitle",
+          "label": "Job Title",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "vacancy",
+          "label": "Vacancy",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "hiringManager",
+          "label": "Hiring Manager",
+          "via": "proximity"
+        },
+        {
+          "component": "Select",
+          "as": "status",
+          "label": "Status",
+          "via": "proximity"
         },
         {
           "component": "TextField",
-          "as": "enterCommaSeperatedWords",
-          "label": "Enter comma seperated words..."
+          "as": "candidateName",
+          "label": "Candidate Name",
+          "via": "proximity"
         },
         {
           "component": "TextField",
-          "as": "from",
-          "label": "From"
+          "as": "keywords",
+          "label": "Keywords",
+          "via": "proximity"
+        },
+        {
+          "component": "TextField",
+          "as": "dateOfApplication",
+          "label": "Date of Application",
+          "via": "proximity"
         },
         {
           "component": "TextField",
           "as": "to",
           "label": "To"
+        },
+        {
+          "component": "Select",
+          "as": "methodOfApplication",
+          "label": "Method of Application",
+          "via": "proximity"
         },
         {
           "component": "Button",
@@ -5772,7 +6381,7 @@
         }
       ],
       "actions": [],
-      "unverified": 6
+      "unverified": 3
     },
     {
       "name": "AttachmentPage",
@@ -6137,6 +6746,16 @@
           "as": "navigation"
         },
         {
+          "component": "RecordTable",
+          "as": "employeeTimesheet",
+          "columns": [
+            "Employee Name",
+            "Timesheet Period",
+            "Actions"
+          ],
+          "keyColumn": "Employee Name"
+        },
+        {
           "component": "Link",
           "as": "upgrade",
           "label": "Upgrade"
@@ -6148,13 +6767,9 @@
         },
         {
           "component": "TextField",
-          "as": "typeForHints",
-          "label": "Type for hints..."
-        },
-        {
-          "component": "Button",
-          "as": "view",
-          "label": "View"
+          "as": "employeeName",
+          "label": "Employee Name",
+          "via": "proximity"
         },
         {
           "component": "Link",
@@ -6163,7 +6778,7 @@
         }
       ],
       "actions": [],
-      "unverified": 1
+      "unverified": 2
     },
     {
       "name": "ViewMyTimesheetPage",
@@ -20619,9 +21234,9 @@
     "declaredOnly": 194,
     "components": 10,
     "regions": 1,
-    "uses": 396,
+    "uses": 459,
     "actions": 0,
-    "unverified": 84,
+    "unverified": 62,
     "endpoints": 490,
     "resources": 105,
     "creatable": 44,

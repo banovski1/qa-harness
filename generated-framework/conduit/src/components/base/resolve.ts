@@ -11,6 +11,13 @@ export interface Identity {
   field?: string;
   within?: string;
   role?: string;
+  /**
+   * How the crawl arrived at `label`. `accessible` means the browser computes it, so
+   * `getByRole` can ask for it. `proximity` means the app renders the label next to the
+   * control without ever associating the two — no `for`, no `aria-labelledby` — so the
+   * accessibility tree does not contain it and only the same DOM walk finds it again.
+   */
+  via?: 'accessible' | 'proximity';
 }
 
 /**
@@ -52,9 +59,29 @@ function quote(value: string): string {
  * app's own field identifier where it does not. The second path is the app-specific
  * one, and it exists in exactly one file: locator-templates.generated.ts.
  */
+/**
+ * The control a rendered label belongs to, for an app that never said so.
+ *
+ * This is the run-time half of the crawl's proximity walk, and it has to agree with it
+ * or the page object is a list of names that resolve to nothing. Find the element whose
+ * own text is the label, climb to the nearest ancestor that also contains a control,
+ * and take the control inside it. `ancestor::*[...][1]` is that climb: nearest first,
+ * so the match is the tightest wrapper holding both, exactly as the crawl chose it.
+ */
+function byProximity(scope: Locator, label: string): Locator {
+  const text = quote(label);
+  const control = '*[self::input or self::textarea or self::select or self::button or ' +
+    '@role="combobox" or @role="textbox" or @role="button" or @contenteditable="true" or ' +
+    'contains(@class,"select-text") or contains(@class,"dropdown-toggle")]';
+  return scope.locator(
+    `xpath=.//*[normalize-space(text())=${text}]/ancestor::*[.//${control}][1]//${control}`,
+  ).first();
+}
+
 export function resolve(pageOrRoot: Page | Locator, role: string, identity: Identity): Locator {
   const scope = scopeOf(pageOrRoot, identity);
   if (identity.label) {
+    if (identity.via === 'proximity') return byProximity(scope, identity.label);
     return scope.getByRole(role as Parameters<Locator['getByRole']>[0], { name: wholeName(identity.label) });
   }
   if (identity.field) {

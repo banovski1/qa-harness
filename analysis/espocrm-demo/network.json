@@ -1105,30 +1105,6 @@
   {
     "screen": "__auth__",
     "method": "GET",
-    "url": "https://demo.eu.espocrm.com/api/v1/Case?maxSize=10&offset=0&orderBy=number&order=desc&whereGroup%5B0%5D%5Btype%5D=bool&whereGroup%5B0%5D%5Bvalue%5D%5B%5D=onlyMy&whereGroup%5B1%5D%5Btype%5D=primary&whereGroup%5B1%5D%5Bvalue%5D=open&attributeSelect=number%2Cname%2Ctype%2Cstatus%2Cpriority%2CaccountId%2CaccountName",
-    "status": 200,
-    "requestShape": null,
-    "responseShape": {
-      "total": "number",
-      "list": [
-        {
-          "id": "string",
-          "name": "string",
-          "number": "number",
-          "status": "string",
-          "priority": "string",
-          "type": "string",
-          "accountId": "string",
-          "accountName": "string",
-          "createdById": "string",
-          "assignedUserId": "string"
-        }
-      ]
-    }
-  },
-  {
-    "screen": "__auth__",
-    "method": "GET",
     "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
     "status": 200,
     "requestShape": null,
@@ -1180,6 +1156,30 @@
   {
     "screen": "__auth__",
     "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Case?maxSize=10&offset=0&orderBy=number&order=desc&whereGroup%5B0%5D%5Btype%5D=bool&whereGroup%5B0%5D%5Bvalue%5D%5B%5D=onlyMy&whereGroup%5B1%5D%5Btype%5D=primary&whereGroup%5B1%5D%5Bvalue%5D=open&attributeSelect=number%2Cname%2Ctype%2Cstatus%2Cpriority%2CaccountId%2CaccountName",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "total": "number",
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "number": "number",
+          "status": "string",
+          "priority": "string",
+          "type": "string",
+          "accountId": "string",
+          "accountName": "string",
+          "createdById": "string",
+          "assignedUserId": "string"
+        }
+      ]
+    }
+  },
+  {
+    "screen": "__auth__",
+    "method": "GET",
     "url": "https://demo.eu.espocrm.com/api/v1/Stream?maxSize=10&offset=0&orderBy=number&order=desc",
     "status": 200,
     "requestShape": null,
@@ -1189,11 +1189,7 @@
         {
           "id": "string",
           "post": "null",
-          "data": {
-            "fields": "…",
-            "attributes": "…",
-            "value": "…"
-          },
+          "data": "null",
           "type": "string",
           "targetType": "null",
           "number": "number",
@@ -1206,8 +1202,9 @@
           "parentId": "string",
           "parentType": "string",
           "parentName": "string",
-          "relatedId": "null",
-          "relatedType": "null",
+          "relatedId": "string",
+          "relatedType": "string",
+          "relatedName": "string",
           "createdById": "string",
           "createdByName": "string"
         }
@@ -2405,11 +2402,7 @@
         {
           "id": "string",
           "post": "null",
-          "data": {
-            "fields": "…",
-            "attributes": "…",
-            "value": "…"
-          },
+          "data": "null",
           "type": "string",
           "targetType": "null",
           "number": "number",
@@ -2422,8 +2415,9 @@
           "parentId": "string",
           "parentType": "string",
           "parentName": "string",
-          "relatedId": "null",
-          "relatedType": "null",
+          "relatedId": "string",
+          "relatedType": "string",
+          "relatedName": "string",
           "createdById": "string",
           "createdByName": "string"
         }
@@ -2431,29 +2425,6 @@
       "reactionsCheckDate": "string",
       "updatedReactions": []
     }
-  },
-  {
-    "screen": "root",
-    "method": "GET",
-    "url": "https://demo.eu.espocrm.com/api/v1/Activities?from=2026-09-07%2000:00&to=2026-09-14%2000:00&scopeList=Meeting%2CCall%2CTask&agenda=true",
-    "status": 200,
-    "requestShape": null,
-    "responseShape": [
-      {
-        "scope": "string",
-        "dateStart": "string",
-        "dateEnd": "string",
-        "id": "string",
-        "name": "string",
-        "status": "string",
-        "dateStartDate": "null",
-        "dateEndDate": "null",
-        "parentType": "string",
-        "parentId": "string",
-        "createdAt": "string",
-        "color": "null"
-      }
-    ]
   },
   {
     "screen": "root",
@@ -2478,6 +2449,29 @@
         }
       ]
     }
+  },
+  {
+    "screen": "root",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Activities?from=2026-09-07%2000:00&to=2026-09-14%2000:00&scopeList=Meeting%2CCall%2CTask&agenda=true",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": [
+      {
+        "scope": "string",
+        "dateStart": "string",
+        "dateEnd": "string",
+        "id": "string",
+        "name": "string",
+        "status": "string",
+        "dateStartDate": "null",
+        "dateEndDate": "null",
+        "parentType": "string",
+        "parentId": "string",
+        "createdAt": "string",
+        "color": "null"
+      }
+    ]
   },
   {
     "screen": "Account",
@@ -2536,9 +2530,9 @@
     }
   },
   {
-    "screen": "Contact",
+    "screen": "Contact-create",
     "method": "POST",
-    "url": "https://region1.analytics.google.com/g/collect?v=2&tid=G-R3RHVCTJQG&gtm=45je6992h1v9133517092z8854693747za20gzb854693747zd854693747&_p=1789108970038&gcd=13l3l3l2l1l1&npa=1&dma_cps=a&dma=1&_eu=EAAAAGQC&cid=385235615.1789074655&frm=0&ir=1&pscdl=noapi&rcb=18&sr=1280x720&uaa=arm&uab=64&uafvl=Chromium%3B152.0.7977.77%7CNot%253FA_Brand%3B24.0.0.0%7CGoogle%2520Chrome%3B152.0.7977.77&uam=&uamb=0&uap=macOS&uapv=26.6.2&uaw=0&ul=en-us&gaf=2&_s=1&tag_exp=115938466~115938469~118897920~118897930~120213116~120385423~120469145~120469153&sid=1789107192&sct=2&seg=1&dl=https%3A%2F%2Fdemo.eu.espocrm.com%2F&dt=EspoCRM%20Demo&en=page_view&tfd=5162",
+    "url": "https://region1.analytics.google.com/g/collect?v=2&tid=G-R3RHVCTJQG&gtm=45je6992v9133517092z8854693747za20gzb854693747zd854693747&_p=1789292513706&gcd=13l3l3l2l1l1&npa=1&dma_cps=a&dma=1&_eu=EAAAAGQC&cid=1558931492.1789291631&frm=0&ir=1&pscdl=noapi&rcb=0&sr=1280x720&uaa=arm&uab=64&uafvl=Chromium%3B152.0.7977.84%7CNot%253FA_Brand%3B24.0.0.0%7CGoogle%2520Chrome%3B152.0.7977.84&uam=&uamb=0&uap=macOS&uapv=26.6.2&uaw=0&ul=en-us&gaf=2&_s=1&tag_exp=115938466~115938469~118897920~118897930~120213116~120385422~120469145~120469153~120912438&sid=1789291630&sct=1&seg=1&dl=https%3A%2F%2Fdemo.eu.espocrm.com%2F&dt=EspoCRM%20Demo&en=page_view&tfd=5181",
     "status": 204,
     "requestShape": null,
     "responseShape": null
@@ -2723,7 +2717,7 @@
   {
     "screen": "Meeting-create",
     "method": "GET",
-    "url": "https://demo.eu.espocrm.com/api/v1/Timeline/busyRanges?from=2026-09-10%2003:00&to=2026-09-13%2010:59&userIdList=1&entityType=Meeting",
+    "url": "https://demo.eu.espocrm.com/api/v1/Timeline/busyRanges?from=2026-09-12%2006:00&to=2026-09-15%2013:59&userIdList=1&entityType=Meeting",
     "status": 200,
     "requestShape": null,
     "responseShape": {
@@ -2850,17 +2844,6 @@
   {
     "screen": "KnowledgeBaseArticle",
     "method": "GET",
-    "url": "https://demo.eu.espocrm.com/api/v1/KnowledgeBaseArticle?maxSize=20&offset=0&orderBy=order&order=asc&whereGroup%5B0%5D%5Battribute%5D=categories&whereGroup%5B0%5D%5Btype%5D=isNotLinked&attributeSelect=name%2Cstatus%2CcreatedAt",
-    "status": 200,
-    "requestShape": null,
-    "responseShape": {
-      "total": "number",
-      "list": []
-    }
-  },
-  {
-    "screen": "KnowledgeBaseArticle",
-    "method": "GET",
     "url": "https://demo.eu.espocrm.com/api/v1/KnowledgeBaseCategory/action/listTree?maxSize=20&offset=0&orderBy=&order=",
     "status": 200,
     "requestShape": null,
@@ -2889,32 +2872,14 @@
     }
   },
   {
-    "screen": "Document",
+    "screen": "KnowledgeBaseArticle",
     "method": "GET",
-    "url": "https://demo.eu.espocrm.com/api/v1/DocumentFolder/action/listTree?maxSize=20&offset=0&orderBy=&order=",
+    "url": "https://demo.eu.espocrm.com/api/v1/KnowledgeBaseArticle?maxSize=20&offset=0&orderBy=order&order=asc&whereGroup%5B0%5D%5Battribute%5D=categories&whereGroup%5B0%5D%5Btype%5D=isNotLinked&attributeSelect=name%2Cstatus%2CcreatedAt",
     "status": 200,
     "requestShape": null,
     "responseShape": {
-      "list": [
-        {
-          "id": "string",
-          "name": "string",
-          "deleted": "boolean",
-          "description": "null",
-          "createdAt": "string",
-          "modifiedAt": "string",
-          "childList": [],
-          "createdById": "string",
-          "createdByName": "string",
-          "modifiedById": "null",
-          "modifiedByName": "null",
-          "parentId": "null",
-          "parentName": "null"
-        }
-      ],
-      "path": [],
-      "data": "null",
-      "openPath": "null"
+      "total": "number",
+      "list": []
     }
   },
   {
@@ -2969,6 +2934,35 @@
     }
   },
   {
+    "screen": "Document",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/DocumentFolder/action/listTree?maxSize=20&offset=0&orderBy=&order=",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "description": "null",
+          "createdAt": "string",
+          "modifiedAt": "string",
+          "childList": [],
+          "createdById": "string",
+          "createdByName": "string",
+          "modifiedById": "null",
+          "modifiedByName": "null",
+          "parentId": "null",
+          "parentName": "null"
+        }
+      ],
+      "path": [],
+      "data": "null",
+      "openPath": "null"
+    }
+  },
+  {
     "screen": "Product",
     "method": "GET",
     "url": "https://demo.eu.espocrm.com/api/v1/Product?maxSize=20&offset=0&orderBy=name&order=asc&whereGroup%5B0%5D%5Battribute%5D=categoryId&whereGroup%5B0%5D%5Btype%5D=isNull&attributeSelect=name%2CbrandId%2CbrandName%2Cstatus",
@@ -3012,16 +3006,6 @@
   {
     "screen": "Quote",
     "method": "GET",
-    "url": "https://demo.eu.espocrm.com/api/v1/PopupNotification/action/grouped",
-    "status": 200,
-    "requestShape": null,
-    "responseShape": {
-      "event": []
-    }
-  },
-  {
-    "screen": "Quote",
-    "method": "GET",
     "url": "https://demo.eu.espocrm.com/api/v1/Quote?maxSize=20&offset=0&orderBy=createdAt&order=desc&attributeSelect=name%2Cstatus%2CaccountId%2CaccountName%2CdateQuoted%2CamountCurrency%2Camount",
     "status": 200,
     "requestShape": null,
@@ -3042,6 +3026,16 @@
           "assignedUserId": "null"
         }
       ]
+    }
+  },
+  {
+    "screen": "Quote",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/PopupNotification/action/grouped",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": {
+      "event": []
     }
   },
   {
@@ -3252,37 +3246,6 @@
   {
     "screen": "Project",
     "method": "GET",
-    "url": "https://demo.eu.espocrm.com/api/v1/ProjectCategory/action/listTree?checkIfEmpty=true&maxSize=20&offset=0&orderBy=&order=",
-    "status": 200,
-    "requestShape": null,
-    "responseShape": {
-      "list": [
-        {
-          "id": "string",
-          "name": "string",
-          "deleted": "boolean",
-          "order": "number",
-          "orderPath": "string",
-          "description": "null",
-          "createdAt": "string",
-          "modifiedAt": "string",
-          "childList": [],
-          "createdById": "string",
-          "createdByName": "string",
-          "modifiedById": "null",
-          "modifiedByName": "null",
-          "parentId": "null",
-          "parentName": "null"
-        }
-      ],
-      "path": [],
-      "data": "null",
-      "openPath": "null"
-    }
-  },
-  {
-    "screen": "Project",
-    "method": "GET",
     "url": "https://demo.eu.espocrm.com/api/v1/Project?maxSize=20&offset=0&orderBy=order&order=asc&whereGroup%5B0%5D%5Battribute%5D=categoryId&whereGroup%5B0%5D%5Btype%5D=isNull&attributeSelect=name%2Cstatus%2CdateStart%2CdateEnd",
     "status": 200,
     "requestShape": null,
@@ -3312,12 +3275,35 @@
     }
   },
   {
-    "screen": "ProjectTask",
+    "screen": "Project",
     "method": "GET",
-    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "url": "https://demo.eu.espocrm.com/api/v1/ProjectCategory/action/listTree?checkIfEmpty=true&maxSize=20&offset=0&orderBy=&order=",
     "status": 200,
     "requestShape": null,
-    "responseShape": "number"
+    "responseShape": {
+      "list": [
+        {
+          "id": "string",
+          "name": "string",
+          "deleted": "boolean",
+          "order": "number",
+          "orderPath": "string",
+          "description": "null",
+          "createdAt": "string",
+          "modifiedAt": "string",
+          "childList": [],
+          "createdById": "string",
+          "createdByName": "string",
+          "modifiedById": "null",
+          "modifiedByName": "null",
+          "parentId": "null",
+          "parentName": "null"
+        }
+      ],
+      "path": [],
+      "data": "null",
+      "openPath": "null"
+    }
   },
   {
     "screen": "ProjectTask",
@@ -3356,6 +3342,14 @@
         }
       ]
     }
+  },
+  {
+    "screen": "ProjectTask",
+    "method": "GET",
+    "url": "https://demo.eu.espocrm.com/api/v1/Notification/action/notReadCount",
+    "status": 200,
+    "requestShape": null,
+    "responseShape": "number"
   },
   {
     "screen": "User",
@@ -3423,11 +3417,7 @@
         {
           "id": "string",
           "post": "null",
-          "data": {
-            "fields": "…",
-            "attributes": "…",
-            "value": "…"
-          },
+          "data": "null",
           "type": "string",
           "targetType": "null",
           "number": "number",
@@ -3440,8 +3430,9 @@
           "parentId": "string",
           "parentType": "string",
           "parentName": "string",
-          "relatedId": "null",
-          "relatedType": "null",
+          "relatedId": "string",
+          "relatedType": "string",
+          "relatedName": "string",
           "createdById": "string",
           "createdByName": "string"
         }
@@ -4324,11 +4315,7 @@
         {
           "id": "string",
           "post": "null",
-          "data": {
-            "fields": "…",
-            "attributes": "…",
-            "value": "…"
-          },
+          "data": "null",
           "type": "string",
           "targetType": "null",
           "number": "number",
@@ -4341,8 +4328,9 @@
           "parentId": "string",
           "parentType": "string",
           "parentName": "string",
-          "relatedId": "null",
-          "relatedType": "null",
+          "relatedId": "string",
+          "relatedType": "string",
+          "relatedName": "string",
           "createdById": "string",
           "createdByName": "string",
           "_scope": "string"
@@ -4449,7 +4437,7 @@
   {
     "screen": "Call-create",
     "method": "GET",
-    "url": "https://demo.eu.espocrm.com/api/v1/Timeline/busyRanges?from=2026-09-10%2003:00&to=2026-09-13%2009:59&userIdList=1&entityType=Call",
+    "url": "https://demo.eu.espocrm.com/api/v1/Timeline/busyRanges?from=2026-09-12%2006:00&to=2026-09-15%2012:59&userIdList=1&entityType=Call",
     "status": 200,
     "requestShape": null,
     "responseShape": {
@@ -4558,11 +4546,7 @@
         {
           "id": "string",
           "post": "null",
-          "data": {
-            "fields": "…",
-            "attributes": "…",
-            "value": "…"
-          },
+          "data": "null",
           "type": "string",
           "targetType": "null",
           "number": "number",
@@ -4575,8 +4559,9 @@
           "parentId": "string",
           "parentType": "string",
           "parentName": "string",
-          "relatedId": "null",
-          "relatedType": "null",
+          "relatedId": "string",
+          "relatedType": "string",
+          "relatedName": "string",
           "createdById": "string",
           "createdByName": "string"
         }

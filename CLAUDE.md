@@ -100,6 +100,20 @@ Four tables, and **only `components` holds a locator**.
 - **A screen carries English, never a selector.** `{ component: 'Button', as: 'submitRequest',
   label: 'Submit Request' }`. `assertNoSelectors` makes a violation a compile error, with a test.
   A region whose only handle is CSS owns that CSS privately inside its own component class.
+- **A handle is emitted only if it addresses one element.** The crawl proves this, and
+  the compiler groups a screen's controls by the handle each would carry: a group of one
+  is addressable, a larger one is retried scoped to the heading above each member, and
+  whatever the heading does not separate is unverified. A numeric suffix on the property
+  name never disambiguates anything — `select` and `select2` carrying one identical
+  locator both resolve to both elements, and the failure lands inside a test instead of
+  in the compiler.
+- **A label the app renders but never associated is marked `via: 'proximity'`.** The
+  crawl finds it by walking out from the control until a label appears in a wrapper
+  holding no other control; `resolve()` performs the same walk at run time. Without the
+  mark the runtime asks the accessibility tree for a name the app never put there, and
+  every getter on the screen fails NOT_FOUND. For a control that takes input this label
+  beats both its own text and its placeholder — three date fields whose accessible name
+  is `yyyy-mm-dd` are three controls with one name; "From Date" is what a person reads.
 - **Recurrence makes a component.** The same region on ≥2 screens with ≥70% of its controls shared
   (`RECURRENCE_MIN_SCREENS`, `RECURRENCE_MIN_CONTROL_MATCH`, `MIN_REGION_CONTROLS` — one constant
   each). A region with no declared root is a crawl partition, not a class.

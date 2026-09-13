@@ -13,18 +13,14 @@ export class WarehousePageGenerated extends BasePage {
   readonly path = '/#Warehouse';
   readonly heading = 'Warehouses';
 
-  // 5 element(s) on this screen carry no label, role name or field
+  // 9 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in WarehousePage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'WarehousePage', expectedUrl: '/#Warehouse', modelPath: MODEL_PATH });
   readonly warehouses = new RecordTable(this.page, 'warehouses', { shape: TABLE_SHAPE, columns: ["Select All Results","Name","City","Status","Stock"], keyColumn: 'Name', screen: 'WarehousePage', expectedUrl: '/#Warehouse', modelPath: MODEL_PATH });
   readonly createWarehouse = new Link(this.page, { label: 'Create Warehouse' }, { screen: 'WarehousePage', expectedUrl: '/#Warehouse', modelPath: MODEL_PATH });
-  readonly all = new Button(this.page, { label: 'All' }, { screen: 'WarehousePage', expectedUrl: '/#Warehouse', modelPath: MODEL_PATH });
   readonly textFilter = new TextField(this.page, { field: 'textFilter' }, { screen: 'WarehousePage', expectedUrl: '/#Warehouse', modelPath: MODEL_PATH });
   readonly search = new Button(this.page, { label: 'Search' }, { screen: 'WarehousePage', expectedUrl: '/#Warehouse', modelPath: MODEL_PATH });
-  readonly control133 = new Button(this.page, { label: '1–3 / 3' }, { screen: 'WarehousePage', expectedUrl: '/#Warehouse', modelPath: MODEL_PATH });
-  readonly previousPage = new Button(this.page, { label: 'Previous Page' }, { screen: 'WarehousePage', expectedUrl: '/#Warehouse', modelPath: MODEL_PATH });
-  readonly nextPage = new Button(this.page, { label: 'Next Page' }, { screen: 'WarehousePage', expectedUrl: '/#Warehouse', modelPath: MODEL_PATH });
   readonly espoCRMInc = new Link(this.page, { label: 'EspoCRM, Inc.' }, { screen: 'WarehousePage', expectedUrl: '/#Warehouse', modelPath: MODEL_PATH });
 
 

@@ -11,12 +11,14 @@ export class LoginPageGenerated extends BasePage {
   readonly path = '/login';
   readonly heading = 'Sign in';
 
+  // 1 element(s) on this screen carry no label, role name or field
+  // identifier, so nothing here addresses them. Record the flow that uses one and add
+  // a scoped accessor in LoginPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'LoginPage', expectedUrl: '/login', modelPath: MODEL_PATH });
   readonly needAnAccount = new Link(this.page, { label: 'Need an account?' }, { screen: 'LoginPage', expectedUrl: '/login', modelPath: MODEL_PATH });
   readonly email = new TextField(this.page, { label: 'Email' }, { screen: 'LoginPage', expectedUrl: '/login', modelPath: MODEL_PATH });
   readonly password = new TextField(this.page, { label: 'Password' }, { screen: 'LoginPage', expectedUrl: '/login', modelPath: MODEL_PATH });
   readonly signIn = new Button(this.page, { label: 'Sign in' }, { screen: 'LoginPage', expectedUrl: '/login', modelPath: MODEL_PATH });
-  readonly conduit = new Link(this.page, { label: 'Conduit' }, { screen: 'LoginPage', expectedUrl: '/login', modelPath: MODEL_PATH });
   readonly realWorldOSSProject = new Link(this.page, { label: 'RealWorld OSS Project' }, { screen: 'LoginPage', expectedUrl: '/login', modelPath: MODEL_PATH });
 
   /** Proved by the crawl: this control leads to RegisterPage. */

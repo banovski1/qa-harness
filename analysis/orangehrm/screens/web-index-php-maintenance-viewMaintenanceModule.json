@@ -15,6 +15,7 @@
       "type": "hidden",
       "role": null,
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -52,7 +53,8 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "",
+      "name": "Username",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -73,17 +75,27 @@
         "h": 45
       },
       "locator": {
-        "strategy": "attribute",
-        "expression": "locator('input[name=\\\"username\\\"]')",
+        "strategy": "proximity",
+        "expression": "label('Username') >> input",
         "matchCount": 1,
         "args": [
-          "input[name=\"username\"]"
+          "Username",
+          "input"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Username') >> input",
+          "matchCount": 1,
+          "args": [
+            "Username",
+            "input"
+          ]
+        },
         {
           "strategy": "attribute",
           "expression": "locator('input[name=\\\"username\\\"]')",
@@ -107,7 +119,8 @@
       "tag": "input",
       "type": "password",
       "role": "textbox",
-      "name": "",
+      "name": "Password",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -128,17 +141,27 @@
         "h": 45
       },
       "locator": {
-        "strategy": "attribute",
-        "expression": "locator('input[name=\\\"password\\\"]')",
+        "strategy": "proximity",
+        "expression": "label('Password') >> input",
         "matchCount": 1,
         "args": [
-          "input[name=\"password\"]"
+          "Password",
+          "input"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Password') >> input",
+          "matchCount": 1,
+          "args": [
+            "Password",
+            "input"
+          ]
+        },
         {
           "strategy": "attribute",
           "expression": "locator('input[name=\\\"password\\\"]')",
@@ -163,6 +186,7 @@
       "type": "button",
       "role": "button",
       "name": "Cancel",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -229,6 +253,7 @@
       "type": "submit",
       "role": "button",
       "name": "Confirm",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -295,6 +320,7 @@
       "type": null,
       "role": "link",
       "name": "OrangeHRM, Inc",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -364,8 +390,8 @@
     "elements": 6,
     "visible": 5,
     "hidden": 1,
-    "semantic": 3,
-    "fragile": 2,
+    "semantic": 5,
+    "fragile": 0,
     "ambiguous": 0,
     "withTestId": 0
   }

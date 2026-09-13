@@ -11,12 +11,11 @@ export class ProductPageGenerated extends BasePage {
   readonly path = '/#Product';
   readonly heading = 'Products';
 
-  // 6 element(s) on this screen carry no label, role name or field
+  // 7 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in ProductPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'ProductPage', expectedUrl: '/#Product', modelPath: MODEL_PATH });
   readonly createProduct = new Button(this.page, { label: 'Create Product' }, { screen: 'ProductPage', expectedUrl: '/#Product', modelPath: MODEL_PATH });
-  readonly all = new Button(this.page, { label: 'All' }, { screen: 'ProductPage', expectedUrl: '/#Product', modelPath: MODEL_PATH });
   readonly textFilter = new TextField(this.page, { field: 'textFilter' }, { screen: 'ProductPage', expectedUrl: '/#Product', modelPath: MODEL_PATH });
   readonly search = new Button(this.page, { label: 'Search' }, { screen: 'ProductPage', expectedUrl: '/#Product', modelPath: MODEL_PATH });
   readonly electronics = new Link(this.page, { label: 'Electronics' }, { screen: 'ProductPage', expectedUrl: '/#Product', modelPath: MODEL_PATH });

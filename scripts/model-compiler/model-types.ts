@@ -11,6 +11,11 @@ export interface Identity {
   within?: string;
   /** ARIA role, where two controls share a label but not a role. */
   role?: string;
+  /**
+   * How the crawl found `label`. `proximity` means the app renders it beside the
+   * control without associating the two, so only the same DOM walk resolves it again.
+   */
+  via?: 'accessible' | 'proximity';
 }
 
 export type ComponentKind = 'region' | 'field' | 'collection';

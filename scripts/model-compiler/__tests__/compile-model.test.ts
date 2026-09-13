@@ -93,6 +93,84 @@ function fixture(): string {
   return dir;
 }
 
+/** Two controls a screen names identically, and one named only by a rendered label. */
+function ambiguous(extra: any[] = []) {
+  const dir = fixture();
+  const twin = (y: number) => ({
+    tag: 'input', role: 'textbox', name: 'Type for hints...', nameSource: 'accessible',
+    label: null, placeholder: 'Type for hints...', id: null, nameAttr: null,
+    testId: null, data: {}, region: 'form', visible: true, disabled: false, href: null,
+    box: { x: 0, y, w: 100, h: 20 },
+    locator: { strategy: 'css', args: ['div:nth-of-type(' + y + ') input'], matchCount: 1 },
+    candidates: [
+      { strategy: 'role', args: ['textbox', 'Type for hints...'], matchCount: 2 },
+      { strategy: 'placeholder', args: ['Type for hints...'], matchCount: 2 },
+      { strategy: 'css', args: ['div:nth-of-type(' + y + ') input'], matchCount: 1 },
+    ],
+    unique: true, fragile: true, type: 'text',
+  });
+  const nearLabelled = {
+    tag: 'div', role: 'combobox', name: 'Sub Unit', nameSource: 'proximity',
+    label: null, placeholder: null, id: null, nameAttr: null,
+    testId: null, data: {}, region: 'form', visible: true, disabled: false, href: null,
+    box: { x: 0, y: 300, w: 100, h: 20 },
+    locator: { strategy: 'proximity', args: ['Sub Unit', 'div'], matchCount: 1 },
+    candidates: [{ strategy: 'proximity', args: ['Sub Unit', 'div'], matchCount: 1 }],
+    unique: true, fragile: false, type: null,
+  };
+  writeFileSync(join(dir, 'screens', 'search.json'), JSON.stringify({
+    url: 'https://demo.test/reports', path: '/reports', title: 'Reports',
+    headings: [{ level: 1, text: 'Reports', y: 0 }], tables: [],
+    elements: [twin(100), twin(200), nearLabelled, ...extra], links: [],
+  }));
+  return dir;
+}
+
+test('a handle that addresses two elements is emitted for neither', () => {
+  const m = compile(ambiguous(), 'T');
+  const reports = m.screens.find(s => s.path === '/reports')!;
+  assert.equal(reports.uses.filter(u => u.label === 'Type for hints...').length, 0);
+  assert.ok(reports.unverified >= 2, 'both twins are reported as unverified, not dropped silently');
+});
+
+test('a heading that separates two same-named controls is used to scope them', () => {
+  const dir = fixture();
+  const field = (y: number, heading: string) => ({
+    tag: 'input', role: 'textbox', name: 'Name', nameSource: 'accessible',
+    label: null, placeholder: null, id: null, nameAttr: null, testId: null, data: {},
+    region: 'form', visible: true, disabled: false, href: null,
+    box: { x: 0, y, w: 100, h: 20 },
+    locator: { strategy: 'css', args: [heading], matchCount: 1 },
+    candidates: [{ strategy: 'role', args: ['textbox', 'Name'], matchCount: 2 }],
+    unique: true, fragile: true, type: 'text',
+  });
+  writeFileSync(join(dir, 'screens', 'scoped.json'), JSON.stringify({
+    url: 'https://demo.test/reports', path: '/reports', title: 'Reports',
+    headings: [{ level: 2, text: 'Billing', y: 50 }, { level: 2, text: 'Shipping', y: 250 }],
+    tables: [], elements: [field(100, 'Billing'), field(300, 'Shipping')], links: [],
+  }));
+  const reports = compile(dir, 'T').screens.find(s => s.path === '/reports')!;
+  const names = reports.uses.filter(u => u.label === 'Name').map(u => u.within).sort();
+  assert.deepEqual(names, ['Billing', 'Shipping']);
+});
+
+test('a proximity label is marked so the runtime repeats the same walk', () => {
+  const reports = compile(ambiguous(), 'T').screens.find(s => s.path === '/reports')!;
+  const subUnit = reports.uses.find(u => u.label === 'Sub Unit')!;
+  assert.equal(subUnit.via, 'proximity');
+  assert.equal(subUnit.component, 'Select');
+});
+
+test('an accessible label carries no via, so the runtime asks the accessibility tree', () => {
+  const add = compile(fixture(), 'T').screens.find(s => s.path === '/contacts/add')!;
+  assert.equal(add.uses.find(u => u.label === 'First Name')!.via, undefined);
+});
+
+test('a collection is named after the heading above it, never the document title', () => {
+  const contacts = compile(fixture(), 'T').screens.find(s => s.path === '/contacts')!;
+  assert.equal(contacts.uses.find(u => u.component === 'RecordTable')!.as, 'contacts');
+});
+
 test('the navigation recurs on both screens, so it becomes one component', () => {
   const m = compile(fixture(), 'T');
   const nav = m.components.NavigationBar;

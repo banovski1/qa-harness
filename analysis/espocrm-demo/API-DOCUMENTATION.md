@@ -4,7 +4,7 @@
 
 - **App:** EspoCRM demo (EU)
 - **Base URL:** https://demo.eu.espocrm.com/
-- **Generated:** 2026-09-11T06:45:10.216Z
+- **Generated:** 2026-09-13T09:43:35.713Z
 - **Endpoints observed:** 68
 - **Calls recorded:** 100
 - **Specification discovered:** none
@@ -34,7 +34,7 @@ no value from the app reaches this file.
 | `GET` | `/api/v1/CreditNote` | 1 | 200 | `maxSize`, `offset`, `orderBy`, `order`, `attributeSelect` | `CreditNote` |
 | `GET` | `/api/v1/DeliveryOrder` | 1 | 200 | `maxSize`, `offset`, `orderBy`, `order`, `attributeSelect` | `DeliveryOrder` |
 | `GET` | `/api/v1/Document` | 1 | 200 | `maxSize`, `offset`, `orderBy`, `order`, `whereGroup[0][attribute]`, `whereGroup[0][type]`, `attributeSelect` | `Document` |
-| `GET` | `/api/v1/DocumentFolder/action/listTree` | 2 | 200 | `maxSize`, `offset`, `orderBy`, `order`, `checkIfEmpty` | `Document` |
+| `GET` | `/api/v1/DocumentFolder/action/listTree` | 2 | 200 | `checkIfEmpty`, `maxSize`, `offset`, `orderBy`, `order` | `Document` |
 | `GET` | `/api/v1/Email` | 1 | 200 | `maxSize`, `offset`, `orderBy`, `order`, `whereGroup[0][type]`, `whereGroup[0][attribute]`, `whereGroup[0][value]`, `attributeSelect` | `Email` |
 | `GET` | `/api/v1/Email/inbox/notReadCounts` | 1 | 200 | — | `Email` |
 | `GET` | `/api/v1/EmailFolder/action/listAll` | 1 | 200 | `maxSize`, `offset`, `orderBy`, `order` | `Email` |
@@ -84,7 +84,7 @@ no value from the app reaches this file.
 | `GET` | `/api/v1/Workflow` | 1 | 200 | `maxSize`, `offset`, `orderBy`, `order`, `whereGroup[0][attribute]`, `whereGroup[0][type]`, `attributeSelect` | `Workflow` |
 | `GET` | `/api/v1/WorkflowCategory/action/listTree` | 1 | 200 | `checkIfEmpty`, `maxSize`, `offset`, `orderBy`, `order` | `Workflow` |
 | `GET` | `/api/v1/WorkingTimeCalendar` | 1 | 200 | `maxSize`, `offset`, `orderBy`, `order`, `attributeSelect` | `WorkingTimeCalendar` |
-| `POST` | `/g/collect` | 1 | 204 | `v`, `tid`, `gtm`, `_p`, `gcd`, `npa`, `dma_cps`, `dma`, `_eu`, `cid`, `frm`, `ir`, `pscdl`, `rcb`, `sr`, `uaa`, `uab`, `uafvl`, `uam`, `uamb`, `uap`, `uapv`, `uaw`, `ul`, `gaf`, `_s`, `tag_exp`, `sid`, `sct`, `seg`, `dl`, `dt`, `en`, `tfd` | `Contact` |
+| `POST` | `/g/collect` | 1 | 204 | `v`, `tid`, `gtm`, `_p`, `gcd`, `npa`, `dma_cps`, `dma`, `_eu`, `cid`, `frm`, `ir`, `pscdl`, `rcb`, `sr`, `uaa`, `uab`, `uafvl`, `uam`, `uamb`, `uap`, `uapv`, `uaw`, `ul`, `gaf`, `_s`, `tag_exp`, `sid`, `sct`, `seg`, `dl`, `dt`, `en`, `tfd` | `Contact-create` |
 
 ## Payload shapes
 
@@ -438,6 +438,7 @@ Response:
 total: number
 list[].id: string
 list[].post: null
+list[].data: null
 list[].type: string
 list[].targetType: null
 list[].number: number
@@ -449,8 +450,9 @@ list[].createdAt: string
 list[].parentId: string
 list[].parentType: string
 list[].parentName: string
-list[].relatedId: null
-list[].relatedType: null
+list[].relatedId: string
+list[].relatedType: string
+list[].relatedName: string
 list[].createdById: string
 list[].createdByName: string
 list[]._scope: string
@@ -1038,6 +1040,7 @@ Response:
 total: number
 list[].id: string
 list[].post: null
+list[].data: null
 list[].type: string
 list[].targetType: null
 list[].number: number
@@ -1049,8 +1052,9 @@ list[].createdAt: string
 list[].parentId: string
 list[].parentType: string
 list[].parentName: string
-list[].relatedId: null
-list[].relatedType: null
+list[].relatedId: string
+list[].relatedType: string
+list[].relatedName: string
 list[].createdById: string
 list[].createdByName: string
 reactionsCheckDate: string
@@ -1243,6 +1247,7 @@ Response:
 total: number
 list[].id: string
 list[].post: null
+list[].data: null
 list[].type: string
 list[].targetType: null
 list[].number: number
@@ -1254,8 +1259,9 @@ list[].createdAt: string
 list[].parentId: string
 list[].parentType: string
 list[].parentName: string
-list[].relatedId: null
-list[].relatedType: null
+list[].relatedId: string
+list[].relatedType: string
+list[].relatedName: string
 list[].createdById: string
 list[].createdByName: string
 reactionsCheckDate: string

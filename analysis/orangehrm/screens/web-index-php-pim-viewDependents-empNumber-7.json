@@ -3,12 +3,34 @@
   "path": "/web/index.php/pim/viewDependents/empNumber/7",
   "title": "OrangeHRM",
   "headings": [],
-  "tables": [],
+  "tables": [
+    {
+      "columns": [
+        "Name",
+        "Relationship",
+        "Date of Birth",
+        "Actions"
+      ],
+      "rowCount": 1
+    },
+    {
+      "columns": [
+        "File Name",
+        "Description",
+        "Size",
+        "Type",
+        "Date Added",
+        "Added By",
+        "Actions"
+      ],
+      "rowCount": 1
+    }
+  ],
   "regions": {
     "navigation": 16,
     "header": 2,
     "body": 23,
-    "table": 2
+    "table": 4
   },
   "elements": [
     {
@@ -17,6 +39,7 @@
       "type": null,
       "role": "link",
       "name": "client brand logo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -75,6 +98,7 @@
       "type": null,
       "role": "textbox",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Search",
       "id": null,
@@ -141,6 +165,7 @@
       "type": "button",
       "role": "none",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -189,6 +214,7 @@
       "type": null,
       "role": "link",
       "name": "Admin",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -254,6 +280,7 @@
       "type": null,
       "role": "link",
       "name": "PIM",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -319,6 +346,7 @@
       "type": null,
       "role": "link",
       "name": "Leave",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -384,6 +412,7 @@
       "type": null,
       "role": "link",
       "name": "Time",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -449,6 +478,7 @@
       "type": null,
       "role": "link",
       "name": "Recruitment",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -514,6 +544,7 @@
       "type": null,
       "role": "link",
       "name": "My Info",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -579,6 +610,7 @@
       "type": null,
       "role": "link",
       "name": "Performance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -644,6 +676,7 @@
       "type": null,
       "role": "link",
       "name": "Dashboard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -709,6 +742,7 @@
       "type": null,
       "role": "link",
       "name": "Directory",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -774,6 +808,7 @@
       "type": null,
       "role": "link",
       "name": "Maintenance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -839,6 +874,7 @@
       "type": null,
       "role": "link",
       "name": "Claim",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -904,6 +940,7 @@
       "type": null,
       "role": "link",
       "name": "Buzz",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -969,6 +1006,7 @@
       "type": null,
       "role": "link",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1034,6 +1072,7 @@
       "type": "button",
       "role": "button",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1100,6 +1139,7 @@
       "type": "button",
       "role": "button",
       "name": "Help",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1157,6 +1197,7 @@
       "type": null,
       "role": "tab",
       "name": "Personal Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1222,6 +1263,7 @@
       "type": null,
       "role": "link",
       "name": "Personal Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1287,6 +1329,7 @@
       "type": null,
       "role": "tab",
       "name": "Contact Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1352,6 +1395,7 @@
       "type": null,
       "role": "link",
       "name": "Contact Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1417,6 +1461,7 @@
       "type": null,
       "role": "tab",
       "name": "Emergency Contacts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1482,6 +1527,7 @@
       "type": null,
       "role": "link",
       "name": "Emergency Contacts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1547,6 +1593,7 @@
       "type": null,
       "role": "tab",
       "name": "Dependents",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1612,6 +1659,7 @@
       "type": null,
       "role": "link",
       "name": "Dependents",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1677,6 +1725,7 @@
       "type": null,
       "role": "tab",
       "name": "Immigration",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1742,6 +1791,7 @@
       "type": null,
       "role": "link",
       "name": "Immigration",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1807,6 +1857,7 @@
       "type": null,
       "role": "tab",
       "name": "Job",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1872,6 +1923,7 @@
       "type": null,
       "role": "link",
       "name": "Job",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1937,6 +1989,7 @@
       "type": null,
       "role": "tab",
       "name": "Salary",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2002,6 +2055,7 @@
       "type": null,
       "role": "link",
       "name": "Salary",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2067,6 +2121,7 @@
       "type": null,
       "role": "tab",
       "name": "Report-to",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2132,6 +2187,7 @@
       "type": null,
       "role": "link",
       "name": "Report-to",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2197,6 +2253,7 @@
       "type": null,
       "role": "tab",
       "name": "Qualifications",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2262,6 +2319,7 @@
       "type": null,
       "role": "link",
       "name": "Qualifications",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2327,6 +2385,7 @@
       "type": null,
       "role": "tab",
       "name": "Memberships",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2392,6 +2451,7 @@
       "type": null,
       "role": "link",
       "name": "Memberships",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2457,6 +2517,7 @@
       "type": "button",
       "role": "button",
       "name": "Add",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2522,6 +2583,7 @@
       "type": "checkbox",
       "role": "checkbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2556,10 +2618,59 @@
     },
     {
       "index": 40,
+      "tag": "span",
+      "type": null,
+      "role": "checkbox",
+      "name": "",
+      "nameSource": null,
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6179b72a": ""
+      },
+      "region": "table",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 555,
+        "y": 323,
+        "w": 18,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+        "matchCount": 2,
+        "args": [
+          "div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+        ]
+      },
+      "unique": false,
+      "fragile": true,
+      "ambiguityReason": "no candidate resolved to exactly one element (best matches 2)",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+          "matchCount": 2,
+          "args": [
+            "div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 41,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "Add",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2620,11 +2731,12 @@
       ]
     },
     {
-      "index": 41,
+      "index": 42,
       "tag": "input",
       "type": "checkbox",
       "role": "checkbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2658,11 +2770,60 @@
       "candidates": []
     },
     {
-      "index": 42,
+      "index": 43,
+      "tag": "span",
+      "type": null,
+      "role": "checkbox",
+      "name": "",
+      "nameSource": null,
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6179b72a": ""
+      },
+      "region": "table",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 555,
+        "y": 573,
+        "w": 18,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+        "matchCount": 2,
+        "args": [
+          "div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+        ]
+      },
+      "unique": false,
+      "fragile": true,
+      "ambiguityReason": "no candidate resolved to exactly one element (best matches 2)",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+          "matchCount": 2,
+          "args": [
+            "div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 44,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "OrangeHRM, Inc",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2849,12 +3010,12 @@
     }
   ],
   "stats": {
-    "elements": 43,
-    "visible": 41,
+    "elements": 45,
+    "visible": 43,
     "hidden": 2,
     "semantic": 38,
     "fragile": 3,
-    "ambiguous": 0,
+    "ambiguous": 2,
     "withTestId": 0
   }
 }

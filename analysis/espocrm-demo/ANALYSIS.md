@@ -9,9 +9,9 @@ re-run the skills, then `compile-model.ts`, to change it.
 | clone | `~/Projects/espocrm` at `8b4f900085` |
 | base URL | https://demo.eu.espocrm.com/ |
 | screens | 97 (60 crawled, 37 declared only) |
-| controls | 951 named, 464 unnamed |
+| controls | 451 named, 679 unnamed |
 | components | 10 (1 shared regions) |
-| proved transitions | 26 |
+| proved transitions | 11 |
 
 ## Components
 
@@ -22,16 +22,16 @@ re-run the skills, then `compile-model.ts`, to change it.
 
 | screen | path | controls | unnamed | actions |
 | --- | --- | --- | --- | --- |
-| StreamPage | `/#Stream` | 83 | 24 | 0 |
-| GlobalStreamPage | `/#GlobalStream` | 80 | 24 | 0 |
-| HomePage | `/` | 76 | 22 | 1 |
-| EmailCreatePage | `/#Email/create` | 35 | 12 | 1 |
-| UserViewPage | `/#User/view/{id}` | 35 | 12 | 3 |
-| AccountCreatePage | `/#Account/create` | 26 | 12 | 1 |
-| LeadCreatePage | `/#Lead/create` | 26 | 16 | 1 |
-| ContactCreatePage | `/#Contact/create` | 23 | 13 | 1 |
-| CallCreatePage | `/#Call/create` | 22 | 15 | 1 |
-| MeetingCreatePage | `/#Meeting/create` | 22 | 14 | 1 |
+| HomePage | `/` | 47 | 53 | 1 |
+| EmailCreatePage | `/#Email/create` | 28 | 19 | 0 |
+| StreamPage | `/#Stream` | 26 | 82 | 0 |
+| UserViewPage | `/#User/view/{id}` | 18 | 31 | 1 |
+| LeadCreatePage | `/#Lead/create` | 16 | 26 | 0 |
+| EmailPage | `/#Email` | 15 | 10 | 0 |
+| ContactCreatePage | `/#Contact/create` | 13 | 23 | 0 |
+| CallCreatePage | `/#Call/create` | 10 | 27 | 0 |
+| MeetingCreatePage | `/#Meeting/create` | 10 | 26 | 0 |
+| OpportunityCreatePage | `/#Opportunity/create` | 10 | 19 | 0 |
 
 ## Declared but never crawled
 

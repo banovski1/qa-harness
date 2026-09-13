@@ -4,7 +4,7 @@
 
 - **App:** Conduit (RealWorld, Angular)
 - **Base URL:** https://demo.realworld.show/
-- **Generated:** 2026-09-12T21:51:39.425Z
+- **Generated:** 2026-09-13T09:40:25.645Z
 - **Endpoints observed:** 15
 - **Calls recorded:** 25
 - **Specification discovered:** none
@@ -22,7 +22,7 @@ no value from the app reaches this file.
 | `GET` | `/api/articles/building-scalable-apis-with-node-js/comments` | 1 | 200 | — | `article-building-scalable-apis-with-node-js` |
 | `GET` | `/api/articles/how-to-learn-javascript-efficiently` | 1 | 200 | — | `article-how-to-learn-javascript-efficiently` |
 | `GET` | `/api/articles/how-to-learn-javascript-efficiently/comments` | 1 | 200 | — | `article-how-to-learn-javascript-efficiently` |
-| `GET` | `/api/articles/how-to-train-your-dragon/comments` | 1 | 404 | — | `article-how-to-train-your-dragon` |
+| `GET` | `/api/articles/how-to-train-your-dragon` | 1 | 404 | — | `article-how-to-train-your-dragon` |
 | `GET` | `/api/articles/introduction-to-machine-learning-for-developers` | 1 | 200 | — | `article-introduction-to-machine-learning-for-developers` |
 | `GET` | `/api/articles/introduction-to-machine-learning-for-developers/comments` | 1 | 200 | — | `article-introduction-to-machine-learning-for-developers` |
 | `GET` | `/api/articles/react-hooks-best-practices` | 1 | 200 | — | `article-react-hooks-best-practices` |
@@ -110,7 +110,7 @@ comments[].updatedAt: string
 comments[].body: string
 ```
 
-### `GET /api/articles/how-to-train-your-dragon/comments`
+### `GET /api/articles/how-to-train-your-dragon`
 
 Response:
 

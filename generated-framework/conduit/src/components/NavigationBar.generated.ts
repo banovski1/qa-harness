@@ -37,10 +37,6 @@ export class NavigationBar extends BaseComponent {
     });
   }
 
-  async goToSignIn(): Promise<void> {
-    await this.click('signIn');
-  }
-
   async goToSignUp(): Promise<void> {
     await this.click('signUp');
   }

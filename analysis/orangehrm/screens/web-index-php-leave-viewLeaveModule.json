@@ -3,13 +3,27 @@
   "path": "/web/index.php/leave/viewLeaveList",
   "title": "OrangeHRM",
   "headings": [],
-  "tables": [],
+  "tables": [
+    {
+      "columns": [
+        "Date",
+        "Employee Name",
+        "Leave Type",
+        "Leave Balance (Days)",
+        "Number of Days",
+        "Status",
+        "Comments",
+        "Actions"
+      ],
+      "rowCount": 1
+    }
+  ],
   "regions": {
     "navigation": 20,
     "header": 2,
-    "body": 2,
-    "form": 9,
-    "table": 9
+    "body": 3,
+    "form": 10,
+    "table": 2
   },
   "elements": [
     {
@@ -18,6 +32,7 @@
       "type": null,
       "role": "link",
       "name": "client brand logo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -76,6 +91,7 @@
       "type": null,
       "role": "textbox",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Search",
       "id": null,
@@ -142,6 +158,7 @@
       "type": "button",
       "role": "none",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -190,6 +207,7 @@
       "type": null,
       "role": "link",
       "name": "Admin",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -255,6 +273,7 @@
       "type": null,
       "role": "link",
       "name": "PIM",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -320,6 +339,7 @@
       "type": null,
       "role": "link",
       "name": "Leave",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -385,6 +405,7 @@
       "type": null,
       "role": "link",
       "name": "Time",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -450,6 +471,7 @@
       "type": null,
       "role": "link",
       "name": "Recruitment",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -515,6 +537,7 @@
       "type": null,
       "role": "link",
       "name": "My Info",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -580,6 +603,7 @@
       "type": null,
       "role": "link",
       "name": "Performance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -645,6 +669,7 @@
       "type": null,
       "role": "link",
       "name": "Dashboard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -710,6 +735,7 @@
       "type": null,
       "role": "link",
       "name": "Directory",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -775,6 +801,7 @@
       "type": null,
       "role": "link",
       "name": "Maintenance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -840,6 +867,7 @@
       "type": null,
       "role": "link",
       "name": "Claim",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -905,6 +933,7 @@
       "type": null,
       "role": "link",
       "name": "Buzz",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -970,6 +999,7 @@
       "type": null,
       "role": "link",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1035,6 +1065,7 @@
       "type": "button",
       "role": "button",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1101,6 +1132,7 @@
       "type": null,
       "role": "link",
       "name": "Apply",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1164,6 +1196,7 @@
       "type": null,
       "role": "link",
       "name": "My Leave",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1227,6 +1260,7 @@
       "type": null,
       "role": "link",
       "name": "Leave List",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1290,6 +1324,7 @@
       "type": null,
       "role": "link",
       "name": "Assign Leave",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1353,6 +1388,7 @@
       "type": "button",
       "role": "button",
       "name": "Help",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1410,6 +1446,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1457,9 +1494,10 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "yyyy-dd-mm",
+      "name": "From Date",
+      "nameSource": "proximity",
       "label": null,
-      "placeholder": "yyyy-dd-mm",
+      "placeholder": "yyyy-mm-dd",
       "id": null,
       "nameAttr": null,
       "testId": null,
@@ -1479,32 +1517,33 @@
         "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-date-wrapper > div.oxd-date-input > input.oxd-input.oxd-input--active')",
+        "strategy": "proximity",
+        "expression": "label('From Date') >> input",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-date-wrapper > div.oxd-date-input > input.oxd-input.oxd-input--active"
+          "From Date",
+          "input"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
         {
-          "strategy": "role",
-          "expression": "getByRole('textbox', { name: 'yyyy-dd-mm', exact: true })",
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('yyyy-mm-dd', { exact: true })",
           "matchCount": 2,
           "args": [
-            "textbox",
-            "yyyy-dd-mm"
+            "yyyy-mm-dd"
           ]
         },
         {
-          "strategy": "placeholder",
-          "expression": "getByPlaceholder('yyyy-dd-mm', { exact: true })",
-          "matchCount": 2,
+          "strategy": "proximity",
+          "expression": "label('From Date') >> input",
+          "matchCount": 1,
           "args": [
-            "yyyy-dd-mm"
+            "From Date",
+            "input"
           ]
         },
         {
@@ -1522,9 +1561,10 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "yyyy-dd-mm",
+      "name": "To Date",
+      "nameSource": "proximity",
       "label": null,
-      "placeholder": "yyyy-dd-mm",
+      "placeholder": "yyyy-mm-dd",
       "id": null,
       "nameAttr": null,
       "testId": null,
@@ -1544,32 +1584,33 @@
         "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-date-wrapper > div.oxd-date-input > input.oxd-input.oxd-input--active')",
+        "strategy": "proximity",
+        "expression": "label('To Date') >> input",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-date-wrapper > div.oxd-date-input > input.oxd-input.oxd-input--active"
+          "To Date",
+          "input"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
         {
-          "strategy": "role",
-          "expression": "getByRole('textbox', { name: 'yyyy-dd-mm', exact: true })",
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('yyyy-mm-dd', { exact: true })",
           "matchCount": 2,
           "args": [
-            "textbox",
-            "yyyy-dd-mm"
+            "yyyy-mm-dd"
           ]
         },
         {
-          "strategy": "placeholder",
-          "expression": "getByPlaceholder('yyyy-dd-mm', { exact: true })",
-          "matchCount": 2,
+          "strategy": "proximity",
+          "expression": "label('To Date') >> input",
+          "matchCount": 1,
           "args": [
-            "yyyy-dd-mm"
+            "To Date",
+            "input"
           ]
         },
         {
@@ -1586,15 +1627,17 @@
       "index": 25,
       "tag": "div",
       "type": null,
-      "role": null,
-      "name": "-- Select --",
+      "role": "combobox",
+      "name": "Show Leave with Status",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-v-67d2aedf": ""
+        "data-v-67d2aedf": "",
+        "data-v-53b4a482": ""
       },
       "region": "form",
       "visible": true,
@@ -1602,23 +1645,33 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 781,
-        "y": 258,
-        "w": 160,
-        "h": 18
+        "x": 780,
+        "y": 244,
+        "w": 201,
+        "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-multiselect-wrapper > div.oxd-select-text.oxd-select-text--active:nth-of-type(1) > div.oxd-select-text-input:nth-of-type(1)')",
+        "strategy": "proximity",
+        "expression": "label('Show Leave with Status') >> div",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-multiselect-wrapper > div.oxd-select-text.oxd-select-text--active:nth-of-type(1) > div.oxd-select-text-input:nth-of-type(1)"
+          "Show Leave with Status",
+          "div"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Show Leave with Status') >> div",
+          "matchCount": 1,
+          "args": [
+            "Show Leave with Status",
+            "div"
+          ]
+        },
         {
           "strategy": "text",
           "expression": "getByText('-- Select --', { exact: true })",
@@ -1629,10 +1682,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-multiselect-wrapper > div.oxd-select-text.oxd-select-text--active:nth-of-type(1) > div.oxd-select-text-input:nth-of-type(1)')",
+          "expression": "locator('div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-multiselect-wrapper > div.oxd-select-text.oxd-select-text--active:nth-of-type(1)')",
           "matchCount": 1,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-multiselect-wrapper > div.oxd-select-text.oxd-select-text--active:nth-of-type(1) > div.oxd-select-text-input:nth-of-type(1)"
+            "div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-multiselect-wrapper > div.oxd-select-text.oxd-select-text--active:nth-of-type(1)"
           ]
         }
       ]
@@ -1641,15 +1694,17 @@
       "index": 26,
       "tag": "div",
       "type": null,
-      "role": null,
-      "name": "-- Select --",
+      "role": "combobox",
+      "name": "Leave Type",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-v-67d2aedf": ""
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
       },
       "region": "form",
       "visible": true,
@@ -1657,23 +1712,33 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 1006,
-        "y": 258,
-        "w": 160,
-        "h": 18
+        "x": 1005,
+        "y": 244,
+        "w": 201,
+        "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+        "strategy": "proximity",
+        "expression": "label('Leave Type') >> div",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+          "Leave Type",
+          "div"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Leave Type') >> div",
+          "matchCount": 1,
+          "args": [
+            "Leave Type",
+            "div"
+          ]
+        },
         {
           "strategy": "text",
           "expression": "getByText('-- Select --', { exact: true })",
@@ -1684,10 +1749,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+          "expression": "locator('div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
           "matchCount": 1,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+            "div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(4) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
           ]
         }
       ]
@@ -1697,7 +1762,8 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "Type for hints...",
+      "name": "Employee Name",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": "Type for hints...",
       "id": null,
@@ -1718,11 +1784,10 @@
         "h": 40
       },
       "locator": {
-        "strategy": "role",
-        "expression": "getByRole('textbox', { name: 'Type for hints...', exact: true })",
+        "strategy": "placeholder",
+        "expression": "getByPlaceholder('Type for hints...', { exact: true })",
         "matchCount": 1,
         "args": [
-          "textbox",
           "Type for hints..."
         ]
       },
@@ -1731,20 +1796,20 @@
       "ambiguityReason": null,
       "candidates": [
         {
-          "strategy": "role",
-          "expression": "getByRole('textbox', { name: 'Type for hints...', exact: true })",
-          "matchCount": 1,
-          "args": [
-            "textbox",
-            "Type for hints..."
-          ]
-        },
-        {
           "strategy": "placeholder",
           "expression": "getByPlaceholder('Type for hints...', { exact: true })",
           "matchCount": 1,
           "args": [
             "Type for hints..."
+          ]
+        },
+        {
+          "strategy": "proximity",
+          "expression": "label('Employee Name') >> input",
+          "matchCount": 1,
+          "args": [
+            "Employee Name",
+            "input"
           ]
         },
         {
@@ -1761,15 +1826,17 @@
       "index": 28,
       "tag": "div",
       "type": null,
-      "role": null,
-      "name": "-- Select --",
+      "role": "combobox",
+      "name": "Sub Unit",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-v-67d2aedf": ""
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
       },
       "region": "form",
       "visible": true,
@@ -1777,23 +1844,33 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 557,
-        "y": 385,
-        "w": 160,
-        "h": 18
+        "x": 556,
+        "y": 371,
+        "w": 201,
+        "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+        "strategy": "proximity",
+        "expression": "label('Sub Unit') >> div",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+          "Sub Unit",
+          "div"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Sub Unit') >> div",
+          "matchCount": 1,
+          "args": [
+            "Sub Unit",
+            "div"
+          ]
+        },
         {
           "strategy": "text",
           "expression": "getByText('-- Select --', { exact: true })",
@@ -1804,10 +1881,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+          "expression": "locator('div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
           "matchCount": 1,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+            "div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
           ]
         }
       ]
@@ -1818,6 +1895,7 @@
       "type": "checkbox",
       "role": "checkbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1852,10 +1930,59 @@
     },
     {
       "index": 30,
+      "tag": "span",
+      "type": null,
+      "role": "switch",
+      "name": "",
+      "nameSource": null,
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-8e4757dc": ""
+      },
+      "region": "form",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 922,
+        "y": 382,
+        "w": 34,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-switch-wrapper > label > span.oxd-switch-input.oxd-switch-input--active')",
+        "matchCount": 1,
+        "args": [
+          "div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-switch-wrapper > label > span.oxd-switch-input.oxd-switch-input--active"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-switch-wrapper > label > span.oxd-switch-input.oxd-switch-input--active')",
+          "matchCount": 1,
+          "args": [
+            "div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-switch-wrapper > label > span.oxd-switch-input.oxd-switch-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 31,
       "tag": "button",
       "type": "reset",
       "role": "button",
       "name": "Reset",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1917,11 +2044,12 @@
       ]
     },
     {
-      "index": 31,
+      "index": 32,
       "tag": "button",
       "type": "submit",
       "role": "button",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1983,11 +2111,12 @@
       ]
     },
     {
-      "index": 32,
+      "index": 33,
       "tag": "input",
       "type": "checkbox",
       "role": "checkbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2021,11 +2150,12 @@
       "candidates": []
     },
     {
-      "index": 33,
-      "tag": "input",
-      "type": "checkbox",
+      "index": 34,
+      "tag": "span",
+      "type": null,
       "role": "checkbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2035,61 +2165,22 @@
         "data-v-6179b72a": ""
       },
       "region": "table",
-      "visible": false,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 338,
-        "y": 685,
-        "w": 13,
-        "h": 13
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input')",
-        "matchCount": 3,
-        "args": [
-          "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input"
-        ]
-      },
-      "unique": false,
-      "fragile": true,
-      "ambiguityReason": "no candidate resolved to exactly one element (best matches 3)",
-      "candidates": []
-    },
-    {
-      "index": 34,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-1d22ad12": ""
-      },
-      "region": "table",
       "visible": true,
       "disabled": false,
       "destructive": false,
       "href": null,
       "box": {
-        "x": 1178,
-        "y": 673,
-        "w": 36,
-        "h": 36
+        "x": 334,
+        "y": 624,
+        "w": 18,
+        "h": 18
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > li.oxd-table-dropdown.oxd-table-cell-action-space > button.oxd-icon-button')",
+        "expression": "locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
         "matchCount": 1,
         "args": [
-          "div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > li.oxd-table-dropdown.oxd-table-cell-action-space > button.oxd-icon-button"
+          "div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
         ]
       },
       "unique": true,
@@ -2098,324 +2189,21 @@
       "candidates": [
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > li.oxd-table-dropdown.oxd-table-cell-action-space > button.oxd-icon-button')",
+          "expression": "locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
           "matchCount": 1,
           "args": [
-            "div.oxd-table-card:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > li.oxd-table-dropdown.oxd-table-cell-action-space > button.oxd-icon-button"
+            "div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
           ]
         }
       ]
     },
     {
       "index": 35,
-      "tag": "input",
-      "type": "checkbox",
-      "role": "checkbox",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-6179b72a": ""
-      },
-      "region": "table",
-      "visible": false,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 338,
-        "y": 760,
-        "w": 13,
-        "h": 13
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input')",
-        "matchCount": 3,
-        "args": [
-          "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input"
-        ]
-      },
-      "unique": false,
-      "fragile": true,
-      "ambiguityReason": "no candidate resolved to exactly one element (best matches 3)",
-      "candidates": []
-    },
-    {
-      "index": 36,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "Approve",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-10d463b7": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 965,
-        "y": 730,
-        "w": 118,
-        "h": 30
-      },
-      "locator": {
-        "strategy": "role",
-        "expression": "getByRole('button', { name: 'Approve', exact: true })",
-        "matchCount": 1,
-        "args": [
-          "button",
-          "Approve"
-        ]
-      },
-      "unique": true,
-      "fragile": false,
-      "ambiguityReason": null,
-      "candidates": [
-        {
-          "strategy": "role",
-          "expression": "getByRole('button', { name: 'Approve', exact: true })",
-          "matchCount": 1,
-          "args": [
-            "button",
-            "Approve"
-          ]
-        },
-        {
-          "strategy": "text",
-          "expression": "getByText('Approve', { exact: true })",
-          "matchCount": 1,
-          "args": [
-            "Approve"
-          ]
-        },
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > button.oxd-button.oxd-button--medium:nth-of-type(1)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > button.oxd-button.oxd-button--medium:nth-of-type(1)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 37,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "Reject",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-10d463b7": "",
-        "data-v-c423d1fa": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1088,
-        "y": 730,
-        "w": 104,
-        "h": 30
-      },
-      "locator": {
-        "strategy": "role",
-        "expression": "getByRole('button', { name: 'Reject', exact: true })",
-        "matchCount": 1,
-        "args": [
-          "button",
-          "Reject"
-        ]
-      },
-      "unique": true,
-      "fragile": false,
-      "ambiguityReason": null,
-      "candidates": [
-        {
-          "strategy": "role",
-          "expression": "getByRole('button', { name: 'Reject', exact: true })",
-          "matchCount": 1,
-          "args": [
-            "button",
-            "Reject"
-          ]
-        },
-        {
-          "strategy": "text",
-          "expression": "getByText('Reject', { exact: true })",
-          "matchCount": 1,
-          "args": [
-            "Reject"
-          ]
-        },
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > button.oxd-button.oxd-button--medium:nth-of-type(2)')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-body:nth-of-type(2) > div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > button.oxd-button.oxd-button--medium:nth-of-type(2)"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 38,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-1d22ad12": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1178,
-        "y": 765,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > li.oxd-table-dropdown.oxd-table-cell-action-space > button.oxd-icon-button')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > li.oxd-table-dropdown.oxd-table-cell-action-space > button.oxd-icon-button"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > li.oxd-table-dropdown.oxd-table-cell-action-space > button.oxd-icon-button')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-card:nth-of-type(2) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > li.oxd-table-dropdown.oxd-table-cell-action-space > button.oxd-icon-button"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 39,
-      "tag": "input",
-      "type": "checkbox",
-      "role": "checkbox",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-6179b72a": ""
-      },
-      "region": "table",
-      "visible": false,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 338,
-        "y": 834,
-        "w": 13,
-        "h": 13
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input')",
-        "matchCount": 3,
-        "args": [
-          "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > input"
-        ]
-      },
-      "unique": false,
-      "fragile": true,
-      "ambiguityReason": "no candidate resolved to exactly one element (best matches 3)",
-      "candidates": []
-    },
-    {
-      "index": 40,
-      "tag": "button",
-      "type": "button",
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {
-        "data-v-f5c763eb": "",
-        "data-v-1d22ad12": ""
-      },
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1178,
-        "y": 822,
-        "w": 36,
-        "h": 36
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > li.oxd-table-dropdown.oxd-table-cell-action-space > button.oxd-icon-button')",
-        "matchCount": 1,
-        "args": [
-          "div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > li.oxd-table-dropdown.oxd-table-cell-action-space > button.oxd-icon-button"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "css",
-          "expression": "locator('div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > li.oxd-table-dropdown.oxd-table-cell-action-space > button.oxd-icon-button')",
-          "matchCount": 1,
-          "args": [
-            "div.oxd-table-card:nth-of-type(3) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(9) > div.oxd-table-cell-actions > li.oxd-table-dropdown.oxd-table-cell-action-space > button.oxd-icon-button"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 41,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "OrangeHRM, Inc",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2429,7 +2217,7 @@
       "href": "http://www.orangehrm.com",
       "box": {
         "x": 709,
-        "y": 1001,
+        "y": 794,
         "w": 95,
         "h": 18
       },
@@ -2469,6 +2257,72 @@
           "matchCount": 1,
           "args": [
             "#app > div.oxd-layout.orangehrm-upgrade-layout:nth-of-type(1) > div.oxd-layout-container:nth-of-type(2) > div.oxd-layout-footer:nth-of-type(3) > p.oxd-text.oxd-text--p:nth-of-type(2) > a"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "tag": "div",
+      "type": null,
+      "role": "button",
+      "name": "×",
+      "nameSource": "accessible",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-31aeb1cf": ""
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 380,
+        "y": 651,
+        "w": 22,
+        "h": 22
+      },
+      "locator": {
+        "strategy": "role",
+        "expression": "getByRole('button', { name: '×', exact: true })",
+        "matchCount": 1,
+        "args": [
+          "button",
+          "×"
+        ]
+      },
+      "unique": true,
+      "fragile": false,
+      "ambiguityReason": null,
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('button', { name: '×', exact: true })",
+          "matchCount": 1,
+          "args": [
+            "button",
+            "×"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('×', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "×"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('#oxd-toaster_1 > div.oxd-toast.oxd-toast--info > div.oxd-toast-close-container:nth-of-type(2) > div.oxd-toast-close.oxd-toast-close--info')",
+          "matchCount": 1,
+          "args": [
+            "#oxd-toaster_1 > div.oxd-toast.oxd-toast--info > div.oxd-toast-close-container:nth-of-type(2) > div.oxd-toast-close.oxd-toast-close--info"
           ]
         }
       ]
@@ -2572,11 +2426,11 @@
     }
   ],
   "stats": {
-    "elements": 42,
-    "visible": 37,
-    "hidden": 5,
-    "semantic": 27,
-    "fragile": 10,
+    "elements": 37,
+    "visible": 35,
+    "hidden": 2,
+    "semantic": 31,
+    "fragile": 4,
     "ambiguous": 0,
     "withTestId": 0
   }

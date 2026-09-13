@@ -5,30 +5,14 @@
   "headings": [
     {
       "level": 3,
-      "text": "Global Stream"
+      "text": "Global Stream",
+      "y": 47
     }
   ],
-  "tables": [
-    {
-      "columns": [],
-      "rowCount": 0
-    },
-    {
-      "columns": [],
-      "rowCount": 0
-    },
-    {
-      "columns": [],
-      "rowCount": 1
-    },
-    {
-      "columns": [],
-      "rowCount": 1
-    }
-  ],
+  "tables": [],
   "regions": {
     "navigation": 74,
-    "body": 190,
+    "body": 192,
     "footer": 1
   },
   "elements": [
@@ -38,6 +22,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -76,6 +61,7 @@
       "type": null,
       "role": "link",
       "name": "logo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -113,6 +99,7 @@
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -158,6 +145,7 @@
       "type": null,
       "role": "link",
       "name": "Home",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -229,6 +217,7 @@
       "type": null,
       "role": "link",
       "name": "Accounts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -300,6 +289,7 @@
       "type": null,
       "role": "link",
       "name": "Contacts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -371,6 +361,7 @@
       "type": null,
       "role": "link",
       "name": "Leads",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -442,6 +433,7 @@
       "type": null,
       "role": "link",
       "name": "Opportunities",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -513,6 +505,7 @@
       "type": null,
       "role": "link",
       "name": "Emails",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -584,6 +577,7 @@
       "type": null,
       "role": "link",
       "name": "Calendar",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -655,6 +649,7 @@
       "type": null,
       "role": "link",
       "name": "Meetings",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -726,6 +721,7 @@
       "type": null,
       "role": "link",
       "name": "Calls",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -797,6 +793,7 @@
       "type": null,
       "role": "link",
       "name": "Tasks",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -868,6 +865,7 @@
       "type": null,
       "role": "link",
       "name": "Cases",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -939,6 +937,7 @@
       "type": null,
       "role": "link",
       "name": "Knowledge Base",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1010,6 +1009,7 @@
       "type": null,
       "role": "link",
       "name": "Documents",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1081,6 +1081,7 @@
       "type": null,
       "role": "button",
       "name": "Sales & Purchases",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-tab-group-group-17",
@@ -1154,6 +1155,7 @@
       "type": null,
       "role": "link",
       "name": "Products",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1191,6 +1193,7 @@
       "type": null,
       "role": "link",
       "name": "Quotes",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1228,6 +1231,7 @@
       "type": null,
       "role": "link",
       "name": "Sales Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1265,6 +1269,7 @@
       "type": null,
       "role": "link",
       "name": "Invoices",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1302,6 +1307,7 @@
       "type": null,
       "role": "link",
       "name": "Delivery Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1339,6 +1345,7 @@
       "type": null,
       "role": "link",
       "name": "Return Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1376,6 +1383,7 @@
       "type": null,
       "role": "link",
       "name": "Credit Notes",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1413,6 +1421,7 @@
       "type": null,
       "role": "link",
       "name": "Suppliers",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1450,6 +1459,7 @@
       "type": null,
       "role": "link",
       "name": "Purchase Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1487,6 +1497,7 @@
       "type": null,
       "role": "link",
       "name": "Receipt Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1524,6 +1535,7 @@
       "type": null,
       "role": "link",
       "name": "Bills",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1561,6 +1573,7 @@
       "type": null,
       "role": "link",
       "name": "Bill Credits",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1598,6 +1611,7 @@
       "type": null,
       "role": "link",
       "name": "Payments",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1635,6 +1649,7 @@
       "type": null,
       "role": "link",
       "name": "Payment Requests",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1672,6 +1687,7 @@
       "type": null,
       "role": "link",
       "name": "Subscription",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1709,6 +1725,7 @@
       "type": null,
       "role": "link",
       "name": "Transfer Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1746,6 +1763,7 @@
       "type": null,
       "role": "link",
       "name": "Inventory Adjustments",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1783,6 +1801,7 @@
       "type": null,
       "role": "link",
       "name": "Warehouses",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1820,6 +1839,7 @@
       "type": null,
       "role": "link",
       "name": "Inventory Numbers",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1857,6 +1877,7 @@
       "type": null,
       "role": "link",
       "name": "Inventory Transactions",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1894,6 +1915,7 @@
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": "nav-more-tabs-dropdown",
@@ -1949,6 +1971,7 @@
       "type": null,
       "role": "link",
       "name": "Campaigns",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1986,6 +2009,7 @@
       "type": null,
       "role": "link",
       "name": "Target Lists",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2023,6 +2047,7 @@
       "type": null,
       "role": "link",
       "name": "Reports",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2060,6 +2085,7 @@
       "type": null,
       "role": "link",
       "name": "Projects",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2097,6 +2123,7 @@
       "type": null,
       "role": "link",
       "name": "Project Tasks",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2134,6 +2161,7 @@
       "type": null,
       "role": "button",
       "name": "Organization",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-tab-group-group-28",
@@ -2173,6 +2201,7 @@
       "type": null,
       "role": "link",
       "name": "Users",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2210,6 +2239,7 @@
       "type": null,
       "role": "link",
       "name": "Teams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2247,6 +2277,7 @@
       "type": null,
       "role": "link",
       "name": "Stream",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2284,6 +2315,7 @@
       "type": null,
       "role": "link",
       "name": "Global Stream",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2321,6 +2353,7 @@
       "type": null,
       "role": "link",
       "name": "Working Time Calendars",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2358,6 +2391,7 @@
       "type": null,
       "role": "button",
       "name": "Automation",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-tab-group-group-29",
@@ -2397,6 +2431,7 @@
       "type": null,
       "role": "link",
       "name": "Workflows",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2434,6 +2469,7 @@
       "type": null,
       "role": "link",
       "name": "Flowcharts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2471,6 +2507,7 @@
       "type": null,
       "role": "link",
       "name": "Processes",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2508,6 +2545,7 @@
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2553,6 +2591,7 @@
       "type": "search",
       "role": "searchbox",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Search",
       "id": null,
@@ -2616,6 +2655,7 @@
       "type": null,
       "role": "button",
       "name": "Last Viewed",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2673,6 +2713,7 @@
       "type": null,
       "role": "button",
       "name": "Create",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-quick-create-dropdown",
@@ -2738,6 +2779,7 @@
       "type": null,
       "role": "link",
       "name": "Account",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2778,6 +2820,7 @@
       "type": null,
       "role": "link",
       "name": "Contact",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2818,6 +2861,7 @@
       "type": null,
       "role": "link",
       "name": "Lead",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2858,6 +2902,7 @@
       "type": null,
       "role": "link",
       "name": "Opportunity",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2898,6 +2943,7 @@
       "type": null,
       "role": "link",
       "name": "Meeting",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2938,6 +2984,7 @@
       "type": null,
       "role": "link",
       "name": "Call",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2978,6 +3025,7 @@
       "type": null,
       "role": "link",
       "name": "Task",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3018,6 +3066,7 @@
       "type": null,
       "role": "link",
       "name": "Case",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3058,6 +3107,7 @@
       "type": null,
       "role": "link",
       "name": "Email",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3098,6 +3148,7 @@
       "type": null,
       "role": "link",
       "name": "Project Task",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3138,6 +3189,7 @@
       "type": null,
       "role": "button",
       "name": "Notifications",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3195,6 +3247,7 @@
       "type": null,
       "role": "button",
       "name": "Menu",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-menu-dropdown",
@@ -3260,6 +3313,7 @@
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3296,6 +3350,7 @@
       "type": null,
       "role": "link",
       "name": "Administration",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3335,6 +3390,7 @@
       "type": null,
       "role": "link",
       "name": "Preferences",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3374,6 +3430,7 @@
       "type": null,
       "role": "link",
       "name": "About",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3413,6 +3470,7 @@
       "type": null,
       "role": "button",
       "name": "Log Out",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3452,6 +3510,7 @@
       "type": "button",
       "role": "button",
       "name": "All",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3490,6 +3549,7 @@
       "type": null,
       "role": "button",
       "name": "All",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3529,6 +3589,7 @@
       "type": null,
       "role": "button",
       "name": "Remove Filter",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3568,6 +3629,7 @@
       "type": null,
       "role": "button",
       "name": "Save Filter",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3607,6 +3669,7 @@
       "type": "search",
       "role": "searchbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3623,7 +3686,7 @@
       "box": {
         "x": 64,
         "y": 99,
-        "w": 513,
+        "w": 507,
         "h": 36
       },
       "locator": {
@@ -3662,6 +3725,7 @@
       "type": "button",
       "role": "button",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3676,7 +3740,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 576,
+        "x": 570,
         "y": 99,
         "w": 76,
         "h": 36
@@ -3719,6 +3783,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3733,7 +3798,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 651,
+        "x": 645,
         "y": 99,
         "w": 54,
         "h": 36
@@ -3766,6 +3831,7 @@
       "type": "button",
       "role": "button",
       "name": "Reset",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3780,7 +3846,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 704,
+        "x": 698,
         "y": 99,
         "w": 54,
         "h": 36
@@ -3805,6 +3871,7 @@
       "type": null,
       "role": "textbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3841,6 +3908,7 @@
       "type": null,
       "role": "button",
       "name": "Type",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3881,6 +3949,7 @@
       "type": null,
       "role": "button",
       "name": "Created By",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3921,6 +3990,7 @@
       "type": null,
       "role": "button",
       "name": "Created At",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3961,6 +4031,7 @@
       "type": null,
       "role": "button",
       "name": "Parent",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4001,6 +4072,7 @@
       "type": null,
       "role": "button",
       "name": "Related",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4041,6 +4113,7 @@
       "type": null,
       "role": "button",
       "name": "Post",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4081,6 +4154,7 @@
       "type": null,
       "role": "button",
       "name": "Attachments",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4121,6 +4195,7 @@
       "type": null,
       "role": "button",
       "name": "Is Internal (for internal users)",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4161,6 +4236,7 @@
       "type": null,
       "role": "button",
       "name": "Target",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4201,6 +4277,7 @@
       "type": null,
       "role": "button",
       "name": "Modified By",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4241,6 +4318,7 @@
       "type": null,
       "role": "button",
       "name": "Modified At",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4281,6 +4359,7 @@
       "type": null,
       "role": "button",
       "name": "Apply Reset",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4320,6 +4399,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4334,7 +4414,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
+        "x": 818,
         "y": 157,
         "w": 30,
         "h": 30
@@ -4367,6 +4447,7 @@
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4374,7 +4455,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "6aa39fd7b4e8ac101"
+        "data-id": "698f42ec1b65074bb"
       },
       "region": "body",
       "visible": false,
@@ -4389,10 +4470,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"6aa39fd7b4e8ac101\\\"]')",
+        "expression": "locator('a[data-id=\\\"698f42ec1b65074bb\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"6aa39fd7b4e8ac101\"]"
+          "a[data-id=\"698f42ec1b65074bb\"]"
         ]
       },
       "unique": true,
@@ -4406,6 +4487,7 @@
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4442,6 +4524,7 @@
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4476,8 +4559,46 @@
       "index": 99,
       "tag": "a",
       "type": null,
+      "role": "button",
+      "name": "",
+      "nameSource": null,
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('ul.list-group > li.list-group-item.list-row:nth-of-type(1) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > a.pull-right.inline-edit-link:nth-of-type(3)')",
+        "matchCount": 1,
+        "args": [
+          "ul.list-group > li.list-group-item.list-row:nth-of-type(1) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > a.pull-right.inline-edit-link:nth-of-type(3)"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": []
+    },
+    {
+      "index": 100,
+      "tag": "a",
+      "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4490,7 +4611,7 @@
       "destructive": false,
       "href": "#User/view/1",
       "box": {
-        "x": 132,
+        "x": 134,
         "y": 166,
         "w": 82,
         "h": 17
@@ -4535,11 +4656,12 @@
       ]
     },
     {
-      "index": 100,
+      "index": 101,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Correct Discount Amount",
+      "name": "PT-00001",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4550,20 +4672,20 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Task/view/606c22e45c823a667",
+      "href": "#PaymentEntry/view/698f42ec0f9ceee44",
       "box": {
-        "x": 308,
+        "x": 336,
         "y": 166,
-        "w": 170,
+        "w": 66,
         "h": 17
       },
       "locator": {
         "strategy": "role",
-        "expression": "getByRole('link', { name: 'Correct Discount Amount', exact: true })",
+        "expression": "getByRole('link', { name: 'PT-00001', exact: true })",
         "matchCount": 1,
         "args": [
           "link",
-          "Correct Discount Amount"
+          "PT-00001"
         ]
       },
       "unique": true,
@@ -4572,19 +4694,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Correct Discount Amount', exact: true })",
+          "expression": "getByRole('link', { name: 'PT-00001', exact: true })",
           "matchCount": 1,
           "args": [
             "link",
-            "Correct Discount Amount"
+            "PT-00001"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Correct Discount Amount', { exact: true })",
+          "expression": "getByText('PT-00001', { exact: true })",
           "matchCount": 1,
           "args": [
-            "Correct Discount Amount"
+            "PT-00001"
           ]
         },
         {
@@ -4598,36 +4720,35 @@
       ]
     },
     {
-      "index": 101,
+      "index": 102,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:29",
+      "name": "Intelacard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
-      "data": {
-        "data-view-cid": "view6090"
-      },
+      "data": {},
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/6aa39fd7b4e8ac101",
+      "href": "#Account/view/5f5f1ecbc217d42bc",
       "box": {
-        "x": 81,
-        "y": 224,
-        "w": 34,
-        "h": 15
+        "x": 540,
+        "y": 166,
+        "w": 67,
+        "h": 17
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(1) > div.stream-date-container:nth-of-type(5) > a.text-muted.small')",
+        "expression": "locator('li.list-group-item.list-row:nth-of-type(1) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record')",
         "matchCount": 1,
         "args": [
-          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(1) > div.stream-date-container:nth-of-type(5) > a.text-muted.small"
+          "li.list-group-item.list-row:nth-of-type(1) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record"
         ]
       },
       "unique": true,
@@ -4636,37 +4757,103 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:29', exact: true })",
-          "matchCount": 2,
+          "expression": "getByRole('link', { name: 'Intelacard', exact: true })",
+          "matchCount": 6,
           "args": [
             "link",
-            "06:29"
+            "Intelacard"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:29', { exact: true })",
-          "matchCount": 2,
+          "expression": "getByText('Intelacard', { exact: true })",
+          "matchCount": 6,
           "args": [
-            "06:29"
+            "Intelacard"
           ]
         },
         {
           "strategy": "css",
-          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(1) > div.stream-date-container:nth-of-type(5) > a.text-muted.small')",
+          "expression": "locator('li.list-group-item.list-row:nth-of-type(1) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record')",
           "matchCount": 1,
           "args": [
-            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(1) > div.stream-date-container:nth-of-type(5) > a.text-muted.small"
+            "li.list-group-item.list-row:nth-of-type(1) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record"
           ]
         }
       ]
     },
     {
-      "index": 102,
+      "index": 103,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "08:00",
+      "nameSource": "accessible",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-view-cid": "view6106"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Note/view/698f42ec1b65074bb",
+      "box": {
+        "x": 81,
+        "y": 195,
+        "w": 34,
+        "h": 15
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(1) > div.stream-date-container:nth-of-type(3) > a.text-muted.small')",
+        "matchCount": 1,
+        "args": [
+          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(1) > div.stream-date-container:nth-of-type(3) > a.text-muted.small"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
+          "args": [
+            "link",
+            "08:00"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
+          "args": [
+            "08:00"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(1) > div.stream-date-container:nth-of-type(3) > a.text-muted.small')",
+          "matchCount": 1,
+          "args": [
+            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(1) > div.stream-date-container:nth-of-type(3) > a.text-muted.small"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 104,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4681,8 +4868,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 256,
+        "x": 818,
+        "y": 227,
         "w": 30,
         "h": 30
       },
@@ -4709,11 +4896,12 @@
       ]
     },
     {
-      "index": 103,
+      "index": 105,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4721,7 +4909,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "6aa39fd430c803c27"
+        "data-id": "698f415e647f795f4"
       },
       "region": "body",
       "visible": false,
@@ -4736,10 +4924,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"6aa39fd430c803c27\\\"]')",
+        "expression": "locator('a[data-id=\\\"698f415e647f795f4\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"6aa39fd430c803c27\"]"
+          "a[data-id=\"698f415e647f795f4\"]"
         ]
       },
       "unique": true,
@@ -4748,11 +4936,12 @@
       "candidates": []
     },
     {
-      "index": 104,
+      "index": 106,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4784,11 +4973,12 @@
       "candidates": []
     },
     {
-      "index": 105,
+      "index": 107,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4820,11 +5010,49 @@
       "candidates": []
     },
     {
-      "index": 106,
+      "index": 108,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "",
+      "nameSource": null,
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('ul.list-group > li.list-group-item.list-row:nth-of-type(2) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > a.pull-right.inline-edit-link:nth-of-type(3)')",
+        "matchCount": 1,
+        "args": [
+          "ul.list-group > li.list-group-item.list-row:nth-of-type(2) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > a.pull-right.inline-edit-link:nth-of-type(3)"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": []
+    },
+    {
+      "index": 109,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4837,8 +5065,8 @@
       "destructive": false,
       "href": "#User/view/1",
       "box": {
-        "x": 132,
-        "y": 265,
+        "x": 134,
+        "y": 236,
         "w": 82,
         "h": 17
       },
@@ -4882,11 +5110,12 @@
       ]
     },
     {
-      "index": 107,
+      "index": 110,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Prepare product presentation",
+      "name": "PR-00001",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4897,20 +5126,20 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Task/view/5f6455ccacf844870",
+      "href": "#PaymentRequest/view/698f415e6060d866e",
       "box": {
-        "x": 308,
-        "y": 265,
-        "w": 196,
+        "x": 390,
+        "y": 236,
+        "w": 67,
         "h": 17
       },
       "locator": {
         "strategy": "role",
-        "expression": "getByRole('link', { name: 'Prepare product presentation', exact: true })",
+        "expression": "getByRole('link', { name: 'PR-00001', exact: true })",
         "matchCount": 1,
         "args": [
           "link",
-          "Prepare product presentation"
+          "PR-00001"
         ]
       },
       "unique": true,
@@ -4919,19 +5148,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Prepare product presentation', exact: true })",
+          "expression": "getByRole('link', { name: 'PR-00001', exact: true })",
           "matchCount": 1,
           "args": [
             "link",
-            "Prepare product presentation"
+            "PR-00001"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Prepare product presentation', { exact: true })",
+          "expression": "getByText('PR-00001', { exact: true })",
           "matchCount": 1,
           "args": [
-            "Prepare product presentation"
+            "PR-00001"
           ]
         },
         {
@@ -4945,36 +5174,35 @@
       ]
     },
     {
-      "index": 108,
+      "index": 111,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:29",
+      "name": "Intelacard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
-      "data": {
-        "data-view-cid": "view6104"
-      },
+      "data": {},
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/6aa39fd430c803c27",
+      "href": "#Account/view/5f5f1ecbc217d42bc",
       "box": {
-        "x": 81,
-        "y": 323,
-        "w": 34,
-        "h": 15
+        "x": 595,
+        "y": 236,
+        "w": 67,
+        "h": 17
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(2) > div.stream-date-container:nth-of-type(5) > a.text-muted.small')",
+        "expression": "locator('li.list-group-item.list-row:nth-of-type(2) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record')",
         "matchCount": 1,
         "args": [
-          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(2) > div.stream-date-container:nth-of-type(5) > a.text-muted.small"
+          "li.list-group-item.list-row:nth-of-type(2) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record"
         ]
       },
       "unique": true,
@@ -4983,37 +5211,103 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:29', exact: true })",
-          "matchCount": 2,
+          "expression": "getByRole('link', { name: 'Intelacard', exact: true })",
+          "matchCount": 6,
           "args": [
             "link",
-            "06:29"
+            "Intelacard"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:29', { exact: true })",
-          "matchCount": 2,
+          "expression": "getByText('Intelacard', { exact: true })",
+          "matchCount": 6,
           "args": [
-            "06:29"
+            "Intelacard"
           ]
         },
         {
           "strategy": "css",
-          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(2) > div.stream-date-container:nth-of-type(5) > a.text-muted.small')",
+          "expression": "locator('li.list-group-item.list-row:nth-of-type(2) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record')",
           "matchCount": 1,
           "args": [
-            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(2) > div.stream-date-container:nth-of-type(5) > a.text-muted.small"
+            "li.list-group-item.list-row:nth-of-type(2) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record"
           ]
         }
       ]
     },
     {
-      "index": 109,
+      "index": 112,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "08:00",
+      "nameSource": "accessible",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-view-cid": "view6121"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Note/view/698f415e647f795f4",
+      "box": {
+        "x": 81,
+        "y": 265,
+        "w": 34,
+        "h": 15
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(2) > div.stream-date-container:nth-of-type(3) > a.text-muted.small')",
+        "matchCount": 1,
+        "args": [
+          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(2) > div.stream-date-container:nth-of-type(3) > a.text-muted.small"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
+          "args": [
+            "link",
+            "08:00"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
+          "args": [
+            "08:00"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(2) > div.stream-date-container:nth-of-type(3) > a.text-muted.small')",
+          "matchCount": 1,
+          "args": [
+            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(2) > div.stream-date-container:nth-of-type(3) > a.text-muted.small"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 113,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5028,8 +5322,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 355,
+        "x": 818,
+        "y": 297,
         "w": 30,
         "h": 30
       },
@@ -5056,11 +5350,12 @@
       ]
     },
     {
-      "index": 110,
+      "index": 114,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5068,7 +5363,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698f42ec1b65074bb"
+        "data-id": "698f40e9b6045489a"
       },
       "region": "body",
       "visible": false,
@@ -5083,10 +5378,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698f42ec1b65074bb\\\"]')",
+        "expression": "locator('a[data-id=\\\"698f40e9b6045489a\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698f42ec1b65074bb\"]"
+          "a[data-id=\"698f40e9b6045489a\"]"
         ]
       },
       "unique": true,
@@ -5095,11 +5390,12 @@
       "candidates": []
     },
     {
-      "index": 111,
+      "index": 115,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5131,11 +5427,12 @@
       "candidates": []
     },
     {
-      "index": 112,
+      "index": 116,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5167,11 +5464,12 @@
       "candidates": []
     },
     {
-      "index": 113,
+      "index": 117,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5203,11 +5501,12 @@
       "candidates": []
     },
     {
-      "index": 114,
+      "index": 118,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5220,8 +5519,8 @@
       "destructive": false,
       "href": "#User/view/1",
       "box": {
-        "x": 134,
-        "y": 364,
+        "x": 132,
+        "y": 306,
         "w": 82,
         "h": 17
       },
@@ -5265,11 +5564,12 @@
       ]
     },
     {
-      "index": 115,
+      "index": 119,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "PT-00001",
+      "name": "I-00018",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5280,20 +5580,20 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#PaymentEntry/view/698f42ec0f9ceee44",
+      "href": "#Invoice/view/698f40e9ae9cbc7d4",
       "box": {
-        "x": 336,
-        "y": 364,
-        "w": 66,
+        "x": 323,
+        "y": 306,
+        "w": 52,
         "h": 17
       },
       "locator": {
         "strategy": "role",
-        "expression": "getByRole('link', { name: 'PT-00001', exact: true })",
+        "expression": "getByRole('link', { name: 'I-00018', exact: true })",
         "matchCount": 1,
         "args": [
           "link",
-          "PT-00001"
+          "I-00018"
         ]
       },
       "unique": true,
@@ -5302,19 +5602,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'PT-00001', exact: true })",
+          "expression": "getByRole('link', { name: 'I-00018', exact: true })",
           "matchCount": 1,
           "args": [
             "link",
-            "PT-00001"
+            "I-00018"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('PT-00001', { exact: true })",
+          "expression": "getByText('I-00018', { exact: true })",
           "matchCount": 1,
           "args": [
-            "PT-00001"
+            "I-00018"
           ]
         },
         {
@@ -5328,11 +5628,12 @@
       ]
     },
     {
-      "index": 116,
+      "index": 120,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Intelacard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5345,8 +5646,8 @@
       "destructive": false,
       "href": "#Account/view/5f5f1ecbc217d42bc",
       "box": {
-        "x": 540,
-        "y": 364,
+        "x": 514,
+        "y": 306,
         "w": 67,
         "h": 17
       },
@@ -5390,27 +5691,28 @@
       ]
     },
     {
-      "index": 117,
+      "index": 121,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6118"
+        "data-view-cid": "view6136"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698f42ec1b65074bb",
+      "href": "#Note/view/698f40e9b6045489a",
       "box": {
         "x": 81,
-        "y": 393,
+        "y": 335,
         "w": 34,
         "h": 15
       },
@@ -5428,19 +5730,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
@@ -5454,11 +5756,12 @@
       ]
     },
     {
-      "index": 118,
+      "index": 122,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5473,8 +5776,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 425,
+        "x": 818,
+        "y": 367,
         "w": 30,
         "h": 30
       },
@@ -5501,11 +5804,12 @@
       ]
     },
     {
-      "index": 119,
+      "index": 123,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5513,7 +5817,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698f415e647f795f4"
+        "data-id": "698f3efbc8be1ff37"
       },
       "region": "body",
       "visible": false,
@@ -5528,10 +5832,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698f415e647f795f4\\\"]')",
+        "expression": "locator('a[data-id=\\\"698f3efbc8be1ff37\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698f415e647f795f4\"]"
+          "a[data-id=\"698f3efbc8be1ff37\"]"
         ]
       },
       "unique": true,
@@ -5540,11 +5844,12 @@
       "candidates": []
     },
     {
-      "index": 120,
+      "index": 124,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5576,11 +5881,12 @@
       "candidates": []
     },
     {
-      "index": 121,
+      "index": 125,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5612,11 +5918,12 @@
       "candidates": []
     },
     {
-      "index": 122,
+      "index": 126,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5648,11 +5955,12 @@
       "candidates": []
     },
     {
-      "index": 123,
+      "index": 127,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5665,8 +5973,8 @@
       "destructive": false,
       "href": "#User/view/1",
       "box": {
-        "x": 134,
-        "y": 434,
+        "x": 136,
+        "y": 376,
         "w": 82,
         "h": 17
       },
@@ -5710,11 +6018,12 @@
       ]
     },
     {
-      "index": 124,
+      "index": 128,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "PR-00001",
+      "name": "DO-00004",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5725,20 +6034,20 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#PaymentRequest/view/698f415e6060d866e",
+      "href": "#DeliveryOrder/view/698f3efbbf44dfd56",
       "box": {
-        "x": 390,
-        "y": 434,
-        "w": 67,
+        "x": 372,
+        "y": 376,
+        "w": 73,
         "h": 17
       },
       "locator": {
         "strategy": "role",
-        "expression": "getByRole('link', { name: 'PR-00001', exact: true })",
+        "expression": "getByRole('link', { name: 'DO-00004', exact: true })",
         "matchCount": 1,
         "args": [
           "link",
-          "PR-00001"
+          "DO-00004"
         ]
       },
       "unique": true,
@@ -5747,19 +6056,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'PR-00001', exact: true })",
+          "expression": "getByRole('link', { name: 'DO-00004', exact: true })",
           "matchCount": 1,
           "args": [
             "link",
-            "PR-00001"
+            "DO-00004"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('PR-00001', { exact: true })",
+          "expression": "getByText('DO-00004', { exact: true })",
           "matchCount": 1,
           "args": [
-            "PR-00001"
+            "DO-00004"
           ]
         },
         {
@@ -5773,11 +6082,12 @@
       ]
     },
     {
-      "index": 125,
+      "index": 129,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Intelacard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5790,8 +6100,8 @@
       "destructive": false,
       "href": "#Account/view/5f5f1ecbc217d42bc",
       "box": {
-        "x": 595,
-        "y": 434,
+        "x": 584,
+        "y": 376,
         "w": 67,
         "h": 17
       },
@@ -5835,27 +6145,28 @@
       ]
     },
     {
-      "index": 126,
+      "index": 130,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6133"
+        "data-view-cid": "view6151"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698f415e647f795f4",
+      "href": "#Note/view/698f3efbc8be1ff37",
       "box": {
         "x": 81,
-        "y": 463,
+        "y": 405,
         "w": 34,
         "h": 15
       },
@@ -5873,19 +6184,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
@@ -5899,11 +6210,12 @@
       ]
     },
     {
-      "index": 127,
+      "index": 131,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5918,8 +6230,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 495,
+        "x": 818,
+        "y": 437,
         "w": 30,
         "h": 30
       },
@@ -5946,11 +6258,12 @@
       ]
     },
     {
-      "index": 128,
+      "index": 132,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5958,7 +6271,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698f40e9b6045489a"
+        "data-id": "698f3e51a4e2ac806"
       },
       "region": "body",
       "visible": false,
@@ -5973,10 +6286,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698f40e9b6045489a\\\"]')",
+        "expression": "locator('a[data-id=\\\"698f3e51a4e2ac806\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698f40e9b6045489a\"]"
+          "a[data-id=\"698f3e51a4e2ac806\"]"
         ]
       },
       "unique": true,
@@ -5985,11 +6298,12 @@
       "candidates": []
     },
     {
-      "index": 129,
+      "index": 133,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6021,11 +6335,12 @@
       "candidates": []
     },
     {
-      "index": 130,
+      "index": 134,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6057,11 +6372,12 @@
       "candidates": []
     },
     {
-      "index": 131,
+      "index": 135,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6093,11 +6409,12 @@
       "candidates": []
     },
     {
-      "index": 132,
+      "index": 136,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6111,7 +6428,7 @@
       "href": "#User/view/1",
       "box": {
         "x": 132,
-        "y": 504,
+        "y": 446,
         "w": 82,
         "h": 17
       },
@@ -6155,11 +6472,12 @@
       ]
     },
     {
-      "index": 133,
+      "index": 137,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "I-00018",
+      "name": "SO-00015",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6170,20 +6488,20 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Invoice/view/698f40e9ae9cbc7d4",
+      "href": "#SalesOrder/view/698f3e519b2d090a6",
       "box": {
-        "x": 323,
-        "y": 504,
-        "w": 52,
+        "x": 350,
+        "y": 446,
+        "w": 68,
         "h": 17
       },
       "locator": {
         "strategy": "role",
-        "expression": "getByRole('link', { name: 'I-00018', exact: true })",
+        "expression": "getByRole('link', { name: 'SO-00015', exact: true })",
         "matchCount": 1,
         "args": [
           "link",
-          "I-00018"
+          "SO-00015"
         ]
       },
       "unique": true,
@@ -6192,19 +6510,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'I-00018', exact: true })",
+          "expression": "getByRole('link', { name: 'SO-00015', exact: true })",
           "matchCount": 1,
           "args": [
             "link",
-            "I-00018"
+            "SO-00015"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('I-00018', { exact: true })",
+          "expression": "getByText('SO-00015', { exact: true })",
           "matchCount": 1,
           "args": [
-            "I-00018"
+            "SO-00015"
           ]
         },
         {
@@ -6218,11 +6536,12 @@
       ]
     },
     {
-      "index": 134,
+      "index": 138,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Intelacard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6235,8 +6554,8 @@
       "destructive": false,
       "href": "#Account/view/5f5f1ecbc217d42bc",
       "box": {
-        "x": 514,
-        "y": 504,
+        "x": 556,
+        "y": 446,
         "w": 67,
         "h": 17
       },
@@ -6280,27 +6599,28 @@
       ]
     },
     {
-      "index": 135,
+      "index": 139,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6148"
+        "data-view-cid": "view6166"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698f40e9b6045489a",
+      "href": "#Note/view/698f3e51a4e2ac806",
       "box": {
         "x": 81,
-        "y": 533,
+        "y": 475,
         "w": 34,
         "h": 15
       },
@@ -6318,19 +6638,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
@@ -6344,11 +6664,12 @@
       ]
     },
     {
-      "index": 136,
+      "index": 140,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6363,8 +6684,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 565,
+        "x": 818,
+        "y": 507,
         "w": 30,
         "h": 30
       },
@@ -6391,11 +6712,12 @@
       ]
     },
     {
-      "index": 137,
+      "index": 141,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6403,7 +6725,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698f3efbc8be1ff37"
+        "data-id": "698f3dc787a1227c2"
       },
       "region": "body",
       "visible": false,
@@ -6418,10 +6740,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698f3efbc8be1ff37\\\"]')",
+        "expression": "locator('a[data-id=\\\"698f3dc787a1227c2\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698f3efbc8be1ff37\"]"
+          "a[data-id=\"698f3dc787a1227c2\"]"
         ]
       },
       "unique": true,
@@ -6430,11 +6752,12 @@
       "candidates": []
     },
     {
-      "index": 138,
+      "index": 142,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6466,11 +6789,12 @@
       "candidates": []
     },
     {
-      "index": 139,
+      "index": 143,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6502,11 +6826,12 @@
       "candidates": []
     },
     {
-      "index": 140,
+      "index": 144,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6538,11 +6863,12 @@
       "candidates": []
     },
     {
-      "index": 141,
+      "index": 145,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6555,8 +6881,8 @@
       "destructive": false,
       "href": "#User/view/1",
       "box": {
-        "x": 136,
-        "y": 574,
+        "x": 132,
+        "y": 516,
         "w": 82,
         "h": 17
       },
@@ -6600,11 +6926,12 @@
       ]
     },
     {
-      "index": 142,
+      "index": 146,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "DO-00004",
+      "name": "Q-00018",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6615,20 +6942,20 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#DeliveryOrder/view/698f3efbbf44dfd56",
+      "href": "#Quote/view/698f3dc781dcc754a",
       "box": {
-        "x": 372,
-        "y": 574,
-        "w": 73,
+        "x": 314,
+        "y": 516,
+        "w": 59,
         "h": 17
       },
       "locator": {
         "strategy": "role",
-        "expression": "getByRole('link', { name: 'DO-00004', exact: true })",
+        "expression": "getByRole('link', { name: 'Q-00018', exact: true })",
         "matchCount": 1,
         "args": [
           "link",
-          "DO-00004"
+          "Q-00018"
         ]
       },
       "unique": true,
@@ -6637,19 +6964,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'DO-00004', exact: true })",
+          "expression": "getByRole('link', { name: 'Q-00018', exact: true })",
           "matchCount": 1,
           "args": [
             "link",
-            "DO-00004"
+            "Q-00018"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('DO-00004', { exact: true })",
+          "expression": "getByText('Q-00018', { exact: true })",
           "matchCount": 1,
           "args": [
-            "DO-00004"
+            "Q-00018"
           ]
         },
         {
@@ -6663,11 +6990,12 @@
       ]
     },
     {
-      "index": 143,
+      "index": 147,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Intelacard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6680,8 +7008,8 @@
       "destructive": false,
       "href": "#Account/view/5f5f1ecbc217d42bc",
       "box": {
-        "x": 584,
-        "y": 574,
+        "x": 512,
+        "y": 516,
         "w": 67,
         "h": 17
       },
@@ -6725,27 +7053,28 @@
       ]
     },
     {
-      "index": 144,
+      "index": 148,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6163"
+        "data-view-cid": "view6181"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698f3efbc8be1ff37",
+      "href": "#Note/view/698f3dc787a1227c2",
       "box": {
         "x": 81,
-        "y": 603,
+        "y": 545,
         "w": 34,
         "h": 15
       },
@@ -6763,19 +7092,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
@@ -6789,11 +7118,12 @@
       ]
     },
     {
-      "index": 145,
+      "index": 149,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6808,8 +7138,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 635,
+        "x": 818,
+        "y": 577,
         "w": 30,
         "h": 30
       },
@@ -6836,11 +7166,12 @@
       ]
     },
     {
-      "index": 146,
+      "index": 150,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6848,7 +7179,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698f3e51a4e2ac806"
+        "data-id": "698d8349bdf7c6e22"
       },
       "region": "body",
       "visible": false,
@@ -6863,10 +7194,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698f3e51a4e2ac806\\\"]')",
+        "expression": "locator('a[data-id=\\\"698d8349bdf7c6e22\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698f3e51a4e2ac806\"]"
+          "a[data-id=\"698d8349bdf7c6e22\"]"
         ]
       },
       "unique": true,
@@ -6875,11 +7206,12 @@
       "candidates": []
     },
     {
-      "index": 147,
+      "index": 151,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6911,11 +7243,12 @@
       "candidates": []
     },
     {
-      "index": 148,
+      "index": 152,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6947,11 +7280,12 @@
       "candidates": []
     },
     {
-      "index": 149,
+      "index": 153,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -6983,11 +7317,12 @@
       "candidates": []
     },
     {
-      "index": 150,
+      "index": 154,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7001,7 +7336,7 @@
       "href": "#User/view/1",
       "box": {
         "x": 132,
-        "y": 644,
+        "y": 586,
         "w": 82,
         "h": 17
       },
@@ -7045,11 +7380,12 @@
       ]
     },
     {
-      "index": 151,
+      "index": 155,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "SO-00015",
+      "name": "Root URL is not updated",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7060,41 +7396,40 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#SalesOrder/view/698f3e519b2d090a6",
+      "href": "#ProjectTask/view/698d8349b91d59f0b",
       "box": {
-        "x": 350,
-        "y": 644,
-        "w": 68,
+        "x": 365,
+        "y": 586,
+        "w": 161,
         "h": 17
       },
       "locator": {
-        "strategy": "role",
-        "expression": "getByRole('link', { name: 'SO-00015', exact: true })",
+        "strategy": "css",
+        "expression": "locator('li.list-group-item.list-row:nth-of-type(7) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record')",
         "matchCount": 1,
         "args": [
-          "link",
-          "SO-00015"
+          "li.list-group-item.list-row:nth-of-type(7) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record"
         ]
       },
       "unique": true,
-      "fragile": false,
-      "ambiguityReason": null,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'SO-00015', exact: true })",
-          "matchCount": 1,
+          "expression": "getByRole('link', { name: 'Root URL is not updated', exact: true })",
+          "matchCount": 2,
           "args": [
             "link",
-            "SO-00015"
+            "Root URL is not updated"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('SO-00015', { exact: true })",
-          "matchCount": 1,
+          "expression": "getByText('Root URL is not updated', { exact: true })",
+          "matchCount": 2,
           "args": [
-            "SO-00015"
+            "Root URL is not updated"
           ]
         },
         {
@@ -7108,11 +7443,12 @@
       ]
     },
     {
-      "index": 152,
+      "index": 156,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Intelacard",
+      "name": "Quality Assurance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7123,11 +7459,11 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Account/view/5f5f1ecbc217d42bc",
+      "href": "#Project/view/698d81d916cdd14be",
       "box": {
-        "x": 556,
-        "y": 644,
-        "w": 67,
+        "x": 657,
+        "y": 586,
+        "w": 122,
         "h": 17
       },
       "locator": {
@@ -7144,19 +7480,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Intelacard', exact: true })",
-          "matchCount": 6,
+          "expression": "getByRole('link', { name: 'Quality Assurance', exact: true })",
+          "matchCount": 8,
           "args": [
             "link",
-            "Intelacard"
+            "Quality Assurance"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Intelacard', { exact: true })",
-          "matchCount": 6,
+          "expression": "getByText('Quality Assurance', { exact: true })",
+          "matchCount": 8,
           "args": [
-            "Intelacard"
+            "Quality Assurance"
           ]
         },
         {
@@ -7170,27 +7506,28 @@
       ]
     },
     {
-      "index": 153,
+      "index": 157,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6178"
+        "data-view-cid": "view6196"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698f3e51a4e2ac806",
+      "href": "#Note/view/698d8349bdf7c6e22",
       "box": {
         "x": 81,
-        "y": 673,
+        "y": 615,
         "w": 34,
         "h": 15
       },
@@ -7208,19 +7545,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
@@ -7234,11 +7571,12 @@
       ]
     },
     {
-      "index": 154,
+      "index": 158,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7253,8 +7591,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 705,
+        "x": 818,
+        "y": 647,
         "w": 30,
         "h": 30
       },
@@ -7281,11 +7619,12 @@
       ]
     },
     {
-      "index": 155,
+      "index": 159,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7293,7 +7632,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698f3dc787a1227c2"
+        "data-id": "698d8349bca3795c2"
       },
       "region": "body",
       "visible": false,
@@ -7308,10 +7647,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698f3dc787a1227c2\\\"]')",
+        "expression": "locator('a[data-id=\\\"698d8349bca3795c2\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698f3dc787a1227c2\"]"
+          "a[data-id=\"698d8349bca3795c2\"]"
         ]
       },
       "unique": true,
@@ -7320,11 +7659,12 @@
       "candidates": []
     },
     {
-      "index": 156,
+      "index": 160,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7356,11 +7696,12 @@
       "candidates": []
     },
     {
-      "index": 157,
+      "index": 161,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7392,47 +7733,12 @@
       "candidates": []
     },
     {
-      "index": 158,
-      "tag": "a",
-      "type": null,
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {},
-      "region": "body",
-      "visible": false,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 0,
-        "y": 0,
-        "w": 0,
-        "h": 0
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('ul.list-group > li.list-group-item.list-row:nth-of-type(8) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > a.pull-right.inline-edit-link:nth-of-type(3)')",
-        "matchCount": 1,
-        "args": [
-          "ul.list-group > li.list-group-item.list-row:nth-of-type(8) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > a.pull-right.inline-edit-link:nth-of-type(3)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": []
-    },
-    {
-      "index": 159,
+      "index": 162,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7446,7 +7752,7 @@
       "href": "#User/view/1",
       "box": {
         "x": 132,
-        "y": 714,
+        "y": 656,
         "w": 82,
         "h": 17
       },
@@ -7490,11 +7796,12 @@
       ]
     },
     {
-      "index": 160,
+      "index": 163,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Q-00018",
+      "name": "Root URL is not updated",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7505,41 +7812,40 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Quote/view/698f3dc781dcc754a",
+      "href": "#ProjectTask/view/698d8349b91d59f0b",
       "box": {
-        "x": 314,
-        "y": 714,
-        "w": 59,
+        "x": 365,
+        "y": 656,
+        "w": 161,
         "h": 17
       },
       "locator": {
-        "strategy": "role",
-        "expression": "getByRole('link', { name: 'Q-00018', exact: true })",
+        "strategy": "css",
+        "expression": "locator('li.list-group-item.list-row:nth-of-type(8) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record')",
         "matchCount": 1,
         "args": [
-          "link",
-          "Q-00018"
+          "li.list-group-item.list-row:nth-of-type(8) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record"
         ]
       },
       "unique": true,
-      "fragile": false,
-      "ambiguityReason": null,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Q-00018', exact: true })",
-          "matchCount": 1,
+          "expression": "getByRole('link', { name: 'Root URL is not updated', exact: true })",
+          "matchCount": 2,
           "args": [
             "link",
-            "Q-00018"
+            "Root URL is not updated"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Q-00018', { exact: true })",
-          "matchCount": 1,
+          "expression": "getByText('Root URL is not updated', { exact: true })",
+          "matchCount": 2,
           "args": [
-            "Q-00018"
+            "Root URL is not updated"
           ]
         },
         {
@@ -7553,98 +7859,37 @@
       ]
     },
     {
-      "index": 161,
+      "index": 164,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Intelacard",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {},
-      "region": "body",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": "#Account/view/5f5f1ecbc217d42bc",
-      "box": {
-        "x": 512,
-        "y": 714,
-        "w": 67,
-        "h": 17
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('li.list-group-item.list-row:nth-of-type(8) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record')",
-        "matchCount": 1,
-        "args": [
-          "li.list-group-item.list-row:nth-of-type(8) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
-      "candidates": [
-        {
-          "strategy": "role",
-          "expression": "getByRole('link', { name: 'Intelacard', exact: true })",
-          "matchCount": 6,
-          "args": [
-            "link",
-            "Intelacard"
-          ]
-        },
-        {
-          "strategy": "text",
-          "expression": "getByText('Intelacard', { exact: true })",
-          "matchCount": 6,
-          "args": [
-            "Intelacard"
-          ]
-        },
-        {
-          "strategy": "css",
-          "expression": "locator('li.list-group-item.list-row:nth-of-type(8) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record')",
-          "matchCount": 1,
-          "args": [
-            "li.list-group-item.list-row:nth-of-type(8) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 162,
-      "tag": "a",
-      "type": null,
-      "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6193"
+        "data-view-cid": "view6211"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698f3dc787a1227c2",
+      "href": "#Note/view/698d8349bca3795c2",
       "box": {
         "x": 81,
-        "y": 743,
+        "y": 714,
         "w": 34,
         "h": 15
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(8) > div.stream-date-container:nth-of-type(3) > a.text-muted.small')",
+        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(8) > div.stream-date-container:nth-of-type(4) > a.text-muted.small')",
         "matchCount": 1,
         "args": [
-          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(8) > div.stream-date-container:nth-of-type(3) > a.text-muted.small"
+          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(8) > div.stream-date-container:nth-of-type(4) > a.text-muted.small"
         ]
       },
       "unique": true,
@@ -7653,37 +7898,38 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "css",
-          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(8) > div.stream-date-container:nth-of-type(3) > a.text-muted.small')",
+          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(8) > div.stream-date-container:nth-of-type(4) > a.text-muted.small')",
           "matchCount": 1,
           "args": [
-            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(8) > div.stream-date-container:nth-of-type(3) > a.text-muted.small"
+            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(8) > div.stream-date-container:nth-of-type(4) > a.text-muted.small"
           ]
         }
       ]
     },
     {
-      "index": 163,
+      "index": 165,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7698,8 +7944,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 775,
+        "x": 818,
+        "y": 746,
         "w": 30,
         "h": 30
       },
@@ -7726,11 +7972,12 @@
       ]
     },
     {
-      "index": 164,
+      "index": 166,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7738,7 +7985,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698d8349bdf7c6e22"
+        "data-id": "698d828b366e3dcb3"
       },
       "region": "body",
       "visible": false,
@@ -7753,10 +8000,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698d8349bdf7c6e22\\\"]')",
+        "expression": "locator('a[data-id=\\\"698d828b366e3dcb3\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698d8349bdf7c6e22\"]"
+          "a[data-id=\"698d828b366e3dcb3\"]"
         ]
       },
       "unique": true,
@@ -7765,11 +8012,12 @@
       "candidates": []
     },
     {
-      "index": 165,
+      "index": 167,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7801,11 +8049,12 @@
       "candidates": []
     },
     {
-      "index": 166,
+      "index": 168,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7837,11 +8086,12 @@
       "candidates": []
     },
     {
-      "index": 167,
+      "index": 169,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7873,11 +8123,12 @@
       "candidates": []
     },
     {
-      "index": 168,
+      "index": 170,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7891,7 +8142,7 @@
       "href": "#User/view/1",
       "box": {
         "x": 132,
-        "y": 784,
+        "y": 755,
         "w": 82,
         "h": 17
       },
@@ -7935,11 +8186,12 @@
       ]
     },
     {
-      "index": 169,
+      "index": 171,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Root URL is not updated",
+      "name": "Label is not translated",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -7950,11 +8202,11 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#ProjectTask/view/698d8349b91d59f0b",
+      "href": "#ProjectTask/view/698d828b30d96210e",
       "box": {
         "x": 365,
-        "y": 784,
-        "w": 161,
+        "y": 755,
+        "w": 147,
         "h": 17
       },
       "locator": {
@@ -7971,19 +8223,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Root URL is not updated', exact: true })",
+          "expression": "getByRole('link', { name: 'Label is not translated', exact: true })",
           "matchCount": 2,
           "args": [
             "link",
-            "Root URL is not updated"
+            "Label is not translated"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Root URL is not updated', { exact: true })",
+          "expression": "getByText('Label is not translated', { exact: true })",
           "matchCount": 2,
           "args": [
-            "Root URL is not updated"
+            "Label is not translated"
           ]
         },
         {
@@ -7997,11 +8249,12 @@
       ]
     },
     {
-      "index": 170,
+      "index": 172,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Quality Assurance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8014,8 +8267,8 @@
       "destructive": false,
       "href": "#Project/view/698d81d916cdd14be",
       "box": {
-        "x": 657,
-        "y": 784,
+        "x": 644,
+        "y": 755,
         "w": 122,
         "h": 17
       },
@@ -8059,27 +8312,28 @@
       ]
     },
     {
-      "index": 171,
+      "index": 173,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6208"
+        "data-view-cid": "view6224"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698d8349bdf7c6e22",
+      "href": "#Note/view/698d828b366e3dcb3",
       "box": {
         "x": 81,
-        "y": 813,
+        "y": 784,
         "w": 34,
         "h": 15
       },
@@ -8097,19 +8351,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
@@ -8123,11 +8377,12 @@
       ]
     },
     {
-      "index": 172,
+      "index": 174,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8142,8 +8397,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 845,
+        "x": 818,
+        "y": 816,
         "w": 30,
         "h": 30
       },
@@ -8170,11 +8425,12 @@
       ]
     },
     {
-      "index": 173,
+      "index": 175,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8182,7 +8438,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698d8349bca3795c2"
+        "data-id": "698d828b350c5a43b"
       },
       "region": "body",
       "visible": false,
@@ -8197,10 +8453,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698d8349bca3795c2\\\"]')",
+        "expression": "locator('a[data-id=\\\"698d828b350c5a43b\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698d8349bca3795c2\"]"
+          "a[data-id=\"698d828b350c5a43b\"]"
         ]
       },
       "unique": true,
@@ -8209,11 +8465,12 @@
       "candidates": []
     },
     {
-      "index": 174,
+      "index": 176,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8245,11 +8502,12 @@
       "candidates": []
     },
     {
-      "index": 175,
+      "index": 177,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8281,11 +8539,12 @@
       "candidates": []
     },
     {
-      "index": 176,
+      "index": 178,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8299,7 +8558,7 @@
       "href": "#User/view/1",
       "box": {
         "x": 132,
-        "y": 854,
+        "y": 825,
         "w": 82,
         "h": 17
       },
@@ -8343,11 +8602,12 @@
       ]
     },
     {
-      "index": 177,
+      "index": 179,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Root URL is not updated",
+      "name": "Label is not translated",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8358,11 +8618,11 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#ProjectTask/view/698d8349b91d59f0b",
+      "href": "#ProjectTask/view/698d828b30d96210e",
       "box": {
         "x": 365,
-        "y": 854,
-        "w": 161,
+        "y": 825,
+        "w": 147,
         "h": 17
       },
       "locator": {
@@ -8379,19 +8639,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Root URL is not updated', exact: true })",
+          "expression": "getByRole('link', { name: 'Label is not translated', exact: true })",
           "matchCount": 2,
           "args": [
             "link",
-            "Root URL is not updated"
+            "Label is not translated"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Root URL is not updated', { exact: true })",
+          "expression": "getByText('Label is not translated', { exact: true })",
           "matchCount": 2,
           "args": [
-            "Root URL is not updated"
+            "Label is not translated"
           ]
         },
         {
@@ -8405,27 +8665,28 @@
       ]
     },
     {
-      "index": 178,
+      "index": 180,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6223"
+        "data-view-cid": "view6239"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698d8349bca3795c2",
+      "href": "#Note/view/698d828b350c5a43b",
       "box": {
         "x": 81,
-        "y": 912,
+        "y": 883,
         "w": 34,
         "h": 15
       },
@@ -8443,19 +8704,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
@@ -8469,11 +8730,12 @@
       ]
     },
     {
-      "index": 179,
+      "index": 181,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8488,8 +8750,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 944,
+        "x": 818,
+        "y": 915,
         "w": 30,
         "h": 30
       },
@@ -8516,11 +8778,12 @@
       ]
     },
     {
-      "index": 180,
+      "index": 182,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8528,7 +8791,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698d828b366e3dcb3"
+        "data-id": "698d81fc4ffc8d6ff"
       },
       "region": "body",
       "visible": false,
@@ -8543,10 +8806,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698d828b366e3dcb3\\\"]')",
+        "expression": "locator('a[data-id=\\\"698d81fc4ffc8d6ff\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698d828b366e3dcb3\"]"
+          "a[data-id=\"698d81fc4ffc8d6ff\"]"
         ]
       },
       "unique": true,
@@ -8555,11 +8818,12 @@
       "candidates": []
     },
     {
-      "index": 181,
+      "index": 183,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8591,11 +8855,12 @@
       "candidates": []
     },
     {
-      "index": 182,
+      "index": 184,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8627,11 +8892,12 @@
       "candidates": []
     },
     {
-      "index": 183,
+      "index": 185,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8663,11 +8929,12 @@
       "candidates": []
     },
     {
-      "index": 184,
+      "index": 186,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8681,7 +8948,7 @@
       "href": "#User/view/1",
       "box": {
         "x": 132,
-        "y": 953,
+        "y": 924,
         "w": 82,
         "h": 17
       },
@@ -8725,11 +8992,12 @@
       ]
     },
     {
-      "index": 185,
+      "index": 187,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Label is not translated",
+      "name": "Cathy Bush",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8740,40 +9008,41 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#ProjectTask/view/698d828b30d96210e",
+      "href": "#User/view/6128998cd76886801",
       "box": {
-        "x": 365,
-        "y": 953,
-        "w": 147,
+        "x": 294,
+        "y": 924,
+        "w": 77,
         "h": 17
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('li.list-group-item.list-row:nth-of-type(11) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record')",
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Cathy Bush', exact: true })",
         "matchCount": 1,
         "args": [
-          "li.list-group-item.list-row:nth-of-type(11) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record"
+          "link",
+          "Cathy Bush"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Label is not translated', exact: true })",
-          "matchCount": 2,
+          "expression": "getByRole('link', { name: 'Cathy Bush', exact: true })",
+          "matchCount": 1,
           "args": [
             "link",
-            "Label is not translated"
+            "Cathy Bush"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Label is not translated', { exact: true })",
-          "matchCount": 2,
+          "expression": "getByText('Cathy Bush', { exact: true })",
+          "matchCount": 1,
           "args": [
-            "Label is not translated"
+            "Cathy Bush"
           ]
         },
         {
@@ -8787,11 +9056,12 @@
       ]
     },
     {
-      "index": 186,
+      "index": 188,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Quality Assurance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8804,8 +9074,8 @@
       "destructive": false,
       "href": "#Project/view/698d81d916cdd14be",
       "box": {
-        "x": 644,
-        "y": 953,
+        "x": 467,
+        "y": 924,
         "w": 122,
         "h": 17
       },
@@ -8849,27 +9119,28 @@
       ]
     },
     {
-      "index": 187,
+      "index": 189,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6236"
+        "data-view-cid": "view6252"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698d828b366e3dcb3",
+      "href": "#Note/view/698d81fc4ffc8d6ff",
       "box": {
         "x": 81,
-        "y": 982,
+        "y": 953,
         "w": 34,
         "h": 15
       },
@@ -8887,19 +9158,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
@@ -8913,11 +9184,12 @@
       ]
     },
     {
-      "index": 188,
+      "index": 190,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8932,8 +9204,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 1014,
+        "x": 818,
+        "y": 985,
         "w": 30,
         "h": 30
       },
@@ -8960,11 +9232,12 @@
       ]
     },
     {
-      "index": 189,
+      "index": 191,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -8972,7 +9245,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698d828b350c5a43b"
+        "data-id": "698d81fc4f28faa13"
       },
       "region": "body",
       "visible": false,
@@ -8987,10 +9260,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698d828b350c5a43b\\\"]')",
+        "expression": "locator('a[data-id=\\\"698d81fc4f28faa13\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698d828b350c5a43b\"]"
+          "a[data-id=\"698d81fc4f28faa13\"]"
         ]
       },
       "unique": true,
@@ -8999,11 +9272,12 @@
       "candidates": []
     },
     {
-      "index": 190,
+      "index": 192,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9035,11 +9309,12 @@
       "candidates": []
     },
     {
-      "index": 191,
+      "index": 193,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9071,11 +9346,49 @@
       "candidates": []
     },
     {
-      "index": 192,
+      "index": 194,
+      "tag": "a",
+      "type": null,
+      "role": "button",
+      "name": "",
+      "nameSource": null,
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "body",
+      "visible": false,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('ul.list-group > li.list-group-item.list-row:nth-of-type(12) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > a.pull-right.inline-edit-link:nth-of-type(3)')",
+        "matchCount": 1,
+        "args": [
+          "ul.list-group > li.list-group-item.list-row:nth-of-type(12) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > a.pull-right.inline-edit-link:nth-of-type(3)"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": []
+    },
+    {
+      "index": 195,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9089,7 +9402,7 @@
       "href": "#User/view/1",
       "box": {
         "x": 132,
-        "y": 1023,
+        "y": 994,
         "w": 82,
         "h": 17
       },
@@ -9133,11 +9446,12 @@
       ]
     },
     {
-      "index": 193,
+      "index": 196,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Label is not translated",
+      "name": "Adam Powers",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9148,40 +9462,41 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#ProjectTask/view/698d828b30d96210e",
+      "href": "#User/view/6128991d2f7ac1014",
       "box": {
-        "x": 365,
-        "y": 1023,
-        "w": 147,
+        "x": 294,
+        "y": 994,
+        "w": 92,
         "h": 17
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('li.list-group-item.list-row:nth-of-type(12) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record')",
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Adam Powers', exact: true })",
         "matchCount": 1,
         "args": [
-          "li.list-group-item.list-row:nth-of-type(12) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record"
+          "link",
+          "Adam Powers"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Label is not translated', exact: true })",
-          "matchCount": 2,
+          "expression": "getByRole('link', { name: 'Adam Powers', exact: true })",
+          "matchCount": 1,
           "args": [
             "link",
-            "Label is not translated"
+            "Adam Powers"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Label is not translated', { exact: true })",
-          "matchCount": 2,
+          "expression": "getByText('Adam Powers', { exact: true })",
+          "matchCount": 1,
           "args": [
-            "Label is not translated"
+            "Adam Powers"
           ]
         },
         {
@@ -9195,36 +9510,35 @@
       ]
     },
     {
-      "index": 194,
+      "index": 197,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "Quality Assurance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
-      "data": {
-        "data-view-cid": "view6251"
-      },
+      "data": {},
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698d828b350c5a43b",
+      "href": "#Project/view/698d81d916cdd14be",
       "box": {
-        "x": 81,
-        "y": 1081,
-        "w": 34,
-        "h": 15
+        "x": 483,
+        "y": 994,
+        "w": 122,
+        "h": 17
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(12) > div.stream-date-container:nth-of-type(4) > a.text-muted.small')",
+        "expression": "locator('li.list-group-item.list-row:nth-of-type(12) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record')",
         "matchCount": 1,
         "args": [
-          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(12) > div.stream-date-container:nth-of-type(4) > a.text-muted.small"
+          "li.list-group-item.list-row:nth-of-type(12) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record"
         ]
       },
       "unique": true,
@@ -9233,37 +9547,103 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: 'Quality Assurance', exact: true })",
+          "matchCount": 8,
           "args": [
             "link",
-            "06:00"
+            "Quality Assurance"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('Quality Assurance', { exact: true })",
+          "matchCount": 8,
           "args": [
-            "06:00"
+            "Quality Assurance"
           ]
         },
         {
           "strategy": "css",
-          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(12) > div.stream-date-container:nth-of-type(4) > a.text-muted.small')",
+          "expression": "locator('li.list-group-item.list-row:nth-of-type(12) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record')",
           "matchCount": 1,
           "args": [
-            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(12) > div.stream-date-container:nth-of-type(4) > a.text-muted.small"
+            "li.list-group-item.list-row:nth-of-type(12) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record"
           ]
         }
       ]
     },
     {
-      "index": 195,
+      "index": 198,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "08:00",
+      "nameSource": "accessible",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-view-cid": "view6267"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Note/view/698d81fc4f28faa13",
+      "box": {
+        "x": 81,
+        "y": 1023,
+        "w": 34,
+        "h": 15
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(12) > div.stream-date-container:nth-of-type(3) > a.text-muted.small')",
+        "matchCount": 1,
+        "args": [
+          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(12) > div.stream-date-container:nth-of-type(3) > a.text-muted.small"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
+          "args": [
+            "link",
+            "08:00"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
+          "args": [
+            "08:00"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(12) > div.stream-date-container:nth-of-type(3) > a.text-muted.small')",
+          "matchCount": 1,
+          "args": [
+            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(12) > div.stream-date-container:nth-of-type(3) > a.text-muted.small"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 199,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9278,8 +9658,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 1113,
+        "x": 818,
+        "y": 1055,
         "w": 30,
         "h": 30
       },
@@ -9306,11 +9686,12 @@
       ]
     },
     {
-      "index": 196,
+      "index": 200,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9318,7 +9699,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698d81fc4ffc8d6ff"
+        "data-id": "698d81fc4e68287e9"
       },
       "region": "body",
       "visible": false,
@@ -9333,10 +9714,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698d81fc4ffc8d6ff\\\"]')",
+        "expression": "locator('a[data-id=\\\"698d81fc4e68287e9\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698d81fc4ffc8d6ff\"]"
+          "a[data-id=\"698d81fc4e68287e9\"]"
         ]
       },
       "unique": true,
@@ -9345,11 +9726,12 @@
       "candidates": []
     },
     {
-      "index": 197,
+      "index": 201,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9381,11 +9763,12 @@
       "candidates": []
     },
     {
-      "index": 198,
+      "index": 202,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9417,11 +9800,12 @@
       "candidates": []
     },
     {
-      "index": 199,
+      "index": 203,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9453,11 +9837,12 @@
       "candidates": []
     },
     {
-      "index": 200,
+      "index": 204,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9471,7 +9856,7 @@
       "href": "#User/view/1",
       "box": {
         "x": 132,
-        "y": 1122,
+        "y": 1064,
         "w": 82,
         "h": 17
       },
@@ -9515,11 +9900,12 @@
       ]
     },
     {
-      "index": 201,
+      "index": 205,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Cathy Bush",
+      "name": "Emily Shelter",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9530,20 +9916,20 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#User/view/6128998cd76886801",
+      "href": "#User/view/612898a4ac2ea939a",
       "box": {
         "x": 294,
-        "y": 1122,
-        "w": 77,
+        "y": 1064,
+        "w": 88,
         "h": 17
       },
       "locator": {
         "strategy": "role",
-        "expression": "getByRole('link', { name: 'Cathy Bush', exact: true })",
+        "expression": "getByRole('link', { name: 'Emily Shelter', exact: true })",
         "matchCount": 1,
         "args": [
           "link",
-          "Cathy Bush"
+          "Emily Shelter"
         ]
       },
       "unique": true,
@@ -9552,19 +9938,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Cathy Bush', exact: true })",
+          "expression": "getByRole('link', { name: 'Emily Shelter', exact: true })",
           "matchCount": 1,
           "args": [
             "link",
-            "Cathy Bush"
+            "Emily Shelter"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Cathy Bush', { exact: true })",
+          "expression": "getByText('Emily Shelter', { exact: true })",
           "matchCount": 1,
           "args": [
-            "Cathy Bush"
+            "Emily Shelter"
           ]
         },
         {
@@ -9578,11 +9964,12 @@
       ]
     },
     {
-      "index": 202,
+      "index": 206,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Quality Assurance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9595,8 +9982,8 @@
       "destructive": false,
       "href": "#Project/view/698d81d916cdd14be",
       "box": {
-        "x": 467,
-        "y": 1122,
+        "x": 478,
+        "y": 1064,
         "w": 122,
         "h": 17
       },
@@ -9640,27 +10027,28 @@
       ]
     },
     {
-      "index": 203,
+      "index": 207,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6264"
+        "data-view-cid": "view6282"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698d81fc4ffc8d6ff",
+      "href": "#Note/view/698d81fc4e68287e9",
       "box": {
         "x": 81,
-        "y": 1151,
+        "y": 1093,
         "w": 34,
         "h": 15
       },
@@ -9678,19 +10066,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
@@ -9704,11 +10092,12 @@
       ]
     },
     {
-      "index": 204,
+      "index": 208,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9723,8 +10112,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 1183,
+        "x": 818,
+        "y": 1125,
         "w": 30,
         "h": 30
       },
@@ -9751,11 +10140,12 @@
       ]
     },
     {
-      "index": 205,
+      "index": 209,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9763,7 +10153,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698d81fc4f28faa13"
+        "data-id": "698d81fc4ab8fef32"
       },
       "region": "body",
       "visible": false,
@@ -9778,10 +10168,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698d81fc4f28faa13\\\"]')",
+        "expression": "locator('a[data-id=\\\"698d81fc4ab8fef32\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698d81fc4f28faa13\"]"
+          "a[data-id=\"698d81fc4ab8fef32\"]"
         ]
       },
       "unique": true,
@@ -9790,11 +10180,12 @@
       "candidates": []
     },
     {
-      "index": 206,
+      "index": 210,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9826,11 +10217,12 @@
       "candidates": []
     },
     {
-      "index": 207,
+      "index": 211,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9862,11 +10254,12 @@
       "candidates": []
     },
     {
-      "index": 208,
+      "index": 212,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9898,11 +10291,12 @@
       "candidates": []
     },
     {
-      "index": 209,
+      "index": 213,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9916,7 +10310,7 @@
       "href": "#User/view/1",
       "box": {
         "x": 132,
-        "y": 1192,
+        "y": 1134,
         "w": 82,
         "h": 17
       },
@@ -9960,11 +10354,12 @@
       ]
     },
     {
-      "index": 210,
+      "index": 214,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Adam Powers",
+      "name": "Ben Smith",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -9975,20 +10370,20 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#User/view/6128991d2f7ac1014",
+      "href": "#User/view/6128966e1667d6220",
       "box": {
         "x": 294,
-        "y": 1192,
-        "w": 92,
+        "y": 1134,
+        "w": 68,
         "h": 17
       },
       "locator": {
         "strategy": "role",
-        "expression": "getByRole('link', { name: 'Adam Powers', exact: true })",
+        "expression": "getByRole('link', { name: 'Ben Smith', exact: true })",
         "matchCount": 1,
         "args": [
           "link",
-          "Adam Powers"
+          "Ben Smith"
         ]
       },
       "unique": true,
@@ -9997,19 +10392,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Adam Powers', exact: true })",
+          "expression": "getByRole('link', { name: 'Ben Smith', exact: true })",
           "matchCount": 1,
           "args": [
             "link",
-            "Adam Powers"
+            "Ben Smith"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Adam Powers', { exact: true })",
+          "expression": "getByText('Ben Smith', { exact: true })",
           "matchCount": 1,
           "args": [
-            "Adam Powers"
+            "Ben Smith"
           ]
         },
         {
@@ -10023,11 +10418,12 @@
       ]
     },
     {
-      "index": 211,
+      "index": 215,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Quality Assurance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10040,8 +10436,8 @@
       "destructive": false,
       "href": "#Project/view/698d81d916cdd14be",
       "box": {
-        "x": 483,
-        "y": 1192,
+        "x": 459,
+        "y": 1134,
         "w": 122,
         "h": 17
       },
@@ -10085,27 +10481,28 @@
       ]
     },
     {
-      "index": 212,
+      "index": 216,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6279"
+        "data-view-cid": "view6297"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698d81fc4f28faa13",
+      "href": "#Note/view/698d81fc4ab8fef32",
       "box": {
         "x": 81,
-        "y": 1221,
+        "y": 1163,
         "w": 34,
         "h": 15
       },
@@ -10123,19 +10520,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
@@ -10149,11 +10546,12 @@
       ]
     },
     {
-      "index": 213,
+      "index": 217,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10168,8 +10566,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 1253,
+        "x": 818,
+        "y": 1195,
         "w": 30,
         "h": 30
       },
@@ -10196,11 +10594,12 @@
       ]
     },
     {
-      "index": 214,
+      "index": 218,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10208,7 +10607,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698d81fc4e68287e9"
+        "data-id": "698d81d91dc0c4c7c"
       },
       "region": "body",
       "visible": false,
@@ -10223,10 +10622,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698d81fc4e68287e9\\\"]')",
+        "expression": "locator('a[data-id=\\\"698d81d91dc0c4c7c\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698d81fc4e68287e9\"]"
+          "a[data-id=\"698d81d91dc0c4c7c\"]"
         ]
       },
       "unique": true,
@@ -10235,11 +10634,12 @@
       "candidates": []
     },
     {
-      "index": 215,
+      "index": 219,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10271,11 +10671,12 @@
       "candidates": []
     },
     {
-      "index": 216,
+      "index": 220,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10307,11 +10708,12 @@
       "candidates": []
     },
     {
-      "index": 217,
+      "index": 221,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10343,11 +10745,12 @@
       "candidates": []
     },
     {
-      "index": 218,
+      "index": 222,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10361,7 +10764,7 @@
       "href": "#User/view/1",
       "box": {
         "x": 132,
-        "y": 1262,
+        "y": 1204,
         "w": 82,
         "h": 17
       },
@@ -10405,11 +10808,12 @@
       ]
     },
     {
-      "index": 219,
+      "index": 223,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Emily Shelter",
+      "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10420,41 +10824,40 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#User/view/612898a4ac2ea939a",
+      "href": "#User/view/1",
       "box": {
         "x": 294,
-        "y": 1262,
-        "w": 88,
+        "y": 1204,
+        "w": 82,
         "h": 17
       },
       "locator": {
-        "strategy": "role",
-        "expression": "getByRole('link', { name: 'Emily Shelter', exact: true })",
+        "strategy": "css",
+        "expression": "locator('li.list-group-item.list-row:nth-of-type(15) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record')",
         "matchCount": 1,
         "args": [
-          "link",
-          "Emily Shelter"
+          "li.list-group-item.list-row:nth-of-type(15) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record"
         ]
       },
       "unique": true,
-      "fragile": false,
-      "ambiguityReason": null,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Emily Shelter', exact: true })",
-          "matchCount": 1,
+          "expression": "getByRole('link', { name: 'Jack Adams', exact: true })",
+          "matchCount": 22,
           "args": [
             "link",
-            "Emily Shelter"
+            "Jack Adams"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Emily Shelter', { exact: true })",
-          "matchCount": 1,
+          "expression": "getByText('Jack Adams', { exact: true })",
+          "matchCount": 22,
           "args": [
-            "Emily Shelter"
+            "Jack Adams"
           ]
         },
         {
@@ -10468,11 +10871,12 @@
       ]
     },
     {
-      "index": 220,
+      "index": 224,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Quality Assurance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10485,8 +10889,8 @@
       "destructive": false,
       "href": "#Project/view/698d81d916cdd14be",
       "box": {
-        "x": 478,
-        "y": 1262,
+        "x": 473,
+        "y": 1204,
         "w": 122,
         "h": 17
       },
@@ -10530,27 +10934,28 @@
       ]
     },
     {
-      "index": 221,
+      "index": 225,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6294"
+        "data-view-cid": "view6312"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698d81fc4e68287e9",
+      "href": "#Note/view/698d81d91dc0c4c7c",
       "box": {
         "x": 81,
-        "y": 1291,
+        "y": 1233,
         "w": 34,
         "h": 15
       },
@@ -10568,19 +10973,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
@@ -10594,11 +10999,12 @@
       ]
     },
     {
-      "index": 222,
+      "index": 226,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10613,8 +11019,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 1323,
+        "x": 818,
+        "y": 1265,
         "w": 30,
         "h": 30
       },
@@ -10641,11 +11047,12 @@
       ]
     },
     {
-      "index": 223,
+      "index": 227,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10653,7 +11060,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698d81fc4ab8fef32"
+        "data-id": "698d81d91bda757e9"
       },
       "region": "body",
       "visible": false,
@@ -10668,10 +11075,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698d81fc4ab8fef32\\\"]')",
+        "expression": "locator('a[data-id=\\\"698d81d91bda757e9\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698d81fc4ab8fef32\"]"
+          "a[data-id=\"698d81d91bda757e9\"]"
         ]
       },
       "unique": true,
@@ -10680,11 +11087,12 @@
       "candidates": []
     },
     {
-      "index": 224,
+      "index": 228,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10716,11 +11124,12 @@
       "candidates": []
     },
     {
-      "index": 225,
+      "index": 229,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10752,47 +11161,12 @@
       "candidates": []
     },
     {
-      "index": 226,
-      "tag": "a",
-      "type": null,
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {},
-      "region": "body",
-      "visible": false,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 0,
-        "y": 0,
-        "w": 0,
-        "h": 0
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('ul.list-group > li.list-group-item.list-row:nth-of-type(16) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > a.pull-right.inline-edit-link:nth-of-type(3)')",
-        "matchCount": 1,
-        "args": [
-          "ul.list-group > li.list-group-item.list-row:nth-of-type(16) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > a.pull-right.inline-edit-link:nth-of-type(3)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": []
-    },
-    {
-      "index": 227,
+      "index": 230,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10805,8 +11179,8 @@
       "destructive": false,
       "href": "#User/view/1",
       "box": {
-        "x": 132,
-        "y": 1332,
+        "x": 134,
+        "y": 1274,
         "w": 82,
         "h": 17
       },
@@ -10850,74 +11224,12 @@
       ]
     },
     {
-      "index": 228,
-      "tag": "a",
-      "type": null,
-      "role": "link",
-      "name": "Ben Smith",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {},
-      "region": "body",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": "#User/view/6128966e1667d6220",
-      "box": {
-        "x": 294,
-        "y": 1332,
-        "w": 68,
-        "h": 17
-      },
-      "locator": {
-        "strategy": "role",
-        "expression": "getByRole('link', { name: 'Ben Smith', exact: true })",
-        "matchCount": 1,
-        "args": [
-          "link",
-          "Ben Smith"
-        ]
-      },
-      "unique": true,
-      "fragile": false,
-      "ambiguityReason": null,
-      "candidates": [
-        {
-          "strategy": "role",
-          "expression": "getByRole('link', { name: 'Ben Smith', exact: true })",
-          "matchCount": 1,
-          "args": [
-            "link",
-            "Ben Smith"
-          ]
-        },
-        {
-          "strategy": "text",
-          "expression": "getByText('Ben Smith', { exact: true })",
-          "matchCount": 1,
-          "args": [
-            "Ben Smith"
-          ]
-        },
-        {
-          "strategy": "css",
-          "expression": "locator('li.list-group-item.list-row:nth-of-type(16) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record')",
-          "matchCount": 1,
-          "args": [
-            "li.list-group-item.list-row:nth-of-type(16) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 229,
+      "index": 231,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Quality Assurance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -10930,17 +11242,17 @@
       "destructive": false,
       "href": "#Project/view/698d81d916cdd14be",
       "box": {
-        "x": 459,
-        "y": 1332,
+        "x": 335,
+        "y": 1274,
         "w": 122,
         "h": 17
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('li.list-group-item.list-row:nth-of-type(16) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record')",
+        "expression": "locator('li.list-group-item.list-row:nth-of-type(16) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record')",
         "matchCount": 1,
         "args": [
-          "li.list-group-item.list-row:nth-of-type(16) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record"
+          "li.list-group-item.list-row:nth-of-type(16) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record"
         ]
       },
       "unique": true,
@@ -10966,45 +11278,46 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('li.list-group-item.list-row:nth-of-type(16) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record')",
+          "expression": "locator('li.list-group-item.list-row:nth-of-type(16) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record')",
           "matchCount": 1,
           "args": [
-            "li.list-group-item.list-row:nth-of-type(16) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record"
+            "li.list-group-item.list-row:nth-of-type(16) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record"
           ]
         }
       ]
     },
     {
-      "index": 230,
+      "index": 232,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6309"
+        "data-view-cid": "view6327"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698d81fc4ab8fef32",
+      "href": "#Note/view/698d81d91bda757e9",
       "box": {
         "x": 81,
-        "y": 1361,
+        "y": 1332,
         "w": 34,
         "h": 15
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(16) > div.stream-date-container:nth-of-type(3) > a.text-muted.small')",
+        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(16) > div.stream-date-container:nth-of-type(4) > a.text-muted.small')",
         "matchCount": 1,
         "args": [
-          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(16) > div.stream-date-container:nth-of-type(3) > a.text-muted.small"
+          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(16) > div.stream-date-container:nth-of-type(4) > a.text-muted.small"
         ]
       },
       "unique": true,
@@ -11013,37 +11326,38 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "css",
-          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(16) > div.stream-date-container:nth-of-type(3) > a.text-muted.small')",
+          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(16) > div.stream-date-container:nth-of-type(4) > a.text-muted.small')",
           "matchCount": 1,
           "args": [
-            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(16) > div.stream-date-container:nth-of-type(3) > a.text-muted.small"
+            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(16) > div.stream-date-container:nth-of-type(4) > a.text-muted.small"
           ]
         }
       ]
     },
     {
-      "index": 231,
+      "index": 233,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11058,8 +11372,8 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
-        "y": 1393,
+        "x": 818,
+        "y": 1364,
         "w": 30,
         "h": 30
       },
@@ -11086,11 +11400,12 @@
       ]
     },
     {
-      "index": 232,
+      "index": 234,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11098,7 +11413,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698d81d91dc0c4c7c"
+        "data-id": "698cb51776957762a"
       },
       "region": "body",
       "visible": false,
@@ -11113,10 +11428,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698d81d91dc0c4c7c\\\"]')",
+        "expression": "locator('a[data-id=\\\"698cb51776957762a\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698d81d91dc0c4c7c\"]"
+          "a[data-id=\"698cb51776957762a\"]"
         ]
       },
       "unique": true,
@@ -11125,11 +11440,12 @@
       "candidates": []
     },
     {
-      "index": 233,
+      "index": 235,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11161,11 +11477,12 @@
       "candidates": []
     },
     {
-      "index": 234,
+      "index": 236,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11197,47 +11514,12 @@
       "candidates": []
     },
     {
-      "index": 235,
-      "tag": "a",
-      "type": null,
-      "role": "button",
-      "name": "",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {},
-      "region": "body",
-      "visible": false,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 0,
-        "y": 0,
-        "w": 0,
-        "h": 0
-      },
-      "locator": {
-        "strategy": "css",
-        "expression": "locator('ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > a.pull-right.inline-edit-link:nth-of-type(3)')",
-        "matchCount": 1,
-        "args": [
-          "ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > a.pull-right.inline-edit-link:nth-of-type(3)"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": []
-    },
-    {
-      "index": 236,
+      "index": 237,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11251,7 +11533,7 @@
       "href": "#User/view/1",
       "box": {
         "x": 132,
-        "y": 1402,
+        "y": 1373,
         "w": 82,
         "h": 17
       },
@@ -11295,11 +11577,12 @@
       ]
     },
     {
-      "index": 237,
+      "index": 238,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Jack Adams",
+      "name": "Refactor ACL framework",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11310,40 +11593,41 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#User/view/1",
+      "href": "#ProjectTask/view/66d7127ec0e489169",
       "box": {
-        "x": 294,
-        "y": 1402,
-        "w": 82,
+        "x": 369,
+        "y": 1373,
+        "w": 164,
         "h": 17
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('li.list-group-item.list-row:nth-of-type(17) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record')",
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Refactor ACL framework', exact: true })",
         "matchCount": 1,
         "args": [
-          "li.list-group-item.list-row:nth-of-type(17) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record"
+          "link",
+          "Refactor ACL framework"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Jack Adams', exact: true })",
-          "matchCount": 22,
+          "expression": "getByRole('link', { name: 'Refactor ACL framework', exact: true })",
+          "matchCount": 1,
           "args": [
             "link",
-            "Jack Adams"
+            "Refactor ACL framework"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Jack Adams', { exact: true })",
-          "matchCount": 22,
+          "expression": "getByText('Refactor ACL framework', { exact: true })",
+          "matchCount": 1,
           "args": [
-            "Jack Adams"
+            "Refactor ACL framework"
           ]
         },
         {
@@ -11357,34 +11641,37 @@
       ]
     },
     {
-      "index": 238,
+      "index": 239,
       "tag": "a",
       "type": null,
-      "role": "link",
-      "name": "Quality Assurance",
+      "role": "button",
+      "name": "Points",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
-      "data": {},
+      "data": {
+        "data-action": "expandDetails"
+      },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Project/view/698d81d916cdd14be",
+      "href": null,
       "box": {
-        "x": 473,
+        "x": 110,
         "y": 1402,
-        "w": 122,
+        "w": 55,
         "h": 17
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('li.list-group-item.list-row:nth-of-type(17) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record')",
+        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-details-container:nth-of-type(3) > a.text-muted.no-underline')",
         "matchCount": 1,
         "args": [
-          "li.list-group-item.list-row:nth-of-type(17) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record"
+          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-details-container:nth-of-type(3) > a.text-muted.no-underline"
         ]
       },
       "unique": true,
@@ -11393,50 +11680,51 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Quality Assurance', exact: true })",
-          "matchCount": 8,
+          "expression": "getByRole('button', { name: 'Points', exact: true })",
+          "matchCount": 4,
           "args": [
-            "link",
-            "Quality Assurance"
+            "button",
+            "Points"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Quality Assurance', { exact: true })",
-          "matchCount": 8,
+          "expression": "getByText('Points', { exact: true })",
+          "matchCount": 4,
           "args": [
-            "Quality Assurance"
+            "Points"
           ]
         },
         {
           "strategy": "css",
-          "expression": "locator('li.list-group-item.list-row:nth-of-type(17) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record')",
+          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-details-container:nth-of-type(3) > a.text-muted.no-underline')",
           "matchCount": 1,
           "args": [
-            "li.list-group-item.list-row:nth-of-type(17) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(3) > a.text-record"
+            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-details-container:nth-of-type(3) > a.text-muted.no-underline"
           ]
         }
       ]
     },
     {
-      "index": 239,
+      "index": 240,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6324"
+        "data-view-cid": "view6340"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698d81d91dc0c4c7c",
+      "href": "#Note/view/698cb51776957762a",
       "box": {
         "x": 81,
         "y": 1431,
@@ -11445,10 +11733,10 @@
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-date-container:nth-of-type(3) > a.text-muted.small')",
+        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-date-container:nth-of-type(5) > a.text-muted.small')",
         "matchCount": 1,
         "args": [
-          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-date-container:nth-of-type(3) > a.text-muted.small"
+          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-date-container:nth-of-type(5) > a.text-muted.small"
         ]
       },
       "unique": true,
@@ -11457,37 +11745,38 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "css",
-          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-date-container:nth-of-type(3) > a.text-muted.small')",
+          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-date-container:nth-of-type(5) > a.text-muted.small')",
           "matchCount": 1,
           "args": [
-            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-date-container:nth-of-type(3) > a.text-muted.small"
+            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(17) > div.stream-date-container:nth-of-type(5) > a.text-muted.small"
           ]
         }
       ]
     },
     {
-      "index": 240,
+      "index": 241,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11502,7 +11791,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
+        "x": 818,
         "y": 1463,
         "w": 30,
         "h": 30
@@ -11530,11 +11819,12 @@
       ]
     },
     {
-      "index": 241,
+      "index": 242,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11542,7 +11832,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698d81d91bda757e9"
+        "data-id": "698cb508c53662291"
       },
       "region": "body",
       "visible": false,
@@ -11557,10 +11847,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698d81d91bda757e9\\\"]')",
+        "expression": "locator('a[data-id=\\\"698cb508c53662291\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698d81d91bda757e9\"]"
+          "a[data-id=\"698cb508c53662291\"]"
         ]
       },
       "unique": true,
@@ -11569,11 +11859,12 @@
       "candidates": []
     },
     {
-      "index": 242,
+      "index": 243,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11605,11 +11896,12 @@
       "candidates": []
     },
     {
-      "index": 243,
+      "index": 244,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11641,11 +11933,12 @@
       "candidates": []
     },
     {
-      "index": 244,
+      "index": 245,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11658,7 +11951,7 @@
       "destructive": false,
       "href": "#User/view/1",
       "box": {
-        "x": 134,
+        "x": 132,
         "y": 1472,
         "w": 82,
         "h": 17
@@ -11703,11 +11996,12 @@
       ]
     },
     {
-      "index": 245,
+      "index": 246,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Quality Assurance",
+      "name": "Role UI improvement",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11718,40 +12012,41 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Project/view/698d81d916cdd14be",
+      "href": "#ProjectTask/view/66d7137df3892a63b",
       "box": {
-        "x": 335,
+        "x": 369,
         "y": 1472,
-        "w": 122,
+        "w": 139,
         "h": 17
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('li.list-group-item.list-row:nth-of-type(18) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record')",
+        "strategy": "role",
+        "expression": "getByRole('link', { name: 'Role UI improvement', exact: true })",
         "matchCount": 1,
         "args": [
-          "li.list-group-item.list-row:nth-of-type(18) > div.stream-head-container:nth-of-type(2) > div.stream-head-text-container:nth-of-type(2) > span.text-muted.message:nth-of-type(2) > span:nth-of-type(2) > a.text-record"
+          "link",
+          "Role UI improvement"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Quality Assurance', exact: true })",
-          "matchCount": 8,
+          "expression": "getByRole('link', { name: 'Role UI improvement', exact: true })",
+          "matchCount": 1,
           "args": [
             "link",
-            "Quality Assurance"
+            "Role UI improvement"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Quality Assurance', { exact: true })",
-          "matchCount": 8,
+          "expression": "getByText('Role UI improvement', { exact: true })",
+          "matchCount": 1,
           "args": [
-            "Quality Assurance"
+            "Role UI improvement"
           ]
         },
         {
@@ -11765,36 +12060,37 @@
       ]
     },
     {
-      "index": 246,
+      "index": 247,
       "tag": "a",
       "type": null,
-      "role": "link",
-      "name": "06:00",
+      "role": "button",
+      "name": "Points",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6339"
+        "data-action": "expandDetails"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698d81d91bda757e9",
+      "href": null,
       "box": {
-        "x": 81,
-        "y": 1530,
-        "w": 34,
-        "h": 15
+        "x": 110,
+        "y": 1501,
+        "w": 55,
+        "h": 17
       },
       "locator": {
         "strategy": "css",
-        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(18) > div.stream-date-container:nth-of-type(4) > a.text-muted.small')",
+        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(18) > div.stream-details-container:nth-of-type(3) > a.text-muted.no-underline')",
         "matchCount": 1,
         "args": [
-          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(18) > div.stream-date-container:nth-of-type(4) > a.text-muted.small"
+          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(18) > div.stream-details-container:nth-of-type(3) > a.text-muted.no-underline"
         ]
       },
       "unique": true,
@@ -11803,37 +12099,103 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('button', { name: 'Points', exact: true })",
+          "matchCount": 4,
           "args": [
-            "link",
-            "06:00"
+            "button",
+            "Points"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('Points', { exact: true })",
+          "matchCount": 4,
           "args": [
-            "06:00"
+            "Points"
           ]
         },
         {
           "strategy": "css",
-          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(18) > div.stream-date-container:nth-of-type(4) > a.text-muted.small')",
+          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(18) > div.stream-details-container:nth-of-type(3) > a.text-muted.no-underline')",
           "matchCount": 1,
           "args": [
-            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(18) > div.stream-date-container:nth-of-type(4) > a.text-muted.small"
+            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(18) > div.stream-details-container:nth-of-type(3) > a.text-muted.no-underline"
           ]
         }
       ]
     },
     {
-      "index": 247,
+      "index": 248,
+      "tag": "a",
+      "type": null,
+      "role": "link",
+      "name": "08:00",
+      "nameSource": "accessible",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-view-cid": "view6354"
+      },
+      "region": "body",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": "#Note/view/698cb508c53662291",
+      "box": {
+        "x": 81,
+        "y": 1530,
+        "w": 34,
+        "h": 15
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(18) > div.stream-date-container:nth-of-type(5) > a.text-muted.small')",
+        "matchCount": 1,
+        "args": [
+          "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(18) > div.stream-date-container:nth-of-type(5) > a.text-muted.small"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "candidates": [
+        {
+          "strategy": "role",
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
+          "args": [
+            "link",
+            "08:00"
+          ]
+        },
+        {
+          "strategy": "text",
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
+          "args": [
+            "08:00"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(18) > div.stream-date-container:nth-of-type(5) > a.text-muted.small')",
+          "matchCount": 1,
+          "args": [
+            "div.list-container.list-container-panel > div.list.list-expanded > ul.list-group > li.list-group-item.list-row:nth-of-type(18) > div.stream-date-container:nth-of-type(5) > a.text-muted.small"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 249,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11848,7 +12210,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
+        "x": 818,
         "y": 1562,
         "w": 30,
         "h": 30
@@ -11876,11 +12238,12 @@
       ]
     },
     {
-      "index": 248,
+      "index": 250,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11888,7 +12251,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698cb51776957762a"
+        "data-id": "698cb4fc7e8ceb9fe"
       },
       "region": "body",
       "visible": false,
@@ -11903,10 +12266,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698cb51776957762a\\\"]')",
+        "expression": "locator('a[data-id=\\\"698cb4fc7e8ceb9fe\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698cb51776957762a\"]"
+          "a[data-id=\"698cb4fc7e8ceb9fe\"]"
         ]
       },
       "unique": true,
@@ -11915,11 +12278,12 @@
       "candidates": []
     },
     {
-      "index": 249,
+      "index": 251,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11951,11 +12315,12 @@
       "candidates": []
     },
     {
-      "index": 250,
+      "index": 252,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -11987,11 +12352,12 @@
       "candidates": []
     },
     {
-      "index": 251,
+      "index": 253,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -12049,11 +12415,12 @@
       ]
     },
     {
-      "index": 252,
+      "index": 254,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Refactor ACL framework",
+      "name": "Theme framework",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -12064,20 +12431,20 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#ProjectTask/view/66d7127ec0e489169",
+      "href": "#ProjectTask/view/66d70c59d371a87cd",
       "box": {
         "x": 369,
         "y": 1571,
-        "w": 164,
+        "w": 123,
         "h": 17
       },
       "locator": {
         "strategy": "role",
-        "expression": "getByRole('link', { name: 'Refactor ACL framework', exact: true })",
+        "expression": "getByRole('link', { name: 'Theme framework', exact: true })",
         "matchCount": 1,
         "args": [
           "link",
-          "Refactor ACL framework"
+          "Theme framework"
         ]
       },
       "unique": true,
@@ -12086,19 +12453,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Refactor ACL framework', exact: true })",
+          "expression": "getByRole('link', { name: 'Theme framework', exact: true })",
           "matchCount": 1,
           "args": [
             "link",
-            "Refactor ACL framework"
+            "Theme framework"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Refactor ACL framework', { exact: true })",
+          "expression": "getByText('Theme framework', { exact: true })",
           "matchCount": 1,
           "args": [
-            "Refactor ACL framework"
+            "Theme framework"
           ]
         },
         {
@@ -12112,11 +12479,12 @@
       ]
     },
     {
-      "index": 253,
+      "index": 255,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Points",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -12151,7 +12519,7 @@
         {
           "strategy": "role",
           "expression": "getByRole('button', { name: 'Points', exact: true })",
-          "matchCount": 2,
+          "matchCount": 4,
           "args": [
             "button",
             "Points"
@@ -12160,7 +12528,7 @@
         {
           "strategy": "text",
           "expression": "getByText('Points', { exact: true })",
-          "matchCount": 2,
+          "matchCount": 4,
           "args": [
             "Points"
           ]
@@ -12176,24 +12544,25 @@
       ]
     },
     {
-      "index": 254,
+      "index": 256,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6352"
+        "data-view-cid": "view6368"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698cb51776957762a",
+      "href": "#Note/view/698cb4fc7e8ceb9fe",
       "box": {
         "x": 81,
         "y": 1629,
@@ -12214,19 +12583,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
@@ -12240,11 +12609,12 @@
       ]
     },
     {
-      "index": 255,
+      "index": 257,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -12259,7 +12629,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 826,
+        "x": 818,
         "y": 1661,
         "w": 30,
         "h": 30
@@ -12287,11 +12657,12 @@
       ]
     },
     {
-      "index": 256,
+      "index": 258,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Remove",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -12299,7 +12670,7 @@
       "testId": null,
       "data": {
         "data-action": "quickRemove",
-        "data-id": "698cb508c53662291"
+        "data-id": "698cb4f205b950c4d"
       },
       "region": "body",
       "visible": false,
@@ -12314,10 +12685,10 @@
       },
       "locator": {
         "strategy": "scoped",
-        "expression": "locator('a[data-id=\\\"698cb508c53662291\\\"]')",
+        "expression": "locator('a[data-id=\\\"698cb4f205b950c4d\\\"]')",
         "matchCount": 1,
         "args": [
-          "a[data-id=\"698cb508c53662291\"]"
+          "a[data-id=\"698cb4f205b950c4d\"]"
         ]
       },
       "unique": true,
@@ -12326,11 +12697,12 @@
       "candidates": []
     },
     {
-      "index": 257,
+      "index": 259,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -12362,11 +12734,12 @@
       "candidates": []
     },
     {
-      "index": 258,
+      "index": 260,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -12398,11 +12771,12 @@
       "candidates": []
     },
     {
-      "index": 259,
+      "index": 261,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -12460,11 +12834,12 @@
       ]
     },
     {
-      "index": 260,
+      "index": 262,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "Role UI improvement",
+      "name": "Light theme",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -12475,20 +12850,20 @@
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#ProjectTask/view/66d7137df3892a63b",
+      "href": "#ProjectTask/view/66d70c74428ff4fd8",
       "box": {
         "x": 369,
         "y": 1670,
-        "w": 139,
+        "w": 79,
         "h": 17
       },
       "locator": {
         "strategy": "role",
-        "expression": "getByRole('link', { name: 'Role UI improvement', exact: true })",
+        "expression": "getByRole('link', { name: 'Light theme', exact: true })",
         "matchCount": 1,
         "args": [
           "link",
-          "Role UI improvement"
+          "Light theme"
         ]
       },
       "unique": true,
@@ -12497,19 +12872,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: 'Role UI improvement', exact: true })",
+          "expression": "getByRole('link', { name: 'Light theme', exact: true })",
           "matchCount": 1,
           "args": [
             "link",
-            "Role UI improvement"
+            "Light theme"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('Role UI improvement', { exact: true })",
+          "expression": "getByText('Light theme', { exact: true })",
           "matchCount": 1,
           "args": [
-            "Role UI improvement"
+            "Light theme"
           ]
         },
         {
@@ -12523,11 +12898,12 @@
       ]
     },
     {
-      "index": 261,
+      "index": 263,
       "tag": "a",
       "type": null,
       "role": "button",
       "name": "Points",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -12562,7 +12938,7 @@
         {
           "strategy": "role",
           "expression": "getByRole('button', { name: 'Points', exact: true })",
-          "matchCount": 2,
+          "matchCount": 4,
           "args": [
             "button",
             "Points"
@@ -12571,7 +12947,7 @@
         {
           "strategy": "text",
           "expression": "getByText('Points', { exact: true })",
-          "matchCount": 2,
+          "matchCount": 4,
           "args": [
             "Points"
           ]
@@ -12587,24 +12963,25 @@
       ]
     },
     {
-      "index": 262,
+      "index": 264,
       "tag": "a",
       "type": null,
       "role": "link",
-      "name": "06:00",
+      "name": "08:00",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-view-cid": "view6366"
+        "data-view-cid": "view6382"
       },
       "region": "body",
       "visible": true,
       "disabled": false,
       "destructive": false,
-      "href": "#Note/view/698cb508c53662291",
+      "href": "#Note/view/698cb4f205b950c4d",
       "box": {
         "x": 81,
         "y": 1728,
@@ -12625,19 +13002,19 @@
       "candidates": [
         {
           "strategy": "role",
-          "expression": "getByRole('link', { name: '06:00', exact: true })",
-          "matchCount": 18,
+          "expression": "getByRole('link', { name: '08:00', exact: true })",
+          "matchCount": 20,
           "args": [
             "link",
-            "06:00"
+            "08:00"
           ]
         },
         {
           "strategy": "text",
-          "expression": "getByText('06:00', { exact: true })",
-          "matchCount": 18,
+          "expression": "getByText('08:00', { exact: true })",
+          "matchCount": 20,
           "args": [
-            "06:00"
+            "08:00"
           ]
         },
         {
@@ -12651,11 +13028,12 @@
       ]
     },
     {
-      "index": 263,
+      "index": 265,
       "tag": "a",
       "type": "button",
       "role": "button",
       "name": "Show more",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -12663,7 +13041,7 @@
       "testId": null,
       "data": {
         "data-action": "showMore",
-        "data-owner-cid": "view6087"
+        "data-owner-cid": "view6103"
       },
       "region": "body",
       "visible": true,
@@ -12673,7 +13051,7 @@
       "box": {
         "x": 66,
         "y": 1756,
-        "w": 793,
+        "w": 785,
         "h": 36
       },
       "locator": {
@@ -12717,11 +13095,12 @@
       ]
     },
     {
-      "index": 264,
+      "index": 266,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "EspoCRM, Inc.",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -13092,36 +13471,6 @@
       "text": "Jack Adams"
     },
     {
-      "href": "#Task/view/606c22e45c823a667",
-      "resolved": "https://demo.eu.espocrm.com/#Task/view/606c22e45c823a667",
-      "text": "Correct Discount Amount"
-    },
-    {
-      "href": "#Note/view/6aa39fd7b4e8ac101",
-      "resolved": "https://demo.eu.espocrm.com/#Note/view/6aa39fd7b4e8ac101",
-      "text": "06:29"
-    },
-    {
-      "href": "#User/view/1",
-      "resolved": "https://demo.eu.espocrm.com/#User/view/1",
-      "text": "Jack Adams"
-    },
-    {
-      "href": "#Task/view/5f6455ccacf844870",
-      "resolved": "https://demo.eu.espocrm.com/#Task/view/5f6455ccacf844870",
-      "text": "Prepare product presentation"
-    },
-    {
-      "href": "#Note/view/6aa39fd430c803c27",
-      "resolved": "https://demo.eu.espocrm.com/#Note/view/6aa39fd430c803c27",
-      "text": "06:29"
-    },
-    {
-      "href": "#User/view/1",
-      "resolved": "https://demo.eu.espocrm.com/#User/view/1",
-      "text": "Jack Adams"
-    },
-    {
       "href": "#PaymentEntry/view/698f42ec0f9ceee44",
       "resolved": "https://demo.eu.espocrm.com/#PaymentEntry/view/698f42ec0f9ceee44",
       "text": "PT-00001"
@@ -13134,7 +13483,7 @@
     {
       "href": "#Note/view/698f42ec1b65074bb",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698f42ec1b65074bb",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13154,7 +13503,7 @@
     {
       "href": "#Note/view/698f415e647f795f4",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698f415e647f795f4",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13174,7 +13523,7 @@
     {
       "href": "#Note/view/698f40e9b6045489a",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698f40e9b6045489a",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13194,7 +13543,7 @@
     {
       "href": "#Note/view/698f3efbc8be1ff37",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698f3efbc8be1ff37",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13214,7 +13563,7 @@
     {
       "href": "#Note/view/698f3e51a4e2ac806",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698f3e51a4e2ac806",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13234,7 +13583,7 @@
     {
       "href": "#Note/view/698f3dc787a1227c2",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698f3dc787a1227c2",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13254,7 +13603,7 @@
     {
       "href": "#Note/view/698d8349bdf7c6e22",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698d8349bdf7c6e22",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13269,7 +13618,7 @@
     {
       "href": "#Note/view/698d8349bca3795c2",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698d8349bca3795c2",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13289,7 +13638,7 @@
     {
       "href": "#Note/view/698d828b366e3dcb3",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698d828b366e3dcb3",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13304,7 +13653,7 @@
     {
       "href": "#Note/view/698d828b350c5a43b",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698d828b350c5a43b",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13324,7 +13673,7 @@
     {
       "href": "#Note/view/698d81fc4ffc8d6ff",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698d81fc4ffc8d6ff",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13344,7 +13693,7 @@
     {
       "href": "#Note/view/698d81fc4f28faa13",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698d81fc4f28faa13",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13364,7 +13713,7 @@
     {
       "href": "#Note/view/698d81fc4e68287e9",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698d81fc4e68287e9",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13384,7 +13733,7 @@
     {
       "href": "#Note/view/698d81fc4ab8fef32",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698d81fc4ab8fef32",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13404,7 +13753,7 @@
     {
       "href": "#Note/view/698d81d91dc0c4c7c",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698d81d91dc0c4c7c",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13419,7 +13768,7 @@
     {
       "href": "#Note/view/698d81d91bda757e9",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698d81d91bda757e9",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13434,7 +13783,7 @@
     {
       "href": "#Note/view/698cb51776957762a",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698cb51776957762a",
-      "text": "06:00"
+      "text": "08:00"
     },
     {
       "href": "#User/view/1",
@@ -13449,7 +13798,37 @@
     {
       "href": "#Note/view/698cb508c53662291",
       "resolved": "https://demo.eu.espocrm.com/#Note/view/698cb508c53662291",
-      "text": "06:00"
+      "text": "08:00"
+    },
+    {
+      "href": "#User/view/1",
+      "resolved": "https://demo.eu.espocrm.com/#User/view/1",
+      "text": "Jack Adams"
+    },
+    {
+      "href": "#ProjectTask/view/66d70c59d371a87cd",
+      "resolved": "https://demo.eu.espocrm.com/#ProjectTask/view/66d70c59d371a87cd",
+      "text": "Theme framework"
+    },
+    {
+      "href": "#Note/view/698cb4fc7e8ceb9fe",
+      "resolved": "https://demo.eu.espocrm.com/#Note/view/698cb4fc7e8ceb9fe",
+      "text": "08:00"
+    },
+    {
+      "href": "#User/view/1",
+      "resolved": "https://demo.eu.espocrm.com/#User/view/1",
+      "text": "Jack Adams"
+    },
+    {
+      "href": "#ProjectTask/view/66d70c74428ff4fd8",
+      "resolved": "https://demo.eu.espocrm.com/#ProjectTask/view/66d70c74428ff4fd8",
+      "text": "Light theme"
+    },
+    {
+      "href": "#Note/view/698cb4f205b950c4d",
+      "resolved": "https://demo.eu.espocrm.com/#Note/view/698cb4f205b950c4d",
+      "text": "08:00"
     },
     {
       "href": "https://www.espocrm.com",
@@ -13458,11 +13837,11 @@
     }
   ],
   "stats": {
-    "elements": 265,
-    "visible": 122,
+    "elements": 267,
+    "visible": 124,
     "hidden": 143,
     "semantic": 37,
-    "fragile": 85,
+    "fragile": 87,
     "ambiguous": 0,
     "withTestId": 0
   }

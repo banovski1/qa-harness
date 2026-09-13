@@ -4,9 +4,9 @@
 
 - **App:** Cal.com (booker slice)
 - **Base URL:** https://cal.com/
-- **Generated:** 2026-09-12T21:47:29.299Z
-- **Endpoints observed:** 14
-- **Calls recorded:** 34
+- **Generated:** 2026-09-13T09:41:40.964Z
+- **Endpoints observed:** 13
+- **Calls recorded:** 29
 - **Specification discovered:** none
 
 Every endpoint here was observed being called by the application itself while
@@ -18,7 +18,6 @@ no value from the app reaches this file.
 | Method | Path | Calls | Statuses | Query params | Seen on |
 | --- | --- | ---: | --- | --- | --- |
 | `GET` | `/api/auth/session` | 8 | 200 | — | `root`, `systemly-app-demo-website`, `systemly-app`, `enterprise`, … |
-| `GET` | `/api/geolocation` | 3 | 200 | — | `root` |
 | `GET` | `/api/trpc/features/map` | 2 | 200 | `batch`, `input` | `systemly-app-demo-website`, `systemly-app` |
 | `GET` | `/api/trpc/slots/getSchedule` | 1 | 200 | `input` | `systemly-app-demo-website` |
 | `GET` | `/api/trpc/timezones/cityTimezones` | 1 | 200 | `input` | `systemly-app-demo-website` |
@@ -30,7 +29,7 @@ no value from the app reaches this file.
 | `GET` | `/cms/GHn9KtFBKNkCI8ru6OBk/xYOiIKrbayJ4jE41b6UG/uOFf2AR12-indexes-pihpXz103-0.framercms` | 1 | 200 | `range` | `blog-calcom-v6-8` |
 | `GET` | `/cms/GHn9KtFBKNkCI8ru6OBk/xYOiIKrbayJ4jE41b6UG/uOFf2AR12-indexes-qZNrsgFtw-0.framercms` | 1 | 200 | `range` | `blog-calcom-v6-8` |
 | `GET` | `/cms/GHn9KtFBKNkCI8ru6OBk/xYOiIKrbayJ4jE41b6UG/uOFf2AR12-indexes-W_zT6RgJe-0.framercms` | 1 | 200 | `range` | `blog-calcom-v6-8` |
-| `GET` | `/systemly.app` | 5 | 200 | `redirect`, `_rsc` | `root`, `systemly-app-demo-website` |
+| `GET` | `/systemly.app` | 3 | 200 | `redirect`, `_rsc` | `systemly-app-demo-website` |
 
 ## Payload shapes
 
@@ -39,14 +38,6 @@ no value from the app reaches this file.
 Response:
 
 ```
-```
-
-### `GET /api/geolocation`
-
-Response:
-
-```
-country: string
 ```
 
 ### `GET /api/trpc/features/map`

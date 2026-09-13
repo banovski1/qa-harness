@@ -5,7 +5,7 @@
     "repoPath": "~/Projects/angular-realworld-example-app",
     "repoCommit": "dd99ed2cf39c805d719f943c5d7061a5683d98a8",
     "stack": "angular / none in this repo",
-    "generatedAt": "2026-09-12T21:51:39.403Z"
+    "generatedAt": "2026-09-13T09:40:25.629Z"
   },
   "components": {
     "NavigationBar": {
@@ -47,11 +47,6 @@
       "seenOn": 15,
       "description": "navigation region — 4 controls shared across 15 screens",
       "actions": [
-        {
-          "name": "goToSignIn",
-          "via": "signIn",
-          "leadsTo": "LoginPage"
-        },
         {
           "name": "goToSignUp",
           "via": "signUp",
@@ -165,11 +160,6 @@
           "label": "johndoe"
         },
         {
-          "component": "Button",
-          "as": "control2",
-          "label": "2"
-        },
-        {
           "component": "Link",
           "as": "howToLearnJavaScriptEfficientlyAComprehensiveGuideToMasteringJavaScriptFromBeginnerToAdvancedLevelReadMoreBeginnersJavascriptProgrammingWebdev",
           "label": "How to Learn JavaScript EfficientlyA comprehensive guide to mastering JavaScript from beginner to advanced levelRead more... beginners javascript programming webdev"
@@ -178,11 +168,6 @@
           "component": "Link",
           "as": "janesmith",
           "label": "janesmith"
-        },
-        {
-          "component": "Button",
-          "as": "control22",
-          "label": "2"
         },
         {
           "component": "Link",
@@ -197,7 +182,8 @@
         {
           "component": "Button",
           "as": "control1",
-          "label": "1"
+          "label": "1",
+          "within": "React Hooks: Best Practices and Common Pitfalls"
         },
         {
           "component": "Link",
@@ -212,7 +198,8 @@
         {
           "component": "Button",
           "as": "control12",
-          "label": "1"
+          "label": "1",
+          "within": "Building Scalable APIs with Node.js"
         },
         {
           "component": "Link",
@@ -222,7 +209,8 @@
         {
           "component": "Button",
           "as": "control13",
-          "label": "1"
+          "label": "1",
+          "within": "Introduction to Machine Learning for Developers"
         },
         {
           "component": "Link",
@@ -301,17 +289,12 @@
         },
         {
           "component": "Link",
-          "as": "conduit",
-          "label": "Conduit"
-        },
-        {
-          "component": "Link",
           "as": "realWorldOSSProject",
           "label": "RealWorld OSS Project"
         }
       ],
       "actions": [],
-      "unverified": 4
+      "unverified": 7
     },
     {
       "name": "ArticlePage",
@@ -342,37 +325,38 @@
         {
           "component": "Link",
           "as": "mikewilson",
-          "label": "mikewilson"
+          "label": "mikewilson",
+          "within": "Building Scalable APIs with Node.js"
         },
         {
           "component": "Button",
           "as": "followMikewilson",
-          "label": "Follow mikewilson"
+          "label": "Follow mikewilson",
+          "within": "Building Scalable APIs with Node.js"
         },
         {
           "component": "Button",
           "as": "favoriteArticle1",
-          "label": "Favorite Article (1)"
+          "label": "Favorite Article (1)",
+          "within": "Building Scalable APIs with Node.js"
         },
         {
           "component": "Link",
           "as": "mikewilson2",
-          "label": "mikewilson"
+          "label": "mikewilson",
+          "within": "Database Optimization"
         },
         {
           "component": "Button",
           "as": "followMikewilson2",
-          "label": "Follow mikewilson"
+          "label": "Follow mikewilson",
+          "within": "Database Optimization"
         },
         {
           "component": "Button",
           "as": "favoriteArticle12",
-          "label": "Favorite Article (1)"
-        },
-        {
-          "component": "Link",
-          "as": "signIn",
-          "label": "Sign in"
+          "label": "Favorite Article (1)",
+          "within": "Database Optimization"
         },
         {
           "component": "Link",
@@ -391,28 +375,18 @@
         },
         {
           "component": "Link",
-          "as": "conduit",
-          "label": "Conduit"
-        },
-        {
-          "component": "Link",
           "as": "realWorldOSSProject",
           "label": "RealWorld OSS Project"
         }
       ],
       "actions": [
         {
-          "name": "goToSignIn",
-          "via": "signIn",
-          "leadsTo": "LoginPage"
-        },
-        {
           "name": "goToSignUp",
           "via": "signUp",
           "leadsTo": "RegisterPage"
         }
       ],
-      "unverified": 4
+      "unverified": 6
     },
     {
       "name": "EditorPage",
@@ -494,11 +468,6 @@
         },
         {
           "component": "Link",
-          "as": "conduit",
-          "label": "Conduit"
-        },
-        {
-          "component": "Link",
           "as": "realWorldOSSProject",
           "label": "RealWorld OSS Project"
         }
@@ -510,7 +479,7 @@
           "leadsTo": "RegisterPage"
         }
       ],
-      "unverified": 0
+      "unverified": 1
     },
     {
       "name": "ProfilePage",
@@ -574,17 +543,12 @@
         },
         {
           "component": "Link",
-          "as": "conduit",
-          "label": "Conduit"
-        },
-        {
-          "component": "Link",
           "as": "realWorldOSSProject",
           "label": "RealWorld OSS Project"
         }
       ],
       "actions": [],
-      "unverified": 1
+      "unverified": 2
     },
     {
       "name": "FavoritesPage",
@@ -652,11 +616,6 @@
         },
         {
           "component": "Link",
-          "as": "conduit",
-          "label": "Conduit"
-        },
-        {
-          "component": "Link",
           "as": "realWorldOSSProject",
           "label": "RealWorld OSS Project"
         }
@@ -668,7 +627,7 @@
           "leadsTo": "LoginPage"
         }
       ],
-      "unverified": 0
+      "unverified": 1
     },
     {
       "name": "SettingsPage",
@@ -732,19 +691,9 @@
           "label": "sarahchen"
         },
         {
-          "component": "Button",
-          "as": "control1",
-          "label": "1"
-        },
-        {
           "component": "Link",
           "as": "introductionToMachineLearningForDevelopersGettingStartedWithMLConceptsAndPracticalApplicationsForSoftwareDevelopersReadMoreAiDatascienceMachinelearningPython",
           "label": "Introduction to Machine Learning for DevelopersGetting started with ML concepts and practical applications for software developersRead more... ai datascience machinelearning python"
-        },
-        {
-          "component": "Button",
-          "as": "control12",
-          "label": "1"
         },
         {
           "component": "Link",
@@ -823,17 +772,12 @@
         },
         {
           "component": "Link",
-          "as": "conduit",
-          "label": "Conduit"
-        },
-        {
-          "component": "Link",
           "as": "realWorldOSSProject",
           "label": "RealWorld OSS Project"
         }
       ],
       "actions": [],
-      "unverified": 1
+      "unverified": 4
     }
   ],
   "api": {
@@ -1229,9 +1173,9 @@
     "declaredOnly": 4,
     "components": 10,
     "regions": 1,
-    "uses": 97,
-    "actions": 4,
-    "unverified": 10,
+    "uses": 86,
+    "actions": 3,
+    "unverified": 21,
     "endpoints": 13,
     "resources": 5,
     "creatable": 3,

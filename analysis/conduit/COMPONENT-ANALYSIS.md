@@ -4,7 +4,7 @@
 
 - **App:** Conduit (RealWorld, Angular)
 - **Base URL:** https://demo.realworld.show/
-- **Generated:** 2026-09-12T21:51:39.412Z
+- **Generated:** 2026-09-13T09:40:25.636Z
 - **Recurring components:** 7
 - **Screen-specific regions:** 3
 - **Screens covered:** 15

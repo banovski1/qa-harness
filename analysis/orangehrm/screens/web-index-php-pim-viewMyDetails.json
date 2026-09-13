@@ -3,13 +3,26 @@
   "path": "/web/index.php/pim/viewPersonalDetails/empNumber/7",
   "title": "OrangeHRM",
   "headings": [],
-  "tables": [],
+  "tables": [
+    {
+      "columns": [
+        "File Name",
+        "Description",
+        "Size",
+        "Type",
+        "Date Added",
+        "Added By",
+        "Actions"
+      ],
+      "rowCount": 2
+    }
+  ],
   "regions": {
     "navigation": 16,
     "header": 2,
     "body": 22,
     "form": 16,
-    "table": 5
+    "table": 7
   },
   "elements": [
     {
@@ -18,6 +31,7 @@
       "type": null,
       "role": "link",
       "name": "client brand logo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -76,6 +90,7 @@
       "type": null,
       "role": "textbox",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Search",
       "id": null,
@@ -142,6 +157,7 @@
       "type": "button",
       "role": "none",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -190,6 +206,7 @@
       "type": null,
       "role": "link",
       "name": "Admin",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -255,6 +272,7 @@
       "type": null,
       "role": "link",
       "name": "PIM",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -320,6 +338,7 @@
       "type": null,
       "role": "link",
       "name": "Leave",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -385,6 +404,7 @@
       "type": null,
       "role": "link",
       "name": "Time",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -450,6 +470,7 @@
       "type": null,
       "role": "link",
       "name": "Recruitment",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -515,6 +536,7 @@
       "type": null,
       "role": "link",
       "name": "My Info",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -580,6 +602,7 @@
       "type": null,
       "role": "link",
       "name": "Performance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -645,6 +668,7 @@
       "type": null,
       "role": "link",
       "name": "Dashboard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -710,6 +734,7 @@
       "type": null,
       "role": "link",
       "name": "Directory",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -775,6 +800,7 @@
       "type": null,
       "role": "link",
       "name": "Maintenance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -840,6 +866,7 @@
       "type": null,
       "role": "link",
       "name": "Claim",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -905,6 +932,7 @@
       "type": null,
       "role": "link",
       "name": "Buzz",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -970,6 +998,7 @@
       "type": null,
       "role": "link",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1035,6 +1064,7 @@
       "type": "button",
       "role": "button",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1101,6 +1131,7 @@
       "type": "button",
       "role": "button",
       "name": "Help",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1158,6 +1189,7 @@
       "type": null,
       "role": "tab",
       "name": "Personal Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1223,6 +1255,7 @@
       "type": null,
       "role": "link",
       "name": "Personal Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1288,6 +1321,7 @@
       "type": null,
       "role": "tab",
       "name": "Contact Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1353,6 +1387,7 @@
       "type": null,
       "role": "link",
       "name": "Contact Details",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1418,6 +1453,7 @@
       "type": null,
       "role": "tab",
       "name": "Emergency Contacts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1483,6 +1519,7 @@
       "type": null,
       "role": "link",
       "name": "Emergency Contacts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1548,6 +1585,7 @@
       "type": null,
       "role": "tab",
       "name": "Dependents",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1613,6 +1651,7 @@
       "type": null,
       "role": "link",
       "name": "Dependents",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1678,6 +1717,7 @@
       "type": null,
       "role": "tab",
       "name": "Immigration",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1743,6 +1783,7 @@
       "type": null,
       "role": "link",
       "name": "Immigration",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1808,6 +1849,7 @@
       "type": null,
       "role": "tab",
       "name": "Job",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1873,6 +1915,7 @@
       "type": null,
       "role": "link",
       "name": "Job",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1938,6 +1981,7 @@
       "type": null,
       "role": "tab",
       "name": "Salary",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2003,6 +2047,7 @@
       "type": null,
       "role": "link",
       "name": "Salary",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2068,6 +2113,7 @@
       "type": null,
       "role": "tab",
       "name": "Report-to",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2133,6 +2179,7 @@
       "type": null,
       "role": "link",
       "name": "Report-to",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2198,6 +2245,7 @@
       "type": null,
       "role": "tab",
       "name": "Qualifications",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2263,6 +2311,7 @@
       "type": null,
       "role": "link",
       "name": "Qualifications",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2328,6 +2377,7 @@
       "type": null,
       "role": "tab",
       "name": "Memberships",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2393,6 +2443,7 @@
       "type": null,
       "role": "link",
       "name": "Memberships",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2458,6 +2509,7 @@
       "type": null,
       "role": "textbox",
       "name": "First Name",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "First Name",
       "id": null,
@@ -2531,6 +2583,7 @@
       "type": null,
       "role": "textbox",
       "name": "Middle Name",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Middle Name",
       "id": null,
@@ -2604,6 +2657,7 @@
       "type": null,
       "role": "textbox",
       "name": "Last Name",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Last Name",
       "id": null,
@@ -2676,7 +2730,8 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "",
+      "name": "Employee Id",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2697,17 +2752,27 @@
         "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
+        "strategy": "proximity",
+        "expression": "label('Employee Id') >> input",
         "matchCount": 1,
         "args": [
-          "div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active"
+          "Employee Id",
+          "input"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Employee Id') >> input",
+          "matchCount": 1,
+          "args": [
+            "Employee Id",
+            "input"
+          ]
+        },
         {
           "strategy": "css",
           "expression": "locator('div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
@@ -2723,7 +2788,8 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "",
+      "name": "Other Id",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2744,17 +2810,27 @@
         "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
+        "strategy": "proximity",
+        "expression": "label('Other Id') >> input",
         "matchCount": 1,
         "args": [
-          "div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active"
+          "Other Id",
+          "input"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Other Id') >> input",
+          "matchCount": 1,
+          "args": [
+            "Other Id",
+            "input"
+          ]
+        },
         {
           "strategy": "css",
           "expression": "locator('div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
@@ -2770,7 +2846,8 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "",
+      "name": "Driver's License Number",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2791,17 +2868,27 @@
         "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid:nth-of-type(2) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
+        "strategy": "proximity",
+        "expression": "label('Driver's License Number') >> input",
         "matchCount": 1,
         "args": [
-          "div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid:nth-of-type(2) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active"
+          "Driver's License Number",
+          "input"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Driver's License Number') >> input",
+          "matchCount": 1,
+          "args": [
+            "Driver's License Number",
+            "input"
+          ]
+        },
         {
           "strategy": "css",
           "expression": "locator('div.oxd-form-row:nth-of-type(2) > div.orangehrm-full-width-grid:nth-of-type(2) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
@@ -2817,9 +2904,10 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "yyyy-dd-mm",
+      "name": "License Expiry Date",
+      "nameSource": "proximity",
       "label": null,
-      "placeholder": "yyyy-dd-mm",
+      "placeholder": "yyyy-mm-dd",
       "id": null,
       "nameAttr": null,
       "testId": null,
@@ -2839,32 +2927,33 @@
         "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-date-wrapper > div.oxd-date-input > input.oxd-input.oxd-input--active')",
+        "strategy": "proximity",
+        "expression": "label('License Expiry Date') >> input",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-date-wrapper > div.oxd-date-input > input.oxd-input.oxd-input--active"
+          "License Expiry Date",
+          "input"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
         {
-          "strategy": "role",
-          "expression": "getByRole('textbox', { name: 'yyyy-dd-mm', exact: true })",
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('yyyy-mm-dd', { exact: true })",
           "matchCount": 2,
           "args": [
-            "textbox",
-            "yyyy-dd-mm"
+            "yyyy-mm-dd"
           ]
         },
         {
-          "strategy": "placeholder",
-          "expression": "getByPlaceholder('yyyy-dd-mm', { exact: true })",
-          "matchCount": 2,
+          "strategy": "proximity",
+          "expression": "label('License Expiry Date') >> input",
+          "matchCount": 1,
           "args": [
-            "yyyy-dd-mm"
+            "License Expiry Date",
+            "input"
           ]
         },
         {
@@ -2881,15 +2970,17 @@
       "index": 45,
       "tag": "div",
       "type": null,
-      "role": null,
-      "name": "American",
+      "role": "combobox",
+      "name": "Nationality",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-v-67d2aedf": ""
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
       },
       "region": "form",
       "visible": true,
@@ -2897,23 +2988,33 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 553,
-        "y": 546,
-        "w": 161,
-        "h": 18
+        "x": 552,
+        "y": 533,
+        "w": 202,
+        "h": 45
       },
       "locator": {
-        "strategy": "text",
-        "expression": "getByText('American', { exact: true })",
+        "strategy": "proximity",
+        "expression": "label('Nationality') >> div",
         "matchCount": 1,
         "args": [
-          "American"
+          "Nationality",
+          "div"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Nationality') >> div",
+          "matchCount": 1,
+          "args": [
+            "Nationality",
+            "div"
+          ]
+        },
         {
           "strategy": "text",
           "expression": "getByText('American', { exact: true })",
@@ -2924,10 +3025,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+          "expression": "locator('div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
           "matchCount": 2,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+            "div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
           ]
         }
       ]
@@ -2936,15 +3037,17 @@
       "index": 46,
       "tag": "div",
       "type": null,
-      "role": null,
-      "name": "Single",
+      "role": "combobox",
+      "name": "Marital Status",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-v-67d2aedf": ""
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
       },
       "region": "form",
       "visible": true,
@@ -2952,23 +3055,33 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 779,
-        "y": 546,
-        "w": 161,
-        "h": 18
+        "x": 778,
+        "y": 533,
+        "w": 202,
+        "h": 45
       },
       "locator": {
-        "strategy": "text",
-        "expression": "getByText('Single', { exact: true })",
+        "strategy": "proximity",
+        "expression": "label('Marital Status') >> div",
         "matchCount": 1,
         "args": [
-          "Single"
+          "Marital Status",
+          "div"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Marital Status') >> div",
+          "matchCount": 1,
+          "args": [
+            "Marital Status",
+            "div"
+          ]
+        },
         {
           "strategy": "text",
           "expression": "getByText('Single', { exact: true })",
@@ -2979,10 +3092,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+          "expression": "locator('div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
           "matchCount": 1,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+            "div.orangehrm-full-width-grid:nth-of-type(1) > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
           ]
         }
       ]
@@ -2992,9 +3105,10 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "yyyy-dd-mm",
+      "name": "Date of Birth",
+      "nameSource": "proximity",
       "label": null,
-      "placeholder": "yyyy-dd-mm",
+      "placeholder": "yyyy-mm-dd",
       "id": null,
       "nameAttr": null,
       "testId": null,
@@ -3014,32 +3128,33 @@
         "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-date-wrapper > div.oxd-date-input > input.oxd-input.oxd-input--active')",
+        "strategy": "proximity",
+        "expression": "label('Date of Birth') >> input",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-date-wrapper > div.oxd-date-input > input.oxd-input.oxd-input--active"
+          "Date of Birth",
+          "input"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "no semantic candidate resolved uniquely; fell back to css",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
         {
-          "strategy": "role",
-          "expression": "getByRole('textbox', { name: 'yyyy-dd-mm', exact: true })",
+          "strategy": "placeholder",
+          "expression": "getByPlaceholder('yyyy-mm-dd', { exact: true })",
           "matchCount": 2,
           "args": [
-            "textbox",
-            "yyyy-dd-mm"
+            "yyyy-mm-dd"
           ]
         },
         {
-          "strategy": "placeholder",
-          "expression": "getByPlaceholder('yyyy-dd-mm', { exact: true })",
-          "matchCount": 2,
+          "strategy": "proximity",
+          "expression": "label('Date of Birth') >> input",
+          "matchCount": 1,
           "args": [
-            "yyyy-dd-mm"
+            "Date of Birth",
+            "input"
           ]
         },
         {
@@ -3058,6 +3173,7 @@
       "type": "radio",
       "role": "radio",
       "name": "Male",
+      "nameSource": "accessible",
       "label": "Male",
       "placeholder": null,
       "id": null,
@@ -3097,6 +3213,7 @@
       "type": "radio",
       "role": "radio",
       "name": "Female",
+      "nameSource": "accessible",
       "label": "Female",
       "placeholder": null,
       "id": null,
@@ -3136,6 +3253,7 @@
       "type": "submit",
       "role": "button",
       "name": "Save",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3199,15 +3317,17 @@
       "index": 51,
       "tag": "div",
       "type": null,
-      "role": null,
-      "name": "A+",
+      "role": "combobox",
+      "name": "Blood Type",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-v-67d2aedf": ""
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
       },
       "region": "form",
       "visible": true,
@@ -3215,23 +3335,33 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 553,
-        "y": 866,
-        "w": 161,
-        "h": 18
+        "x": 552,
+        "y": 853,
+        "w": 202,
+        "h": 45
       },
       "locator": {
-        "strategy": "text",
-        "expression": "getByText('A+', { exact: true })",
+        "strategy": "proximity",
+        "expression": "label('Blood Type') >> div",
         "matchCount": 1,
         "args": [
-          "A+"
+          "Blood Type",
+          "div"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Blood Type') >> div",
+          "matchCount": 1,
+          "args": [
+            "Blood Type",
+            "div"
+          ]
+        },
         {
           "strategy": "text",
           "expression": "getByText('A+', { exact: true })",
@@ -3242,10 +3372,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+          "expression": "locator('div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
           "matchCount": 2,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+            "div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(1) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
           ]
         }
       ]
@@ -3255,7 +3385,8 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "",
+      "name": "Test_Field",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3276,17 +3407,27 @@
         "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-form-row:nth-of-type(1) > div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
+        "strategy": "proximity",
+        "expression": "label('Test_Field') >> input",
         "matchCount": 1,
         "args": [
-          "div.oxd-form-row:nth-of-type(1) > div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active"
+          "Test_Field",
+          "input"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Test_Field') >> input",
+          "matchCount": 1,
+          "args": [
+            "Test_Field",
+            "input"
+          ]
+        },
         {
           "strategy": "css",
           "expression": "locator('div.oxd-form-row:nth-of-type(1) > div.orangehrm-full-width-grid > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > input.oxd-input.oxd-input--active')",
@@ -3303,6 +3444,7 @@
       "type": "submit",
       "role": "button",
       "name": "Save",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3367,6 +3509,7 @@
       "type": "button",
       "role": "button",
       "name": "Add",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3433,6 +3576,7 @@
       "type": "checkbox",
       "role": "checkbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3467,10 +3611,59 @@
     },
     {
       "index": 56,
+      "tag": "span",
+      "type": null,
+      "role": "checkbox",
+      "name": "",
+      "nameSource": null,
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6179b72a": ""
+      },
+      "region": "table",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 555,
+        "y": 1154,
+        "w": 18,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+        "matchCount": 1,
+        "args": [
+          "div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+          "matchCount": 1,
+          "args": [
+            "div.oxd-table-header:nth-of-type(1) > div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-header-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 57,
       "tag": "input",
       "type": "checkbox",
       "role": "checkbox",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3504,11 +3697,60 @@
       "candidates": []
     },
     {
-      "index": 57,
+      "index": 58,
+      "tag": "span",
+      "type": null,
+      "role": "checkbox",
+      "name": "",
+      "nameSource": null,
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {
+        "data-v-6179b72a": ""
+      },
+      "region": "table",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 555,
+        "y": 1211,
+        "w": 18,
+        "h": 18
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+        "matchCount": 1,
+        "args": [
+          "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "css",
+          "expression": "locator('div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active')",
+          "matchCount": 1,
+          "args": [
+            "div.oxd-table-row.oxd-table-row--with-border > div.oxd-table-cell.oxd-padding-cell:nth-of-type(1) > div.oxd-table-card-cell-checkbox > div.oxd-checkbox-wrapper > label > span.oxd-checkbox-input.oxd-checkbox-input--active"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 59,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3552,11 +3794,12 @@
       ]
     },
     {
-      "index": 58,
+      "index": 60,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3600,11 +3843,12 @@
       ]
     },
     {
-      "index": 59,
+      "index": 61,
       "tag": "button",
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3648,11 +3892,12 @@
       ]
     },
     {
-      "index": 60,
+      "index": 62,
       "tag": "a",
       "type": null,
       "role": "link",
       "name": "OrangeHRM, Inc",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3839,11 +4084,11 @@
     }
   ],
   "stats": {
-    "elements": 61,
-    "visible": 57,
+    "elements": 63,
+    "visible": 59,
     "hidden": 4,
-    "semantic": 42,
-    "fragile": 15,
+    "semantic": 51,
+    "fragile": 8,
     "ambiguous": 0,
     "withTestId": 0
   }

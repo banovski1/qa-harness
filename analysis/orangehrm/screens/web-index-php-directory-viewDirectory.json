@@ -17,6 +17,7 @@
       "type": null,
       "role": "link",
       "name": "client brand logo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -75,6 +76,7 @@
       "type": null,
       "role": "textbox",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Search",
       "id": null,
@@ -141,6 +143,7 @@
       "type": "button",
       "role": "none",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -189,6 +192,7 @@
       "type": null,
       "role": "link",
       "name": "Admin",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -254,6 +258,7 @@
       "type": null,
       "role": "link",
       "name": "PIM",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -319,6 +324,7 @@
       "type": null,
       "role": "link",
       "name": "Leave",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -384,6 +390,7 @@
       "type": null,
       "role": "link",
       "name": "Time",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -449,6 +456,7 @@
       "type": null,
       "role": "link",
       "name": "Recruitment",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -514,6 +522,7 @@
       "type": null,
       "role": "link",
       "name": "My Info",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -579,6 +588,7 @@
       "type": null,
       "role": "link",
       "name": "Performance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -644,6 +654,7 @@
       "type": null,
       "role": "link",
       "name": "Dashboard",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -709,6 +720,7 @@
       "type": null,
       "role": "link",
       "name": "Directory",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -774,6 +786,7 @@
       "type": null,
       "role": "link",
       "name": "Maintenance",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -839,6 +852,7 @@
       "type": null,
       "role": "link",
       "name": "Claim",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -904,6 +918,7 @@
       "type": null,
       "role": "link",
       "name": "Buzz",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -969,6 +984,7 @@
       "type": null,
       "role": "link",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1034,6 +1050,7 @@
       "type": "button",
       "role": "button",
       "name": "Upgrade",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1100,6 +1117,7 @@
       "type": "button",
       "role": "button",
       "name": "Help",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1157,6 +1175,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1204,7 +1223,8 @@
       "tag": "input",
       "type": null,
       "role": "textbox",
-      "name": "Type for hints...",
+      "name": "Employee Name",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": "Type for hints...",
       "id": null,
@@ -1225,11 +1245,10 @@
         "h": 40
       },
       "locator": {
-        "strategy": "role",
-        "expression": "getByRole('textbox', { name: 'Type for hints...', exact: true })",
+        "strategy": "placeholder",
+        "expression": "getByPlaceholder('Type for hints...', { exact: true })",
         "matchCount": 1,
         "args": [
-          "textbox",
           "Type for hints..."
         ]
       },
@@ -1238,20 +1257,20 @@
       "ambiguityReason": null,
       "candidates": [
         {
-          "strategy": "role",
-          "expression": "getByRole('textbox', { name: 'Type for hints...', exact: true })",
-          "matchCount": 1,
-          "args": [
-            "textbox",
-            "Type for hints..."
-          ]
-        },
-        {
           "strategy": "placeholder",
           "expression": "getByPlaceholder('Type for hints...', { exact: true })",
           "matchCount": 1,
           "args": [
             "Type for hints..."
+          ]
+        },
+        {
+          "strategy": "proximity",
+          "expression": "label('Employee Name') >> input",
+          "matchCount": 1,
+          "args": [
+            "Employee Name",
+            "input"
           ]
         },
         {
@@ -1268,15 +1287,17 @@
       "index": 20,
       "tag": "div",
       "type": null,
-      "role": null,
-      "name": "-- Select --",
+      "role": "combobox",
+      "name": "Job Title",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-v-67d2aedf": ""
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
       },
       "region": "form",
       "visible": true,
@@ -1284,23 +1305,33 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 631,
-        "y": 266,
-        "w": 234,
-        "h": 18
+        "x": 630,
+        "y": 252,
+        "w": 275,
+        "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+        "strategy": "proximity",
+        "expression": "label('Job Title') >> div",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+          "Job Title",
+          "div"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Job Title') >> div",
+          "matchCount": 1,
+          "args": [
+            "Job Title",
+            "div"
+          ]
+        },
         {
           "strategy": "text",
           "expression": "getByText('-- Select --', { exact: true })",
@@ -1311,10 +1342,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+          "expression": "locator('div > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
           "matchCount": 1,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+            "div > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(2) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
           ]
         }
       ]
@@ -1323,15 +1354,17 @@
       "index": 21,
       "tag": "div",
       "type": null,
-      "role": null,
-      "name": "-- Select --",
+      "role": "combobox",
+      "name": "Location",
+      "nameSource": "proximity",
       "label": null,
       "placeholder": null,
       "id": null,
       "nameAttr": null,
       "testId": null,
       "data": {
-        "data-v-67d2aedf": ""
+        "data-v-67d2aedf": "",
+        "data-v-13cf171c": ""
       },
       "region": "form",
       "visible": true,
@@ -1339,23 +1372,33 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 931,
-        "y": 266,
-        "w": 234,
-        "h": 18
+        "x": 930,
+        "y": 252,
+        "w": 275,
+        "h": 45
       },
       "locator": {
-        "strategy": "css",
-        "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+        "strategy": "proximity",
+        "expression": "label('Location') >> div",
         "matchCount": 1,
         "args": [
-          "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+          "Location",
+          "div"
         ]
       },
       "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "fragile": false,
+      "ambiguityReason": null,
       "candidates": [
+        {
+          "strategy": "proximity",
+          "expression": "label('Location') >> div",
+          "matchCount": 1,
+          "args": [
+            "Location",
+            "div"
+          ]
+        },
         {
           "strategy": "text",
           "expression": "getByText('-- Select --', { exact: true })",
@@ -1366,10 +1409,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)')",
+          "expression": "locator('div > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active')",
           "matchCount": 1,
           "args": [
-            "div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active > div.oxd-select-text-input:nth-of-type(1)"
+            "div > div.oxd-grid-item.oxd-grid-item--gutters:nth-of-type(3) > div.oxd-input-group.oxd-input-field-bottom-space > div:nth-of-type(2) > div.oxd-select-wrapper > div.oxd-select-text.oxd-select-text--active"
           ]
         }
       ]
@@ -1380,6 +1423,7 @@
       "type": "reset",
       "role": "button",
       "name": "Reset",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1446,6 +1490,7 @@
       "type": "submit",
       "role": "button",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1512,6 +1557,7 @@
       "type": null,
       "role": "link",
       "name": "OrangeHRM, Inc",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1651,8 +1697,8 @@
     "elements": 25,
     "visible": 25,
     "hidden": 0,
-    "semantic": 21,
-    "fragile": 4,
+    "semantic": 23,
+    "fragile": 2,
     "ambiguous": 0,
     "withTestId": 0
   }

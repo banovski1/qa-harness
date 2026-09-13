@@ -13,18 +13,14 @@ export class LeadPageGenerated extends BasePage {
   readonly path = '/#Lead';
   readonly heading = 'Leads';
 
-  // 5 element(s) on this screen carry no label, role name or field
+  // 9 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in LeadPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'LeadPage', expectedUrl: '/#Lead', modelPath: MODEL_PATH });
   readonly leads = new RecordTable(this.page, 'leads', { shape: TABLE_SHAPE, columns: ["Select All Results","Name","Status","Email","Phone","Assigned User"], keyColumn: 'Name', screen: 'LeadPage', expectedUrl: '/#Lead', modelPath: MODEL_PATH });
   readonly createLead = new Link(this.page, { label: 'Create Lead' }, { screen: 'LeadPage', expectedUrl: '/#Lead', modelPath: MODEL_PATH });
-  readonly all = new Button(this.page, { label: 'All' }, { screen: 'LeadPage', expectedUrl: '/#Lead', modelPath: MODEL_PATH });
   readonly textFilter = new TextField(this.page, { field: 'textFilter' }, { screen: 'LeadPage', expectedUrl: '/#Lead', modelPath: MODEL_PATH });
   readonly search = new Button(this.page, { label: 'Search' }, { screen: 'LeadPage', expectedUrl: '/#Lead', modelPath: MODEL_PATH });
-  readonly control12020 = new Button(this.page, { label: '1–20 / 20' }, { screen: 'LeadPage', expectedUrl: '/#Lead', modelPath: MODEL_PATH });
-  readonly previousPage = new Button(this.page, { label: 'Previous Page' }, { screen: 'LeadPage', expectedUrl: '/#Lead', modelPath: MODEL_PATH });
-  readonly nextPage = new Button(this.page, { label: 'Next Page' }, { screen: 'LeadPage', expectedUrl: '/#Lead', modelPath: MODEL_PATH });
   readonly espoCRMInc = new Link(this.page, { label: 'EspoCRM, Inc.' }, { screen: 'LeadPage', expectedUrl: '/#Lead', modelPath: MODEL_PATH });
 
   /** Proved by the crawl: this control leads to LeadCreatePage. */

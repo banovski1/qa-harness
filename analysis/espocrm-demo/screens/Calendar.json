@@ -29,25 +29,13 @@
         "Sat 12",
         "Sun 13"
       ],
-      "rowCount": 0
-    },
-    {
-      "columns": [],
-      "rowCount": 1
-    },
-    {
-      "columns": [],
-      "rowCount": 48
-    },
-    {
-      "columns": [],
       "rowCount": 1
     }
   ],
   "regions": {
     "navigation": 74,
     "body": 14,
-    "table": 22,
+    "table": 21,
     "footer": 1
   },
   "elements": [
@@ -57,6 +45,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -95,6 +84,7 @@
       "type": null,
       "role": "link",
       "name": "logo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -132,6 +122,7 @@
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -177,6 +168,7 @@
       "type": null,
       "role": "link",
       "name": "Home",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -248,6 +240,7 @@
       "type": null,
       "role": "link",
       "name": "Accounts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -319,6 +312,7 @@
       "type": null,
       "role": "link",
       "name": "Contacts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -390,6 +384,7 @@
       "type": null,
       "role": "link",
       "name": "Leads",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -461,6 +456,7 @@
       "type": null,
       "role": "link",
       "name": "Opportunities",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -532,6 +528,7 @@
       "type": null,
       "role": "link",
       "name": "Emails",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -603,6 +600,7 @@
       "type": null,
       "role": "link",
       "name": "Calendar",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -674,6 +672,7 @@
       "type": null,
       "role": "link",
       "name": "Meetings",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -745,6 +744,7 @@
       "type": null,
       "role": "link",
       "name": "Calls",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -816,6 +816,7 @@
       "type": null,
       "role": "link",
       "name": "Tasks",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -887,6 +888,7 @@
       "type": null,
       "role": "link",
       "name": "Cases",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -958,6 +960,7 @@
       "type": null,
       "role": "link",
       "name": "Knowledge Base",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1029,6 +1032,7 @@
       "type": null,
       "role": "link",
       "name": "Documents",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1100,6 +1104,7 @@
       "type": null,
       "role": "button",
       "name": "Sales & Purchases",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-tab-group-group-17",
@@ -1173,6 +1178,7 @@
       "type": null,
       "role": "link",
       "name": "Products",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1210,6 +1216,7 @@
       "type": null,
       "role": "link",
       "name": "Quotes",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1247,6 +1254,7 @@
       "type": null,
       "role": "link",
       "name": "Sales Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1284,6 +1292,7 @@
       "type": null,
       "role": "link",
       "name": "Invoices",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1321,6 +1330,7 @@
       "type": null,
       "role": "link",
       "name": "Delivery Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1358,6 +1368,7 @@
       "type": null,
       "role": "link",
       "name": "Return Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1395,6 +1406,7 @@
       "type": null,
       "role": "link",
       "name": "Credit Notes",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1432,6 +1444,7 @@
       "type": null,
       "role": "link",
       "name": "Suppliers",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1469,6 +1482,7 @@
       "type": null,
       "role": "link",
       "name": "Purchase Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1506,6 +1520,7 @@
       "type": null,
       "role": "link",
       "name": "Receipt Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1543,6 +1558,7 @@
       "type": null,
       "role": "link",
       "name": "Bills",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1580,6 +1596,7 @@
       "type": null,
       "role": "link",
       "name": "Bill Credits",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1617,6 +1634,7 @@
       "type": null,
       "role": "link",
       "name": "Payments",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1654,6 +1672,7 @@
       "type": null,
       "role": "link",
       "name": "Payment Requests",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1691,6 +1710,7 @@
       "type": null,
       "role": "link",
       "name": "Subscription",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1728,6 +1748,7 @@
       "type": null,
       "role": "link",
       "name": "Transfer Orders",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1765,6 +1786,7 @@
       "type": null,
       "role": "link",
       "name": "Inventory Adjustments",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1802,6 +1824,7 @@
       "type": null,
       "role": "link",
       "name": "Warehouses",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1839,6 +1862,7 @@
       "type": null,
       "role": "link",
       "name": "Inventory Numbers",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1876,6 +1900,7 @@
       "type": null,
       "role": "link",
       "name": "Inventory Transactions",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -1913,6 +1938,7 @@
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": "nav-more-tabs-dropdown",
@@ -1968,6 +1994,7 @@
       "type": null,
       "role": "link",
       "name": "Campaigns",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2005,6 +2032,7 @@
       "type": null,
       "role": "link",
       "name": "Target Lists",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2042,6 +2070,7 @@
       "type": null,
       "role": "link",
       "name": "Reports",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2079,6 +2108,7 @@
       "type": null,
       "role": "link",
       "name": "Projects",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2116,6 +2146,7 @@
       "type": null,
       "role": "link",
       "name": "Project Tasks",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2153,6 +2184,7 @@
       "type": null,
       "role": "button",
       "name": "Organization",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-tab-group-group-28",
@@ -2192,6 +2224,7 @@
       "type": null,
       "role": "link",
       "name": "Users",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2229,6 +2262,7 @@
       "type": null,
       "role": "link",
       "name": "Teams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2266,6 +2300,7 @@
       "type": null,
       "role": "link",
       "name": "Stream",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2303,6 +2338,7 @@
       "type": null,
       "role": "link",
       "name": "Global Stream",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2340,6 +2376,7 @@
       "type": null,
       "role": "link",
       "name": "Working Time Calendars",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2376,6 +2413,7 @@
       "type": null,
       "role": "button",
       "name": "Automation",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-tab-group-group-29",
@@ -2415,6 +2453,7 @@
       "type": null,
       "role": "link",
       "name": "Workflows",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2452,6 +2491,7 @@
       "type": null,
       "role": "link",
       "name": "Flowcharts",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2489,6 +2529,7 @@
       "type": null,
       "role": "link",
       "name": "Processes",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2526,6 +2567,7 @@
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2571,6 +2613,7 @@
       "type": "search",
       "role": "searchbox",
       "name": "Search",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": "Search",
       "id": null,
@@ -2634,6 +2677,7 @@
       "type": null,
       "role": "button",
       "name": "Last Viewed",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2691,6 +2735,7 @@
       "type": null,
       "role": "button",
       "name": "Create",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-quick-create-dropdown",
@@ -2756,6 +2801,7 @@
       "type": null,
       "role": "link",
       "name": "Account",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2796,6 +2842,7 @@
       "type": null,
       "role": "link",
       "name": "Contact",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2836,6 +2883,7 @@
       "type": null,
       "role": "link",
       "name": "Lead",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2876,6 +2924,7 @@
       "type": null,
       "role": "link",
       "name": "Opportunity",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2916,6 +2965,7 @@
       "type": null,
       "role": "link",
       "name": "Meeting",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2956,6 +3006,7 @@
       "type": null,
       "role": "link",
       "name": "Call",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -2996,6 +3047,7 @@
       "type": null,
       "role": "link",
       "name": "Task",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3036,6 +3088,7 @@
       "type": null,
       "role": "link",
       "name": "Case",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3076,6 +3129,7 @@
       "type": null,
       "role": "link",
       "name": "Email",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3116,6 +3170,7 @@
       "type": null,
       "role": "link",
       "name": "Project Task",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3156,6 +3211,7 @@
       "type": null,
       "role": "button",
       "name": "Notifications",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3213,6 +3269,7 @@
       "type": null,
       "role": "button",
       "name": "Menu",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": "nav-menu-dropdown",
@@ -3278,6 +3335,7 @@
       "type": null,
       "role": "link",
       "name": "Jack Adams",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3315,6 +3373,7 @@
       "type": null,
       "role": "link",
       "name": "Administration",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3354,6 +3413,7 @@
       "type": null,
       "role": "link",
       "name": "Preferences",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3393,6 +3453,7 @@
       "type": null,
       "role": "link",
       "name": "About",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3432,6 +3493,7 @@
       "type": null,
       "role": "button",
       "name": "Log Out",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3471,6 +3533,7 @@
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3518,6 +3581,7 @@
       "type": null,
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3565,6 +3629,7 @@
       "type": null,
       "role": "button",
       "name": "TodayTo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3630,6 +3695,7 @@
       "type": null,
       "role": "button",
       "name": "Edit",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3669,6 +3735,7 @@
       "type": null,
       "role": "button",
       "name": "MonthMo",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3684,7 +3751,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 1028,
+        "x": 1017,
         "y": 42,
         "w": 65,
         "h": 36
@@ -3735,6 +3802,7 @@
       "type": null,
       "role": "button",
       "name": "WeekWe",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3750,7 +3818,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 1092,
+        "x": 1081,
         "y": 42,
         "w": 60,
         "h": 36
@@ -3801,6 +3869,7 @@
       "type": null,
       "role": "button",
       "name": "TimelineTi",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3816,7 +3885,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 1151,
+        "x": 1140,
         "y": 42,
         "w": 79,
         "h": 36
@@ -3867,6 +3936,7 @@
       "type": "button",
       "role": "button",
       "name": "",
+      "nameSource": null,
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3881,7 +3951,7 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 1229,
+        "x": 1218,
         "y": 42,
         "w": 36,
         "h": 36
@@ -3914,6 +3984,7 @@
       "type": null,
       "role": "button",
       "name": "Day",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3954,6 +4025,7 @@
       "type": null,
       "role": "button",
       "name": "Meetings",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -3994,6 +4066,7 @@
       "type": null,
       "role": "button",
       "name": "Calls",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4034,6 +4107,7 @@
       "type": null,
       "role": "button",
       "name": "Tasks",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4074,6 +4148,7 @@
       "type": null,
       "role": "button",
       "name": "Create Shared View",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4113,6 +4188,7 @@
       "type": null,
       "role": "link",
       "name": "Working Time Calendars",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4149,6 +4225,7 @@
       "type": null,
       "role": null,
       "name": "Prepare product presentation",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4161,17 +4238,17 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 282,
+        "x": 118,
         "y": 124,
-        "w": 159,
+        "w": 158,
         "h": 23
       },
       "locator": {
-        "strategy": "text",
-        "expression": "getByText('Prepare product presentation', { exact: true })",
+        "strategy": "css",
+        "expression": "locator('tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable')",
         "matchCount": 1,
         "args": [
-          "Prepare product presentation"
+          "tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable"
         ]
       },
       "unique": true,
@@ -4181,17 +4258,17 @@
         {
           "strategy": "text",
           "expression": "getByText('Prepare product presentation', { exact: true })",
-          "matchCount": 1,
+          "matchCount": 2,
           "args": [
             "Prepare product presentation"
           ]
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-tue:nth-of-type(3) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-tue:nth-of-type(3) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable"
           ]
         }
       ]
@@ -4201,7 +4278,8 @@
       "tag": "a",
       "type": null,
       "role": null,
-      "name": "Organize trade show",
+      "name": "Prepare product presentation",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4214,9 +4292,63 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 446,
+        "x": 605,
         "y": 124,
-        "w": 159,
+        "w": 158,
+        "h": 23
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable')",
+        "matchCount": 1,
+        "args": [
+          "tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "text",
+          "expression": "getByText('Prepare product presentation', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "Prepare product presentation"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable')",
+          "matchCount": 1,
+          "args": [
+            "tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 90,
+      "tag": "a",
+      "type": null,
+      "role": null,
+      "name": "Organize trade show",
+      "nameSource": "accessible",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "table",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 768,
+        "y": 124,
+        "w": 158,
         "h": 23
       },
       "locator": {
@@ -4241,20 +4373,21 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-wed:nth-of-type(4) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-wed:nth-of-type(4) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable"
           ]
         }
       ]
     },
     {
-      "index": 90,
+      "index": 91,
       "tag": "a",
       "type": null,
       "role": null,
       "name": "Review report for Top Management",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4267,9 +4400,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 610,
+        "x": 930,
         "y": 124,
-        "w": 159,
+        "w": 158,
         "h": 23
       },
       "locator": {
@@ -4294,20 +4427,21 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable"
           ]
         }
       ]
     },
     {
-      "index": 91,
+      "index": 92,
       "tag": "a",
       "type": null,
       "role": null,
       "name": "Sales Plan",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4320,9 +4454,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 610,
+        "x": 930,
         "y": 148,
-        "w": 159,
+        "w": 158,
         "h": 23
       },
       "locator": {
@@ -4347,20 +4481,21 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(2) > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(2) > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(2) > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(2) > a.fc-event.fc-event-draggable"
           ]
         }
       ]
     },
     {
-      "index": 92,
+      "index": 93,
       "tag": "a",
       "type": null,
       "role": null,
       "name": "Packaging Sales Order for Speakers 30",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4373,9 +4508,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 774,
+        "x": 1093,
         "y": 124,
-        "w": 159,
+        "w": 158,
         "h": 23
       },
       "locator": {
@@ -4400,20 +4535,21 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable"
           ]
         }
       ]
     },
     {
-      "index": 93,
+      "index": 94,
       "tag": "a",
       "type": null,
       "role": null,
       "name": "Prepare annual revenue report for investors",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4426,9 +4562,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 774,
+        "x": 1093,
         "y": 148,
-        "w": 159,
+        "w": 158,
         "h": 23
       },
       "locator": {
@@ -4453,20 +4589,21 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(2) > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(2) > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(2) > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(2) > a.fc-event.fc-event-draggable"
           ]
         }
       ]
     },
     {
-      "index": 94,
+      "index": 95,
       "tag": "a",
       "type": null,
       "role": null,
       "name": "Send sales order draft to A.Beike",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4479,9 +4616,9 @@
       "destructive": true,
       "href": null,
       "box": {
-        "x": 774,
+        "x": 1093,
         "y": 171,
-        "w": 159,
+        "w": 158,
         "h": 23
       },
       "locator": {
@@ -4506,63 +4643,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(3) > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(3) > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(3) > a.fc-event.fc-event-draggable"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 95,
-      "tag": "a",
-      "type": null,
-      "role": null,
-      "name": "Review & approve marketing budget",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {},
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 938,
-        "y": 124,
-        "w": 159,
-        "h": 23
-      },
-      "locator": {
-        "strategy": "text",
-        "expression": "getByText('Review & approve marketing budget', { exact: true })",
-        "matchCount": 1,
-        "args": [
-          "Review & approve marketing budget"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "text",
-          "expression": "getByText('Review & approve marketing budget', { exact: true })",
-          "matchCount": 1,
-          "args": [
-            "Review & approve marketing budget"
-          ]
-        },
-        {
-          "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable')",
-          "matchCount": 1,
-          "args": [
-            "tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(1) > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(3) > a.fc-event.fc-event-draggable"
           ]
         }
       ]
@@ -4572,7 +4656,8 @@
       "tag": "a",
       "type": null,
       "role": null,
-      "name": "Write emails to potential suppliers",
+      "name": "10:00 – 10:10Delivery Address Correction",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4585,17 +4670,17 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 938,
-        "y": 148,
-        "w": 159,
-        "h": 23
+        "x": 118,
+        "y": 391,
+        "w": 156,
+        "h": 14
       },
       "locator": {
         "strategy": "text",
-        "expression": "getByText('Write emails to potential suppliers', { exact: true })",
+        "expression": "getByText('10:00 – 10:10Delivery Address Correction', { exact: true })",
         "matchCount": 1,
         "args": [
-          "Write emails to potential suppliers"
+          "10:00 – 10:10Delivery Address Correction"
         ]
       },
       "unique": true,
@@ -4604,18 +4689,18 @@
       "candidates": [
         {
           "strategy": "text",
-          "expression": "getByText('Write emails to potential suppliers', { exact: true })",
+          "expression": "getByText('10:00 – 10:10Delivery Address Correction', { exact: true })",
           "matchCount": 1,
           "args": [
-            "Write emails to potential suppliers"
+            "10:00 – 10:10Delivery Address Correction"
           ]
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(2) > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-day-events:nth-of-type(1) > div.fc-daygrid-event-harness:nth-of-type(2) > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable"
           ]
         }
       ]
@@ -4625,7 +4710,8 @@
       "tag": "a",
       "type": null,
       "role": null,
-      "name": "12:00 – 13:00Smart Laser demonstration",
+      "name": "11:00 – 12:00Video call with investors",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4638,9 +4724,225 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 282,
-        "y": 616,
-        "w": 157,
+        "x": 118,
+        "y": 436,
+        "w": 156,
+        "h": 44
+      },
+      "locator": {
+        "strategy": "text",
+        "expression": "getByText('11:00 – 12:00Video call with investors', { exact: true })",
+        "matchCount": 1,
+        "args": [
+          "11:00 – 12:00Video call with investors"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "text",
+          "expression": "getByText('11:00 – 12:00Video call with investors', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "11:00 – 12:00Video call with investors"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(2) > a.fc-event.fc-event-draggable')",
+          "matchCount": 1,
+          "args": [
+            "tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(2) > a.fc-event.fc-event-draggable"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 98,
+      "tag": "a",
+      "type": null,
+      "role": null,
+      "name": "13:30 – 14:15Delivery issue",
+      "nameSource": "accessible",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "table",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 118,
+        "y": 548,
+        "w": 156,
+        "h": 33
+      },
+      "locator": {
+        "strategy": "css",
+        "expression": "locator('tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(3) > a.fc-event.fc-event-draggable')",
+        "matchCount": 1,
+        "args": [
+          "tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(3) > a.fc-event.fc-event-draggable"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "text",
+          "expression": "getByText('13:30 – 14:15Delivery issue', { exact: true })",
+          "matchCount": 2,
+          "args": [
+            "13:30 – 14:15Delivery issue"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(3) > a.fc-event.fc-event-draggable')",
+          "matchCount": 1,
+          "args": [
+            "tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(3) > a.fc-event.fc-event-draggable"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 99,
+      "tag": "a",
+      "type": null,
+      "role": null,
+      "name": "10:00 – 10:15Delivery issue discussion",
+      "nameSource": "accessible",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "table",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 280,
+        "y": 391,
+        "w": 156,
+        "h": 14
+      },
+      "locator": {
+        "strategy": "text",
+        "expression": "getByText('10:00 – 10:15Delivery issue discussion', { exact: true })",
+        "matchCount": 1,
+        "args": [
+          "10:00 – 10:15Delivery issue discussion"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "text",
+          "expression": "getByText('10:00 – 10:15Delivery issue discussion', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "10:00 – 10:15Delivery issue discussion"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('tr > td.fc-day.fc-day-tue:nth-of-type(3) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable')",
+          "matchCount": 1,
+          "args": [
+            "tr > td.fc-day.fc-day-tue:nth-of-type(3) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 100,
+      "tag": "a",
+      "type": null,
+      "role": null,
+      "name": "11:00 – 13:00Lunch with top management",
+      "nameSource": "accessible",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "table",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 280,
+        "y": 436,
+        "w": 156,
+        "h": 89
+      },
+      "locator": {
+        "strategy": "text",
+        "expression": "getByText('11:00 – 13:00Lunch with top management', { exact: true })",
+        "matchCount": 1,
+        "args": [
+          "11:00 – 13:00Lunch with top management"
+        ]
+      },
+      "unique": true,
+      "fragile": true,
+      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
+      "candidates": [
+        {
+          "strategy": "text",
+          "expression": "getByText('11:00 – 13:00Lunch with top management', { exact: true })",
+          "matchCount": 1,
+          "args": [
+            "11:00 – 13:00Lunch with top management"
+          ]
+        },
+        {
+          "strategy": "css",
+          "expression": "locator('tr > td.fc-day.fc-day-tue:nth-of-type(3) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(2) > a.fc-event.fc-event-draggable')",
+          "matchCount": 1,
+          "args": [
+            "tr > td.fc-day.fc-day-tue:nth-of-type(3) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(2) > a.fc-event.fc-event-draggable"
+          ]
+        }
+      ]
+    },
+    {
+      "index": 101,
+      "tag": "a",
+      "type": null,
+      "role": null,
+      "name": "12:00 – 13:00Smart Laser demonstration",
+      "nameSource": "accessible",
+      "label": null,
+      "placeholder": null,
+      "id": null,
+      "nameAttr": null,
+      "testId": null,
+      "data": {},
+      "region": "table",
+      "visible": true,
+      "disabled": false,
+      "destructive": false,
+      "href": null,
+      "box": {
+        "x": 605,
+        "y": 481,
+        "w": 156,
         "h": 44
       },
       "locator": {
@@ -4665,20 +4967,21 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-tue:nth-of-type(3) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-tue:nth-of-type(3) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset > a.fc-event.fc-event-draggable"
           ]
         }
       ]
     },
     {
-      "index": 98,
+      "index": 102,
       "tag": "a",
       "type": null,
       "role": null,
       "name": "13:30 – 14:00Agree upon Mr. Thompson's sales order",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4691,9 +4994,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 446,
-        "y": 683,
-        "w": 157,
+        "x": 768,
+        "y": 548,
+        "w": 156,
         "h": 22
       },
       "locator": {
@@ -4718,20 +5021,21 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-wed:nth-of-type(4) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-wed:nth-of-type(4) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset > a.fc-event.fc-event-draggable"
           ]
         }
       ]
     },
     {
-      "index": 99,
+      "index": 103,
       "tag": "a",
       "type": null,
       "role": null,
       "name": "09:00 – 11:00Team Meeting",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4744,9 +5048,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 610,
-        "y": 481,
-        "w": 157,
+        "x": 930,
+        "y": 346,
+        "w": 156,
         "h": 89
       },
       "locator": {
@@ -4771,20 +5075,21 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset > a.fc-event.fc-event-draggable"
           ]
         }
       ]
     },
     {
-      "index": 100,
+      "index": 104,
       "tag": "a",
       "type": null,
       "role": null,
       "name": "13:30 – 14:15Delivery issue",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4797,17 +5102,17 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 774,
-        "y": 683,
-        "w": 157,
+        "x": 1093,
+        "y": 548,
+        "w": 156,
         "h": 33
       },
       "locator": {
-        "strategy": "text",
-        "expression": "getByText('13:30 – 14:15Delivery issue', { exact: true })",
+        "strategy": "css",
+        "expression": "locator('tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable')",
         "matchCount": 1,
         "args": [
-          "13:30 – 14:15Delivery issue"
+          "tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable"
         ]
       },
       "unique": true,
@@ -4817,27 +5122,28 @@
         {
           "strategy": "text",
           "expression": "getByText('13:30 – 14:15Delivery issue', { exact: true })",
-          "matchCount": 1,
+          "matchCount": 2,
           "args": [
             "13:30 – 14:15Delivery issue"
           ]
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable"
           ]
         }
       ]
     },
     {
-      "index": 101,
+      "index": 105,
       "tag": "a",
       "type": null,
       "role": null,
       "name": "14:00 – 14:45Discount discussion",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4850,9 +5156,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 853,
-        "y": 706,
-        "w": 79,
+        "x": 1171,
+        "y": 571,
+        "w": 78,
         "h": 32
       },
       "locator": {
@@ -4877,20 +5183,21 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(2) > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(2) > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(2) > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(2) > a.fc-event.fc-event-draggable"
           ]
         }
       ]
     },
     {
-      "index": 102,
+      "index": 106,
       "tag": "a",
       "type": null,
       "role": null,
       "name": "14:30 – 15:00Conference call with partners",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4903,9 +5210,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 774,
-        "y": 728,
-        "w": 157,
+        "x": 1093,
+        "y": 593,
+        "w": 156,
         "h": 22
       },
       "locator": {
@@ -4930,20 +5237,21 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(3) > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(3) > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(3) > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(3) > a.fc-event.fc-event-draggable"
           ]
         }
       ]
     },
     {
-      "index": 103,
+      "index": 107,
       "tag": "a",
       "type": null,
       "role": null,
       "name": "11:00 – 12:00Meeting with stakeholder",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -4956,9 +5264,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 774,
-        "y": 571,
-        "w": 157,
+        "x": 1093,
+        "y": 436,
+        "w": 156,
         "h": 44
       },
       "locator": {
@@ -4983,20 +5291,21 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(4) > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(4) > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(4) > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(4) > a.fc-event.fc-event-draggable"
           ]
         }
       ]
     },
     {
-      "index": 104,
+      "index": 108,
       "tag": "a",
       "type": null,
       "role": null,
       "name": "12:00 – 13:00Product Presentation Discussion",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5009,9 +5318,9 @@
       "destructive": false,
       "href": null,
       "box": {
-        "x": 774,
-        "y": 616,
-        "w": 157,
+        "x": 1093,
+        "y": 481,
+        "w": 156,
         "h": 44
       },
       "locator": {
@@ -5036,222 +5345,10 @@
         },
         {
           "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(5) > a.fc-event.fc-event-draggable')",
+          "expression": "locator('tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(5) > a.fc-event.fc-event-draggable')",
           "matchCount": 1,
           "args": [
-            "tr > td.fc-day.fc-day-fri:nth-of-type(6) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(5) > a.fc-event.fc-event-draggable"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 105,
-      "tag": "a",
-      "type": null,
-      "role": null,
-      "name": "10:30 – 11:15Discount discussion with Mr. Brenson",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {},
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 938,
-        "y": 548,
-        "w": 157,
-        "h": 33
-      },
-      "locator": {
-        "strategy": "text",
-        "expression": "getByText('10:30 – 11:15Discount discussion with Mr. Brenson', { exact: true })",
-        "matchCount": 1,
-        "args": [
-          "10:30 – 11:15Discount discussion with Mr. Brenson"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "text",
-          "expression": "getByText('10:30 – 11:15Discount discussion with Mr. Brenson', { exact: true })",
-          "matchCount": 1,
-          "args": [
-            "10:30 – 11:15Discount discussion with Mr. Brenson"
-          ]
-        },
-        {
-          "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable')",
-          "matchCount": 1,
-          "args": [
-            "tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 106,
-      "tag": "a",
-      "type": null,
-      "role": null,
-      "name": "11:00 – 13:00Discuss plans",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {},
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1017,
-        "y": 571,
-        "w": 79,
-        "h": 89
-      },
-      "locator": {
-        "strategy": "text",
-        "expression": "getByText('11:00 – 13:00Discuss plans', { exact: true })",
-        "matchCount": 1,
-        "args": [
-          "11:00 – 13:00Discuss plans"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "text",
-          "expression": "getByText('11:00 – 13:00Discuss plans', { exact: true })",
-          "matchCount": 1,
-          "args": [
-            "11:00 – 13:00Discuss plans"
-          ]
-        },
-        {
-          "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(2) > a.fc-event.fc-event-draggable')",
-          "matchCount": 1,
-          "args": [
-            "tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(2) > a.fc-event.fc-event-draggable"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 107,
-      "tag": "a",
-      "type": null,
-      "role": null,
-      "name": "14:00 – 16:00Review work done",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {},
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 938,
-        "y": 706,
-        "w": 157,
-        "h": 89
-      },
-      "locator": {
-        "strategy": "text",
-        "expression": "getByText('14:00 – 16:00Review work done', { exact: true })",
-        "matchCount": 1,
-        "args": [
-          "14:00 – 16:00Review work done"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "text",
-          "expression": "getByText('14:00 – 16:00Review work done', { exact: true })",
-          "matchCount": 1,
-          "args": [
-            "14:00 – 16:00Review work done"
-          ]
-        },
-        {
-          "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(3) > a.fc-event.fc-event-draggable')",
-          "matchCount": 1,
-          "args": [
-            "tr > td.fc-day.fc-day-sat:nth-of-type(7) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(3) > a.fc-event.fc-event-draggable"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 108,
-      "tag": "a",
-      "type": null,
-      "role": null,
-      "name": "10:00 – 10:30Daily meeting",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {},
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1102,
-        "y": 526,
-        "w": 158,
-        "h": 21
-      },
-      "locator": {
-        "strategy": "text",
-        "expression": "getByText('10:00 – 10:30Daily meeting', { exact: true })",
-        "matchCount": 1,
-        "args": [
-          "10:00 – 10:30Daily meeting"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "text",
-          "expression": "getByText('10:00 – 10:30Daily meeting', { exact: true })",
-          "matchCount": 1,
-          "args": [
-            "10:00 – 10:30Daily meeting"
-          ]
-        },
-        {
-          "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable')",
-          "matchCount": 1,
-          "args": [
-            "tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(1) > a.fc-event.fc-event-draggable"
+            "tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(5) > a.fc-event.fc-event-draggable"
           ]
         }
       ]
@@ -5260,61 +5357,9 @@
       "index": 109,
       "tag": "a",
       "type": null,
-      "role": null,
-      "name": "11:30 – 13:30Warm calls to repeat customers",
-      "label": null,
-      "placeholder": null,
-      "id": null,
-      "nameAttr": null,
-      "testId": null,
-      "data": {},
-      "region": "table",
-      "visible": true,
-      "disabled": false,
-      "destructive": false,
-      "href": null,
-      "box": {
-        "x": 1102,
-        "y": 593,
-        "w": 158,
-        "h": 89
-      },
-      "locator": {
-        "strategy": "text",
-        "expression": "getByText('11:30 – 13:30Warm calls to repeat customers', { exact: true })",
-        "matchCount": 1,
-        "args": [
-          "11:30 – 13:30Warm calls to repeat customers"
-        ]
-      },
-      "unique": true,
-      "fragile": true,
-      "ambiguityReason": "element carries no test id, accessible name, label, placeholder or named ancestor",
-      "candidates": [
-        {
-          "strategy": "text",
-          "expression": "getByText('11:30 – 13:30Warm calls to repeat customers', { exact: true })",
-          "matchCount": 1,
-          "args": [
-            "11:30 – 13:30Warm calls to repeat customers"
-          ]
-        },
-        {
-          "strategy": "css",
-          "expression": "locator('tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(2) > a.fc-event.fc-event-draggable')",
-          "matchCount": 1,
-          "args": [
-            "tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2) > div.fc-timegrid-event-harness.fc-timegrid-event-harness-inset:nth-of-type(2) > a.fc-event.fc-event-draggable"
-          ]
-        }
-      ]
-    },
-    {
-      "index": 110,
-      "tag": "a",
-      "type": null,
       "role": "link",
       "name": "EspoCRM, Inc.",
+      "nameSource": "accessible",
       "label": null,
       "placeholder": null,
       "id": null,
@@ -5691,11 +5736,11 @@
     }
   ],
   "stats": {
-    "elements": 111,
-    "visible": 52,
+    "elements": 110,
+    "visible": 51,
     "hidden": 59,
     "semantic": 24,
-    "fragile": 28,
+    "fragile": 27,
     "ambiguous": 0,
     "withTestId": 0
   }

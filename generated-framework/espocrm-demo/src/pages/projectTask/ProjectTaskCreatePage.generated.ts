@@ -11,28 +11,19 @@ export class ProjectTaskCreatePageGenerated extends BasePage {
   readonly path = '/#ProjectTask/create';
   readonly heading = 'Project Taskscreate';
 
-  // 8 element(s) on this screen carry no label, role name or field
+  // 13 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in ProjectTaskCreatePage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
-  readonly projectTasks = new Link(this.page, { label: 'Project Tasks' }, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
   readonly save = new Button(this.page, { label: 'Save' }, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
   readonly cancel = new Button(this.page, { label: 'Cancel' }, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
-  readonly name = new TextField(this.page, { field: 'name' }, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
-  readonly select = new TextField(this.page, { label: 'Select' }, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
+  readonly name = new TextField(this.page, { label: 'Name *', via: 'proximity' }, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
   readonly dateStart = new TextField(this.page, { field: 'dateStart' }, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
   readonly dateEnd = new TextField(this.page, { field: 'dateEnd' }, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
   readonly description = new TextField(this.page, { field: 'description' }, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
-  readonly select2 = new TextField(this.page, { label: 'Select' }, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
-  readonly select3 = new Button(this.page, { label: 'Select' }, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
-  readonly select4 = new TextField(this.page, { label: 'Select' }, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
   readonly espoCRMInc = new Link(this.page, { label: 'EspoCRM, Inc.' }, { screen: 'ProjectTaskCreatePage', expectedUrl: '/#ProjectTask/create', modelPath: MODEL_PATH });
 
-  /** Proved by the crawl: this control leads to ProjectTaskPage. */
-  async goToProjectTasks(): Promise<void> {
-    await this.projectTasks.click();
-    await this.page.waitForURL(url => url.href.includes('/#ProjectTask'));
-  }
+
 
   constructor(page: Page) {
     super(page);

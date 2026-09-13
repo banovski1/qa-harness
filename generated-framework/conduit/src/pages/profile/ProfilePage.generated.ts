@@ -11,7 +11,7 @@ export class ProfilePageGenerated extends BasePage {
   readonly path = '/profile/{username}';
   readonly heading = 'React Hooks: Best Practices and Common Pitfalls';
 
-  // 1 element(s) on this screen carry no label, role name or field
+  // 2 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in ProfilePage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'ProfilePage', expectedUrl: '/profile/{username}', modelPath: MODEL_PATH });
@@ -22,7 +22,6 @@ export class ProfilePageGenerated extends BasePage {
   readonly control2 = new Button(this.page, { label: '2' }, { screen: 'ProfilePage', expectedUrl: '/profile/{username}', modelPath: MODEL_PATH });
   readonly reactHooksBestPracticesAndCommonPitfallsEssentialPatternsAndAntiPatternsWhenWorkingWithReactHooksReadMoreFrontendHooksJavascriptReact = new Link(this.page, { label: 'React Hooks: Best Practices and Common PitfallsEssential patterns and anti-patterns when working with React HooksRead more... frontend hooks javascript react' }, { screen: 'ProfilePage', expectedUrl: '/profile/{username}', modelPath: MODEL_PATH });
   readonly control1 = new Button(this.page, { label: '1' }, { screen: 'ProfilePage', expectedUrl: '/profile/{username}', modelPath: MODEL_PATH });
-  readonly conduit = new Link(this.page, { label: 'Conduit' }, { screen: 'ProfilePage', expectedUrl: '/profile/{username}', modelPath: MODEL_PATH });
   readonly realWorldOSSProject = new Link(this.page, { label: 'RealWorld OSS Project' }, { screen: 'ProfilePage', expectedUrl: '/profile/{username}', modelPath: MODEL_PATH });
 
 

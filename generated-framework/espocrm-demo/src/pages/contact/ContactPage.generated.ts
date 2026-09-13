@@ -13,18 +13,14 @@ export class ContactPageGenerated extends BasePage {
   readonly path = '/#Contact';
   readonly heading = 'Contacts';
 
-  // 5 element(s) on this screen carry no label, role name or field
+  // 9 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in ContactPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'ContactPage', expectedUrl: '/#Contact', modelPath: MODEL_PATH });
   readonly contacts = new RecordTable(this.page, 'contacts', { shape: TABLE_SHAPE, columns: ["Select All Results","Name","Account","Email","Phone"], keyColumn: 'Name', screen: 'ContactPage', expectedUrl: '/#Contact', modelPath: MODEL_PATH });
   readonly createContact = new Link(this.page, { label: 'Create Contact' }, { screen: 'ContactPage', expectedUrl: '/#Contact', modelPath: MODEL_PATH });
-  readonly all = new Button(this.page, { label: 'All' }, { screen: 'ContactPage', expectedUrl: '/#Contact', modelPath: MODEL_PATH });
   readonly textFilter = new TextField(this.page, { field: 'textFilter' }, { screen: 'ContactPage', expectedUrl: '/#Contact', modelPath: MODEL_PATH });
   readonly search = new Button(this.page, { label: 'Search' }, { screen: 'ContactPage', expectedUrl: '/#Contact', modelPath: MODEL_PATH });
-  readonly control120 = new Button(this.page, { label: '1–20' }, { screen: 'ContactPage', expectedUrl: '/#Contact', modelPath: MODEL_PATH });
-  readonly previousPage = new Button(this.page, { label: 'Previous Page' }, { screen: 'ContactPage', expectedUrl: '/#Contact', modelPath: MODEL_PATH });
-  readonly nextPage = new Button(this.page, { label: 'Next Page' }, { screen: 'ContactPage', expectedUrl: '/#Contact', modelPath: MODEL_PATH });
   readonly showMore = new Button(this.page, { label: 'Show more' }, { screen: 'ContactPage', expectedUrl: '/#Contact', modelPath: MODEL_PATH });
   readonly espoCRMInc = new Link(this.page, { label: 'EspoCRM, Inc.' }, { screen: 'ContactPage', expectedUrl: '/#Contact', modelPath: MODEL_PATH });
 

@@ -13,18 +13,14 @@ export class AccountPageGenerated extends BasePage {
   readonly path = '/#Account';
   readonly heading = 'Accounts';
 
-  // 5 element(s) on this screen carry no label, role name or field
+  // 9 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in AccountPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'AccountPage', expectedUrl: '/#Account', modelPath: MODEL_PATH });
   readonly accounts = new RecordTable(this.page, 'accounts', { shape: TABLE_SHAPE, columns: ["Select All Results","Name","Industry","Type","Country"], keyColumn: 'Name', screen: 'AccountPage', expectedUrl: '/#Account', modelPath: MODEL_PATH });
   readonly createAccount = new Link(this.page, { label: 'Create Account' }, { screen: 'AccountPage', expectedUrl: '/#Account', modelPath: MODEL_PATH });
-  readonly all = new Button(this.page, { label: 'All' }, { screen: 'AccountPage', expectedUrl: '/#Account', modelPath: MODEL_PATH });
   readonly textFilter = new TextField(this.page, { field: 'textFilter' }, { screen: 'AccountPage', expectedUrl: '/#Account', modelPath: MODEL_PATH });
   readonly search = new Button(this.page, { label: 'Search' }, { screen: 'AccountPage', expectedUrl: '/#Account', modelPath: MODEL_PATH });
-  readonly control11212 = new Button(this.page, { label: '1–12 / 12' }, { screen: 'AccountPage', expectedUrl: '/#Account', modelPath: MODEL_PATH });
-  readonly previousPage = new Button(this.page, { label: 'Previous Page' }, { screen: 'AccountPage', expectedUrl: '/#Account', modelPath: MODEL_PATH });
-  readonly nextPage = new Button(this.page, { label: 'Next Page' }, { screen: 'AccountPage', expectedUrl: '/#Account', modelPath: MODEL_PATH });
   readonly espoCRMInc = new Link(this.page, { label: 'EspoCRM, Inc.' }, { screen: 'AccountPage', expectedUrl: '/#Account', modelPath: MODEL_PATH });
 
   /** Proved by the crawl: this control leads to AccountCreatePage. */

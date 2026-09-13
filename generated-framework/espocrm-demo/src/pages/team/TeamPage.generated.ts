@@ -13,18 +13,14 @@ export class TeamPageGenerated extends BasePage {
   readonly path = '/#Team';
   readonly heading = 'Teams';
 
-  // 4 element(s) on this screen carry no label, role name or field
+  // 8 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in TeamPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'TeamPage', expectedUrl: '/#Team', modelPath: MODEL_PATH });
   readonly teams = new RecordTable(this.page, 'teams', { shape: TABLE_SHAPE, columns: ["Name"], keyColumn: 'Name', screen: 'TeamPage', expectedUrl: '/#Team', modelPath: MODEL_PATH });
   readonly createTeam = new Link(this.page, { label: 'Create Team' }, { screen: 'TeamPage', expectedUrl: '/#Team', modelPath: MODEL_PATH });
-  readonly all = new Button(this.page, { label: 'All' }, { screen: 'TeamPage', expectedUrl: '/#Team', modelPath: MODEL_PATH });
   readonly textFilter = new TextField(this.page, { field: 'textFilter' }, { screen: 'TeamPage', expectedUrl: '/#Team', modelPath: MODEL_PATH });
   readonly search = new Button(this.page, { label: 'Search' }, { screen: 'TeamPage', expectedUrl: '/#Team', modelPath: MODEL_PATH });
-  readonly control111 = new Button(this.page, { label: '1–1 / 1' }, { screen: 'TeamPage', expectedUrl: '/#Team', modelPath: MODEL_PATH });
-  readonly previousPage = new Button(this.page, { label: 'Previous Page' }, { screen: 'TeamPage', expectedUrl: '/#Team', modelPath: MODEL_PATH });
-  readonly nextPage = new Button(this.page, { label: 'Next Page' }, { screen: 'TeamPage', expectedUrl: '/#Team', modelPath: MODEL_PATH });
   readonly espoCRMInc = new Link(this.page, { label: 'EspoCRM, Inc.' }, { screen: 'TeamPage', expectedUrl: '/#Team', modelPath: MODEL_PATH });
 
 

@@ -9,9 +9,9 @@ re-run the skills, then `compile-model.ts`, to change it.
 | clone | `~/Projects/angular-realworld-example-app` at `dd99ed2cf3` |
 | base URL | https://demo.realworld.show/ |
 | screens | 10 (6 crawled, 4 declared only) |
-| controls | 97 named, 10 unnamed |
+| controls | 86 named, 21 unnamed |
 | components | 10 (1 shared regions) |
-| proved transitions | 4 |
+| proved transitions | 3 |
 
 ## Components
 
@@ -22,12 +22,12 @@ re-run the skills, then `compile-model.ts`, to change it.
 
 | screen | path | controls | unnamed | actions |
 | --- | --- | --- | --- | --- |
-| HomePage | `/` | 34 | 4 | 0 |
-| TagPage | `/tag/{tag}` | 25 | 1 | 0 |
-| ArticlePage | `/article/{slug}` | 13 | 4 | 2 |
-| ProfilePage | `/profile/{username}` | 10 | 1 | 0 |
-| RegisterPage | `/register` | 8 | 0 | 1 |
-| LoginPage | `/login` | 7 | 0 | 1 |
+| HomePage | `/` | 31 | 7 | 0 |
+| TagPage | `/tag/{tag}` | 22 | 4 | 0 |
+| ArticlePage | `/article/{slug}` | 11 | 6 | 1 |
+| ProfilePage | `/profile/{username}` | 9 | 2 | 0 |
+| RegisterPage | `/register` | 7 | 1 | 1 |
+| LoginPage | `/login` | 6 | 1 | 1 |
 | EditorPage | `/editor` | 0 | 0 | 0 |
 | Editor2Page | `/editor/{slug}` | 0 | 0 | 0 |
 | FavoritesPage | `/profile/{username}/favorites` | 0 | 0 | 0 |

@@ -4,10 +4,10 @@
 
 - **App:** EspoCRM demo (EU)
 - **Base URL:** https://demo.eu.espocrm.com/
-- **Generated:** 2026-09-11T06:45:10.208Z
-- **Visible interactive controls:** 3893
-- **Addressable semantically:** 2379 (61%)
-- **Needing a CSS path or still ambiguous:** 1514
+- **Generated:** 2026-09-13T09:43:35.706Z
+- **Visible interactive controls:** 3898
+- **Addressable semantically:** 2378 (61%)
+- **Needing a CSS path or still ambiguous:** 1520
 
 Every candidate below was counted against the live DOM at extraction time, so
 "resolves uniquely" means exactly one element on the rendered page answered to
@@ -22,21 +22,27 @@ markup around them is rearranged, and they are listed in full below.
 | Rung | Strategy | Semantic | Chosen for |
 | ---: | --- | --- | ---: |
 | 1 | `testId` | yes | 0 |
-| 2 | `role` | yes | 1953 |
+| 2 | `role` | yes | 1952 |
 | 3 | `label` | yes | 0 |
 | 4 | `placeholder` | yes | 0 |
-| 5 | `scoped` | yes | 482 |
-| 6 | `attribute` | no | 61 |
-| 7 | `text` | no | 43 |
-| 8 | `css` | no | 1354 |
+| 5 | `// A label the app renders next to a control but never associated with it. Semantic —
+  // it is the word a person reads — but resolved by walking the DOM` | no | 0 |
+| 6 | `not by asking the
+  // accessibility tree` | no | 0 |
+| 7 | `so it ranks below the associations the app actually declared.
+  'proximity` | no | 0 |
+| 8 | `scoped` | yes | 458 |
+| 9 | `attribute` | no | 61 |
+| 10 | `text` | no | 34 |
+| 11 | `css` | no | 1369 |
 
 ## Recommendation
 
-Only 0 of 3893 visible controls carry a test id, so the working default is `getByRole` with an exact accessible name (1953 controls), falling back to `getByLabel` inside forms (0) and `getByPlaceholder` (0).
+Only 0 of 3898 visible controls carry a test id, so the working default is `getByRole` with an exact accessible name (1952 controls), falling back to `getByLabel` inside forms (0) and `getByPlaceholder` (0).
 
-Where a control has no name of its own, 482 were reachable through an ancestor the application names deliberately — `[data-name="…"] input` and the like. That is a CSS expression anchored to a semantic attribute, so it survives restyling and breaks only when the field is renamed. Prefer it over a markup path every time.
+Where a control has no name of its own, 458 were reachable through an ancestor the application names deliberately — `[data-name="…"] input` and the like. That is a CSS expression anchored to a semantic attribute, so it survives restyling and breaks only when the field is renamed. Prefer it over a markup path every time.
 
-A bare markup path was the only option left for 1354 controls. Each is a control with no test id, no accessible name, no label, no placeholder and no named ancestor. Those are the ones to fix in the application — and, until then, the ones to wrap in a page object so a single markup change costs one edit rather than many.
+A bare markup path was the only option left for 1369 controls. Each is a control with no test id, no accessible name, no label, no placeholder and no named ancestor. Those are the ones to fix in the application — and, until then, the ones to wrap in a page object so a single markup change costs one edit rather than many.
 
 ## Controls without a semantic locator
 
@@ -119,28 +125,27 @@ A bare markup path was the only option left for 1354 controls. Each is a control
 | `Calendar` | button | button | `locator('#main > div.calendar-container.no-window-scroll > div.row.button-container:nth-of-type(1) > div:nth-of-type(1) ` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | button | button | `locator('#main > div.calendar-container.no-window-scroll > div.row.button-container:nth-of-type(1) > div:nth-of-type(1) ` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | button | button | `locator('div.calendar-container.no-window-scroll > div.row.button-container:nth-of-type(1) > div:nth-of-type(3) > div.bt` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
-| `Calendar` | Prepare product presentation | a | `getByText('Prepare product presentation', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
+| `Calendar` | Prepare product presentation | a | `locator('tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-d` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
+| `Calendar` | Prepare product presentation | a | `locator('tr > td.fc-day.fc-day-thu:nth-of-type(5) > div.fc-daygrid-day-frame.fc-scrollgrid-sync-inner > div.fc-daygrid-d` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | Organize trade show | a | `getByText('Organize trade show', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | Review report for Top Management | a | `getByText('Review report for Top Management', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | Sales Plan | a | `getByText('Sales Plan', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | Packaging Sales Order for Speakers 30 | a | `getByText('Packaging Sales Order for Speakers 30', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | Prepare annual revenue report for investors | a | `getByText('Prepare annual revenue report for investors', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | Send sales order draft to A.Beike | a | `getByText('Send sales order draft to A.Beike', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
-| `Calendar` | Review & approve marketing budget | a | `getByText('Review & approve marketing budget', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
-| `Calendar` | Write emails to potential suppliers | a | `getByText('Write emails to potential suppliers', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
+| `Calendar` | 10:00 – 10:10Delivery Address Correction | a | `getByText('10:00 – 10:10Delivery Address Correction', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
+| `Calendar` | 11:00 – 12:00Video call with investors | a | `getByText('11:00 – 12:00Video call with investors', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
+| `Calendar` | 13:30 – 14:15Delivery issue | a | `locator('tr > td.fc-day.fc-day-mon:nth-of-type(2) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
+| `Calendar` | 10:00 – 10:15Delivery issue discussion | a | `getByText('10:00 – 10:15Delivery issue discussion', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
+| `Calendar` | 11:00 – 13:00Lunch with top management | a | `getByText('11:00 – 13:00Lunch with top management', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | 12:00 – 13:00Smart Laser demonstration | a | `getByText('12:00 – 13:00Smart Laser demonstration', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | 13:30 – 14:00Agree upon Mr. Thompson's sales order | a | `getByText('13:30 – 14:00Agree upon Mr. Thompson's sales order', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | 09:00 – 11:00Team Meeting | a | `getByText('09:00 – 11:00Team Meeting', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
-| `Calendar` | 13:30 – 14:15Delivery issue | a | `getByText('13:30 – 14:15Delivery issue', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
+| `Calendar` | 13:30 – 14:15Delivery issue | a | `locator('tr > td.fc-day.fc-day-sun:nth-of-type(8) > div.fc-timegrid-col-frame > div.fc-timegrid-col-events:nth-of-type(2` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | 14:00 – 14:45Discount discussion | a | `getByText('14:00 – 14:45Discount discussion', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | 14:30 – 15:00Conference call with partners | a | `getByText('14:30 – 15:00Conference call with partners', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | 11:00 – 12:00Meeting with stakeholder | a | `getByText('11:00 – 12:00Meeting with stakeholder', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Calendar` | 12:00 – 13:00Product Presentation Discussion | a | `getByText('12:00 – 13:00Product Presentation Discussion', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
-| `Calendar` | 10:30 – 11:15Discount discussion with Mr. Brenson | a | `getByText('10:30 – 11:15Discount discussion with Mr. Brenson', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
-| `Calendar` | 11:00 – 13:00Discuss plans | a | `getByText('11:00 – 13:00Discuss plans', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
-| `Calendar` | 14:00 – 16:00Review work done | a | `getByText('14:00 – 16:00Review work done', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
-| `Calendar` | 10:00 – 10:30Daily meeting | a | `getByText('10:00 – 10:30Daily meeting', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
-| `Calendar` | 11:30 – 13:30Warm calls to repeat customers | a | `getByText('11:30 – 13:30Warm calls to repeat customers', { exact: true })` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Call-create` | a | button | `locator('#navbar > div.navbar.navbar-inverse > div.navbar-header:nth-of-type(1) > a.side-menu-button')` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Call-create` | a | button | `locator('#nav-more-tabs-dropdown')` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 | `Call-create` | a | button | `locator('#navbar > div.navbar.navbar-inverse > div.navbar-collapse.navbar-body:nth-of-type(2) > div.navbar-left-containe` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
@@ -242,8 +247,9 @@ A bare markup path was the only option left for 1354 controls. Each is a control
 | `Case-create` | Attach File | label | `locator('div.cell.form-group > div.field > div.attachment-upload > div.clearfix.attachment-control:nth-of-type(1) > div.` | 1 | no semantic candidate resolved uniquely; fell back to css |
 | `Case-create` | Select | button | `locator('div.row > div.cell.form-group:nth-of-type(1) > div.field > div.input-group > span.input-group-btn > button.btn.` | 1 | no semantic candidate resolved uniquely; fell back to css |
 | `Case-create` | button | button | `locator('div.row > div.cell.form-group:nth-of-type(1) > div.field > div.input-group > span.input-group-btn > button.btn.` | 1 | no semantic candidate resolved uniquely; fell back to css |
+| `Case` | a | button | `locator('#navbar > div.navbar.navbar-inverse > div.navbar-header:nth-of-type(1) > a.side-menu-button')` | 1 | element carries no test id, accessible name, label, placeholder or named ancestor |
 
-…and 1314 more, in `screens/*.json`.
+…and 1320 more, in `screens/*.json`.
 
 ## Full element map
 
