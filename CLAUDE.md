@@ -70,8 +70,8 @@ change shaped around one of them shows up as a diff in the other three.
 | `conduit` | `~/Projects/angular-realworld-example-app` | Angular | no labels at all — placeholders are the whole vocabulary |
 | `calcom` | `~/Projects/cal.diy` | Next.js app-router + tRPC | 78 declared routes, 4 crawlable: the declared-but-unreached path |
 
-Odoo (`~/Projects/odoo`) is deliberately outside the corpus. It is the "new app, no code changes"
-test.
+Retargeting to a new app is a new profile, never a code change. Proving that needs an app outside
+these four; none is chosen yet.
 
 ## The map
 

@@ -73,7 +73,8 @@ Two rules that matter more than completeness:
   `basePath`/`baseHref`/`RewriteBase` you find, and record it once in the dossier —
   never glued onto each path.
 - **Record the component that renders each route** when the declaration names one.
-  Where a route hands off to a controller that picks a view at runtime (Backbone, Odoo),
+  Where a route hands off to a controller that picks a view at runtime (Backbone, and most
+  server-rendered back offices),
   say `null` and say why once. It is not a failure; it is the app's design.
 
 Drop API-only routes (`/api/*`, JSON endpoints) — they belong to `app-api`.

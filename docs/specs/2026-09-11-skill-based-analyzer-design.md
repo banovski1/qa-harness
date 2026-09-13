@@ -160,8 +160,8 @@ the diff.
 | Cal.com | `~/Projects/cal.diy` | Next.js app-router + tRPC | `cal.com/systemly.app/demo-website` (booker only — 2 of 79 routes) |
 | Conduit | `~/Projects/angular-realworld-example-app` | Angular | `demo.realworld.show` |
 
-Odoo (`~/Projects/odoo`) is deliberately held back: it is the "new app, no code
-changes" test once the pipeline is built, which is worth more than a fifth corpus row.
+A fifth app, held back as the "new app, no code changes" test, is worth more than a
+fifth corpus row. Which app that is has not been decided.
 
 ## `app-model.json` — the generator's only input
 
@@ -282,4 +282,4 @@ corpus app, so a skill change that does not move it did not change the framework
    A generated framework that does not typecheck is a failed run.
 4. Live smoke — real specs per app against the demos, including create-a-record then
    find-its-row, which only a live run proves.
-5. Odoo, untouched code — the new-app test.
+5. A new app on untouched code — the retarget test.
