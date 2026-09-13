@@ -18,6 +18,7 @@ const EMPTY: Analysis = {
   components: {},
   screens: [],
   testability: { summary: { write: 0, recordFirst: 0, unknown: 0, total: 0 }, recordings: [] },
+  recordings: [],
   stats: {},
 };
 

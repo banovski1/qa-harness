@@ -75,17 +75,23 @@ function renderPage(screen: Screen, model: AppModel): string {
     `  readonly ${u.as} = ${useExpression(u, model, screen)};`);
 
   const actions = screen.actions.map(a =>
-    `  /** Proved by the crawl: this control leads to ${a.leadsTo}. */\n` +
+    `  /** Proved by ${(a as { provenBy?: string }).provenBy === 'recording' ? 'a recording' : 'the crawl'}: this control leads to ${a.leadsTo}. */\n` +
     `  async ${a.name}(): Promise<void> {\n` +
     `    await this.${a.via}.click();\n` +
     `    await this.page.waitForURL(url => url.href.includes(${q(model.screens.find(s => s.name === a.leadsTo)!.path)}));\n` +
     `  }`);
 
   const notes: string[] = [];
-  if (!screen.crawled) {
+  if (!screen.crawled && !screen.uses.length) {
     notes.push(
       `  // This route is declared in the app's source but the crawl never reached it, so`,
       `  // it has a URL and nothing else. Crawl the screen to fill it in.`);
+  } else if (!screen.crawled) {
+    // Everything below came from a human walking the flow. Saying so is the difference
+    // between "these are proved unique" and "these resolved once, for one person".
+    notes.push(
+      `  // The crawl never reached this route — everything here comes from a recording.`,
+      `  // The controls resolved when a human used them; nothing has proved them unique.`);
   }
   if (screen.unverified) {
     notes.push(

@@ -85,6 +85,13 @@ export interface AnalysisControl {
   matches: number;
   /** Vertical position, the only evidence of which heading a control sits under. */
   y: number;
+  /**
+   * Where the control came from. Absent means the crawl, which is the default and the
+   * only source that proves `matches`. A recorded control is real but unproven: a human
+   * addressed it once, which says nothing about whether a second element carries the
+   * same handle.
+   */
+  source?: 'crawl' | 'recording';
 }
 
 /**
@@ -117,10 +124,18 @@ export interface AnalysisScreen {
   source?: { component: string | null; route: string | null };
   /** false: the route is declared and no crawl ever reached it. */
   crawled?: boolean;
+  /**
+   * The crawl never reached this route; a human walked it with the recorder.
+   *
+   * Distinct from `crawled: false` alone, which is the compiler's marker for a declared
+   * route behind which nothing is known. Here the controls are real observations — they
+   * are simply unproven, so the screen must not be mistaken for a crawled one.
+   */
+  recordedOnly?: boolean;
   /** Components mapped onto this screen. English only — never a selector. */
   uses?: Record<string, unknown>[];
   /** Transitions the crawl proved, through a control this screen owns. */
-  actions?: { name: string; via: string; leadsTo: string }[];
+  actions?: { name: string; via: string; leadsTo: string; provenBy?: 'crawl' | 'recording' }[];
   /** Controls the crawl saw and could not name. Never silently dropped. */
   unverified?: number;
   testability?: ScreenTestability;
@@ -143,7 +158,7 @@ export interface ScreenTestability {
 export interface AnalysisTestability {
   /** The roll-up. Per-screen detail lives on the screen itself. */
   summary: { write: number; recordFirst: number; unknown: number; total: number };
-  /** Flows a human recorded with playwright-codegen, by name. */
+  /** Flows a human recorded with the app-recorder skill, by name. */
   recordings: { flow: string; path: string; recordedAt: string; screens: string[] }[];
 }
 
@@ -170,6 +185,57 @@ export interface AnalysisMap {
   budget?: Record<string, unknown>;
 }
 
+/**
+ * One flow a human recorded, and everything it proved.
+ *
+ * This is evidence, not conclusion: the raw locator the recorder emitted, the route it
+ * ran against, and the request it provoked, exactly as observed. `merge-recordings.ts`
+ * turns it into screens, controls and endpoints; nothing else reads it.
+ *
+ * It is deliberately separate from `testability.recordings`, which is a list of flow
+ * names for the scorer and holds no evidence at all. One says *that* a flow was
+ * recorded; this says *what the recording saw*.
+ */
+export interface AnalysisRecording {
+  flow: string;
+  recordedAt: string;
+  /** The committed human-readable record the evidence was read from. */
+  file: string;
+  steps: RecordedStep[];
+  routes: { path: string; url: string; headings: string[] }[];
+  requests: RecordedRequest[];
+}
+
+export interface RecordedStep {
+  action: 'goto' | 'click' | 'fill' | 'select' | 'check' | 'uncheck' | 'press' | 'other';
+  /** The locator as the recorder emitted it. Evidence — never emitted into a page object. */
+  rawLocator: string | null;
+  /** From locator-rung.ts. 1-6 stable, 7-8 not. */
+  rung: number;
+  /** Redacted: a recording is not a place to keep a password. */
+  value: string | null;
+  /** The screen this step ran against, from the most recent navigation. */
+  screenPath: string | null;
+  /** The `screens[].controls` name this step resolves to, or null if nothing matched. */
+  resolvedControl: string | null;
+}
+
+/**
+ * One request the flow provoked.
+ *
+ * Shapes, not values: a precondition needs to know an endpoint takes a `name` and a
+ * `jobTitleId`, and knowing the particular name this human typed helps nobody and
+ * commits their data to the repo.
+ */
+export interface RecordedRequest {
+  method: string;
+  path: string;
+  status: number;
+  kind: 'xhr' | 'fetch' | 'document';
+  requestShape: string[] | null;
+  responseShape: string[] | null;
+}
+
 export interface Analysis {
   app: AnalysisApp;
   source: AnalysisSource;
@@ -180,10 +246,12 @@ export interface Analysis {
   components: Record<string, unknown>;
   screens: AnalysisScreen[];
   testability: AnalysisTestability;
+  /** What a human recorded, as evidence. Empty means the recorder has not run. */
+  recordings: AnalysisRecording[];
   stats: Record<string, number>;
 }
 
-export const SECTIONS = ['app', 'source', 'conventions', 'api', 'map', 'components', 'screens', 'testability', 'stats'] as const;
+export const SECTIONS = ['app', 'source', 'conventions', 'api', 'map', 'components', 'screens', 'testability', 'recordings', 'stats'] as const;
 export type Section = typeof SECTIONS[number];
 
 /**
@@ -203,5 +271,6 @@ export const SECTION_OWNER: Record<Section, string> = {
   components: 'compile-model.ts',
   screens: 'app-explorer (explore.mjs), enriched by compile-model.ts',
   testability: 'compile-model.ts',
+  recordings: 'app-recorder (ingest-recording.ts)',
   stats: 'compile-model.ts',
 };

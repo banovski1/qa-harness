@@ -133,7 +133,7 @@ const map = {
   notes: allNotes,
   errors: allErrors,
 };
-const SECTIONS = ['app', 'source', 'conventions', 'api', 'map', 'components', 'screens', 'testability', 'stats'];
+const SECTIONS = ['app', 'source', 'conventions', 'api', 'map', 'components', 'screens', 'testability', 'recordings', 'stats'];
 
 // Ordered first, then anything this file does not know about — a writer that dropped an
 // unrecognised key would silently delete another skill's section the moment the contract

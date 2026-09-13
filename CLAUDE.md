@@ -29,7 +29,7 @@ pipeline produces.
 | file | what it is |
 | --- | --- |
 | `.env` | yours. The only app-specific thing anyone writes by hand. `.env.example` is its committed template |
-| `analysis.json` | everything known about the app: nine sections, one contract |
+| `analysis.json` | everything known about the app: ten sections, one contract |
 
 There were sixteen files, then four. Anything derived from `analysis.json` and committed
 beside it is a second thing to diff and a second thing to keep honest — the rendered
@@ -38,7 +38,7 @@ dropped which buttons were destructive.
 
 ## The contract: `analysis.json`
 
-Nine sections, always all nine, each with exactly one owner. A section that is present
+Ten sections, always all ten, each with exactly one owner. A section that is present
 but empty means a skill has not run — `check-model.ts` says which.
 
 | section | owner | holds |
@@ -51,6 +51,7 @@ but empty means a skill has not run — `check-model.ts` says which.
 | `components` | compile-model | the locator layer. **The only place a selector may appear** |
 | `screens` | app-explorer, enriched by compile-model | one entry per screen: what was observed *and* what was derived |
 | `testability` | compile-model | the roll-up, and the recordings that raised it |
+| `recordings` | app-recorder (`ingest-recording.ts`) | what a human's recording saw: steps, routes, and the requests the flow provoked |
 | `stats` | compile-model | the counts a review reads first |
 
 `screens` is the one section with two writers, and the order matters: the explorer writes
@@ -112,8 +113,14 @@ node .claude/skills/app-explorer/lib/explore.mjs  # controls, deep
 npx tsx scripts/api-auth/verify-auth.ts --write   # credentials come from .env
 
 # 4. Compile, then gate the contract
-npx tsx scripts/model-compiler/compile-model.ts   # fills in the compiler's five sections
+npx tsx scripts/model-compiler/compile-model.ts   # merges recordings, fills the compiler's five sections
 npx tsx scripts/model-compiler/check-model.ts     # staleness, naming, addressability
+
+# 4b. Record a flow the crawl could not reach, and pour it back in
+#     (the app-recorder skill drives these; `npm run check` fails if the ingest
+#      happened and the compile did not)
+npm run record:ingest -- recordings/<flow>-<timestamp>.json
+npm run compile
 
 # 5. Generate the framework
 npx tsx scripts/framework-generator/emit/emit.ts [--dry-run]
@@ -206,8 +213,25 @@ first. Below 0.3 — the screen is a URL and little else.** A low score is a req
 evidence, not a defect in the app.
 
 A recording is the one thing a crawl cannot substitute for: it says what a click leads
-to, not merely what is on the page. Recording a flow with the `playwright-codegen` skill
-adds it to `testability.recordings` and lifts every screen it covers.
+to, not merely what is on the page.
+
+**And a recording pays for itself.** The `app-recorder` skill records a human walking the
+flow, captures the requests it provoked from the same `playwright-cli` session, and writes
+both to `recordings/`. `ingest-recording.ts` puts the evidence in the `recordings`
+section; `merge-recordings.ts` — inside the compiler, before component derivation — folds
+it into `screens`, `components` and `api.endpoints`. So the routes, controls, transitions
+and endpoints one recording proved are there for every test after it, and each recording
+makes the next one smaller.
+
+The merge is **additive, and the crawl always wins**. A recording proves a human addressed
+one element once; it cannot prove no second element carries the same handle, which is the
+one thing the crawl exists to establish. A recorded control may fill a gap and may never
+replace a proof — the disagreement is counted in `stats.recordingConflicts` and the
+crawl's answer stands.
+
+A screen still below 0.7 *after* being recorded is not asking for a second recording. Its
+controls cannot be addressed by name, and the fix is a re-crawl; `missing` says so in
+those words.
 
 ## Authentication is verified, never asserted
 
@@ -291,10 +315,15 @@ no exception. `node .claude/hooks/__fixtures__/run.mjs` is the rule set's own su
 here. Never use the Playwright MCP (`mcp__playwright__*`) tools. Scratch output lands in
 `.playwright-cli/` (gitignored).
 
-`playwright-codegen` is the one exception: `npx playwright codegen` opens a browser a **human**
-drives, and the skill shapes the result into `codegen-recordings/<flow>-<timestamp>.md`. Recordings
-are evidence of what happened and are never edited afterwards. If a screen's elements are missing,
-re-crawl; if a *flow* is unknown, record it.
+**There is no exception.** Human recording is `playwright-cli recording-start` /
+`recording-stop`, which the `app-recorder` skill drives — and because the same session
+answers `requests`, the network the flow provoked comes back with it, needing no HAR and
+no trace. `playwright-codegen` used to be the exception here and has been deleted.
+
+Recordings land in `recordings/<flow>-<timestamp>.{md,json}` — both committed, because the
+analysis is derived from them and a derivation whose input is not in the repo cannot be
+re-run. They are evidence of what happened and are never edited afterwards. If a screen's
+elements are missing, re-crawl; if a *flow* is unknown, record it.
 
 ## Test authoring rule
 

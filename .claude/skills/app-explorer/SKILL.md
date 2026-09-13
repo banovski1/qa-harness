@@ -220,7 +220,7 @@ is a finding: either genuinely live content, or a stability bug worth fixing her
 
 ## The contract
 
-`analysis.json` has nine sections and always all nine. You own **`map` and `screens`**
+`analysis.json` has ten sections and always all ten. You own **`map` and `screens`**
 and write no other.
 
 | section | owner |

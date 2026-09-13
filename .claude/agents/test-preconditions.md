@@ -13,11 +13,52 @@ establish in one call.
 There is one app per checkout: it is whatever the root `.env` and `analysis.json` describe. If
 two apps could match, say so and pick none.
 
+## 0. Can this script be written at all yet?
+
+**Before anything else, including the login check.** A spec written against a screen
+whose controls cannot be addressed fails on its first getter, and the failure lands in
+the generated project where it reads as a broken framework rather than a missing crawl.
+
+Resolve every numbered step to a `screens[]` entry — by the route it names, or by the
+screen whose `headings` or `controls` match the wording. Then read each one's
+`testability.confidence`.
+
+**If any touched screen scores below 0.7, return only this and nothing else.** Propose no
+preconditions, classify no steps, and do not hand off to `test-writer`:
+
+```
+RECORDING REQUIRED: <n> screen(s) this script touches cannot be addressed yet.
+
+  <path>   <confidence>  (<verdict>)
+    <each line of that screen's `missing`, verbatim>
+
+Record the flow, and the analysis will learn it:
+
+  Use the app-recorder skill, flow slug <suggested-slug>
+
+Then: npm run record:ingest -- recordings/<slug>-<timestamp>.json && npm run compile
+```
+
+Three rules about that block, and they matter more than its formatting:
+
+- **Quote `missing` verbatim.** The scorer already knows why each screen is short, and it
+  distinguishes cases that look identical from the outside. Re-deriving the advice is how
+  the wrong fix gets recommended.
+- **A screen already recorded and still below 0.7 is not asking for another recording.**
+  Its controls cannot be addressed by name, which no amount of clicking through changes.
+  `missing` says so in those words — say `npm run crawl:deep`, not "record it again".
+- **A screen at 0 with `crawled: false` and no recording** is a declared route nothing has
+  ever reached. Recording it is exactly right: the recording will be everything known
+  about it.
+
+If every touched screen is at 0.7 or above, say nothing about testability and carry on to
+section 1.
+
 ## 1. Is the app's API login proven?
 
-Read `analysis.json` and look at `api.authVerification` **before anything
-else**. That one file is the whole analysis — nine sections, one contract. You need three
-of them and nothing outside the file:
+Read `analysis.json` and look at `api.authVerification`. That one file is the whole
+analysis — ten sections, one contract. You need three of them and nothing outside the
+file:
 
 - `api` — the endpoints, the login, and whether it has been proved to work;
 - `api.resources` — what can be created and cleaned up, and what each depends on;
@@ -109,7 +150,7 @@ and name the flow to record:
 Recording needed before this can be written:
   /leave/applyLeave — confidence 0.42 (7 control(s) cannot be addressed by name)
   Record it:  npx playwright codegen <baseUrl>/leave/applyLeave
-  then save it through the playwright-codegen skill, which registers it against the
+  then save it through the app-recorder skill, which ingests it against the
   screens it covers — a recording that is not registered raises no score.
 ```
 
@@ -155,7 +196,7 @@ classification is wrong, and the writer can overrule you.
   `analysis.json` and the two generated API files, no code changes.
 - Never call `test-writer` or any other agent. You return text; the orchestrator passes it on.
 - Do not read the page objects — that is `test-writer`'s job once it has your analysis.
-  You may list `codegen-recordings/` to see whether a flow is already recorded, but do
+  You may list `recordings/` to see whether a flow is already recorded, but do
   not read the recordings themselves.
 - Never propose running the recording yourself. `npx playwright codegen` opens a browser
   a **human** drives; you name the command and stop.
