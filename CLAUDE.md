@@ -90,7 +90,15 @@ canonical; the aliases exist so a newcomer following README.md does not have to 
 paths. `npm run setup` installs the generator's toolchain, and `cp .env.example .env` is
 the first thing anyone does.
 
+**The whole of the below is wrapped in the `setup` skill.** A user who has filled in `.env`
+says `/setup` and never runs these by hand; `scripts/setup/preflight.mjs` gates it and stops
+with the one thing they must change. Run the phases individually when re-running one, or
+when debugging.
+
 ```bash
+# 0. Is this machine and this .env ready? /setup runs this first and stops on any FIX.
+npm run preflight
+
 # 1. Analysis — the three skills read the clone. Invoke them by name; each writes its
 #    own section via scripts/analysis/write-section.ts.
 #    app-dossier → app-components and app-api (both read `source`) → app-explorer.

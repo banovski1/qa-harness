@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "setup": "npm install --prefix scripts/framework-generator",
+    "preflight": "node scripts/setup/preflight.mjs",
     "crawl:map": "node .claude/skills/app-explorer/lib/map.mjs",
     "crawl:deep": "node .claude/skills/app-explorer/lib/explore.mjs",
     "verify-auth": "tsx scripts/api-auth/verify-auth.ts",

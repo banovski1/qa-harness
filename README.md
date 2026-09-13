@@ -46,7 +46,7 @@ environment you care about — but point it at staging first anyway.
 git clone <this repo> && cd qa-micro-agents
 npm install          # the root toolchain
 npm run setup        # the generator's toolchain
-npm run pipeline:test   # 47 tests. If these pass, the pipeline itself is sound
+npm run pipeline:test   # 51 tests. If these pass, the pipeline itself is sound
 ```
 
 Nothing is configured yet. That is the next step.
@@ -86,7 +86,32 @@ is committed and must never hold a real password.**
 One app per checkout. To analyse a second application, give it its own worktree —
 `npm run app:worktree -- <slug>` — rather than a second config here.
 
-### 2. Read the source — three skills, in Claude Code
+### 2. Say `/setup` in Claude Code
+
+That is the whole of it. The `setup` skill runs everything below — installs what is
+missing, reads your source, proves the login, crawls the running app, compiles, gates and
+generates — and reports how many screens you can write tests against.
+
+It starts by checking your `.env` and your machine:
+
+```bash
+npm run preflight     # what /setup runs first; safe to run yourself any time
+```
+
+Every line is `ok`, `warn` or `FIX`. **`/setup` stops on any `FIX`** and tells you the one
+thing to change — a missing `AUTH_READY_WHEN`, a clone that is not where you said, an
+`analysis.json` left over from a different application. `warn` lines are degraded results,
+not blockers: the loudest is a missing `APP_USERNAME`, which means the crawl sees only what
+a logged-out visitor sees.
+
+The rest of this section is what `/setup` does for you. Read it when you want to run a
+phase again on its own, or when something went wrong.
+
+---
+
+### The phases, by hand
+
+#### Read the source — three skills
 
 Ask Claude Code to run them by name, in this order. Each writes one section of
 `analysis.json` and nothing else:
@@ -99,7 +124,7 @@ run the app-api skill           # endpoints, and how to log in
 
 `app-dossier` must go first; the other two read what it wrote.
 
-### 3. Prove the login actually works
+#### Prove the login actually works
 
 ```bash
 npm run verify-auth -- --write
@@ -111,7 +136,7 @@ says `verified` if the first is refused and the second admitted. A citation is a
 hypothesis; this makes it a fact. Until it says `verified`, no agent will build test setup
 on that login.
 
-### 4. Crawl the running app — two passes
+#### Crawl the running app — two passes
 
 ```bash
 playwright-cli -s=myapp open https://staging.example.com/
@@ -126,7 +151,7 @@ buttons, fields and tables. Read the `map` section of `analysis.json` afterwards
 the quickest picture of an app this repo produces. The **deep crawl** is what proves a
 locator resolves to exactly one element.
 
-### 5. Compile, gate, generate
+#### Compile, gate, generate
 
 ```bash
 npm run compile     # joins source + crawl, scores every screen
@@ -137,13 +162,12 @@ npm run generate    # writes generated-framework/
 `check` is the one to read. `0 error(s)` means the contract is complete. Warnings name the
 step you skipped.
 
-### 6. Run what came out
+#### Run what came out
 
 ```bash
 cd generated-framework
 npm install && npx playwright install chromium
-cp .env.example .env      # APP_USERNAME / APP_PASSWORD again, for the tests
-npx tsc --noEmit && npx playwright test
+npx tsc --noEmit && npx playwright test   # credentials come from the root .env
 ```
 
 ## Now write a test
