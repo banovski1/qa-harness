@@ -40,19 +40,22 @@ playwright-cli -s=<session> open <baseUrl>
 node .claude/skills/app-explorer/lib/map.mjs --profile analysis/<app>/app-profile.yaml     # menus, minutes
 node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-profile.yaml # controls, deep
 
-# 3. Compile the model, then gate it
+# 3. Prove the documented API login actually works (stamps api.json)
+APP_USERNAME=... APP_PASSWORD=... npx tsx scripts/api-auth/verify-auth.ts --app <app> --write
+
+# 4. Compile the model, then gate it
 npx tsx scripts/model-compiler/compile-model.ts --app <app>     # writes app-model.json + ANALYSIS.md
 npx tsx scripts/model-compiler/check-model.ts --app <app>       # staleness, naming, addressability
 
-# 4. Generate the framework
+# 5. Generate the framework
 npx tsx scripts/framework-generator/emit/emit.ts --app <app> [--dry-run]
 
-# 5. The tests of the pipeline itself
+# 6. The tests of the pipeline itself
 npm test --prefix scripts/framework-generator          # compile-model's unit + fixture suite
 npm run typecheck --prefix scripts/framework-generator
 node .claude/hooks/__fixtures__/run.mjs                # the write-guard rule set
 
-# 6. The generated project
+# 7. The generated project
 cd generated-framework/<app> && npm install && npx playwright install chromium
 cp .env.example .env      # APP_USERNAME / APP_PASSWORD
 npx tsc --noEmit && npx playwright test
@@ -107,6 +110,19 @@ Four tables, and **only `components` holds a locator**.
   page object with a URL and nothing else, flagged `crawled: false`.
 - **Actions are crawl-proven; navigation is universal.** A typed method only where the crawl proved
   the transition through a control the screen owns. Every route still has `goto()`.
+
+## Authentication is verified, never asserted
+
+An `auth` block in `api.json` is read out of source, and a citation is a hypothesis.
+`scripts/api-auth/verify-auth.ts` executes it against the running instance and stamps
+`authVerification` with the verdict. **`verified` means one specific thing**: a
+parameter-free `GET` from the app's own endpoint list refused an anonymous caller and
+admitted this credential. A login answering `200` is not evidence — a re-rendered login
+page answers `200` too.
+
+No `authVerification`, no proven login. `test-preconditions` may not build on an
+unverified one. The block is written by the tool or it is absent; hand-editing it is the
+same lie as hand-editing anything else under `analysis/`.
 
 ## Assertions
 

@@ -6826,5 +6826,50 @@
     "Tier A: every row is an @OA annotation on the handler that serves it, so the path, summary, operationId and tag are the app's own words rather than an inference. CI fails a PR whose annotations are wrong, which makes them unusually trustworthy.",
     "490 operations across 141 tags. A request payload is recorded where the annotation declares a RequestBody; where it is absent the operation takes no body, or references a component schema that only the generated document resolves.",
     "An earlier version of this file reported Tier B, read from routes.yaml, because it searched for a spec file and this project generates its spec rather than committing it."
-  ]
+  ],
+  "authVerification": {
+    "verdict": "verified",
+    "reason": "/web/index.php/api/v2/buzz/feed answers 401 anonymously and 200 with the credential",
+    "checkedAt": "2026-09-13T09:02:27.284Z",
+    "credential": {
+      "via": "cookie",
+      "name": "orangehrm"
+    },
+    "probe": {
+      "method": "GET",
+      "path": "/web/index.php/api/v2/buzz/feed",
+      "anonymous": 401,
+      "authenticated": 200
+    },
+    "observations": [
+      {
+        "step": "csrf",
+        "request": "GET https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+        "status": 200,
+        "ok": true,
+        "detail": "read _token (130 chars)"
+      },
+      {
+        "step": "login",
+        "request": "POST https://opensource-demo.orangehrmlive.com/web/index.php/auth/validate",
+        "status": 302,
+        "ok": true,
+        "detail": "redirect → https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"
+      },
+      {
+        "step": "probe-anonymous",
+        "request": "GET https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/buzz/feed",
+        "status": 401,
+        "ok": true,
+        "detail": "no credential"
+      },
+      {
+        "step": "probe-authenticated",
+        "request": "GET https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/buzz/feed",
+        "status": 200,
+        "ok": true,
+        "detail": "cookie orangehrm"
+      }
+    ]
+  }
 }

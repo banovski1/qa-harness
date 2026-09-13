@@ -82,6 +82,42 @@ Find, in order of usefulness:
 
 Never put a credential in this file. Reference `env:APP_USERNAME` / `env:APP_PASSWORD`.
 
+### Then prove it — the auth block is not finished until the verifier passes
+
+A login read out of source is a **hypothesis**, however good the citation. Every auth
+block in this corpus was well-sourced and one of them was still wrong: the CSRF token a
+form field calls `_token` was published on the page as an entity-encoded component prop,
+so the documented flow could not have worked.
+
+```bash
+npx tsx scripts/api-auth/verify-auth.ts --app <app>          # look
+npx tsx scripts/api-auth/verify-auth.ts --app <app> --write  # stamp api.json
+```
+
+It runs the login you recorded against the running instance, then calls a parameter-free
+`GET` from your own `endpoints` list twice — once anonymously, once with the credential —
+and only says `verified` when the endpoint **refuses the first and admits the second**. A
+login that answers `200` proves nothing on its own; plenty of apps render their login page
+with a `200`.
+
+It needs `APP_USERNAME` / `APP_PASSWORD` in the environment and a reachable `baseUrl`.
+Read the verdict as instructions:
+
+| verdict | what it means | what you do |
+| --- | --- | --- |
+| `verified` | the credential opened a protected read | nothing — write `authVerification` and move on |
+| `failed` | the flow ran and did not work | fix the auth block; the observations name the step that broke |
+| `unverifiable` | no protected read to test against, or the spec names no scheme | say so in `notes`; do not claim the login works |
+| `skipped` | no credentials in the environment, or the app declares no API login | say which, in `notes` |
+
+**Rule: never hand-edit `authVerification`.** It is written by the verifier or it is
+absent. An auth block with no `authVerification` is unproven, and any skill reading
+`api.json` — `test-preconditions` above all — must treat it that way.
+
+If the tool cannot express the app's flow, **fix the tool, not the app's entry**. It
+knows token, Basic and form-session logins and no application names; a new shape belongs
+in `strategies.ts` where the next app inherits it.
+
 ## Output
 
 ```jsonc
@@ -95,6 +131,13 @@ Never put a credential in this file. Reference `env:APP_USERNAME` / `env:APP_PAS
             "success": { "cookie": "auth-token-secret", "status": 200 },
             "csrf": null,
             "users": [ { "role": "admin", "username": "env:APP_USERNAME" } ] },
+  // written only by scripts/api-auth/verify-auth.ts --write; never by hand
+  "authVerification": { "verdict": "verified|failed|unverifiable|skipped",
+                        "reason": "...", "checkedAt": "...",
+                        "credential": { "via": "cookie", "name": "orangehrm" },
+                        "probe": { "path": "/api/v2/buzz/feed",
+                                   "anonymous": 401, "authenticated": 200 },
+                        "observations": [] },
   "endpoints": [ { "method": "POST", "path": "/api/v1/Contact",
                    "summary": "create a contact", "tier": "B",
                    "request": { "firstName": "string", "lastName": "string" },
@@ -117,3 +160,6 @@ exhaustive coverage of an admin API nothing will call.
   the CI workflows. "No spec" is a claim, and an unevidenced one is usually wrong.
 - **This file is a reference, not a promise.** An endpoint here may still 403 for the
   test user. Say so in `notes` when you have reason to think it will.
+- **Run the verifier before you report.** An `api.json` whose `auth` block has never been
+  executed is a draft. `verified` is the only state that entitles a downstream skill to
+  build a precondition on that login.

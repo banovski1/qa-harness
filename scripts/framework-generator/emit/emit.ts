@@ -434,7 +434,7 @@ function renderPreconditions(model: AppModel): string {
     const keys = (deleteOp?.path.match(/\{(\w+)\}/g) ?? []).map((s: string) => s.slice(1, -1));
     const idField = keys[keys.length - 1] ?? 'id';
     const undo = deleteOp
-      ? `    this.created.push({\n      label: \`${name} \${id}\`,\n      undo: () => this.api.${prop(name)}.remove({ ${keys.map(k => `${k}: id`).join(', ')} }),\n    });`
+      ? `    this.created.push({\n      label: \`${name} \${id}\`,\n      undo: () => this.api.${prop(name)}.remove({ ${keys.map((k: string) => `${k}: id`).join(', ')} }),\n    });`
       : `    // The API declares no delete for ${name}: this record cannot be cleaned up.`;
     lines.push(
       `  /** Makes true: ${res.establishes}.${res.requires.length ? ` Needs an existing ${res.requires.join(' and ')} — pass their ids in overrides.` : ''} */`,

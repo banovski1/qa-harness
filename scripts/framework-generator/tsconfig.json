@@ -1,5 +1,5 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./*.ts", "./emit/*.ts", "../model-compiler/*.ts"],
+  "include": ["./*.ts", "./emit/*.ts", "../model-compiler/*.ts", "../api-auth/*.ts"],
   "exclude": ["./emit/runtime"]
 }

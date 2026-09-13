@@ -54,7 +54,7 @@
     {
       "method": "POST",
       "path": "/api/users",
-      "summary": "register \u2014 creates a test user",
+      "summary": "register — creates a test user",
       "tier": "C",
       "auth": false,
       "request": {
@@ -97,7 +97,7 @@
     {
       "method": "POST",
       "path": "/api/articles",
-      "summary": "create an article \u2014 the precondition workhorse",
+      "summary": "create an article — the precondition workhorse",
       "tier": "C",
       "auth": true,
       "request": {
@@ -132,7 +132,7 @@
     {
       "method": "DELETE",
       "path": "/api/articles/{slug}",
-      "summary": "delete an article \u2014 use for cleanup",
+      "summary": "delete an article — use for cleanup",
       "tier": "C",
       "auth": true,
       "source": "src/app/features/article/services/articles.service.ts",
@@ -185,7 +185,15 @@
     }
   ],
   "notes": [
-    "Every row is Tier C: this clone contains no backend and no specification, so these endpoints are what the Angular services call, not what the server promises. The RealWorld API is specified publicly \u2014 if a precondition needs a guarantee, read that spec rather than trusting this file.",
+    "Every row is Tier C: this clone contains no backend and no specification, so these endpoints are what the Angular services call, not what the server promises. The RealWorld API is specified publicly — if a precondition needs a guarantee, read that spec rather than trusting this file.",
     "The API is shared and world-writable. Create what you assert on."
-  ]
+  ],
+  "authVerification": {
+    "verdict": "skipped",
+    "reason": "APP_USERNAME / APP_PASSWORD are not set in the environment",
+    "checkedAt": "2026-09-13T09:02:29.888Z",
+    "credential": null,
+    "probe": null,
+    "observations": []
+  }
 }

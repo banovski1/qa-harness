@@ -21,7 +21,7 @@
   "auth": {
     "kind": "undocumented-in-spec",
     "schemes": {},
-    "specSays": "nothing \u2014 the document declares no securitySchemes, no top-level security and no per-operation security, so which credential each endpoint wants is not stated by the contract.",
+    "specSays": "nothing — the document declares no securitySchemes, no top-level security and no per-operation security, so which credential each endpoint wants is not stated by the contract.",
     "loginEndpoint": {
       "method": "POST",
       "path": "/api/auth/callback/credentials",
@@ -1573,9 +1573,17 @@
     }
   ],
   "notes": [
-    "Tier A, read from the committed document \u2014 paths, payload schemas and required fields are the API's own contract, not an inference.",
+    "Tier A, read from the committed document — paths, payload schemas and required fields are the API's own contract, not an inference.",
     "121 operations. An earlier version of this file was deliberately empty, on the false premise that the API was only tRPC; the spec was in the clone the whole time at docs/api-reference/v2/openapi.json.",
     "The tRPC procedures under packages/trpc/server/routers/viewer/* remain undocumented here on purpose: they serve the web app, are unversioned, and this REST spec is the supported surface.",
     "The document declares no servers either, so the base URL is unknown rather than assumed. Both gaps are the spec's, not the reader's."
-  ]
+  ],
+  "authVerification": {
+    "verdict": "unverifiable",
+    "reason": "the spec declares no security scheme — settle the credential against a deployment first",
+    "checkedAt": "2026-09-13T09:02:29.890Z",
+    "credential": null,
+    "probe": null,
+    "observations": []
+  }
 }

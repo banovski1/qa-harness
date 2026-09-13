@@ -37,7 +37,7 @@
         "role": "admin",
         "username": "env:APP_USERNAME",
         "password": "env:APP_PASSWORD",
-        "note": "the public demo gates on a user picker rather than a password \u2014 see app-profile.yaml"
+        "note": "the public demo gates on a user picker rather than a password — see app-profile.yaml"
       }
     ],
     "note": "GET /App/user with Basic credentials both authenticates and returns the token to reuse. This is the cheapest possible session: one request, no form, no CSRF."
@@ -65,7 +65,7 @@
     {
       "method": "POST",
       "path": "/api/v1/{entityType}",
-      "summary": "create a record \u2014 the precondition workhorse",
+      "summary": "create a record — the precondition workhorse",
       "tier": "B",
       "auth": true,
       "request": {
@@ -101,7 +101,7 @@
     {
       "method": "DELETE",
       "path": "/api/v1/{entityType}/{id}",
-      "summary": "delete a record \u2014 use for test cleanup",
+      "summary": "delete a record — use for test cleanup",
       "tier": "B",
       "auth": true,
       "source": "application/Espo/Resources/routes.json",
@@ -128,7 +128,7 @@
     {
       "method": "GET",
       "path": "/api/v1/Metadata",
-      "summary": "the full metadata tree \u2014 field definitions for every entity, i.e. what a create payload may contain",
+      "summary": "the full metadata tree — field definitions for every entity, i.e. what a create payload may contain",
       "tier": "B",
       "auth": true,
       "source": "application/Espo/Resources/routes.json:6",
@@ -145,9 +145,47 @@
     }
   ],
   "notes": [
-    "The API is generic: one set of CRUD routes serves every entity, with {entityType} taken from the 14 object scopes listed in routes.json. So a precondition for any entity is the same request with a different path segment \u2014 which is why this file lists the shapes rather than 14 copies of each.",
+    "The API is generic: one set of CRUD routes serves every entity, with {entityType} taken from the 14 object scopes listed in routes.json. So a precondition for any entity is the same request with a different path segment — which is why this file lists the shapes rather than 14 copies of each.",
     "The payload a create accepts is per entity and is declared in application/Espo/Resources/metadata/entityDefs/<entityType>.json. GET /api/v1/Metadata returns the same thing at runtime.",
     "115 routes are declared in application/Espo/Resources/routes.json. The ones omitted here are admin, mail and stream operations no UI precondition needs; add a row when one does.",
     "This is a PUBLIC DEMO. It resets periodically and may rate-limit. Treat write endpoints as usable but not guaranteed, and never assume data survives between runs."
-  ]
+  ],
+  "authVerification": {
+    "verdict": "verified",
+    "reason": "/api/v1/Metadata answers 401 anonymously and 200 with the credential",
+    "checkedAt": "2026-09-13T09:02:28.680Z",
+    "credential": {
+      "via": "header",
+      "name": "Authorization"
+    },
+    "probe": {
+      "method": "GET",
+      "path": "/api/v1/Metadata",
+      "anonymous": 401,
+      "authenticated": 200
+    },
+    "observations": [
+      {
+        "step": "login",
+        "request": "GET https://demo.eu.espocrm.com/api/v1/App/user",
+        "status": 200,
+        "ok": true,
+        "detail": "{\"user\":{\"id\":\"1\",\"name\":\"Jack Adams\",\"deleted\":false,\"userName\":\"admin\",\"type\":\"admin\",\"authMethod\":null,\"salutationName\":null,\"firstName\":\"Jack\",\"lastName\":\"Adams\",\"isActive\":tru…"
+      },
+      {
+        "step": "probe-anonymous",
+        "request": "GET https://demo.eu.espocrm.com/api/v1/Metadata",
+        "status": 401,
+        "ok": true,
+        "detail": "no credential"
+      },
+      {
+        "step": "probe-authenticated",
+        "request": "GET https://demo.eu.espocrm.com/api/v1/Metadata",
+        "status": 200,
+        "ok": true,
+        "detail": "header Authorization"
+      }
+    ]
+  }
 }
