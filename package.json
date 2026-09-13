@@ -8,6 +8,7 @@
     "crawl:map": "node .claude/skills/app-explorer/lib/map.mjs --profile",
     "crawl:deep": "node .claude/skills/app-explorer/lib/explore.mjs --profile",
     "verify-auth": "tsx scripts/api-auth/verify-auth.ts",
+    "register-recording": "tsx scripts/analysis/register-recording.ts",
     "compile": "tsx scripts/model-compiler/compile-model.ts",
     "check": "tsx scripts/model-compiler/check-model.ts",
     "generate": "tsx scripts/framework-generator/emit/emit.ts",

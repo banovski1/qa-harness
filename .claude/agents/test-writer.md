@@ -30,8 +30,12 @@ flow, and give the user the command:
 npx playwright codegen <baseUrl><path>
 ```
 
-then stop. Recording it takes them two minutes and settles what the crawl could not: what
-a click leads to, which field comes first, what the app does on submit. A spec inferred
+then stop — the `playwright-codegen` skill shapes the result and registers it, which is
+what moves the score. Recording takes them two minutes and settles what the crawl could
+not: what a click leads to, which field comes first, what the app does on submit.
+
+If the screen's `testability.recorded` is already `true` and it still scores low, do not
+ask again: its controls cannot be addressed by name and the fix is a re-crawl. Say that. A spec inferred
 past a low score fails on the third step and costs far more to debug than the recording
 would have cost to make. Writing it anyway is the mistake this section exists to prevent.
 

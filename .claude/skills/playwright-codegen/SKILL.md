@@ -12,12 +12,15 @@ TypeScript. `playwright-cli` stays the tool for every agent-driven browser task 
 repo — this skill exists only to capture a human-driven recording and shape its output
 into something reusable.
 
-A recording is one of the two inputs `test-writer` reads. `analysis/` says what is on each
-screen; a recording is the only record of what the app *does* — the order of steps, what a
-click leads to, what the app accepts. The two compose, and shaping (step 3) is where they
-meet: an unstable recorded locator is repaired against the label dictionary rather than left
-for a human to puzzle over. This skill writes only to `codegen-recordings/`; never to
-`generated-framework/` or `analysis/`.
+A recording is one of the two inputs `test-writer` reads. `analysis/<app>/analysis.json`
+says what is on each screen; a recording is the only record of what the app *does* — the
+order of steps, what a click leads to, what the app accepts. The two compose, and shaping
+(step 3) is where they meet: an unstable recorded locator is repaired against the
+`screens` section rather than left for a human to puzzle over.
+
+This skill writes the recording to `codegen-recordings/`, and registers it in
+`analysis.json`'s `testability.recordings` (step 5) — and touches nothing else. It never
+writes to `generated-framework/`, and it never edits an analysis section by hand.
 
 ## 1. Resolve BASE_URL
 
@@ -26,7 +29,7 @@ Read, in order, stopping at the first that exists:
 1. `generated-framework/<app>/.env` — `BASE_URL=`
 2. `generated-framework/<app>/.env.example` — `BASE_URL=` (warn: using the example default,
    suggest `cp .env.example .env`)
-3. `app-config.yaml` — `baseUrl:`
+3. `analysis/<app>/app-profile.yaml` — `baseUrl:`
 
 Never hardcode an app URL. If none of the three resolve, stop and ask the user for one.
 
@@ -108,7 +111,7 @@ Structure:
 2. **fill** `getByRole('textbox', { name: 'Username' })` = `"Admin"` — stable
 3. **click** `locator('.oxd-table tr:nth-child(3) button')` — ⚠ UNSTABLE (positional CSS)
    → resolves to `recordsTable` — "Username" (table, rung 4) via `tableByColumn`
-     [analysis/<app>/label-dictionary.json → /admin/viewSystemUsers]
+     [analysis.json § screens → /admin/viewSystemUsers]
 ...
 
 ## Raw generated code
@@ -131,16 +134,17 @@ Shaping rules:
   single ranking the whole repo shares, so a step flagged here reads the same way it would to
   the write-hook or the generator. Rungs 1-6 are stable; 7 and 8 are flagged **UNSTABLE**
   with the reason `classify` gives (positional, unnamed role, raw CSS, text-only).
-- **Repair each flagged step against the label dictionary.** Take the route from the most
+- **Repair each flagged step against the `screens` section.** Take the route from the most
   recent `goto` (or the URL the step ran against), strip the `/web/index.php` prefix, and look
-  it up in `../../../analysis/<app>/label-dictionary.json`. Match the flagged element to a dictionary entry by
+  it up in `analysis/<app>/analysis.json` — the `screens` entry whose `path` matches, then its
+  `controls`. Match the flagged element to a control by
   position in the form and by kind, and record the resolved element — its `name`, `label` and
   rung — as the substitute. Write what it *is*, not what it might be:
 
   ```
   9. **click** `locator('.oxd-icon.bi-caret-down-fill.oxd-select-text--arrow')` — ⚠ UNSTABLE (raw CSS)
      → resolves to `leaveTypeDropdown` — "Leave Type" (dropdown, rung 4) via `labelledSelect`
-       [analysis/<app>/label-dictionary.json → /leave/applyLeave]
+       [analysis.json § screens → /leave/applyLeave]
   ```
 
   When the route is absent from the dictionary, or no entry plausibly matches, say so
@@ -158,7 +162,7 @@ Shaping rules:
 Tell the user:
 - Raw file path and shaped file path (both carrying the final `<content-slug>-<timestamp>` name).
 - Step count, and how many were flagged UNSTABLE.
-- How many flagged steps were repaired from the label dictionary, and how many could not be.
+- How many flagged steps were repaired from the `screens` section, and how many could not be.
 - That the shaped file is a reference — if they want it acted on, they can paste its steps
   into a `test-writer` request. Do not auto-invoke it.
 - `codegen-recordings/` is a growing library of one file per recording —
@@ -172,15 +176,42 @@ Tell the user:
 - Never write under `generated-framework/` — it's hook-protected and this output isn't
   generator input anyway.
 - Never invent or hardcode BASE_URL or credentials; read them from `.env` /
-  `app-config.yaml` per step 1.
+  `analysis/<app>/app-profile.yaml` per step 1.
 - Raw codegen output stays under `.playwright-cli/codegen/` (already gitignored); only
   the shaped Markdown file is committed, under `codegen-recordings/`.
 - Every shaped file gets a unique `<content-slug>-<timestamp>.md` name (step 3) —
   never reuse the launch-time slug as the final filename, so recordings accumulate as
   a library instead of overwriting each other.
-- This skill reads `../../../analysis/<app>/label-dictionary.json` and never writes to it. The analysis is
+- This skill reads `analysis/<app>/analysis.json` and writes only its `testability.recordings`. The analysis is
   the repo analyzer's output; a recording that disagrees with it is a reason to re-run the
   analyzer, not to edit its report.
 - Once BASE_URL resolves and a slug is chosen (from the request, or the `recording`
   fallback), launch codegen immediately in the same turn — do not ask for confirmation
   to start.
+
+## 5. Register the recording, or it counts for nothing
+
+A recording that is saved and not registered changes no score. `test-preconditions`
+refuses a journey whose screens fall below 0.7 and asks for a recording; if nothing
+records that one was made, it asks again for the same flow, for ever.
+
+```bash
+npx tsx scripts/analysis/register-recording.ts --app <app> \
+  --flow <slug> \
+  --file codegen-recordings/<slug>-<timestamp>.md \
+  --screens /leave/applyLeave,/leave/viewMyLeaveList
+```
+
+`--screens` are the paths the recording actually walks through, spelled exactly as the
+`screens` entries carry them. A path that matches no screen is rejected rather than
+silently ignored — a typo that raised nothing while appearing to would be worse than the
+error.
+
+Re-registering the same `--flow` replaces its entry, so a re-recording supersedes the one
+it corrects rather than stacking beside it.
+
+Report the score each screen moved to. A screen that was never crawled goes to 0.7 on the
+strength of the recording alone — the recording names its controls, which is more than a
+crawl of it ever proved. A screen that stays below 0.7 **after** being recorded is not
+asking for another recording: its controls cannot be addressed by name, and the fix is a
+re-crawl. `missing` says so in those words.

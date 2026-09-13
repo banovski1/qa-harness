@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { scoreScreen, verdictFor, scoreScreens, UNCRAWLED } from '../../analysis/testability.ts';
+import { scoreScreen, verdictFor, scoreScreens, UNCRAWLED, RECORDED_ONLY } from '../../analysis/testability.ts';
 import { SECTIONS, SECTION_OWNER } from '../../analysis/analysis-types.ts';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -79,4 +79,24 @@ test('every writer of analysis.json agrees on the section list', () => {
     assert.match(source, /for \(const key of Object\.keys\(current\)\)/,
       `${writer} rebuilds the file without carrying through unknown keys`);
   }
+});
+
+test('a recording of a route the crawl never reached is what makes it writable', () => {
+  // The case a recording is worth most in, and the one the scorer used to ignore: a
+  // declared-but-unreached screen stayed at zero however often it was recorded, so the
+  // agent asked for a recording that could never raise the score.
+  const screens: any[] = [{ ...screen([]), path: '/editor', crawled: false }];
+  scoreScreens(screens, []);
+  assert.equal(verdictFor(screens[0].testability.confidence), 'unknown');
+
+  scoreScreens(screens, [{ flow: 'write', path: 'r.md', recordedAt: '', screens: ['/editor'] }]);
+  assert.deepEqual(screens[0].testability, RECORDED_ONLY);
+  assert.equal(verdictFor(screens[0].testability.confidence), 'write');
+});
+
+test('a screen still weak after recording asks for a re-crawl, not another recording', () => {
+  const s = scoreScreen(screen([named(), named(2), named(2), named(2)]), true);
+  assert.ok(s.confidence < 0.7, 'still below the threshold');
+  assert.ok(s.missing.some(m => /already covers this screen/.test(m) && /re-crawl/.test(m)),
+    'missing must say the recording exists and name the real fix');
 });

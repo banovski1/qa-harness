@@ -109,13 +109,23 @@ and name the flow to record:
 Recording needed before this can be written:
   /leave/applyLeave — confidence 0.42 (7 control(s) cannot be addressed by name)
   Record it:  npx playwright codegen <baseUrl>/leave/applyLeave
-  then save it through the playwright-codegen skill so it lands in codegen-recordings/.
+  then save it through the playwright-codegen skill, which registers it against the
+  screens it covers — a recording that is not registered raises no score.
+```
+
+**Check `testability.recorded` before you ask.** A screen that is already recorded and
+still scores low is not asking for another recording — its controls cannot be addressed
+by name, and `missing` says so in those words. Report that instead:
+
+```
+  /leave/applyLeave — confidence 0.6, already recorded.
+  14 control(s) cannot be addressed by name; this needs a re-crawl, not another recording.
 ```
 
 A crawl says what is on a page. A recording says what a click leads to, which is the
 thing a journey test is made of and the thing no crawl can supply. Asking for one is a
 normal outcome, not a failure — and it is cheaper than a spec built on inference that
-fails on the third step.
+fails on the third step. Asking twice for the same one is a bug.
 
 ## 4. Return the enhanced prompt
 

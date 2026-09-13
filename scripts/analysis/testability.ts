@@ -28,6 +28,15 @@ export function scoreScreen(screen: AnalysisScreen, recorded: boolean): ScreenTe
   if (unaddressable > 0) missing.push(`${unaddressable} control(s) cannot be addressed by name`);
   if (!screen.headings?.length) missing.push('no heading to assert the screen by');
 
+  // Asking for a recording that already exists is the loop this prevents: a screen can
+  // stay under the threshold after being recorded, and the answer then is a re-crawl —
+  // the controls are unnameable, which no amount of clicking through will change.
+  if (recorded) {
+    missing.push(unaddressable > 0
+      ? `a recording already covers this screen — the remaining gap is ${unaddressable} unaddressable control(s), so re-crawl rather than re-record`
+      : 'a recording already covers this screen');
+  }
+
   const ratio = controls.length ? addressable / controls.length : 0;
   // A recording is direct evidence of the flow, which nothing derived from a crawl can
   // replace: it says what a click leads to, not merely what is on the page.
@@ -45,6 +54,25 @@ export function scoreScreen(screen: AnalysisScreen, recorded: boolean): ScreenTe
     missing,
   };
 }
+
+/**
+ * A route the crawl never reached, but a human walked through with the recorder.
+ *
+ * This is the case a recording is worth most in, and it was the case the scorer ignored:
+ * a declared-but-unreached screen stayed at zero however many times it was recorded, so
+ * the agent asked for a recording that could never raise the score. A recording names
+ * the controls and the order they are used in — which is more than a crawl of the screen
+ * would have proved — so it is enough to write against.
+ */
+export const RECORDED_ONLY: ScreenTestability = {
+  confidence: CONFIDENT,
+  addressable: 0,
+  unaddressable: 0,
+  hasTable: false,
+  crawled: false,
+  recorded: true,
+  missing: ['no crawl reached this route — everything known about it comes from the recording'],
+};
 
 /** Declared but never reached: a URL and nothing behind it. */
 export const UNCRAWLED: ScreenTestability = {
@@ -71,9 +99,10 @@ export function scoreScreens(
   const recorded = new Set(recordings.flatMap(r => r.screens));
   const summary = { write: 0, recordFirst: 0, unknown: 0, total: screens.length };
   for (const screen of screens) {
+    const wasRecorded = recorded.has(screen.path);
     screen.testability = screen.crawled === false
-      ? { ...UNCRAWLED }
-      : scoreScreen(screen, recorded.has(screen.path));
+      ? (wasRecorded ? { ...RECORDED_ONLY } : { ...UNCRAWLED })
+      : scoreScreen(screen, wasRecorded);
     const verdict = verdictFor(screen.testability.confidence);
     if (verdict === 'write') summary.write += 1;
     else if (verdict === 'record-first') summary.recordFirst += 1;

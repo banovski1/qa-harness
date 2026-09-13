@@ -179,7 +179,9 @@ Recording needed before this can be written:
 A crawl can see what is *on* a page. It cannot see what a click *leads to*, which field
 must be filled first, or what the app does on submit. When the score is low, two minutes
 of recording settles what no amount of guessing will. Run the command, click through the
-flow once, and the `playwright-codegen` skill turns it into evidence the agents can use.
+flow once, and the `playwright-codegen` skill turns it into evidence the agents can use —
+including registering it against the screens it covers, which is what raises the score.
+A recording that is saved but never registered changes nothing.
 
 **This is the most important habit to build.** A spec written past a low score fails on
 its third step and costs an hour to debug.
