@@ -23,7 +23,7 @@ const UNSCOPED_TEXT = /\.getByText\s*\(/;
 const FIX_SPEC =
   'Locators live in src/pages/** wrapped in a component. Add a getter to the protected page object and call it from the spec.';
 const FIX_POSITIONAL =
-  'Positional selectors break on any layout change. Use a named role or label locator; if the element has no accessor, record the flow with the playwright-codegen skill and add one to the page object.';
+  'Positional selectors break on any layout change. Use a named role or label locator; if the element has no accessor, record the flow with the app-recorder skill and add one to the page object.';
 
 function unstableGetters(root) {
   const found = new Map();
@@ -81,7 +81,7 @@ export function locatorRules(ctx) {
               rule: 'unstable-getter',
               line: no,
               found: `${getter} (${owner}) is marked // UNSTABLE`,
-              fix: 'This getter resolves to more than one element, or has no stable anchor. Record the flow with the playwright-codegen skill and give the page object a scoped accessor, then use that.',
+              fix: 'This getter resolves to more than one element, or has no stable anchor. Record the flow with the app-recorder skill and give the page object a scoped accessor, then use that.',
             });
           }
         }

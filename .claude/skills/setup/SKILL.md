@@ -125,8 +125,9 @@ Tell the user, concretely:
   `test-preconditions` -> `test-writer` -> `test-runner` chain takes it from there.
 
 If many screens score low, say so and name the remedy: record the flow with the
-`playwright-codegen` skill, then `npm run register-recording`. A low score is a request
-for evidence, not a defect in their app.
+`app-recorder` skill, then `npm run record:ingest -- <the .json it wrote>` and
+`npm run compile`. A low score is a request for evidence, not a defect in their app —
+and each recording makes the next one smaller.
 
 ---
 
