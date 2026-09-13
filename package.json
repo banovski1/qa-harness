@@ -4,6 +4,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "analyze": "npm run --prefix scripts/repo-analyzer analyze --"
+    "setup": "npm install --prefix scripts/framework-generator",
+    "crawl:map": "node .claude/skills/app-explorer/lib/map.mjs --profile",
+    "crawl:deep": "node .claude/skills/app-explorer/lib/explore.mjs --profile",
+    "verify-auth": "tsx scripts/api-auth/verify-auth.ts",
+    "compile": "tsx scripts/model-compiler/compile-model.ts",
+    "check": "tsx scripts/model-compiler/check-model.ts",
+    "generate": "tsx scripts/framework-generator/emit/emit.ts",
+    "pipeline:test": "tsx --test scripts/model-compiler/__tests__/*.test.ts",
+    "pipeline:typecheck": "npm run typecheck --prefix scripts/framework-generator",
+    "hooks:test": "node .claude/hooks/__fixtures__/run.mjs"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.13",
+    "typescript": "^5.9.3",
+    "@types/node": "^22.20.1"
   }
 }

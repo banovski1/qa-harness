@@ -75,6 +75,12 @@ by side, and adding a fifth is a new profile, never a code change.
 
 ## Commands
 
+`package.json` at the root wraps each of these (`npm run compile -- --app <app>`, and
+likewise `check`, `generate`, `verify-auth`, `crawl:map`, `crawl:deep`). The `npx tsx`
+forms below are canonical; the aliases exist so a newcomer following README.md does not
+have to know the paths. `npm run setup` installs the generator's toolchain, and
+`analysis/_template/app-profile.yaml` is the file a new app is copied from.
+
 ```bash
 # 1. Analysis — the three skills read the clone. Invoke them by name; each writes its
 #    own section via scripts/analysis/write-section.ts.
