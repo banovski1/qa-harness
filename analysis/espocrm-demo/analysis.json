@@ -4,7 +4,7 @@
     "baseUrl": "https://demo.eu.espocrm.com/",
     "repoPath": "~/Projects/espocrm",
     "repoCommit": "8b4f900085d2e21097b72c8cc27e14cb1de5cbd8",
-    "generatedAt": "2026-09-13T14:05:05.090Z",
+    "generatedAt": "2026-09-13T14:05:05.996Z",
     "stack": "backbone / php (bespoke, Slim-like DI container)"
   },
   "source": {

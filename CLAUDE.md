@@ -15,7 +15,7 @@ analysis/<app>/app-profile.yaml     the only hand-written file: repoPath, baseUr
         ├─► app-components ──► conventions        how the app is built
         ├─► app-api ─────────► api                endpoints, and how to log in
         └─► app-explorer ────► map, screens       what the running app presents
-                    │                             (and renders app-map.yaml from `map`)
+                    │
         compile-model.ts ◄──┘   deterministic, pure, snapshot-tested
                     │
                     └─► components, screens[].uses, api.resources, testability, stats
@@ -23,16 +23,17 @@ analysis/<app>/app-profile.yaml     the only hand-written file: repoPath, baseUr
                                     └─► emit.ts ──► generated-framework/<app>/
 ```
 
-**Two artifacts per app**, plus the profile you write:
+**One artifact per app**, plus the profile you write:
 
 | file | what it is |
 | --- | --- |
 | `app-profile.yaml` | yours. The only app-specific thing anyone writes by hand |
 | `analysis.json` | everything known about the app: nine sections, one contract |
-| `app-map.yaml` | the menu map, rendered from `analysis.json`'s `map` for people to read |
 
-There were sixteen files and a second `app-model.json`, and answering "what can I
-address on this screen?" meant opening two of them and joining by path.
+There were sixteen files, then four. Anything derived from `analysis.json` and committed
+beside it is a second thing to diff and a second thing to keep honest — the rendered
+menu map was the last of them, and its own reader could not tell that it silently
+dropped which buttons were destructive.
 
 ## The contract: `analysis.json`
 
@@ -45,7 +46,7 @@ but empty means a skill has not run — `check-model.ts` says which.
 | `source` | app-dossier | declared routes, entities, dependencies, existing tests, self-documentation |
 | `conventions` | app-components | the UI library, region selectors, how a label reaches an input |
 | `api` | app-api | endpoints, tiers, spec, `auth`, `authVerification`, and `resources` (derived) |
-| `map` | app-explorer (`map.mjs`) | the menu map — what `app-map.yaml` renders |
+| `map` | app-explorer (`map.mjs`) | the menu map: modules, entries, and each screen's buttons, fields and tables |
 | `components` | compile-model | the locator layer. **The only place a selector may appear** |
 | `screens` | app-explorer, enriched by compile-model | one entry per screen: what was observed *and* what was derived |
 | `testability` | compile-model | the roll-up, and the recordings that raised it |
@@ -129,7 +130,7 @@ these four; none is chosen yet.
 
 ## The map
 
-`app-map.yaml` answers "where is everything?" — the primary menu, each module's own menu including
+The `map` section answers "where is everything?" — the primary menu, each module's own menu including
 entries that only open a submenu, and per screen its heading, buttons, fields with types, and
 tables with columns. It navigates through the application's own menus rather than following
 `<a href>`, because most business software does not link its screens.

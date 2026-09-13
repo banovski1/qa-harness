@@ -14,7 +14,7 @@ screen?" meant opening two of them and joining by path.
 | `source` | app-dossier | declared routes, entities, dependencies, existing tests, self-documentation |
 | `conventions` | app-components | the UI library, region selectors, how a label reaches an input |
 | `api` | app-api | endpoints, tiers, spec, `auth`, `authVerification`, `resources` (derived) |
-| `map` | app-explorer (`map.mjs`) | the menu map — `app-map.yaml` is rendered from it |
+| `map` | app-explorer (`map.mjs`) | the menu map: modules, menu entries, and each screen's buttons, fields and tables |
 | `components` | compile-model | the locator layer. **The only place a selector may appear** |
 | `screens` | app-explorer, enriched by compile-model | one entry per screen |
 | `testability` | compile-model | the roll-up, and the recordings that raised it |

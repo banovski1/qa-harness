@@ -122,9 +122,10 @@ npm run crawl:deep -- analysis/my-app/app-profile.yaml    # longer: every contro
 ```
 
 The **map** walks the application's own menus — because most business software does not
-link its screens — and answers "where is everything?". It writes `app-map.yaml`, which is
-worth reading yourself. The **deep crawl** is what proves a locator resolves to exactly
-one element.
+link its screens — and answers "where is everything?": every module, and per screen its
+buttons, fields and tables. Read the `map` section of `analysis.json` afterwards; it is
+the quickest picture of an app this repo produces. The **deep crawl** is what proves a
+locator resolves to exactly one element.
 
 ### 5. Compile, gate, generate
 

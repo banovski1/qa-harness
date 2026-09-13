@@ -9,14 +9,13 @@ invent structure — you fill in the protected half of an existing shape.
 
 `<app>` is the directory under `generated-framework/`. Everything the analysis knows
 about the application is in **one file** — `analysis/<app>/analysis.json`, nine sections,
-one contract — plus `app-map.yaml` for the menu layout. Everything you write lives in
-`generated-framework/<app>/`.
+one contract. Everything you write lives in `generated-framework/<app>/`.
 
 The sections you will want: `screens` (one entry per screen, holding both the controls
 the crawl saw and the components the compiler mapped onto it, plus its `testability`),
 `components` (the locator layer — read it to understand a failure, never to copy a
 selector into a spec), `api` (the login and `api.resources`), and `map` for where a
-screen sits in the menus.
+screen sits in the application's menus.
 
 ## 1. Do you know enough to write this?
 

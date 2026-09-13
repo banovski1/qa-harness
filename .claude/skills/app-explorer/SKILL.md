@@ -22,12 +22,11 @@ For an app named `<app>`:
 analysis/<app>/
   app-profile.yaml   the only app-specific file — you write this one
   analysis.json      every skill's findings, one section each. You own `map` and `screens`
-  app-map.yaml       the menu map, rendered from analysis.json's `map` for people to read
   .crawl/            raw crawl output — working material, gitignored, never an artifact
 ```
 
-Four files. There were sixteen, and reviewing a change meant reading a diff spread
-across all of them.
+Two files. There were sixteen, and reviewing a change meant reading a diff spread across
+all of them.
 
 The raw crawl carries a ranked candidate ladder and a bounding box for every element on
 every screen — fifteen megabytes for one app, none of it readable, and none of it read
@@ -52,8 +51,7 @@ node .claude/skills/app-explorer/lib/map.mjs --profile analysis/<app>/app-profil
   [--only Leave,Time] [--budget-min 15] [--per-module-seconds 90] [--max-per-module 12]
 ```
 
-It writes the `map` section of `analysis.json` (read by tools) and renders `app-map.yaml`
-from it (read by people) — one object, two views, so they cannot drift apart. Every module in the
+It writes the `map` section of `analysis.json`: every module in the
 primary menu, every entry in each module's own menu including the ones that only open a submenu,
 and for each screen its heading, its buttons, its fields with their types, and its tables with
 their columns. **Minutes, not hours** — the budget is enforced per module, and a module cut short

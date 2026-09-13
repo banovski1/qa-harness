@@ -4,7 +4,7 @@
     "baseUrl": "https://demo.realworld.show/",
     "repoPath": "~/Projects/angular-realworld-example-app",
     "repoCommit": "dd99ed2cf39c805d719f943c5d7061a5683d98a8",
-    "generatedAt": "2026-09-13T14:10:27.605Z",
+    "generatedAt": "2026-09-13T14:42:45.406Z",
     "stack": "angular / none in this repo"
   },
   "source": {
@@ -525,8 +525,8 @@
   "map": {
     "app": "Conduit (RealWorld, Angular)",
     "baseUrl": "https://demo.realworld.show/",
-    "generatedAt": "2026-09-13T14:12:01.903Z",
-    "elapsedSeconds": 13,
+    "generatedAt": "2026-09-13T14:42:45.403Z",
+    "elapsedSeconds": 12,
     "totals": {
       "modules": 3,
       "screens": 5,

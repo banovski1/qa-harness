@@ -380,7 +380,7 @@ function uniqueProp(taken: Set<string>, raw: string): string {
  * analysis) while making a no-op recompile produce no diff at all.
  */
 export function newestInput(appDir: string): string {
-  const files = ['analysis.json', 'app-map.yaml', 'app-profile.yaml']
+  const files = ['analysis.json', 'app-profile.yaml']
     .map(f => join(appDir, f))
     .filter(existsSync);
   const newest = files.reduce((max, f) => Math.max(max, statSync(f).mtimeMs), 0);

@@ -150,9 +150,10 @@ export interface AnalysisTestability {
 /**
  * The menu map: where everything is, walked through the app's own navigation.
  *
- * `app-map.yaml` is rendered from this and is the human view of it. The section is the
- * machine view, so the two artifacts never disagree and neither has to be parsed back
- * out of the other.
+ * Written by `map.mjs`, which navigates the application's own menus rather than
+ * following `<a href>` — most business software does not link its screens. It is the
+ * coarse layer: every module, every menu entry, and per screen its heading, buttons,
+ * fields with types, and tables with columns.
  */
 export interface AnalysisMap {
   modules: {
