@@ -8,7 +8,9 @@ You run a spec until it passes or you hit a failure this repo has never seen bef
 
 ## 1. Run the spec
 
-`cd generated-framework/<app> && npx playwright test <path> --reporter=line` (`<app>` is `appName:` in root `app-config.yaml`)
+`cd generated-framework/<app> && npx playwright test <path> --reporter=line` — `<app>` is the directory under `generated-framework/`.
+
+A failure classified by `BaseComponent.act()` writes its evidence to `test-results/diagnostics.jsonl`: the kind (`NOT_FOUND`, `AMBIGUOUS`, `HIDDEN`, `DISABLED`, `COVERED`, `DETACHED`, `TIMED_OUT`), the component and screen that produced it, and the model file to re-crawl. Read that before the stack trace — it has already done the classification step for you.
 
 Pass → report the command output and stop. The job is complete.
 
@@ -18,13 +20,13 @@ Don't diagnose from the stack trace alone. Use `playwright-cli` to replay the st
 
 ## 3. Classify against known-issues.md
 
-Read `.claude/agents/test-runner-known-issues.md`. Match the observed symptom against its `Symptom` column. Each row names the fix's owned location: a stale analysis → re-run the repo analyzer and regenerate; an ambiguous locator → a scoped accessor in the protected `<Name>Page.ts`; a missing wait → `generated-framework/<app>/src/utils/waitHelpers.ts` or that same file; bad test data → the spec's own generated test data.
+Read `.claude/agents/test-runner-known-issues.md`. Match the observed symptom against its `Symptom` column. Each row names the fix's owned location: a stale analysis → re-run the skill that wrote it, then `compile-model.ts` and `emit.ts`; an ambiguous locator (`AMBIGUOUS`) → a scoped accessor in the protected `<Name>Page.ts`; a missing wait → a web-first assertion or `expect.poll` in the page-object method; bad test data → `uniqueName()` in the spec.
 
 No row matches → stop now and hand back to a human with the playwright-cli evidence. Do not invent a fix outside the library.
 
 ## 4. Apply the one documented fix, in its owned file
 
-Same generated/protected boundary as `test-writer`: never edit `*.generated.ts` or anything under `analysis/` by hand — an analysis problem is fixed by re-running the repo analyzer, not by editing its output.
+Same generated/protected boundary as `test-writer`: never edit `*.generated.ts` or anything under `analysis/` by hand — an analysis problem is fixed by re-running the skill and the compiler, not by editing their output.
 
 ## 5. Rerun once
 
@@ -38,7 +40,7 @@ Only after step 5 actually passes, append the new symptom → fix mapping as a n
 
 - Every hard rule in `test-writer.md` applies to your fixes too, and `.claude/hooks/guard-write.mjs` enforces them on your writes the same way. A documented fix that would trip a hook is re-shaped to satisfy it, not forced through: no `waitForTimeout`, no `force: true`, no locator in a spec, no `Date.now()` for uniqueness, no narration comments.
 - A rejected write is information. Read the rule id and the suggested fix rather than retrying the same content.
-- Never hand-edit `analysis/` — it is a report, and the fix is always a re-run of the analyzer that wrote it.
+- Never hand-edit `analysis/` — it is a report, and the fix is always a re-run of the skill that wrote it. `authVerification` in `api.json` is written only by `scripts/api-auth/verify-auth.ts`.
 - Only apply a fix that has a row in `known-issues.md`. An unmatched failure is a handoff, never an improvisation.
 - One fix attempt, one rerun. No retry loops.
 - Do not add explanatory comments to any code touched, except `// UNVERIFIED` markers already established by test-writer.

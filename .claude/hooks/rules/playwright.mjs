@@ -45,9 +45,13 @@ const SPEC_RULES = [
     fix: 'A per-spec retry or timeout bump hides flakiness instead of removing it. Fix the wait; retries stay a CI-wide setting.',
   },
   {
-    id: 'no-new-page-object',
-    pattern: /new\s+\w*Page\s*\(/,
-    fix: 'Page objects arrive as destructured fixtures. Register a new one in src/fixtures/extra-fixtures.ts instead of constructing it here.',
+    // A page object in a spec is constructed, not injected: the generated fixture
+    // carries `api` and `given` only, because 200-odd page fixtures would be a
+    // registry nobody reads. A *component*, though, is a locator with a wrapper on
+    // it, and a locator in a spec is the thing this whole layer exists to prevent.
+    id: 'no-new-component',
+    pattern: /new\s+(TextField|Select|Checkbox|RadioButton|Button|Link|Tab|MenuItem|Toast|RecordTable|NavigationBar|\w*Component)\s*\(/,
+    fix: 'Components belong to a page object, not to a spec. Add the accessor to the protected src/pages/**/<Name>Page.ts and call it from here.',
   },
   {
     id: 'no-conditional-flow',

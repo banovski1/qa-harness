@@ -174,12 +174,22 @@ export class FixturePage extends FixturePageGenerated {
 `,
   },
   {
-    name: 'new page object in a spec is blocked',
+    name: 'constructing a page object in a spec is allowed',
     path: SPEC,
-    expect: ['no-new-page-object'],
+    expect: [],
     content: `test('x', async ({ page }) => {
   const dashboard = new DashboardPage(page);
   await dashboard.goto();
+});
+`,
+  },
+  {
+    name: 'constructing a component in a spec is blocked',
+    path: SPEC,
+    expect: ['no-new-component'],
+    content: `test('x', async ({ page }) => {
+  const city = new TextField(page, { label: 'City' });
+  await city.expectVisible();
 });
 `,
   },

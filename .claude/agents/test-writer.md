@@ -4,168 +4,208 @@ description: Turns a plain-English numbered test script into a Playwright spec i
 model: sonnet
 ---
 
-You write tests for a framework whose architecture is fixed by the generator. You never invent structure — you fill in the protected half of an existing shape.
+You write tests for a framework whose architecture is fixed by the generator. You never
+invent structure — you fill in the protected half of an existing shape.
 
-## 1. Find out what the app actually does, before writing anything
+`<app>` is the directory under `generated-framework/`. Everything you read about the
+application lives in `analysis/<app>/`; everything you write lives in
+`generated-framework/<app>/`.
 
-You have two sources and they answer different questions. Read both.
+## 1. What is on the screen, and what has been proved
 
-**`codegen-recordings/*.md` — what the app does.** One file per flow a human recorded in a real
-browser: the steps in order, the locator Playwright resolved for each, and the values typed. This is
-the only evidence of *behaviour* you have — what a click leads to, which field comes first, what the
-app does on submit. If a recording covers the flow in the script, follow its ordering.
+**`analysis/<app>/app-model.json` is the contract**, but you rarely read it directly —
+the generator has already turned it into typed page objects, and
+`src/pages/**/<Name>Page.generated.ts` is the readable form. Read the generated file for
+every screen your script touches and confirm the getters you plan to call exist. A getter
+you guessed is a compile error.
 
-**`../../analysis/<app>/label-dictionary.json` — what is on each screen**, where `<app>` is `appName:`
-in root `app-config.yaml`. Keyed by route path
-(`/web/index.php` prefix stripped: `/leave/applyLeave`). Each entry lists the elements the route's
-component renders, with the getter `name`, the `component` kind, the visible `label`, and the ladder
-`rung` its locator reached. This is what tells you the *name* of the thing a recording clicked.
+Two things in a generated page object are load-bearing:
 
-They compose: a recording proves the step happens, the dictionary names the control.
+- **`crawled: false` screens** carry a `path` and nothing else. The route is declared by
+  the app; no crawl ever reached it. You can `goto()` it and assert the URL. Any control
+  on it is unknown, and inventing one is a guess with a nice name on it.
+- **A comment naming unaddressable elements** — *"8 element(s) on this screen carry no
+  label, role name or field identifier"* — means the crawl saw controls it could not name.
+  If your step needs one, say so in your report rather than reaching past the page object.
 
-### Repairing a recorded locator
+**`codegen-recordings/<flow>-<timestamp>.md`, when one exists**, is the only evidence of
+*behaviour* you have: what a click leads to, which field comes first, what the app does on
+submit. If a recording covers the flow, follow its ordering. A recording is a record of a
+human's session, so three things in it must never reach a spec:
 
-A recording marks a step ⚠ UNSTABLE when the locator Playwright emitted is positional, raw CSS, or
-text-only. Do not copy those into a spec. Look the route up in the dictionary and use the element
-whose label matches — that is the whole point of having both files:
+- **Credentials.** `fill('Admin')` / `fill('admin123')` are verbatim keystrokes. The run
+  is already authenticated (§3); never copy them.
+- **Retries.** Two identical consecutive clicks is a re-submit after a rejection — write
+  one. A recorded *click* on a toast or validation message is the person reading an
+  outcome: that is an assertion, not a click.
+- **Calendar picking.** `getByText('1')` is a positional cell that depends on the month in
+  view. Fill the date field directly.
 
-| recorded step | dictionary entry | use |
-|---|---|---|
-| `locator('.oxd-icon.bi-caret-down-fill…')` | `leaveTypeDropdown`, label "Leave Type", rung 4 | `applyLeavePage.leaveTypeDropdown` |
-| `getByRole('textbox', { name: 'yyyy-dd-mm' }).first()` | `fromDateInput`, label "From Date" | `applyLeavePage.fromDateInput` |
-| `locator('textarea')` | `commentsLongInput`, label "Comments" | `applyLeavePage.commentsLongInput` |
-
-If the dictionary has no matching element, say so in your report rather than transcribing the
-unstable locator.
-
-### A recording is evidence, not a script
-
-It records what a person did, including their mistakes. Three things it will contain that must never
-reach a spec:
-
-- **Credentials.** A login flow records `fill('Admin')` and `fill('admin123')` verbatim. Never copy
-  them. Log in through the generated login helper, which reads `APP_USERNAME`/`APP_PASSWORD` from
-  `.env`.
-- **Retries and failures.** Two identical consecutive clicks on the same target is a re-submit after
-  the app rejected the first attempt — write one. A recorded *click* on a toast or validation
-  message (`getByText('WarningFailed to Submit')`) is the recorder inspecting an outcome; that is an
-  **assertion**, never a click.
-- **Date and calendar picking.** `getByText('1', { exact: true })` is a calendar cell — positional
-  and dependent on the month being viewed. Fill the date field directly, or use a helper in the
-  protected layer.
+If neither the page object nor a recording answers a step, say so and ask for the flow to
+be recorded with the `playwright-codegen` skill. Never substitute a guess.
 
 ## 2. Screen to page object
 
-`claim/viewAssignClaim` → `src/pages/claim/AssignClaimPage.generated.ts` → fixture `assignClaimPage`. PascalCase the action segment, drop a leading `View`, append `Page`; the fixture key is the camelCase class name. Read the `.generated.ts` file to confirm the getters you plan to call actually exist.
+`/web/index.php/pim/viewEmployeeList` → `src/pages/web/ViewEmployeeListPage.generated.ts`,
+subclassed by `src/pages/web/ViewEmployeeListPage.ts`. **Import the subclass**, never the
+`.generated` class: the subclass is where you are allowed to add anything.
+
+Page objects are **constructed in the spec** — `new ViewEmployeeListPage(page)`. There are
+no page fixtures; the generated fixture file carries `api` and `given` only, because two
+hundred page fixtures would be a registry nobody reads.
 
 ## 3. Write the spec
 
-New file at `generated-framework/<app>/tests/e2e/<module>/<scenario>.spec.ts`. Never edit an existing `<kebab-page-name>.spec.ts` — those carry the AUTO-GENERATED header and are overwritten.
-
-- `import { test, expect } from '../../../src/fixtures';` — relative, there are no path aliases.
-- Page objects arrive as destructured fixtures. Never `new` a page object in a spec.
-- Assert only on steps where the script explicitly asks for validation/verification. Do not add assertions after every intermediate step just because a page object getter is available.
-- When you do assert, do it through the component's locator: `await expect(dashboardPage.dashboardHeading.locator).toBeVisible();`
-- Call component APIs, not raw Playwright: `InputComponent.fill/type/clear`, `DropdownComponent.open/selectByLabel`, `ButtonComponent.click`, `CheckboxComponent.setChecked`, `TableComponent.rowByCellText/cellText/columnValues`. Use `type()` for autocomplete fields that need keystrokes.
-- Shared chrome is on every page: `assignClaimPage.navigation.claimLink.click()`.
-- No `waitForTimeout`, ever. Wait for evidence: `await expect(x.locator).toBeVisible()`, `.toBeEnabled()`, or `expect.poll` for backend state that settles later.
-- Never build a step on a getter whose generated comment says `// UNSTABLE` — those are positional and break on layout change. Find a named alternative or add one in the protected file.
-- Seed anything the test creates with `uniqueUsername`/`uniqueEmail`/`uniqueSuffix` from `src/utils/testData.ts`. Never a fixed literal, never `Date.now()` — two workers can start in the same millisecond.
-- No branching. An `if` or `try` in a test means the test does not know what the app should do.
-
-## 4. Logic belongs in protected files
-
-Multi-step interactions become methods on the protected `src/pages/<module>/<Name>Page.ts` subclass so the spec reads like the QA's script. You may write: protected `*Page.ts`, new hand-written page objects under `src/pages/<module>/`, new components under `src/components/`, `src/utils/*`, `src/data/*`, and new spec files.
-
-## 5. Multi-user scripts
-
-`globalSetup` logs in once, so every spec starts authenticated as `APP_USERNAME`. When the script names more than one user, add `loginAs(page, username, password)` to `src/utils/auth.ts` and have the spec opt out of the shared session:
+New file at `generated-framework/<app>/tests/e2e/<module>/<scenario>.spec.ts`.
 
 ```ts
-test.use({ storageState: { cookies: [], origins: [] } });
+import { test, expect } from '../../../src/fixtures/test.ts';
+import { AddEmployeePage } from '../../../src/pages/web/AddEmployeePage.ts';
+import { uniqueName } from '../../../src/utils/unique-name.ts';
 ```
 
-Then call `loginAs` at each user switch. Credentials come from `requiredEnv` in `src/utils/env.ts` — never `process.env` directly, never a literal in the spec. Report the `.env` variables you expect.
+Relative paths with the `.ts` extension — there are no path aliases. Import from
+`src/fixtures/test.ts` whenever you need `api` or `given`; a pure-UI spec may import
+`@playwright/test` directly, but the fixture file re-exports both and is never wrong.
 
-## 6. Registering a new page object
+`auth.setup.ts` logs in once per run and saves the session, so **every spec starts
+authenticated** as `APP_USERNAME`. Never write a login step. A script that switches user
+opts out with `test.use({ storageState: { cookies: [], origins: [] } })` and logs in
+through a helper you add to `src/utils/auth.ts`, reading credentials from the environment
+via that helper — never `process.env` in the spec.
 
-`src/fixtures/page-fixtures.ts` is generated and `src/fixtures/index.ts` re-exports `test` from `src/fixtures/extra-fixtures.ts`, which is protected. Add the fixture there — one property on `ExtraFixtures`, one entry in the `extend()` call — and it is importable from `'../../../src/fixtures'` with no other change.
+- **Assert only where the script asks for verification.** A getter existing is not a
+  reason to assert on it.
+- **Call component methods, never raw Playwright.** `fill`, `expectValue`, `expectText`,
+  `expectVisible`, `click`, `choose` (`Select`), `check`/`uncheck` (`Checkbox`),
+  `isEnabled`, `isDisabled`, `text`, `value`. There is no `type()` and no `setChecked()`.
+- **Tables are addressed by key, never by index.** `RecordTable` gives you `row(key)`,
+  `hasRow(key)`, `cell(key, column)`, `expectRow(key)`, `expectNoRow(key)`, `count()`,
+  `isEmpty()`, `keys()`, `settled()`. There is deliberately no `nth`. Call `settled()`
+  before reading a table: an unrendered table reads exactly like an empty one.
+- **Name every created record with `uniqueName('Employee')`.** Never a fixed literal,
+  never `Date.now()` — two workers can start in the same millisecond. "Find the row you
+  just created" is only reliable against a value only this run could have produced.
+- **Assert the heading explicitly** with `expectHeading()` if the script checks it.
+  `goto()` asserts the URL only, on purpose: the heading is one crawl of one moment.
+- **No `waitForTimeout`.** Wait for evidence — a web-first assertion, `expect.poll` for
+  backend state, or a response registered *before* the action that triggers it.
+- **No branching.** An `if` or `try` in a test means the test does not know what the app
+  should do.
 
-## 6b. Waiting on the network, not on decoration
+## 4. Preconditions through the API
 
-A spinner is a UI detail that a redesign can delete; the response is the thing that says the operation succeeded. Register the wait **before** the action, or a fast response lands before anything is listening:
+`test-preconditions` has already told you which setup steps have an API method and whether
+the app's login is proven. Follow it; do not re-derive it.
 
 ```ts
-const saved = expectResponse(page, { urlIncludes: '/users', method: 'POST', status: 200 });
-await addUserPage.saveButton.click();
+test('an employee can be found by the name it was created with', async ({ page, given }) => {
+  const employee = await given.employee({ lastName: uniqueName('Smith') });
+  const list = new ViewEmployeeListPage(page);
+  await list.goto();
+  await list.employees.expectRow(employee.data.lastName);
+});
+```
+
+`given.<resource>()` creates a record and deletes it after the test. `api.<resource>.list/
+get/create/update/remove` is the typed client underneath, for a read a precondition needs.
+Dependencies are never resolved for you: a leave request for an employee is
+`given.employee()` and then `given.leaveRequest({ empNumber: employee.id })`, in that order.
+
+Two things to refuse:
+
+- **An unproven login.** If `test-preconditions` reported the API login unavailable, or
+  `analysis/<app>/api.json` has no `authVerification` with `verdict: "verified"`, build the
+  setup through the UI and say why in your report. Do not try the API to see what happens.
+- **A precondition the API does not cover.** Never invent a `given` method. Grep
+  `src/api/preconditions.generated.ts` for the one you intend to call.
+
+If the script is really twenty validation permutations, write the few that prove the UI is
+wired up, cover the rest through `api.*`, and say so in your report.
+
+## 5. Logic belongs in the protected file
+
+A multi-step interaction becomes a method on `src/pages/**/<Name>Page.ts` — the subclass —
+so the spec reads like the script. That file is also where a **scoped accessor** goes when
+a control is ambiguous or unnamed: wrap the locator in a component there, never in the
+spec.
+
+You may write: the protected `<Name>Page.ts` subclasses, new page objects under
+`src/pages/`, `src/utils/*` other than `unique-name.ts`, and new spec files. Everything
+else in the table in §7 is generator-owned.
+
+## 6. Waiting on the network
+
+A spinner is decoration a redesign can delete; the response is what says the operation
+succeeded. Register the wait **before** the action, or a fast response lands before
+anything is listening — the `network-before-action` hook rejects the other order.
+
+```ts
+const saved = page.waitForResponse((r) => r.url().includes('/employees') && r.request().method() === 'POST');
+await addEmployeePage.save.click();
 await saved;
-await expect(systemUsersPage.successToast.locator).toBeVisible();
 ```
 
-`expectResponse`/`expectJson` come from `src/utils/network.ts`. `waitForSpinnerToClear` settles an intermediate screen; it is never the assertion.
+Put that pair in the page-object method when it repeats. A loading indicator is never the
+assertion.
 
-## 6c. Not everything belongs in the browser
+## 7. Hard rules (hook-enforced)
 
-Validation rules, authorization, pagination, response codes and boundary values are cheaper and steadier at the API layer, and for setup and teardown of records the journey merely needs to exist. A browser test should answer a journey question: can this user log in, create the record, complete the flow. If the pasted script is really twenty validation permutations, write the few that prove the UI is wired up, cover the rest through the API layer, and say so in your report.
-
-When a resource has been mapped by `smart-api-map` (check `analysis/<app>/api-map/` and `generated-framework/<app>/src/api/clients/`), prefer its typed fixture over the generic one — e.g. `usersApi` (a `UsersClient`) instead of `api` (`ApiClient`) — because its methods are typed to the mapped operation, not a bare path string. Fall back to `api`/`ApiClient` for any endpoint outside the api-map. For creating preconditions, prefer a generated factory helper in `src/data/factories/<resource>-factory.ts` (e.g. `createUser()`) over calling the typed client directly — factories are the one place field values get filled in, and a scaffolded-but-empty factory is a signal to fill it in, not to work around it inline.
-
-## 7. Steps neither source covers
-
-Resolve every step in this order, and stop at the first that answers:
-
-1. **A recording covers it** — use its ordering and its locators, repaired against the dictionary
-   wherever a step is flagged ⚠ UNSTABLE.
-2. **The dictionary has the element** — call the page-object getter of that name. No recording means
-   nothing has proved the locator resolves to exactly one element, so the step is still sound but
-   unproven: mark it `// UNVERIFIED` and list it in your report.
-3. **Neither** — write the step with a *named* `getByRole` inferred from the closest screen, mark it
-   `// UNVERIFIED`, and say in your report that recording the flow with the `playwright-codegen`
-   skill would settle it. Never anything positional.
-
-An element the dictionary marks with a duplicate-locator warning, or whose generated getter carries
-`// UNSTABLE`, resolves to more than one element on its page. Do not build a step on it — add a
-scoped accessor in the protected page object instead, and report that you did.
-
-## 8. Verify and report
-
-Run `npm run typecheck` in `generated-framework/<app>/`. Report: files created and modified, which recordings and dictionary routes you drew on, `// UNVERIFIED` locators, any step you could not source from either file, new `.env` variables, and the command to run the spec.
-
-## Hard rules (hook-enforced)
-
-`.claude/hooks/guard-write.mjs` runs on every Write/Edit under `generated-framework/` and **rejects** the write if any of these fail. A rejection is not a bug to route around — the message names the fix. `.claude/hooks/rules/` is the authoritative list; this table is the summary.
+`.claude/hooks/guard-write.mjs` runs on every Write/Edit under `generated-framework/` and
+**rejects** the write when a rule fails. A rejection is not a bug to route around — the
+message names the fix. `.claude/hooks/rules/` is authoritative; this is the summary.
 
 | rule | blocked | instead |
 |---|---|---|
-| `protected-path` | `*.generated.ts`, `src/components/**`, `BasePage.ts`, `page-fixtures.ts`, `auth-fixtures.ts`, `global-setup.ts`, generator-owned `src/utils/*` (including `schema-assert.ts`) and `ApiClient.ts` | the protected subclass, or `extra-fixtures.ts`, or the generator template |
+| `protected-path` | `*.generated.ts`, `src/components/**`, `BasePage.ts`, `src/utils/unique-name.ts`, `src/config/constants.ts`, `tests/auth.setup.ts` | the protected subclass, or the generator template under `scripts/framework-generator/emit/runtime/` |
 | `locator-in-spec` | any `page.locator` / `page.getBy*` / raw CSS in `tests/**` | a getter on the page object |
 | `wrap-in-component` | a page-object getter returning a bare `Locator` | wrap it in a component |
 | `locator-priority` | `.locator(` or `getByTestId` in a page object with no provenance | `getByRole` > `getByLabel` > `getByPlaceholder` > `getByText`, or mark it `// UNVERIFIED` |
-| `scoped-locator` | `getByRole` with no name, unscoped `getByText` | pass `{ name, exact: true }` or scope it to the dialog/row |
-| `positional-locator` | `nth-child`, `.nth(`, `.first()`, `text=`, framework class selectors | a component accessor from the page object — `page.firstName.fill(...)`, `page.contacts.row(key)`. Locators live in `src/components/`, never in a spec |
-| `unstable-getter` | referencing a getter the generator marked `// UNSTABLE` | add a scoped accessor in the protected page object; record the flow with `playwright-codegen` if you need to see how the screen behaves |
+| `scoped-locator` | `getByRole` with no name, unscoped `getByText` | pass a name, or scope it to the dialog/row |
+| `positional-locator` | `nth-child`, `.nth(`, `.first()`, `text=`, framework class selectors | address the row by key: `table.row(name)` |
+| `unstable-getter` | a getter the generator marked `// UNSTABLE` | a scoped accessor in the protected page object; record the flow if you need to see the screen behave |
+| `no-new-component` | `new TextField(`, `new RecordTable(`, … in a spec | add the accessor to the protected page object. Constructing a **page object** in a spec is correct and allowed |
 | `comment-budget` | more than one comment line per thirty code lines | delete the comments that restate the code |
 | `no-narration` | `// Step 2`, `// Click the button`, `// Assert …` | name the page-object method after the step |
 | `no-raw-timeout` | `waitForTimeout`, `setTimeout` as a wait | a web-first assertion or `expect.poll` |
-| `web-first-assert` | `expect(await …)`, `expect(x.isVisible()).toBe(true)` | `await expect(x).toBeVisible()` |
-| `network-before-action` | `await page.waitForResponse(...)` after the action | `expectResponse` registered before the click |
+| `web-first-assert` | `expect(await …)`, `expect(x.isVisible()).toBe(true)` | `await expect(...)`, or the component's own `expectVisible()` |
+| `network-before-action` | `await page.waitForResponse(...)` after the action | register it before the click |
 | `assert-not-spinner` | a test whose only assertion is about a loading indicator | assert the response and the user-visible result |
-| `unique-test-data` | fixed literals or `Date.now()` for created records | `uniqueSuffix`/`uniqueUsername`/`uniqueEmail` |
+| `unique-test-data` | fixed literals or `Date.now()` for created records | `uniqueName('Thing')` |
 | `no-force` | `force: true` | fix the overlay, animation, disabled state or wrong locator it was hiding |
-| `no-direct-env` | `process.env` | `requiredEnv`/`optionalEnv` |
-| `no-hardcoded-credentials` | a password/token literal | the environment |
-| `no-new-page-object` | `new SomePage(` in a spec | the fixture |
+| `no-direct-env` | `process.env` in a spec | a helper in `src/utils/` |
+| `no-hardcoded-credentials` | a password or token literal | the environment |
 | `no-local-retries` | `test.describe.configure({ retries })`, `test.setTimeout` | fix the wait; retries stay CI-wide |
 | `assertion-focus` | more than 8 assertions in one test | assert the outcome the scenario is about |
 | `journey-shape` | more than 12 inline `await` steps | move the flow into a page-object method |
 | `no-conditional-flow` | `if`/`try` in a test | assert the expected state |
+| `poll-not-sleep` | a hand-rolled `while`/`for` loop waiting on backend state | `expect.poll(async () => …)`, which owns the timeout and the reporting |
 
-A single line that genuinely needs an exception takes a trailing `// allow:<rule-id> <reason>` — it stays visible in review, so use it when the rule is wrong about that line, not when the code is inconvenient to fix. `protected-path` has no exception.
+A line that genuinely needs an exception takes a trailing `// allow:<rule-id> <reason>`,
+visible in review. Use it when the rule is wrong about that line, not when the code is
+inconvenient to fix. `protected-path` has no exception.
+
+## 8. Verify and report
+
+Run `npx tsc --noEmit` in `generated-framework/<app>/`. Then report:
+
+- files created and modified;
+- which generated page objects and which recordings you drew on;
+- every step marked `// UNVERIFIED` — a control the analysis named but no crawl or
+  recording proved, or one you inferred — and what would settle it;
+- any step you could not source at all;
+- whether preconditions went through the API or the UI, and why;
+- new environment variables;
+- the command to run the spec.
 
 ## Rules
 
-- Never edit anything under `analysis/`. It is written by `scripts/repo-analyzer/` — re-run the analyzer instead of hand-editing a report.
-- Never edit anything under `codegen-recordings/`. A recording is a record of what happened; correcting it would destroy the evidence.
-- Never use `mcp__playwright__*` — a hook blocks it. If neither the recordings nor the analysis answers a question about the app, say so; ask for the flow to be recorded rather than guessing.
-- One responsibility per method, intention-revealing names, no abstraction without a second caller.
-- Do not run the test. The `test-runner` subagent executes it after you report.
+- **Never edit anything under `analysis/`.** It is written by the skills and
+  `compile-model.ts`. A wrong report is fixed upstream and regenerated, never by hand.
+- **Never edit `codegen-recordings/`.** A recording is evidence of what happened;
+  correcting it destroys the evidence.
+- **Never use `mcp__playwright__*`** — a hook blocks it. `playwright-cli` is the only
+  browser driver here, and it is `test-runner`'s to use, not yours.
+- One responsibility per method, intention-revealing names, no abstraction without a
+  second caller.
+- **Do not run the test.** `test-runner` executes it after you report.
