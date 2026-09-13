@@ -35,9 +35,10 @@ by side, and adding a fifth is a new profile, never a code change.
 # 1. Analysis — the three skills read the clone. Invoke them by name; they write JSON.
 #    app-dossier → app-components and app-api (both read the dossier) → app-explorer.
 
-# 2. Crawl the running app
+# 2. Crawl the running app. Two crawls, two questions.
 playwright-cli -s=<session> open <baseUrl>
-node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-profile.yaml
+node .claude/skills/app-explorer/lib/map.mjs --profile analysis/<app>/app-profile.yaml     # menus, minutes
+node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-profile.yaml # controls, deep
 
 # 3. Compile the model, then gate it
 npx tsx scripts/model-compiler/compile-model.ts --app <app>     # writes app-model.json + ANALYSIS.md
@@ -71,6 +72,23 @@ change shaped around one of them shows up as a diff in the other three.
 
 Odoo (`~/Projects/odoo`) is deliberately outside the corpus. It is the "new app, no code changes"
 test.
+
+## The map
+
+`app-map.yaml` answers "where is everything?" — the primary menu, each module's own menu including
+entries that only open a submenu, and per screen its heading, buttons, fields with types, and
+tables with columns. It navigates through the application's own menus rather than following
+`<a href>`, because most business software does not link its screens.
+
+**It is read-only.** Menu entries are followed; no button on a page is ever pressed. A map can be
+taken against an environment you care about.
+
+It is budgeted per module and reports what it skipped and why. OrangeHRM: 12 modules, 76 screens,
+52 tables in seven minutes. Conduit: 3 modules, 5 screens in eleven seconds — and its "Popular
+Tags" sidebar is recorded as a `valueList` with two samples, not crawled as fifteen menu entries.
+
+The map is the coarse layer. The deep crawl sharpens the screens that matter; a recorded session
+sharpens them further.
 
 ## The contract: `app-model.json`
 

@@ -1,0 +1,791 @@
+# OrangeHRM (open-source demo) — application map
+# 12 modules, 66 screens, crawled in 387s
+# Menus and surfaces only. Nothing here was created, updated or deleted.
+app: OrangeHRM (open-source demo)
+baseUrl: "https://opensource-demo.orangehrmlive.com/"
+generatedAt: "2026-09-13T00:52:00.575Z"
+modules:
+  - module: Admin
+    menu:
+      - Upgrade   # opens a submenu
+      - User Management   # opens a submenu
+        - Users
+      - Job   # opens a submenu
+        - Job Titles
+        - Pay Grades
+        - Employment Status
+        - Job Categories
+        - Work Shifts
+      - Organization   # opens a submenu
+        - General Information
+        - Locations
+        - Structure
+      - Qualifications   # opens a submenu
+        - Skills
+        - Education
+        - Licenses
+        - Languages
+        - Memberships
+      - Nationalities
+      - Corporate Branding
+      - Configuration   # opens a submenu
+      - Help   # opens a submenu
+    screens:
+      - name: Admin
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers"
+        heading: Admin User Management
+        buttons: [Reset, Search, Add]
+        fields:
+          - Username (text)
+          - User Role (dropdown)
+          - Employee Name (text)
+          - Status (dropdown)
+        tables:
+          - kind: table
+            columns: [UsernameAscendingDescending, User RoleAscendingDescending, Employee NameAscendingDescending, StatusAscendingDescending, Actions]
+            rows: 5
+      - name: "Job → Job Titles"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewJobTitleList"
+        heading: Admin Job
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [Job TitlesAscendingDescending, Job Description, Actions]
+            rows: 28
+      - name: "Job → Pay Grades"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewPayGrades"
+        heading: Admin Job
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [Name, Currency, Actions]
+            rows: 5
+      - name: "Job → Employment Status"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/employmentStatus"
+        heading: Admin Job
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [Employment Status, Actions]
+            rows: 6
+      - name: "Job → Job Categories"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/jobCategory"
+        heading: Admin Job
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [Job Category, Actions]
+            rows: 9
+      - name: "Job → Work Shifts"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/workShift"
+        heading: Admin Job
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [Name, From, To, Hours Per Day, Actions]
+            rows: 2
+      - name: "Organization → General Information"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewOrganizationGeneralInformation"
+        heading: Admin Organization
+        fields:
+          - Organization Name (text)
+          - Registration Number (text)
+          - Tax ID (text)
+          - Phone (text)
+          - Fax (text)
+          - Email (text)
+          - Address Street 1 (text)
+          - Address Street 2 (text)
+          - City (text)
+          - State/Province (text)
+          - Zip/Postal Code (text)
+          - Country (dropdown)
+          - Notes (textarea)
+      - name: "Organization → Locations"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewLocations"
+        heading: Admin Organization
+        buttons: [Reset, Search, Add]
+        fields:
+          - Name (text)
+          - City (text)
+          - Country (dropdown)
+        tables:
+          - kind: table
+            columns: [NameAscendingDescending, CityAscendingDescending, CountryAscendingDescending, PhoneAscendingDescending, Number of EmployeesAscendingDescending, Actions]
+            rows: 4
+      - name: "Organization → Structure"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewCompanyStructure"
+        heading: Admin Organization
+      - name: "Qualifications → Skills"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSkills"
+        heading: Admin Qualifications
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [Name, Description, Actions]
+            rows: 21
+      - name: "Qualifications → Education"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewEducation"
+        heading: Admin Qualifications
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [Level, Actions]
+            rows: 4
+      - name: "Qualifications → Licenses"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewLicenses"
+        heading: Admin Qualifications
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [Name, Actions]
+            rows: 6
+      - name: "Qualifications → Languages"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewLanguages"
+        heading: Admin Qualifications
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [Name, Actions]
+            rows: 6
+  - module: PIM
+    menu:
+      - Upgrade   # opens a submenu
+      - Configuration   # opens a submenu
+        - Optional Fields
+        - Custom Fields
+        - Data Import
+        - Reporting Methods
+        - Termination Reasons
+      - Employee List
+      - Add Employee
+      - Reports
+      - Help   # opens a submenu
+    screens:
+      - name: PIM
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList"
+        heading: PIM
+        buttons: [Reset, Search, Add]
+        fields:
+          - Employee Name (text)
+          - Employee Id (text)
+          - Employment Status (dropdown)
+          - Include (dropdown)
+          - Supervisor Name (text)
+          - Job Title (dropdown)
+          - Sub Unit (dropdown)
+        tables:
+          - kind: table
+            columns: [IdAscendingDescending, First (& Middle) NameAscendingDescending, Last NameAscendingDescending, Job TitleAscendingDescending, Employment StatusAscendingDescending, Sub UnitAscendingDescending, SupervisorAscendingDescending, Actions]
+            rows: 50
+      - name: "Configuration → Optional Fields"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/configurePim"
+        heading: PIM Configuration
+        buttons: [Save]
+      - name: "Configuration → Custom Fields"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/listCustomFields"
+        heading: PIM Configuration
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [Custom Field Name, Screen, Field Type, Actions]
+            rows: 2
+      - name: "Configuration → Data Import"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/pimCsvImport"
+        heading: PIM Configuration
+        buttons: [Upload]
+      - name: "Configuration → Reporting Methods"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewReportingMethods"
+        heading: PIM Configuration
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [Name, Actions]
+            rows: 3
+      - name: "Configuration → Termination Reasons"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewTerminationReasons"
+        heading: PIM Configuration
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [Name, Actions]
+            rows: 11
+      - name: Add Employee
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee"
+        heading: PIM
+        buttons: [Cancel, Save]
+        fields:
+          - First Name (text)
+          - Middle Name (text)
+          - Last Name (text)
+          - Employee Id (text)
+      - name: Reports
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewDefinedPredefinedReports"
+        heading: PIM
+        buttons: [Reset, Search, Add]
+        fields:
+          - Report Name (text)
+        tables:
+          - kind: table
+            columns: [NameAscendingDescending, Actions]
+            rows: 4
+  - module: Leave
+    menu:
+      - Upgrade   # opens a submenu
+      - Apply
+      - My Leave
+      - Entitlements   # opens a submenu
+        - Add Entitlements
+        - Employee Entitlements
+        - My Entitlements
+      - Reports   # opens a submenu
+        - Leave Entitlements and Usage Report
+        - My Leave Entitlements and Usage Report
+      - Configure   # opens a submenu
+        - Leave Period
+        - Leave Types
+        - Work Week
+        - Holidays
+      - Leave List
+      - Assign Leave
+      - Help   # opens a submenu
+    screens:
+      - name: Leave
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList"
+        heading: Leave
+        buttons: [Reset, Search, "×"]
+        fields:
+          - From Date (text)
+          - To Date (text)
+          - Show Leave with Status (dropdown)
+          - Leave Type (dropdown)
+          - Employee Name (text)
+          - Sub Unit (dropdown)
+        tables:
+          - kind: table
+            columns: [Date, Employee Name, Leave Type, Leave Balance (Days), Number of Days, Status, Comments, Actions]
+            rows: 0
+      - name: Apply
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/leave/applyLeave"
+        heading: Leave
+      - name: My Leave
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewMyLeaveList"
+        heading: Leave
+        buttons: [Reset, Search, "×"]
+        fields:
+          - From Date (text)
+          - To Date (text)
+          - Show Leave with Status (dropdown)
+          - Leave Type (dropdown)
+        tables:
+          - kind: table
+            columns: [Date, Employee Name, Leave Type, Leave Balance (Days), Number of Days, Status, Comments, Actions]
+            rows: 0
+      - name: "Entitlements → Add Entitlements"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/leave/addLeaveEntitlement"
+        heading: Leave Entitlements
+        buttons: [Cancel, Save]
+        fields:
+          - Employee Name (text)
+          - Leave Type (dropdown)
+          - Leave Period (dropdown)
+          - Entitlement (text)
+      - name: "Entitlements → Employee Entitlements"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveEntitlements"
+        heading: Leave Entitlements
+        buttons: [Search]
+        fields:
+          - Employee Name (text)
+          - Leave Type (dropdown)
+          - Leave Period (dropdown)
+      - name: "Entitlements → My Entitlements"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewMyLeaveEntitlements"
+        heading: Leave Entitlements
+        buttons: [Search, Add, "×"]
+        fields:
+          - Leave Type (dropdown)
+          - Leave Period (dropdown)
+        tables:
+          - kind: table
+            columns: [Leave Type, Entitlement Type, Valid From, Valid To, Days, Actions]
+            rows: 0
+      - name: "Reports → Leave Entitlements and Usage Report"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveBalanceReport"
+        heading: Leave Reports
+        buttons: [Generate]
+        fields:
+          - Leave Type (dropdown)
+          - Leave Period (dropdown)
+          - Location (dropdown)
+          - Sub Unit (dropdown)
+          - Job Title (dropdown)
+      - name: "Reports → My Leave Entitlements and Usage Report"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewMyLeaveBalanceReport"
+        heading: Leave Reports
+        buttons: [Generate]
+        fields:
+          - Leave Period (dropdown)
+      - name: "Configure → Leave Period"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/leave/defineLeavePeriod"
+        heading: Leave Configure
+        buttons: [Reset, Save]
+        fields:
+          - Start Month (dropdown)
+          - Start Date (dropdown)
+      - name: "Configure → Leave Types"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/leave/leaveTypeList"
+        heading: Leave Configure
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [Name, Actions]
+            rows: 10
+      - name: "Configure → Work Week"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/leave/defineWorkWeek"
+        heading: Leave Configure
+        buttons: [Save]
+        fields:
+          - Monday (dropdown)
+          - Tuesday (dropdown)
+          - Wednesday (dropdown)
+          - Thursday (dropdown)
+          - Friday (dropdown)
+          - Saturday (dropdown)
+          - Sunday (dropdown)
+      - name: "Configure → Holidays"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewHolidayList"
+        heading: Leave Configure
+        buttons: [Reset, Search, Add]
+        fields:
+          - From (text)
+          - To (text)
+        tables:
+          - kind: table
+            columns: [Name, Date, Full Day/ Half Day, Repeats Annually, Actions]
+            rows: 16
+      - name: Assign Leave
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/leave/assignLeave"
+        heading: Leave
+        buttons: [Assign]
+        fields:
+          - Employee Name (text)
+          - Leave Type (dropdown)
+          - From Date (text)
+          - To Date (text)
+          - Comments (textarea)
+  - module: Time
+    menu:
+      - Upgrade   # opens a submenu
+      - Timesheets   # opens a submenu
+        - My Timesheets
+        - Employee Timesheets
+      - Attendance   # opens a submenu
+        - My Records
+        - Punch In/Out
+        - Employee Records
+        - Configuration
+      - Reports   # opens a submenu
+        - Project Reports
+        - Employee Reports
+        - Attendance Summary
+      - Project Info   # opens a submenu
+        - Customers
+        - Projects
+      - Help   # opens a submenu
+    screens:
+      - name: Time
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet"
+        heading: Time Timesheets
+        buttons: [View]
+        fields:
+          - Employee Name (text)
+        tables:
+          - kind: table
+            columns: [Employee Name, Timesheet Period, Actions]
+            rows: 3
+      - name: "Timesheets → My Timesheets"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewMyTimesheet"
+        heading: Time Timesheets
+        buttons: [Edit, Submit, "×"]
+        fields:
+          - yyyy-dd-mm (text)
+        tables:
+          - kind: table
+            columns: [Project, Activity, 7Mon, 8Tue, 9Wed, 10Thu, 11Fri, 12Sat, 13Sun, Total]
+            rows: 1
+      - name: "Timesheets → Employee Timesheets"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet"
+        heading: Time Timesheets
+        buttons: [View]
+        fields:
+          - Employee Name (text)
+        tables:
+          - kind: table
+            columns: [Employee Name, Timesheet Period, Actions]
+            rows: 3
+      - name: "Attendance → My Records"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/viewMyAttendanceRecord"
+        heading: Attendance Attendance
+        buttons: [View, "×"]
+        fields:
+          - Date (text)
+        tables:
+          - kind: table
+            columns: [Punch In, Punch In Note, Punch Out, Punch Out Note, Duration (Hours), Actions]
+            rows: 0
+      - name: "Attendance → Punch In/Out"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/punchIn"
+        heading: Attendance Attendance
+        buttons: [In]
+        fields:
+          - Date (text)
+          - Time (text)
+          - Note (textarea)
+      - name: "Attendance → Employee Records"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/viewAttendanceRecord"
+        heading: Attendance Attendance
+        buttons: [View]
+        fields:
+          - Employee Name (text)
+          - Date (text)
+        tables:
+          - kind: table
+            columns: [Employee Name, Total Duration (Hours), Actions]
+            rows: 50
+      - name: "Attendance → Configuration"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/configure"
+        heading: Attendance Attendance
+        buttons: [Save]
+      - name: "Reports → Project Reports"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/time/displayProjectReportCriteria"
+        heading: Time Reports
+        buttons: [View]
+        fields:
+          - Project Name (text)
+          - Project Date Range (text)
+          - To (text)
+      - name: "Reports → Employee Reports"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/time/displayEmployeeReportCriteria"
+        heading: Time Reports
+        buttons: [View]
+        fields:
+          - Employee Name (text)
+          - Project Name (text)
+          - Activity Name (dropdown)
+          - Project Date Range (text)
+          - To (text)
+      - name: "Reports → Attendance Summary"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/time/displayAttendanceSummaryReportCriteria"
+        heading: Time Reports
+        buttons: [View]
+        fields:
+          - Employee Name (text)
+          - Job Title (dropdown)
+          - Sub Unit (dropdown)
+          - Employment Status (dropdown)
+          - Date Range (text)
+          - To (text)
+      - name: "Project Info → Customers"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewCustomers"
+        heading: Time Project Info
+        buttons: [Add]
+        tables:
+          - kind: table
+            columns: [NameAscendingDescending, Description, Actions]
+            rows: 9
+      - name: "Project Info → Projects"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewProjects"
+        heading: Time Project Info
+        buttons: [Reset, Search, Add]
+        fields:
+          - Customer Name (text)
+          - Project (text)
+          - Project Admin (text)
+        tables:
+          - kind: table
+            columns: [Customer NameAscendingDescending, ProjectAscendingDescending, Project Admins, Actions]
+            rows: 11
+  - module: Recruitment
+    menu:
+      - Upgrade   # opens a submenu
+      - Candidates
+      - Vacancies
+      - Help   # opens a submenu
+    screens:
+      - name: Recruitment
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates"
+        heading: Recruitment
+        buttons: [Reset, Search, Add]
+        fields:
+          - Job Title (dropdown)
+          - Vacancy (dropdown)
+          - Hiring Manager (dropdown)
+          - Status (dropdown)
+          - Candidate Name (text)
+          - Keywords (text)
+          - Date of Application (text)
+          - To (text)
+          - Method of Application (dropdown)
+        tables:
+          - kind: table
+            columns: [VacancyAscendingDescending, CandidateAscendingDescending, Hiring ManagerAscendingDescending, Date of ApplicationAscendingDescending, StatusAscendingDescending, Actions]
+            rows: 50
+      - name: Vacancies
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewJobVacancy"
+        heading: Recruitment
+        buttons: [Reset, Search, Add]
+        fields:
+          - Job Title (dropdown)
+          - Vacancy (dropdown)
+          - Hiring Manager (dropdown)
+          - Status (dropdown)
+        tables:
+          - kind: table
+            columns: [VacancyAscendingDescending, Job TitleAscendingDescending, Hiring ManagerAscendingDescending, StatusAscendingDescending, Actions]
+            rows: 7
+  - module: My Info
+    menu:
+      - Upgrade   # opens a submenu
+      - Help   # opens a submenu
+    screens:
+      - name: My Info
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7"
+        heading: PIM
+        buttons: [Save, Add]
+        fields:
+          - First Name (text)
+          - Middle Name (text)
+          - Last Name (text)
+          - Employee Id (text)
+          - Other Id (text)
+          - Driver's License Number (text)
+          - License Expiry Date (text)
+          - Nationality (dropdown)
+          - Marital Status (dropdown)
+          - Date of Birth (text)
+          - Blood Type (dropdown)
+          - Test_Field (text)
+        tables:
+          - kind: table
+            columns: [File Name, Description, Size, Type, Date Added, Added By, Actions]
+            rows: 8
+  - module: Performance
+    menu:
+      - Upgrade   # opens a submenu
+      - Configure   # opens a submenu
+        - KPIs
+        - Trackers
+      - Manage Reviews   # opens a submenu
+        - My Reviews
+        - Employee Reviews
+      - My Trackers
+      - Employee Trackers
+      - Help   # opens a submenu
+    screens:
+      - name: Performance
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview"
+        heading: Performance Manage Reviews
+        buttons: [Reset, Search, "×"]
+        fields:
+          - Employee Name (text)
+          - Job Title (dropdown)
+          - Sub Unit (dropdown)
+          - Include (dropdown)
+          - Review Status (dropdown)
+          - From Date (text)
+          - To Date (text)
+        tables:
+          - kind: table
+            columns: [EmployeeAscendingDescending, Job Title, Sub Unit, Review PeriodAscendingDescending, Due DateAscendingDescending, Review StatusAscendingDescending, Actions]
+            rows: 0
+      - name: "Configure → KPIs"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchKpi"
+        heading: Performance Configure
+        buttons: [Reset, Search, Add]
+        fields:
+          - Job Title (dropdown)
+        tables:
+          - kind: table
+            columns: [Key Performance IndicatorAscendingDescending, Job TitleAscendingDescending, Min Rate, Max Rate, Is Default, Actions]
+            rows: 50
+      - name: "Configure → Trackers"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/performance/viewPerformanceTracker"
+        heading: Performance Configure
+        buttons: [Reset, Search, Add]
+        fields:
+          - Employee Name (text)
+        tables:
+          - kind: table
+            columns: [EmployeeAscendingDescending, TrackerAscendingDescending, Added DateAscendingDescending, Modified DateAscendingDescending, Actions]
+            rows: 1
+      - name: "Manage Reviews → My Reviews"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/performance/myPerformanceReview"
+        heading: Performance Manage Reviews
+        buttons: [Evaluate]
+        tables:
+          - kind: table
+            columns: [Job Title, Sub Unit, Review PeriodAscendingDescending, Due DateAscendingDescending, Self Evaluation StatusAscendingDescending, Review StatusAscendingDescending, Actions]
+            rows: 1
+      - name: "Manage Reviews → Employee Reviews"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview"
+        heading: Performance Manage Reviews
+        buttons: [Reset, Search]
+        fields:
+          - Employee Name (text)
+          - Job Title (dropdown)
+          - Sub Unit (dropdown)
+          - Include (dropdown)
+          - Review Status (dropdown)
+          - From Date (text)
+          - To Date (text)
+        tables:
+          - kind: table
+            columns: [EmployeeAscendingDescending, Job Title, Sub Unit, Review PeriodAscendingDescending, Due DateAscendingDescending, Review StatusAscendingDescending, Actions]
+            rows: 0
+      - name: My Trackers
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/performance/viewMyPerformanceTrackerList"
+        heading: Performance
+        buttons: [View]
+        tables:
+          - kind: table
+            columns: [TrackerAscendingDescending, Added DateAscendingDescending, Modified DateAscendingDescending, Actions]
+            rows: 1
+      - name: Employee Trackers
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/performance/viewEmployeePerformanceTrackerList"
+        heading: Performance
+        buttons: [Reset, Search, View]
+        fields:
+          - Employee Name (text)
+          - Include (dropdown)
+        tables:
+          - kind: table
+            columns: [Employee NameAscendingDescending, TrackersAscendingDescending, Added DateAscendingDescending, Modified DateAscendingDescending, Actions]
+            rows: 1
+  - module: Dashboard
+    menu:
+      - Upgrade   # opens a submenu
+      - Help   # opens a submenu
+    screens:
+      - name: Dashboard
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"
+        heading: Dashboard
+        buttons: [Assign Leave, Leave List, Timesheets, Apply Leave, My Leave, My Timesheet]
+  - module: Directory
+    menu:
+      - Upgrade   # opens a submenu
+      - Help   # opens a submenu
+    screens:
+      - name: Directory
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory"
+        heading: Directory
+        buttons: [Reset, Search]
+        fields:
+          - Employee Name (text)
+          - Job Title (dropdown)
+          - Location (dropdown)
+  - module: Maintenance
+    screens:
+      - name: Maintenance
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/purgeEmployee"
+        buttons: [Cancel, Confirm]
+        fields:
+          - Username (text)
+          - Password (password)
+  - module: Claim
+    menu:
+      - Upgrade   # opens a submenu
+      - Configuration   # opens a submenu
+        - Events
+        - Expense Types
+      - Submit Claim
+      - My Claims
+      - Employee Claims
+      - Assign Claim
+      - Help   # opens a submenu
+    screens:
+      - name: Claim
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewAssignClaim"
+        heading: Claim
+        buttons: [Reset, Search, Assign Claim, View Details]
+        fields:
+          - Employee Name (text)
+          - Reference Id (text)
+          - Event Name (dropdown)
+          - Status (dropdown)
+          - From Date (text)
+          - To Date (text)
+          - Include (dropdown)
+        tables:
+          - kind: table
+            columns: [Reference IdAscendingDescending, Employee NameAscendingDescending, Event NameAscendingDescending, Description, Currency, Submitted DateAscendingDescending, StatusAscendingDescending, Amount, Actions]
+            rows: 3
+      - name: "Configuration → Events"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewEvents"
+        heading: Claim Configuration
+        buttons: [Reset, Search, Add]
+        fields:
+          - Event Name (text)
+          - Status (dropdown)
+        tables:
+          - kind: table
+            columns: [Event NameAscendingDescending, StatusAscendingDescending, Actions]
+            rows: 3
+      - name: "Configuration → Expense Types"
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewExpense"
+        heading: Claim Configuration
+        buttons: [Reset, Search, Add]
+        fields:
+          - Name (text)
+          - Status (dropdown)
+        tables:
+          - kind: table
+            columns: [NameAscendingDescending, StatusAscendingDescending, Actions]
+            rows: 4
+      - name: Submit Claim
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/claim/submitClaim"
+        heading: Claim
+        buttons: [Cancel, Create]
+        fields:
+          - Event (dropdown)
+          - Currency (dropdown)
+          - Remarks (textarea)
+      - name: My Claims
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewClaim"
+        heading: Claim
+        buttons: [Reset, Search, Submit Claim, View Details]
+        fields:
+          - Reference Id (text)
+          - Event Name (dropdown)
+          - Status (dropdown)
+          - From Date (text)
+          - To Date (text)
+        tables:
+          - kind: table
+            columns: [Reference IdAscendingDescending, Event NameAscendingDescending, Description, Currency, Submitted DateAscendingDescending, StatusAscendingDescending, Amount, Actions]
+            rows: 3
+      - name: Assign Claim
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/claim/assignClaim"
+        heading: Claim
+        buttons: [Cancel, Create]
+        fields:
+          - Employee Name (text)
+          - Event (dropdown)
+          - Currency (dropdown)
+          - Remarks (textarea)
+  - module: Buzz
+    menu:
+      - Upgrade   # opens a submenu
+      - Help   # opens a submenu
+    screens:
+      - name: Buzz
+        url: "https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz"
+        heading: Buzz
+        buttons: [Post, Share Photos, Share Video, Most Recent Posts, Most Liked Posts, Most Commented Posts]
+        fields:
+          - "What's on your mind?" (textarea)
+# places the crawl chose not to go, and why
+notes:
+  - "Admin: Users — led outside the application"
+  - "Admin: Qualifications → Memberships — the per-module screen limit was reached"
+  - "Admin: Nationalities — the per-module screen limit was reached"
+  - "Leave: Help — the per-module screen limit was reached"

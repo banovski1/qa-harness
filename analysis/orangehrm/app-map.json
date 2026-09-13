@@ -1,0 +1,3076 @@
+{
+  "app": "OrangeHRM (open-source demo)",
+  "baseUrl": "https://opensource-demo.orangehrmlive.com/",
+  "generatedAt": "2026-09-13T00:52:00.575Z",
+  "elapsedSeconds": 387,
+  "totals": {
+    "modules": 12,
+    "screens": 66,
+    "tables": 42,
+    "errors": 0
+  },
+  "modules": [
+    {
+      "module": "Admin",
+      "screens": [
+        {
+          "name": "Admin",
+          "via": "primary menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers",
+          "title": "OrangeHRM",
+          "heading": "Admin User Management",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Username",
+              "type": "text"
+            },
+            {
+              "name": "User Role",
+              "type": "dropdown"
+            },
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Status",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "UsernameAscendingDescending",
+                "User RoleAscendingDescending",
+                "Employee NameAscendingDescending",
+                "StatusAscendingDescending",
+                "Actions"
+              ],
+              "rows": 5
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 4,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Job → Job Titles",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewJobTitleList",
+          "title": "OrangeHRM",
+          "heading": "Admin Job",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Job TitlesAscendingDescending",
+                "Job Description",
+                "Actions"
+              ],
+              "rows": 28
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Job → Pay Grades",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewPayGrades",
+          "title": "OrangeHRM",
+          "heading": "Admin Job",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Name",
+                "Currency",
+                "Actions"
+              ],
+              "rows": 5
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Job → Employment Status",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/employmentStatus",
+          "title": "OrangeHRM",
+          "heading": "Admin Job",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Employment Status",
+                "Actions"
+              ],
+              "rows": 6
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Job → Job Categories",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/jobCategory",
+          "title": "OrangeHRM",
+          "heading": "Admin Job",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Job Category",
+                "Actions"
+              ],
+              "rows": 9
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Job → Work Shifts",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/workShift",
+          "title": "OrangeHRM",
+          "heading": "Admin Job",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Name",
+                "From",
+                "To",
+                "Hours Per Day",
+                "Actions"
+              ],
+              "rows": 2
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Organization → General Information",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewOrganizationGeneralInformation",
+          "title": "OrangeHRM",
+          "heading": "Admin Organization",
+          "buttons": [],
+          "fields": [
+            {
+              "name": "Organization Name",
+              "type": "text"
+            },
+            {
+              "name": "Registration Number",
+              "type": "text"
+            },
+            {
+              "name": "Tax ID",
+              "type": "text"
+            },
+            {
+              "name": "Phone",
+              "type": "text"
+            },
+            {
+              "name": "Fax",
+              "type": "text"
+            },
+            {
+              "name": "Email",
+              "type": "text"
+            },
+            {
+              "name": "Address Street 1",
+              "type": "text"
+            },
+            {
+              "name": "Address Street 2",
+              "type": "text"
+            },
+            {
+              "name": "City",
+              "type": "text"
+            },
+            {
+              "name": "State/Province",
+              "type": "text"
+            },
+            {
+              "name": "Zip/Postal Code",
+              "type": "text"
+            },
+            {
+              "name": "Country",
+              "type": "dropdown"
+            },
+            {
+              "name": "Notes",
+              "type": "textarea"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 0,
+            "fields": 13,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Organization → Locations",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewLocations",
+          "title": "OrangeHRM",
+          "heading": "Admin Organization",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Name",
+              "type": "text"
+            },
+            {
+              "name": "City",
+              "type": "text"
+            },
+            {
+              "name": "Country",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "NameAscendingDescending",
+                "CityAscendingDescending",
+                "CountryAscendingDescending",
+                "PhoneAscendingDescending",
+                "Number of EmployeesAscendingDescending",
+                "Actions"
+              ],
+              "rows": 4
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 3,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Organization → Structure",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewCompanyStructure",
+          "title": "OrangeHRM",
+          "heading": "Admin Organization",
+          "buttons": [],
+          "fields": [],
+          "collections": [],
+          "counts": {
+            "buttons": 0,
+            "fields": 0,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Qualifications → Skills",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSkills",
+          "title": "OrangeHRM",
+          "heading": "Admin Qualifications",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Name",
+                "Description",
+                "Actions"
+              ],
+              "rows": 21
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Qualifications → Education",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewEducation",
+          "title": "OrangeHRM",
+          "heading": "Admin Qualifications",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Level",
+                "Actions"
+              ],
+              "rows": 4
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Qualifications → Licenses",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewLicenses",
+          "title": "OrangeHRM",
+          "heading": "Admin Qualifications",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Name",
+                "Actions"
+              ],
+              "rows": 6
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Qualifications → Languages",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewLanguages",
+          "title": "OrangeHRM",
+          "heading": "Admin Qualifications",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Name",
+                "Actions"
+              ],
+              "rows": 6
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        }
+      ],
+      "menu": [
+        {
+          "name": "Upgrade",
+          "hasPopup": true
+        },
+        {
+          "name": "User Management",
+          "hasPopup": true,
+          "children": [
+            "Users"
+          ]
+        },
+        {
+          "name": "Job",
+          "hasPopup": true,
+          "children": [
+            "Job Titles",
+            "Pay Grades",
+            "Employment Status",
+            "Job Categories",
+            "Work Shifts"
+          ]
+        },
+        {
+          "name": "Organization",
+          "hasPopup": true,
+          "children": [
+            "General Information",
+            "Locations",
+            "Structure"
+          ]
+        },
+        {
+          "name": "Qualifications",
+          "hasPopup": true,
+          "children": [
+            "Skills",
+            "Education",
+            "Licenses",
+            "Languages",
+            "Memberships"
+          ]
+        },
+        {
+          "name": "Nationalities"
+        },
+        {
+          "name": "Corporate Branding"
+        },
+        {
+          "name": "Configuration",
+          "hasPopup": true
+        },
+        {
+          "name": "Help",
+          "hasPopup": true
+        }
+      ],
+      "landedAt": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers"
+    },
+    {
+      "module": "PIM",
+      "screens": [
+        {
+          "name": "PIM",
+          "via": "primary menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList",
+          "title": "OrangeHRM",
+          "heading": "PIM",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Employee Id",
+              "type": "text"
+            },
+            {
+              "name": "Employment Status",
+              "type": "dropdown"
+            },
+            {
+              "name": "Include",
+              "type": "dropdown"
+            },
+            {
+              "name": "Supervisor Name",
+              "type": "text"
+            },
+            {
+              "name": "Job Title",
+              "type": "dropdown"
+            },
+            {
+              "name": "Sub Unit",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "IdAscendingDescending",
+                "First (& Middle) NameAscendingDescending",
+                "Last NameAscendingDescending",
+                "Job TitleAscendingDescending",
+                "Employment StatusAscendingDescending",
+                "Sub UnitAscendingDescending",
+                "SupervisorAscendingDescending",
+                "Actions"
+              ],
+              "rows": 50
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 7,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Configuration → Optional Fields",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/configurePim",
+          "title": "OrangeHRM",
+          "heading": "PIM Configuration",
+          "buttons": [
+            {
+              "name": "Save"
+            }
+          ],
+          "fields": [],
+          "collections": [],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Configuration → Custom Fields",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/listCustomFields",
+          "title": "OrangeHRM",
+          "heading": "PIM Configuration",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Custom Field Name",
+                "Screen",
+                "Field Type",
+                "Actions"
+              ],
+              "rows": 2
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Configuration → Data Import",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/pimCsvImport",
+          "title": "OrangeHRM",
+          "heading": "PIM Configuration",
+          "buttons": [
+            {
+              "name": "Upload"
+            }
+          ],
+          "fields": [],
+          "collections": [],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Configuration → Reporting Methods",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewReportingMethods",
+          "title": "OrangeHRM",
+          "heading": "PIM Configuration",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Name",
+                "Actions"
+              ],
+              "rows": 3
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Configuration → Termination Reasons",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewTerminationReasons",
+          "title": "OrangeHRM",
+          "heading": "PIM Configuration",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Name",
+                "Actions"
+              ],
+              "rows": 11
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Add Employee",
+          "via": "module menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee",
+          "title": "OrangeHRM",
+          "heading": "PIM",
+          "buttons": [
+            {
+              "name": "Cancel"
+            },
+            {
+              "name": "Save"
+            }
+          ],
+          "fields": [
+            {
+              "name": "First Name",
+              "type": "text"
+            },
+            {
+              "name": "Middle Name",
+              "type": "text"
+            },
+            {
+              "name": "Last Name",
+              "type": "text"
+            },
+            {
+              "name": "Employee Id",
+              "type": "text"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 2,
+            "fields": 4,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Reports",
+          "via": "module menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewDefinedPredefinedReports",
+          "title": "OrangeHRM",
+          "heading": "PIM",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Report Name",
+              "type": "text"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "NameAscendingDescending",
+                "Actions"
+              ],
+              "rows": 4
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 1,
+            "collections": 1
+          }
+        }
+      ],
+      "menu": [
+        {
+          "name": "Upgrade",
+          "hasPopup": true
+        },
+        {
+          "name": "Configuration",
+          "hasPopup": true,
+          "children": [
+            "Optional Fields",
+            "Custom Fields",
+            "Data Import",
+            "Reporting Methods",
+            "Termination Reasons"
+          ]
+        },
+        {
+          "name": "Employee List"
+        },
+        {
+          "name": "Add Employee"
+        },
+        {
+          "name": "Reports"
+        },
+        {
+          "name": "Help",
+          "hasPopup": true
+        }
+      ],
+      "landedAt": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList"
+    },
+    {
+      "module": "Leave",
+      "screens": [
+        {
+          "name": "Leave",
+          "via": "primary menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList",
+          "title": "OrangeHRM",
+          "heading": "Leave",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "×"
+            }
+          ],
+          "fields": [
+            {
+              "name": "From Date",
+              "type": "text"
+            },
+            {
+              "name": "To Date",
+              "type": "text"
+            },
+            {
+              "name": "Show Leave with Status",
+              "type": "dropdown"
+            },
+            {
+              "name": "Leave Type",
+              "type": "dropdown"
+            },
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Sub Unit",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Date",
+                "Employee Name",
+                "Leave Type",
+                "Leave Balance (Days)",
+                "Number of Days",
+                "Status",
+                "Comments",
+                "Actions"
+              ],
+              "rows": 0
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 6,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Apply",
+          "via": "module menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/applyLeave",
+          "title": "OrangeHRM",
+          "heading": "Leave",
+          "buttons": [],
+          "fields": [],
+          "collections": [],
+          "counts": {
+            "buttons": 0,
+            "fields": 0,
+            "collections": 0
+          }
+        },
+        {
+          "name": "My Leave",
+          "via": "module menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewMyLeaveList",
+          "title": "OrangeHRM",
+          "heading": "Leave",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "×"
+            }
+          ],
+          "fields": [
+            {
+              "name": "From Date",
+              "type": "text"
+            },
+            {
+              "name": "To Date",
+              "type": "text"
+            },
+            {
+              "name": "Show Leave with Status",
+              "type": "dropdown"
+            },
+            {
+              "name": "Leave Type",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Date",
+                "Employee Name",
+                "Leave Type",
+                "Leave Balance (Days)",
+                "Number of Days",
+                "Status",
+                "Comments",
+                "Actions"
+              ],
+              "rows": 0
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 4,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Entitlements → Add Entitlements",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/addLeaveEntitlement",
+          "title": "OrangeHRM",
+          "heading": "Leave Entitlements",
+          "buttons": [
+            {
+              "name": "Cancel"
+            },
+            {
+              "name": "Save"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Leave Type",
+              "type": "dropdown"
+            },
+            {
+              "name": "Leave Period",
+              "type": "dropdown"
+            },
+            {
+              "name": "Entitlement",
+              "type": "text"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 2,
+            "fields": 4,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Entitlements → Employee Entitlements",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveEntitlements",
+          "title": "OrangeHRM",
+          "heading": "Leave Entitlements",
+          "buttons": [
+            {
+              "name": "Search"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Leave Type",
+              "type": "dropdown"
+            },
+            {
+              "name": "Leave Period",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 1,
+            "fields": 3,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Entitlements → My Entitlements",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewMyLeaveEntitlements",
+          "title": "OrangeHRM",
+          "heading": "Leave Entitlements",
+          "buttons": [
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Add"
+            },
+            {
+              "name": "×"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Leave Type",
+              "type": "dropdown"
+            },
+            {
+              "name": "Leave Period",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Leave Type",
+                "Entitlement Type",
+                "Valid From",
+                "Valid To",
+                "Days",
+                "Actions"
+              ],
+              "rows": 0
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 2,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Reports → Leave Entitlements and Usage Report",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveBalanceReport",
+          "title": "OrangeHRM",
+          "heading": "Leave Reports",
+          "buttons": [
+            {
+              "name": "Generate"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Leave Type",
+              "type": "dropdown"
+            },
+            {
+              "name": "Leave Period",
+              "type": "dropdown"
+            },
+            {
+              "name": "Location",
+              "type": "dropdown"
+            },
+            {
+              "name": "Sub Unit",
+              "type": "dropdown"
+            },
+            {
+              "name": "Job Title",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 1,
+            "fields": 5,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Reports → My Leave Entitlements and Usage Report",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewMyLeaveBalanceReport",
+          "title": "OrangeHRM",
+          "heading": "Leave Reports",
+          "buttons": [
+            {
+              "name": "Generate"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Leave Period",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 1,
+            "fields": 1,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Configure → Leave Period",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/defineLeavePeriod",
+          "title": "OrangeHRM",
+          "heading": "Leave Configure",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Save"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Start Month",
+              "type": "dropdown"
+            },
+            {
+              "name": "Start Date",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 2,
+            "fields": 2,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Configure → Leave Types",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/leaveTypeList",
+          "title": "OrangeHRM",
+          "heading": "Leave Configure",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Name",
+                "Actions"
+              ],
+              "rows": 10
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Configure → Work Week",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/defineWorkWeek",
+          "title": "OrangeHRM",
+          "heading": "Leave Configure",
+          "buttons": [
+            {
+              "name": "Save"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Monday",
+              "type": "dropdown"
+            },
+            {
+              "name": "Tuesday",
+              "type": "dropdown"
+            },
+            {
+              "name": "Wednesday",
+              "type": "dropdown"
+            },
+            {
+              "name": "Thursday",
+              "type": "dropdown"
+            },
+            {
+              "name": "Friday",
+              "type": "dropdown"
+            },
+            {
+              "name": "Saturday",
+              "type": "dropdown"
+            },
+            {
+              "name": "Sunday",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 1,
+            "fields": 7,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Configure → Holidays",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewHolidayList",
+          "title": "OrangeHRM",
+          "heading": "Leave Configure",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [
+            {
+              "name": "From",
+              "type": "text"
+            },
+            {
+              "name": "To",
+              "type": "text"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Name",
+                "Date",
+                "Full Day/ Half Day",
+                "Repeats Annually",
+                "Actions"
+              ],
+              "rows": 16
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 2,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Assign Leave",
+          "via": "module menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/assignLeave",
+          "title": "OrangeHRM",
+          "heading": "Leave",
+          "buttons": [
+            {
+              "name": "Assign"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Leave Type",
+              "type": "dropdown"
+            },
+            {
+              "name": "From Date",
+              "type": "text"
+            },
+            {
+              "name": "To Date",
+              "type": "text"
+            },
+            {
+              "name": "Comments",
+              "type": "textarea"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 1,
+            "fields": 5,
+            "collections": 0
+          }
+        }
+      ],
+      "menu": [
+        {
+          "name": "Upgrade",
+          "hasPopup": true
+        },
+        {
+          "name": "Apply"
+        },
+        {
+          "name": "My Leave"
+        },
+        {
+          "name": "Entitlements",
+          "hasPopup": true,
+          "children": [
+            "Add Entitlements",
+            "Employee Entitlements",
+            "My Entitlements"
+          ]
+        },
+        {
+          "name": "Reports",
+          "hasPopup": true,
+          "children": [
+            "Leave Entitlements and Usage Report",
+            "My Leave Entitlements and Usage Report"
+          ]
+        },
+        {
+          "name": "Configure",
+          "hasPopup": true,
+          "children": [
+            "Leave Period",
+            "Leave Types",
+            "Work Week",
+            "Holidays"
+          ]
+        },
+        {
+          "name": "Leave List"
+        },
+        {
+          "name": "Assign Leave"
+        },
+        {
+          "name": "Help",
+          "hasPopup": true
+        }
+      ],
+      "landedAt": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList"
+    },
+    {
+      "module": "Time",
+      "screens": [
+        {
+          "name": "Time",
+          "via": "primary menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet",
+          "title": "OrangeHRM",
+          "heading": "Time Timesheets",
+          "buttons": [
+            {
+              "name": "View"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Employee Name",
+                "Timesheet Period",
+                "Actions"
+              ],
+              "rows": 3
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 1,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Timesheets → My Timesheets",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewMyTimesheet",
+          "title": "OrangeHRM",
+          "heading": "Time Timesheets",
+          "buttons": [
+            {
+              "name": "Edit"
+            },
+            {
+              "name": "Submit"
+            },
+            {
+              "name": "×"
+            }
+          ],
+          "fields": [
+            {
+              "name": "yyyy-dd-mm",
+              "type": "text"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Project",
+                "Activity",
+                "7Mon",
+                "8Tue",
+                "9Wed",
+                "10Thu",
+                "11Fri",
+                "12Sat",
+                "13Sun",
+                "Total"
+              ],
+              "rows": 1
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 1,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Timesheets → Employee Timesheets",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet",
+          "title": "OrangeHRM",
+          "heading": "Time Timesheets",
+          "buttons": [
+            {
+              "name": "View"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Employee Name",
+                "Timesheet Period",
+                "Actions"
+              ],
+              "rows": 3
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 1,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Attendance → My Records",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/viewMyAttendanceRecord",
+          "title": "OrangeHRM",
+          "heading": "Attendance Attendance",
+          "buttons": [
+            {
+              "name": "View"
+            },
+            {
+              "name": "×"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Date",
+              "type": "text"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Punch In",
+                "Punch In Note",
+                "Punch Out",
+                "Punch Out Note",
+                "Duration (Hours)",
+                "Actions"
+              ],
+              "rows": 0
+            }
+          ],
+          "counts": {
+            "buttons": 2,
+            "fields": 1,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Attendance → Punch In/Out",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/punchIn",
+          "title": "OrangeHRM",
+          "heading": "Attendance Attendance",
+          "buttons": [
+            {
+              "name": "In"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Date",
+              "type": "text"
+            },
+            {
+              "name": "Time",
+              "type": "text"
+            },
+            {
+              "name": "Note",
+              "type": "textarea"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 1,
+            "fields": 3,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Attendance → Employee Records",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/viewAttendanceRecord",
+          "title": "OrangeHRM",
+          "heading": "Attendance Attendance",
+          "buttons": [
+            {
+              "name": "View"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Date",
+              "type": "text"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Employee Name",
+                "Total Duration (Hours)",
+                "Actions"
+              ],
+              "rows": 50
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 2,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Attendance → Configuration",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/attendance/configure",
+          "title": "OrangeHRM",
+          "heading": "Attendance Attendance",
+          "buttons": [
+            {
+              "name": "Save"
+            }
+          ],
+          "fields": [],
+          "collections": [],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Reports → Project Reports",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/displayProjectReportCriteria",
+          "title": "OrangeHRM",
+          "heading": "Time Reports",
+          "buttons": [
+            {
+              "name": "View"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Project Name",
+              "type": "text"
+            },
+            {
+              "name": "Project Date Range",
+              "type": "text"
+            },
+            {
+              "name": "To",
+              "type": "text"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 1,
+            "fields": 3,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Reports → Employee Reports",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/displayEmployeeReportCriteria",
+          "title": "OrangeHRM",
+          "heading": "Time Reports",
+          "buttons": [
+            {
+              "name": "View"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Project Name",
+              "type": "text"
+            },
+            {
+              "name": "Activity Name",
+              "type": "dropdown"
+            },
+            {
+              "name": "Project Date Range",
+              "type": "text"
+            },
+            {
+              "name": "To",
+              "type": "text"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 1,
+            "fields": 5,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Reports → Attendance Summary",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/displayAttendanceSummaryReportCriteria",
+          "title": "OrangeHRM",
+          "heading": "Time Reports",
+          "buttons": [
+            {
+              "name": "View"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Job Title",
+              "type": "dropdown"
+            },
+            {
+              "name": "Sub Unit",
+              "type": "dropdown"
+            },
+            {
+              "name": "Employment Status",
+              "type": "dropdown"
+            },
+            {
+              "name": "Date Range",
+              "type": "text"
+            },
+            {
+              "name": "To",
+              "type": "text"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 1,
+            "fields": 6,
+            "collections": 0
+          }
+        },
+        {
+          "name": "Project Info → Customers",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewCustomers",
+          "title": "OrangeHRM",
+          "heading": "Time Project Info",
+          "buttons": [
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "NameAscendingDescending",
+                "Description",
+                "Actions"
+              ],
+              "rows": 9
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Project Info → Projects",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewProjects",
+          "title": "OrangeHRM",
+          "heading": "Time Project Info",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Customer Name",
+              "type": "text"
+            },
+            {
+              "name": "Project",
+              "type": "text"
+            },
+            {
+              "name": "Project Admin",
+              "type": "text"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Customer NameAscendingDescending",
+                "ProjectAscendingDescending",
+                "Project Admins",
+                "Actions"
+              ],
+              "rows": 11
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 3,
+            "collections": 1
+          }
+        }
+      ],
+      "menu": [
+        {
+          "name": "Upgrade",
+          "hasPopup": true
+        },
+        {
+          "name": "Timesheets",
+          "hasPopup": true,
+          "children": [
+            "My Timesheets",
+            "Employee Timesheets"
+          ]
+        },
+        {
+          "name": "Attendance",
+          "hasPopup": true,
+          "children": [
+            "My Records",
+            "Punch In/Out",
+            "Employee Records",
+            "Configuration"
+          ]
+        },
+        {
+          "name": "Reports",
+          "hasPopup": true,
+          "children": [
+            "Project Reports",
+            "Employee Reports",
+            "Attendance Summary"
+          ]
+        },
+        {
+          "name": "Project Info",
+          "hasPopup": true,
+          "children": [
+            "Customers",
+            "Projects"
+          ]
+        },
+        {
+          "name": "Help",
+          "hasPopup": true
+        }
+      ],
+      "landedAt": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet"
+    },
+    {
+      "module": "Recruitment",
+      "screens": [
+        {
+          "name": "Recruitment",
+          "via": "primary menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates",
+          "title": "OrangeHRM",
+          "heading": "Recruitment",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Job Title",
+              "type": "dropdown"
+            },
+            {
+              "name": "Vacancy",
+              "type": "dropdown"
+            },
+            {
+              "name": "Hiring Manager",
+              "type": "dropdown"
+            },
+            {
+              "name": "Status",
+              "type": "dropdown"
+            },
+            {
+              "name": "Candidate Name",
+              "type": "text"
+            },
+            {
+              "name": "Keywords",
+              "type": "text"
+            },
+            {
+              "name": "Date of Application",
+              "type": "text"
+            },
+            {
+              "name": "To",
+              "type": "text"
+            },
+            {
+              "name": "Method of Application",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "VacancyAscendingDescending",
+                "CandidateAscendingDescending",
+                "Hiring ManagerAscendingDescending",
+                "Date of ApplicationAscendingDescending",
+                "StatusAscendingDescending",
+                "Actions"
+              ],
+              "rows": 50
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 9,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Vacancies",
+          "via": "module menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewJobVacancy",
+          "title": "OrangeHRM",
+          "heading": "Recruitment",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Job Title",
+              "type": "dropdown"
+            },
+            {
+              "name": "Vacancy",
+              "type": "dropdown"
+            },
+            {
+              "name": "Hiring Manager",
+              "type": "dropdown"
+            },
+            {
+              "name": "Status",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "VacancyAscendingDescending",
+                "Job TitleAscendingDescending",
+                "Hiring ManagerAscendingDescending",
+                "StatusAscendingDescending",
+                "Actions"
+              ],
+              "rows": 7
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 4,
+            "collections": 1
+          }
+        }
+      ],
+      "menu": [
+        {
+          "name": "Upgrade",
+          "hasPopup": true
+        },
+        {
+          "name": "Candidates"
+        },
+        {
+          "name": "Vacancies"
+        },
+        {
+          "name": "Help",
+          "hasPopup": true
+        }
+      ],
+      "landedAt": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates"
+    },
+    {
+      "module": "My Info",
+      "screens": [
+        {
+          "name": "My Info",
+          "via": "primary menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7",
+          "title": "OrangeHRM",
+          "heading": "PIM",
+          "buttons": [
+            {
+              "name": "Save"
+            },
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [
+            {
+              "name": "First Name",
+              "type": "text"
+            },
+            {
+              "name": "Middle Name",
+              "type": "text"
+            },
+            {
+              "name": "Last Name",
+              "type": "text"
+            },
+            {
+              "name": "Employee Id",
+              "type": "text"
+            },
+            {
+              "name": "Other Id",
+              "type": "text"
+            },
+            {
+              "name": "Driver's License Number",
+              "type": "text"
+            },
+            {
+              "name": "License Expiry Date",
+              "type": "text"
+            },
+            {
+              "name": "Nationality",
+              "type": "dropdown"
+            },
+            {
+              "name": "Marital Status",
+              "type": "dropdown"
+            },
+            {
+              "name": "Date of Birth",
+              "type": "text"
+            },
+            {
+              "name": "Blood Type",
+              "type": "dropdown"
+            },
+            {
+              "name": "Test_Field",
+              "type": "text"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "File Name",
+                "Description",
+                "Size",
+                "Type",
+                "Date Added",
+                "Added By",
+                "Actions"
+              ],
+              "rows": 8
+            }
+          ],
+          "counts": {
+            "buttons": 2,
+            "fields": 12,
+            "collections": 1
+          }
+        }
+      ],
+      "menu": [
+        {
+          "name": "Upgrade",
+          "hasPopup": true
+        },
+        {
+          "name": "Help",
+          "hasPopup": true
+        }
+      ],
+      "landedAt": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7"
+    },
+    {
+      "module": "Performance",
+      "screens": [
+        {
+          "name": "Performance",
+          "via": "primary menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview",
+          "title": "OrangeHRM",
+          "heading": "Performance Manage Reviews",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "×"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Job Title",
+              "type": "dropdown"
+            },
+            {
+              "name": "Sub Unit",
+              "type": "dropdown"
+            },
+            {
+              "name": "Include",
+              "type": "dropdown"
+            },
+            {
+              "name": "Review Status",
+              "type": "dropdown"
+            },
+            {
+              "name": "From Date",
+              "type": "text"
+            },
+            {
+              "name": "To Date",
+              "type": "text"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "EmployeeAscendingDescending",
+                "Job Title",
+                "Sub Unit",
+                "Review PeriodAscendingDescending",
+                "Due DateAscendingDescending",
+                "Review StatusAscendingDescending",
+                "Actions"
+              ],
+              "rows": 0
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 7,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Configure → KPIs",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchKpi",
+          "title": "OrangeHRM",
+          "heading": "Performance Configure",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Job Title",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Key Performance IndicatorAscendingDescending",
+                "Job TitleAscendingDescending",
+                "Min Rate",
+                "Max Rate",
+                "Is Default",
+                "Actions"
+              ],
+              "rows": 50
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 1,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Configure → Trackers",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/viewPerformanceTracker",
+          "title": "OrangeHRM",
+          "heading": "Performance Configure",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "EmployeeAscendingDescending",
+                "TrackerAscendingDescending",
+                "Added DateAscendingDescending",
+                "Modified DateAscendingDescending",
+                "Actions"
+              ],
+              "rows": 1
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 1,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Manage Reviews → My Reviews",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/myPerformanceReview",
+          "title": "OrangeHRM",
+          "heading": "Performance Manage Reviews",
+          "buttons": [
+            {
+              "name": "Evaluate"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Job Title",
+                "Sub Unit",
+                "Review PeriodAscendingDescending",
+                "Due DateAscendingDescending",
+                "Self Evaluation StatusAscendingDescending",
+                "Review StatusAscendingDescending",
+                "Actions"
+              ],
+              "rows": 1
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Manage Reviews → Employee Reviews",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview",
+          "title": "OrangeHRM",
+          "heading": "Performance Manage Reviews",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Job Title",
+              "type": "dropdown"
+            },
+            {
+              "name": "Sub Unit",
+              "type": "dropdown"
+            },
+            {
+              "name": "Include",
+              "type": "dropdown"
+            },
+            {
+              "name": "Review Status",
+              "type": "dropdown"
+            },
+            {
+              "name": "From Date",
+              "type": "text"
+            },
+            {
+              "name": "To Date",
+              "type": "text"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "EmployeeAscendingDescending",
+                "Job Title",
+                "Sub Unit",
+                "Review PeriodAscendingDescending",
+                "Due DateAscendingDescending",
+                "Review StatusAscendingDescending",
+                "Actions"
+              ],
+              "rows": 0
+            }
+          ],
+          "counts": {
+            "buttons": 2,
+            "fields": 7,
+            "collections": 1
+          }
+        },
+        {
+          "name": "My Trackers",
+          "via": "module menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/viewMyPerformanceTrackerList",
+          "title": "OrangeHRM",
+          "heading": "Performance",
+          "buttons": [
+            {
+              "name": "View"
+            }
+          ],
+          "fields": [],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "TrackerAscendingDescending",
+                "Added DateAscendingDescending",
+                "Modified DateAscendingDescending",
+                "Actions"
+              ],
+              "rows": 1
+            }
+          ],
+          "counts": {
+            "buttons": 1,
+            "fields": 0,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Employee Trackers",
+          "via": "module menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/viewEmployeePerformanceTrackerList",
+          "title": "OrangeHRM",
+          "heading": "Performance",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "View"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Include",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Employee NameAscendingDescending",
+                "TrackersAscendingDescending",
+                "Added DateAscendingDescending",
+                "Modified DateAscendingDescending",
+                "Actions"
+              ],
+              "rows": 1
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 2,
+            "collections": 1
+          }
+        }
+      ],
+      "menu": [
+        {
+          "name": "Upgrade",
+          "hasPopup": true
+        },
+        {
+          "name": "Configure",
+          "hasPopup": true,
+          "children": [
+            "KPIs",
+            "Trackers"
+          ]
+        },
+        {
+          "name": "Manage Reviews",
+          "hasPopup": true,
+          "children": [
+            "My Reviews",
+            "Employee Reviews"
+          ]
+        },
+        {
+          "name": "My Trackers"
+        },
+        {
+          "name": "Employee Trackers"
+        },
+        {
+          "name": "Help",
+          "hasPopup": true
+        }
+      ],
+      "landedAt": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview"
+    },
+    {
+      "module": "Dashboard",
+      "screens": [
+        {
+          "name": "Dashboard",
+          "via": "primary menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index",
+          "title": "OrangeHRM",
+          "heading": "Dashboard",
+          "buttons": [
+            {
+              "name": "Assign Leave"
+            },
+            {
+              "name": "Leave List"
+            },
+            {
+              "name": "Timesheets"
+            },
+            {
+              "name": "Apply Leave"
+            },
+            {
+              "name": "My Leave"
+            },
+            {
+              "name": "My Timesheet"
+            }
+          ],
+          "fields": [],
+          "collections": [],
+          "counts": {
+            "buttons": 6,
+            "fields": 0,
+            "collections": 0
+          }
+        }
+      ],
+      "menu": [
+        {
+          "name": "Upgrade",
+          "hasPopup": true
+        },
+        {
+          "name": "Help",
+          "hasPopup": true
+        }
+      ]
+    },
+    {
+      "module": "Directory",
+      "screens": [
+        {
+          "name": "Directory",
+          "via": "primary menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory",
+          "title": "OrangeHRM",
+          "heading": "Directory",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Job Title",
+              "type": "dropdown"
+            },
+            {
+              "name": "Location",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 2,
+            "fields": 3,
+            "collections": 0
+          }
+        }
+      ],
+      "menu": [
+        {
+          "name": "Upgrade",
+          "hasPopup": true
+        },
+        {
+          "name": "Help",
+          "hasPopup": true
+        }
+      ]
+    },
+    {
+      "module": "Maintenance",
+      "screens": [
+        {
+          "name": "Maintenance",
+          "via": "primary menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/purgeEmployee",
+          "title": "OrangeHRM",
+          "heading": "",
+          "buttons": [
+            {
+              "name": "Cancel"
+            },
+            {
+              "name": "Confirm"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Username",
+              "type": "text"
+            },
+            {
+              "name": "Password",
+              "type": "password"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 2,
+            "fields": 2,
+            "collections": 0
+          }
+        }
+      ],
+      "menu": [],
+      "landedAt": "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/purgeEmployee"
+    },
+    {
+      "module": "Claim",
+      "screens": [
+        {
+          "name": "Claim",
+          "via": "primary menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewAssignClaim",
+          "title": "OrangeHRM",
+          "heading": "Claim",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Assign Claim"
+            },
+            {
+              "name": "View Details"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Reference Id",
+              "type": "text"
+            },
+            {
+              "name": "Event Name",
+              "type": "dropdown"
+            },
+            {
+              "name": "Status",
+              "type": "dropdown"
+            },
+            {
+              "name": "From Date",
+              "type": "text"
+            },
+            {
+              "name": "To Date",
+              "type": "text"
+            },
+            {
+              "name": "Include",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Reference IdAscendingDescending",
+                "Employee NameAscendingDescending",
+                "Event NameAscendingDescending",
+                "Description",
+                "Currency",
+                "Submitted DateAscendingDescending",
+                "StatusAscendingDescending",
+                "Amount",
+                "Actions"
+              ],
+              "rows": 3
+            }
+          ],
+          "counts": {
+            "buttons": 4,
+            "fields": 7,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Configuration → Events",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewEvents",
+          "title": "OrangeHRM",
+          "heading": "Claim Configuration",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Event Name",
+              "type": "text"
+            },
+            {
+              "name": "Status",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Event NameAscendingDescending",
+                "StatusAscendingDescending",
+                "Actions"
+              ],
+              "rows": 3
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 2,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Configuration → Expense Types",
+          "via": "module submenu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewExpense",
+          "title": "OrangeHRM",
+          "heading": "Claim Configuration",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Add"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Name",
+              "type": "text"
+            },
+            {
+              "name": "Status",
+              "type": "dropdown"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "NameAscendingDescending",
+                "StatusAscendingDescending",
+                "Actions"
+              ],
+              "rows": 4
+            }
+          ],
+          "counts": {
+            "buttons": 3,
+            "fields": 2,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Submit Claim",
+          "via": "module menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/submitClaim",
+          "title": "OrangeHRM",
+          "heading": "Claim",
+          "buttons": [
+            {
+              "name": "Cancel"
+            },
+            {
+              "name": "Create"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Event",
+              "type": "dropdown"
+            },
+            {
+              "name": "Currency",
+              "type": "dropdown"
+            },
+            {
+              "name": "Remarks",
+              "type": "textarea"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 2,
+            "fields": 3,
+            "collections": 0
+          }
+        },
+        {
+          "name": "My Claims",
+          "via": "module menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewClaim",
+          "title": "OrangeHRM",
+          "heading": "Claim",
+          "buttons": [
+            {
+              "name": "Reset",
+              "destructive": true
+            },
+            {
+              "name": "Search"
+            },
+            {
+              "name": "Submit Claim"
+            },
+            {
+              "name": "View Details"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Reference Id",
+              "type": "text"
+            },
+            {
+              "name": "Event Name",
+              "type": "dropdown"
+            },
+            {
+              "name": "Status",
+              "type": "dropdown"
+            },
+            {
+              "name": "From Date",
+              "type": "text"
+            },
+            {
+              "name": "To Date",
+              "type": "text"
+            }
+          ],
+          "collections": [
+            {
+              "kind": "table",
+              "columns": [
+                "Reference IdAscendingDescending",
+                "Event NameAscendingDescending",
+                "Description",
+                "Currency",
+                "Submitted DateAscendingDescending",
+                "StatusAscendingDescending",
+                "Amount",
+                "Actions"
+              ],
+              "rows": 3
+            }
+          ],
+          "counts": {
+            "buttons": 4,
+            "fields": 5,
+            "collections": 1
+          }
+        },
+        {
+          "name": "Assign Claim",
+          "via": "module menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/assignClaim",
+          "title": "OrangeHRM",
+          "heading": "Claim",
+          "buttons": [
+            {
+              "name": "Cancel"
+            },
+            {
+              "name": "Create"
+            }
+          ],
+          "fields": [
+            {
+              "name": "Employee Name",
+              "type": "text"
+            },
+            {
+              "name": "Event",
+              "type": "dropdown"
+            },
+            {
+              "name": "Currency",
+              "type": "dropdown"
+            },
+            {
+              "name": "Remarks",
+              "type": "textarea"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 2,
+            "fields": 4,
+            "collections": 0
+          }
+        }
+      ],
+      "menu": [
+        {
+          "name": "Upgrade",
+          "hasPopup": true
+        },
+        {
+          "name": "Configuration",
+          "hasPopup": true,
+          "children": [
+            "Events",
+            "Expense Types"
+          ]
+        },
+        {
+          "name": "Submit Claim"
+        },
+        {
+          "name": "My Claims"
+        },
+        {
+          "name": "Employee Claims"
+        },
+        {
+          "name": "Assign Claim"
+        },
+        {
+          "name": "Help",
+          "hasPopup": true
+        }
+      ],
+      "landedAt": "https://opensource-demo.orangehrmlive.com/web/index.php/claim/viewAssignClaim"
+    },
+    {
+      "module": "Buzz",
+      "screens": [
+        {
+          "name": "Buzz",
+          "via": "primary menu",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz",
+          "title": "OrangeHRM",
+          "heading": "Buzz",
+          "buttons": [
+            {
+              "name": "Post"
+            },
+            {
+              "name": "Share Photos"
+            },
+            {
+              "name": "Share Video"
+            },
+            {
+              "name": "Most Recent Posts"
+            },
+            {
+              "name": "Most Liked Posts"
+            },
+            {
+              "name": "Most Commented Posts"
+            }
+          ],
+          "fields": [
+            {
+              "name": "What's on your mind?",
+              "type": "textarea"
+            }
+          ],
+          "collections": [],
+          "counts": {
+            "buttons": 6,
+            "fields": 1,
+            "collections": 0
+          }
+        }
+      ],
+      "menu": [
+        {
+          "name": "Upgrade",
+          "hasPopup": true
+        },
+        {
+          "name": "Help",
+          "hasPopup": true
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "module": "Admin",
+      "skipped": "Users",
+      "why": "led outside the application",
+      "landed": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers",
+      "base": "https://opensource-demo.orangehrmlive.com/"
+    },
+    {
+      "module": "Admin",
+      "skipped": "Qualifications → Memberships",
+      "why": "the per-module screen limit was reached"
+    },
+    {
+      "module": "Admin",
+      "skipped": "Nationalities",
+      "why": "the per-module screen limit was reached"
+    },
+    {
+      "module": "Leave",
+      "skipped": "Help",
+      "why": "the per-module screen limit was reached"
+    }
+  ],
+  "errors": []
+}

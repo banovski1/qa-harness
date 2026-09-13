@@ -34,6 +34,32 @@ analysis/<app>/
 Everything except `app-profile.yaml` is generated. Never hand-edit it — re-run
 the phase that wrote it.
 
+## Two crawls, two questions
+
+The deep crawl proves a locator for every control on every screen it can reach. It is thorough
+and it is slow, and reaching a screen at all depends on that screen being linked by an `<a href>`.
+Most business applications are not built that way: their modules hang off a menu, their submenus
+open on a click, and half their screens have no inbound link anywhere in the DOM.
+
+So there is a second, coarser crawl that navigates the way a person does.
+
+```bash
+node .claude/skills/app-explorer/lib/map.mjs --profile analysis/<app>/app-profile.yaml \
+  [--only Leave,Time] [--budget-min 15] [--per-module-seconds 90] [--max-per-module 12]
+```
+
+It writes `app-map.yaml` (read by people) and `app-map.json` (read by tools): every module in the
+primary menu, every entry in each module's own menu including the ones that only open a submenu,
+and for each screen its heading, its buttons, its fields with their types, and its tables with
+their columns. **Minutes, not hours** — the budget is enforced per module, and a module cut short
+says so in `notes` rather than appearing thin for no stated reason.
+
+**It never writes.** It follows menus and it reads screens. No button on a page is ever pressed —
+only menu entries — so a map can be taken against an environment you care about.
+
+The map is the coarse layer. The deep crawl sharpens the screens that matter, and a recorded
+session sharpens them further still.
+
 ## Running it
 
 ```bash
@@ -90,6 +116,38 @@ rendered** element:
 - `settings.contentSelector` proves the *application* finished rendering into the
   page. Settling proves the page stopped changing; without this gate a screen
   whose list has not arrived yet is recorded as a nearly empty one.
+
+## What the map crawl learned the hard way
+
+Each of these cost a wrong run, and each is now a comment in the code that explains itself:
+
+- **A menu entry is not always a link or a button.** OrangeHRM's `Entitlements` is an `<li>` with
+  a caret, and its children carry `href="#"` and navigate by script. Recognising only `a[href]`
+  finds half a menu and none of its depth.
+- **When a wrapper and a link share a name, keep the link.** The wrapper owns the popup, but only
+  the link says where the entry goes. Preferring the outermost element turned every module into a
+  click target with no URL, and the crawl became far more fragile for no gain.
+- **A click that navigates has not navigated when it returns.** Reading the URL immediately
+  reports the previous screen, so a real navigation looks like a dead menu item. Wait for the
+  address to change — but only where a change is expected, since opening a dropdown correctly
+  changes nothing.
+- **A redirect destroys the execution context an evaluate is running in.** That is ordinary
+  behaviour in an application that redirects after load. Retry it; do not record it as a broken
+  screen.
+- **`page.goto` throws when the page is already navigating.** Letting that exception escape
+  abandoned the whole module and left the crawl recording the *previous* module's screen under the
+  new module's name.
+- **A module can hold the session.** OrangeHRM's Maintenance screen refuses to leave until a
+  password is given, so the two modules after it were silently mapped as copies of it. Every
+  module now starts from the home page, verifies it arrived, and re-checks *after* capturing —
+  an application can let you arrive and then send you back.
+- **The section test must be containment, not position.** `/pim/viewMyDetails` legitimately
+  becomes `/pim/viewPersonalDetails/empNumber/7`. Comparing path positions rejects every screen
+  whose URL carries a record id.
+- **The run-code sandbox has no `URL` constructor.** Resolution belongs in the browser; origins
+  are compared as text. This one cost two separate bugs, in two separate functions.
+- **A shared batch budget starves the last module in the batch.** Time looked broken for three
+  runs. It was simply last in line behind three large modules.
 
 ## How it stays stable
 

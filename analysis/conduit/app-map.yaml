@@ -1,0 +1,38 @@
+# Conduit (RealWorld, Angular) — application map
+# 3 modules, 5 screens, crawled in 12s
+# Menus and surfaces only. Nothing here was created, updated or deleted.
+app: "Conduit (RealWorld, Angular)"
+baseUrl: "https://demo.realworld.show/"
+generatedAt: "2026-09-13T00:45:33.415Z"
+modules:
+  - module: Home
+    menu:
+      - ai
+      - api
+    valueList: "/tag/…"   # 15 entries — a list of values, not a menu — two were sampled
+    screens:
+      - name: Home
+        url: "https://demo.realworld.show/"
+      - name: ai
+        url: "https://demo.realworld.show/tag/ai"
+      - name: api
+        url: "https://demo.realworld.show/tag/api"
+  - module: Sign in
+    screens:
+      - name: Sign in
+        url: "https://demo.realworld.show/login"
+        heading: Sign in
+        buttons: [Sign in]
+        fields:
+          - Email (text)
+          - Password (password)
+  - module: Sign up
+    screens:
+      - name: Sign up
+        url: "https://demo.realworld.show/register"
+        heading: Sign up
+        buttons: [Sign up]
+        fields:
+          - Username (text)
+          - Email (text)
+          - Password (password)
