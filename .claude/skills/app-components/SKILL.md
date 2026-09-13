@@ -1,6 +1,6 @@
 ---
 name: app-components
-description: Read a local clone of the app under test and write down its component conventions — the UI library, how labels attach to controls, what a form/table/dialog looks like in this codebase. Use for "what components does the app use", "how are labels wired", "regenerate the components section". Runs after app-dossier.
+description: Read a local clone of the app under test and write down its component conventions — the UI library, how labels attach to controls, what a form/table/dialog looks like in this codebase. Use for "what components does the app use", "how are labels wired", "regenerate the conventions section". Runs after app-dossier.
 ---
 
 # app-components
@@ -10,7 +10,7 @@ comes from the crawl (`app-explorer`), which can prove a locator resolves to one
 source cannot. What source knows, and the crawl does not, is *how this codebase is built* —
 and that is what decides how the generated page objects should address it.
 
-Inputs: `analysis/<app>/app-profile.yaml`, `dossier.json`. Output: the `components` section of `analysis/<app>/analysis.json`.
+Inputs: `analysis/<app>/app-profile.yaml`, and the `source` section written by app-dossier. Output: the `conventions` section of `analysis/<app>/analysis.json`.
 
 ## What to find out
 
@@ -77,13 +77,31 @@ is allowed to exist, and it never reaches a page object.
 
 ## Where this goes
 
-One artifact per app. You own the `components` section of `analysis/<app>/analysis.json` and
+One artifact per app. You own the `conventions` section of `analysis/<app>/analysis.json` and
 write no other — write your JSON to a scratch file, then hand it over:
 
 ```bash
-npx tsx scripts/analysis/write-section.ts --app <app> --section components --file /tmp/components.json
+npx tsx scripts/analysis/write-section.ts --app <app> --section conventions --file /tmp/components.json
 ```
 
 The tool replaces that one key and leaves every other byte alone, so a re-run of this
 skill produces a diff confined to your own work. Never edit `analysis.json` directly:
 you would be rewriting three other skills' findings from whatever you happened to read.
+
+## The contract
+
+`analysis/<app>/analysis.json` has nine sections and always all nine. You own **`conventions`**
+and write no other.
+
+| section | owner |
+| --- | --- |
+| `app`, `source` | app-dossier |
+| `conventions` | app-components |
+| `api` | app-api |
+| `map` | app-explorer (`map.mjs`) |
+| `components`, `testability`, `stats` | compile-model.ts |
+| `screens` | app-explorer (`explore.mjs`), enriched by compile-model.ts |
+
+A section that is present but empty means its skill has not run, and `check-model.ts`
+reports it by name. Leaving yours empty because you found nothing is a claim — say where
+you looked in `notes` instead.

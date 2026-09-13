@@ -39,7 +39,7 @@ function parseArgs(argv: string[]): Args {
 
 function listApps(): string[] {
   return readdirSync(ANALYSIS, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory() && existsSync(join(ANALYSIS, entry.name, 'api.json')))
+    .filter((entry) => entry.isDirectory() && existsSync(join(ANALYSIS, entry.name, 'analysis.json')))
     .map((entry) => entry.name)
     .sort();
 }
@@ -57,8 +57,10 @@ function probeCandidates(endpoints: Endpoint[]): Endpoint[] {
 }
 
 async function verify(app: string): Promise<VerifyResult> {
-  const apiPath = join(ANALYSIS, app, 'api.json');
-  const api = JSON.parse(readFileSync(apiPath, 'utf8')) as {
+  const analysis = JSON.parse(readFileSync(join(ANALYSIS, app, 'analysis.json'), 'utf8')) as {
+    app?: { baseUrl?: string }; api?: { auth?: AuthBlock; endpoints?: Endpoint[] };
+  };
+  const api = { ...analysis.api, baseUrl: analysis.app?.baseUrl } as {
     baseUrl?: string; auth?: AuthBlock; endpoints?: Endpoint[];
   };
   const profilePath = join(ANALYSIS, app, 'app-profile.yaml');
@@ -180,9 +182,10 @@ async function proveCredential(
 }
 
 function stamp(app: string, result: VerifyResult): void {
-  const apiPath = join(ANALYSIS, app, 'api.json');
-  const api = JSON.parse(readFileSync(apiPath, 'utf8')) as Record<string, unknown>;
-  api.authVerification = {
+  const path = join(ANALYSIS, app, 'analysis.json');
+  const analysis = JSON.parse(readFileSync(path, 'utf8')) as Record<string, any>;
+  analysis.api = analysis.api ?? {};
+  analysis.api.authVerification = {
     verdict: result.verdict,
     reason: result.reason,
     checkedAt: result.checkedAt,
@@ -190,7 +193,7 @@ function stamp(app: string, result: VerifyResult): void {
     probe: result.probe ?? null,
     observations: result.observations,
   };
-  writeFileSync(apiPath, `${JSON.stringify(api, null, 2)}\n`);
+  writeFileSync(path, `${JSON.stringify(analysis, null, 2)}\n`);
 }
 
 const MARK: Record<Verdict, string> = {

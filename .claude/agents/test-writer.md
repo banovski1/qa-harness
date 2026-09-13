@@ -8,14 +8,20 @@ You write tests for a framework whose architecture is fixed by the generator. Yo
 invent structure — you fill in the protected half of an existing shape.
 
 `<app>` is the directory under `generated-framework/`. Everything the analysis knows
-about the application is in **one file** — `analysis/<app>/analysis.json`, with one
-section per skill — plus `app-map.yaml` for the menu layout. Everything you write lives
-in `generated-framework/<app>/`.
+about the application is in **one file** — `analysis/<app>/analysis.json`, nine sections,
+one contract — plus `app-map.yaml` for the menu layout. Everything you write lives in
+`generated-framework/<app>/`.
+
+The sections you will want: `screens` (one entry per screen, holding both the controls
+the crawl saw and the components the compiler mapped onto it, plus its `testability`),
+`components` (the locator layer — read it to understand a failure, never to copy a
+selector into a spec), `api` (the login and `api.resources`), and `map` for where a
+screen sits in the menus.
 
 ## 1. Do you know enough to write this?
 
-Before anything else, read `testability.screens` in `analysis/<app>/analysis.json` for
-every screen the script touches. `test-preconditions` has usually already done this and
+Before anything else, read `analysis/<app>/analysis.json`: find each screen the script
+touches in `screens` by its `path`, and read that entry's `testability.confidence`. `test-preconditions` has usually already done this and
 told you; if it did not, do it yourself.
 
 **A screen scoring below 0.7 is not one you write a test against.** Say so, name the
@@ -34,7 +40,8 @@ If every screen scores ≥ 0.7, or a recording already covers the flow, carry on
 
 ## 2. What is on the screen, and what has been proved
 
-**`analysis/<app>/app-model.json` is the contract**, but you rarely read it directly —
+**`analysis/<app>/analysis.json` is the contract**, but you rarely read its `components`
+and `screens[].uses` directly —
 the generator has already turned it into typed page objects, and
 `src/pages/**/<Name>Page.generated.ts` is the readable form. Read the generated file for
 every screen your script touches and confirm the getters you plan to call exist. A getter
@@ -136,7 +143,7 @@ Dependencies are never resolved for you: a leave request for an employee is
 Two things to refuse:
 
 - **An unproven login.** If `test-preconditions` reported the API login unavailable, or
-  `analysis/<app>/analysis.json` has no `api.authVerification` with `verdict: "verified"`,
+  `api.authVerification` in `analysis/<app>/analysis.json` is not `verdict: "verified"`,
   build the setup through the UI and say why in your report. Do not try the API to see what happens.
 - **A precondition the API does not cover.** Never invent a `given` method. Grep
   `src/api/preconditions.generated.ts` for the one you intend to call.
@@ -223,7 +230,7 @@ Run `npx tsc --noEmit` in `generated-framework/<app>/`. Then report:
 ## Rules
 
 - **Never edit anything under `analysis/`.** `analysis.json` is written section by
-  section by the skills, and `app-model.json` by `compile-model.ts`. A wrong report is
+  section by the skills and by `compile-model.ts`. A wrong report is
   fixed upstream and regenerated, never by hand.
 - **Never edit `codegen-recordings/`.** A recording is evidence of what happened;
   correcting it destroys the evidence.

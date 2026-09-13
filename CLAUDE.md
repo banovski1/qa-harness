@@ -11,22 +11,59 @@ test framework whose page objects contain no locators at all.
 analysis/<app>/app-profile.yaml     the only hand-written file: repoPath, baseUrl, auth, seeds, budget
         │
         │   four skills, one artifact — each owns one section of analysis.json
-        ├─► app-dossier ─────► app, source      what the source declares
-        ├─► app-components ──► components       how the app is built
-        ├─► app-api ─────────► api              endpoints, and how to log in
-        └─► app-explorer ────► map, screens     what the running app presents
-                    │                           (and renders app-map.yaml from `map`)
+        ├─► app-dossier ─────► app, source        what the source declares
+        ├─► app-components ──► conventions        how the app is built
+        ├─► app-api ─────────► api                endpoints, and how to log in
+        └─► app-explorer ────► map, screens       what the running app presents
+                    │                             (and renders app-map.yaml from `map`)
         compile-model.ts ◄──┘   deterministic, pure, snapshot-tested
                     │
-                    ├─► app-model.json  ──► emit.ts ──► generated-framework/<app>/
-                    └─► analysis.json § testability   what can be tested, and what needs recording
+                    └─► components, screens[].uses, api.resources, testability, stats
+                                    │
+                                    └─► emit.ts ──► generated-framework/<app>/
 ```
 
-Four files per app and no more: `app-profile.yaml` (yours), `analysis.json` (every
-finding, one section per skill), `app-map.yaml` (the menu map, for people), and
-`app-model.json` (the compiled contract). There were sixteen, and a change meant reading
-a diff spread across all of them.
+**Two artifacts per app**, plus the profile you write:
 
+| file | what it is |
+| --- | --- |
+| `app-profile.yaml` | yours. The only app-specific thing anyone writes by hand |
+| `analysis.json` | everything known about the app: nine sections, one contract |
+| `app-map.yaml` | the menu map, rendered from `analysis.json`'s `map` for people to read |
+
+There were sixteen files and a second `app-model.json`, and answering "what can I
+address on this screen?" meant opening two of them and joining by path.
+
+## The contract: `analysis.json`
+
+Nine sections, always all nine, each with exactly one owner. A section that is present
+but empty means a skill has not run — `check-model.ts` says which.
+
+| section | owner | holds |
+| --- | --- | --- |
+| `app` | app-dossier | name, baseUrl, repoPath, repoCommit, stack |
+| `source` | app-dossier | declared routes, entities, dependencies, existing tests, self-documentation |
+| `conventions` | app-components | the UI library, region selectors, how a label reaches an input |
+| `api` | app-api | endpoints, tiers, spec, `auth`, `authVerification`, and `resources` (derived) |
+| `map` | app-explorer (`map.mjs`) | the menu map — what `app-map.yaml` renders |
+| `components` | compile-model | the locator layer. **The only place a selector may appear** |
+| `screens` | app-explorer, enriched by compile-model | one entry per screen: what was observed *and* what was derived |
+| `testability` | compile-model | the roll-up, and the recordings that raised it |
+| `stats` | compile-model | the counts a review reads first |
+
+`screens` is the one section with two writers, and the order matters: the explorer writes
+what it observed — controls, tables, links, headings — then the compiler adds what it
+derived to the same entries: the page object's name, the components mapped onto it, the
+transitions it proved, and the confidence. Everything about one screen is in one entry,
+because looking it up in two places is what the second file was.
+
+The compiler writes back into the section it reads, so `crawled: false` is load-bearing:
+it marks a screen the compiler itself added for a declared route no crawl reached, and
+keeps a recompile from counting it as something the crawl found. There is a test for it.
+
+Raw crawl output stays in `.crawl/` and is gitignored — a candidate ladder and a bounding
+box per element, fifteen megabytes for one app, never read again once uniqueness has been
+decided.
 
 The two halves answer different questions, and tests need both. **Source** knows every route the
 app declares, how a label attaches to an input, and which endpoint creates a record. **The running
@@ -51,8 +88,8 @@ node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-pr
 # 3. Prove the documented API login actually works (stamps api.json)
 APP_USERNAME=... APP_PASSWORD=... npx tsx scripts/api-auth/verify-auth.ts --app <app> --write
 
-# 4. Compile the model, then gate it
-npx tsx scripts/model-compiler/compile-model.ts --app <app>     # app-model.json + the testability section
+# 4. Compile, then gate the contract
+npx tsx scripts/model-compiler/compile-model.ts --app <app>     # fills in the compiler's five sections
 npx tsx scripts/model-compiler/check-model.ts --app <app>       # staleness, naming, addressability
 
 # 5. Generate the framework
@@ -101,9 +138,9 @@ Tags" sidebar is recorded as a `valueList` with two samples, not crawled as fift
 The map is the coarse layer. The deep crawl sharpens the screens that matter; a recorded session
 sharpens them further.
 
-## The contract: `app-model.json`
+## What the compiler guarantees
 
-Four tables, and **only `components` holds a locator**.
+Across `components` and `screens`, **only `components` holds a locator**.
 
 - **A screen carries English, never a selector.** `{ component: 'Button', as: 'submitRequest',
   label: 'Submit Request' }`. `assertNoSelectors` makes a violation a compile error, with a test.
@@ -135,10 +172,9 @@ Four tables, and **only `components` holds a locator**.
 
 ## Testability: write it, or record it first
 
-`compile-model.ts` writes the one section no skill owns. For every screen — crawled or
-merely declared — `testability.screens[path]` carries a confidence between 0 and 1, the
-count of controls that can and cannot be addressed, and a `missing` list saying what
-would raise it.
+`compile-model.ts` scores every screen in place: `screens[].testability` carries a
+confidence between 0 and 1, the count of controls that can and cannot be addressed, and
+a `missing` list saying what would raise it. `testability.summary` is the roll-up.
 
 The number answers one question: *is there enough here to address the controls a test
 would touch?* **≥ 0.7 — write the test. 0.3 to 0.7 — ask for the flow to be recorded
@@ -179,8 +215,8 @@ list. The heading is recorded too, but it is one crawl of one moment: assert it 
 
 `BaseComponent.act()` wraps every interaction. On failure it classifies rather than timing out:
 `NOT_FOUND`, `AMBIGUOUS`, `HIDDEN`, `DISABLED`, `COVERED`, `DETACHED`, `TIMED_OUT` — each with the
-evidence that distinguishes it, the component and screen that produced it, and the path of the
-model file to re-crawl. Every wait is a named condition and reports what it saw instead
+evidence that distinguishes it, the component and screen that produced it, and the path of
+`analysis.json` to re-crawl. Every wait is a named condition and reports what it saw instead
 (`waited 5041ms for the table to render — no element matches .oxd-table`), so the misdiagnosis that
 ends in a pasted `waitForTimeout` is not available. Two channels: `test.step` for the trace, and
 `test-results/diagnostics.jsonl` for an agent.
@@ -205,7 +241,9 @@ once, never touched). `<Name>Page.generated.ts` carries the mapped components;
 `<Name>Page.ts` — its subclass — carries your actions and assertions. Nothing is ever deleted, so a
 rename leaves the old file behind: delete `src/` before a regeneration that changes names.
 
-Never hand-edit anything under `analysis/` or any `*.generated.ts`. The fix for a wrong report is
+Never hand-edit anything under `analysis/` or any `*.generated.ts`. A skill writes its
+section through `scripts/analysis/write-section.ts`, which replaces one key and leaves
+every other byte alone; nothing edits `analysis.json` by hand. The fix for a wrong report is
 upstream — re-run the skill, then the compiler. Both `analysis/` and `generated-framework/` are
 committed on purpose: re-running produces a `git diff`, and that diff *is* the test of the change.
 

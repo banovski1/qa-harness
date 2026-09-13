@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/calcom/app-model.json (b0a34f21c9)
+// Source: analysis/calcom/analysis.json (b0a34f21c9)
 
 import type { Page } from '@playwright/test';
 import { BasePage } from '../BasePage.ts';
@@ -10,7 +10,7 @@ export class HomePageGenerated extends BasePage {
   readonly path = '/';
   readonly heading = 'The better way to schedule your meetings';
 
-  // 18 element(s) on this screen carry no label, role name or field
+  // 21 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in HomePage.ts.
   readonly calAi = new Link(this.page, { label: 'Cal.ai' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
@@ -18,7 +18,10 @@ export class HomePageGenerated extends BasePage {
   readonly calComLaunchesV68 = new Link(this.page, { label: 'Cal.com launches v6.8' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly signUpWithGoogle = new Link(this.page, { label: 'Sign up with Google' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly signUpWithEmail = new Link(this.page, { label: 'Sign up with email' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
+  readonly bookADemo = new Link(this.page, { label: 'Book a demo', within: 'With us, appointment scheduling is easy' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
+  readonly bookADemo2 = new Link(this.page, { label: 'Book a demo', within: 'Your all-purpose scheduling app' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly exploreApps = new Link(this.page, { label: 'Explore apps' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
+  readonly bookADemo3 = new Link(this.page, { label: 'Book a demo', within: 'See why our users love Cal.com' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly readMoreAboutCalcomISO27001 = new Link(this.page, { label: 'Read more about Calcom ISO 27001' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly readMoreAboutCalcomSOC2 = new Link(this.page, { label: 'Read more about Calcom SOC 2' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });
   readonly readMoreAboutCalcomCCPA = new Link(this.page, { label: 'Read more about Calcom CCPA' }, { screen: 'HomePage', expectedUrl: '/', modelPath: MODEL_PATH });

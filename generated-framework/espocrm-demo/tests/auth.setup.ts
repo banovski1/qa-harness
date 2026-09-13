@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/espocrm-demo/app-model.json (8b4f900085)
+// Source: analysis/espocrm-demo/analysis.json (8b4f900085)
 
 // Logs in once per run and saves the session, so no spec pays for a login.
 // The steps come from analysis/espocrm-demo/app-profile.yaml; credentials never do.

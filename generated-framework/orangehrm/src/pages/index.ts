@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/orangehrm/app-model.json (56e23b3b09)
+// Source: analysis/orangehrm/analysis.json (56e23b3b09)
 export { AddAuthProviderPage } from './web/AddAuthProviderPage.ts';
 export { AddEmployeePage } from './web/AddEmployeePage.ts';
 export { AddLeaveEntitlementPage } from './web/AddLeaveEntitlementPage.ts';

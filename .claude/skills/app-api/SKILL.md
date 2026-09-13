@@ -9,7 +9,7 @@ A UI test that creates its preconditions through the UI is slow and tests the wr
 thing twice. This file is what lets a spec set up state directly. Its other job is
 **authentication**: the cheapest possible way to get a logged-in session.
 
-Inputs: `analysis/<app>/app-profile.yaml`, `dossier.json`. Output: the `api` section of `analysis/<app>/analysis.json`.
+Inputs: `analysis/<app>/app-profile.yaml`, and the `source` section written by app-dossier. Output: the `api` section of `analysis/<app>/analysis.json`.
 
 ## Work the tiers in order and stop when one pays
 
@@ -176,3 +176,21 @@ npx tsx scripts/analysis/write-section.ts --app <app> --section api --file /tmp/
 The tool replaces that one key and leaves every other byte alone, so a re-run of this
 skill produces a diff confined to your own work. Never edit `analysis.json` directly:
 you would be rewriting three other skills' findings from whatever you happened to read.
+
+## The contract
+
+`analysis/<app>/analysis.json` has nine sections and always all nine. You own **`api`**
+and write no other.
+
+| section | owner |
+| --- | --- |
+| `app`, `source` | app-dossier |
+| `conventions` | app-components |
+| `api` | app-api |
+| `map` | app-explorer (`map.mjs`) |
+| `components`, `testability`, `stats` | compile-model.ts |
+| `screens` | app-explorer (`explore.mjs`), enriched by compile-model.ts |
+
+A section that is present but empty means its skill has not run, and `check-model.ts`
+reports it by name. Leaving yours empty because you found nothing is a claim — say where
+you looked in `notes` instead.

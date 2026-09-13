@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/orangehrm/app-model.json (56e23b3b09)
+// Source: analysis/orangehrm/analysis.json (56e23b3b09)
 
 // The only file in this project that names an app-specific selector. Everything
 // else addresses controls by label, role or field name.

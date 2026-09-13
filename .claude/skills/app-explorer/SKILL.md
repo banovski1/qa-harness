@@ -23,7 +23,6 @@ analysis/<app>/
   app-profile.yaml   the only app-specific file — you write this one
   analysis.json      every skill's findings, one section each. You own `map` and `screens`
   app-map.yaml       the menu map, rendered from analysis.json's `map` for people to read
-  app-model.json     the compiled contract, written by compile-model.ts
   .crawl/            raw crawl output — working material, gitignored, never an artifact
 ```
 
@@ -220,3 +219,21 @@ node .claude/skills/app-explorer/lib/explore.mjs --profile analysis/<app>/app-pr
 
 On the EspoCRM demo this is 60 screens out of 60 identical. A screen that differs
 is a finding: either genuinely live content, or a stability bug worth fixing here.
+
+## The contract
+
+`analysis/<app>/analysis.json` has nine sections and always all nine. You own **`map` and `screens`**
+and write no other.
+
+| section | owner |
+| --- | --- |
+| `app`, `source` | app-dossier |
+| `conventions` | app-components |
+| `api` | app-api |
+| `map` | app-explorer (`map.mjs`) |
+| `components`, `testability`, `stats` | compile-model.ts |
+| `screens` | app-explorer (`explore.mjs`), enriched by compile-model.ts |
+
+A section that is present but empty means its skill has not run, and `check-model.ts`
+reports it by name. Leaving yours empty because you found nothing is a claim — say where
+you looked in `notes` instead.

@@ -16,8 +16,12 @@ two apps could match, say so and pick none.
 ## 1. Is the app's API login proven?
 
 Read `analysis/<app>/analysis.json` and look at `api.authVerification` **before anything
-else**. That one file holds everything four skills learned about the app; you need three
-of its sections and nothing outside it.
+else**. That one file is the whole analysis — nine sections, one contract. You need three
+of them and nothing outside the file:
+
+- `api` — the endpoints, the login, and whether it has been proved to work;
+- `api.resources` — what can be created and cleaned up, and what each depends on;
+- `screens[].testability` — whether the UI half is known well enough to write.
 
 | `verdict` | what you do |
 | --- | --- |
@@ -87,16 +91,16 @@ Rules for this section:
 
 ## 3b. Say whether the UI half is known well enough to write
 
-`analysis.json`'s `testability.screens` scores every screen the journey will touch, and
-this is the check that decides whether `test-writer` writes anything at all. For each
-screen the steps name, find its path and read `confidence`:
+`analysis.json` scores every screen in place: find the entry in `screens` whose `path`
+matches, and read its `testability.confidence`. This is the check that decides whether
+`test-writer` writes anything at all.
 
 | confidence | verdict | what you write |
 | --- | --- | --- |
 | ≥ 0.7 | `write` | nothing — the screen is known |
 | 0.3 – 0.7 | `record-first` | name the screen and what `missing` says is absent |
 | < 0.3 | `unknown` | the screen is a URL and little else |
-| `crawled: false` | `unknown` | the route is declared and was never reached |
+| `testability.crawled: false` | `unknown` | the route is declared and was never reached |
 
 If any screen in the journey scores below 0.7, **say so at the top of your return value**
 and name the flow to record:

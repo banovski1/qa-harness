@@ -1,10 +1,10 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/conduit/app-model.json (dd99ed2cf3)
+// Source: analysis/conduit/analysis.json (dd99ed2cf3)
 
 import type { Locator, Page } from '@playwright/test';
 import { BaseComponent, type ComponentContext } from './base/BaseComponent.ts';
 
-/** navigation region — 4 controls shared across 15 screens. This class owns the only selector for this region. */
+/** navigation region — 4 controls shared across 6 screens. This class owns the only selector for this region. */
 export class NavigationBar extends BaseComponent {
   constructor(page: Page, context: ComponentContext = {}) {
     super(page, 'NavigationBar', context);
@@ -15,7 +15,7 @@ export class NavigationBar extends BaseComponent {
   }
 
   get conduit(): Locator {
-    return this.locator().locator('body > app-root > app-layout-header > nav.navbar.navbar-light > div.container > a.navbar-brand');
+    return this.locator().getByRole('link', { name: 'Conduit', exact: true });
   }
 
   get home(): Locator {
@@ -23,7 +23,7 @@ export class NavigationBar extends BaseComponent {
   }
 
   get signIn(): Locator {
-    return this.locator().locator('app-layout-header > nav.navbar.navbar-light > div.container > ul.nav.navbar-nav > li.nav-item:nth-of-type(2) > a.nav-link');
+    return this.locator().getByRole('link', { name: 'Sign in', exact: true });
   }
 
   get signUp(): Locator {

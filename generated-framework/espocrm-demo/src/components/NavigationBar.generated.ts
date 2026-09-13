@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/espocrm-demo/app-model.json (8b4f900085)
+// Source: analysis/espocrm-demo/analysis.json (8b4f900085)
 
 import type { Locator, Page } from '@playwright/test';
 import { BaseComponent, type ComponentContext } from './base/BaseComponent.ts';
@@ -97,4 +97,7 @@ export class NavigationBar extends BaseComponent {
     });
   }
 
+  async goToCalendar(): Promise<void> {
+    await this.click('calendar');
+  }
 }

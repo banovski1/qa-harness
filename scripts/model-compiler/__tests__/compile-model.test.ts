@@ -4,6 +4,7 @@ import { mkdtempSync, writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { compile, assertNoSelectors, pickKeyColumn, assignPageNames, pathIdentity } from '../compile-model.ts';
+import { scoreScreens } from '../../analysis/testability.ts';
 
 test('a page is identified by its full parameterless path', () => {
   assert.equal(pathIdentity('/pim/employee/{id}/edit'), 'pim/employee/edit');
@@ -72,7 +73,7 @@ function fixture(): string {
       routes: [{ path: '/contacts' }, { path: '/contacts/add' }, { path: '/reports' }],
       entities: [], existingTests: [], docs: {}, dependencies: {},
     },
-    components: {
+    conventions: {
       regions: [
         { name: 'NavigationBar', selector: '#nav' },
         { name: 'RecordTable', selector: '.tbl', row: 'tr', cell: 'td', rowKey: 'data-id' },
@@ -233,4 +234,36 @@ test('a crawled record URL folds onto its declared parameterised route', () => {
   assert.equal(detail.crawled, true);
   assert.deepEqual(detail.aliases, ['/contacts/42']);
   assert.ok(!m.screens.some(s => s.path === '/contacts/42'));
+});
+
+test('compiling twice over its own output changes nothing', () => {
+  // The compiler writes back into the section it reads, so a declared-but-unreached
+  // screen it added last run must not be counted as something a crawl found this one.
+  const dir = fixture();
+  const first = compile(dir, 'T');
+  const analysis = JSON.parse(readFileSync(join(dir, 'analysis.json'), 'utf8'));
+  const observed = new Map(analysis.screens.map((s: any) => [s.path, s]));
+  analysis.screens = first.screens.map((page: any) => ({
+    ...(observed.get(page.path) ?? { headings: [], tables: [], controls: [], links: [] }),
+    path: page.path, url: page.url, title: page.title,
+    name: page.name, crawled: page.crawled, uses: page.uses, actions: page.actions,
+  }));
+  writeFileSync(join(dir, 'analysis.json'), JSON.stringify(analysis, null, 2));
+
+  const second = compile(dir, 'T');
+  assert.equal(second.stats.crawled, first.stats.crawled);
+  assert.equal(second.stats.declaredOnly, first.stats.declaredOnly);
+  assert.equal(second.stats.uses, first.stats.uses);
+});
+
+test('a declared screen the crawl never reached scores zero, whatever its controls say', () => {
+  const screens: any[] = [
+    { path: '/a', headings: [], tables: [], controls: [{ name: 'X', matches: 1 }], links: [] },
+    { path: '/b', crawled: false, headings: [], tables: [], controls: [], links: [] },
+  ];
+  const summary = scoreScreens(screens, []);
+  assert.equal(screens[0].testability.confidence > 0, true);
+  assert.equal(screens[1].testability.confidence, 0);
+  assert.equal(screens[1].testability.crawled, false);
+  assert.equal(summary.summary.total, 2);
 });

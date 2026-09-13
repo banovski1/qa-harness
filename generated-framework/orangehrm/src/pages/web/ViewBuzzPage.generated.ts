@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/orangehrm/app-model.json (56e23b3b09)
+// Source: analysis/orangehrm/analysis.json (56e23b3b09)
 
 import type { Page } from '@playwright/test';
 import { BasePage } from '../BasePage.ts';
@@ -11,7 +11,7 @@ export class ViewBuzzPageGenerated extends BasePage {
   readonly path = '/web/index.php/buzz/viewBuzz';
   readonly heading = null;
 
-  // 9 element(s) on this screen carry no label, role name or field
+  // 13 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in ViewBuzzPage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'ViewBuzzPage', expectedUrl: '/web/index.php/buzz/viewBuzz', modelPath: MODEL_PATH });

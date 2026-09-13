@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/calcom/app-model.json (b0a34f21c9)
+// Source: analysis/calcom/analysis.json (b0a34f21c9)
 
 import type { Page } from '@playwright/test';
 import { BasePage } from '../BasePage.ts';
@@ -10,7 +10,7 @@ export class EnterprisePageGenerated extends BasePage {
   readonly path = '/enterprise';
   readonly heading = 'The operating system for scheduling';
 
-  // 20 element(s) on this screen carry no label, role name or field
+  // 30 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in EnterprisePage.ts.
   readonly calAi = new Link(this.page, { label: 'Cal.ai' }, { screen: 'EnterprisePage', expectedUrl: '/enterprise', modelPath: MODEL_PATH });

@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/espocrm-demo/app-model.json (8b4f900085)
+// Source: analysis/espocrm-demo/analysis.json (8b4f900085)
 
 // The only file in this project that names an app-specific selector. Everything
 // else addresses controls by label, role or field name.

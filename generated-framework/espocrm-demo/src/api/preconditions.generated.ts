@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/espocrm-demo/app-model.json (8b4f900085)
+// Source: analysis/espocrm-demo/analysis.json (8b4f900085)
 
 import { Api, idOf } from './resources.generated.ts';
 import { uniqueName } from '../utils/unique-name.ts';

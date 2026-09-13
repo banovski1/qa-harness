@@ -1,6 +1,6 @@
 # framework-generator
 
-`app-model.json` in, a Playwright project out. Nothing here reads the application, the crawl or the
+`analysis.json` in, a Playwright project out. Nothing here reads the application, the crawl or the
 repo: every decision was made by `scripts/model-compiler/compile-model.ts`.
 
 ```bash

@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 // Probes the usual specification locations from inside the authenticated page,
 // so a spec behind a session cookie is still reachable. Writes
-// openapi-discovery.json whether or not one answers: "nothing answered" is a
+// api.spec.discovery whether or not one answers: "nothing answered" is a
 // finding the API report states, not an omission.
 import { execFile } from 'node:child_process';
 import { readFile, writeFile, rm } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { promisify } from 'node:util';
 import { parseYaml } from './yaml-lite.mjs';
@@ -86,5 +87,13 @@ const discovery = hit
   ? { ...hit, probedAt: new Date().toISOString(), probes: payload.probes }
   : { found: false, probedAt: new Date().toISOString(), probes: payload.probes };
 
-await writeFile(join(outDir, 'openapi-discovery.json'), JSON.stringify(discovery, null, 2));
+// Into the one artifact, under the section that owns the specification. A probe that
+// found nothing is still evidence, and it belongs beside the claim it qualifies.
+{
+  const path = join(outDir, 'analysis.json');
+  const analysis = existsSync(path) ? JSON.parse(await readFile(path, 'utf8')) : {};
+  analysis.api = analysis.api ?? {};
+  analysis.api.spec = { ...(analysis.api.spec ?? {}), discovery };
+  await writeFile(path, JSON.stringify(analysis, null, 2) + '\n');
+}
 console.log('[probe-openapi]', hit ? 'specification found at ' + hit.url : 'no specification answered');

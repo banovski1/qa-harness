@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/espocrm-demo/app-model.json (8b4f900085)
+// Source: analysis/espocrm-demo/analysis.json (8b4f900085)
 
 import type { Page } from '@playwright/test';
 import { BasePage } from '../BasePage.ts';
@@ -11,7 +11,7 @@ export class MeetingCreatePageGenerated extends BasePage {
   readonly path = '/#Meeting/create';
   readonly heading = 'Meetingscreate';
 
-  // 26 element(s) on this screen carry no label, role name or field
+  // 27 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in MeetingCreatePage.ts.
   readonly navigation = new NavigationBar(this.page, { screen: 'MeetingCreatePage', expectedUrl: '/#Meeting/create', modelPath: MODEL_PATH });

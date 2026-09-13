@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/calcom/app-model.json (b0a34f21c9)
+// Source: analysis/calcom/analysis.json (b0a34f21c9)
 
 import type { Page } from '@playwright/test';
 import { BasePage } from '../BasePage.ts';
@@ -10,7 +10,7 @@ export class UserPageGenerated extends BasePage {
   readonly path = '/{user}';
   readonly heading = 'Supercharged scheduling with';
 
-  // 15 element(s) on this screen carry no label, role name or field
+  // 17 element(s) on this screen carry no label, role name or field
   // identifier, so nothing here addresses them. Record the flow that uses one and add
   // a scoped accessor in UserPage.ts.
   readonly calAi = new Link(this.page, { label: 'Cal.ai' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
@@ -18,10 +18,15 @@ export class UserPageGenerated extends BasePage {
   readonly getStarted = new Link(this.page, { label: 'Get started' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
   readonly bookASalesCallWithOurTeam = new Link(this.page, { label: 'Book a sales call with our team' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
   readonly tryAIScheduling = new Link(this.page, { label: 'Try AI scheduling', within: 'AI-powered calls' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
+  readonly tryAIScheduling2 = new Link(this.page, { label: 'Try AI scheduling', within: 'See the AI phone agent in action' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
   readonly seeCalAiInLiveAction = new Link(this.page, { label: 'See Cal.ai in live action' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
   readonly play = new Button(this.page, { label: 'Play' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
-  readonly tryAIScheduling2 = new Link(this.page, { label: 'Try AI scheduling', within: 'Not to mention everything else you could need in a scheduling app' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
-  readonly tryAIScheduling3 = new Link(this.page, { label: 'Try AI scheduling', within: 'Empower your receptionist. Let AI handle the scheduling' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
+  readonly tryAIScheduling3 = new Link(this.page, { label: 'Try AI scheduling', within: 'Set up your Agent in minutes without a PhD degree' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
+  readonly tryAIScheduling4 = new Link(this.page, { label: 'Try AI scheduling', within: 'Why Cal.ai\'s AI phone calls transform your scheduling' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
+  readonly tryAIScheduling5 = new Link(this.page, { label: 'Try AI scheduling', within: 'Automated AI calls that fill calendars and reduce no-shows' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
+  readonly tryAIScheduling6 = new Link(this.page, { label: 'Try AI scheduling', within: 'Not to mention everything else you could need in a scheduling app' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
+  readonly tryAIScheduling7 = new Link(this.page, { label: 'Try AI scheduling', within: 'Frequently asked questions about Cal.ai' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
+  readonly tryAIScheduling8 = new Link(this.page, { label: 'Try AI scheduling', within: 'Empower your receptionist. Let AI handle the scheduling' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
   readonly calAiPhoneAgentSuperchargedSchedulingWithAIPoweredCallsProductHunt = new Link(this.page, { label: 'Cal.ai Phone Agent - Supercharged scheduling with AI-powered calls | Product Hunt' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
   readonly readMoreAboutCalcomISO27001 = new Link(this.page, { label: 'Read more about Calcom ISO 27001' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });
   readonly readMoreAboutCalcomSOC2 = new Link(this.page, { label: 'Read more about Calcom SOC 2' }, { screen: 'UserPage', expectedUrl: '/{user}', modelPath: MODEL_PATH });

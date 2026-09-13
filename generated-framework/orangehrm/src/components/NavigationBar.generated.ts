@@ -1,10 +1,10 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/orangehrm/app-model.json (56e23b3b09)
+// Source: analysis/orangehrm/analysis.json (56e23b3b09)
 
 import type { Locator, Page } from '@playwright/test';
 import { BaseComponent, type ComponentContext } from './base/BaseComponent.ts';
 
-/** navigation region — 15 controls shared across 30 screens. This class owns the only selector for this region. */
+/** navigation region — 15 controls shared across 21 screens. This class owns the only selector for this region. */
 export class NavigationBar extends BaseComponent {
   constructor(page: Page, context: ComponentContext = {}) {
     super(page, 'NavigationBar', context);

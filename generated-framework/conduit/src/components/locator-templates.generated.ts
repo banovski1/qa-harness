@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/conduit/app-model.json (dd99ed2cf3)
+// Source: analysis/conduit/analysis.json (dd99ed2cf3)
 
 // The only file in this project that names an app-specific selector. Everything
 // else addresses controls by label, role or field name.

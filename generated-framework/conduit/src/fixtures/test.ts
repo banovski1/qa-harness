@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/conduit/app-model.json (dd99ed2cf3)
+// Source: analysis/conduit/analysis.json (dd99ed2cf3)
 
 import { test as base } from '@playwright/test';
 import { Api } from '../api/resources.generated.ts';

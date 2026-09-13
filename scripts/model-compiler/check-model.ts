@@ -10,6 +10,7 @@ import { execFileSync } from 'node:child_process';
 import { homedir } from 'node:os';
 import type { AppModel } from './model-types.ts';
 import { SECTION_OWNER, type Section } from '../analysis/analysis-types.ts';
+import { modelFromAnalysis } from '../framework-generator/emit/emit.ts';
 
 interface Finding { level: 'error' | 'warning'; message: string }
 
@@ -38,11 +39,15 @@ export function checkModel(appDir: string, model: AppModel): Finding[] {
     err('analysis.json is missing — no skill has run');
   } else {
     const analysis = JSON.parse(readFileSync(analysisPath, 'utf8'));
+    // Every section the contract promises, and who fills it in. A section that is
+    // present but empty is a skill that has not run, not a skill that found nothing.
     const empty: Record<string, boolean> = {
       source: !analysis.source?.routes?.length,
-      components: !analysis.components?.regions?.length,
+      conventions: !analysis.conventions?.regions?.length,
       api: !analysis.api?.endpoints?.length,
+      components: !Object.keys(analysis.components ?? {}).length,
       screens: !analysis.screens?.length,
+      stats: !Object.keys(analysis.stats ?? {}).length,
     };
     for (const [section, isEmpty] of Object.entries(empty)) {
       if (isEmpty) err(`analysis.json has no "${section}" — ${SECTION_OWNER[section as Section]} has not run`);
@@ -104,7 +109,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const app = process.argv[process.argv.indexOf('--app') + 1];
   if (!app || app.startsWith('--')) { console.error('usage: check-model.ts --app <name>'); process.exit(2); }
   const dir = join('analysis', app);
-  const model: AppModel = JSON.parse(readFileSync(join(dir, 'app-model.json'), 'utf8'));
+  const model: AppModel = modelFromAnalysis(app);
   const findings = checkModel(dir, model);
   for (const f of findings) console.log(`${f.level === 'error' ? 'ERROR  ' : 'warning'} ${f.message}`);
   const errors = findings.filter(f => f.level === 'error').length;

@@ -1,4 +1,4 @@
-// app-model.json in, a Playwright project out. The generator never reads the app, the
+// analysis.json in, a Playwright project out. The generator never reads the app, the
 // crawl or the repo: everything it needs was decided by compile-model.ts.
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
@@ -16,7 +16,7 @@ const q = (s: string) => `'${String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'
 
 const HEADER = (model: AppModel) =>
   `// GENERATED — rewritten on every run. Put nothing here you want to keep.\n` +
-  `// Source: analysis/${model.app.name}/app-model.json (${model.app.repoCommit.slice(0, 10)})\n`;
+  `// Source: analysis/${model.app.name}/analysis.json (${model.app.repoCommit.slice(0, 10)})\n`;
 
 /** Every file under emit/runtime/ is copied verbatim: it is ordinary, reviewable code. */
 function runtimeFiles(dir = RUNTIME, prefix = 'src'): { path: string; contents: string }[] {
@@ -255,7 +255,7 @@ function staticProject(model: AppModel): { path: string; contents: string; kind:
         `export const APP_NAME = ${q(model.app.name)};`,
         `export const BASE_URL = ${q(model.app.baseUrl)};`,
         `/** Every diagnostic names this file, so a failure can be traced to its analysis. */`,
-        `export const MODEL_PATH = ${q(`analysis/${model.app.name}/app-model.json`)};`,
+        `export const MODEL_PATH = ${q(`analysis/${model.app.name}/analysis.json`)};`,
         `export const ANALYSED_COMMIT = ${q(model.app.repoCommit)};`,
         '',
       ].join('\n'),
@@ -528,14 +528,35 @@ export function emit(model: AppModel, conventions: any, outputDir: string, { dry
   return writer;
 }
 
+/**
+ * analysis.json carries one entry per screen holding both what the crawl observed and
+ * what the compiler derived. The generator only needs the derived half, so it is read
+ * back into the shape the emitter has always used rather than teaching every render
+ * function about controls it does not emit.
+ */
+export function modelFromAnalysis(app: string): AppModel {
+  const analysis = JSON.parse(readFileSync(join('analysis', app, 'analysis.json'), 'utf8'));
+  return {
+    app: analysis.app,
+    components: analysis.components,
+    screens: analysis.screens.map((s: any) => ({
+      name: s.name, path: s.path, url: s.url, title: s.title,
+      aliases: s.aliases, identity: s.identity, source: s.source,
+      crawled: s.crawled, uses: s.uses ?? [], actions: s.actions ?? [],
+      unverified: s.unverified ?? 0,
+    })),
+    api: analysis.api,
+    stats: analysis.stats,
+  } as AppModel;
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
   const appIdx = process.argv.indexOf('--app');
   if (appIdx < 0) { console.error('usage: emit.ts --app <name> [--dry-run]'); process.exit(2); }
   const app = process.argv[appIdx + 1];
   const dryRun = process.argv.includes('--dry-run');
-  const model: AppModel = JSON.parse(readFileSync(join('analysis', app, 'app-model.json'), 'utf8'));
-  const conventionsPath = join('analysis', app, 'components.json');
-  const conventions = JSON.parse(readFileSync(conventionsPath, 'utf8'));
-  const writer = emit(model, conventions, join('generated-framework', app), { dryRun });
+  const model: AppModel = modelFromAnalysis(app);
+  const analysis = JSON.parse(readFileSync(join('analysis', app, 'analysis.json'), 'utf8'));
+  const writer = emit(model, analysis.conventions, join('generated-framework', app), { dryRun });
   console.log(`${dryRun ? '[dry run] ' : ''}${writer.summary()}`);
 }

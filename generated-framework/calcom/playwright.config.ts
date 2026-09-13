@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/calcom/app-model.json (b0a34f21c9)
+// Source: analysis/calcom/analysis.json (b0a34f21c9)
 
 import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({

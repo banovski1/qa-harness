@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/espocrm-demo/app-model.json (8b4f900085)
+// Source: analysis/espocrm-demo/analysis.json (8b4f900085)
 export { AboutPage } from './about/AboutPage.ts';
 export { AccountCreatePage } from './account/AccountCreatePage.ts';
 export { AccountEditPage } from './account/AccountEditPage.ts';

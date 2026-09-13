@@ -6,7 +6,7 @@
  * controls a test would touch?* It is not a quality judgement about the app, and a low
  * score is not a defect — it is a request for a recording.
  */
-import type { Analysis, AnalysisScreen, AnalysisTestability } from './analysis-types.ts';
+import type { AnalysisScreen, AnalysisTestability, ScreenTestability } from './analysis-types.ts';
 
 /** Above this, write the test. Below it, ask for a recording first. */
 export const CONFIDENT = 0.7;
@@ -18,10 +18,7 @@ export const UNKNOWN = 0.3;
  * thirty out of forty, because the second has ten things a test may reach for and miss.
  * So the ratio carries the weight, and the extras adjust it.
  */
-export function scoreScreen(screen: AnalysisScreen, recorded: boolean): {
-  confidence: number; addressable: number; unaddressable: number;
-  hasTable: boolean; crawled: boolean; recorded: boolean; missing: string[];
-} {
+export function scoreScreen(screen: AnalysisScreen, recorded: boolean): ScreenTestability {
   const controls = screen.controls ?? [];
   const addressable = controls.filter(c => c.name && c.matches === 1).length;
   const unaddressable = controls.length - addressable;
@@ -50,7 +47,7 @@ export function scoreScreen(screen: AnalysisScreen, recorded: boolean): {
 }
 
 /** Declared but never reached: a URL and nothing behind it. */
-export const UNCRAWLED = {
+export const UNCRAWLED: ScreenTestability = {
   confidence: 0,
   addressable: 0,
   unaddressable: 0,
@@ -60,20 +57,29 @@ export const UNCRAWLED = {
   missing: ['the crawl never reached this route — only its URL is known'],
 };
 
-export function computeTestability(
-  analysis: Analysis,
-  declaredPaths: string[],
+/**
+ * Score every screen in place, and return the roll-up.
+ *
+ * The score lives on the screen because that is where it is read: an agent asking "can
+ * I write a test for /leave/applyLeave?" should not have to look the same path up in a
+ * second table to find out.
+ */
+export function scoreScreens(
+  screens: AnalysisScreen[],
   recordings: AnalysisTestability['recordings'],
 ): AnalysisTestability {
-  const recordedPaths = new Set(recordings.flatMap(r => r.screens));
-  const screens: AnalysisTestability['screens'] = {};
-  for (const screen of analysis.screens ?? []) {
-    screens[screen.path] = scoreScreen(screen, recordedPaths.has(screen.path));
+  const recorded = new Set(recordings.flatMap(r => r.screens));
+  const summary = { write: 0, recordFirst: 0, unknown: 0, total: screens.length };
+  for (const screen of screens) {
+    screen.testability = screen.crawled === false
+      ? { ...UNCRAWLED }
+      : scoreScreen(screen, recorded.has(screen.path));
+    const verdict = verdictFor(screen.testability.confidence);
+    if (verdict === 'write') summary.write += 1;
+    else if (verdict === 'record-first') summary.recordFirst += 1;
+    else summary.unknown += 1;
   }
-  for (const path of declaredPaths) {
-    if (!screens[path]) screens[path] = { ...UNCRAWLED };
-  }
-  return { screens, recordings };
+  return { summary, recordings };
 }
 
 /** The verdict a test-writing agent acts on. */

@@ -10,11 +10,13 @@ export const analysisPath = (app: string) => join(ROOT, 'analysis', app, 'analys
 const EMPTY: Analysis = {
   app: { name: '', baseUrl: '', repoPath: '', repoCommit: null, generatedAt: '' },
   source: { stack: {}, routes: [], entities: [], existingTests: [], docs: {}, dependencies: {} },
-  components: { regions: [], labelAssociation: {} },
+  conventions: { regions: [], labelAssociation: {} },
   api: { apiPrefix: null, tiers: {}, spec: {}, auth: null, endpoints: [] },
   map: { modules: [] },
+  components: {},
   screens: [],
-  testability: { screens: {}, recordings: [] },
+  testability: { summary: { write: 0, recordFirst: 0, unknown: 0, total: 0 }, recordings: [] },
+  stats: {},
 };
 
 export function readAnalysis(app: string): Analysis {
@@ -33,8 +35,12 @@ export function readAnalysis(app: string): Analysis {
 export function writeSection(app: string, section: Section, value: unknown): string {
   const current = readAnalysis(app) as unknown as Record<string, unknown>;
   current[section] = value;
+  // Ordered first, then anything this file does not know about. A writer that dropped an
+  // unrecognised key would delete another skill's section the moment the contract grew —
+  // which is exactly what two stale copies of this list did before they were fixed.
   const ordered: Record<string, unknown> = {};
-  for (const key of SECTIONS) ordered[key] = current[key];
+  for (const key of SECTIONS) if (key in current) ordered[key] = current[key];
+  for (const key of Object.keys(current)) if (!(key in ordered)) ordered[key] = current[key];
   const path = analysisPath(app);
   mkdirSync(join(ROOT, 'analysis', app), { recursive: true });
   writeFileSync(path, `${JSON.stringify(ordered, null, 2)}\n`);

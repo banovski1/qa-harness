@@ -36,7 +36,7 @@ export interface AnalysisSource {
 }
 
 /** app-components: how the app is built, and how a label reaches an input. */
-export interface AnalysisComponents {
+export interface AnalysisConventions {
   regions: { name: string; selector: string; [k: string]: unknown }[];
   labelAssociation: Record<string, unknown>;
   designSystem?: Record<string, unknown>;
@@ -52,6 +52,12 @@ export interface AnalysisApi {
   /** Written only by scripts/api-auth/verify-auth.ts. Absent means unproven. */
   authVerification?: Record<string, unknown>;
   endpoints: Record<string, unknown>[];
+  /**
+   * Derived by the compiler, not by the skill: one entry per resource the endpoints
+   * describe, with the operations that create, read and delete it, the resources it
+   * depends on, and whether it can stand up a precondition at all.
+   */
+  resources?: Record<string, unknown>;
   notes?: string[];
 }
 
@@ -81,7 +87,16 @@ export interface AnalysisControl {
   y: number;
 }
 
+/**
+ * One screen, and everything known about it.
+ *
+ * The crawl writes the observation — what is on the page. The compiler writes the
+ * derived half — the page object's name, the components mapped onto it, the transitions
+ * it proved, and how confidently a test can be written against it. Both live in the same
+ * entry because splitting them meant looking one screen up in two places.
+ */
 export interface AnalysisScreen {
+  // --- observed, by app-explorer ---
   path: string;
   url: string;
   title: string;
@@ -91,6 +106,34 @@ export interface AnalysisScreen {
   hiddenControls?: number;
   controls: AnalysisControl[];
   links: { href: string; resolved: string; text: string }[];
+
+  // --- derived, by compile-model.ts ---
+  /** The generated page object's class name. */
+  name?: string;
+  /** Crawled URLs that fold onto this screen's declared parameterised route. */
+  aliases?: string[];
+  /** The anchored URL pattern a test asserts the screen by, and the heading it showed. */
+  identity?: { urlPattern: string; heading: string | null };
+  source?: { component: string | null; route: string | null };
+  /** false: the route is declared and no crawl ever reached it. */
+  crawled?: boolean;
+  /** Components mapped onto this screen. English only — never a selector. */
+  uses?: Record<string, unknown>[];
+  /** Transitions the crawl proved, through a control this screen owns. */
+  actions?: { name: string; via: string; leadsTo: string }[];
+  /** Controls the crawl saw and could not name. Never silently dropped. */
+  unverified?: number;
+  testability?: ScreenTestability;
+}
+
+export interface ScreenTestability {
+  confidence: number;
+  addressable: number;
+  unaddressable: number;
+  hasTable: boolean;
+  crawled: boolean;
+  recorded: boolean;
+  missing: string[];
 }
 
 /**
@@ -98,16 +141,8 @@ export interface AnalysisScreen {
  * asking a human to record the flow first.
  */
 export interface AnalysisTestability {
-  /** 0..1 per screen, and what is missing. */
-  screens: Record<string, {
-    confidence: number;
-    addressable: number;
-    unaddressable: number;
-    hasTable: boolean;
-    crawled: boolean;
-    recorded: boolean;
-    missing: string[];
-  }>;
+  /** The roll-up. Per-screen detail lives on the screen itself. */
+  summary: { write: number; recordFirst: number; unknown: number; total: number };
   /** Flows a human recorded with playwright-codegen, by name. */
   recordings: { flow: string; path: string; recordedAt: string; screens: string[] }[];
 }
@@ -137,23 +172,35 @@ export interface AnalysisMap {
 export interface Analysis {
   app: AnalysisApp;
   source: AnalysisSource;
-  components: AnalysisComponents;
+  conventions: AnalysisConventions;
   api: AnalysisApi;
   map: AnalysisMap;
+  /** The locator layer. The only place in this file a selector may appear. */
+  components: Record<string, unknown>;
   screens: AnalysisScreen[];
   testability: AnalysisTestability;
+  stats: Record<string, number>;
 }
 
-export const SECTIONS = ['app', 'source', 'components', 'api', 'map', 'screens', 'testability'] as const;
+export const SECTIONS = ['app', 'source', 'conventions', 'api', 'map', 'components', 'screens', 'testability', 'stats'] as const;
 export type Section = typeof SECTIONS[number];
 
-/** Which skill owns which section. A skill writing another's section is a bug. */
+/**
+ * Which skill owns which section. A skill writing another's section is a bug.
+ *
+ * `screens` is the one section with two writers, and the order matters: the explorer
+ * writes what it observed, then the compiler adds what it derived to the same entries.
+ * A crawl re-run without a recompile therefore leaves the derived half stale, which is
+ * exactly what check-model.ts reports.
+ */
 export const SECTION_OWNER: Record<Section, string> = {
   app: 'app-dossier',
   source: 'app-dossier',
-  components: 'app-components',
+  conventions: 'app-components',
   api: 'app-api',
   map: 'app-explorer (map.mjs)',
-  screens: 'app-explorer (explore.mjs)',
+  components: 'compile-model.ts',
+  screens: 'app-explorer (explore.mjs), enriched by compile-model.ts',
   testability: 'compile-model.ts',
+  stats: 'compile-model.ts',
 };

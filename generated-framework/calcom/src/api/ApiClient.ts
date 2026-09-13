@@ -30,8 +30,8 @@ export class ApiError extends Error {
 function hintFor(status: number): string {
   if (status === 401) return 'not authenticated — the storage state is missing or expired. Re-run the setup project.';
   if (status === 403) return 'authenticated but not permitted. The test user lacks the role this endpoint needs.';
-  if (status === 404) return 'no such path, or the record was already removed. Check the path against app-model.json.';
-  if (status === 422 || status === 400) return 'the payload was rejected. The required fields in app-model.json come from the spec — if the spec omits a mandatory field, record it in analysis/<app>/api.json.';
+  if (status === 404) return 'no such path, or the record was already removed. Check the path against analysis.json.';
+  if (status === 422 || status === 400) return 'the payload was rejected. The required fields come from the spec — if the spec omits a mandatory field, re-run app-api so the api section records it.';
   if (status === 405) return 'the method is wrong for this path.';
   if (status >= 500) return 'the application errored. This is usually bad data in the payload rather than a broken test.';
   return 'unexpected status.';

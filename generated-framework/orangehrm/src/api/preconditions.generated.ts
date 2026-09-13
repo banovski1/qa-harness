@@ -1,5 +1,5 @@
 // GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis/orangehrm/app-model.json (56e23b3b09)
+// Source: analysis/orangehrm/analysis.json (56e23b3b09)
 
 import { Api, idOf } from './resources.generated.ts';
 import { uniqueName } from '../utils/unique-name.ts';

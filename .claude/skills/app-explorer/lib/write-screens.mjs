@@ -51,7 +51,18 @@ function distil(screen) {
   };
 }
 
-const SECTIONS = ['app', 'source', 'components', 'api', 'map', 'screens', 'testability'];
+const SECTIONS = ['app', 'source', 'conventions', 'api', 'map', 'components', 'screens', 'testability', 'stats'];
+
+// Ordered first, then anything this file does not know about — a writer that dropped an
+// unrecognised key would silently delete another skill's section the moment the contract
+// grew. Section order is fixed so a re-run diffs only its own work.
+function reorder(current) {
+  const ordered = {};
+  for (const key of SECTIONS) if (key in current) ordered[key] = current[key];
+  for (const key of Object.keys(current)) if (!(key in ordered)) ordered[key] = current[key];
+  return ordered;
+}
+
 
 export async function writeScreensSection({ outDir, screensDir }) {
   const files = existsSync(screensDir)
@@ -66,9 +77,7 @@ export async function writeScreensSection({ outDir, screensDir }) {
   const current = existsSync(path) ? JSON.parse(await readFile(path, 'utf8')) : {};
   current.screens = screens;
   // Fixed key order, so a re-run of one skill diffs only its own section.
-  const ordered = {};
-  for (const key of SECTIONS) if (key in current) ordered[key] = current[key];
-  await writeFile(path, JSON.stringify(ordered, null, 2) + '\n');
+  await writeFile(path, JSON.stringify(reorder(current), null, 2) + '\n');
   return { screens: screens.length, controls: screens.reduce((n, s) => n + s.controls.length, 0) };
 }
 

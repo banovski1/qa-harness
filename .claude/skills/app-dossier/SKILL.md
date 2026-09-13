@@ -135,3 +135,21 @@ you would be rewriting three other skills' findings from whatever you happened t
 `source` carries `stack`, `routes`, `entities`, `existingTests`, `docs` and
 `dependencies`. `entities` is the one most easily skipped and the one preconditions
 depend on: a domain object the app persists is a record a test may need to exist.
+
+## The contract
+
+`analysis/<app>/analysis.json` has nine sections and always all nine. You own **`app` and `source`**
+and write no other.
+
+| section | owner |
+| --- | --- |
+| `app`, `source` | app-dossier |
+| `conventions` | app-components |
+| `api` | app-api |
+| `map` | app-explorer (`map.mjs`) |
+| `components`, `testability`, `stats` | compile-model.ts |
+| `screens` | app-explorer (`explore.mjs`), enriched by compile-model.ts |
+
+A section that is present but empty means its skill has not run, and `check-model.ts`
+reports it by name. Leaving yours empty because you found nothing is a claim — say where
+you looked in `notes` instead.

@@ -1,4 +1,5 @@
-// Pure: (dossier, routes, components, api, screens/*) -> app-model.json.
+// Pure: analysis.json in, analysis.json out — the compiler fills in the five sections
+// no skill owns.
 // No network, no browser, no judgement that is not stated as a constant below. This is
 // the determinism boundary: everything above it is skill output reviewed by eye,
 // everything from here down is snapshot-tested code.
@@ -10,7 +11,7 @@ import { join } from 'node:path';
 // @ts-ignore -- a deliberately small YAML reader, shared with the explorer
 import { parseYaml } from '../../.claude/skills/app-explorer/lib/yaml-lite.mjs';
 import { readAnalysis, writeSection } from '../analysis/analysis-file.ts';
-import { computeTestability, verdictFor } from '../analysis/testability.ts';
+import { scoreScreens, verdictFor } from '../analysis/testability.ts';
 import { deriveResources, tagEndpoints } from './api-resources.ts';
 import type { AppModel, ComponentDef, ComponentUse, Screen, LocatorSpec } from './model-types.ts';
 
@@ -391,7 +392,7 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
   const analysis: any = JSON.parse(readFileSync(join(appDir, 'analysis.json'), 'utf8'));
   const dossier = { ...analysis.app, ...analysis.source.stack };
   const routes = { routes: analysis.source.routes ?? [] };
-  const conventions = analysis.components ?? { regions: [] };
+  const conventions = analysis.conventions ?? { regions: [] };
   const api = analysis.api ?? { endpoints: [], auth: null };
   const profilePath = join(appDir, 'app-profile.yaml');
   const profile: any = existsSync(profilePath) ? parseYaml(readFileSync(profilePath, 'utf8')) : {};
@@ -399,7 +400,11 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
   // The distilled screen carries `controls` and a per-control `matches`; the compiler's
   // own vocabulary is `elements` with a candidate ladder, so translate once here rather
   // than teaching every function downstream about both shapes.
-  const crawled: CrawlScreen[] = (analysis.screens ?? []).map((s: any) => ({
+  // The compiler writes back into the section it reads, so a declared-but-unreached
+  // screen it added last run must not be mistaken for something a crawl found this run.
+  // `crawled: false` is the marker the compiler itself put there; a screen the explorer
+  // just wrote carries no such key at all.
+  const crawled: CrawlScreen[] = (analysis.screens ?? []).filter((s: any) => s.crawled !== false).map((s: any) => ({
     ...s,
     elements: (s.controls ?? []).map((c: any) => ({
       tag: '', type: null, role: c.role, name: c.name, nameSource: c.nameSource,
@@ -634,25 +639,68 @@ export function compile(appDir: string, now = newestInput(appDir)): AppModel {
   };
 }
 
+/**
+ * Fold the compiler's findings back into analysis.json.
+ *
+ * There is one artifact per app, and the compiled half belongs in it: a page object's
+ * components sat in a second file while the controls they were built from sat in the
+ * first, so answering "what can I address on this screen?" meant opening both and
+ * joining them by path. The compiler is the last writer in the pipeline — it never
+ * overwrites an observation, it adds what it derived to the entry that holds it.
+ */
+export function foldIntoAnalysis(app: string, model: AppModel): { write: number; total: number } {
+  const analysis = readAnalysis(app);
+  const observed = new Map(analysis.screens.map(s => [s.path, s]));
+
+  const screens = model.screens.map(page => {
+    const seen = observed.get(page.path) ?? observed.get(page.aliases?.[0] ?? '');
+    return {
+      // observed
+      path: page.path,
+      url: page.url,
+      title: page.title,
+      headings: seen?.headings ?? [],
+      tables: seen?.tables ?? [],
+      hiddenControls: seen?.hiddenControls,
+      controls: seen?.controls ?? [],
+      links: seen?.links ?? [],
+      // derived
+      name: page.name,
+      aliases: page.aliases,
+      identity: page.identity,
+      source: page.source,
+      crawled: page.crawled,
+      uses: page.uses as unknown as Record<string, unknown>[],
+      actions: page.actions,
+      unverified: page.unverified,
+    };
+  });
+
+  const testability = scoreScreens(screens, analysis.testability?.recordings ?? []);
+
+  writeSection(app, 'app', { ...analysis.app, ...model.app });
+  // `model.api.auth` is the skill's auth block plus the UI login the profile declares
+  // and the storage-state path the generator writes to — dropping it here leaves the
+  // emitted project with no setup project and every spec starting logged out.
+  writeSection(app, 'api', {
+    ...analysis.api,
+    auth: model.api.auth ?? analysis.api.auth,
+    resources: model.api.resources,
+  });
+  writeSection(app, 'components', model.components);
+  writeSection(app, 'screens', screens);
+  writeSection(app, 'testability', testability);
+  writeSection(app, 'stats', model.stats);
+  return { write: testability.summary.write, total: testability.summary.total };
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
   const appIdx = process.argv.indexOf('--app');
   if (appIdx < 0) { console.error('usage: compile-model.ts --app <name>'); process.exit(2); }
   const app = process.argv[appIdx + 1];
   const dir = join('analysis', app);
   const model = compile(dir);
-  mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, 'app-model.json'), JSON.stringify(model, null, 2) + '\n');
-
-  // The compiler is the only thing that has seen both what the crawl found and which
-  // routes were declared, so it is where "can a test be written against this screen?"
-  // is answered. It writes the one section no skill owns.
-  const analysis = readAnalysis(app);
-  const declared = (analysis.source.routes ?? []).map(r => r.path);
-  const testability = computeTestability(analysis, declared, analysis.testability?.recordings ?? []);
-  writeSection(app, 'testability', testability);
-
-  const scored = Object.values(testability.screens);
-  const writeable = scored.filter(v => verdictFor(v.confidence) === 'write').length;
-  console.log(`app-model.json  ${JSON.stringify(model.stats)}`);
-  console.log(`analysis.json   testability: ${writeable}/${scored.length} screens ready to write against`);
+  const { write, total } = foldIntoAnalysis(app, model);
+  console.log(`analysis.json  ${JSON.stringify(model.stats)}`);
+  console.log(`               ${write}/${total} screens ready to write a test against`);
 }

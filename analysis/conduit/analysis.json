@@ -4,7 +4,8 @@
     "baseUrl": "https://demo.realworld.show/",
     "repoPath": "~/Projects/angular-realworld-example-app",
     "repoCommit": "dd99ed2cf39c805d719f943c5d7061a5683d98a8",
-    "generatedAt": "2026-09-13T10:16:09.703Z"
+    "generatedAt": "2026-09-13T14:04:17.776Z",
+    "stack": "angular / none in this repo"
   },
   "source": {
     "stack": {
@@ -110,7 +111,7 @@
       "Routes are lazy (loadComponent/loadChildren), so the component of a route is an import path rather than a class reference — recorded as the module path."
     ]
   },
-  "components": {
+  "conventions": {
     "regions": [
       {
         "name": "NavigationBar",
@@ -188,7 +189,8 @@
         "name": "Authorization",
         "value": "Token {jwt}",
         "source": "src/app/core/interceptors/token.interceptor.ts:10"
-      }
+      },
+      "uiLogin": null
     },
     "authVerification": {
       "verdict": "skipped",
@@ -335,7 +337,190 @@
     "notes": [
       "Every row is Tier C: this clone contains no backend and no specification, so these endpoints are what the Angular services call, not what the server promises. The RealWorld API is specified publicly — if a precondition needs a guarantee, read that spec rather than trusting this file.",
       "The API is shared and world-writable. Create what you assert on."
-    ]
+    ],
+    "resources": {
+      "Article": {
+        "name": "Article",
+        "basePath": "/api/articles",
+        "ops": {
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/api/articles",
+            "summary": "create an article — the precondition workhorse",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "article"
+            ],
+            "source": "src/app/features/article/services/articles.service.ts"
+          },
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/api/articles",
+            "summary": "the feed, filtered by tag/author/favorited",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/features/article/services/articles.service.ts"
+          },
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/api/articles/{slug}",
+            "summary": "one article",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/features/article/services/articles.service.ts"
+          },
+          "delete": {
+            "kind": "delete",
+            "method": "DELETE",
+            "path": "/api/articles/{slug}",
+            "summary": "delete an article — use for cleanup",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/features/article/services/articles.service.ts"
+          },
+          "actions": [
+            {
+              "kind": "action",
+              "method": "POST",
+              "path": "/api/articles/{slug}/favorite",
+              "summary": "favourite an article",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "src/app/features/article/services/articles.service.ts"
+            },
+            {
+              "kind": "action",
+              "method": "GET",
+              "path": "/api/articles/{slug}/comments",
+              "summary": "comments on an article",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "src/app/features/article/services/comments.service.ts"
+            },
+            {
+              "kind": "action",
+              "method": "DELETE",
+              "path": "/api/articles/{slug}/comments/{id}",
+              "summary": "delete a comment",
+              "requiredKnown": false,
+              "requiredFields": [],
+              "optionalFields": [],
+              "source": "src/app/features/article/services/comments.service.ts"
+            }
+          ]
+        },
+        "requires": [],
+        "establishes": "an Article exists",
+        "cleanup": "delete"
+      },
+      "Login": {
+        "name": "Login",
+        "basePath": "/api/users/login",
+        "ops": {
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/api/users/login",
+            "summary": "log in",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/core/auth/services/user.service.ts:74"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Profile": {
+        "name": "Profile",
+        "basePath": "/api/profiles",
+        "ops": {
+          "get": {
+            "kind": "get",
+            "method": "GET",
+            "path": "/api/profiles/{username}",
+            "summary": "a user profile",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/features/profile/services/profile.service.ts"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "Tag": {
+        "name": "Tag",
+        "basePath": "/api/tags",
+        "ops": {
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/api/tags",
+            "summary": "the tag cloud",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/features/article/services/tags.service.ts"
+          }
+        },
+        "requires": [],
+        "establishes": null,
+        "cleanup": "none"
+      },
+      "User": {
+        "name": "User",
+        "basePath": "/api/user",
+        "ops": {
+          "create": {
+            "kind": "create",
+            "method": "POST",
+            "path": "/api/users",
+            "summary": "register — creates a test user",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [
+              "user"
+            ],
+            "source": "src/app/core/auth/services/user.service.ts"
+          },
+          "list": {
+            "kind": "list",
+            "method": "GET",
+            "path": "/api/user",
+            "summary": "the current user",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/core/auth/services/user.service.ts"
+          },
+          "update": {
+            "kind": "update",
+            "method": "PUT",
+            "path": "/api/user",
+            "summary": "update settings",
+            "requiredKnown": false,
+            "requiredFields": [],
+            "optionalFields": [],
+            "source": "src/app/core/auth/services/user.service.ts"
+          }
+        },
+        "requires": [],
+        "establishes": "a User exists",
+        "cleanup": "none"
+      }
+    }
   },
   "map": {
     "app": "Conduit (RealWorld, Angular)",
@@ -492,3374 +677,120 @@
     "notes": [],
     "errors": []
   },
+  "components": {
+    "NavigationBar": {
+      "kind": "region",
+      "root": {
+        "strategy": "css",
+        "args": [
+          "nav.navbar"
+        ]
+      },
+      "controls": {
+        "conduit": {
+          "strategy": "role",
+          "args": [
+            "link",
+            "Conduit"
+          ]
+        },
+        "home": {
+          "strategy": "role",
+          "args": [
+            "link",
+            "Home"
+          ]
+        },
+        "signIn": {
+          "strategy": "role",
+          "args": [
+            "link",
+            "Sign in"
+          ]
+        },
+        "signUp": {
+          "strategy": "role",
+          "args": [
+            "link",
+            "Sign up"
+          ]
+        }
+      },
+      "seenOn": 6,
+      "description": "navigation region — 4 controls shared across 6 screens",
+      "actions": [
+        {
+          "name": "goToSignUp",
+          "via": "signUp",
+          "leadsTo": "RegisterPage"
+        }
+      ]
+    },
+    "TextField": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a text input or textarea, addressed by its label"
+    },
+    "Select": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a select or combobox, addressed by its label"
+    },
+    "Checkbox": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a checkbox, addressed by its label"
+    },
+    "RadioButton": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a radio button, addressed by its label"
+    },
+    "Button": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a button, addressed by its visible text"
+    },
+    "Link": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a link, addressed by its visible text"
+    },
+    "Tab": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a tab, addressed by its visible text"
+    },
+    "MenuItem": {
+      "kind": "field",
+      "fieldTemplate": "[formControlName=\"{fieldName}\"]",
+      "seenOn": 0,
+      "description": "a menu item, addressed by its visible text"
+    },
+    "RecordTable": {
+      "kind": "collection",
+      "root": {
+        "strategy": "css",
+        "args": [
+          "app-article-list"
+        ]
+      },
+      "table": {
+        "row": "app-article-preview",
+        "cell": "a.preview-link"
+      },
+      "seenOn": 0,
+      "description": "a data table whose rows are addressed by the value in their key column"
+    }
+  },
   "screens": [
-    {
-      "path": "/article/building-scalable-apis-with-node-js",
-      "url": "https://demo.realworld.show/article/building-scalable-apis-with-node-js",
-      "title": "Conduit",
-      "headings": [
-        {
-          "level": 1,
-          "text": "Building Scalable APIs with Node.js",
-          "y": 89
-        },
-        {
-          "level": 2,
-          "text": "API Design Principles",
-          "y": 357
-        },
-        {
-          "level": 2,
-          "text": "Error Handling Strategy",
-          "y": 498
-        },
-        {
-          "level": 2,
-          "text": "Database Optimization",
-          "y": 638
-        }
-      ],
-      "tables": [],
-      "hiddenControls": 0,
-      "controls": [
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 8
-        },
-        {
-          "role": "link",
-          "name": "Home",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 2,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 12
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/mikewilson",
-          "matches": -1,
-          "y": 174
-        },
-        {
-          "role": "link",
-          "name": "mikewilson",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/mikewilson",
-          "matches": 2,
-          "y": 170
-        },
-        {
-          "role": "button",
-          "name": "Follow mikewilson",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 173
-        },
-        {
-          "role": "button",
-          "name": "Favorite Article (1)",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 173
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/mikewilson",
-          "matches": -1,
-          "y": 908
-        },
-        {
-          "role": "link",
-          "name": "mikewilson",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/mikewilson",
-          "matches": 2,
-          "y": 904
-        },
-        {
-          "role": "button",
-          "name": "Follow mikewilson",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 906
-        },
-        {
-          "role": "button",
-          "name": "Favorite Article (1)",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 906
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 2,
-          "y": 986
-        },
-        {
-          "role": "link",
-          "name": "sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 986
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith",
-          "matches": -1,
-          "y": 1102
-        },
-        {
-          "role": "link",
-          "name": "janesmith",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith",
-          "matches": 1,
-          "y": 1103
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/johndoe",
-          "matches": -1,
-          "y": 1227
-        },
-        {
-          "role": "link",
-          "name": "johndoe",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/johndoe",
-          "matches": 1,
-          "y": 1227
-        },
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 1333
-        },
-        {
-          "role": "link",
-          "name": "RealWorld OSS Project",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "https://github.com/gothinkster/realworld",
-          "matches": 1,
-          "y": 1333
-        }
-      ],
-      "links": [
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": "Home"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Sign up"
-        },
-        {
-          "href": "/profile/mikewilson",
-          "resolved": "https://demo.realworld.show/profile/mikewilson",
-          "text": ""
-        },
-        {
-          "href": "/profile/mikewilson",
-          "resolved": "https://demo.realworld.show/profile/mikewilson",
-          "text": "mikewilson"
-        },
-        {
-          "href": "/profile/mikewilson",
-          "resolved": "https://demo.realworld.show/profile/mikewilson",
-          "text": ""
-        },
-        {
-          "href": "/profile/mikewilson",
-          "resolved": "https://demo.realworld.show/profile/mikewilson",
-          "text": "mikewilson"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "sign up"
-        },
-        {
-          "href": "/profile/janesmith",
-          "resolved": "https://demo.realworld.show/profile/janesmith",
-          "text": ""
-        },
-        {
-          "href": "/profile/janesmith",
-          "resolved": "https://demo.realworld.show/profile/janesmith",
-          "text": "janesmith"
-        },
-        {
-          "href": "/profile/johndoe",
-          "resolved": "https://demo.realworld.show/profile/johndoe",
-          "text": ""
-        },
-        {
-          "href": "/profile/johndoe",
-          "resolved": "https://demo.realworld.show/profile/johndoe",
-          "text": "johndoe"
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "https://github.com/gothinkster/realworld",
-          "resolved": "https://github.com/gothinkster/realworld",
-          "text": "RealWorld OSS Project"
-        }
-      ]
-    },
-    {
-      "path": "/article/how-to-learn-javascript-efficiently",
-      "url": "https://demo.realworld.show/article/how-to-learn-javascript-efficiently",
-      "title": "Conduit",
-      "headings": [
-        {
-          "level": 1,
-          "text": "How to Learn JavaScript Efficiently",
-          "y": 89
-        },
-        {
-          "level": 2,
-          "text": "Start with the Fundamentals",
-          "y": 386
-        },
-        {
-          "level": 2,
-          "text": "Practice with Real Projects",
-          "y": 555
-        },
-        {
-          "level": 2,
-          "text": "Join the Community",
-          "y": 696
-        }
-      ],
-      "tables": [],
-      "hiddenControls": 0,
-      "controls": [
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 8
-        },
-        {
-          "role": "link",
-          "name": "Home",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 2,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 12
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/johndoe",
-          "matches": -1,
-          "y": 174
-        },
-        {
-          "role": "link",
-          "name": "johndoe",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/johndoe",
-          "matches": 2,
-          "y": 170
-        },
-        {
-          "role": "button",
-          "name": "Follow johndoe",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 173
-        },
-        {
-          "role": "button",
-          "name": "Favorite Article (2)",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 173
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/johndoe",
-          "matches": -1,
-          "y": 936
-        },
-        {
-          "role": "link",
-          "name": "johndoe",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/johndoe",
-          "matches": 2,
-          "y": 933
-        },
-        {
-          "role": "button",
-          "name": "Follow johndoe",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 935
-        },
-        {
-          "role": "button",
-          "name": "Favorite Article (2)",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 935
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 2,
-          "y": 1015
-        },
-        {
-          "role": "link",
-          "name": "sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 1015
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith",
-          "matches": -1,
-          "y": 1131
-        },
-        {
-          "role": "link",
-          "name": "janesmith",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith",
-          "matches": 1,
-          "y": 1132
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/mikewilson",
-          "matches": -1,
-          "y": 1279
-        },
-        {
-          "role": "link",
-          "name": "mikewilson",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/mikewilson",
-          "matches": 1,
-          "y": 1280
-        },
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 1386
-        },
-        {
-          "role": "link",
-          "name": "RealWorld OSS Project",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "https://github.com/gothinkster/realworld",
-          "matches": 1,
-          "y": 1385
-        }
-      ],
-      "links": [
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": "Home"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Sign up"
-        },
-        {
-          "href": "/profile/johndoe",
-          "resolved": "https://demo.realworld.show/profile/johndoe",
-          "text": ""
-        },
-        {
-          "href": "/profile/johndoe",
-          "resolved": "https://demo.realworld.show/profile/johndoe",
-          "text": "johndoe"
-        },
-        {
-          "href": "/profile/johndoe",
-          "resolved": "https://demo.realworld.show/profile/johndoe",
-          "text": ""
-        },
-        {
-          "href": "/profile/johndoe",
-          "resolved": "https://demo.realworld.show/profile/johndoe",
-          "text": "johndoe"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "sign up"
-        },
-        {
-          "href": "/profile/janesmith",
-          "resolved": "https://demo.realworld.show/profile/janesmith",
-          "text": ""
-        },
-        {
-          "href": "/profile/janesmith",
-          "resolved": "https://demo.realworld.show/profile/janesmith",
-          "text": "janesmith"
-        },
-        {
-          "href": "/profile/mikewilson",
-          "resolved": "https://demo.realworld.show/profile/mikewilson",
-          "text": ""
-        },
-        {
-          "href": "/profile/mikewilson",
-          "resolved": "https://demo.realworld.show/profile/mikewilson",
-          "text": "mikewilson"
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "https://github.com/gothinkster/realworld",
-          "resolved": "https://github.com/gothinkster/realworld",
-          "text": "RealWorld OSS Project"
-        }
-      ]
-    },
-    {
-      "path": "/article/how-to-train-your-dragon",
-      "url": "https://demo.realworld.show/article/how-to-train-your-dragon",
-      "title": "Conduit",
-      "headings": [],
-      "tables": [],
-      "hiddenControls": 0,
-      "controls": [
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 8
-        },
-        {
-          "role": "link",
-          "name": "Home",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 12
-        },
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 686
-        },
-        {
-          "role": "link",
-          "name": "RealWorld OSS Project",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "https://github.com/gothinkster/realworld",
-          "matches": 1,
-          "y": 686
-        }
-      ],
-      "links": [
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": "Home"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Sign up"
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "https://github.com/gothinkster/realworld",
-          "resolved": "https://github.com/gothinkster/realworld",
-          "text": "RealWorld OSS Project"
-        }
-      ]
-    },
-    {
-      "path": "/article/introduction-to-machine-learning-for-developers",
-      "url": "https://demo.realworld.show/article/introduction-to-machine-learning-for-developers",
-      "title": "Conduit",
-      "headings": [
-        {
-          "level": 1,
-          "text": "Introduction to Machine Learning for Developers",
-          "y": 89
-        },
-        {
-          "level": 2,
-          "text": "Understanding the Basics",
-          "y": 406
-        },
-        {
-          "level": 2,
-          "text": "Practical Tools and Libraries",
-          "y": 547
-        },
-        {
-          "level": 2,
-          "text": "Data Preprocessing",
-          "y": 688
-        }
-      ],
-      "tables": [],
-      "hiddenControls": 0,
-      "controls": [
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 8
-        },
-        {
-          "role": "link",
-          "name": "Home",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 2,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 12
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/sarahchen",
-          "matches": -1,
-          "y": 223
-        },
-        {
-          "role": "link",
-          "name": "sarahchen",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/sarahchen",
-          "matches": 2,
-          "y": 220
-        },
-        {
-          "role": "button",
-          "name": "Follow sarahchen",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 222
-        },
-        {
-          "role": "button",
-          "name": "Favorite Article (1)",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 222
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/sarahchen",
-          "matches": -1,
-          "y": 928
-        },
-        {
-          "role": "link",
-          "name": "sarahchen",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/sarahchen",
-          "matches": 2,
-          "y": 924
-        },
-        {
-          "role": "button",
-          "name": "Follow sarahchen",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 927
-        },
-        {
-          "role": "button",
-          "name": "Favorite Article (1)",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 927
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 2,
-          "y": 1006
-        },
-        {
-          "role": "link",
-          "name": "sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 1006
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith",
-          "matches": -1,
-          "y": 1123
-        },
-        {
-          "role": "link",
-          "name": "janesmith",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith",
-          "matches": 1,
-          "y": 1124
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/mikewilson",
-          "matches": -1,
-          "y": 1271
-        },
-        {
-          "role": "link",
-          "name": "mikewilson",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/mikewilson",
-          "matches": 1,
-          "y": 1272
-        },
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 1378
-        },
-        {
-          "role": "link",
-          "name": "RealWorld OSS Project",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "https://github.com/gothinkster/realworld",
-          "matches": 1,
-          "y": 1377
-        }
-      ],
-      "links": [
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": "Home"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Sign up"
-        },
-        {
-          "href": "/profile/sarahchen",
-          "resolved": "https://demo.realworld.show/profile/sarahchen",
-          "text": ""
-        },
-        {
-          "href": "/profile/sarahchen",
-          "resolved": "https://demo.realworld.show/profile/sarahchen",
-          "text": "sarahchen"
-        },
-        {
-          "href": "/profile/sarahchen",
-          "resolved": "https://demo.realworld.show/profile/sarahchen",
-          "text": ""
-        },
-        {
-          "href": "/profile/sarahchen",
-          "resolved": "https://demo.realworld.show/profile/sarahchen",
-          "text": "sarahchen"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "sign up"
-        },
-        {
-          "href": "/profile/janesmith",
-          "resolved": "https://demo.realworld.show/profile/janesmith",
-          "text": ""
-        },
-        {
-          "href": "/profile/janesmith",
-          "resolved": "https://demo.realworld.show/profile/janesmith",
-          "text": "janesmith"
-        },
-        {
-          "href": "/profile/mikewilson",
-          "resolved": "https://demo.realworld.show/profile/mikewilson",
-          "text": ""
-        },
-        {
-          "href": "/profile/mikewilson",
-          "resolved": "https://demo.realworld.show/profile/mikewilson",
-          "text": "mikewilson"
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "https://github.com/gothinkster/realworld",
-          "resolved": "https://github.com/gothinkster/realworld",
-          "text": "RealWorld OSS Project"
-        }
-      ]
-    },
-    {
-      "path": "/article/react-hooks-best-practices",
-      "url": "https://demo.realworld.show/article/react-hooks-best-practices",
-      "title": "Conduit",
-      "headings": [
-        {
-          "level": 1,
-          "text": "React Hooks: Best Practices and Common Pitfalls",
-          "y": 89
-        },
-        {
-          "level": 2,
-          "text": "useEffect Dependencies",
-          "y": 406
-        },
-        {
-          "level": 2,
-          "text": "Custom Hooks for Reusability",
-          "y": 547
-        },
-        {
-          "level": 2,
-          "text": "Performance Considerations",
-          "y": 688
-        }
-      ],
-      "tables": [],
-      "hiddenControls": 0,
-      "controls": [
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 8
-        },
-        {
-          "role": "link",
-          "name": "Home",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 2,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 12
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith",
-          "matches": -1,
-          "y": 223
-        },
-        {
-          "role": "link",
-          "name": "janesmith",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith",
-          "matches": 2,
-          "y": 220
-        },
-        {
-          "role": "button",
-          "name": "Follow janesmith",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 222
-        },
-        {
-          "role": "button",
-          "name": "Favorite Article (2)",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 222
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith",
-          "matches": -1,
-          "y": 928
-        },
-        {
-          "role": "link",
-          "name": "janesmith",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith",
-          "matches": 2,
-          "y": 924
-        },
-        {
-          "role": "button",
-          "name": "Follow janesmith",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 927
-        },
-        {
-          "role": "button",
-          "name": "Favorite Article (2)",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 927
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 2,
-          "y": 1006
-        },
-        {
-          "role": "link",
-          "name": "sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 1006
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/johndoe",
-          "matches": -1,
-          "y": 1147
-        },
-        {
-          "role": "link",
-          "name": "johndoe",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/johndoe",
-          "matches": 1,
-          "y": 1148
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/sarahchen",
-          "matches": -1,
-          "y": 1271
-        },
-        {
-          "role": "link",
-          "name": "sarahchen",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/sarahchen",
-          "matches": 1,
-          "y": 1272
-        },
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 1378
-        },
-        {
-          "role": "link",
-          "name": "RealWorld OSS Project",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "https://github.com/gothinkster/realworld",
-          "matches": 1,
-          "y": 1377
-        }
-      ],
-      "links": [
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": "Home"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Sign up"
-        },
-        {
-          "href": "/profile/janesmith",
-          "resolved": "https://demo.realworld.show/profile/janesmith",
-          "text": ""
-        },
-        {
-          "href": "/profile/janesmith",
-          "resolved": "https://demo.realworld.show/profile/janesmith",
-          "text": "janesmith"
-        },
-        {
-          "href": "/profile/janesmith",
-          "resolved": "https://demo.realworld.show/profile/janesmith",
-          "text": ""
-        },
-        {
-          "href": "/profile/janesmith",
-          "resolved": "https://demo.realworld.show/profile/janesmith",
-          "text": "janesmith"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "sign up"
-        },
-        {
-          "href": "/profile/johndoe",
-          "resolved": "https://demo.realworld.show/profile/johndoe",
-          "text": ""
-        },
-        {
-          "href": "/profile/johndoe",
-          "resolved": "https://demo.realworld.show/profile/johndoe",
-          "text": "johndoe"
-        },
-        {
-          "href": "/profile/sarahchen",
-          "resolved": "https://demo.realworld.show/profile/sarahchen",
-          "text": ""
-        },
-        {
-          "href": "/profile/sarahchen",
-          "resolved": "https://demo.realworld.show/profile/sarahchen",
-          "text": "sarahchen"
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "https://github.com/gothinkster/realworld",
-          "resolved": "https://github.com/gothinkster/realworld",
-          "text": "RealWorld OSS Project"
-        }
-      ]
-    },
-    {
-      "path": "/login",
-      "url": "https://demo.realworld.show/login",
-      "title": "Conduit",
-      "headings": [
-        {
-          "level": 1,
-          "text": "Sign in",
-          "y": 80
-        }
-      ],
-      "tables": [],
-      "hiddenControls": 0,
-      "controls": [
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 8
-        },
-        {
-          "role": "link",
-          "name": "Home",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 12
-        },
-        {
-          "role": "link",
-          "name": "Need an account?",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 134
-        },
-        {
-          "role": "textbox",
-          "name": "Email",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": "Email",
-          "field": "email",
-          "region": "form",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 188
-        },
-        {
-          "role": "textbox",
-          "name": "Password",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": "Password",
-          "field": "password",
-          "region": "form",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 255
-        },
-        {
-          "role": "button",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "form",
-          "visible": true,
-          "disabled": true,
-          "href": null,
-          "matches": 1,
-          "y": 322
-        },
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 686
-        },
-        {
-          "role": "link",
-          "name": "RealWorld OSS Project",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "https://github.com/gothinkster/realworld",
-          "matches": 1,
-          "y": 686
-        }
-      ],
-      "links": [
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": "Home"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Sign up"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Need an account?"
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "https://github.com/gothinkster/realworld",
-          "resolved": "https://github.com/gothinkster/realworld",
-          "text": "RealWorld OSS Project"
-        }
-      ]
-    },
-    {
-      "path": "/login",
-      "url": "https://demo.realworld.show/login",
-      "title": "Conduit",
-      "headings": [
-        {
-          "level": 1,
-          "text": "Sign in",
-          "y": 80
-        }
-      ],
-      "tables": [],
-      "hiddenControls": 0,
-      "controls": [
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 8
-        },
-        {
-          "role": "link",
-          "name": "Home",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 12
-        },
-        {
-          "role": "link",
-          "name": "Need an account?",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 134
-        },
-        {
-          "role": "textbox",
-          "name": "Email",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": "Email",
-          "field": "email",
-          "region": "form",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 188
-        },
-        {
-          "role": "textbox",
-          "name": "Password",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": "Password",
-          "field": "password",
-          "region": "form",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 255
-        },
-        {
-          "role": "button",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "form",
-          "visible": true,
-          "disabled": true,
-          "href": null,
-          "matches": 1,
-          "y": 322
-        },
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 686
-        },
-        {
-          "role": "link",
-          "name": "RealWorld OSS Project",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "https://github.com/gothinkster/realworld",
-          "matches": 1,
-          "y": 686
-        }
-      ],
-      "links": [
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": "Home"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Sign up"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Need an account?"
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "https://github.com/gothinkster/realworld",
-          "resolved": "https://github.com/gothinkster/realworld",
-          "text": "RealWorld OSS Project"
-        }
-      ]
-    },
-    {
-      "path": "/profile/janesmith",
-      "url": "https://demo.realworld.show/profile/janesmith",
-      "title": "Conduit",
-      "headings": [
-        {
-          "level": 1,
-          "text": "React Hooks: Best Practices and Common Pitfalls",
-          "y": 478
-        }
-      ],
-      "tables": [],
-      "hiddenControls": 0,
-      "controls": [
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 8
-        },
-        {
-          "role": "link",
-          "name": "Home",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 12
-        },
-        {
-          "role": "button",
-          "name": "Follow janesmith",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 295
-        },
-        {
-          "role": "link",
-          "name": "My Posts",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith",
-          "matches": 1,
-          "y": 364
-        },
-        {
-          "role": "link",
-          "name": "Favorited Posts",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith/favorites",
-          "matches": 1,
-          "y": 364
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith",
-          "matches": -1,
-          "y": 434
-        },
-        {
-          "role": "link",
-          "name": "janesmith",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/janesmith",
-          "matches": 1,
-          "y": 430
-        },
-        {
-          "role": "button",
-          "name": "2",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 430
-        },
-        {
-          "role": "link",
-          "name": "React Hooks: Best Practices and Common PitfallsEssential patterns and anti-patterns when working with React HooksRead more... frontend hooks javascript react",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/article/react-hooks-best-practices",
-          "matches": 1,
-          "y": 478
-        },
-        {
-          "role": "button",
-          "name": "1",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 607
-        },
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 732
-        },
-        {
-          "role": "link",
-          "name": "RealWorld OSS Project",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "https://github.com/gothinkster/realworld",
-          "matches": 1,
-          "y": 731
-        }
-      ],
-      "links": [
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": "Home"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Sign up"
-        },
-        {
-          "href": "/profile/janesmith",
-          "resolved": "https://demo.realworld.show/profile/janesmith",
-          "text": "My Posts"
-        },
-        {
-          "href": "/profile/janesmith/favorites",
-          "resolved": "https://demo.realworld.show/profile/janesmith/favorites",
-          "text": "Favorited Posts"
-        },
-        {
-          "href": "/profile/janesmith",
-          "resolved": "https://demo.realworld.show/profile/janesmith",
-          "text": ""
-        },
-        {
-          "href": "/profile/janesmith",
-          "resolved": "https://demo.realworld.show/profile/janesmith",
-          "text": "janesmith"
-        },
-        {
-          "href": "/article/react-hooks-best-practices",
-          "resolved": "https://demo.realworld.show/article/react-hooks-best-practices",
-          "text": "React Hooks: Best Practices and Common PitfallsEssential patterns and anti-patte"
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "https://github.com/gothinkster/realworld",
-          "resolved": "https://github.com/gothinkster/realworld",
-          "text": "RealWorld OSS Project"
-        }
-      ]
-    },
-    {
-      "path": "/profile/johndoe",
-      "url": "https://demo.realworld.show/profile/johndoe",
-      "title": "Conduit",
-      "headings": [
-        {
-          "level": 1,
-          "text": "How to Learn JavaScript Efficiently",
-          "y": 478
-        }
-      ],
-      "tables": [],
-      "hiddenControls": 0,
-      "controls": [
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 8
-        },
-        {
-          "role": "link",
-          "name": "Home",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 12
-        },
-        {
-          "role": "button",
-          "name": "Follow johndoe",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 295
-        },
-        {
-          "role": "link",
-          "name": "My Posts",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/johndoe",
-          "matches": 1,
-          "y": 364
-        },
-        {
-          "role": "link",
-          "name": "Favorited Posts",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/johndoe/favorites",
-          "matches": 1,
-          "y": 364
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/johndoe",
-          "matches": -1,
-          "y": 434
-        },
-        {
-          "role": "link",
-          "name": "johndoe",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/johndoe",
-          "matches": 1,
-          "y": 430
-        },
-        {
-          "role": "button",
-          "name": "2",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 430
-        },
-        {
-          "role": "link",
-          "name": "How to Learn JavaScript EfficientlyA comprehensive guide to mastering JavaScript from beginner to advanced levelRead more... beginners javascript programming webdev",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/article/how-to-learn-javascript-efficiently",
-          "matches": 1,
-          "y": 478
-        },
-        {
-          "role": "button",
-          "name": "1",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 607
-        },
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 732
-        },
-        {
-          "role": "link",
-          "name": "RealWorld OSS Project",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "https://github.com/gothinkster/realworld",
-          "matches": 1,
-          "y": 731
-        }
-      ],
-      "links": [
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": "Home"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Sign up"
-        },
-        {
-          "href": "/profile/johndoe",
-          "resolved": "https://demo.realworld.show/profile/johndoe",
-          "text": "My Posts"
-        },
-        {
-          "href": "/profile/johndoe/favorites",
-          "resolved": "https://demo.realworld.show/profile/johndoe/favorites",
-          "text": "Favorited Posts"
-        },
-        {
-          "href": "/profile/johndoe",
-          "resolved": "https://demo.realworld.show/profile/johndoe",
-          "text": ""
-        },
-        {
-          "href": "/profile/johndoe",
-          "resolved": "https://demo.realworld.show/profile/johndoe",
-          "text": "johndoe"
-        },
-        {
-          "href": "/article/how-to-learn-javascript-efficiently",
-          "resolved": "https://demo.realworld.show/article/how-to-learn-javascript-efficiently",
-          "text": "How to Learn JavaScript EfficientlyA comprehensive guide to mastering JavaScript"
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "https://github.com/gothinkster/realworld",
-          "resolved": "https://github.com/gothinkster/realworld",
-          "text": "RealWorld OSS Project"
-        }
-      ]
-    },
-    {
-      "path": "/profile/mikewilson",
-      "url": "https://demo.realworld.show/profile/mikewilson",
-      "title": "Conduit",
-      "headings": [
-        {
-          "level": 1,
-          "text": "Building Scalable APIs with Node.js",
-          "y": 478
-        }
-      ],
-      "tables": [],
-      "hiddenControls": 0,
-      "controls": [
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 8
-        },
-        {
-          "role": "link",
-          "name": "Home",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 12
-        },
-        {
-          "role": "button",
-          "name": "Follow mikewilson",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 295
-        },
-        {
-          "role": "link",
-          "name": "My Posts",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/mikewilson",
-          "matches": 1,
-          "y": 364
-        },
-        {
-          "role": "link",
-          "name": "Favorited Posts",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/mikewilson/favorites",
-          "matches": 1,
-          "y": 364
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/mikewilson",
-          "matches": -1,
-          "y": 434
-        },
-        {
-          "role": "link",
-          "name": "mikewilson",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/mikewilson",
-          "matches": 1,
-          "y": 430
-        },
-        {
-          "role": "button",
-          "name": "1",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 430
-        },
-        {
-          "role": "link",
-          "name": "Building Scalable APIs with Node.jsArchitectural patterns and best practices for creating robust backend servicesRead more... api architecture backend nodejs",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/article/building-scalable-apis-with-node-js",
-          "matches": 1,
-          "y": 478
-        },
-        {
-          "role": "button",
-          "name": "1",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 607
-        },
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 732
-        },
-        {
-          "role": "link",
-          "name": "RealWorld OSS Project",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "https://github.com/gothinkster/realworld",
-          "matches": 1,
-          "y": 731
-        }
-      ],
-      "links": [
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": "Home"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Sign up"
-        },
-        {
-          "href": "/profile/mikewilson",
-          "resolved": "https://demo.realworld.show/profile/mikewilson",
-          "text": "My Posts"
-        },
-        {
-          "href": "/profile/mikewilson/favorites",
-          "resolved": "https://demo.realworld.show/profile/mikewilson/favorites",
-          "text": "Favorited Posts"
-        },
-        {
-          "href": "/profile/mikewilson",
-          "resolved": "https://demo.realworld.show/profile/mikewilson",
-          "text": ""
-        },
-        {
-          "href": "/profile/mikewilson",
-          "resolved": "https://demo.realworld.show/profile/mikewilson",
-          "text": "mikewilson"
-        },
-        {
-          "href": "/article/building-scalable-apis-with-node-js",
-          "resolved": "https://demo.realworld.show/article/building-scalable-apis-with-node-js",
-          "text": "Building Scalable APIs with Node.jsArchitectural patterns and best practices for"
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "https://github.com/gothinkster/realworld",
-          "resolved": "https://github.com/gothinkster/realworld",
-          "text": "RealWorld OSS Project"
-        }
-      ]
-    },
-    {
-      "path": "/profile/sarahchen",
-      "url": "https://demo.realworld.show/profile/sarahchen",
-      "title": "Conduit",
-      "headings": [
-        {
-          "level": 1,
-          "text": "Introduction to Machine Learning for Developers",
-          "y": 478
-        }
-      ],
-      "tables": [],
-      "hiddenControls": 0,
-      "controls": [
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 8
-        },
-        {
-          "role": "link",
-          "name": "Home",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 12
-        },
-        {
-          "role": "button",
-          "name": "Follow sarahchen",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 295
-        },
-        {
-          "role": "link",
-          "name": "My Posts",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/sarahchen",
-          "matches": 1,
-          "y": 364
-        },
-        {
-          "role": "link",
-          "name": "Favorited Posts",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/sarahchen/favorites",
-          "matches": 1,
-          "y": 364
-        },
-        {
-          "role": "link",
-          "name": "",
-          "nameSource": null,
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/sarahchen",
-          "matches": -1,
-          "y": 434
-        },
-        {
-          "role": "link",
-          "name": "sarahchen",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/profile/sarahchen",
-          "matches": 1,
-          "y": 430
-        },
-        {
-          "role": "button",
-          "name": "1",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 430
-        },
-        {
-          "role": "link",
-          "name": "Introduction to Machine Learning for DevelopersGetting started with ML concepts and practical applications for software developersRead more... ai datascience machinelearning python",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/article/introduction-to-machine-learning-for-developers",
-          "matches": 1,
-          "y": 478
-        },
-        {
-          "role": "button",
-          "name": "1",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 2,
-          "y": 607
-        },
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 732
-        },
-        {
-          "role": "link",
-          "name": "RealWorld OSS Project",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "https://github.com/gothinkster/realworld",
-          "matches": 1,
-          "y": 731
-        }
-      ],
-      "links": [
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": "Home"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Sign up"
-        },
-        {
-          "href": "/profile/sarahchen",
-          "resolved": "https://demo.realworld.show/profile/sarahchen",
-          "text": "My Posts"
-        },
-        {
-          "href": "/profile/sarahchen/favorites",
-          "resolved": "https://demo.realworld.show/profile/sarahchen/favorites",
-          "text": "Favorited Posts"
-        },
-        {
-          "href": "/profile/sarahchen",
-          "resolved": "https://demo.realworld.show/profile/sarahchen",
-          "text": ""
-        },
-        {
-          "href": "/profile/sarahchen",
-          "resolved": "https://demo.realworld.show/profile/sarahchen",
-          "text": "sarahchen"
-        },
-        {
-          "href": "/article/introduction-to-machine-learning-for-developers",
-          "resolved": "https://demo.realworld.show/article/introduction-to-machine-learning-for-developers",
-          "text": "Introduction to Machine Learning for DevelopersGetting started with ML concepts "
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "https://github.com/gothinkster/realworld",
-          "resolved": "https://github.com/gothinkster/realworld",
-          "text": "RealWorld OSS Project"
-        }
-      ]
-    },
-    {
-      "path": "/register",
-      "url": "https://demo.realworld.show/register",
-      "title": "Conduit",
-      "headings": [
-        {
-          "level": 1,
-          "text": "Sign up",
-          "y": 80
-        }
-      ],
-      "tables": [],
-      "hiddenControls": 0,
-      "controls": [
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 8
-        },
-        {
-          "role": "link",
-          "name": "Home",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign in",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 1,
-          "y": 9
-        },
-        {
-          "role": "link",
-          "name": "Sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "navigation",
-          "visible": true,
-          "disabled": false,
-          "href": "/register",
-          "matches": 1,
-          "y": 12
-        },
-        {
-          "role": "link",
-          "name": "Have an account?",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "body",
-          "visible": true,
-          "disabled": false,
-          "href": "/login",
-          "matches": 1,
-          "y": 134
-        },
-        {
-          "role": "textbox",
-          "name": "Username",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": "Username",
-          "field": "username",
-          "region": "form",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 172
-        },
-        {
-          "role": "textbox",
-          "name": "Email",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": "Email",
-          "field": "email",
-          "region": "form",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 239
-        },
-        {
-          "role": "textbox",
-          "name": "Password",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": "Password",
-          "field": "password",
-          "region": "form",
-          "visible": true,
-          "disabled": false,
-          "href": null,
-          "matches": 1,
-          "y": 306
-        },
-        {
-          "role": "button",
-          "name": "Sign up",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "form",
-          "visible": true,
-          "disabled": true,
-          "href": null,
-          "matches": 1,
-          "y": 373
-        },
-        {
-          "role": "link",
-          "name": "Conduit",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "/",
-          "matches": 2,
-          "y": 686
-        },
-        {
-          "role": "link",
-          "name": "RealWorld OSS Project",
-          "nameSource": "accessible",
-          "label": null,
-          "placeholder": null,
-          "field": null,
-          "region": "footer",
-          "visible": true,
-          "disabled": false,
-          "href": "https://github.com/gothinkster/realworld",
-          "matches": 1,
-          "y": 686
-        }
-      ],
-      "links": [
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": "Home"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Sign in"
-        },
-        {
-          "href": "/register",
-          "resolved": "https://demo.realworld.show/register",
-          "text": "Sign up"
-        },
-        {
-          "href": "/login",
-          "resolved": "https://demo.realworld.show/login",
-          "text": "Have an account?"
-        },
-        {
-          "href": "/",
-          "resolved": "https://demo.realworld.show/",
-          "text": ""
-        },
-        {
-          "href": "https://github.com/gothinkster/realworld",
-          "resolved": "https://github.com/gothinkster/realworld",
-          "text": "RealWorld OSS Project"
-        }
-      ]
-    },
     {
       "path": "/",
       "url": "https://demo.realworld.show/",
@@ -4645,7 +1576,743 @@
           "resolved": "https://github.com/gothinkster/realworld",
           "text": "RealWorld OSS Project"
         }
-      ]
+      ],
+      "name": "HomePage",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/",
+        "heading": "How to Learn JavaScript Efficiently"
+      },
+      "source": {
+        "component": "src/app/features/article/pages/home/home.component.ts",
+        "route": "/"
+      },
+      "crawled": true,
+      "uses": [
+        {
+          "component": "NavigationBar",
+          "as": "navigation"
+        },
+        {
+          "component": "Link",
+          "as": "angularFrontend",
+          "label": "Angular frontend"
+        },
+        {
+          "component": "Link",
+          "as": "realworld",
+          "label": "Realworld"
+        },
+        {
+          "component": "Link",
+          "as": "globalFeed",
+          "label": "Global Feed"
+        },
+        {
+          "component": "Link",
+          "as": "johndoe",
+          "label": "johndoe"
+        },
+        {
+          "component": "Link",
+          "as": "howToLearnJavaScriptEfficientlyAComprehensiveGuideToMasteringJavaScriptFromBeginnerToAdvancedLevelReadMoreBeginnersJavascriptProgrammingWebdev",
+          "label": "How to Learn JavaScript EfficientlyA comprehensive guide to mastering JavaScript from beginner to advanced levelRead more... beginners javascript programming webdev"
+        },
+        {
+          "component": "Link",
+          "as": "janesmith",
+          "label": "janesmith"
+        },
+        {
+          "component": "Link",
+          "as": "reactHooksBestPracticesAndCommonPitfallsEssentialPatternsAndAntiPatternsWhenWorkingWithReactHooksReadMoreFrontendHooksJavascriptReact",
+          "label": "React Hooks: Best Practices and Common PitfallsEssential patterns and anti-patterns when working with React HooksRead more... frontend hooks javascript react"
+        },
+        {
+          "component": "Link",
+          "as": "mikewilson",
+          "label": "mikewilson"
+        },
+        {
+          "component": "Button",
+          "as": "control1",
+          "label": "1",
+          "within": "React Hooks: Best Practices and Common Pitfalls"
+        },
+        {
+          "component": "Link",
+          "as": "buildingScalableAPIsWithNodeJsArchitecturalPatternsAndBestPracticesForCreatingRobustBackendServicesReadMoreApiArchitectureBackendNodejs",
+          "label": "Building Scalable APIs with Node.jsArchitectural patterns and best practices for creating robust backend servicesRead more... api architecture backend nodejs"
+        },
+        {
+          "component": "Link",
+          "as": "sarahchen",
+          "label": "sarahchen"
+        },
+        {
+          "component": "Button",
+          "as": "control12",
+          "label": "1",
+          "within": "Building Scalable APIs with Node.js"
+        },
+        {
+          "component": "Link",
+          "as": "introductionToMachineLearningForDevelopersGettingStartedWithMLConceptsAndPracticalApplicationsForSoftwareDevelopersReadMoreAiDatascienceMachinelearningPython",
+          "label": "Introduction to Machine Learning for DevelopersGetting started with ML concepts and practical applications for software developersRead more... ai datascience machinelearning python"
+        },
+        {
+          "component": "Button",
+          "as": "control13",
+          "label": "1",
+          "within": "Introduction to Machine Learning for Developers"
+        },
+        {
+          "component": "Link",
+          "as": "ai",
+          "label": "ai"
+        },
+        {
+          "component": "Link",
+          "as": "api",
+          "label": "api"
+        },
+        {
+          "component": "Link",
+          "as": "architecture",
+          "label": "architecture"
+        },
+        {
+          "component": "Link",
+          "as": "backend",
+          "label": "backend"
+        },
+        {
+          "component": "Link",
+          "as": "beginners",
+          "label": "beginners"
+        },
+        {
+          "component": "Link",
+          "as": "datascience",
+          "label": "datascience"
+        },
+        {
+          "component": "Link",
+          "as": "frontend",
+          "label": "frontend"
+        },
+        {
+          "component": "Link",
+          "as": "hooks",
+          "label": "hooks"
+        },
+        {
+          "component": "Link",
+          "as": "javascript",
+          "label": "javascript"
+        },
+        {
+          "component": "Link",
+          "as": "machinelearning",
+          "label": "machinelearning"
+        },
+        {
+          "component": "Link",
+          "as": "nodejs",
+          "label": "nodejs"
+        },
+        {
+          "component": "Link",
+          "as": "programming",
+          "label": "programming"
+        },
+        {
+          "component": "Link",
+          "as": "python",
+          "label": "python"
+        },
+        {
+          "component": "Link",
+          "as": "react",
+          "label": "react"
+        },
+        {
+          "component": "Link",
+          "as": "webdev",
+          "label": "webdev"
+        },
+        {
+          "component": "Link",
+          "as": "realWorldOSSProject",
+          "label": "RealWorld OSS Project"
+        }
+      ],
+      "actions": [],
+      "unverified": 7,
+      "testability": {
+        "confidence": 0.73,
+        "addressable": 30,
+        "unaddressable": 11,
+        "hasTable": false,
+        "crawled": true,
+        "recorded": false,
+        "missing": [
+          "11 control(s) cannot be addressed by name"
+        ]
+      }
+    },
+    {
+      "path": "/article/{slug}",
+      "url": "https://demo.realworld.show/article/building-scalable-apis-with-node-js",
+      "title": "Conduit",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Building Scalable APIs with Node.js",
+          "y": 89
+        },
+        {
+          "level": 2,
+          "text": "API Design Principles",
+          "y": 357
+        },
+        {
+          "level": 2,
+          "text": "Error Handling Strategy",
+          "y": 498
+        },
+        {
+          "level": 2,
+          "text": "Database Optimization",
+          "y": 638
+        }
+      ],
+      "tables": [],
+      "hiddenControls": 0,
+      "controls": [
+        {
+          "role": "link",
+          "name": "Conduit",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "navigation",
+          "visible": true,
+          "disabled": false,
+          "href": "/",
+          "matches": 2,
+          "y": 8
+        },
+        {
+          "role": "link",
+          "name": "Home",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "navigation",
+          "visible": true,
+          "disabled": false,
+          "href": "/",
+          "matches": 1,
+          "y": 9
+        },
+        {
+          "role": "link",
+          "name": "Sign in",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "navigation",
+          "visible": true,
+          "disabled": false,
+          "href": "/login",
+          "matches": 2,
+          "y": 9
+        },
+        {
+          "role": "link",
+          "name": "Sign up",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "navigation",
+          "visible": true,
+          "disabled": false,
+          "href": "/register",
+          "matches": 1,
+          "y": 12
+        },
+        {
+          "role": "link",
+          "name": "",
+          "nameSource": null,
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/profile/mikewilson",
+          "matches": -1,
+          "y": 174
+        },
+        {
+          "role": "link",
+          "name": "mikewilson",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/profile/mikewilson",
+          "matches": 2,
+          "y": 170
+        },
+        {
+          "role": "button",
+          "name": "Follow mikewilson",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": null,
+          "matches": 2,
+          "y": 173
+        },
+        {
+          "role": "button",
+          "name": "Favorite Article (1)",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": null,
+          "matches": 2,
+          "y": 173
+        },
+        {
+          "role": "link",
+          "name": "",
+          "nameSource": null,
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/profile/mikewilson",
+          "matches": -1,
+          "y": 908
+        },
+        {
+          "role": "link",
+          "name": "mikewilson",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/profile/mikewilson",
+          "matches": 2,
+          "y": 904
+        },
+        {
+          "role": "button",
+          "name": "Follow mikewilson",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": null,
+          "matches": 2,
+          "y": 906
+        },
+        {
+          "role": "button",
+          "name": "Favorite Article (1)",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": null,
+          "matches": 2,
+          "y": 906
+        },
+        {
+          "role": "link",
+          "name": "Sign in",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/login",
+          "matches": 2,
+          "y": 986
+        },
+        {
+          "role": "link",
+          "name": "sign up",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/register",
+          "matches": 1,
+          "y": 986
+        },
+        {
+          "role": "link",
+          "name": "",
+          "nameSource": null,
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/profile/janesmith",
+          "matches": -1,
+          "y": 1102
+        },
+        {
+          "role": "link",
+          "name": "janesmith",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/profile/janesmith",
+          "matches": 1,
+          "y": 1103
+        },
+        {
+          "role": "link",
+          "name": "",
+          "nameSource": null,
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/profile/johndoe",
+          "matches": -1,
+          "y": 1227
+        },
+        {
+          "role": "link",
+          "name": "johndoe",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/profile/johndoe",
+          "matches": 1,
+          "y": 1227
+        },
+        {
+          "role": "link",
+          "name": "Conduit",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "footer",
+          "visible": true,
+          "disabled": false,
+          "href": "/",
+          "matches": 2,
+          "y": 1333
+        },
+        {
+          "role": "link",
+          "name": "RealWorld OSS Project",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "footer",
+          "visible": true,
+          "disabled": false,
+          "href": "https://github.com/gothinkster/realworld",
+          "matches": 1,
+          "y": 1333
+        }
+      ],
+      "links": [
+        {
+          "href": "/",
+          "resolved": "https://demo.realworld.show/",
+          "text": ""
+        },
+        {
+          "href": "/",
+          "resolved": "https://demo.realworld.show/",
+          "text": "Home"
+        },
+        {
+          "href": "/login",
+          "resolved": "https://demo.realworld.show/login",
+          "text": "Sign in"
+        },
+        {
+          "href": "/register",
+          "resolved": "https://demo.realworld.show/register",
+          "text": "Sign up"
+        },
+        {
+          "href": "/profile/mikewilson",
+          "resolved": "https://demo.realworld.show/profile/mikewilson",
+          "text": ""
+        },
+        {
+          "href": "/profile/mikewilson",
+          "resolved": "https://demo.realworld.show/profile/mikewilson",
+          "text": "mikewilson"
+        },
+        {
+          "href": "/profile/mikewilson",
+          "resolved": "https://demo.realworld.show/profile/mikewilson",
+          "text": ""
+        },
+        {
+          "href": "/profile/mikewilson",
+          "resolved": "https://demo.realworld.show/profile/mikewilson",
+          "text": "mikewilson"
+        },
+        {
+          "href": "/login",
+          "resolved": "https://demo.realworld.show/login",
+          "text": "Sign in"
+        },
+        {
+          "href": "/register",
+          "resolved": "https://demo.realworld.show/register",
+          "text": "sign up"
+        },
+        {
+          "href": "/profile/janesmith",
+          "resolved": "https://demo.realworld.show/profile/janesmith",
+          "text": ""
+        },
+        {
+          "href": "/profile/janesmith",
+          "resolved": "https://demo.realworld.show/profile/janesmith",
+          "text": "janesmith"
+        },
+        {
+          "href": "/profile/johndoe",
+          "resolved": "https://demo.realworld.show/profile/johndoe",
+          "text": ""
+        },
+        {
+          "href": "/profile/johndoe",
+          "resolved": "https://demo.realworld.show/profile/johndoe",
+          "text": "johndoe"
+        },
+        {
+          "href": "/",
+          "resolved": "https://demo.realworld.show/",
+          "text": ""
+        },
+        {
+          "href": "https://github.com/gothinkster/realworld",
+          "resolved": "https://github.com/gothinkster/realworld",
+          "text": "RealWorld OSS Project"
+        }
+      ],
+      "name": "ArticlePage",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/article/{slug}",
+        "heading": "Building Scalable APIs with Node.js"
+      },
+      "source": {
+        "component": "src/app/features/article/pages/article/article.component.ts",
+        "route": "/article/{slug}"
+      },
+      "crawled": true,
+      "uses": [
+        {
+          "component": "NavigationBar",
+          "as": "navigation"
+        },
+        {
+          "component": "Link",
+          "as": "mikewilson",
+          "label": "mikewilson",
+          "within": "Building Scalable APIs with Node.js"
+        },
+        {
+          "component": "Button",
+          "as": "followMikewilson",
+          "label": "Follow mikewilson",
+          "within": "Building Scalable APIs with Node.js"
+        },
+        {
+          "component": "Button",
+          "as": "favoriteArticle1",
+          "label": "Favorite Article (1)",
+          "within": "Building Scalable APIs with Node.js"
+        },
+        {
+          "component": "Link",
+          "as": "mikewilson2",
+          "label": "mikewilson",
+          "within": "Database Optimization"
+        },
+        {
+          "component": "Button",
+          "as": "followMikewilson2",
+          "label": "Follow mikewilson",
+          "within": "Database Optimization"
+        },
+        {
+          "component": "Button",
+          "as": "favoriteArticle12",
+          "label": "Favorite Article (1)",
+          "within": "Database Optimization"
+        },
+        {
+          "component": "Link",
+          "as": "signUp",
+          "label": "sign up"
+        },
+        {
+          "component": "Link",
+          "as": "janesmith",
+          "label": "janesmith"
+        },
+        {
+          "component": "Link",
+          "as": "johndoe",
+          "label": "johndoe"
+        },
+        {
+          "component": "Link",
+          "as": "realWorldOSSProject",
+          "label": "RealWorld OSS Project"
+        }
+      ],
+      "actions": [
+        {
+          "name": "goToSignUp",
+          "via": "signUp",
+          "leadsTo": "RegisterPage"
+        }
+      ],
+      "unverified": 6,
+      "testability": {
+        "confidence": 0.3,
+        "addressable": 6,
+        "unaddressable": 14,
+        "hasTable": false,
+        "crawled": true,
+        "recorded": false,
+        "missing": [
+          "14 control(s) cannot be addressed by name"
+        ]
+      }
+    },
+    {
+      "path": "/editor",
+      "url": "https://demo.realworld.show/editor",
+      "title": "/editor",
+      "headings": [],
+      "tables": [],
+      "controls": [],
+      "links": [],
+      "name": "EditorPage",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/editor",
+        "heading": null
+      },
+      "source": {
+        "component": "src/app/features/article/pages/editor/editor.component.ts",
+        "route": "/editor"
+      },
+      "crawled": false,
+      "uses": [],
+      "actions": [],
+      "unverified": 0,
+      "testability": {
+        "confidence": 0,
+        "addressable": 0,
+        "unaddressable": 0,
+        "hasTable": false,
+        "crawled": false,
+        "recorded": false,
+        "missing": [
+          "the crawl never reached this route — only its URL is known"
+        ]
+      }
+    },
+    {
+      "path": "/editor/{slug}",
+      "url": "https://demo.realworld.show/editor/%7Bslug%7D",
+      "title": "/editor/{slug}",
+      "headings": [],
+      "tables": [],
+      "controls": [],
+      "links": [],
+      "name": "Editor2Page",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/editor/{slug}",
+        "heading": null
+      },
+      "source": {
+        "component": "src/app/features/article/pages/editor/editor.component.ts",
+        "route": "/editor/{slug}"
+      },
+      "crawled": false,
+      "uses": [],
+      "actions": [],
+      "unverified": 0,
+      "testability": {
+        "confidence": 0,
+        "addressable": 0,
+        "unaddressable": 0,
+        "hasTable": false,
+        "crawled": false,
+        "recorded": false,
+        "missing": [
+          "the crawl never reached this route — only its URL is known"
+        ]
+      }
     },
     {
       "path": "/login",
@@ -4838,10 +2505,751 @@
           "resolved": "https://github.com/gothinkster/realworld",
           "text": "RealWorld OSS Project"
         }
-      ]
+      ],
+      "name": "LoginPage",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/login",
+        "heading": "Sign in"
+      },
+      "source": {
+        "component": "src/app/core/auth/auth.component.ts",
+        "route": "/login"
+      },
+      "crawled": true,
+      "uses": [
+        {
+          "component": "NavigationBar",
+          "as": "navigation"
+        },
+        {
+          "component": "Link",
+          "as": "needAnAccount",
+          "label": "Need an account?"
+        },
+        {
+          "component": "TextField",
+          "as": "email",
+          "label": "Email"
+        },
+        {
+          "component": "TextField",
+          "as": "password",
+          "label": "Password"
+        },
+        {
+          "component": "Button",
+          "as": "signIn",
+          "label": "Sign in"
+        },
+        {
+          "component": "Link",
+          "as": "realWorldOSSProject",
+          "label": "RealWorld OSS Project"
+        }
+      ],
+      "actions": [
+        {
+          "name": "goToNeedAnAccount",
+          "via": "needAnAccount",
+          "leadsTo": "RegisterPage"
+        }
+      ],
+      "unverified": 1,
+      "testability": {
+        "confidence": 0.8,
+        "addressable": 8,
+        "unaddressable": 2,
+        "hasTable": false,
+        "crawled": true,
+        "recorded": false,
+        "missing": [
+          "2 control(s) cannot be addressed by name"
+        ]
+      }
     },
     {
-      "path": "/tag/ai",
+      "path": "/profile/{username}",
+      "url": "https://demo.realworld.show/profile/janesmith",
+      "title": "Conduit",
+      "headings": [
+        {
+          "level": 1,
+          "text": "React Hooks: Best Practices and Common Pitfalls",
+          "y": 478
+        }
+      ],
+      "tables": [],
+      "hiddenControls": 0,
+      "controls": [
+        {
+          "role": "link",
+          "name": "Conduit",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "navigation",
+          "visible": true,
+          "disabled": false,
+          "href": "/",
+          "matches": 2,
+          "y": 8
+        },
+        {
+          "role": "link",
+          "name": "Home",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "navigation",
+          "visible": true,
+          "disabled": false,
+          "href": "/",
+          "matches": 1,
+          "y": 9
+        },
+        {
+          "role": "link",
+          "name": "Sign in",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "navigation",
+          "visible": true,
+          "disabled": false,
+          "href": "/login",
+          "matches": 1,
+          "y": 9
+        },
+        {
+          "role": "link",
+          "name": "Sign up",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "navigation",
+          "visible": true,
+          "disabled": false,
+          "href": "/register",
+          "matches": 1,
+          "y": 12
+        },
+        {
+          "role": "button",
+          "name": "Follow janesmith",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": null,
+          "matches": 1,
+          "y": 295
+        },
+        {
+          "role": "link",
+          "name": "My Posts",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/profile/janesmith",
+          "matches": 1,
+          "y": 364
+        },
+        {
+          "role": "link",
+          "name": "Favorited Posts",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/profile/janesmith/favorites",
+          "matches": 1,
+          "y": 364
+        },
+        {
+          "role": "link",
+          "name": "",
+          "nameSource": null,
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/profile/janesmith",
+          "matches": -1,
+          "y": 434
+        },
+        {
+          "role": "link",
+          "name": "janesmith",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/profile/janesmith",
+          "matches": 1,
+          "y": 430
+        },
+        {
+          "role": "button",
+          "name": "2",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": null,
+          "matches": 1,
+          "y": 430
+        },
+        {
+          "role": "link",
+          "name": "React Hooks: Best Practices and Common PitfallsEssential patterns and anti-patterns when working with React HooksRead more... frontend hooks javascript react",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/article/react-hooks-best-practices",
+          "matches": 1,
+          "y": 478
+        },
+        {
+          "role": "button",
+          "name": "1",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "navigation",
+          "visible": true,
+          "disabled": false,
+          "href": null,
+          "matches": 1,
+          "y": 607
+        },
+        {
+          "role": "link",
+          "name": "Conduit",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "footer",
+          "visible": true,
+          "disabled": false,
+          "href": "/",
+          "matches": 2,
+          "y": 732
+        },
+        {
+          "role": "link",
+          "name": "RealWorld OSS Project",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "footer",
+          "visible": true,
+          "disabled": false,
+          "href": "https://github.com/gothinkster/realworld",
+          "matches": 1,
+          "y": 731
+        }
+      ],
+      "links": [
+        {
+          "href": "/",
+          "resolved": "https://demo.realworld.show/",
+          "text": ""
+        },
+        {
+          "href": "/",
+          "resolved": "https://demo.realworld.show/",
+          "text": "Home"
+        },
+        {
+          "href": "/login",
+          "resolved": "https://demo.realworld.show/login",
+          "text": "Sign in"
+        },
+        {
+          "href": "/register",
+          "resolved": "https://demo.realworld.show/register",
+          "text": "Sign up"
+        },
+        {
+          "href": "/profile/janesmith",
+          "resolved": "https://demo.realworld.show/profile/janesmith",
+          "text": "My Posts"
+        },
+        {
+          "href": "/profile/janesmith/favorites",
+          "resolved": "https://demo.realworld.show/profile/janesmith/favorites",
+          "text": "Favorited Posts"
+        },
+        {
+          "href": "/profile/janesmith",
+          "resolved": "https://demo.realworld.show/profile/janesmith",
+          "text": ""
+        },
+        {
+          "href": "/profile/janesmith",
+          "resolved": "https://demo.realworld.show/profile/janesmith",
+          "text": "janesmith"
+        },
+        {
+          "href": "/article/react-hooks-best-practices",
+          "resolved": "https://demo.realworld.show/article/react-hooks-best-practices",
+          "text": "React Hooks: Best Practices and Common PitfallsEssential patterns and anti-patte"
+        },
+        {
+          "href": "/",
+          "resolved": "https://demo.realworld.show/",
+          "text": ""
+        },
+        {
+          "href": "https://github.com/gothinkster/realworld",
+          "resolved": "https://github.com/gothinkster/realworld",
+          "text": "RealWorld OSS Project"
+        }
+      ],
+      "name": "ProfilePage",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/profile/{username}",
+        "heading": "React Hooks: Best Practices and Common Pitfalls"
+      },
+      "source": {
+        "component": "src/app/features/profile/pages/profile/profile.component.ts",
+        "route": "/profile/{username}"
+      },
+      "crawled": true,
+      "uses": [
+        {
+          "component": "NavigationBar",
+          "as": "navigation"
+        },
+        {
+          "component": "Button",
+          "as": "followJanesmith",
+          "label": "Follow janesmith"
+        },
+        {
+          "component": "Link",
+          "as": "myPosts",
+          "label": "My Posts"
+        },
+        {
+          "component": "Link",
+          "as": "favoritedPosts",
+          "label": "Favorited Posts"
+        },
+        {
+          "component": "Link",
+          "as": "janesmith",
+          "label": "janesmith"
+        },
+        {
+          "component": "Button",
+          "as": "control2",
+          "label": "2"
+        },
+        {
+          "component": "Link",
+          "as": "reactHooksBestPracticesAndCommonPitfallsEssentialPatternsAndAntiPatternsWhenWorkingWithReactHooksReadMoreFrontendHooksJavascriptReact",
+          "label": "React Hooks: Best Practices and Common PitfallsEssential patterns and anti-patterns when working with React HooksRead more... frontend hooks javascript react"
+        },
+        {
+          "component": "Button",
+          "as": "control1",
+          "label": "1"
+        },
+        {
+          "component": "Link",
+          "as": "realWorldOSSProject",
+          "label": "RealWorld OSS Project"
+        }
+      ],
+      "actions": [],
+      "unverified": 2,
+      "testability": {
+        "confidence": 0.79,
+        "addressable": 11,
+        "unaddressable": 3,
+        "hasTable": false,
+        "crawled": true,
+        "recorded": false,
+        "missing": [
+          "3 control(s) cannot be addressed by name"
+        ]
+      }
+    },
+    {
+      "path": "/profile/{username}/favorites",
+      "url": "https://demo.realworld.show/profile/%7Busername%7D/favorites",
+      "title": "/profile/{username}/favorites",
+      "headings": [],
+      "tables": [],
+      "controls": [],
+      "links": [],
+      "name": "FavoritesPage",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/profile/{username}/favorites",
+        "heading": null
+      },
+      "source": {
+        "component": "src/app/features/profile/components/profile-favorites.component.ts",
+        "route": "/profile/{username}/favorites"
+      },
+      "crawled": false,
+      "uses": [],
+      "actions": [],
+      "unverified": 0,
+      "testability": {
+        "confidence": 0,
+        "addressable": 0,
+        "unaddressable": 0,
+        "hasTable": false,
+        "crawled": false,
+        "recorded": false,
+        "missing": [
+          "the crawl never reached this route — only its URL is known"
+        ]
+      }
+    },
+    {
+      "path": "/register",
+      "url": "https://demo.realworld.show/register",
+      "title": "Conduit",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Sign up",
+          "y": 80
+        }
+      ],
+      "tables": [],
+      "hiddenControls": 0,
+      "controls": [
+        {
+          "role": "link",
+          "name": "Conduit",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "navigation",
+          "visible": true,
+          "disabled": false,
+          "href": "/",
+          "matches": 2,
+          "y": 8
+        },
+        {
+          "role": "link",
+          "name": "Home",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "navigation",
+          "visible": true,
+          "disabled": false,
+          "href": "/",
+          "matches": 1,
+          "y": 9
+        },
+        {
+          "role": "link",
+          "name": "Sign in",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "navigation",
+          "visible": true,
+          "disabled": false,
+          "href": "/login",
+          "matches": 1,
+          "y": 9
+        },
+        {
+          "role": "link",
+          "name": "Sign up",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "navigation",
+          "visible": true,
+          "disabled": false,
+          "href": "/register",
+          "matches": 1,
+          "y": 12
+        },
+        {
+          "role": "link",
+          "name": "Have an account?",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "body",
+          "visible": true,
+          "disabled": false,
+          "href": "/login",
+          "matches": 1,
+          "y": 134
+        },
+        {
+          "role": "textbox",
+          "name": "Username",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": "Username",
+          "field": "username",
+          "region": "form",
+          "visible": true,
+          "disabled": false,
+          "href": null,
+          "matches": 1,
+          "y": 172
+        },
+        {
+          "role": "textbox",
+          "name": "Email",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": "Email",
+          "field": "email",
+          "region": "form",
+          "visible": true,
+          "disabled": false,
+          "href": null,
+          "matches": 1,
+          "y": 239
+        },
+        {
+          "role": "textbox",
+          "name": "Password",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": "Password",
+          "field": "password",
+          "region": "form",
+          "visible": true,
+          "disabled": false,
+          "href": null,
+          "matches": 1,
+          "y": 306
+        },
+        {
+          "role": "button",
+          "name": "Sign up",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "form",
+          "visible": true,
+          "disabled": true,
+          "href": null,
+          "matches": 1,
+          "y": 373
+        },
+        {
+          "role": "link",
+          "name": "Conduit",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "footer",
+          "visible": true,
+          "disabled": false,
+          "href": "/",
+          "matches": 2,
+          "y": 686
+        },
+        {
+          "role": "link",
+          "name": "RealWorld OSS Project",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "footer",
+          "visible": true,
+          "disabled": false,
+          "href": "https://github.com/gothinkster/realworld",
+          "matches": 1,
+          "y": 686
+        }
+      ],
+      "links": [
+        {
+          "href": "/",
+          "resolved": "https://demo.realworld.show/",
+          "text": ""
+        },
+        {
+          "href": "/",
+          "resolved": "https://demo.realworld.show/",
+          "text": "Home"
+        },
+        {
+          "href": "/login",
+          "resolved": "https://demo.realworld.show/login",
+          "text": "Sign in"
+        },
+        {
+          "href": "/register",
+          "resolved": "https://demo.realworld.show/register",
+          "text": "Sign up"
+        },
+        {
+          "href": "/login",
+          "resolved": "https://demo.realworld.show/login",
+          "text": "Have an account?"
+        },
+        {
+          "href": "/",
+          "resolved": "https://demo.realworld.show/",
+          "text": ""
+        },
+        {
+          "href": "https://github.com/gothinkster/realworld",
+          "resolved": "https://github.com/gothinkster/realworld",
+          "text": "RealWorld OSS Project"
+        }
+      ],
+      "name": "RegisterPage",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/register",
+        "heading": "Sign up"
+      },
+      "source": {
+        "component": "src/app/core/auth/auth.component.ts",
+        "route": "/register"
+      },
+      "crawled": true,
+      "uses": [
+        {
+          "component": "NavigationBar",
+          "as": "navigation"
+        },
+        {
+          "component": "Link",
+          "as": "haveAnAccount",
+          "label": "Have an account?"
+        },
+        {
+          "component": "TextField",
+          "as": "username",
+          "label": "Username"
+        },
+        {
+          "component": "TextField",
+          "as": "email",
+          "label": "Email"
+        },
+        {
+          "component": "TextField",
+          "as": "password",
+          "label": "Password"
+        },
+        {
+          "component": "Button",
+          "as": "signUp",
+          "label": "Sign up"
+        },
+        {
+          "component": "Link",
+          "as": "realWorldOSSProject",
+          "label": "RealWorld OSS Project"
+        }
+      ],
+      "actions": [
+        {
+          "name": "goToHaveAnAccount",
+          "via": "haveAnAccount",
+          "leadsTo": "LoginPage"
+        }
+      ],
+      "unverified": 1,
+      "testability": {
+        "confidence": 0.82,
+        "addressable": 9,
+        "unaddressable": 2,
+        "hasTable": false,
+        "crawled": true,
+        "recorded": false,
+        "missing": [
+          "2 control(s) cannot be addressed by name"
+        ]
+      }
+    },
+    {
+      "path": "/settings",
+      "url": "https://demo.realworld.show/settings",
+      "title": "/settings",
+      "headings": [],
+      "tables": [],
+      "controls": [],
+      "links": [],
+      "name": "SettingsPage",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/settings",
+        "heading": null
+      },
+      "source": {
+        "component": "src/app/features/settings/settings.component.ts",
+        "route": "/settings"
+      },
+      "crawled": false,
+      "uses": [],
+      "actions": [],
+      "unverified": 0,
+      "testability": {
+        "confidence": 0,
+        "addressable": 0,
+        "unaddressable": 0,
+        "hasTable": false,
+        "crawled": false,
+        "recorded": false,
+        "missing": [
+          "the crawl never reached this route — only its URL is known"
+        ]
+      }
+    },
+    {
+      "path": "/tag/{tag}",
       "url": "https://demo.realworld.show/tag/ai",
       "title": "Conduit",
       "headings": [
@@ -5397,145 +3805,132 @@
           "resolved": "https://github.com/gothinkster/realworld",
           "text": "RealWorld OSS Project"
         }
-      ]
-    }
-  ],
-  "testability": {
-    "screens": {
-      "/article/building-scalable-apis-with-node-js": {
-        "confidence": 0.3,
-        "addressable": 6,
-        "unaddressable": 14,
-        "hasTable": false,
-        "crawled": true,
-        "recorded": false,
-        "missing": [
-          "14 control(s) cannot be addressed by name"
-        ]
+      ],
+      "name": "TagPage",
+      "aliases": [],
+      "identity": {
+        "urlPattern": "/tag/{tag}",
+        "heading": "Introduction to Machine Learning for Developers"
       },
-      "/article/how-to-learn-javascript-efficiently": {
-        "confidence": 0.3,
-        "addressable": 6,
-        "unaddressable": 14,
-        "hasTable": false,
-        "crawled": true,
-        "recorded": false,
-        "missing": [
-          "14 control(s) cannot be addressed by name"
-        ]
+      "source": {
+        "component": "src/app/features/article/pages/home/home.component.ts",
+        "route": "/tag/{tag}"
       },
-      "/article/how-to-train-your-dragon": {
-        "confidence": 0.67,
-        "addressable": 4,
-        "unaddressable": 2,
-        "hasTable": false,
-        "crawled": true,
-        "recorded": false,
-        "missing": [
-          "2 control(s) cannot be addressed by name",
-          "no heading to assert the screen by"
-        ]
-      },
-      "/article/introduction-to-machine-learning-for-developers": {
-        "confidence": 0.3,
-        "addressable": 6,
-        "unaddressable": 14,
-        "hasTable": false,
-        "crawled": true,
-        "recorded": false,
-        "missing": [
-          "14 control(s) cannot be addressed by name"
-        ]
-      },
-      "/article/react-hooks-best-practices": {
-        "confidence": 0.3,
-        "addressable": 6,
-        "unaddressable": 14,
-        "hasTable": false,
-        "crawled": true,
-        "recorded": false,
-        "missing": [
-          "14 control(s) cannot be addressed by name"
-        ]
-      },
-      "/login": {
-        "confidence": 0.8,
-        "addressable": 8,
-        "unaddressable": 2,
-        "hasTable": false,
-        "crawled": true,
-        "recorded": false,
-        "missing": [
-          "2 control(s) cannot be addressed by name"
-        ]
-      },
-      "/profile/janesmith": {
-        "confidence": 0.79,
-        "addressable": 11,
-        "unaddressable": 3,
-        "hasTable": false,
-        "crawled": true,
-        "recorded": false,
-        "missing": [
-          "3 control(s) cannot be addressed by name"
-        ]
-      },
-      "/profile/johndoe": {
-        "confidence": 0.79,
-        "addressable": 11,
-        "unaddressable": 3,
-        "hasTable": false,
-        "crawled": true,
-        "recorded": false,
-        "missing": [
-          "3 control(s) cannot be addressed by name"
-        ]
-      },
-      "/profile/mikewilson": {
-        "confidence": 0.64,
-        "addressable": 9,
-        "unaddressable": 5,
-        "hasTable": false,
-        "crawled": true,
-        "recorded": false,
-        "missing": [
-          "5 control(s) cannot be addressed by name"
-        ]
-      },
-      "/profile/sarahchen": {
-        "confidence": 0.64,
-        "addressable": 9,
-        "unaddressable": 5,
-        "hasTable": false,
-        "crawled": true,
-        "recorded": false,
-        "missing": [
-          "5 control(s) cannot be addressed by name"
-        ]
-      },
-      "/register": {
-        "confidence": 0.82,
-        "addressable": 9,
-        "unaddressable": 2,
-        "hasTable": false,
-        "crawled": true,
-        "recorded": false,
-        "missing": [
-          "2 control(s) cannot be addressed by name"
-        ]
-      },
-      "/": {
-        "confidence": 0.73,
-        "addressable": 30,
-        "unaddressable": 11,
-        "hasTable": false,
-        "crawled": true,
-        "recorded": false,
-        "missing": [
-          "11 control(s) cannot be addressed by name"
-        ]
-      },
-      "/tag/ai": {
+      "crawled": true,
+      "uses": [
+        {
+          "component": "NavigationBar",
+          "as": "navigation"
+        },
+        {
+          "component": "Link",
+          "as": "angularFrontend",
+          "label": "Angular frontend"
+        },
+        {
+          "component": "Link",
+          "as": "realworld",
+          "label": "Realworld"
+        },
+        {
+          "component": "Link",
+          "as": "globalFeed",
+          "label": "Global Feed"
+        },
+        {
+          "component": "Link",
+          "as": "sarahchen",
+          "label": "sarahchen"
+        },
+        {
+          "component": "Link",
+          "as": "introductionToMachineLearningForDevelopersGettingStartedWithMLConceptsAndPracticalApplicationsForSoftwareDevelopersReadMoreAiDatascienceMachinelearningPython",
+          "label": "Introduction to Machine Learning for DevelopersGetting started with ML concepts and practical applications for software developersRead more... ai datascience machinelearning python"
+        },
+        {
+          "component": "Link",
+          "as": "ai",
+          "label": "ai"
+        },
+        {
+          "component": "Link",
+          "as": "api",
+          "label": "api"
+        },
+        {
+          "component": "Link",
+          "as": "architecture",
+          "label": "architecture"
+        },
+        {
+          "component": "Link",
+          "as": "backend",
+          "label": "backend"
+        },
+        {
+          "component": "Link",
+          "as": "beginners",
+          "label": "beginners"
+        },
+        {
+          "component": "Link",
+          "as": "datascience",
+          "label": "datascience"
+        },
+        {
+          "component": "Link",
+          "as": "frontend",
+          "label": "frontend"
+        },
+        {
+          "component": "Link",
+          "as": "hooks",
+          "label": "hooks"
+        },
+        {
+          "component": "Link",
+          "as": "javascript",
+          "label": "javascript"
+        },
+        {
+          "component": "Link",
+          "as": "machinelearning",
+          "label": "machinelearning"
+        },
+        {
+          "component": "Link",
+          "as": "nodejs",
+          "label": "nodejs"
+        },
+        {
+          "component": "Link",
+          "as": "programming",
+          "label": "programming"
+        },
+        {
+          "component": "Link",
+          "as": "python",
+          "label": "python"
+        },
+        {
+          "component": "Link",
+          "as": "react",
+          "label": "react"
+        },
+        {
+          "component": "Link",
+          "as": "webdev",
+          "label": "webdev"
+        },
+        {
+          "component": "Link",
+          "as": "realWorldOSSProject",
+          "label": "RealWorld OSS Project"
+        }
+      ],
+      "actions": [],
+      "unverified": 4,
+      "testability": {
         "confidence": 0.83,
         "addressable": 24,
         "unaddressable": 5,
@@ -5545,85 +3940,30 @@
         "missing": [
           "5 control(s) cannot be addressed by name"
         ]
-      },
-      "/tag/{tag}": {
-        "confidence": 0,
-        "addressable": 0,
-        "unaddressable": 0,
-        "hasTable": false,
-        "crawled": false,
-        "recorded": false,
-        "missing": [
-          "the crawl never reached this route — only its URL is known"
-        ]
-      },
-      "/settings": {
-        "confidence": 0,
-        "addressable": 0,
-        "unaddressable": 0,
-        "hasTable": false,
-        "crawled": false,
-        "recorded": false,
-        "missing": [
-          "the crawl never reached this route — only its URL is known"
-        ]
-      },
-      "/editor": {
-        "confidence": 0,
-        "addressable": 0,
-        "unaddressable": 0,
-        "hasTable": false,
-        "crawled": false,
-        "recorded": false,
-        "missing": [
-          "the crawl never reached this route — only its URL is known"
-        ]
-      },
-      "/editor/{slug}": {
-        "confidence": 0,
-        "addressable": 0,
-        "unaddressable": 0,
-        "hasTable": false,
-        "crawled": false,
-        "recorded": false,
-        "missing": [
-          "the crawl never reached this route — only its URL is known"
-        ]
-      },
-      "/article/{slug}": {
-        "confidence": 0,
-        "addressable": 0,
-        "unaddressable": 0,
-        "hasTable": false,
-        "crawled": false,
-        "recorded": false,
-        "missing": [
-          "the crawl never reached this route — only its URL is known"
-        ]
-      },
-      "/profile/{username}": {
-        "confidence": 0,
-        "addressable": 0,
-        "unaddressable": 0,
-        "hasTable": false,
-        "crawled": false,
-        "recorded": false,
-        "missing": [
-          "the crawl never reached this route — only its URL is known"
-        ]
-      },
-      "/profile/{username}/favorites": {
-        "confidence": 0,
-        "addressable": 0,
-        "unaddressable": 0,
-        "hasTable": false,
-        "crawled": false,
-        "recorded": false,
-        "missing": [
-          "the crawl never reached this route — only its URL is known"
-        ]
       }
+    }
+  ],
+  "testability": {
+    "summary": {
+      "write": 5,
+      "recordFirst": 1,
+      "unknown": 4,
+      "total": 10
     },
     "recordings": []
+  },
+  "stats": {
+    "screens": 10,
+    "crawled": 6,
+    "declaredOnly": 4,
+    "components": 10,
+    "regions": 1,
+    "uses": 86,
+    "actions": 3,
+    "unverified": 21,
+    "endpoints": 13,
+    "resources": 5,
+    "creatable": 3,
+    "cleanable": 1
   }
 }

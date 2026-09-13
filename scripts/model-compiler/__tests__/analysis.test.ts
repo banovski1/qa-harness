@@ -1,7 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { scoreScreen, verdictFor, computeTestability, UNCRAWLED } from '../../analysis/testability.ts';
+import { scoreScreen, verdictFor, scoreScreens, UNCRAWLED } from '../../analysis/testability.ts';
 import { SECTIONS, SECTION_OWNER } from '../../analysis/analysis-types.ts';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 const screen = (controls: any[], over: Record<string, unknown> = {}) => ({
   path: '/x', url: 'https://a/x', title: 'X',
@@ -37,21 +39,44 @@ test('a recording lifts a screen a crawl could not settle', () => {
 });
 
 test('a declared route the crawl never reached scores zero and says so', () => {
-  const t = computeTestability({ screens: [] } as any, ['/never'], []);
-  assert.deepEqual(t.screens['/never'], UNCRAWLED);
-  assert.match(t.screens['/never'].missing[0], /never reached/);
+  const screens: any[] = [{ ...screen([]), path: '/never', crawled: false }];
+  scoreScreens(screens, []);
+  assert.deepEqual(screens[0].testability, UNCRAWLED);
+  assert.match(screens[0].testability.missing[0], /never reached/);
 });
 
 test('a recording is matched to the screens it covers, not to all of them', () => {
-  const analysis = { screens: [screen([named(2)], { path: '/a' }), screen([named(2)], { path: '/b' })] } as any;
-  const t = computeTestability(analysis, [], [
+  const screens: any[] = [screen([named(2)], { path: '/a' }), screen([named(2)], { path: '/b' })];
+  scoreScreens(screens, [
     { flow: 'apply', path: 'codegen-recordings/apply.md', recordedAt: '', screens: ['/a'] },
   ]);
-  assert.equal(t.screens['/a'].recorded, true);
-  assert.equal(t.screens['/b'].recorded, false);
+  assert.equal(screens[0].testability.recorded, true);
+  assert.equal(screens[1].testability.recorded, false);
 });
 
 test('every section has exactly one owner', () => {
   for (const section of SECTIONS) assert.ok(SECTION_OWNER[section], `${section} has no owner`);
   assert.equal(Object.keys(SECTION_OWNER).length, SECTIONS.length);
+});
+
+test('every writer of analysis.json agrees on the section list', () => {
+  // Three files write this artifact and each held its own copy of the order. Two went
+  // stale when the contract grew, and because each rebuilt the object from its own list,
+  // the sections they did not know about were silently deleted — app-components' work
+  // vanished the next time the map ran. The lists must match, and every writer must
+  // carry through keys it does not recognise.
+  const root = join(import.meta.dirname, '../../..');
+  const writers = [
+    '.claude/skills/app-explorer/lib/map.mjs',
+    '.claude/skills/app-explorer/lib/write-screens.mjs',
+  ];
+  for (const writer of writers) {
+    const source = readFileSync(join(root, writer), 'utf8');
+    const declared = source.match(/const SECTIONS = \[([^\]]+)\]/);
+    assert.ok(declared, `${writer} declares no SECTIONS list`);
+    const names = declared[1].split(',').map(s => s.trim().replace(/^['"]|['"]$/g, '')).filter(Boolean);
+    assert.deepEqual(names, [...SECTIONS], `${writer} is out of step with analysis-types.ts`);
+    assert.match(source, /for \(const key of Object\.keys\(current\)\)/,
+      `${writer} rebuilds the file without carrying through unknown keys`);
+  }
 });
