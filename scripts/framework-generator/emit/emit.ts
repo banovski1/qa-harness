@@ -3,7 +3,9 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { FileWriter } from '../file-writer.ts';
+import { FileWriter, assertOutputEmpty } from '../file-writer.ts';
+import { assertDraftApproved } from './gates.ts';
+import { currentDraft, DRAFT_PATH, LOCK_PATH } from './draft.ts';
 import { ROOT } from '../../config/profile.mjs';
 import type { AppModel, Screen, ComponentUse } from '../../model-compiler/model-types.ts';
 
@@ -560,8 +562,24 @@ export function modelFromAnalysis(): AppModel {
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   const dryRun = process.argv.includes('--dry-run');
+  const force = process.argv.includes('--force');
+  const outputDir = join(ROOT, 'generated-framework');
+
+  try {
+    // A dry run writes nothing, so an existing framework is no obstacle to describing
+    // what a fresh one would look like.
+    if (!dryRun) assertOutputEmpty(outputDir);
+    if (!force) {
+      const { markdown } = currentDraft();
+      assertDraftApproved({ draftPath: DRAFT_PATH, lockPath: LOCK_PATH, current: markdown });
+    }
+  } catch (error) {
+    console.error(`✗ ${(error as Error).message}`);
+    process.exit(1);
+  }
+
   const model: AppModel = modelFromAnalysis();
   const analysis = JSON.parse(readFileSync(join(ROOT, 'analysis.json'), 'utf8'));
-  const writer = emit(model, analysis.conventions, join(ROOT, 'generated-framework'), { dryRun });
+  const writer = emit(model, analysis.conventions, outputDir, { dryRun });
   console.log(`${dryRun ? '[dry run] ' : ''}${writer.summary()}`);
 }

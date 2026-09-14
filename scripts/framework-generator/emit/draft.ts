@@ -27,15 +27,15 @@ export function writeDraft(markdown: string): void {
   writeFileSync(DRAFT_PATH, markdown, 'utf8');
 }
 
-export function approve(markdown: string, repoCommit: string): void {
+export function approve(markdown: string, repoCommit: string, lockPath: string = LOCK_PATH): void {
   const lock: DraftLock = { hash: hashDraft(markdown), approvedAt: new Date().toISOString(), repoCommit };
-  writeFileSync(LOCK_PATH, JSON.stringify(lock, null, 2) + '\n', 'utf8');
+  writeFileSync(lockPath, JSON.stringify(lock, null, 2) + '\n', 'utf8');
 }
 
-export function readLock(): DraftLock | null {
-  if (!existsSync(LOCK_PATH)) return null;
+export function readLock(lockPath: string = LOCK_PATH): DraftLock | null {
+  if (!existsSync(lockPath)) return null;
   try {
-    return JSON.parse(readFileSync(LOCK_PATH, 'utf8')) as DraftLock;
+    return JSON.parse(readFileSync(lockPath, 'utf8')) as DraftLock;
   } catch {
     return null;
   }
