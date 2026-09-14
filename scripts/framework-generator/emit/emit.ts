@@ -551,6 +551,7 @@ export function modelFromAnalysis(): AppModel {
       aliases: s.aliases, identity: s.identity, source: s.source,
       crawled: s.crawled, uses: s.uses ?? [], actions: s.actions ?? [],
       unverified: s.unverified ?? 0,
+      testability: s.testability,
     })),
     api: analysis.api,
     stats: analysis.stats,

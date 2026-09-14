@@ -72,6 +72,20 @@ export interface Screen {
   actions: ScreenAction[];
   /** Elements the crawl saw but could not name semantically. Never silently dropped. */
   unverified: number;
+  /**
+   * The compiler's answer to "is there enough here to address what a test would touch?"
+   * The generator never acts on it; the draft shows it, because a reviewer approving a
+   * page object deserves to know what it was built from.
+   */
+  testability?: {
+    confidence: number;
+    addressable: number;
+    unaddressable: number;
+    hasTable: boolean;
+    crawled: boolean;
+    recorded: boolean;
+    missing: string[];
+  };
 }
 
 export interface ApiAuth {
