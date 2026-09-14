@@ -20,7 +20,7 @@ Don't diagnose from the stack trace alone. Use `playwright-cli` to replay the st
 
 ## 3. Classify against known-issues.md
 
-Read `.claude/agents/test-runner-known-issues.md`. Match the observed symptom against its `Symptom` column. Each row names the fix's owned location: a stale analysis → re-run the skill that wrote it, then `compile-model.ts` and `emit.ts`; an ambiguous locator (`AMBIGUOUS`) → a scoped accessor in the protected `<Name>Page.ts`; a missing wait → a web-first assertion or `expect.poll` in the page-object method; bad test data → `uniqueName()` in the spec.
+Read `.claude/agents/test-runner-known-issues.md`. Match the observed symptom against its `Symptom` column. Each row names the fix's owned location: a stale analysis → re-run the skill that wrote it, then `compile-model.ts` and `emit.ts`; an ambiguous locator (`AMBIGUOUS`) → a scoped accessor in `<Name>Page.ts`; a missing wait → a web-first assertion or `expect.poll` in the page-object method; bad test data → `uniqueName()` in the spec.
 
 No row matches → stop now and hand back to a human with the playwright-cli evidence. Do not invent a fix outside the library.
 
@@ -28,7 +28,7 @@ If the failure is that the analysis simply does not know the screen — a contro
 
 ## 4. Apply the one documented fix, in its owned file
 
-Same generated/protected boundary as `test-writer`: never edit `*.generated.ts` or anything under `analysis/` by hand — an analysis problem is fixed by re-running the skill and the compiler, not by editing their output. Each skill owns one section of `analysis.json` and writes it through `scripts/analysis/write-section.ts`; nothing writes that file by hand.
+Same rule as `test-writer`: never edit anything under `analysis/` by hand — an analysis problem is fixed by re-running the skill and the compiler, not by editing their output. Each skill owns one section of `analysis.json` and writes it through `scripts/analysis/write-section.ts`; nothing writes that file by hand. The page objects under `src/pages/` and the API clients under `src/api/` are otherwise yours to edit — there is no generated/protected split any more.
 
 ## 5. Rerun once
 
