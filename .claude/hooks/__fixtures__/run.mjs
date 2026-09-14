@@ -11,17 +11,30 @@
  * leaves a file behind in the tree it is testing.
  */
 import { spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, rmSync, rmdirSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { CASES } from './cases.mjs';
 
 const root = process.cwd();
 let failures = 0;
 
+/** Ancestor directories of `dir`, nearest first, that do not yet exist on disk. */
+function missingAncestors(dir) {
+  const missing = [];
+  let current = dir;
+  while (!existsSync(current)) {
+    missing.push(current);
+    current = dirname(current);
+  }
+  return missing;
+}
+
 for (const testCase of CASES) {
   const absolute = `${root}/${testCase.path}`;
   const preexisting = existsSync(absolute);
+  let createdDirs = [];
   if (testCase.materialize && !preexisting) {
+    createdDirs = missingAncestors(dirname(absolute));
     mkdirSync(dirname(absolute), { recursive: true });
     writeFileSync(absolute, testCase.content ?? '');
   }
@@ -35,6 +48,11 @@ for (const testCase of CASES) {
 
   if (testCase.materialize && !preexisting) {
     rmSync(absolute, { force: true });
+    // Only remove directories this run actually created, deepest first, and only
+    // while they are empty — a directory another fixture also wanted into stays.
+    for (const dir of createdDirs) {
+      if (existsSync(dir) && readdirSync(dir).length === 0) rmdirSync(dir);
+    }
   }
 
   const reported = [...new Set([...run.stderr.matchAll(/\[([a-z-]+)\]/g)].map((m) => m[1]))].sort();
