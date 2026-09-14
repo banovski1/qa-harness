@@ -1,6 +1,5 @@
-/** The write policy's unit: one file, and whether the generator owns it. */
+/** The write policy's unit. There is exactly one policy now: write it once. */
 export interface GeneratedFile {
   path: string;
   contents: string;
-  kind: 'generated' | 'protected';
 }

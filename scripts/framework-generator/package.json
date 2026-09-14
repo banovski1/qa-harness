@@ -11,7 +11,7 @@
     "check": "cd ../.. && tsx scripts/model-compiler/check-model.ts",
     "generate": "cd ../.. && tsx scripts/framework-generator/emit/emit.ts",
     "generate:dry": "cd ../.. && tsx scripts/framework-generator/emit/emit.ts --dry-run",
-    "test": "cd ../.. && tsx --test scripts/model-compiler/__tests__/*.test.ts",
+    "test": "cd ../.. && tsx --test scripts/model-compiler/__tests__/*.test.ts scripts/framework-generator/__tests__/*.test.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {

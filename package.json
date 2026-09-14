@@ -14,7 +14,7 @@
     "check": "tsx scripts/model-compiler/check-model.ts",
     "generate": "tsx scripts/framework-generator/emit/emit.ts",
     "app:worktree": "node scripts/worktree/new-app.mjs",
-    "pipeline:test": "tsx --test scripts/model-compiler/__tests__/*.test.ts scripts/analysis/__tests__/*.test.ts",
+    "pipeline:test": "tsx --test scripts/model-compiler/__tests__/*.test.ts scripts/analysis/__tests__/*.test.ts scripts/framework-generator/__tests__/*.test.ts",
     "pipeline:typecheck": "npm run typecheck --prefix scripts/framework-generator",
     "hooks:test": "node .claude/hooks/__fixtures__/run.mjs"
   },

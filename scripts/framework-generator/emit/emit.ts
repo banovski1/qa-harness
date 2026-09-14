@@ -3,7 +3,7 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { FileWriter } from '../file-writer.js';
+import { FileWriter } from '../file-writer.ts';
 import { ROOT } from '../../config/profile.mjs';
 import type { AppModel, Screen, ComponentUse } from '../../model-compiler/model-types.ts';
 
@@ -200,12 +200,12 @@ function renderTemplates(model: AppModel, conventions: any): string {
   ].join('\n');
 }
 
-function staticProject(model: AppModel): { path: string; contents: string; kind: 'generated' | 'protected' }[] {
+function staticProject(model: AppModel): { path: string; contents: string }[] {
   const auth: any = model.api.auth ?? {};
   const ui = auth.uiLogin;
   return [
     {
-      path: 'package.json', kind: 'protected',
+      path: 'package.json',
       contents: JSON.stringify({
         name: `${model.app.name}-tests`, private: true, type: 'module',
         scripts: {
@@ -217,7 +217,7 @@ function staticProject(model: AppModel): { path: string; contents: string; kind:
       }, null, 2) + '\n',
     },
     {
-      path: 'tsconfig.json', kind: 'generated',
+      path: 'tsconfig.json',
       contents: JSON.stringify({
         compilerOptions: {
           target: 'ES2022', module: 'ESNext', moduleResolution: 'bundler',
@@ -228,7 +228,7 @@ function staticProject(model: AppModel): { path: string; contents: string; kind:
       }, null, 2) + '\n',
     },
     {
-      path: 'playwright.config.ts', kind: 'generated',
+      path: 'playwright.config.ts',
       contents: [
         HEADER(model),
         `import { defineConfig, devices } from '@playwright/test';`,
@@ -256,7 +256,7 @@ function staticProject(model: AppModel): { path: string; contents: string; kind:
       ].filter(Boolean).join('\n'),
     },
     {
-      path: 'src/config/constants.ts', kind: 'generated',
+      path: 'src/config/constants.ts',
       contents: [
         HEADER(model),
         `export const APP_NAME = ${q(model.app.name)};`,
@@ -268,15 +268,15 @@ function staticProject(model: AppModel): { path: string; contents: string; kind:
       ].join('\n'),
     },
     {
-      path: '.env.example', kind: 'protected',
+      path: '.env.example',
       contents: `APP_USERNAME=\nAPP_PASSWORD=\nBASE_URL=${model.app.baseUrl}\n`,
     },
     {
-      path: '.gitignore', kind: 'protected',
+      path: '.gitignore',
       contents: `node_modules/\ntest-results/\nplaywright-report/\n.auth/\n.env\n`,
     },
     ...(ui ? [{
-      path: 'tests/auth.setup.ts', kind: 'generated' as const,
+      path: 'tests/auth.setup.ts',
       contents: [
         HEADER(model),
         `// Logs in once per run and saves the session, so no spec pays for a login.`,
@@ -503,30 +503,30 @@ function renderFixtures(model: AppModel): string {
 export function emit(model: AppModel, conventions: any, outputDir: string, { dryRun = false } = {}) {
   const writer = new FileWriter(outputDir, { dryRun });
 
-  for (const f of runtimeFiles()) writer.write({ ...f, kind: 'generated' });
-  writer.write({ path: 'src/components/locator-templates.generated.ts', contents: renderTemplates(model, conventions), kind: 'generated' });
+  for (const f of runtimeFiles()) writer.write(f);
+  writer.write({ path: 'src/components/locator-templates.generated.ts', contents: renderTemplates(model, conventions) });
 
   for (const [name, def] of Object.entries(model.components)) {
     if (def.kind !== 'region') continue;
-    writer.write({ path: `src/components/${name}.generated.ts`, contents: renderRegion(name, model), kind: 'generated' });
+    writer.write({ path: `src/components/${name}.generated.ts`, contents: renderRegion(name, model) });
   }
 
   for (const screen of model.screens) {
     const dir = `src/pages/${moduleOf(screen.path)}`;
-    writer.write({ path: `${dir}/${screen.name}.generated.ts`, contents: renderPage(screen, model), kind: 'generated' });
-    writer.write({ path: `${dir}/${screen.name}.ts`, contents: renderPageSubclass(screen), kind: 'protected' });
+    writer.write({ path: `${dir}/${screen.name}.generated.ts`, contents: renderPage(screen, model) });
+    writer.write({ path: `${dir}/${screen.name}.ts`, contents: renderPageSubclass(screen) });
   }
 
   const index = model.screens
     .map(s => `export { ${s.name} } from './${moduleOf(s.path)}/${s.name}.ts';`)
     .sort().join('\n');
-  writer.write({ path: 'src/pages/index.ts', contents: HEADER(model) + index + '\n', kind: 'generated' });
+  writer.write({ path: 'src/pages/index.ts', contents: HEADER(model) + index + '\n' });
 
   const resources = (model.api as any).resources ?? {};
   if (Object.keys(resources).length) {
-    writer.write({ path: 'src/api/resources.generated.ts', contents: renderResources(model), kind: 'generated' });
-    writer.write({ path: 'src/api/preconditions.generated.ts', contents: renderPreconditions(model), kind: 'generated' });
-    writer.write({ path: 'src/fixtures/test.ts', contents: renderFixtures(model), kind: 'generated' });
+    writer.write({ path: 'src/api/resources.generated.ts', contents: renderResources(model) });
+    writer.write({ path: 'src/api/preconditions.generated.ts', contents: renderPreconditions(model) });
+    writer.write({ path: 'src/fixtures/test.ts', contents: renderFixtures(model) });
   }
 
   for (const f of staticProject(model)) writer.write(f);
