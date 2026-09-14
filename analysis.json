@@ -4,7 +4,7 @@
     "baseUrl": "https://opensource-demo.orangehrmlive.com/",
     "repoPath": "~/Projects/orangehrm",
     "repoCommit": "56e23b3b09e7af29317a0943523b825843fff527",
-    "generatedAt": "2026-09-13T15:17:36.946Z",
+    "generatedAt": "2026-09-13T15:58:38.631Z",
     "stack": "vue / symfony"
   },
   "source": {
@@ -18306,7 +18306,7 @@
     },
     "TextField": {
       "kind": "field",
-      "seenOn": 14,
+      "seenOn": 15,
       "description": "a text input or textarea, addressed by its label"
     },
     "Select": {
@@ -18326,7 +18326,7 @@
     },
     "Button": {
       "kind": "field",
-      "seenOn": 22,
+      "seenOn": 23,
       "description": "a button, addressed by its visible text"
     },
     "Link": {
@@ -23013,8 +23013,55 @@
       "title": "/web/index.php/auth/login",
       "headings": [],
       "tables": [],
-      "controls": [],
+      "controls": [
+        {
+          "role": "textbox",
+          "name": "Username",
+          "nameSource": "accessible",
+          "label": "Username",
+          "placeholder": null,
+          "field": "username",
+          "region": "main",
+          "visible": true,
+          "disabled": false,
+          "href": null,
+          "matches": 1,
+          "y": 0,
+          "source": "recording"
+        },
+        {
+          "role": "textbox",
+          "name": "Password",
+          "nameSource": "accessible",
+          "label": "Password",
+          "placeholder": null,
+          "field": "password",
+          "region": "main",
+          "visible": true,
+          "disabled": false,
+          "href": null,
+          "matches": 1,
+          "y": 0,
+          "source": "recording"
+        },
+        {
+          "role": "button",
+          "name": "Login",
+          "nameSource": "accessible",
+          "label": null,
+          "placeholder": null,
+          "field": null,
+          "region": "main",
+          "visible": true,
+          "disabled": false,
+          "href": null,
+          "matches": 1,
+          "y": 0,
+          "source": "recording"
+        }
+      ],
       "links": [],
+      "recordedOnly": true,
       "name": "LoginPage",
       "aliases": [],
       "identity": {
@@ -23026,18 +23073,36 @@
         "route": "/web/index.php/auth/login"
       },
       "crawled": false,
-      "uses": [],
+      "uses": [
+        {
+          "component": "TextField",
+          "as": "username",
+          "label": "Username"
+        },
+        {
+          "component": "TextField",
+          "as": "password",
+          "label": "Password"
+        },
+        {
+          "component": "Button",
+          "as": "login",
+          "label": "Login"
+        }
+      ],
       "actions": [],
       "unverified": 0,
       "testability": {
-        "confidence": 0,
-        "addressable": 0,
+        "confidence": 0.7,
+        "addressable": 3,
         "unaddressable": 0,
         "hasTable": false,
         "crawled": false,
-        "recorded": false,
+        "recorded": true,
         "missing": [
-          "the crawl never reached this route — only its URL is known"
+          "no heading to assert the screen by",
+          "a recording already covers this screen",
+          "the crawl has not proved these locators unique — only the recording resolved them"
         ]
       }
     },
@@ -49034,20 +49099,85 @@
   ],
   "testability": {
     "summary": {
-      "write": 17,
+      "write": 18,
       "recordFirst": 2,
-      "unknown": 197,
+      "unknown": 196,
       "total": 216
     },
-    "recordings": []
+    "recordings": [
+      {
+        "flow": "login",
+        "path": "recordings/login-20260913-185834.md",
+        "recordedAt": "2026-09-13T15:58:34.507Z",
+        "screens": [
+          "/web/index.php/auth/login"
+        ]
+      }
+    ]
   },
+  "recordings": [
+    {
+      "flow": "login",
+      "recordedAt": "2026-09-13T15:58:34.507Z",
+      "file": "recordings/login-20260913-185834.md",
+      "steps": [
+        {
+          "action": "goto",
+          "rawLocator": null,
+          "rung": 8,
+          "value": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+          "screenPath": "/web/index.php/auth/login",
+          "resolvedControl": null
+        },
+        {
+          "action": "fill",
+          "rawLocator": "getByRole('textbox', { name: 'Username' })",
+          "rung": 2,
+          "value": "ess_test",
+          "screenPath": "/web/index.php/auth/login",
+          "resolvedControl": null
+        },
+        {
+          "action": "fill",
+          "rawLocator": "getByRole('textbox', { name: 'Password' })",
+          "rung": 2,
+          "value": "Test1234!",
+          "screenPath": "/web/index.php/auth/login",
+          "resolvedControl": null
+        },
+        {
+          "action": "click",
+          "rawLocator": "getByRole('button', { name: 'Login' })",
+          "rung": 2,
+          "value": null,
+          "screenPath": "/web/index.php/auth/login",
+          "resolvedControl": null
+        }
+      ],
+      "routes": [
+        {
+          "path": "/web/index.php/auth/login",
+          "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+          "headings": []
+        }
+      ],
+      "requests": []
+    }
+  ],
   "stats": {
+    "recordings": 1,
+    "recordedScreens": 0,
+    "recordedControls": 3,
+    "recordedActions": 0,
+    "recordedEndpoints": 0,
+    "recordingConflicts": 0,
+    "recordingUnresolved": 0,
     "screens": 216,
     "crawled": 22,
     "declaredOnly": 194,
     "components": 10,
     "regions": 1,
-    "uses": 459,
+    "uses": 462,
     "actions": 0,
     "unverified": 66,
     "endpoints": 490,

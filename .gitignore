@@ -25,4 +25,7 @@ analysis/*/.crawl/
 
 # The hand-written config. .env.example is the committed template.
 .env
+
 docs/
+recordings/
+prompt-library/
