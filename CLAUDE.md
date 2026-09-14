@@ -130,6 +130,8 @@ npx tsx scripts/framework-generator/emit/draft.ts --approve  # records that a hu
 
 # 6. Generate — once, ever
 npx tsx scripts/framework-generator/emit/emit.ts
+# --force skips the draft/approval gate entirely. It exists for CI, where there is no
+# human to approve a draft; never pass it to get past an unapproved draft yourself.
 
 # 7. The tests of the pipeline itself
 npm test --prefix scripts/framework-generator          # compile-model's unit + fixture suite

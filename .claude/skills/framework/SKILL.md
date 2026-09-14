@@ -97,19 +97,30 @@ Say that to the user rather than quietly editing the output.
 
 ## Phase 5 — smoke
 
-Run one spec — the smallest one present:
+`emit()` creates `tests/e2e/` and puts nothing in it — a freshly generated framework has
+no specs. Running Playwright against zero tests exits non-zero ("no tests found"), which
+is expected here, not a failure to chase.
+
+The honest smoke check at this point is narrower: confirm Playwright itself starts and
+the project is wired correctly.
 
 ```bash
-npx playwright test --project=chromium --reporter=list
+npx playwright test --project=chromium --list
 ```
 
-Then read what the components said about themselves:
+A clean "no tests found" with no config or fixture error means the scaffold compiles and
+Playwright can load it. A config error, a fixture that throws, or an import that fails to
+resolve — that is a real framework defect, and Phase 5 is where it is caught before a spec
+ever exists to surface it.
+
+The first real evidence — an actual browser run, `test-results/framework.log.jsonl`
+populated, components proving or failing to prove their locators — comes once a spec
+exists. That is `test-writer`'s job, not this skill's. Once a spec has run, the log is
+worth reading the same way:
 
 ```bash
 head -20 test-results/framework.log.jsonl
 ```
-
-Report, concretely:
 
 - how many interactions were logged, and how many carry `"outcome":"ok"`;
 - any record whose `strategy` is `proximity` — those controls are addressed by walking
@@ -136,6 +147,9 @@ Test authoring is not this skill's job. A pasted numbered test script goes to
 ## Rules
 
 - **Approval is the user's, always.** This skill verifies the lock; it never writes one.
+- **Never pass `--force`.** It skips the draft/approval gate and exists for CI, where
+  there is no human to approve a draft. Using it to get past an unapproved draft is
+  exactly what the gate exists to prevent.
 - **Never edit anything under `generated-framework/` to make a phase pass.** The fix is
   upstream, in the generator or in the analysis. The output is not a draft you correct.
 - **Never remove `generated-framework/` without being asked.** It is not recoverable

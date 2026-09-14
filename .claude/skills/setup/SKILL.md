@@ -153,6 +153,9 @@ and each recording makes the next one smaller.
 - **Never run `npm run generate` yourself, and never approve a draft.** This skill ends
   at the draft. Generating is the `framework` skill's job and approving is the user's —
   it runs once, with no undo but `rm -rf generated-framework/`.
+- **Never pass `--force`.** It skips the draft/approval gate and exists for CI, where
+  there is no human to approve a draft. Using it to get past an unapproved draft is
+  exactly what the gate exists to prevent.
 - **Never put credentials anywhere but `.env`.** If a phase needs a password, it reads
   `APP_USERNAME`/`APP_PASSWORD` from the environment.
 - **`playwright-cli` is the only thing that drives a browser.** The Playwright MCP tools
