@@ -30,8 +30,8 @@ That is the system working, not failing.
 
 | | why |
 | --- | --- |
-| **Node.js 20+** | everything runs on it |
-| **Claude Code** | the skills and agents in `.claude/` are how the analysis and the tests get written |
+| **Node.js 22+** | the pipeline and RuleSync run on it |
+| **Claude Code, Codex, or OpenCode** | project skills and agents drive the analysis and test workflow |
 | **A clone of the app under test** | the source half of the analysis. Any language |
 | **A running instance you may crawl** | staging, a local `docker compose`, or a public demo |
 | **`playwright-cli`** | the only thing allowed to drive a browser here: `npm install -g @playwright/cli@latest` |
@@ -41,6 +41,56 @@ never presses a button that could create or change data. It is safe to point at 
 environment you care about — but point it at staging first anyway.
 
 ## Get started
+
+### Working with Codex
+
+Open this checkout in Codex and start a new session to discover `AGENTS.md`, the eight
+skills in `.agents/skills/`, and the three agents in `.codex/agents/`. Use `$setup`
+after filling in `.env`; Claude's `/skill-name` examples mean `$skill-name` in Codex.
+The agents inherit your session model.
+
+`CLAUDE.md` and `.claude/` remain the editable sources. After changing them, run:
+
+```bash
+npm install
+npm run codex:sync
+npm run codex:check
+```
+
+The refresh uses [RuleSync](https://github.com/dyoshikawa/rulesync), pinned to 16.31.0,
+with a temporary import directory. It preserves skill helper files and references;
+the test runner's known-issues table stays shared in `.claude/agents/`. Generation
+does not delete obsolete outputs: remove a retired generated skill or agent explicitly.
+
+Claude's write hooks require Claude tool payloads and are not registered in Codex.
+Their policies are carried into `AGENTS.md` as instructions, without automatic write
+blocking. Claude plugin enablement and scheduled-task state are client-specific.
+The current `.mcp.json` has no servers, so no Codex MCP configuration is needed.
+
+### Working with OpenCode
+
+Open this checkout in OpenCode and ask it to use the `setup` skill after filling in
+`.env`. OpenCode reads the shared `AGENTS.md`, eight skills in `.opencode/skills/`,
+and three subagents in `.opencode/agents/`. You can also mention an agent directly,
+for example `@test-preconditions`. See the official [skills](https://opencode.ai/docs/skills/)
+and [agents](https://opencode.ai/docs/agents/) documentation.
+
+After editing the Claude sources, refresh and verify both clients:
+
+```bash
+npm run codex:sync
+npm run opencode:sync
+npm run codex:check
+npm run opencode:check
+```
+
+Both commands generate identical shared instructions, so their order does not matter.
+OpenCode agents inherit the calling agent's model. The same hook limitation applies:
+Claude hooks are carried as policies, not installed as OpenCode plugins. There are
+currently no MCP servers or Claude commands to convert. Retired generated files need
+explicit removal, as with Codex.
+
+### Pipeline setup
 
 Three steps. The third one does everything else.
 

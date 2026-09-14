@@ -4,6 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "codex:sync": "node scripts/sync-codex.mjs",
+    "codex:check": "node scripts/sync-codex.mjs --check",
+    "opencode:sync": "node scripts/sync-codex.mjs --opencode",
+    "opencode:check": "node scripts/sync-codex.mjs --opencode --check",
     "setup": "npm install --prefix scripts/framework-generator",
     "preflight": "node scripts/setup/preflight.mjs",
     "crawl:map": "node .claude/skills/app-explorer/lib/map.mjs",
@@ -19,8 +23,9 @@
     "hooks:test": "node .claude/hooks/__fixtures__/run.mjs"
   },
   "devDependencies": {
+    "@types/node": "^22.20.1",
+    "rulesync": "16.31.0",
     "tsx": "^4.23.13",
-    "typescript": "^5.9.3",
-    "@types/node": "^22.20.1"
+    "typescript": "^5.9.3"
   }
 }
