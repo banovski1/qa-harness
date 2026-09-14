@@ -61,3 +61,10 @@ test('a region component and the templates are written without a suffix', () => 
   assert.ok(paths.includes('src/components/locator-templates.ts'));
   assert.ok(!paths.includes('src/components/NavigationBar.generated.ts'));
 });
+
+test('no emitted path carries the .generated suffix, anywhere', () => {
+  const model = fixtureModel();
+  const writer = emit(model, null, '/tmp/does-not-matter', { dryRun: true });
+  const offenders = writer.planned.filter(p => p.path.includes('.generated.'));
+  assert.deepEqual(offenders, []);
+});

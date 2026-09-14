@@ -9,7 +9,7 @@ import { ROOT } from '../../config/profile.mjs';
 import { moduleOf, header } from './naming.ts';
 import { renderPage } from './pages.ts';
 import { renderRegion, renderTemplates, runtimeFiles } from './components.ts';
-import { renderResources, renderPreconditions, renderFixtures } from './api.ts';
+import { renderResource, renderApi, renderPreconditions, renderFixtures } from './api.ts';
 import { staticProject } from './project.ts';
 import type { AppModel } from '../../model-compiler/model-types.ts';
 
@@ -36,8 +36,11 @@ export function emit(model: AppModel, conventions: any, outputDir: string, { dry
 
   const resources = (model.api as any).resources ?? {};
   if (Object.keys(resources).length) {
-    writer.write({ path: 'src/api/resources.generated.ts', contents: renderResources(model) });
-    writer.write({ path: 'src/api/preconditions.generated.ts', contents: renderPreconditions(model) });
+    for (const [name, resource] of Object.entries(resources)) {
+      writer.write({ path: `src/api/${name}Api.ts`, contents: renderResource(name, resource, model) });
+    }
+    writer.write({ path: 'src/api/Api.ts', contents: renderApi(model) });
+    writer.write({ path: 'src/api/Preconditions.ts', contents: renderPreconditions(model) });
     writer.write({ path: 'src/fixtures/test.ts', contents: renderFixtures(model) });
   }
 
