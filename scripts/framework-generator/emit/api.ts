@@ -1,18 +1,13 @@
 // Renders the API layer: one client class per resource, the preconditions that
 // establish state through it, and the fixtures a spec imports.
-import { q, camel } from './naming.ts';
+import { q, camel, header } from './naming.ts';
 import type { AppModel } from '../../model-compiler/model-types.ts';
-
-// NOTE: kept identical to (and not sourced from) naming.ts's `header` — see pages.ts.
-const HEADER = (model: AppModel) =>
-  `// GENERATED — rewritten on every run. Put nothing here you want to keep.\n` +
-  `// Source: analysis.json (${model.app.repoCommit.slice(0, 10)})\n`;
 
 /** One class per resource: the CRUD the API declares, and nothing invented. */
 export function renderResources(model: AppModel): string {
   const resources = (model.api as any).resources as Record<string, any>;
   const lines: string[] = [
-    HEADER(model),
+    header(model),
     `import { ApiClient, fillPath, idOf } from './ApiClient.ts';`,
     `import type { APIRequestContext } from '@playwright/test';`,
     `import { BASE_URL } from '../config/constants.ts';`,
@@ -118,7 +113,7 @@ export function renderPreconditions(model: AppModel): string {
   }
   const prop = (name: string) => property.get(name) ?? camel(name);
   const lines: string[] = [
-    HEADER(model),
+    header(model),
     `import { Api, idOf } from './resources.generated.ts';`,
     `import { uniqueName } from '../utils/unique-name.ts';`,
     '',
@@ -184,7 +179,7 @@ export function renderPreconditions(model: AppModel): string {
 /** The fixtures a spec actually imports. */
 export function renderFixtures(model: AppModel): string {
   return [
-    HEADER(model),
+    header(model),
     `import { test as base } from '@playwright/test';`,
     `import { Api } from '../api/resources.generated.ts';`,
     `import { Preconditions } from '../api/preconditions.generated.ts';`,

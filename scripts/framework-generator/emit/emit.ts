@@ -6,19 +6,12 @@ import { FileWriter, assertOutputEmpty } from '../file-writer.ts';
 import { assertDraftApproved } from './gates.ts';
 import { currentDraft, DRAFT_PATH, LOCK_PATH } from './draft.ts';
 import { ROOT } from '../../config/profile.mjs';
-import { moduleOf } from './naming.ts';
-import { renderPage, renderPageSubclass } from './pages.ts';
+import { moduleOf, header } from './naming.ts';
+import { renderPage } from './pages.ts';
 import { renderRegion, renderTemplates, runtimeFiles } from './components.ts';
 import { renderResources, renderPreconditions, renderFixtures } from './api.ts';
 import { staticProject } from './project.ts';
 import type { AppModel } from '../../model-compiler/model-types.ts';
-
-// NOTE: kept identical to (and not sourced from) naming.ts's `header` — the two strings
-// differ, and unifying them is a later task's business, not this pure move's. See
-// task-5-report.md for the detail.
-const HEADER = (model: AppModel) =>
-  `// GENERATED — rewritten on every run. Put nothing here you want to keep.\n` +
-  `// Source: analysis.json (${model.app.repoCommit.slice(0, 10)})\n`;
 
 export function emit(model: AppModel, conventions: any, outputDir: string, { dryRun = false } = {}) {
   const writer = new FileWriter(outputDir, { dryRun });
@@ -33,14 +26,13 @@ export function emit(model: AppModel, conventions: any, outputDir: string, { dry
 
   for (const screen of model.screens) {
     const dir = `src/pages/${moduleOf(screen.path)}`;
-    writer.write({ path: `${dir}/${screen.name}.generated.ts`, contents: renderPage(screen, model) });
-    writer.write({ path: `${dir}/${screen.name}.ts`, contents: renderPageSubclass(screen) });
+    writer.write({ path: `${dir}/${screen.name}.ts`, contents: renderPage(screen, model) });
   }
 
   const index = model.screens
     .map(s => `export { ${s.name} } from './${moduleOf(s.path)}/${s.name}.ts';`)
     .sort().join('\n');
-  writer.write({ path: 'src/pages/index.ts', contents: HEADER(model) + index + '\n' });
+  writer.write({ path: 'src/pages/index.ts', contents: header(model) + index + '\n' });
 
   const resources = (model.api as any).resources ?? {};
   if (Object.keys(resources).length) {

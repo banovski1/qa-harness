@@ -1,13 +1,7 @@
-// Renders page objects: the generated base class and the protected subclass a human owns.
-import { q } from './naming.ts';
+// Renders page objects: one file per screen, written once, owned by the reader from
+// the moment it exists.
+import { q, header } from './naming.ts';
 import type { AppModel, Screen, ComponentUse } from '../../model-compiler/model-types.ts';
-
-// NOTE: kept identical to (and not sourced from) naming.ts's `header` — the two strings
-// differ, and unifying them is a later task's business, not this pure move's. See
-// task-5-report.md for the detail.
-const HEADER = (model: AppModel) =>
-  `// GENERATED — rewritten on every run. Put nothing here you want to keep.\n` +
-  `// Source: analysis.json (${model.app.repoCommit.slice(0, 10)})\n`;
 
 export function useExpression(use: ComponentUse, model: AppModel, screen: Screen): string {
   const ctx = `{ screen: ${q(screen.name)}, expectedUrl: ${q(screen.path)}, modelPath: MODEL_PATH }`;
@@ -37,11 +31,11 @@ export function renderPage(screen: Screen, model: AppModel): string {
     `import { BasePage } from '../BasePage.ts';`,
     `import { MODEL_PATH } from '../../config/constants.ts';`,
   ];
-  if (fieldKinds.length) imports.push(`import { ${fieldKinds.sort().join(', ')} } from '../../components/fields.ts';`);
-  for (const r of regions.sort()) imports.push(`import { ${r} } from '../../components/${r}.generated.ts';`);
+  if (fieldKinds.length) imports.push(`import { ${fieldKinds.sort().join(', ')} } from '../../components/index.ts';`);
+  for (const r of regions.sort()) imports.push(`import { ${r} } from '../../components/${r}.ts';`);
   if (collections.length) {
     imports.push(`import { RecordTable } from '../../components/RecordTable.ts';`);
-    imports.push(`import { TABLE_SHAPE } from '../../components/locator-templates.generated.ts';`);
+    imports.push(`import { TABLE_SHAPE } from '../../components/locator-templates.ts';`);
   }
 
   const members = screen.uses.map(u =>
@@ -74,10 +68,10 @@ export function renderPage(screen: Screen, model: AppModel): string {
   }
 
   return [
-    HEADER(model),
+    header(model),
     imports.join('\n'),
     '',
-    `export class ${screen.name}Generated extends BasePage {`,
+    `export class ${screen.name} extends BasePage {`,
     `  readonly path = ${q(screen.path)};`,
     `  readonly heading = ${screen.identity.heading ? q(screen.identity.heading) : 'null'};`,
     '',
@@ -89,18 +83,10 @@ export function renderPage(screen: Screen, model: AppModel): string {
     `  constructor(page: Page) {`,
     `    super(page);`,
     `  }`,
+    '',
+    `  // Everything above came from the analysis. Everything below is yours: actions,`,
+    `  // assertions, and the domain language a crawl could not know.`,
     `}`,
     '',
   ].filter(l => l !== undefined).join('\n');
-}
-
-export function renderPageSubclass(screen: Screen): string {
-  return [
-    `// Yours. The generator writes this once and never touches it again — put actions,`,
-    `// assertions and anything the analysis could not know here.`,
-    `import { ${screen.name}Generated } from './${screen.name}.generated.ts';`,
-    '',
-    `export class ${screen.name} extends ${screen.name}Generated {}`,
-    '',
-  ].join('\n');
 }

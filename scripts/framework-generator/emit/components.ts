@@ -3,16 +3,11 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { q } from './naming.ts';
+import { q, header } from './naming.ts';
 import type { AppModel } from '../../model-compiler/model-types.ts';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const RUNTIME = join(HERE, 'runtime');
-
-// NOTE: kept identical to (and not sourced from) naming.ts's `header` — see pages.ts.
-const HEADER = (model: AppModel) =>
-  `// GENERATED — rewritten on every run. Put nothing here you want to keep.\n` +
-  `// Source: analysis.json (${model.app.repoCommit.slice(0, 10)})\n`;
 
 /** Every file under emit/runtime/ is copied verbatim: it is ordinary, reviewable code. */
 export function runtimeFiles(dir = RUNTIME, prefix = 'src'): { path: string; contents: string }[] {
@@ -43,7 +38,7 @@ export function renderRegion(name: string, model: AppModel): string {
     `    await this.click(${q(a.via)});\n` +
     `  }`);
   return [
-    HEADER(model),
+    header(model),
     `import type { Locator, Page } from '@playwright/test';`,
     `import { BaseComponent, type ComponentContext } from './base/BaseComponent.ts';`,
     '',
@@ -74,7 +69,7 @@ export function renderRegion(name: string, model: AppModel): string {
 export function renderTemplates(model: AppModel, conventions: any): string {
   const table = Object.values(model.components).find(c => c.kind === 'collection');
   return [
-    HEADER(model),
+    header(model),
     `// The only file in this project that names an app-specific selector. Everything`,
     `// else addresses controls by label, role or field name.`,
     '',

@@ -1,12 +1,7 @@
 // Renders the project scaffolding: package.json, tsconfig, playwright.config, constants,
 // env/gitignore, and the auth setup spec when the app logs in through the UI.
-import { q } from './naming.ts';
+import { q, header } from './naming.ts';
 import type { AppModel } from '../../model-compiler/model-types.ts';
-
-// NOTE: kept identical to (and not sourced from) naming.ts's `header` — see pages.ts.
-const HEADER = (model: AppModel) =>
-  `// GENERATED — rewritten on every run. Put nothing here you want to keep.\n` +
-  `// Source: analysis.json (${model.app.repoCommit.slice(0, 10)})\n`;
 
 export function staticProject(model: AppModel): { path: string; contents: string }[] {
   const auth: any = model.api.auth ?? {};
@@ -38,7 +33,7 @@ export function staticProject(model: AppModel): { path: string; contents: string
     {
       path: 'playwright.config.ts',
       contents: [
-        HEADER(model),
+        header(model),
         `import { defineConfig, devices } from '@playwright/test';`,
         '',
         `export default defineConfig({`,
@@ -66,7 +61,7 @@ export function staticProject(model: AppModel): { path: string; contents: string
     {
       path: 'src/config/constants.ts',
       contents: [
-        HEADER(model),
+        header(model),
         `export const APP_NAME = ${q(model.app.name)};`,
         `export const BASE_URL = ${q(model.app.baseUrl)};`,
         `/** Every diagnostic names this file, so a failure can be traced to its analysis. */`,
@@ -86,7 +81,7 @@ export function staticProject(model: AppModel): { path: string; contents: string
     ...(ui ? [{
       path: 'tests/auth.setup.ts',
       contents: [
-        HEADER(model),
+        header(model),
         `// Logs in once per run and saves the session, so no spec pays for a login.`,
         `// The steps come from the root .env; credentials never do.`,
         `import { test as setup, expect } from '@playwright/test';`,
