@@ -207,9 +207,9 @@ const RUN_OUTPUT = new Set(['node_modules', 'test-results', 'playwright-report',
 if (existsSync(outputDir)) {
   const remaining = readdirSync(outputDir).filter((entry) => !RUN_OUTPUT.has(entry));
   if (remaining.length) {
-    fix('generated framework', 'there is already a generated framework at generated-framework/',
-        '/setup builds one from scratch and will not overwrite it. To re-run one phase, use the '
-        + 'individual commands in CLAUDE.md; to start over, remove the directory first.');
+    warn('generated framework', 'there is already a generated framework at generated-framework/',
+         '/setup only produces a draft and stops - /framework will refuse to overwrite an existing '
+         + 'output, so this is still worth running. To regenerate anyway, remove the directory first.');
   } else {
     ok('generated framework', 'not yet built - /setup will produce it');
   }
