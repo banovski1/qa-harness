@@ -38,12 +38,6 @@ export class FixturePage extends FixturePageGenerated {
 `,
   },
   {
-    name: 'generated file is unwritable',
-    path: 'generated-framework/src/pages/admin/FixturePage.generated.ts',
-    expect: ['protected-path'],
-    content: 'export class X {}\n',
-  },
-  {
     name: 'raw timeout is blocked',
     path: SPEC,
     expect: ['no-raw-timeout'],
@@ -211,6 +205,34 @@ test('x', async ({ dashboardPage }) => {
     content: `test('x', async ({ page, dashboardPage }) => {
   await dashboardPage.goto();
   await page.waitForTimeout(500); // allow:no-raw-timeout third-party widget has no observable ready state
+});
+`,
+  },
+  {
+    name: 'a page object under the owned framework is writable',
+    path: 'generated-framework/src/pages/web/WorkShiftPage.ts',
+    expect: [],
+    content: `export class WorkShiftPage {}
+`,
+  },
+  {
+    name: 'a component under the owned framework is writable',
+    path: 'generated-framework/src/components/NavigationBar.ts',
+    expect: [],
+    content: `export class NavigationBar {}
+`,
+  },
+  {
+    name: 'a generated smoke spec is still protected',
+    path: 'generated-framework/tests/e2e/admin/smoke.spec.ts',
+    expect: ['protected-path'],
+    // The rule reads the file from disk (existsSync/readFileSync), not from the
+    // tool payload, so the runner materializes this content at `path` for the
+    // duration of the case and removes it immediately after.
+    materialize: true,
+    content: `// AUTO-GENERATED smoke spec — do not edit.
+test('x', async ({ dashboardPage }) => {
+  await dashboardPage.goto();
 });
 `,
   },
