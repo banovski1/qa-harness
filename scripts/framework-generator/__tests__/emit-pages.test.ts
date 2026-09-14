@@ -52,3 +52,12 @@ test('one page file is emitted per screen, not two', () => {
   assert.ok(names.includes('src/pages/auth/LoginPage.ts'));
   assert.equal(new Set(names).size, names.length, 'no path is written twice');
 });
+
+test('a region component and the templates are written without a suffix', () => {
+  const model = fixtureModel();
+  const writer = emit(model, null, '/tmp/does-not-matter', { dryRun: true });
+  const paths = writer.planned.map(p => p.path);
+  assert.ok(paths.includes('src/components/NavigationBar.ts'));
+  assert.ok(paths.includes('src/components/locator-templates.ts'));
+  assert.ok(!paths.includes('src/components/NavigationBar.generated.ts'));
+});

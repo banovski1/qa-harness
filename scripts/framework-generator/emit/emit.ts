@@ -17,11 +17,11 @@ export function emit(model: AppModel, conventions: any, outputDir: string, { dry
   const writer = new FileWriter(outputDir, { dryRun });
 
   for (const f of runtimeFiles()) writer.write(f);
-  writer.write({ path: 'src/components/locator-templates.generated.ts', contents: renderTemplates(model, conventions) });
+  writer.write({ path: 'src/components/locator-templates.ts', contents: renderTemplates(model, conventions) });
 
   for (const [name, def] of Object.entries(model.components)) {
     if (def.kind !== 'region') continue;
-    writer.write({ path: `src/components/${name}.generated.ts`, contents: renderRegion(name, model) });
+    writer.write({ path: `src/components/${name}.ts`, contents: renderRegion(name, model) });
   }
 
   for (const screen of model.screens) {

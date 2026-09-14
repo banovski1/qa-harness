@@ -4,7 +4,7 @@
 // selector that turns into is this file's business and nowhere else's, which is what
 // lets the whole page layer stay free of CSS.
 import type { Locator, Page } from '@playwright/test';
-import { FIELD_TEMPLATE } from '../locator-templates.generated.ts';
+import { FIELD_TEMPLATE } from '../locator-templates.ts';
 
 export interface Identity {
   label?: string;
@@ -57,7 +57,7 @@ function quote(value: string): string {
 /**
  * Address a control by role and accessible name where the app gives one, and by the
  * app's own field identifier where it does not. The second path is the app-specific
- * one, and it exists in exactly one file: locator-templates.generated.ts.
+ * one, and it exists in exactly one file: locator-templates.ts.
  */
 /**
  * The control a rendered label belongs to, for an app that never said so.
