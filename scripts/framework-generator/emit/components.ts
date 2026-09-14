@@ -9,13 +9,21 @@ import type { AppModel } from '../../model-compiler/model-types.ts';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const RUNTIME = join(HERE, 'runtime');
 
+// components/locator-templates.ts under runtime/ is a placeholder that exists only so
+// resolve.ts (which imports FIELD_TEMPLATE at module scope) can be loaded and tested
+// standalone. renderTemplates() writes the real, app-specific file at the same output
+// path ('src/components/locator-templates.ts'), so the placeholder is excluded here —
+// copying it too would plan the same path twice.
+const SKIP = new Set(['components/locator-templates.ts']);
+
 /** Every file under emit/runtime/ is copied verbatim: it is ordinary, reviewable code. */
 export function runtimeFiles(dir = RUNTIME, prefix = 'src'): { path: string; contents: string }[] {
   const out: { path: string; contents: string }[] = [];
   for (const entry of readdirSync(dir)) {
     const full = join(dir, entry);
+    const relative = full.slice(RUNTIME.length + 1);
     if (statSync(full).isDirectory()) out.push(...runtimeFiles(full, `${prefix}/${entry}`));
-    else out.push({ path: `${prefix}/${entry}`, contents: readFileSync(full, 'utf8') });
+    else if (!SKIP.has(relative)) out.push({ path: `${prefix}/${entry}`, contents: readFileSync(full, 'utf8') });
   }
   return out;
 }

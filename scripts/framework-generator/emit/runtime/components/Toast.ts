@@ -18,6 +18,6 @@ export class Toast extends BaseComponent {
   async expectText(expected: string | RegExp): Promise<void> {
     await this.act(`expect text ${expected}`, async target => {
       await expect(target.first()).toContainText(expected);
-    });
+    }, String(expected));
   }
 }

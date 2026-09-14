@@ -3,7 +3,7 @@
 import type { Locator, Page } from '@playwright/test';
 import { InteractiveComponent } from './interactive.ts';
 import type { ComponentContext } from './BaseComponent.ts';
-import { resolve, type Identity } from './resolve.ts';
+import { resolve, describeStrategy, type Identity } from './resolve.ts';
 
 export abstract class Addressed extends InteractiveComponent {
   protected readonly identity: Identity;
@@ -19,5 +19,10 @@ export abstract class Addressed extends InteractiveComponent {
 
   locator(): Locator {
     return resolve(this.host, this.identity.role ?? this.role, this.identity);
+  }
+
+  protected describe() {
+    const { strategy, selector } = describeStrategy(this.identity, this.identity.role ?? this.role);
+    return { strategy, selector, via: this.identity.via };
   }
 }

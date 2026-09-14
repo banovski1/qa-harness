@@ -95,3 +95,25 @@ export function resolve(pageOrRoot: Page | Locator, role: string, identity: Iden
   }
   throw new Error('An identity must carry a label or a field.');
 }
+
+/**
+ * The same decision `resolve` makes, reported rather than executed. It is a second
+ * expression of one rule, which is a real cost — the alternative was for resolve() to
+ * return a locator *and* a description, and every caller to unpack a pair it does not
+ * want. The test below keeps the two in step.
+ */
+export function describeStrategy(identity: Identity, role: string): { strategy: string; selector: string } {
+  if (identity.label) {
+    if (identity.via === 'proximity') {
+      return { strategy: 'proximity', selector: `label "${identity.label}" → nearest control` };
+    }
+    return { strategy: 'role+name', selector: `${role}[name ~= "${identity.label}"]` };
+  }
+  if (identity.field) {
+    return {
+      strategy: 'field-template',
+      selector: FIELD_TEMPLATE ? renderTemplate(FIELD_TEMPLATE, { fieldName: identity.field, label: identity.field }) : '(no field template)',
+    };
+  }
+  return { strategy: 'none', selector: '(an identity must carry a label or a field)' };
+}

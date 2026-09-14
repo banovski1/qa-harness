@@ -16,7 +16,10 @@ export function staticProject(model: AppModel): { path: string; contents: string
           'test:ui': 'playwright test --ui', report: 'playwright show-report',
           typecheck: 'tsc --noEmit',
         },
-        devDependencies: { '@playwright/test': '^1.56.0', '@types/node': '^22.20.1', typescript: '^5.9.2' },
+        devDependencies: {
+          '@playwright/test': '^1.56.0', '@types/node': '^22.20.1', typescript: '^5.9.2',
+          pino: '^9.5.0', 'pino-pretty': '^13.0.0',
+        },
       }, null, 2) + '\n',
     },
     {

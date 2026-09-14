@@ -12,7 +12,9 @@ test('fields.ts is gone — ten classes in one file is not a component library',
 
 test('every component file declares exactly one exported class, named for the file', () => {
   for (const entry of readdirSync(COMPONENTS)) {
-    if (!entry.endsWith('.ts') || entry === 'index.ts') continue;
+    // locator-templates.ts is a data file, not a component — see components.ts for why
+    // it lives here at all (a standalone-import placeholder, excluded from the copy).
+    if (!entry.endsWith('.ts') || entry === 'index.ts' || entry === 'locator-templates.ts') continue;
     const source = readFileSync(join(COMPONENTS, entry), 'utf8');
     const classes = [...source.matchAll(/^export (?:abstract )?class (\w+)/gm)].map(m => m[1]);
     assert.equal(classes.length, 1, `${entry} exports ${classes.length} classes: ${classes.join(', ')}`);

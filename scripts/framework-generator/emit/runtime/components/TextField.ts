@@ -8,7 +8,7 @@ export class TextField extends Addressed {
   async fill(value: string): Promise<void> {
     await this.act(`fill with "${value}"`, async target => {
       await target.fill(value);
-    });
+    }, value);
   }
 
   async value(): Promise<string> {
@@ -18,6 +18,6 @@ export class TextField extends Addressed {
   async expectValue(expected: string): Promise<void> {
     await this.act(`expect value "${expected}"`, async target => {
       await expect(target).toHaveValue(expected);
-    });
+    }, expected);
   }
 }

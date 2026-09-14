@@ -12,7 +12,7 @@ export class Select extends Addressed {
       }
       await target.click();
       await this.page.getByRole('option', { name: option, exact: true }).click();
-    });
+    }, option);
   }
 
   async selected(): Promise<string> {

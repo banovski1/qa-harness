@@ -19,6 +19,11 @@ generated-framework/**/test-results/
 generated-framework/**/playwright-report/
 generated-framework/**/.auth/
 
+# Importing emit/runtime/support/logger.ts (its own tests, e.g.) creates this at the
+# repo root exactly as it does inside a generated project: the log destination path is
+# relative to whatever process imports it.
+/test-results/
+
 # Raw crawl output. Working material for the explorer, distilled into analysis.json's
 # `screens` section — the ladder and boxes it carries are megabytes nothing reads twice.
 analysis/*/.crawl/
@@ -29,3 +34,5 @@ analysis/*/.crawl/
 docs/
 recordings/
 prompt-library/
+# Subagent-driven-development scratch: ledgers, briefs, review packages
+.superpowers/

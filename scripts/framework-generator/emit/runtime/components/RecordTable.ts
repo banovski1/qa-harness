@@ -77,7 +77,7 @@ export class RecordTable extends BaseComponent {
   async expectRow(key: string): Promise<void> {
     await this.act(`expect row "${key}"`, async () => {
       await expect(this.row(key)).toHaveCount(1);
-    }).catch(async error => {
+    }, key).catch(async error => {
       const keys = await this.keys().catch(() => []);
       throw new Error(
         `${(error as Error).message}\n  rows present: ${keys.slice(0, 10).join(' | ') || '(table is empty)'}`,
@@ -88,7 +88,7 @@ export class RecordTable extends BaseComponent {
   async expectNoRow(key: string): Promise<void> {
     await this.act(`expect no row "${key}"`, async () => {
       await expect(this.row(key)).toHaveCount(0);
-    });
+    }, key);
   }
 
   /**
