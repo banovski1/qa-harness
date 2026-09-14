@@ -1,5 +1,5 @@
-// GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis.json (56e23b3b09)
+// Generated once from analysis.json (56e23b3b09) on 2026-09-13.
+// This file is yours now. Nothing regenerates it.
 
 import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({

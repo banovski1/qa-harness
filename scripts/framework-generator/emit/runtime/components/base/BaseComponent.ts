@@ -56,7 +56,7 @@ export abstract class BaseComponent {
    * class knows nothing about strategy — only `Addressed` (label/field identities) does
    * — so this returns nothing, and `act()` logs whatever it has.
    */
-  protected describe(): { strategy?: string; selector?: string; via?: string } {
+  protected describe(): { strategy?: string; selector?: string; via?: ComponentLog['via'] } {
     return {};
   }
 

@@ -4,7 +4,7 @@
 // selector that turns into is this file's business and nowhere else's, which is what
 // lets the whole page layer stay free of CSS.
 import type { Locator, Page } from '@playwright/test';
-import { FIELD_TEMPLATE } from '../locator-templates.generated.ts';
+import { FIELD_TEMPLATE } from '../locator-templates.ts';
 
 export interface Identity {
   label?: string;
@@ -57,7 +57,7 @@ function quote(value: string): string {
 /**
  * Address a control by role and accessible name where the app gives one, and by the
  * app's own field identifier where it does not. The second path is the app-specific
- * one, and it exists in exactly one file: locator-templates.generated.ts.
+ * one, and it exists in exactly one file: locator-templates.ts.
  */
 /**
  * The control a rendered label belongs to, for an app that never said so.
@@ -94,4 +94,26 @@ export function resolve(pageOrRoot: Page | Locator, role: string, identity: Iden
     return scope.locator(renderTemplate(FIELD_TEMPLATE, { fieldName: identity.field, label: identity.field }));
   }
   throw new Error('An identity must carry a label or a field.');
+}
+
+/**
+ * The same decision `resolve` makes, reported rather than executed. It is a second
+ * expression of one rule, which is a real cost — the alternative was for resolve() to
+ * return a locator *and* a description, and every caller to unpack a pair it does not
+ * want. The test below keeps the two in step.
+ */
+export function describeStrategy(identity: Identity, role: string): { strategy: string; selector: string } {
+  if (identity.label) {
+    if (identity.via === 'proximity') {
+      return { strategy: 'proximity', selector: `label "${identity.label}" → nearest control` };
+    }
+    return { strategy: 'role+name', selector: `${role}[name ~= "${identity.label}"]` };
+  }
+  if (identity.field) {
+    return {
+      strategy: 'field-template',
+      selector: FIELD_TEMPLATE ? renderTemplate(FIELD_TEMPLATE, { fieldName: identity.field, label: identity.field }) : '(no field template)',
+    };
+  }
+  return { strategy: 'none', selector: '(an identity must carry a label or a field)' };
 }
