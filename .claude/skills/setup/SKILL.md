@@ -119,9 +119,11 @@ npm run draft
 
 Then tell the user, in your own words: the draft is at `framework-draft.md`, it describes
 every page object and component that will be written, and nothing has been generated yet.
-Ask them to read it. Do not run `npm run generate` — the user approves with
-`npm run draft -- --approve` and runs it themselves, or tells you to. The generator runs
-once, and there is no undo but `rm -rf`.
+Ask them to read it, then approve it with `npm run draft -- --approve`.
+
+Approving is theirs — the generator runs once, and there is no undo but `rm -rf`. Once
+they have approved, building it is the `framework` skill's job, not yours: it verifies
+the lock still matches before it spends anything. Say so and stop here.
 
 ## Phase 6 — report
 
@@ -132,9 +134,9 @@ Tell the user, concretely:
   once generated.
 - whether the API login verified, and what that means for test preconditions.
 - anything preflight warned about that is still true.
-- that `framework-draft.md` is written and waiting: read it, then either
-  `npm run draft -- --approve` and `npm run generate` themselves, or say so and let the
-  agent run them.
+- that `framework-draft.md` is written and waiting: read it, then
+  `npm run draft -- --approve`. After that, `/framework` builds it — generate, install,
+  typecheck, smoke — and reports whether it compiles and runs.
 
 If many screens score low, say so and name the remedy: record the flow with the
 `app-recorder` skill, then `npm run record:ingest -- <the .json it wrote>` and
@@ -148,8 +150,9 @@ and each recording makes the next one smaller.
 
 - **Never edit `analysis.json` by hand** to make a phase appear to pass. The fix is
   always upstream: re-run the skill, then the compiler.
-- **Never run `npm run generate` yourself.** It runs once and there is no undo but
-  `rm -rf generated-framework/`; only the user decides to spend that.
+- **Never run `npm run generate` yourself, and never approve a draft.** This skill ends
+  at the draft. Generating is the `framework` skill's job and approving is the user's —
+  it runs once, with no undo but `rm -rf generated-framework/`.
 - **Never put credentials anywhere but `.env`.** If a phase needs a password, it reads
   `APP_USERNAME`/`APP_PASSWORD` from the environment.
 - **`playwright-cli` is the only thing that drives a browser.** The Playwright MCP tools

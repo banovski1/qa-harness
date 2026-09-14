@@ -91,10 +91,12 @@ canonical; the aliases exist so a newcomer following README.md does not have to 
 paths. `npm run setup` installs the generator's toolchain, and `cp .env.example .env` is
 the first thing anyone does.
 
-**The whole of the below is wrapped in the `setup` skill.** A user who has filled in `.env`
-says `/setup` and never runs these by hand; `scripts/setup/preflight.mjs` gates it and stops
-with the one thing they must change. Run the phases individually when re-running one, or
-when debugging.
+**Two skills wrap the whole of the below, and the seam between them is the approval.**
+`/setup` runs steps 0–5, from a filled-in `.env` to `framework-draft.md`, and stops —
+`scripts/setup/preflight.mjs` gates it and stops with the one thing the user must change.
+The user approves the draft. Then `/framework` runs steps 6 and 8: generate, install,
+typecheck, smoke. Neither skill approves on the user's behalf. Run the phases individually
+when re-running one, or when debugging.
 
 ```bash
 # 0. Is this machine and this .env ready? /setup runs this first and stops on any FIX.
