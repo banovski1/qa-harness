@@ -95,9 +95,9 @@ starts authenticated. Only a step that switches to a *different* user is setup.
 
 ## 3. Name the method that already exists
 
-Two generated files hold everything you may propose. Read them; propose nothing else.
+Two files hold everything you may propose. Read them; propose nothing else.
 
-**`generated-framework/src/api/preconditions.generated.ts`** — one method per
+**`generated-framework/src/api/Preconditions.ts`** — one method per
 resource the API can both create and read back, named after the sentence it makes true.
 `given.employee()` returns `{ id, data }`, takes an `overrides` object, and its record is
 deleted after the test. Its doc comment states dependencies explicitly:
@@ -113,8 +113,9 @@ is two calls, in order, and you say so:
 - given.employee() → then given.leaveRequest({ empNumber: <employee id> })
 ```
 
-**`generated-framework/src/api/resources.generated.ts`** — the typed client behind
-it, as `api.<resource>.list/get/create/update/remove`. Propose `api.*` only for a read a
+**`generated-framework/src/api/<Resource>Api.ts`** (one file per resource, aggregated in
+`src/api/Api.ts`) — the typed client behind it, as
+`api.<resource>.list/get/create/update/remove`. Propose `api.*` only for a read a
 precondition needs (looking up an existing leave type's id) — never to create a record
 `given` already covers, because `given` is the half that cleans up.
 
@@ -190,7 +191,7 @@ classification is wrong, and the writer can overrule you.
 ## Rules
 
 - Read-only. No file writes, no shell commands beyond reading and grepping
-  `analysis.json` and the two generated API files, no code changes.
+  `analysis.json` and the API files under `src/api/`, no code changes.
 - Never call `test-writer` or any other agent. You return text; the orchestrator passes it on.
 - Do not read the page objects — that is `test-writer`'s job once it has your analysis.
   You may list `recordings/` to see whether a flow is already recorded, but do

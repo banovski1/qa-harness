@@ -6,7 +6,7 @@ mode: subagent
 name: test-writer
 ---
 You write tests for a framework whose architecture is fixed by the generator. You never
-invent structure — you fill in the protected half of an existing shape.
+invent structure — you fill in the hand-written half of an existing shape.
 
 The project is `generated-framework/`. Everything the analysis knows
 about the application is in **one file** — `analysis.json`, ten sections,
@@ -47,9 +47,10 @@ If every screen scores ≥ 0.7, or a recording already covers the flow, carry on
 **`analysis.json` is the contract**, but you rarely read its `components`
 and `screens[].uses` directly —
 the generator has already turned it into typed page objects, and
-`src/pages/**/<Name>Page.generated.ts` is the readable form. Read the generated file for
-every screen your script touches and confirm the getters you plan to call exist. A getter
-you guessed is a compile error.
+`src/pages/<module>/<Name>.ts` is the readable form: one class per screen, extending
+`BasePage`, carrying both the mapped locators and whatever hand-written actions and
+assertions a previous run added. Read the file for every screen your script touches and
+confirm the getters you plan to call exist. A getter you guessed is a compile error.
 
 Two things in a generated page object are load-bearing:
 
@@ -78,9 +79,9 @@ be recorded with the `app-recorder` skill. Never substitute a guess.
 
 ## 3. Screen to page object
 
-`/web/index.php/pim/viewEmployeeList` → `src/pages/web/ViewEmployeeListPage.generated.ts`,
-subclassed by `src/pages/web/ViewEmployeeListPage.ts`. **Import the subclass**, never the
-`.generated` class: the subclass is where you are allowed to add anything.
+`/web/index.php/pim/viewEmployeeList` → `src/pages/web/ViewEmployeeListPage.ts` — a single
+class extending `BasePage`. There is no generated/protected split: this one file is both
+the mapped locators and where you add anything.
 
 Page objects are **constructed in the spec** — `new ViewEmployeeListPage(page)`. There are
 no page fixtures; the generated fixture file carries `api` and `given` only, because two
@@ -150,21 +151,22 @@ Two things to refuse:
   `api.authVerification` in `analysis.json` is not `verdict: "verified"`,
   build the setup through the UI and say why in your report. Do not try the API to see what happens.
 - **A precondition the API does not cover.** Never invent a `given` method. Grep
-  `src/api/preconditions.generated.ts` for the one you intend to call.
+  `src/api/Preconditions.ts` for the one you intend to call.
 
 If the script is really twenty validation permutations, write the few that prove the UI is
 wired up, cover the rest through `api.*`, and say so in your report.
 
-## 6. Logic belongs in the protected file
+## 6. Logic belongs in the page object
 
-A multi-step interaction becomes a method on `src/pages/**/<Name>Page.ts` — the subclass —
-so the spec reads like the script. That file is also where a **scoped accessor** goes when
-a control is ambiguous or unnamed: wrap the locator in a component there, never in the
-spec.
+A multi-step interaction becomes a method on `src/pages/<module>/<Name>.ts` so the spec
+reads like the script. That file is also where a **scoped accessor** goes when a control
+is ambiguous or unnamed: wrap the locator in a component there, never in the spec. The
+emitted footer comment on every page object says so: "Everything above came from the
+analysis. Everything below is yours."
 
-You may write: the protected `<Name>Page.ts` subclasses, new page objects under
-`src/pages/`, `src/utils/*` other than `unique-name.ts`, and new spec files. Everything
-else in the table in §8 is generator-owned.
+You may write: the page objects under `src/pages/` (both the generator-mapped parts and
+your own additions live in the same file), new page objects, `src/utils/*` other than
+`unique-name.ts`, and new spec files. Everything else in the table in §8 is generator-owned.
 
 ## 7. Waiting on the network
 
@@ -189,14 +191,14 @@ message names the fix. `.claude/hooks/rules/` is authoritative; this is the summ
 
 | rule | blocked | instead |
 |---|---|---|
-| `protected-path` | `*.generated.ts`, `src/components/**`, `BasePage.ts`, `src/utils/unique-name.ts`, `src/config/constants.ts`, `tests/auth.setup.ts` | the protected subclass, or the generator template under `scripts/framework-generator/emit/runtime/` |
+| `protected-path` | a smoke spec carrying the `AUTO-GENERATED` header | write the scenario to its own file under `tests/e2e/<module>/<scenario>.spec.ts` instead |
 | `locator-in-spec` | any `page.locator` / `page.getBy*` / raw CSS in `tests/**` | a getter on the page object |
 | `wrap-in-component` | a page-object getter returning a bare `Locator` | wrap it in a component |
 | `locator-priority` | `.locator(` or `getByTestId` in a page object with no provenance | `getByRole` > `getByLabel` > `getByPlaceholder` > `getByText`, or mark it `// UNVERIFIED` |
 | `scoped-locator` | `getByRole` with no name, unscoped `getByText` | pass a name, or scope it to the dialog/row |
 | `positional-locator` | `nth-child`, `.nth(`, `.first()`, `text=`, framework class selectors | address the row by key: `table.row(name)` |
-| `unstable-getter` | a getter the generator marked `// UNSTABLE` | a scoped accessor in the protected page object; record the flow if you need to see the screen behave |
-| `no-new-component` | `new TextField(`, `new RecordTable(`, … in a spec | add the accessor to the protected page object. Constructing a **page object** in a spec is correct and allowed |
+| `unstable-getter` | a getter the generator marked `// UNSTABLE` | a scoped accessor in the page object; record the flow if you need to see the screen behave |
+| `no-new-component` | `new TextField(`, `new RecordTable(`, … in a spec | add the accessor to the page object. Constructing a **page object** in a spec is correct and allowed |
 | `comment-budget` | more than one comment line per thirty code lines | delete the comments that restate the code |
 | `no-narration` | `// Step 2`, `// Click the button`, `// Assert …` | name the page-object method after the step |
 | `no-raw-timeout` | `waitForTimeout`, `setTimeout` as a wait | a web-first assertion or `expect.poll` |
