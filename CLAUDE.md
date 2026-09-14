@@ -20,7 +20,7 @@ test framework whose page objects contain no locators at all.
                     │
                     └─► components, screens[].uses, api.resources, testability, stats
                                     │
-                                    └─► emit.ts ──► generated-framework/
+                                    └─► draft.ts ──► framework-draft.md ──(a human approves)──► emit.ts ──► generated-framework/
 ```
 
 **One app per checkout**, and at its root two files: the one you write and the one the
@@ -86,15 +86,17 @@ application has not been validated.**
 ## Commands
 
 `package.json` at the root wraps each of these (`npm run compile`, and likewise `check`,
-`generate`, `verify-auth`, `crawl:map`, `crawl:deep`). The `npx tsx` forms below are
+`draft`, `generate`, `verify-auth`, `crawl:map`, `crawl:deep`). The `npx tsx` forms below are
 canonical; the aliases exist so a newcomer following README.md does not have to know the
 paths. `npm run setup` installs the generator's toolchain, and `cp .env.example .env` is
 the first thing anyone does.
 
-**The whole of the below is wrapped in the `setup` skill.** A user who has filled in `.env`
-says `/setup` and never runs these by hand; `scripts/setup/preflight.mjs` gates it and stops
-with the one thing they must change. Run the phases individually when re-running one, or
-when debugging.
+**Two skills wrap the whole of the below, and the seam between them is the approval.**
+`/setup` runs steps 0–5, from a filled-in `.env` to `framework-draft.md`, and stops —
+`scripts/setup/preflight.mjs` gates it and stops with the one thing the user must change.
+The user approves the draft. Then `/framework` runs steps 6 and 8: generate, install,
+typecheck, smoke. Neither skill approves on the user's behalf. Run the phases individually
+when re-running one, or when debugging.
 
 ```bash
 # 0. Is this machine and this .env ready? /setup runs this first and stops on any FIX.
@@ -122,15 +124,19 @@ npx tsx scripts/model-compiler/check-model.ts     # staleness, naming, addressab
 npm run record:ingest -- recordings/<flow>-<timestamp>.json
 npm run compile
 
-# 5. Generate the framework
-npx tsx scripts/framework-generator/emit/emit.ts [--dry-run]
+# 5. Draft the framework, read it, approve it
+npx tsx scripts/framework-generator/emit/draft.ts            # writes framework-draft.md; writes no code
+npx tsx scripts/framework-generator/emit/draft.ts --approve  # records that a human read it
 
-# 6. The tests of the pipeline itself
+# 6. Generate — once, ever
+npx tsx scripts/framework-generator/emit/emit.ts
+
+# 7. The tests of the pipeline itself
 npm test --prefix scripts/framework-generator          # compile-model's unit + fixture suite
 npm run typecheck --prefix scripts/framework-generator
 node .claude/hooks/__fixtures__/run.mjs                # the write-guard rule set
 
-# 7. The generated project
+# 8. The generated project
 cd generated-framework && npm install && npx playwright install chromium
 npx tsc --noEmit && npx playwright test   # credentials come from the root .env
 ```
@@ -267,7 +273,9 @@ evidence that distinguishes it, the component and screen that produced it, and t
 `analysis.json` to re-crawl. Every wait is a named condition and reports what it saw instead
 (`waited 5041ms for the table to render — no element matches .oxd-table`), so the misdiagnosis that
 ends in a pasted `waitForTimeout` is not available. Two channels: `test.step` for the trace, and
-`test-results/diagnostics.jsonl` for an agent.
+`test-results/framework.log.jsonl` for an agent — which now records every interaction, not only
+the failures, each line carrying `component`, `screen`, `handle`, `strategy`, `via`, `outcome`
+and `ms`.
 
 `actionTimeout` is deliberately shorter than the test timeout. A component must fail while there is
 still budget to diagnose why, or every failure reads as `TIMED_OUT`.
@@ -284,16 +292,17 @@ still budget to diagnose why, or every failure reads as `TIMED_OUT`.
 
 ## Write policy
 
-`file-writer.ts` tags every emitted file `generated` (rewritten every run) or `protected` (written
-once, never touched). `<Name>Page.generated.ts` carries the mapped components;
-`<Name>Page.ts` — its subclass — carries your actions and assertions. Nothing is ever deleted, so a
-rename leaves the old file behind: delete `src/` before a regeneration that changes names.
+**The generator runs once.** `npm run generate` refuses if `generated-framework/`
+holds anything, and refuses if the draft has not been approved. What it writes is a
+normal Playwright project from that moment on: one `.ts` file per page, per component
+and per API resource, maintained by hand and by agents. Nothing regenerates it, so
+nothing in it is protected from you.
 
-Never hand-edit anything under `analysis/` or any `*.generated.ts`. A skill writes its
-section through `scripts/analysis/write-section.ts`, which replaces one key and leaves
-every other byte alone; nothing edits `analysis.json` by hand. The fix for a wrong report is
-upstream — re-run the skill, then the compiler. Both `analysis/` and `generated-framework/` are
-committed on purpose: re-running produces a `git diff`, and that diff *is* the test of the change.
+Never hand-edit `analysis.json`. A skill writes its section through
+`scripts/analysis/write-section.ts`, which replaces one key and leaves every other byte
+alone. The fix for a wrong report is upstream — re-run the skill, then the compiler,
+then draft again; generating the fix means a fresh `generated-framework/`, because the
+one that exists already spent its one run.
 
 `.gitattributes` pins `eol=lf`; do not relax it.
 
@@ -304,8 +313,9 @@ committed on purpose: re-running produces a `git diff`, and that diff *is* the t
 a rule in `.claude/hooks/rules/` fails; the Playwright MCP tools are rejected outright. This applies
 to every writer — `test-writer`, `test-runner`, and you.
 
-`paths.mjs` (generator-owned files are unwritable), `locators.mjs` (locators live in the component
-layer), `comments.mjs`, `playwright.mjs` (wait for evidence, not for time). A single line that
+`paths.mjs` (a generated smoke spec is not the place for your scenario),
+`locators.mjs` (locators live in the component layer), `comments.mjs`,
+`playwright.mjs` (wait for evidence, not for time). A single line that
 genuinely needs an exception carries a trailing `// allow:<rule-id> <reason>`. `protected-path` has
 no exception. `node .claude/hooks/__fixtures__/run.mjs` is the rule set's own suite.
 

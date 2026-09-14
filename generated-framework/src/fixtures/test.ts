@@ -1,9 +1,9 @@
-// GENERATED — rewritten on every run. Put nothing here you want to keep.
-// Source: analysis.json (56e23b3b09)
+// Generated once from analysis.json (56e23b3b09) on 2026-09-13.
+// This file is yours now. Nothing regenerates it.
 
 import { test as base } from '@playwright/test';
-import { Api } from '../api/resources.generated.ts';
-import { Preconditions } from '../api/preconditions.generated.ts';
+import { Api } from '../api/Api.ts';
+import { Preconditions } from '../api/Preconditions.ts';
 
 export const test = base.extend<{ api: Api; given: Preconditions }>({
   api: async ({ request }, use) => {

@@ -6,7 +6,7 @@
 //
 //   node scripts/setup/preflight.mjs [--json]
 
-import { existsSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
 import { ROOT, loadEnv } from '../config/profile.mjs';
@@ -199,6 +199,22 @@ if (!existsSync(analysisPath)) {
         : `complete - ${analysis.screens?.length ?? 0} screens`);
     }
   }
+}
+
+// -- 8. An existing generated framework -----------------------------------------
+const outputDir = join(ROOT, 'generated-framework');
+const RUN_OUTPUT = new Set(['node_modules', 'test-results', 'playwright-report', '.auth', '.git']);
+if (existsSync(outputDir)) {
+  const remaining = readdirSync(outputDir).filter((entry) => !RUN_OUTPUT.has(entry));
+  if (remaining.length) {
+    fix('generated framework', 'there is already a generated framework at generated-framework/',
+        '/setup builds one from scratch and will not overwrite it. To re-run one phase, use the '
+        + 'individual commands in CLAUDE.md; to start over, remove the directory first.');
+  } else {
+    ok('generated framework', 'not yet built - /setup will produce it');
+  }
+} else {
+  ok('generated framework', 'not yet built - /setup will produce it');
 }
 
 report();

@@ -10,7 +10,7 @@ You run a spec until it passes or you hit a failure this repo has never seen bef
 
 `cd generated-framework && npx playwright test <path> --reporter=line`.
 
-A failure classified by `BaseComponent.act()` writes its evidence to `test-results/diagnostics.jsonl`: the kind (`NOT_FOUND`, `AMBIGUOUS`, `HIDDEN`, `DISABLED`, `COVERED`, `DETACHED`, `TIMED_OUT`), the component and screen that produced it, and the model file to re-crawl. Read that before the stack trace — it has already done the classification step for you.
+A failure classified by `BaseComponent.act()` writes its evidence to `test-results/framework.log.jsonl`: the kind (`NOT_FOUND`, `AMBIGUOUS`, `HIDDEN`, `DISABLED`, `COVERED`, `DETACHED`, `TIMED_OUT`), the component and screen that produced it, and the model file to re-crawl. Read that before the stack trace — it has already done the classification step for you. That file holds every interaction, not only the failures, so it also shows how the control was being addressed on the steps before the one that broke — each record carries `component`, `screen`, `handle`, `strategy`, `via`, `outcome` and `ms`.
 
 Pass → report the command output and stop. The job is complete.
 

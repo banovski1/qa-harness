@@ -101,16 +101,29 @@ If the map reports **0 modules**, the crawl is almost certainly not logged in, o
 `AUTH_READY_WHEN` names something that is not visible. Check that before running the deep
 crawl — a deep crawl of the login page is a waste of minutes.
 
-## Phase 5 — compile, gate, generate
+## Phase 5 — compile and gate
 
 ```bash
 npm run compile     # joins source and crawl, scores every screen
 npm run check       # staleness, naming, addressability
-npm run generate    # writes generated-framework/
 ```
 
 `check` is the one to read out. `0 error(s)` means the contract is complete; warnings name
 a step that did not run.
+
+### Draft the framework, and stop
+
+```bash
+npm run draft
+```
+
+Then tell the user, in your own words: the draft is at `framework-draft.md`, it describes
+every page object and component that will be written, and nothing has been generated yet.
+Ask them to read it, then approve it with `npm run draft -- --approve`.
+
+Approving is theirs — the generator runs once, and there is no undo but `rm -rf`. Once
+they have approved, building it is the `framework` skill's job, not yours: it verifies
+the lock still matches before it spends anything. Say so and stop here.
 
 ## Phase 6 — report
 
@@ -118,24 +131,28 @@ Tell the user, concretely:
 
 - how many screens were found, and **how many score >= 0.7** (`npm run check` prints this,
   and `testability.summary` holds it). That number is what they can write tests against
-  today.
+  once generated.
 - whether the API login verified, and what that means for test preconditions.
 - anything preflight warned about that is still true.
-- what to do next: paste a numbered test script, and the
-  `test-preconditions` -> `test-writer` -> `test-runner` chain takes it from there.
+- that `framework-draft.md` is written and waiting: read it, then
+  `npm run draft -- --approve`. After that, `/framework` builds it — generate, install,
+  typecheck, smoke — and reports whether it compiles and runs.
 
 If many screens score low, say so and name the remedy: record the flow with the
 `app-recorder` skill, then `npm run record:ingest -- <the .json it wrote>` and
-`npm run compile`. A low score is a request for evidence, not a defect in their app —
+`npm run compile` (which will require a fresh `npm run draft`, since recompiling changes
+what it would render). A low score is a request for evidence, not a defect in their app —
 and each recording makes the next one smaller.
 
 ---
 
 ## Rules
 
-- **Never edit `analysis.json` or anything under `generated-framework/src/**/*.generated.ts`
-  by hand** to make a phase appear to pass. The fix is always upstream: re-run the skill,
-  then the compiler.
+- **Never edit `analysis.json` by hand** to make a phase appear to pass. The fix is
+  always upstream: re-run the skill, then the compiler.
+- **Never run `npm run generate` yourself, and never approve a draft.** This skill ends
+  at the draft. Generating is the `framework` skill's job and approving is the user's —
+  it runs once, with no undo but `rm -rf generated-framework/`.
 - **Never put credentials anywhere but `.env`.** If a phase needs a password, it reads
   `APP_USERNAME`/`APP_PASSWORD` from the environment.
 - **`playwright-cli` is the only thing that drives a browser.** The Playwright MCP tools

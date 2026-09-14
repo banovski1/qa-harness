@@ -6,11 +6,11 @@ describe a test in plain English, and an agent writes it.
 
 ```
 your app's source ──┐
-                    ├──►     analysis.json      ──►   generated-framework/
-your app running ───┘                                            │
-                                                    you paste numbered steps
-                                                            │
-                              test-preconditions → test-writer → test-runner
+                    ├──►     analysis.json      ──►   framework-draft.md ──(you approve)──►   generated-framework/
+your app running ───┘                                                                                    │
+                                                                                          you paste numbered steps
+                                                                                                    │
+                                                                      test-preconditions → test-writer → test-runner
 ```
 
 Two ideas are worth knowing before you start.
@@ -132,11 +132,24 @@ reached. Pick something you can see — a container with zero height proves noth
 /setup
 ```
 
-That is the whole of it. The skill installs what is missing, reads your source, proves
-the login works, crawls the running app twice, compiles, gates the result and generates
-the framework — then tells you how many screens you can write tests against today.
+The skill installs what is missing, reads your source, proves the login works, crawls the
+running app twice, compiles and gates the result, then writes `framework-draft.md` — every
+page object, component and API resource it would generate, with the testability score and
+the evidence behind each control — and stops. **It does not generate anything.**
 
 It takes a few minutes, mostly the crawl. It reports each phase as it goes.
+
+Read the draft. If it is the right foundation:
+
+```bash
+npm run draft -- --approve   # records that a human read it
+npm run generate             # writes generated-framework/ — once, and only once
+```
+
+The generator refuses to run a second time against an existing `generated-framework/`,
+and refuses to run at all if the draft is unapproved or no longer matches what the
+current analysis would render — recompiling the analysis expires the approval
+automatically. There is no undo but `rm -rf generated-framework/`.
 
 **If something is wrong, it stops and names it.** Before doing any work `/setup` runs a
 preflight you can also run yourself:
@@ -162,7 +175,8 @@ would both happily run against.
 
 ### Then what?
 
-You have `analysis.json` and a `generated-framework/` project. Skip to
+You have `analysis.json`, a `framework-draft.md` to read, and once you approve it and run
+`npm run generate`, a `generated-framework/` project. Skip to
 [Now write a test](#now-write-a-test).
 
 One app per checkout. To analyse a second application, give it its own worktree —
@@ -179,8 +193,8 @@ npm install && npx playwright install chromium
 npx tsc --noEmit
 ```
 
-Now open any `src/pages/**/*.generated.ts` and notice there is not a single CSS selector
-in it — just named controls. That is the point of the whole repo.
+Now open any `src/pages/**/*.ts` and notice there is not a single CSS selector in it —
+just named controls. That is the point of the whole repo.
 
 To actually *run* those tests you need credentials in the root `.env`.
 
@@ -249,8 +263,9 @@ somebody already shipped:
 - **No `waitForTimeout`.** Wait for evidence — an assertion, or the response itself.
 - **No fixed names for created records.** `uniqueName('Customer')` — two test runs in the
   same second must not collide.
-- **Never edit `analysis.json` or any `*.generated.ts`.** Both are rewritten.
-  A wrong report is fixed by re-running the skill that wrote it.
+- **Never edit `analysis.json`.** A wrong report is fixed by re-running the skill that
+  wrote it, not by hand — the generator has already run once, so a fix to the analysis
+  after that point lives only in a fresh worktree or a fresh `generated-framework/`.
 
 `.claude/hooks/rules/` is the full list, and the rejection message always names the fix.
 
@@ -300,16 +315,29 @@ buttons, fields and tables. Read the `map` section of `analysis.json` afterwards
 the quickest picture of an app this repo produces. The **deep crawl** is what proves a
 locator resolves to exactly one element.
 
-### Compile, gate, generate
+### Compile and gate
 
 ```bash
 npm run compile     # joins source + crawl, scores every screen
 npm run check       # tells you what is missing and who has not run
-npm run generate    # writes generated-framework/
 ```
 
 `check` is the one to read. `0 error(s)` means the contract is complete. Warnings name the
 step you skipped.
+
+### Draft the framework, then generate it — once
+
+```bash
+npm run draft                # writes framework-draft.md; writes no code
+npm run draft -- --approve   # records that a human read it
+npm run generate             # writes generated-framework/ — once, and only once
+```
+
+The draft is every page object, component and API resource the generator would write,
+with the testability score and the evidence behind each control. It exists so the
+decision to generate — which cannot be undone short of `rm -rf generated-framework/` — is
+made by a human who has read what will be built, not by a command that ran and hoped.
+Recompiling the analysis changes the draft, which expires the approval automatically.
 
 ### Run what came out
 
@@ -332,12 +360,14 @@ clone or a missing tool, and it names them directly.
 | the crawl found 0 modules | it is not logged in. Check the `AUTH_*` values, especially `AUTH_READY_WHEN` |
 | `check` says a section is missing | that skill has not run. It names which one |
 | `verify-auth` says `failed` | the login in the analysis is wrong. The observations show which step broke |
-| a test fails with `AMBIGUOUS` | the locator matches more than one element — add a scoped accessor in the protected page object |
+| a test fails with `AMBIGUOUS` | the locator matches more than one element — add a scoped accessor in the page object |
 | a test fails with `NOT_FOUND` | the app moved, or the analysis is stale. Re-crawl |
 | a page object is nearly empty | the crawl never reached that screen. Check `testability` in `analysis.json` |
 
-Every failure names the component, the screen, and the file to re-crawl. They are written
-to `test-results/diagnostics.jsonl` as well as the terminal.
+Every failure names the component, the screen, and the file to re-crawl. It is one line
+in `test-results/framework.log.jsonl`, which holds a JSON record for every interaction a
+component makes, not only the ones that fail — so the lines just before a failure show how
+the control was being addressed right up to the step that broke.
 
 ## Where to read next
 

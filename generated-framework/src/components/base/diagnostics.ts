@@ -5,8 +5,6 @@
 // those six has evidence that distinguishes it, and all of that evidence is available
 // at the moment of failure. This module gathers it.
 import type { Locator, Page } from '@playwright/test';
-import { appendFileSync, mkdirSync } from 'node:fs';
-import { dirname } from 'node:path';
 
 export type FailureMode =
   | 'NOT_FOUND'
@@ -93,17 +91,6 @@ function summary(d: Diagnosis): string {
   }
 }
 
-/** The machine-readable channel. An agent reads this file instead of scraping stdout. */
-export function recordDiagnosis(d: Diagnosis): void {
-  const path = process.env.DIAGNOSTICS_FILE ?? 'test-results/diagnostics.jsonl';
-  try {
-    mkdirSync(dirname(path), { recursive: true });
-    appendFileSync(path, JSON.stringify({ at: new Date().toISOString(), ...d }) + '\n');
-  } catch {
-    // Diagnostics must never be the reason a test fails.
-  }
-}
-
 /** Classify a failure from the live page. Runs only once something has already gone wrong. */
 export async function classify(
   locator: Locator,
@@ -153,6 +140,5 @@ export async function classify(
     actualUrl: page.url(), expectedUrl: context.expectedUrl, modelPath: context.modelPath,
     advice: ADVICE[mode],
   };
-  recordDiagnosis(d);
   return d;
 }
