@@ -9,6 +9,11 @@
  * than from the tool payload. The runner writes `content` to `path` immediately
  * before invoking the guard and removes it immediately after, so no fixture
  * leaves a file behind in the tree it is testing.
+ *
+ * A case may instead (or additionally) set `materializePath` / `materializeContent`
+ * when the rule under test reads a *different* file from disk than the one the
+ * tool call targets — `unstable-getter` walks `src/pages` for `// UNSTABLE`
+ * markers while the write under test is a spec that calls the getter.
  */
 import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, rmSync, rmdirSync, writeFileSync } from 'node:fs';
@@ -39,6 +44,15 @@ for (const testCase of CASES) {
     writeFileSync(absolute, testCase.content ?? '');
   }
 
+  const sidecarAbsolute = testCase.materializePath ? `${root}/${testCase.materializePath}` : null;
+  const sidecarPreexisting = sidecarAbsolute ? existsSync(sidecarAbsolute) : false;
+  let sidecarCreatedDirs = [];
+  if (sidecarAbsolute && !sidecarPreexisting) {
+    sidecarCreatedDirs = missingAncestors(dirname(sidecarAbsolute));
+    mkdirSync(dirname(sidecarAbsolute), { recursive: true });
+    writeFileSync(sidecarAbsolute, testCase.materializeContent ?? '');
+  }
+
   const payload = JSON.stringify({
     cwd: root,
     tool_name: testCase.tool ?? 'Write',
@@ -51,6 +65,13 @@ for (const testCase of CASES) {
     // Only remove directories this run actually created, deepest first, and only
     // while they are empty — a directory another fixture also wanted into stays.
     for (const dir of createdDirs) {
+      if (existsSync(dir) && readdirSync(dir).length === 0) rmdirSync(dir);
+    }
+  }
+
+  if (sidecarAbsolute && !sidecarPreexisting) {
+    rmSync(sidecarAbsolute, { force: true });
+    for (const dir of sidecarCreatedDirs) {
       if (existsSync(dir) && readdirSync(dir).length === 0) rmdirSync(dir);
     }
   }

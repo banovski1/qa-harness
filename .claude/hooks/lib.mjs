@@ -83,4 +83,3 @@ export function codeLines(text) {
 
 export const isSpec = (p) => /(^|\/)tests\//.test(p);
 export const isPageObject = (p) => /(^|\/)src\/pages\//.test(p);
-export const isGenerated = (p) => p.endsWith('.generated.ts');

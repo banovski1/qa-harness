@@ -21,7 +21,7 @@ const UNNAMED_ROLE = /\.getByRole\s*\(\s*(['"`])[^'"`]+\1\s*\)/;
 const UNSCOPED_TEXT = /\.getByText\s*\(/;
 
 const FIX_SPEC =
-  'Locators live in src/pages/** wrapped in a component. Add a getter to the protected page object and call it from the spec.';
+  'Locators live in src/pages/** wrapped in a component. Add a getter to the page object and call it from the spec.';
 const FIX_POSITIONAL =
   'Positional selectors break on any layout change. Use a named role or label locator; if the element has no accessor, record the flow with the app-recorder skill and add one to the page object.';
 
@@ -40,14 +40,14 @@ function unstableGetters(root) {
         walk(full);
         continue;
       }
-      if (!entry.endsWith('.generated.ts')) continue;
+      if (!entry.endsWith('.ts')) continue;
       const src = readFileSync(full, 'utf8').split(/\r?\n/);
       for (let i = 0; i < src.length; i += 1) {
         if (!/\/\/\s*UNSTABLE/.test(src[i])) continue;
         for (let j = i + 1; j < Math.min(i + 5, src.length); j += 1) {
           const name = /\bget\s+(\w+)\s*\(/.exec(src[j]);
           if (name) {
-            found.set(name[1], entry.replace('.generated.ts', ''));
+            found.set(name[1], entry.replace('.ts', ''));
             break;
           }
         }

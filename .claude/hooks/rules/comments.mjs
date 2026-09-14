@@ -4,7 +4,7 @@
  * comment restating the next line is worse than nothing because it doubles the
  * surface a reader has to reconcile.
  */
-import { codeLines, isAllowed, isGenerated, stripComment } from '../lib.mjs';
+import { codeLines, isAllowed, stripComment } from '../lib.mjs';
 
 const RATIO = 1 / 30;
 const MIN_CODE_LINES = 20;
@@ -36,7 +36,6 @@ function commentLineCount(text) {
 }
 
 export function commentRules(ctx) {
-  if (isGenerated(ctx.path)) return [];
   const out = [];
 
   const whole = ctx.whole ?? ctx.text;

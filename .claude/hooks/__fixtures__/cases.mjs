@@ -23,9 +23,9 @@ test('an admin can create a system user', async ({ systemUsersPage, addSystemUse
     path: PAGE,
     expect: [],
     content: `import { InputComponent } from '../../components';
-import { FixturePageGenerated } from './FixturePage.generated';
+import { BasePage } from '../../BasePage';
 
-export class FixturePage extends FixturePageGenerated {
+export class FixturePage extends BasePage {
   get username(): InputComponent {
     return new InputComponent(this.page.getByLabel('Username'), 'Username');
   }
@@ -220,6 +220,26 @@ test('x', async ({ dashboardPage }) => {
     path: 'generated-framework/src/components/NavigationBar.ts',
     expect: [],
     content: `export class NavigationBar {}
+`,
+  },
+  {
+    name: 'a spec calling an UNSTABLE-marked getter on a one-class page file is blocked',
+    path: SPEC,
+    expect: ['unstable-getter'],
+    // unstableGetters() walks generated-framework/src/pages from disk looking for
+    // any *.ts file — not only *.generated.ts, which no longer exists — so the
+    // page object is materialized at its own path for the duration of this case.
+    materializePath: PAGE,
+    materializeContent: `export class FixturePage {
+  // UNSTABLE
+  get searchButton(): unknown {
+    return this.page.getByRole('button', { name: 'Search' });
+  }
+}
+`,
+    content: `test('x', async ({ page }) => {
+  await fixturePage.searchButton.click();
+});
 `,
   },
   {
