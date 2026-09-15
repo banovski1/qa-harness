@@ -1,6 +1,7 @@
 // Renders the API layer: one client class per resource, the preconditions that
 // establish state through it, and the fixtures a spec imports.
 import { q, camel, header } from './naming.ts';
+import { authFacts } from './auth.ts';
 import type { AppModel } from '../../model-compiler/model-types.ts';
 
 function docFor(r: any, name: string): string {
@@ -100,8 +101,8 @@ export function renderApi(model: AppModel): string {
     `  readonly http: ApiClient;`,
     ...names.map(n => `  readonly ${property.get(n)}: ${n}Api;`),
     '',
-    `  constructor(request: APIRequestContext, baseUrl = BASE_URL) {`,
-    `    this.http = new ApiClient(request, baseUrl);`,
+    `  constructor(request: APIRequestContext, baseUrl = BASE_URL, headers: Record<string, string> = {}) {`,
+    `    this.http = new ApiClient(request, baseUrl, headers);`,
     ...names.map(n => `    this.${property.get(n)} = new ${n}Api(this.http);`),
     `  }`,
     `}`,
@@ -166,16 +167,29 @@ export function renderPreconditions(model: AppModel): string {
   }
 
   lines.push(
-    `  /** Undo everything this test made, newest first. Failures are reported, never thrown. */`,
-    `  async cleanup(): Promise<void> {`,
+    `  /**`,
+    `   * Undo everything this test made, newest first.`,
+    `   *`,
+    `   * A cleanup failure is reported and not thrown, because a test that already`,
+    `   * passed should not be failed by its own teardown. Pass \`strict\` to invert`,
+    `   * that: the round-trip gate needs a delete that quietly removes nothing to be`,
+    `   * an error, since a silent no-op is the exact defect it exists to catch.`,
+    `   */`,
+    `  async cleanup({ strict = false }: { strict?: boolean } = {}): Promise<void> {`,
+    `    const failures: string[] = [];`,
     `    for (const record of [...this.created].reverse()) {`,
     `      try {`,
     `        await record.undo();`,
     `      } catch (error) {`,
-    `        console.warn(\`cleanup failed for \${record.label}: \${(error as Error).message.split('\\n')[0]}\`);`,
+    `        const detail = \`\${record.label}: \${(error as Error).message.split('\\n')[0]}\`;`,
+    `        failures.push(detail);`,
+    `        if (!strict) console.warn(\`cleanup failed for \${detail}\`);`,
     `      }`,
     `    }`,
     `    this.created.length = 0;`,
+    `    if (strict && failures.length) {`,
+    `      throw new Error(\`\${failures.length} record(s) could not be removed:\\n  \${failures.join('\\n  ')}\`);`,
+    `    }`,
     `  }`,
     `}`,
     '',
@@ -185,21 +199,66 @@ export function renderPreconditions(model: AppModel): string {
 
 /** The fixtures a spec actually imports. */
 export function renderFixtures(model: AppModel): string {
+  const facts = authFacts(model);
+  // A browser-proven login cannot be replayed from scratch here: the setup project
+  // performs it once and this context inherits the session it saved.
+  const fromStorage = facts?.strategy === 'browser';
+
+  const api = fromStorage
+    ? [
+        `  api: async ({ playwright, baseURL }, use) => {`,
+        `    // The credential was harvested from the browser, so it arrives as saved`,
+        `    // state rather than a login this context can perform itself.`,
+        `    const state = JSON.parse(readFileSync(STORAGE_STATE, 'utf8'));`,
+        `    const request = await playwright.request.newContext({`,
+        `      baseURL, storageState: STORAGE_STATE, extraHTTPHeaders: replayHeaders(state),`,
+        `    });`,
+        `    try {`,
+        `      await use(new Api(request, baseURL));`,
+        `    } finally {`,
+        `      await request.dispose();`,
+        `    }`,
+        `  },`,
+      ]
+    : [
+        `  api: async ({ playwright, baseURL }, use) => {`,
+        `    // A context of its own, deliberately anonymous at birth. Inheriting the`,
+        `    // worker's \`request\` fixture would carry no credential: the browser's`,
+        `    // storage state does not reach it, and every call would be unauthenticated.`,
+        `    const request = await playwright.request.newContext({`,
+        `      baseURL, storageState: { cookies: [], origins: [] },`,
+        `    });`,
+        `    try {`,
+        `      const headers = await authenticate(request);`,
+        `      await use(new Api(request, baseURL, headers));`,
+        `    } finally {`,
+        `      await request.dispose();`,
+        `    }`,
+        `  },`,
+      ];
+
   return [
     header(model),
     `import { test as base } from '@playwright/test';`,
+    ...(fromStorage ? [`import { readFileSync } from 'node:fs';`] : []),
     `import { Api } from '../api/Api.ts';`,
     `import { Preconditions } from '../api/Preconditions.ts';`,
+    fromStorage
+      ? `import { replayHeaders } from '../support/authenticate.ts';`
+      : `import { authenticate } from '../support/authenticate.ts';`,
+    ...(fromStorage ? [`import { STORAGE_STATE } from '../config/constants.ts';`] : []),
     '',
     `export const test = base.extend<{ api: Api; given: Preconditions }>({`,
-    `  api: async ({ request }, use) => {`,
-    `    await use(new Api(request));`,
-    `  },`,
+    ...api,
     `  // Named "given" so a spec reads as a sentence: given.employee().`,
     `  given: async ({ api }, use) => {`,
     `    const preconditions = new Preconditions(api);`,
-    `    await use(preconditions);`,
-    `    await preconditions.cleanup();`,
+    `    try {`,
+    `      await use(preconditions);`,
+    `    } finally {`,
+    `      // In a finally, so a failing test still removes what it made.`,
+    `      await preconditions.cleanup();`,
+    `    }`,
     `  },`,
     `});`,
     '',

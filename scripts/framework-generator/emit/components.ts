@@ -14,7 +14,10 @@ const RUNTIME = join(HERE, 'runtime');
 // standalone. renderTemplates() writes the real, app-specific file at the same output
 // path ('src/components/locator-templates.ts'), so the placeholder is excluded here —
 // copying it too would plan the same path twice.
-const SKIP = new Set(['components/locator-templates.ts']);
+// config/auth-plan.ts is the same arrangement: authenticate.ts imports AUTH_PLAN at
+// module scope, and renderAuthPlan() writes the real one from the strategy that
+// verify-auth.ts proved.
+const SKIP = new Set(['components/locator-templates.ts', 'config/auth-plan.ts']);
 
 /** Every file under emit/runtime/ is copied verbatim: it is ordinary, reviewable code. */
 export function runtimeFiles(dir = RUNTIME, prefix = 'src'): { path: string; contents: string }[] {

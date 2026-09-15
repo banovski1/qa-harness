@@ -71,3 +71,38 @@ export function fixtureModel(): AppModel {
     stats: { screens: 3, crawled: 2, declaredOnly: 1, components: 3 },
   };
 }
+
+/**
+ * Stamp a fixture with a proven login.
+ *
+ * An API layer may only be emitted on a login that was executed against the running
+ * application, so any fixture carrying resources carries the proof too. Mirrors what
+ * `verify-auth.ts` writes after a successful run.
+ */
+export function verified(model: AppModel): AppModel {
+  (model.api as any).auth = {
+    kind: 'session',
+    loginEndpoint: { method: 'POST', path: '/auth/validate' },
+    csrf: { field: '_token', from: 'a hidden input on /auth/login', fromPath: '/auth/login' },
+    success: { status: 302, cookie: 'app_session', redirect: '/dashboard' },
+    uiLogin: {
+      loginUrl: 'https://app.example.com/auth/login',
+      steps: [
+        { action: 'fill', selector: "input[name='username']", value: 'env:APP_USERNAME' },
+        { action: 'fill', selector: "input[name='password']", value: 'env:APP_PASSWORD' },
+        { action: 'click', selector: "button[type='submit']" },
+      ],
+      readyWhen: '.topbar',
+    },
+  };
+  (model.api as any).authVerification = {
+    verdict: 'verified',
+    strategy: 'session',
+    reason: '/api/v2/me answers 401 anonymously and 200 with the credential',
+    checkedAt: '2026-09-15T00:00:00.000Z',
+    credential: { via: 'cookie', name: 'app_session' },
+    probe: { method: 'GET', path: '/api/v2/me', anonymous: 401, authenticated: 200 },
+    attempts: [{ strategy: 'session', outcome: 'verified', reason: 'proved' }],
+  };
+  return model;
+}

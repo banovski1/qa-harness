@@ -2,11 +2,11 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { renderResource, renderApi, resourceProperties } from '../emit/api.ts';
 import type { AppModel } from '../../model-compiler/model-types.ts';
-import { fixtureModel } from './fixtures/model.ts';
+import { fixtureModel, verified } from './fixtures/model.ts';
 import { emit } from '../emit/emit.ts';
 
 function withResources(): AppModel {
-  const model = fixtureModel();
+  const model = verified(fixtureModel());
   model.api.resources = {
     Employee: {
       establishes: 'an employee exists', requires: [],

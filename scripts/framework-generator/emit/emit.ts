@@ -10,10 +10,35 @@ import { moduleOf, header } from './naming.ts';
 import { renderPage } from './pages.ts';
 import { renderRegion, renderTemplates, runtimeFiles } from './components.ts';
 import { renderResource, renderApi, renderPreconditions, renderFixtures } from './api.ts';
+import { renderAuthPlan, authFacts } from './auth.ts';
+import { renderRoundTripGate } from './gate.ts';
 import { staticProject } from './project.ts';
 import type { AppModel } from '../../model-compiler/model-types.ts';
 
+/**
+ * An API layer may only be built on a login that was executed against the running
+ * application. `authVerification` is written by verify-auth.ts or it is absent, and the
+ * rest of this pipeline has always said so — the generator was the one consumer not
+ * honouring it, and it emitted an API layer that could not authenticate at all.
+ */
+export function assertAuthVerified(model: AppModel): void {
+  if (!Object.keys((model.api as any).resources ?? {}).length) return;
+  if (authFacts(model)) return;
+
+  const verification = (model.api as any).authVerification;
+  const verdict = verification?.verdict ?? 'missing';
+  const attempts = (verification?.attempts ?? [])
+    .map((a: any) => `\n    ${a.strategy}: ${a.reason}`).join('');
+  throw new Error(
+    `The API layer needs a proven login, and authVerification says "${verdict}".\n` +
+    (verification?.reason ? `  ${verification.reason}\n` : '') +
+    (attempts ? `  strategies tried:${attempts}\n` : '') +
+    `  Run: npm run verify-auth -- --write`,
+  );
+}
+
 export function emit(model: AppModel, conventions: any, outputDir: string, { dryRun = false } = {}) {
+  assertAuthVerified(model);
   const writer = new FileWriter(outputDir, { dryRun });
 
   for (const f of runtimeFiles()) writer.write(f);
@@ -41,7 +66,9 @@ export function emit(model: AppModel, conventions: any, outputDir: string, { dry
     }
     writer.write({ path: 'src/api/Api.ts', contents: renderApi(model) });
     writer.write({ path: 'src/api/Preconditions.ts', contents: renderPreconditions(model) });
+    writer.write({ path: 'src/config/auth-plan.ts', contents: renderAuthPlan(model) });
     writer.write({ path: 'src/fixtures/test.ts', contents: renderFixtures(model) });
+    writer.write({ path: 'gates/api-roundtrip.spec.ts', contents: renderRoundTripGate(model) });
   }
 
   for (const f of staticProject(model)) writer.write(f);
