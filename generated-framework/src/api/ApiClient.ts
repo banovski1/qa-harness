@@ -41,6 +41,12 @@ export class ApiClient {
   constructor(
     private readonly request: APIRequestContext,
     private readonly baseUrl: string,
+    /**
+     * Whatever the credential requires on every call — a bearer, or a CSRF header the
+     * application copies out of a cookie. Empty for a plain cookie session, where the
+     * context's own jar carries it.
+     */
+    private readonly authHeaders: Record<string, string> = {},
   ) {}
 
   async call<T = unknown>(
@@ -54,7 +60,7 @@ export class ApiClient {
         method,
         data: options.data as never,
         params: options.params,
-        headers: { Accept: 'application/json' },
+        headers: { Accept: 'application/json', ...this.authHeaders },
       });
       const text = await response.text();
       if (!response.ok()) {
@@ -78,7 +84,12 @@ export class ApiClient {
   post<T = unknown>(path: string, data?: unknown) { return this.call<T>('POST', path, { data }); }
   put<T = unknown>(path: string, data?: unknown) { return this.call<T>('PUT', path, { data }); }
   patch<T = unknown>(path: string, data?: unknown) { return this.call<T>('PATCH', path, { data }); }
-  delete<T = unknown>(path: string) { return this.call<T>('DELETE', path); }
+  /**
+   * A body is allowed here on purpose. Plenty of APIs delete a *collection* —
+   * `DELETE /users` with `{ ids: [...] }` — and a client that cannot send one forces
+   * every such resource to drop to `call()` by hand.
+   */
+  delete<T = unknown>(path: string, data?: unknown) { return this.call<T>('DELETE', path, { data }); }
 }
 
 /** Fill a path's record slots: ('/x/{id}', { id: 7 }) → '/x/7'. */

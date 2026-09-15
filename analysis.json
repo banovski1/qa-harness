@@ -4,7 +4,7 @@
     "baseUrl": "https://opensource-demo.orangehrmlive.com/",
     "repoPath": "~/Projects/orangehrm",
     "repoCommit": "56e23b3b09e7af29317a0943523b825843fff527",
-    "generatedAt": "2026-09-13T15:58:38.631Z",
+    "generatedAt": "2026-09-15T16:17:09.635Z",
     "stack": "vue / symfony"
   },
   "source": {
@@ -1818,7 +1818,9 @@
     "authVerification": {
       "verdict": "verified",
       "reason": "/web/index.php/api/v2/buzz/feed answers 401 anonymously and 200 with the credential",
-      "checkedAt": "2026-09-13T09:02:27.284Z",
+      "strategy": "session",
+      "loginPagePath": "/web/index.php/auth/login",
+      "checkedAt": "2026-09-15T16:17:08.174Z",
       "credential": {
         "via": "cookie",
         "name": "orangehrm"
@@ -1829,6 +1831,13 @@
         "anonymous": 401,
         "authenticated": 200
       },
+      "attempts": [
+        {
+          "strategy": "session",
+          "outcome": "verified",
+          "reason": "/web/index.php/api/v2/buzz/feed answers 401 anonymously and 200 with the credential"
+        }
+      ],
       "observations": [
         {
           "step": "csrf",

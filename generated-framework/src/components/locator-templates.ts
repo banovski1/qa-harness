@@ -1,4 +1,4 @@
-// Generated once from analysis.json (56e23b3b09) on 2026-09-13.
+// Generated once from analysis.json (56e23b3b09) on 2026-09-15.
 // This file is yours now. Nothing regenerates it.
 
 // The only file in this project that names an app-specific selector. Everything

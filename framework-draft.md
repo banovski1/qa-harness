@@ -22,6 +22,30 @@ is yours: no command in this repository will rewrite it.
 | record the flow first (0.3–0.7) | 2 |
 | a URL and little else (< 0.3) | 196 |
 
+## Authentication
+
+Proven by `verify-auth.ts` as **session**: /web/index.php/api/v2/buzz/feed answers 401 anonymously and 200 with the credential
+
+The generated framework replays these steps. It does not transcribe the login screen.
+
+### The API round-trip gate
+
+`npm run gate:api` creates, reads back, deletes and confirms the removal of **27** resource(s).
+
+**11** are skipped: creating one needs another record first, and which field carries that id is not recorded anywhere — only guessable from its name. The gate does not guess.
+
+- `Candidate` needs an existing Vacancy
+- `Kpis` needs an existing JobTitle
+- `LeaveEntitlement` needs an existing Employee and LeaveType and Location
+- `LeaveRequest` needs an existing Employee and LeaveType
+- `Project` needs an existing Customer
+- `Registration` needs an existing Subunit
+- `Review` needs an existing Employee
+- `Tracker` needs an existing Employee
+- `User` needs an existing Employee
+- `Vacancy` needs an existing Employee and JobTitle
+- `WorkShift` needs an existing Employee
+
 ## Files
 
 ```

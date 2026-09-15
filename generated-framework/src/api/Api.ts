@@ -1,4 +1,4 @@
-// Generated once from analysis.json (56e23b3b09) on 2026-09-13.
+// Generated once from analysis.json (56e23b3b09) on 2026-09-15.
 // This file is yours now. Nothing regenerates it.
 
 import type { APIRequestContext } from '@playwright/test';
@@ -219,8 +219,8 @@ export class Api {
   readonly workShift: WorkShiftApi;
   readonly workweek: WorkweekApi;
 
-  constructor(request: APIRequestContext, baseUrl = BASE_URL) {
-    this.http = new ApiClient(request, baseUrl);
+  constructor(request: APIRequestContext, baseUrl = BASE_URL, headers: Record<string, string> = {}) {
+    this.http = new ApiClient(request, baseUrl, headers);
     this.about = new AboutApi(this.http);
     this.actionSummary = new ActionSummaryApi(this.http);
     this.activityName = new ActivityNameApi(this.http);

@@ -1,4 +1,4 @@
-// Generated once from analysis.json (56e23b3b09) on 2026-09-13.
+// Generated once from analysis.json (56e23b3b09) on 2026-09-15.
 // This file is yours now. Nothing regenerates it.
 
 import { Api, idOf } from './Api.ts';
@@ -460,15 +460,28 @@ export class Preconditions {
     return { id, data: response };
   }
 
-  /** Undo everything this test made, newest first. Failures are reported, never thrown. */
-  async cleanup(): Promise<void> {
+  /**
+   * Undo everything this test made, newest first.
+   *
+   * A cleanup failure is reported and not thrown, because a test that already
+   * passed should not be failed by its own teardown. Pass `strict` to invert
+   * that: the round-trip gate needs a delete that quietly removes nothing to be
+   * an error, since a silent no-op is the exact defect it exists to catch.
+   */
+  async cleanup({ strict = false }: { strict?: boolean } = {}): Promise<void> {
+    const failures: string[] = [];
     for (const record of [...this.created].reverse()) {
       try {
         await record.undo();
       } catch (error) {
-        console.warn(`cleanup failed for ${record.label}: ${(error as Error).message.split('\n')[0]}`);
+        const detail = `${record.label}: ${(error as Error).message.split('\n')[0]}`;
+        failures.push(detail);
+        if (!strict) console.warn(`cleanup failed for ${detail}`);
       }
     }
     this.created.length = 0;
+    if (strict && failures.length) {
+      throw new Error(`${failures.length} record(s) could not be removed:\n  ${failures.join('\n  ')}`);
+    }
   }
 }

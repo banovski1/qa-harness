@@ -1,4 +1,4 @@
-// Generated once from analysis.json (56e23b3b09) on 2026-09-13.
+// Generated once from analysis.json (56e23b3b09) on 2026-09-15.
 // This file is yours now. Nothing regenerates it.
 
 import { defineConfig, devices } from '@playwright/test';
@@ -18,6 +18,13 @@ export default defineConfig({
   },
   projects: [
     { name: 'setup', testMatch: /auth\.setup\.ts/ },
-    { name: 'chromium', use: { ...devices['Desktop Chrome'], storageState: '.auth/user.json' }, dependencies: ['setup'] },
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'], storageState: '.auth/user.json' },
+      dependencies: ['setup'],
+    },
+    // The API round-trip gate writes to the target application, so it is not
+    // part of an ordinary run. `npm run gate:api` sets the flag that adds it.
+    ...(process.env.API_GATE ? [{ name: 'api-gate', testDir: './gates' }] : []),
   ],
 });
