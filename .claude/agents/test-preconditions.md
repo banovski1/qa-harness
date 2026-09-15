@@ -81,6 +81,11 @@ npx tsx scripts/api-auth/verify-auth.ts --write to settle it.
 
 Never propose verifying it yourself, and never suggest the writer "try the API anyway".
 
+`verified` is a statement about the **credential**, not about any request shape. It means
+this login is admitted where an anonymous caller is refused. It says nothing about
+whether a payload is complete — that is section 3a's job, and a verified login will
+return `422` all day for a request missing a field.
+
 ## 2. Classify each step
 
 For every numbered step decide:
@@ -125,13 +130,112 @@ precondition needs (looking up an existing leave type's id) — never to create 
 Rules for this section:
 
 - **Grep for the method before you name it.** A `given.x()` that does not exist costs the
-  writer a compile error and a round trip.
+  writer a compile error and a round trip. Existence is only half the check — section 3a
+  settles what the call must send, and section 3b what must run before it.
 - If nothing covers a setup step, write `no API precondition for this resource — the
   writer must do it through the UI`. Never invent a method, a factory, or a file path.
-- If a `given` method's `undo` is empty (`remove({ })` with no id), flag it: the record
-  will be created and never cleaned up.
+- If a `given` method's `undo` is empty (`remove({ })` with no id), the record will be
+  created and never cleaned up. Do not stop at flagging it — section 3a says to read
+  `ops.delete` and hand over the delete's real contract.
 
-## 3b. Say whether the UI half is known well enough to write
+## 3a. Name the request, not just the method
+
+A method name is half an answer. `given.user()` compiles, runs, and returns `422` if the
+payload is short a field — and that failure lands in `test-writer`'s spec, where it reads
+as a broken test rather than an unread contract. So for every call you propose, open
+`analysis.json` at `api.resources.<Resource>.ops.<kind>` and report the request itself.
+
+**Method and path, verbatim from the op.** Never infer them from REST convention. This
+corpus contains a `delete` whose path is the *collection* with no `{id}` and whose ids
+travel in the body; assuming `/{id}` costs a wrong fix and a `405`.
+
+**The field set, read honestly.** `requiredKnown` says whether the extractor could
+classify the fields it found:
+
+| `requiredKnown` | how you read the op |
+| --- | --- |
+| `true` | `requiredFields` is authoritative. Name it |
+| `false` | **`optionalFields` is not a list of optional fields** — it is every field the extractor saw and could not classify. Treat all of them as candidate-required |
+
+When it is `false`, say so in those words and list them all:
+
+```
+ops.create — POST /web/index.php/api/v2/admin/users
+  requiredKnown: false — these are the fields the extractor saw but could not
+  classify; send all of them, and expect a 422 to name any still missing:
+  username, password, status, userRoleId, empNumber
+```
+
+Do not soften this into "you may also want to send". The one time it was read as
+genuinely optional, `userRoleId` and `status` were both mandatory.
+
+**The delta against the helper.** `Preconditions.<method>()` seeds what the generator
+could infer, which is usually one field. Compare it to the op's field set and state the
+difference outright, because that difference is what the writer must pass in `overrides`:
+
+```
+- given.user() seeds `username` only; ops.create lists `status`, `userRoleId`,
+  `empNumber` — pass all three in overrides
+```
+
+**Cleanup, as a contract rather than a warning.** Where section 3 tells you to flag an
+empty `undo`, read `ops.delete` and name what the delete actually takes — its method,
+its path, and whether the id goes in the path or the body. A flag saying "this will not
+be cleaned up" sends the writer to rediscover the contract; the contract itself does not.
+
+## 3b. Resolve the chain, and say what each link returns
+
+A precondition is rarely one request. A field that names another record holds that
+record's **id**, never its name, and an action on an existing record needs that record
+found first. Neither id exists until something returns it, so every call you propose is
+the last step of a chain you have already written out.
+
+Three shapes, and you name every link of whichever applies:
+
+**A reference field needs a lookup.** "An offer in EUR" is not `{ currency: 'EUR' }` — it
+is a `currencyId` the app assigns, so the read that resolves it comes first:
+
+```
+- api.currency.list() → find the entry whose code is 'EUR', take its id
+  → given.offer({ currencyId: <that id> })
+```
+
+The same holds for every status, type, role, category and lookup value a step names in
+English. **Never propose a literal id.** `userRoleId: 2` is true of one instance until
+someone reseeds it; the `api.*` read that returns it is true of all of them. If the
+analysis records no endpoint that lists the values, say that plainly rather than
+inventing one — an unresolvable lookup is a real finding.
+
+**An action on an existing record needs that record found.** "Delete the employee" and
+"open the candidate" both need an id the script never states. Prefer creating the record
+you are about to act on, because a test that owns its data cannot collide with another
+run:
+
+```
+- given.employee() → then api.employee.remove({ empNumber: <employee id> })
+```
+
+Fall back to a read only when the step means a record the test may not create — a
+seeded fixture, or the logged-in user's own record:
+
+```
+- api.employee.list({ name: '<from .env seeds>' }) → take empNumber from the first match
+```
+
+Either way, name the field the id arrives in. It is frequently not `id`: this app's
+Employee create returns `empNumber` and no `id` at all, and a chain that reads the wrong
+key passes `undefined` into the next request.
+
+**A record needs a parent.** Already covered in section 3 — `given.employee()` before
+`given.leaveRequest({ empNumber })`. The rule that a dependency is never resolved for you
+applies identically here.
+
+Write chains as ordered lines with `→` between links, one line per precondition, in the
+order they must run. Where a link's output feeds the next, name the field it comes from
+in angle brackets. And check each link against section 3a: a lookup call is a request
+too, and the same op has the same contract.
+
+## 3c. Say whether the UI half is known well enough to write
 
 `analysis.json` scores every screen in place: find the entry in `screens` whose `path`
 matches, and read its `testability.confidence`. This is the check that decides whether
@@ -178,7 +282,12 @@ App: <name from analysis.app.name>   API login: verified | unavailable (<reason>
 Screen confidence: <path> <score> …   Recording needed: yes | no
 
 Preconditions:
-- <step group> — <given.method(...) / api.resource.method(...) / no API precondition for this resource>
+- <step group> — <chain, links joined by →, in run order; each link a given.method(...),
+  an api.resource.method(...), or `no API precondition for this resource`>
+    <METHOD> <path>  requiredKnown: <true|false>
+    send: <field, field, field>   (when requiredKnown is false, say the words from 3a)
+    helper seeds: <what Preconditions.<method>() already fills>  → overrides: <the delta>
+    cleanup: <the ops.delete contract, or `none — undo is empty`>
 
 UI journey to test:
 - <kept step, renumbered from 1>
@@ -191,6 +300,10 @@ Original steps:
 Always include the original steps verbatim at the end. Nothing is lost even when your
 classification is wrong, and the writer can overrule you.
 
+The block under each precondition is not decoration. It is the difference between a
+writer that emits a call and a writer that emits a call which works, and every line of
+it comes from `api.resources` — none of it is yours to infer.
+
 ## Rules
 
 - Read-only. No file writes, no shell commands beyond reading and grepping
@@ -201,5 +314,10 @@ classification is wrong, and the writer can overrule you.
   not read the recordings themselves.
 - Never propose running the recording yourself. `npx playwright codegen` opens a browser
   a **human** drives; you name the command and stop.
+- Never propose a literal id for a lookup value. Name the `api.*` read that returns it.
+  An id you cannot resolve from the analysis is reported as unresolvable, never guessed.
+- A proposed call is incomplete until you have named its method, its path, its field set
+  and every request that must run before it. A bare method name is the failure this
+  section exists to prevent.
 - If every step is journey with nothing to extract, say so in one line and pass the steps
   through unchanged.

@@ -1,8 +1,14 @@
 # Known issues — test-runner's fix library
 
-`test-runner` reads this table to decide whether a failure has a documented fix. A
-symptom with no matching row is a handoff to a human, not something to improvise.
-Each row `test-runner` appends after a confirmed fix must keep this same shape.
+`test-runner` reads this table first, to avoid re-deriving a fix this repo has already
+confirmed. A symptom with no matching row is not a handoff — `test-runner` diagnoses it
+against the running app, fixes the layer that is actually wrong, and appends the row
+itself once the spec passes, so the next run matches instead of re-deriving.
+
+A row is written for the *next* run: the `Symptom` column carries the error text,
+diagnostic kind, or snapshot observation that run will see, never a description of the
+spec that happened to hit it. Every row keeps this same shape, and a fix a human should
+still review says so in its `Fix` cell.
 
 | Symptom (from playwright-cli reproduction) | Root cause | Fix location | Fix |
 |---|---|---|---|
@@ -13,3 +19,5 @@ Each row `test-runner` appends after a confirmed fix must keep this same shape.
 | `page.goto('/auth/login')` never shows the login form; playwright-cli snapshot shows the app already on the authenticated Dashboard for the previous user | Switching users without logging out first — the app redirects an authenticated session straight past `/auth/login` | The `loginAs`/`login` helper in `generated-framework/src/utils/auth.ts` | Log out (open the profile menu and click Logout, or navigate to the app's logout URL) before navigating to `/auth/login` for the next user |
 | Form save appears to click through, then a downstream login/assertion fails with wrong-state errors (e.g. "Invalid credentials") even though a manual, step-by-step playwright-cli replay of the same form succeeds | Race: an autocomplete suggestion or a submit button was clicked before it rendered/settled, so the automated run outraced the app while a manually-paced replay did not | The protected `<Name>Page.ts` method driving the multi-field form | Assert the suggestion/option with `await expect(option).toBeVisible()` before clicking it. After submit, register `page.waitForResponse(...)` **before** the click and await it after — the response is the evidence the save happened; a cleared spinner is not |
 | A control the spec needs is absent from the page object entirely, and `playwright-cli` confirms it exists in the running app | The analysis never named it: the screen's `testability.confidence` in `analysis.json` is below 0.7 and `missing` says why | nothing in this repo — the evidence does not exist yet | Hand back with the screen's confidence and the command to record it: `npx playwright codegen <baseUrl><path>`. A recording is the only thing that settles what a crawl could not see; do not add the locator by hand |
+| `DELETE .../{id}` (or `/{empNumber}`) returns 405, or the created record is still present after `Preconditions.cleanup()` | The resource's real delete endpoint is a bulk delete on the collection URL with a JSON body (`{ "ids": [id] }`), not a single-resource path — confirmed against `EmployeeAPI.php` and `UserAPI.php`'s `delete()` methods, both reading `CommonParams::PARAMETER_IDS` from the request body | the `<Resource>Api.ts` client's `remove()` | Call `this.api.delete(collectionPath, { ids: [id] })` instead of `fillPath('.../{id}', params)`. Check the API source's own `delete()` before assuming a REST-shaped single-resource path |
+| `POST <create endpoint>` → 422 `{"invalidParamKeys":[...]}` naming a field the `Preconditions` helper never sent | `api.resources.<Resource>.ops.create` has `requiredKnown: false` / `requiredFields: []` in `analysis.json` — the `app-api` analysis never learned the field is mandatory, even though the source validation rule requires it | The 422's `invalidParamKeys` name the fields; the source file cited in `api.resources.<Resource>.ops.create.source` gives the type | `Preconditions.ts`'s helper for that resource — add the missing field(s) to its payload. **This is a workaround over an open analysis gap, not a repair**: the right fix is re-running `app-api` then `compile-model.ts` so `requiredFields` is filled in; only patch `Preconditions.ts` directly when told to keep that gap open. A value that must match something the live app enforces (e.g. a role id) must be queried live (e.g. `GET` the resource's own list endpoint through the project's already-authenticated request context) and named as a constant with a comment citing the query — never hand-guessed |
