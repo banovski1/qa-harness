@@ -3,7 +3,9 @@
  * carry, or an explanation of why it could not get one. No application is named.
  */
 import { Jar, send, csrfToken, deepFind, type Sent } from './http.ts';
-import type { AuthBlock, Observation } from './types.ts';
+// @ts-ignore - the shared .env reader is plain JS used across the pipeline
+import { loadEnv } from '../config/profile.mjs';
+import type { AuthBlock, Observation, ReplayRule } from './types.ts';
 
 export interface Credential {
   jar: Jar;
@@ -11,12 +13,23 @@ export interface Credential {
   /** How the caller should describe what proved the login. */
   via: 'header' | 'cookie';
   name: string;
+  /**
+   * Set only by the browser rung: how to rebuild this credential outside the browser.
+   * The HTTP strategies know their own protocol and need no replay rule.
+   */
+  replay?: ReplayRule;
 }
 
 export interface Attempt {
   credential: Credential | null;
   reason: string;
   observations: Observation[];
+  /**
+   * What this attempt learned by doing it, as opposed to what the analysis claimed.
+   * The login page's path is the case in point: `auth.csrf.from` is prose, and the
+   * path actually fetched is a fact only a run can establish.
+   */
+  facts?: { loginPagePath?: string };
 }
 
 const isRedirect = (status: number) => status >= 300 && status < 400;
@@ -30,10 +43,20 @@ function resolve(baseUrl: string, path: string): string {
   return new URL(path, baseUrl).toString();
 }
 
-/** Credentials come from the environment, never from a committed file. */
+/**
+ * Credentials come from the root `.env`, or from the real environment, which wins —
+ * so CI can set APP_PASSWORD without a file.
+ *
+ * Reading the file matters: `.env` is a data file, not a shell script. A value like
+ * `APP_NAME=OrangeHRM (open-source demo)` is perfectly legal in it and cannot be
+ * `source`d, so "export it first" is not a thing a caller can reliably do. Requiring
+ * that was the same mistake as defaulting a missing password to an empty string: a
+ * configuration that exists, is correct, and is silently not read.
+ */
 export function credentialsFromEnv(): { username: string; password: string } | null {
-  const username = process.env.APP_USERNAME;
-  const password = process.env.APP_PASSWORD;
+  const env = loadEnv() as Record<string, string | undefined>;
+  const username = env.APP_USERNAME;
+  const password = env.APP_PASSWORD;
   if (!username || !password) return null;
   return { username, password };
 }
@@ -164,11 +187,14 @@ export async function sessionLogin(baseUrl: string, auth: AuthBlock, loginPageUr
 
   const jar = new Jar();
   const form = new URLSearchParams();
+  const facts: Attempt['facts'] = {};
 
   const csrfField = auth.csrf?.field;
   if (csrfField) {
     const pageUrl = loginPageUrl ?? resolve(baseUrl, String(auth.csrf?.from ?? '').match(/\/\S+/)?.[0] ?? '/');
     const page = await send(pageUrl, { jar });
+    // The path this run actually used. `auth.csrf.from` is a sentence; this is a fact.
+    facts.loginPagePath = new URL(pageUrl).pathname;
     const token = csrfToken(page.body, csrfField);
     observations.push({
       step: 'csrf',
@@ -178,7 +204,7 @@ export async function sessionLogin(baseUrl: string, auth: AuthBlock, loginPageUr
       detail: token ? `read ${csrfField} (${token.length} chars)` : `no ${csrfField} on the login page`,
     });
     if (!token) {
-      return { credential: null, reason: `the login page carried no ${csrfField}`, observations };
+      return { credential: null, reason: `the login page carried no ${csrfField}`, observations, facts };
     }
     form.set(csrfField, token);
   }
@@ -217,16 +243,18 @@ export async function sessionLogin(baseUrl: string, auth: AuthBlock, loginPageUr
       credential: null,
       reason: bouncedBack ? `login redirected back to ${location}` : `login answered ${sent.status}`,
       observations,
+      facts,
     };
   }
 
   const expected = auth.success?.cookie;
   const cookieName = expected && jar.has(expected) ? expected : jar.names().at(-1);
-  if (!cookieName) return { credential: null, reason: 'no cookie was set by the login', observations };
+  if (!cookieName) return { credential: null, reason: 'no cookie was set by the login', observations, facts };
 
   return {
     credential: { jar, headers: {}, via: 'cookie', name: cookieName },
     reason: `login answered ${sent.status} and set ${cookieName}`,
     observations,
+    facts,
   };
 }

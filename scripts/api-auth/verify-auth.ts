@@ -14,8 +14,10 @@ import { resolve as resolvePath, join } from 'node:path';
 // @ts-ignore - the explorer's yaml reader is plain JS shared across the pipeline
 import { loadProfile, ANALYSIS_PATH } from '../config/profile.mjs';
 import { Jar, send } from './http.ts';
-import { tokenLogin, basicLogin, sessionLogin, credentialsFromEnv, type Credential } from './strategies.ts';
-import type { AuthBlock, Endpoint, Observation, VerifyResult, Verdict } from './types.ts';
+import { tokenLogin, basicLogin, sessionLogin, credentialsFromEnv, type Credential, type Attempt } from './strategies.ts';
+import { browserLogin } from './browser-login.ts';
+import { cascadeFor } from './cascade.ts';
+import type { AuthAttempt, AuthBlock, AuthStrategy, Endpoint, Observation, VerifyResult, Verdict } from './types.ts';
 
 /** How many candidate endpoints to try before giving up on finding a protected one. */
 const MAX_PROBES = 6;
@@ -77,31 +79,72 @@ async function verify(): Promise<VerifyResult> {
     return { ...base, verdict: 'skipped', reason: 'APP_USERNAME / APP_PASSWORD are not set in the environment' };
   }
 
-  // The shape of the login request decides the strategy, not the name of the
-  // credential it returns: an app can hand back a token in exchange for Basic.
-  const wantsBasic = kind === 'basic'
-    || auth.loginEndpoint.auth === 'basic'
-    || Object.values(auth.loginEndpoint.headers ?? {}).some((value) => /basic|base64/i.test(value));
-  const attempt = wantsBasic
-    ? await basicLogin(baseUrl, auth)
-    : kind === 'token'
-      ? await tokenLogin(baseUrl, auth)
-      : await sessionLogin(baseUrl, auth, profile.auth?.loginUrl);
+  // Try each shape until one produces a credential a protected read accepts. The
+  // declared kind goes first because it is usually right, not because it is binding.
+  const observations: Observation[] = [];
+  const attempts: AuthAttempt[] = [];
+  let lastProbe: VerifyResult['probe'] | undefined;
+  let lastVerdict: Verdict = 'failed';
 
-  const observations = [...attempt.observations];
-  if (!attempt.credential) {
-    return { ...base, verdict: 'failed', reason: attempt.reason, observations };
+  for (const strategy of cascadeFor(auth)) {
+    const attempt = await runStrategy(strategy, baseUrl, auth, profile.auth?.loginUrl);
+    observations.push(...attempt.observations);
+
+    if (!attempt.credential) {
+      attempts.push({ strategy, outcome: 'no-credential', reason: attempt.reason });
+      continue;
+    }
+
+    const probe = await proveCredential(baseUrl, api.endpoints ?? [], attempt.credential, observations);
+    if (probe.verdict === 'verified') {
+      attempts.push({ strategy, outcome: 'verified', reason: probe.reason });
+      return {
+        ...base,
+        verdict: 'verified',
+        reason: probe.reason,
+        strategy,
+        attempts,
+        ...(attempt.facts?.loginPagePath ? { loginPagePath: attempt.facts.loginPagePath } : {}),
+        credential: {
+          via: attempt.credential.via,
+          name: attempt.credential.name,
+          ...(attempt.credential.replay ? { replay: attempt.credential.replay } : {}),
+        },
+        probe: probe.probe,
+        observations,
+      };
+    }
+
+    // The login worked and the credential did not open a protected read. That is a
+    // different failure from "no credential", and the next rung may still succeed.
+    attempts.push({ strategy, outcome: 'credential-refused', reason: probe.reason });
+    lastProbe = probe.probe;
+    lastVerdict = probe.verdict;
   }
 
-  const probe = await proveCredential(baseUrl, api.endpoints ?? [], attempt.credential, observations);
   return {
     ...base,
-    verdict: probe.verdict,
-    reason: probe.reason,
-    credential: { via: attempt.credential.via, name: attempt.credential.name },
-    probe: probe.probe,
+    verdict: attempts.some(a => a.outcome === 'credential-refused') ? lastVerdict : 'failed',
+    reason: attempts.length
+      ? `no strategy produced a verified credential (tried ${attempts.map(a => a.strategy).join(', ')})`
+      : 'no auth strategy was applicable',
+    attempts,
+    probe: lastProbe,
     observations,
   };
+}
+
+/** Dispatch one rung. Every strategy has the same shape, so this is a table, not logic. */
+async function runStrategy(
+  strategy: AuthStrategy,
+  baseUrl: string,
+  auth: AuthBlock,
+  loginPageUrl?: string,
+): Promise<Attempt> {
+  if (strategy === 'basic') return basicLogin(baseUrl, auth);
+  if (strategy === 'token') return tokenLogin(baseUrl, auth);
+  if (strategy === 'browser') return browserLogin(baseUrl, auth);
+  return sessionLogin(baseUrl, auth, loginPageUrl);
 }
 
 /**
@@ -174,9 +217,13 @@ function stamp(result: VerifyResult): void {
   analysis.api.authVerification = {
     verdict: result.verdict,
     reason: result.reason,
+    // The rung that won. The generator emits this, not `auth.kind`.
+    strategy: result.strategy ?? null,
+    loginPagePath: result.loginPagePath ?? null,
     checkedAt: result.checkedAt,
     credential: result.credential ?? null,
     probe: result.probe ?? null,
+    attempts: result.attempts ?? [],
     observations: result.observations,
   };
   writeFileSync(path, `${JSON.stringify(analysis, null, 2)}\n`);
@@ -189,9 +236,23 @@ const MARK: Record<Verdict, string> = {
   skipped: '– skipped',
 };
 
+const OUTCOME: Record<AuthAttempt['outcome'], string> = {
+  verified: '✓',
+  'no-credential': '✗',
+  'credential-refused': '·',
+};
+
 function report(result: VerifyResult): void {
   console.log(`\n${result.app}  [${result.kind}]  ${MARK[result.verdict]}`);
   console.log(`  ${result.reason}`);
+  // Every rung tried, so a failure names all of them and not just the last.
+  if (result.attempts?.length) {
+    console.log('');
+    for (const attempt of result.attempts) {
+      console.log(`    ${OUTCOME[attempt.outcome]} ${attempt.strategy.padEnd(9)} ${attempt.reason}`);
+    }
+  }
+  console.log('');
   for (const observation of result.observations) {
     console.log(`    ${observation.step.padEnd(20)} ${String(observation.status ?? '—').padStart(3)}  ${observation.detail}`);
   }

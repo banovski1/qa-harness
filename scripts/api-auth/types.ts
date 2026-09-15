@@ -2,6 +2,20 @@
 
 export type AuthKind = 'token' | 'session' | 'basic' | 'undocumented-in-spec' | 'none';
 
+/**
+ * A way of obtaining a credential. `auth.kind` orders these; it does not choose one.
+ * `browser` is the last resort: it performs the app's own UI login and replays what
+ * the app itself sends, for flows no HTTP shape can reproduce.
+ */
+export type AuthStrategy = 'session' | 'token' | 'basic' | 'browser';
+
+/** One rung of the cascade, and what it produced. */
+export interface AuthAttempt {
+  strategy: AuthStrategy;
+  outcome: 'verified' | 'no-credential' | 'credential-refused';
+  reason: string;
+}
+
 /** The `auth` block an app-api run writes into the `api` section of analysis.json. */
 export interface AuthBlock {
   kind?: string;
@@ -22,10 +36,39 @@ export interface AuthBlock {
   } | null;
   csrf?: {
     field?: string;
+    /** Prose: "a hidden input on /auth/login". Human-readable, not machine-readable. */
     from?: string;
+    /**
+     * The login page's path. Added because the verifier used to regex a path out of
+     * `from`, which is one rephrasing away from silently falling back to "/". The
+     * generator requires this field and never scrapes the prose.
+     */
+    fromPath?: string;
   } | null;
   header?: { name?: string; value?: string } | null;
   users?: Array<{ role?: string; username?: string; password?: string }>;
+}
+
+/** Where a harvested credential lives, and how the app presents it on the wire. */
+export interface ReplaySource {
+  from: 'cookie' | 'localStorage' | 'sessionStorage';
+  key: string;
+  /** `Bearer {}` when the header wraps the stored value; absent when it is the value. */
+  template?: string;
+}
+
+/**
+ * How to rebuild a browser-harvested credential outside the browser.
+ *
+ * Derived by observing a request the application itself made, never by guessing
+ * which storage key holds a token.
+ */
+export interface ReplayRule {
+  /** Whether the harvested cookies alone carry the session. */
+  cookies: boolean;
+  headers: Record<string, ReplaySource>;
+  /** Headers that were sent but match nothing in storage — reported, never emitted. */
+  underivable?: string[];
 }
 
 export interface Endpoint {
@@ -53,7 +96,17 @@ export interface VerifyResult {
   verdict: Verdict;
   /** One sentence a human can act on. */
   reason: string;
-  credential?: { via: 'header' | 'cookie'; name: string };
+  /** The rung that won. This — not `kind` — is what the generator emits. */
+  strategy?: AuthStrategy;
+  /** Every rung tried, in order. A failure names all of them, not just the last. */
+  attempts?: AuthAttempt[];
+  /**
+   * The login page this run actually fetched the CSRF token from. Recorded because
+   * `auth.csrf.from` is prose and the generator must not scrape a path out of a
+   * sentence — see renderAuthPlan.
+   */
+  loginPagePath?: string;
+  credential?: { via: 'header' | 'cookie'; name: string; replay?: ReplayRule };
   probe?: { method: string; path: string; anonymous: number | null; authenticated: number | null };
   observations: Observation[];
   checkedAt: string;
