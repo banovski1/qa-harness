@@ -8,6 +8,71 @@ import { plannedPaths } from './plan.ts';
 
 const score = (s: Screen): number => s.testability?.confidence ?? 0;
 
+/**
+ * How the framework will log in, and what the round-trip gate will cover.
+ *
+ * Both belong in the draft because both are things the reader is approving. The gate
+ * writes to a real application, and the resources it cannot reach are a known gap
+ * rather than a surprise to be met later.
+ */
+function authSection(model: AppModel): string[] {
+  const resources = Object.keys((model.api.resources ?? {}) as Record<string, unknown>);
+  if (!resources.length) return [];
+
+  const verification = (model.api as any).authVerification;
+  const lines = ['## Authentication', ''];
+
+  if (verification?.verdict === 'verified') {
+    lines.push(
+      `Proven by \`verify-auth.ts\` as **${verification.strategy ?? 'session'}**: ${verification.reason}`,
+      '',
+      'The generated framework replays these steps. It does not transcribe the login screen.',
+      '',
+    );
+    const attempts = verification.attempts ?? [];
+    if (attempts.length > 1) {
+      lines.push('Strategies tried, in order:', '');
+      for (const attempt of attempts) {
+        lines.push(`- \`${attempt.strategy}\` — ${attempt.outcome}: ${attempt.reason}`);
+      }
+      lines.push('');
+    }
+  } else {
+    lines.push(
+      `**No proven login** (\`${verification?.verdict ?? 'missing'}\`). Generation will refuse:`,
+      'an API layer cannot be built on a login nobody has executed.',
+      '',
+      'Run `npm run verify-auth -- --write` first.',
+      '',
+    );
+  }
+
+  // Deliberately duplicated logic-free: gate.ts owns the rule, this reports the counts.
+  const all = (model.api.resources ?? {}) as Record<string, any>;
+  const creatable = Object.entries(all).filter(([, r]) => r.establishes && r.ops?.create);
+  const covered = creatable.filter(([, r]) => !r.requires?.length);
+  const skipped = creatable.filter(([, r]) => r.requires?.length);
+
+  lines.push(
+    '### The API round-trip gate',
+    '',
+    `\`npm run gate:api\` creates, reads back, deletes and confirms the removal of ` +
+    `**${covered.length}** resource(s).`,
+    '',
+  );
+  if (skipped.length) {
+    lines.push(
+      `**${skipped.length}** are skipped: creating one needs another record first, and ` +
+      'which field carries that id is not recorded anywhere — only guessable from its ' +
+      'name. The gate does not guess.',
+      '',
+      ...skipped.map(([name, r]) => `- \`${name}\` needs an existing ${r.requires.join(' and ')}`),
+      '',
+    );
+  }
+  return lines;
+}
+
 function identityOf(use: { label?: string; field?: string; within?: string; via?: string }): string {
   const parts: string[] = [];
   if (use.label) parts.push(`label: "${use.label}"`);
@@ -111,6 +176,7 @@ export function renderDraft(model: AppModel, _conventions: unknown): string {
     `| record the flow first (0.3–0.7) | ${record} |`,
     `| a URL and little else (< 0.3) | ${weak} |`,
     '',
+    ...authSection(model),
     '## Files',
     '',
     '```',
