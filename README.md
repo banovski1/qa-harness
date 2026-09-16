@@ -2,7 +2,7 @@
 
 # qa-harness
 
-**Point it at a web app. Get a Playwright framework whose page objects contain no locators at all.**
+**Point it at a web app. Get a solid Playwright framework foundation and build on top of it using agents.**
 
 Then describe a test in plain English, and an agent writes it.
 
