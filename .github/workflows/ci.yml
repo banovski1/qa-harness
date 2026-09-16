@@ -46,19 +46,6 @@ jobs:
       - name: OpenCode tree matches .claude/
         run: npm run opencode:check
 
-  generated-framework:
-    name: generated framework typechecks
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: npm ci
-        working-directory: generated-framework
-      - run: npx tsc --noEmit
-        working-directory: generated-framework
-
   secrets:
     name: no credentials in the diff
     runs-on: ubuntu-latest
@@ -76,3 +63,17 @@ jobs:
             echo "::error::.env.example must ship empty credentials."
             exit 1
           fi
+      - name: no pipeline output is committed
+        run: |
+          fail=0
+          for f in analysis.json framework-draft.md .framework-draft.lock; do
+            if git ls-files --error-unmatch "$f" >/dev/null 2>&1; then
+              echo "::error::$f is committed. It describes one person's app; it must stay gitignored."
+              fail=1
+            fi
+          done
+          if [ -n "$(git ls-files generated-framework)" ]; then
+            echo "::error::generated-framework/ is committed. A clone must start fresh."
+            fail=1
+          fi
+          exit $fail

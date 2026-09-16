@@ -186,16 +186,31 @@ costs an hour.
 
 ---
 
-## See it working first
+## What "done" looks like
 
-OrangeHRM is committed with its analysis and its framework, so you can see what "done"
-looks like before aiming this at your own app:
+A clone of this repo is empty of app data on purpose — `analysis.json` and
+`generated-framework/` describe *your* application, so they are produced, never shipped.
+Here is a page object the generator wrote for a real screen, trimmed:
 
-```bash
-cd generated-framework && npm install && npx tsc --noEmit
+```ts
+export class EmployeeListPage extends BasePage {
+  readonly path = '/pim/viewEmployeeList';
+
+  readonly employeeName = new TextField(this.page, { label: 'Employee Name', via: 'proximity' }, ctx);
+  readonly employmentStatus = new Select(this.page, { label: 'Employment Status', via: 'proximity' }, ctx);
+  readonly search = new Button(this.page, { label: 'Search' }, ctx);
+  readonly employeeList = new RecordTable(this.page, 'employeeList', { keyColumn: 'Id', ... });
+
+  // Everything above came from the analysis. Everything below is yours: actions,
+  // assertions, and the domain language a crawl could not know.
+}
 ```
 
-Open any `src/pages/**/*.ts`. Not one CSS selector. That is the point of the whole repo.
+Not one CSS selector, and that app's markup has no `for=` on a single label — `via:
+'proximity'` is the crawl recording that it found the label by walking outward, and the
+runtime performing the same walk. That is the point of the whole repo.
+
+Run `/setup` against your own app and you get this file, for every screen it reached.
 
 ---
 

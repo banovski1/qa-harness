@@ -31,6 +31,13 @@ pipeline produces.
 | `.env` | yours. The only app-specific thing anyone writes by hand. `.env.example` is its committed template |
 | `analysis.json` | everything known about the app: ten sections, one contract |
 
+**Neither is committed, and neither is `generated-framework/`.** A clone of this repo
+starts with no app data at all — every one of those describes whichever application the
+person cloning it happens to point at, so shipping one would ship somebody else's crawl.
+`.gitignore` covers them and CI fails if one reappears in the index. This does not soften
+the write policy below: `analysis.json` is still produced and never hand-edited, and
+`generated-framework/` is still written exactly once.
+
 There were sixteen files, then four. Anything derived from `analysis.json` and committed
 beside it is a second thing to diff and a second thing to keep honest — the rendered
 menu map was the last of them, and its own reader could not tell that it silently
