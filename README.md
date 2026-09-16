@@ -11,6 +11,8 @@ Then describe a test in plain English, and an agent writes it.
 [![Node 22+](https://img.shields.io/badge/node-22%2B-5FA04E.svg)](https://nodejs.org)
 [![Sponsor](https://img.shields.io/badge/sponsor-%E2%9D%A4-db61a2.svg)](https://github.com/sponsors/bklv1)
 
+<sub>Built by [Cvetomir Banovski](https://github.com/bklv1) · [what this is and why](#who-built-this-and-why)</sub>
+
 </div>
 
 ```
@@ -41,15 +43,36 @@ Not a CSS selector in sight, and a hook rejects one if you add it. The page obje
 behind it is equally selector-free — every control is a named component built from the
 label a human reads, proved by the crawl to resolve to exactly one element.
 
-Two ideas are worth knowing before you start.
+### Four decisions that make that possible
 
-**The analysis is one file.** `analysis.json` holds everything known about your app —
-declared routes, API endpoints, every screen and control a crawl found, and whether each
-control can be addressed *reliably*. Nothing else is derived and committed beside it.
+**A handle is emitted only if it addresses exactly one element.** Not "probably one" —
+the crawl proves it against the running app. Controls are grouped by the handle each
+would carry; a group of one is addressable, a larger one is retried scoped to the
+heading above it, and whatever that does not separate is marked unverified and left out.
+A numeric suffix never disambiguates anything: `select` and `select2` carrying the same
+locator both resolve to both elements, and that failure belongs in the compiler, not in
+your test at 2am.
 
-**The pipeline knows what it does not know.** Every screen carries a confidence score.
-When it is low the agents refuse to write the test and ask you to record the flow
-instead. That is the system working, not failing.
+**Source and the running app answer different questions, and you need both.** Source
+knows every route the app declares and which endpoint creates a record. Only the running
+app can prove a locator is unique. Neither substitutes for the other, and the compiler is
+where they join.
+
+**The pipeline knows what it does not know.** Every screen carries a confidence score
+between 0 and 1. Below 0.7 the agents *refuse* to write the test and ask you to record
+the flow instead. That is the system working, not failing — a spec written past a low
+score fails on its third step and costs an hour.
+
+**Failures classify instead of timing out.** `NOT_FOUND`, `AMBIGUOUS`, `HIDDEN`,
+`DISABLED`, `COVERED`, `DETACHED` — each with the evidence that distinguishes it, the
+component and screen that produced it, and the path to re-crawl. Every wait is a named
+condition that reports what it saw instead:
+
+```
+waited 5041ms for the table to render — no element matches .oxd-table
+```
+
+So the misdiagnosis that ends in a pasted `waitForTimeout` is simply not available.
 
 ---
 
@@ -181,8 +204,8 @@ calls go into `analysis.json` permanently.
 > A screen still below 0.7 *after* being recorded is not asking for a second recording.
 > Its controls have no addressable names, and the fix is `npm run crawl:deep`.
 
-**This is the habit to build.** A spec written past a low score fails on step three and
-costs an hour.
+**This is the habit to build.** Recording when asked is the cheapest two minutes in the
+whole workflow.
 
 ---
 
@@ -227,6 +250,71 @@ A hook rejects writes that break these. Each one is a bug somebody already shipp
   that wrote it.
 
 `.claude/hooks/rules/` is the full list, and the rejection always names the fix.
+
+---
+
+## Things learned the hard way, encoded
+
+Each of these cost a debugging session before it became a line of code. They are the
+reason the generated framework behaves the way it does:
+
+**Never use `exact: true` on an accessible name.** A button built from an icon plus text
+computes its name as `"+ Create Contact"` once the icon font loads, and `"Create
+Contact"` before it does. The same test passes and fails depending on font timing.
+`wholeName()` anchors the end and requires a word boundary at the start instead.
+
+**A table that has not rendered reads exactly like a table that is empty.** Both give you
+zero rows. `settled()` waits for the root element first and then tells you which of the
+two it actually is — the distinction between "broken" and "no results", which no row
+count can give you.
+
+**`isVisible()` does not wait.** It is a query, not an assertion, and using it as one
+produces a test that passes on a fast machine and fails on CI. `expectVisible()` is the
+assertion.
+
+**A `<table>` with no header row is a layout table, not a collection.** One app in the
+corpus has dozens of them. Treating them as data is how you get a page object full of
+tables nobody can address.
+
+**A screen's identity is its URL pattern, anchored.** Without the anchor, `/#Contact`
+also matches `/#Contact/view/123`, and a test that never left the detail screen cheerfully
+reports that it is on the list.
+
+**`actionTimeout` must be shorter than the test timeout.** A component has to fail while
+there is still budget left to diagnose *why*. Otherwise every failure in the suite reads
+as `TIMED_OUT`, and the taxonomy above is worthless.
+
+**A table is addressed by what is in it, never by where a row sits.** `.nth(0)` and "the
+last row" break the moment sorting, paging or a parallel worker changes anything — which
+is exactly when a create test needs to find the row it just made. So every public
+accessor takes a value: `row(key)`, `cell(key, column)`, `expectRow(key)`. And since
+"the row you just created" is only reliable against a value only *this* run could have
+produced, every create test names its record through `uniqueName('Contact')` →
+`Contact-k3f9a2`. When `expectRow` fails, it prints the rows that were actually there.
+
+---
+
+## Who built this, and why
+
+I'm [Cvetomir Banovski](https://github.com/bklv1). I write test automation, and I got
+tired of the same failure: a page object full of CSS selectors, a redesign, and a week of
+work that produces no new coverage — only the same coverage, re-addressed.
+
+The interesting part was never "generate page objects." Plenty of tools do that, and what
+they produce is a pile of brittle selectors with a class around it. The interesting part
+is **refusing to emit a handle that has not been proved unique**, and **being honest about
+which screens are not ready to be tested.** A generator that always succeeds is a
+generator that has quietly moved the failure into your test suite.
+
+So the whole design is organised around evidence. Authentication is verified against the
+running app rather than read out of source and believed. A locator is emitted only when
+the crawl proved it resolves to one element. A screen the crawl could not reach is marked
+`crawled: false` rather than guessed at. And when the evidence is thin, the agents say so
+and ask for a recording instead of writing a test that will fail on step three.
+
+If that resonates, or you want to talk about testing, agents, or any of the decisions
+above — [open an issue](https://github.com/bklv1/qa-harness/issues), or find me on
+[GitHub](https://github.com/bklv1).
 
 ---
 
