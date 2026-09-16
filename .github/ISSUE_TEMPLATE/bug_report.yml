@@ -1,0 +1,57 @@
+name: Bug report
+description: Something in the pipeline did the wrong thing
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Two commands answer most questions. Please run them before filing.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you ran, what you expected, what you got.
+    validations: { required: true }
+  - type: textarea
+    id: preflight
+    attributes:
+      label: "`npm run preflight` output"
+      description: Redact anything private. It should not print credentials.
+      render: text
+    validations: { required: true }
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Which phase
+      options:
+        - preflight / .env
+        - analysis skills (dossier, components, api)
+        - crawl (map or deep)
+        - verify-auth
+        - compile / check
+        - draft / generate
+        - the generated framework at run time
+        - the test-writing agents
+    validations: { required: true }
+  - type: textarea
+    id: logs
+    attributes:
+      label: Evidence
+      description: |
+        For a run-time failure, the relevant lines of
+        `generated-framework/test-results/framework.log.jsonl` — one JSON record per
+        interaction. The lines *before* the failure show how the control was being
+        addressed. For a compile failure, `npm run check` output.
+      render: text
+  - type: input
+    id: app
+    attributes:
+      label: The app under test
+      description: Stack and, if it is public, a link. "A private Django admin" is fine.
+  - type: input
+    id: versions
+    attributes:
+      label: Node version and OS
+      placeholder: node 22.11.0, macOS 15.6
+    validations: { required: true }
+

@@ -1,7 +1,31 @@
 {
-  "name": "qa-micro-agents",
+  "name": "qa-harness",
   "version": "1.0.0",
   "private": true,
+  "description": "Point it at a web app - its source and a running instance - and get a Playwright framework whose page objects contain no locators at all.",
+  "keywords": [
+    "playwright",
+    "test-automation",
+    "page-object",
+    "codegen",
+    "qa",
+    "end-to-end",
+    "claude-code",
+    "ai-agents"
+  ],
+  "license": "Apache-2.0",
+  "author": "Cvetomir Banovski",
+  "homepage": "https://github.com/bklv1/qa-harness#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bklv1/qa-harness.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bklv1/qa-harness/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
   "type": "module",
   "scripts": {
     "codex:sync": "node scripts/sync-codex.mjs",

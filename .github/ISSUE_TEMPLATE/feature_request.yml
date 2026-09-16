@@ -1,0 +1,23 @@
+name: Feature request
+description: Something the pipeline should be able to do and cannot
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What you were trying to test, and where the pipeline stopped being able to help.
+    validations: { required: true }
+  - type: textarea
+    id: app
+    attributes:
+      label: The app that provoked it
+      description: |
+        The corpus in `CLAUDE.md` is four apps, each of which named one problem the
+        generator had to solve. A new app shape is the most useful thing you can bring.
+    validations: { required: true }
+  - type: textarea
+    id: idea
+    attributes:
+      label: What you think should happen
+      description: Optional. The problem is worth more than the solution.

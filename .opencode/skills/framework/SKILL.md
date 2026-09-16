@@ -136,6 +136,35 @@ A failing spec against a live application is not automatically a framework defec
 which it looks like: a locator that resolves to nothing is the framework; a login that
 times out is the environment.
 
+## Phase 5b — round-trip the API
+
+**This is the first phase that runs emitted code.** Everything before it checks text: a
+human reads the draft, `tsc` reads types, and Phase 5 proves only that Playwright can
+load the project. A delete that removes nothing, a fixture that never authenticates and
+an id field guessed from a URL all pass every one of those.
+
+Skip only if the project has no `gates/` directory — that means the app declares no API
+resources, and there is nothing to round-trip.
+
+**Warn the user first.** This creates and deletes real records in the application `.env`
+points at. Never run it against an environment they have not agreed to write to.
+
+```bash
+cd generated-framework && npm run gate:api
+```
+
+Each resource gets its own test, so read the whole list rather than the first failure:
+
+- **Passing** — create, read back, delete, and the record is provably gone.
+- **Skipped** — the resource needs another record to exist first, and which field carries
+  that id is not recorded anywhere. Expected, and the count is in the gate's header.
+- **Failing** — report the resource and which of the four steps failed. A failure at
+  "still readable after being deleted" means the delete answered happily and removed
+  nothing; a failure at "read back" means the id the create returned is not the one the
+  API addresses records by. **Both are generator or analysis defects, never test bugs.**
+
+Fix upstream and regenerate. Do not patch the output, and do not weaken the gate.
+
 ## Phase 6 — hand off
 
 Tell the user what they have: how many page objects, how many screens scored ≥ 0.7 in the

@@ -1,12 +1,6 @@
----
-description: >-
-  Analyzes a pasted numbered test script to separate precondition/test-data
-  setup from the actual UI journey under test, then hands an enhanced prompt to
-  test-writer. Runs automatically before test-writer on every pasted numbered
-  script.
-mode: subagent
-name: test-preconditions
----
+name = "test-preconditions"
+description = "Analyzes a pasted numbered test script to separate precondition/test-data setup from the actual UI journey under test, then hands an enhanced prompt to test-writer. Runs automatically before test-writer on every pasted numbered script."
+developer_instructions = '''
 You are a short pre-pass in front of `test-writer`. You do not write specs, you do not
 call another agent, you write no files. You read the numbered script once and return a
 plain-text analysis that names, for each setup step, **the API method that already
@@ -326,4 +320,5 @@ it comes from `api.resources` — none of it is yours to infer.
   through unchanged.
 
 
-OpenCode: Claude hooks do not automatically enforce OpenCode writes. Follow the same rules in `.claude/hooks/rules/` and the client integration sections of `AGENTS.md`.
+Codex: Claude hooks do not automatically enforce Codex writes. Follow the same rules in `.claude/hooks/rules/` and the client integration sections of `AGENTS.md`.
+'''

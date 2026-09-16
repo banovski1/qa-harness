@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pipeline:
+    name: pipeline
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run setup
+      - name: tests
+        run: npm run pipeline:test
+      - name: typecheck
+        run: npm run pipeline:typecheck
+      - name: write-guard rules
+        run: npm run hooks:test
+
+  agent-configs:
+    name: agent configs in sync
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Codex tree matches .claude/
+        run: npm run codex:check
+      - name: OpenCode tree matches .claude/
+        run: npm run opencode:check
+
+  generated-framework:
+    name: generated framework typechecks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+        working-directory: generated-framework
+      - run: npx tsc --noEmit
+        working-directory: generated-framework
+
+  secrets:
+    name: no credentials in the diff
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: .env is not tracked
+        run: |
+          if git ls-files --error-unmatch .env >/dev/null 2>&1; then
+            echo "::error::.env is committed. It must stay gitignored."
+            exit 1
+          fi
+      - name: .env.example holds no filled-in credential
+        run: |
+          if grep -nE '^(APP_USERNAME|APP_PASSWORD)=.+' .env.example; then
+            echo "::error::.env.example must ship empty credentials."
+            exit 1
+          fi

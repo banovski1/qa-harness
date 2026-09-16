@@ -1,28 +1,55 @@
-# qa-micro-agents
+<div align="center">
 
-Point this at a web application — its source *and* a running instance — and it produces a
-Playwright test framework whose page objects contain **no locators at all**. Then you
-describe a test in plain English, and an agent writes it.
+# qa-harness
+
+**Point it at a web app. Get a Playwright framework whose page objects contain no locators at all.**
+
+Then describe a test in plain English, and an agent writes it.
+
+[![CI](https://github.com/bklv1/qa-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/bklv1/qa-harness/actions/workflows/ci.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Node 22+](https://img.shields.io/badge/node-22%2B-5FA04E.svg)](https://nodejs.org)
+[![Sponsor](https://img.shields.io/badge/sponsor-%E2%9D%A4-db61a2.svg)](https://github.com/sponsors/bklv1)
+
+</div>
 
 ```
 your app's source ──┐
-                    ├──►     analysis.json      ──►   framework-draft.md ──(you approve)──►   generated-framework/
-your app running ───┘                                                                                    │
-                                                                                          you paste numbered steps
-                                                                                                    │
-                                                                      test-preconditions → test-writer → test-runner
+                    ├──►  analysis.json  ──►  framework-draft.md ──(you approve)──►  generated-framework/
+your app running ───┘                                                                        │
+                                                                              you paste numbered steps
+                                                                                             │
+                                                        test-preconditions → test-writer → test-runner
 ```
+
+---
+
+## Why this exists
+
+Every page object you have ever maintained rots because a selector lives in it. This
+one puts selectors in exactly one layer and lets everything above it speak English:
+
+```ts
+// a test against generated page objects — this is the whole vocabulary
+await employeeListPage.goto();
+await employeeListPage.employeeName.fill(name);
+await employeeListPage.search.click();
+await employeeListPage.employeeList.expectRow(id);
+```
+
+Not a CSS selector in sight, and a hook rejects one if you add it. The page object
+behind it is equally selector-free — every control is a named component built from the
+label a human reads, proved by the crawl to resolve to exactly one element.
 
 Two ideas are worth knowing before you start.
 
-**The analysis is one file.** `analysis.json`, at the root, holds everything known about
-your app: its declared routes, its API endpoints, every screen and control a crawl found,
-and — critically — whether each control can be addressed reliably. `CLAUDE.md` documents
-its ten sections.
+**The analysis is one file.** `analysis.json` holds everything known about your app —
+declared routes, API endpoints, every screen and control a crawl found, and whether each
+control can be addressed *reliably*. Nothing else is derived and committed beside it.
 
-**The pipeline knows what it does not know.** Every screen carries a confidence score. If
-it is low, the agents will refuse to write a test and ask you to record the flow instead.
-That is the system working, not failing.
+**The pipeline knows what it does not know.** Every screen carries a confidence score.
+When it is low the agents refuse to write the test and ask you to record the flow
+instead. That is the system working, not failing.
 
 ---
 
@@ -30,84 +57,31 @@ That is the system working, not failing.
 
 | | why |
 | --- | --- |
-| **Node.js 22+** | the pipeline and RuleSync run on it |
-| **Claude Code, Codex, or OpenCode** | project skills and agents drive the analysis and test workflow |
-| **A clone of the app under test** | the source half of the analysis. Any language |
+| **Node.js 22+** | the pipeline runs on it |
+| **Claude Code, Codex, or OpenCode** | the skills and agents that drive analysis and test writing |
+| **A clone of the app's source** | declared routes, entities, endpoints. Any language |
 | **A running instance you may crawl** | staging, a local `docker compose`, or a public demo |
-| **`playwright-cli`** | the only thing allowed to drive a browser here: `npm install -g @playwright/cli@latest` |
+| **`playwright-cli`** | the only thing allowed to drive a browser here — `npm i -g @playwright/cli@latest` |
 
-A note on the running instance: **the crawl is read-only.** It follows menus and links and
-never presses a button that could create or change data. It is safe to point at an
-environment you care about — but point it at staging first anyway.
+**The crawl is read-only.** It follows menus and links and never presses a button that
+could create or change data. Point it at staging first anyway.
 
-## Get started
+---
 
-### Working with Codex
+## Quickstart
 
-Open this checkout in Codex and start a new session to discover `AGENTS.md`, the eight
-skills in `.agents/skills/`, and the three agents in `.codex/agents/`. Use `$setup`
-after filling in `.env`; Claude's `/skill-name` examples mean `$skill-name` in Codex.
-The agents inherit your session model.
-
-`CLAUDE.md` and `.claude/` remain the editable sources. After changing them, run:
+### 1 · Install
 
 ```bash
-npm install
-npm run codex:sync
-npm run codex:check
+git clone https://github.com/bklv1/qa-harness.git && cd qa-harness
+npm install && npm run setup
+npm run pipeline:test    # if these pass, the pipeline itself is sound
 ```
 
-The refresh uses [RuleSync](https://github.com/dyoshikawa/rulesync), pinned to 16.31.0,
-with a temporary import directory. It preserves skill helper files and references;
-the test runner's known-issues table stays shared in `.claude/agents/`. Generation
-does not delete obsolete outputs: remove a retired generated skill or agent explicitly.
-
-Claude's write hooks require Claude tool payloads and are not registered in Codex.
-Their policies are carried into `AGENTS.md` as instructions, without automatic write
-blocking. Claude plugin enablement and scheduled-task state are client-specific.
-The current `.mcp.json` has no servers, so no Codex MCP configuration is needed.
-
-### Working with OpenCode
-
-Open this checkout in OpenCode and ask it to use the `setup` skill after filling in
-`.env`. OpenCode reads the shared `AGENTS.md`, eight skills in `.opencode/skills/`,
-and three subagents in `.opencode/agents/`. You can also mention an agent directly,
-for example `@test-preconditions`. See the official [skills](https://opencode.ai/docs/skills/)
-and [agents](https://opencode.ai/docs/agents/) documentation.
-
-After editing the Claude sources, refresh and verify both clients:
+### 2 · Fill in `.env` — the only file you write by hand
 
 ```bash
-npm run codex:sync
-npm run opencode:sync
-npm run codex:check
-npm run opencode:check
-```
-
-Both commands generate identical shared instructions, so their order does not matter.
-OpenCode agents inherit the calling agent's model. The same hook limitation applies:
-Claude hooks are carried as policies, not installed as OpenCode plugins. There are
-currently no MCP servers or Claude commands to convert. Retired generated files need
-explicit removal, as with Codex.
-
-### Pipeline setup
-
-Three steps. The third one does everything else.
-
-### 1. Install
-
-```bash
-git clone <this repo> && cd qa-micro-agents
-npm install             # the root toolchain
-npm run setup           # the generator's toolchain
-npm run pipeline:test   # 51 tests. If these pass, the pipeline itself is sound
-```
-
-### 2. Fill in `.env` — the only file you write by hand
-
-```bash
-cp .env.example .env
-$EDITOR .env
+cp .env.example .env && $EDITOR .env
 ```
 
 It is commented line by line. Five things have to be right:
@@ -116,28 +90,26 @@ It is commented line by line. Five things have to be right:
 | --- | --- |
 | `APP_BASE_URL` | where the running app lives |
 | `APP_REPO_PATH` | where you cloned its source |
-| `APP_USERNAME` / `APP_PASSWORD` | a test account. Without these the crawl sees only a login page |
+| `APP_USERNAME` / `APP_PASSWORD` | a test account — without it the crawl sees a login page and nothing else |
 | `AUTH_*_SELECTOR` | the username field, the password field, the submit button |
 | `AUTH_READY_WHEN` | something **visible** that exists only once you are logged in |
 
-That last one earns its own sentence. Without it nothing can tell a successful login
-from a re-rendered login page, and you get an analysis full of screens that were never
-reached. Pick something you can see — a container with zero height proves nothing.
+> That last one earns its own sentence. Without it nothing can tell a successful login
+> from a re-rendered login page, and you get an analysis full of screens that were never
+> reached. A container with zero height proves nothing — pick something you can see.
 
-**`.env` is gitignored. `.env.example` is committed and must never hold a real password.**
+**`.env` is gitignored. `.env.example` is the committed template and holds placeholders only.**
 
-### 3. Say `/setup` in Claude Code
+### 3 · Say `/setup`
 
 ```
 /setup
 ```
 
-The skill installs what is missing, reads your source, proves the login works, crawls the
-running app twice, compiles and gates the result, then writes `framework-draft.md` — every
-page object, component and API resource it would generate, with the testability score and
-the evidence behind each control — and stops. **It does not generate anything.**
-
-It takes a few minutes, mostly the crawl. It reports each phase as it goes.
+It installs what is missing, reads your source, proves the login actually works, crawls
+the running app twice, compiles and gates the result — then writes `framework-draft.md`
+and **stops**. Every page object, component and API resource it *would* generate, with
+the testability score and the evidence behind each control. It generates nothing.
 
 Read the draft. If it is the right foundation:
 
@@ -146,19 +118,17 @@ npm run draft -- --approve   # records that a human read it
 npm run generate             # writes generated-framework/ — once, and only once
 ```
 
-The generator refuses to run a second time against an existing `generated-framework/`,
-and refuses to run at all if the draft is unapproved or no longer matches what the
-current analysis would render — recompiling the analysis expires the approval
-automatically. There is no undo but `rm -rf generated-framework/`.
+Takes a few minutes, mostly the crawl. It reports each phase as it goes.
 
-**If something is wrong, it stops and names it.** Before doing any work `/setup` runs a
-preflight you can also run yourself:
+### When it stops instead
+
+`/setup` runs a preflight first, which you can also run yourself:
 
 ```bash
 npm run preflight
 ```
 
-Every line is `ok`, `warn` or `FIX`, and each `FIX` carries the one thing to change:
+Every line is `ok`, `warn` or `FIX`, and each `FIX` names the one thing to change:
 
 ```
 ok   APP_BASE_URL           https://staging.example.com/
@@ -168,39 +138,13 @@ FIX  source clone           /Users/you/Projects/my-app does not exist
 warn APP_USERNAME           not set - the crawl only sees what a logged-out visitor sees
 ```
 
-`FIX` stops the run — those are decisions only you can make. `warn` continues, but means
-a degraded result. It also catches the failure that otherwise looks like success: an
-`analysis.json` left over from a *different* application, which compile and generate
-would both happily run against.
+`FIX` stops the run — those are decisions only you can make. `warn` continues, degraded.
 
-### Then what?
+---
 
-You have `analysis.json`, a `framework-draft.md` to read, and once you approve it and run
-`npm run generate`, a `generated-framework/` project. Skip to
-[Now write a test](#now-write-a-test).
+## Write a test
 
-One app per checkout. To analyse a second application, give it its own worktree —
-`npm run app:worktree -- <slug>` — rather than a second config here.
-
-## Try it on an app that already works
-
-OrangeHRM is committed with its analysis and its framework, so you can see what "done"
-looks like before aiming at your own app.
-
-```bash
-cd generated-framework
-npm install && npx playwright install chromium
-npx tsc --noEmit
-```
-
-Now open any `src/pages/**/*.ts` and notice there is not a single CSS selector in it —
-just named controls. That is the point of the whole repo.
-
-To actually *run* those tests you need credentials in the root `.env`.
-
-## Now write a test
-
-Paste numbered steps into Claude Code. Just that — no special syntax:
+Paste numbered steps. No special syntax:
 
 ```
 1. Log in as an admin
@@ -211,167 +155,88 @@ Paste numbered steps into Claude Code. Just that — no special syntax:
 
 Three agents run in order, automatically:
 
-- **`test-preconditions`** decides which steps are *setup* (create the customer through
-  the API — fast and reliable) and which are the *journey under test* (the UI). It checks
-  that your API login is verified and that the screens are known well enough.
-- **`test-writer`** writes the spec using the generated page objects.
-- **`test-runner`** runs it and fixes it, but only using documented fixes.
+| agent | what it does |
+| --- | --- |
+| **`test-preconditions`** | splits *setup* (create the customer over the API — fast, reliable) from the *journey under test* (the UI), and checks the login is verified and the screens are known well enough |
+| **`test-writer`** | writes the spec against the generated page objects |
+| **`test-runner`** | runs it and fixes it, using documented fixes only |
 
 ### When it asks you to record instead
-
-Sometimes you will get this back:
 
 ```
 RECORDING REQUIRED: 1 screen(s) this script touches cannot be addressed yet.
 
   /customers/new   0.42  (record-first)
     7 control(s) cannot be addressed by name
-
-Record the flow, and the analysis will learn it:
-
-  Use the app-recorder skill, flow slug customers-new
 ```
 
-A crawl can see what is *on* a page. It cannot see what a click *leads to*, which field
-must be filled first, or what the app does on submit. When the score is low, two minutes
-of recording settles what no amount of guessing will.
+A crawl sees what is *on* a page. It cannot see what a click *leads to*. Ask for the
+`app-recorder` skill: it opens your app, logs you in, and hands you the browser. You
+click the flow once. It captures the clicks **and** the requests your app made while
+you worked, so the endpoints behind the flow are learned too.
 
-Ask for the `app-recorder` skill. It opens your app, logs you in, and hands you the
-browser — you click through the flow once and say when you are done. What it captures is
-not just the clicks: the requests your app made while you worked are captured from the
-same session, so the endpoints behind the flow are learned too.
+**Each recording makes the next one smaller** — routes, controls, transitions and API
+calls go into `analysis.json` permanently.
 
-**Each recording makes the next one smaller.** The routes, controls, transitions and API
-calls one recording proved go into `analysis.json` permanently, so the screens it touched
-stop asking — and the endpoints it revealed become preconditions the agents can set up in
-one call instead of clicking through.
+> A screen still below 0.7 *after* being recorded is not asking for a second recording.
+> Its controls have no addressable names, and the fix is `npm run crawl:deep`.
 
-One thing to know: a screen still below 0.7 *after* being recorded is not asking to be
-recorded again. Its controls have no addressable names, and the fix is `npm run
-crawl:deep`. The report says so when that is the case.
+**This is the habit to build.** A spec written past a low score fails on step three and
+costs an hour.
 
-**This is the most important habit to build.** A spec written past a low score fails on
-its third step and costs an hour to debug.
+---
+
+## See it working first
+
+OrangeHRM is committed with its analysis and its framework, so you can see what "done"
+looks like before aiming this at your own app:
+
+```bash
+cd generated-framework && npm install && npx tsc --noEmit
+```
+
+Open any `src/pages/**/*.ts`. Not one CSS selector. That is the point of the whole repo.
+
+---
 
 ## The rules the repo enforces on you
 
-A hook rejects writes that break these — it is not being difficult, each one is a bug
-somebody already shipped:
+A hook rejects writes that break these. Each one is a bug somebody already shipped:
 
 - **No locators in a test.** `page.locator('.btn-save')` is rejected; `customerPage.save`
   is the way. Selectors live in one layer so a redesign is one edit.
 - **No `waitForTimeout`.** Wait for evidence — an assertion, or the response itself.
-- **No fixed names for created records.** `uniqueName('Customer')` — two test runs in the
-  same second must not collide.
-- **Never edit `analysis.json`.** A wrong report is fixed by re-running the skill that
-  wrote it, not by hand — the generator has already run once, so a fix to the analysis
-  after that point lives only in a fresh worktree or a fresh `generated-framework/`.
+- **No fixed names for created records.** `uniqueName('Customer')`. Two runs in the same
+  second must not collide.
+- **Never hand-edit `analysis.json`.** A wrong report is fixed by re-running the skill
+  that wrote it.
 
-`.claude/hooks/rules/` is the full list, and the rejection message always names the fix.
-
-## Appendix: running a phase by hand
-
-`/setup` runs all of these in order. Reach for one directly when you are re-running a
-single phase — a fresh crawl after the app changed, say — or when you want to see what
-failed.
-
-### Read the source — three skills
-
-Ask Claude Code to run them by name, in this order. Each writes one section of
-`analysis.json` and nothing else:
-
-```
-run the app-dossier skill       # stack, declared routes, entities
-run the app-components skill    # the UI library, how labels attach to inputs
-run the app-api skill           # endpoints, and how to log in
-```
-
-`app-dossier` must go first; the other two read what it wrote.
-
-### Prove the login actually works
-
-```bash
-npm run verify-auth -- --write
-```
-
-This runs the login the skill *read out of your source* against the running app, then
-calls a protected endpoint twice — once anonymously, once with the credential — and only
-says `verified` if the first is refused and the second admitted. A citation is a
-hypothesis; this makes it a fact. Until it says `verified`, no agent will build test setup
-on that login.
-
-### Crawl the running app — two passes
-
-```bash
-playwright-cli -s=myapp open https://staging.example.com/
-
-npm run crawl:map     # minutes: menus, buttons, tables
-npm run crawl:deep    # longer: every control, proved unique
-```
-
-The **map** walks the application's own menus — because most business software does not
-link its screens — and answers "where is everything?": every module, and per screen its
-buttons, fields and tables. Read the `map` section of `analysis.json` afterwards; it is
-the quickest picture of an app this repo produces. The **deep crawl** is what proves a
-locator resolves to exactly one element.
-
-### Compile and gate
-
-```bash
-npm run compile     # joins source + crawl, scores every screen
-npm run check       # tells you what is missing and who has not run
-```
-
-`check` is the one to read. `0 error(s)` means the contract is complete. Warnings name the
-step you skipped.
-
-### Draft the framework, then generate it — once
-
-```bash
-npm run draft                # writes framework-draft.md; writes no code
-npm run draft -- --approve   # records that a human read it
-npm run generate             # writes generated-framework/ — once, and only once
-```
-
-The draft is every page object, component and API resource the generator would write,
-with the testability score and the evidence behind each control. It exists so the
-decision to generate — which cannot be undone short of `rm -rf generated-framework/` — is
-made by a human who has read what will be built, not by a command that ran and hoped.
-Recompiling the analysis changes the draft, which expires the approval automatically.
-
-### Run what came out
-
-```bash
-cd generated-framework
-npm install && npx playwright install chromium
-npx tsc --noEmit && npx playwright test   # credentials come from the root .env
-```
+`.claude/hooks/rules/` is the full list, and the rejection always names the fix.
 
 ---
 
-## When something goes wrong
+## Where to go next
 
-**Start with `npm run preflight`.** Most setup failures are a `.env` value, a missing
-clone or a missing tool, and it names them directly.
-
-| symptom | what it means |
+| | |
 | --- | --- |
-| `/setup` stopped on a `FIX` line | that one is yours to fix — the line says what and how |
-| the crawl found 0 modules | it is not logged in. Check the `AUTH_*` values, especially `AUTH_READY_WHEN` |
-| `check` says a section is missing | that skill has not run. It names which one |
-| `verify-auth` says `failed` | the login in the analysis is wrong. The observations show which step broke |
-| a test fails with `AMBIGUOUS` | the locator matches more than one element — add a scoped accessor in the page object |
-| a test fails with `NOT_FOUND` | the app moved, or the analysis is stale. Re-crawl |
-| a page object is nearly empty | the crawl never reached that screen. Check `testability` in `analysis.json` |
+| [**RUNBOOK.md**](RUNBOOK.md) | run any phase by hand, and what to do when something breaks |
+| [**CLAUDE.md**](CLAUDE.md) | the architecture, and every rule with the reason it exists |
+| [**CONTRIBUTING.md**](CONTRIBUTING.md) | how to send a change, and what a good one looks like |
+| `scripts/analysis/README.md` | the `analysis.json` contract, section by section |
+| `.claude/agents/` | exactly what each agent will and will not do |
 
-Every failure names the component, the screen, and the file to re-crawl. It is one line
-in `test-results/framework.log.jsonl`, which holds a JSON record for every interaction a
-component makes, not only the ones that fail — so the lines just before a failure show how
-the control was being addressed right up to the step that broke.
+Using **Codex** or **OpenCode** instead of Claude Code? Both are supported —
+[RUNBOOK.md](RUNBOOK.md#other-agent-clients) has the details. Claude's `/skill-name`
+is `$skill-name` in Codex.
 
-## Where to read next
+---
 
-- **`CLAUDE.md`** — the architecture, and every rule with the reason it exists.
-- **`scripts/analysis/README.md`** — the `analysis.json` contract, section by section.
-- **`.claude/agents/`** — exactly what each agent will and will not do.
-- **`.claude/skills/setup/SKILL.md`** — what `/setup` actually does, phase by phase.
+## Support this project
+
+qa-harness is Apache-2.0 and free to use. If it saved you a week of writing page
+objects, [**sponsor it**](https://github.com/sponsors/bklv1) — it funds the corpus of
+apps every generator change is validated against.
+
+## Licence
+
+[Apache-2.0](LICENSE) © Cvetomir Banovski. Contributions are covered by [CLA.md](CLA.md).
