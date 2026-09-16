@@ -339,10 +339,12 @@ here. Never use the Playwright MCP (`mcp__playwright__*`) tools. Scratch output 
 answers `requests`, the network the flow provoked comes back with it, needing no HAR and
 no trace. `playwright-codegen` used to be the exception here and has been deleted.
 
-Recordings land in `recordings/<flow>-<timestamp>.{md,json}` — both committed, because the
-analysis is derived from them and a derivation whose input is not in the repo cannot be
-re-run. They are evidence of what happened and are never edited afterwards. If a screen's
-elements are missing, re-crawl; if a *flow* is unknown, record it.
+Recordings land in `recordings/<flow>-<timestamp>.{md,json}`, and like `analysis.json`
+they are gitignored: a recording is a walk through *your* application, and it is the one
+artifact here that can carry a real credential, so it stays on the machine that made it.
+Keep them anyway — `analysis.json` is derived from them, and a derivation whose input you
+deleted cannot be re-run. They are evidence of what happened and are never edited
+afterwards. If a screen's elements are missing, re-crawl; if a *flow* is unknown, record it.
 
 ## Test authoring rule
 

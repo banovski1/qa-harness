@@ -15,8 +15,11 @@ const run = (args) => execFileSync(process.execPath, [cli, ...args], { cwd: stag
 
 try {
   await mkdir(join(stage, '.claude/agents'), { recursive: true });
+  // .mcp.json is optional: this repo declares no MCP servers, and a checkout that
+  // adds one should still sync. rulesync's `mcp` feature simply finds nothing.
   for (const path of ['CLAUDE.md', '.mcp.json', '.claude/settings.json', '.claude/skills']) {
-    await cp(join(root, path), join(stage, path), { recursive: true });
+    await cp(join(root, path), join(stage, path), { recursive: true, force: true })
+      .catch((err) => { if (err.code !== 'ENOENT') throw err; });
   }
   // The other Markdown file is a shared, mutable reference table, not an agent.
   for (const name of ['test-preconditions', 'test-writer', 'test-runner']) {

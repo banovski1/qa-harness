@@ -190,7 +190,11 @@ docs.
 Claude's write hooks require Claude tool payloads and are not registered in Codex or
 OpenCode. Their policies are carried into `AGENTS.md` as instructions, **without
 automatic write blocking**. Claude plugin enablement and scheduled-task state are
-client-specific, and the current `.mcp.json` has no servers.
+client-specific.
+
+This repo declares no MCP servers, so there is no `.mcp.json` to translate. If you add
+one, the sync picks it up — and note that `playwright-cli` remains the only thing allowed
+to drive a browser here, so the Playwright MCP is not the server to add.
 
 ---
 
