@@ -11,7 +11,7 @@ Then describe a test in plain English, and an agent writes it.
 [![Node 22+](https://img.shields.io/badge/node-22%2B-5FA04E.svg)](https://nodejs.org)
 [![Sponsor](https://img.shields.io/badge/sponsor-%E2%9D%A4-db61a2.svg)](https://github.com/sponsors/bklv1)
 
-<sub>Built by [Cvetomir Banovski](https://github.com/bklv1) · [what this is and why](#who-built-this-and-why)</sub>
+<sub>Built by [Tsvetomir Banovski](https://github.com/bklv1) · [what this is and why](#who-built-this-and-why)</sub>
 
 </div>
 
@@ -296,7 +296,7 @@ produced, every create test names its record through `uniqueName('Contact')` →
 
 ## Who built this, and why
 
-I'm [Cvetomir Banovski](https://github.com/bklv1). I write test automation, and I got
+I'm [Tsvetomir Banovski](https://github.com/bklv1). I write test automation, and I got
 tired of the same failure: a page object full of CSS selectors, a redesign, and a week of
 work that produces no new coverage — only the same coverage, re-addressed.
 
@@ -342,7 +342,7 @@ apps every generator change is validated against.
 
 ## Licence
 
-[Apache-2.0](LICENSE) © Cvetomir Banovski.
+[Apache-2.0](LICENSE) © Tsvetomir Banovski.
 
 Contributions are licensed under the same terms — Apache-2.0 includes an explicit
 contribution grant (section 5), so there is nothing extra to sign.
