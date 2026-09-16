@@ -2,11 +2,14 @@
 
 Thanks for being here. Three things to know before you open a pull request.
 
-### 1. Sign the CLA
+### 1. Your contribution is Apache-2.0
 
-A bot asks once, on your first PR. [`CLA.md`](CLA.md) says what it is and why it
-exists — short version: you keep your copyright, the project keeps a single
-relicensable IP chain.
+There is nothing to sign. Apache-2.0 section 5 says any contribution you
+deliberately submit is licensed under the same terms as the project, unless you
+state otherwise. You keep the copyright on your own work.
+
+If any part of what you send is *not* your original creation, say so in the pull
+request and name its source and licence.
 
 ### 2. `master` is protected
 
@@ -75,5 +78,5 @@ CI fails if the generated trees drift from their source.
 
 ## Licence
 
-By contributing you agree your work is licensed under Apache-2.0 (see
-[`LICENSE`](LICENSE)) and covered by [`CLA.md`](CLA.md).
+By contributing you agree your work is licensed under Apache-2.0. See
+[`LICENSE`](LICENSE).

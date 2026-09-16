@@ -239,4 +239,7 @@ apps every generator change is validated against.
 
 ## Licence
 
-[Apache-2.0](LICENSE) © Cvetomir Banovski. Contributions are covered by [CLA.md](CLA.md).
+[Apache-2.0](LICENSE) © Cvetomir Banovski.
+
+Contributions are licensed under the same terms — Apache-2.0 includes an explicit
+contribution grant (section 5), so there is nothing extra to sign.
