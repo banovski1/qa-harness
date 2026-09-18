@@ -60,6 +60,13 @@ export function loadEnv(envPath = join(ROOT, '.env')) {
   return { ...fromFile, ...process.env };
 }
 
+/** Resolve a profile's env reference only at the point where its value is consumed. */
+export function resolveEnvValue(value, env = loadEnv()) {
+  return typeof value === 'string' && value.startsWith('env:')
+    ? (env[value.slice(4)] ?? '')
+    : value;
+}
+
 /**
  * A login form is a username, a password and a submit button. The YAML profile expressed
  * that as a general step machine, which bought generality nothing in the corpus ever used

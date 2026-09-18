@@ -9,9 +9,10 @@ scripts/framework-generator/node_modules
 docs/superpowers/
 .worktrees/
 
-# app-explorer scratch: the bundle it hands to playwright-cli
-analysis/**/.batch.js
-analysis/**/.probe.js
+# app-explorer scratch: the bundles it hands to playwright-cli
+.batch.js
+.map-batch.js
+.probe.js
 
 # ─── Everything the pipeline produces ───────────────────────────────────────
 # A fresh checkout starts empty. You fill in .env, run the pipeline, and these
@@ -31,7 +32,7 @@ generated-framework/
 
 # Raw crawl output. Working material for the explorer, distilled into analysis.json's
 # `screens` section — the ladder and boxes it carries are megabytes nothing reads twice.
-analysis/*/.crawl/
+.crawl/
 
 # The hand-written config. .env.example is the committed template.
 .env

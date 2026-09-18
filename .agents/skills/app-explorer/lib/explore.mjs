@@ -7,7 +7,7 @@ import { mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { promisify } from 'node:util';
-import { loadProfile, ROOT } from '../../../../scripts/config/profile.mjs';
+import { loadEnv, loadProfile, resolveEnvValue, ROOT } from '../../../../scripts/config/profile.mjs';
 import { buildBundle } from './build-bundle.mjs';
 import { writeScreensSection } from './write-screens.mjs';
 
@@ -31,6 +31,7 @@ const flag = (name, fallback) => {
 const has = (name) => args.includes('--' + name);
 
 const profile = loadProfile();
+const env = loadEnv();
 const outDir = ROOT;
 // Raw crawl output is working material, not an artifact: it carries a candidate ladder
 // and a bounding box per element, which was fifteen megabytes for one app and unreadable
@@ -144,9 +145,7 @@ const authConfig = profile.auth
     loginUrl: profile.auth.loginUrl || profile.baseUrl,
     steps: (profile.auth.steps || []).map((step) => ({
       ...step,
-      value: typeof step.value === 'string' && step.value.startsWith('env:')
-        ? (process.env[step.value.slice(4)] ?? '')
-        : step.value,
+      value: resolveEnvValue(step.value, env),
     })),
     readyWhen: profile.auth.readyWhen || null,
   }

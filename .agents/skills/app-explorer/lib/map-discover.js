@@ -52,11 +52,30 @@ async page => {
         return { ok: false, error: 'auth step failed: ' + step.selector + ' — ' + e.message };
       }
     }
+    // Submitting the form starts a redirect chain, and a login that ends in one is the
+    // normal case rather than the exotic one. `readyWhen` is the app's own signal that
+    // the chain finished, so it is waited on before settling: without it the next
+    // evaluate lands on a document already being torn down, or on the login page still,
+    // which reads as an application with no menus at all. A crawl that cannot prove it
+    // logged in says so rather than reporting that emptiness as a finding.
+    if (CONFIG.auth.readyWhen) {
+      const ready = await page.locator(CONFIG.auth.readyWhen).first()
+        .waitFor({ state: 'visible', timeout: CONFIG.navTimeout }).then(() => true, () => false);
+      if (!ready) return { ok: false, error: 'post-login marker never appeared' };
+    }
     await settle();
   } else {
     await goTo(CONFIG.baseUrl);
   }
 
-  const nav = await page.evaluate(navOf, {});
+  // One retry, for the same reason: a navigation may still land between settling and
+  // reading. Re-settling and asking again costs a second and removes a flake.
+  let nav;
+  try {
+    nav = await page.evaluate(navOf, {});
+  } catch {
+    await settle();
+    nav = await page.evaluate(navOf, {});
+  }
   return { ok: true, url: page.url(), primary: nav.primary, secondary: nav.secondary };
 }

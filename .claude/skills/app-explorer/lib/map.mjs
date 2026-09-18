@@ -8,7 +8,7 @@ import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
-import { loadProfile, ROOT } from '../../../../scripts/config/profile.mjs';
+import { loadEnv, loadProfile, resolveEnvValue, ROOT } from '../../../../scripts/config/profile.mjs';
 
 const run = promisify(execFile);
 const here = dirname(fileURLToPath(import.meta.url));
@@ -17,6 +17,7 @@ const args = process.argv.slice(2);
 const flag = (name, fallback) => { const at = args.indexOf('--' + name); return at === -1 ? fallback : args[at + 1]; };
 
 const profile = loadProfile();
+const env = loadEnv();
 const outDir = ROOT;
 const session = flag('session', profile.session || 'app-map');
 const budgetMin = Number(flag('budget-min', (profile.budget || {}).mapMinutes || 8));
@@ -37,7 +38,7 @@ const authConfig = profile.auth ? {
   loginUrl: profile.auth.loginUrl || profile.baseUrl,
   steps: (profile.auth.steps || []).map((step) => ({
     ...step,
-    value: typeof step.value === 'string' && step.value.startsWith('env:') ? (process.env[step.value.slice(4)] ?? '') : step.value,
+    value: resolveEnvValue(step.value, env),
   })),
   readyWhen: profile.auth.readyWhen || null,
 } : null;

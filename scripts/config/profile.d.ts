@@ -22,3 +22,4 @@ export declare const ANALYSIS_PATH: string;
 export declare function parseEnvFile(text: string): Record<string, string>;
 export declare function loadEnv(envPath?: string): Record<string, string | undefined>;
 export declare function loadProfile(envPath?: string): Profile;
+export declare function resolveEnvValue(value: unknown, env?: Record<string, string | undefined>): unknown;

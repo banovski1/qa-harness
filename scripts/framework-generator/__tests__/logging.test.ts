@@ -105,6 +105,32 @@ test('a password handle is redacted end to end — the secret never appears in t
   assert.ok(!serialised.includes(secret), 'the secret leaked into the log record');
 });
 
+test('an action cannot bypass handle-based redaction while ordinary action detail survives', async () => {
+  const secretCapture = capture();
+  const password = new TestComponent(
+    'Password',
+    { screen: 'LoginPage', logger: secretCapture.logger },
+    fakeLocator(),
+  );
+  const secret = ['sensitive', 'canary'].join('-');
+
+  await password.run(`fill with "${secret}"`, async target => { await target.count(); }, secret);
+
+  const secretRecord = JSON.stringify(secretCapture.records()[0]);
+  assert.ok(!secretRecord.includes(secret), 'the secret leaked through the action');
+
+  const ordinaryCapture = capture();
+  const firstName = new TestComponent(
+    'First Name',
+    { screen: 'ContactPage', logger: ordinaryCapture.logger },
+    fakeLocator(),
+  );
+
+  await firstName.run('fill with "Ada"', async target => { await target.count(); }, 'Ada');
+
+  assert.equal(ordinaryCapture.records()[0]?.action, 'fill with "Ada"');
+});
+
 test('a failed interaction logs the classified outcome, not "ok", and still throws ComponentError', async () => {
   const { logger, records } = capture();
   const component = new TestComponent('Submit', { screen: 'ContactPage', logger }, fakeLocator({ count: async () => 0 }));

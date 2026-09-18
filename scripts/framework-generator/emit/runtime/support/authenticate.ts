@@ -196,10 +196,23 @@ export async function authenticate(
   // same thing from a test's point of view, and only this call tells them apart.
   const probe = await request.fetch(plan.verifyWith.path, { method: plan.verifyWith.method, headers });
   if (!probe.ok()) {
+    // 401 and 403 are different diagnoses and must not share a sentence. 401 says the
+    // credential is absent or was not accepted — the login is what broke. 403 says the
+    // credential arrived and was understood, and this account simply may not read this
+    // endpoint: the login is fine and the probe was the wrong choice. Saying "the
+    // credential did not survive the login" for a 403 sends the reader to inspect a
+    // login that never failed.
+    const forbidden = probe.status() === 403;
     throw new AuthError(
       `Logged in, but ${plan.verifyWith.method} ${plan.verifyWith.path} answered ` +
-      `${probe.status()}. This read is known to admit an authenticated caller, so the ` +
-      `credential did not survive the login.`,
+      `${probe.status()}. ` +
+      (forbidden
+        ? 'A 403 means the credential was accepted and this account is not permitted to ' +
+          'read that endpoint — the login worked, and the endpoint recorded as the proof ' +
+          'is one this user cannot see. Re-run: npm run verify-auth -- --write, which ' +
+          'cascades until it finds a read this account is authorised for, then regenerate.'
+        : 'This read is known to admit an authenticated caller, so the credential did not ' +
+          'survive the login.'),
     );
   }
   return headers;

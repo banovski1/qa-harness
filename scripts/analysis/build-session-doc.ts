@@ -120,6 +120,22 @@ export function routesIn(steps: Step[], baseUrl: string): { path: string; url: s
  */
 const ASSET = /\.(css|js|mjs|png|jpe?g|gif|svg|woff2?|ttf|ico|map)(\?|$)/i;
 
+/**
+ * Turn `playwright-cli`'s printed request log into the rows `requestsIn` reads.
+ *
+ * One line per request: `12. [POST] https://host/path => [302] `. The status is what
+ * makes a line worth keeping — a line without one is a request still in flight when the
+ * session was asked, and its outcome is unknown.
+ */
+export function parseRequestLog(log: string): { method: string; url: string; status: number }[] {
+  const out: { method: string; url: string; status: number }[] = [];
+  for (const line of log.split('\n')) {
+    const m = /^\s*\d+\.\s*\[([A-Z]+)\]\s+(\S+)\s*=>\s*\[(\d{3})\]/.exec(line);
+    if (m) out.push({ method: m[1], url: m[2], status: Number(m[3]) });
+  }
+  return out;
+}
+
 export function requestsIn(raw: unknown[], baseUrl: string) {
   const out: {
     method: string; path: string; status: number; kind: 'xhr' | 'fetch' | 'document';
@@ -223,7 +239,13 @@ function main(): void {
   if (requestsPath && existsSync(requestsPath)) {
     try {
       const parsed = JSON.parse(readFileSync(requestsPath, 'utf8'));
-      rawRequests = Array.isArray(parsed) ? parsed : (parsed.requests ?? parsed.result ?? []);
+      const held = Array.isArray(parsed) ? parsed : (parsed.requests ?? parsed.result ?? []);
+      // `playwright-cli --json requests` answers with its human-readable log in a single
+      // `result` string, not an array of objects:
+      //   "6. [GET] https://host/path => [200] \n7. [POST] …"
+      // Handing that string to requestsIn() iterates its characters and silently yields
+      // no traffic at all, which reads exactly like an app that made no requests.
+      rawRequests = typeof held === 'string' ? parseRequestLog(held) : held;
     } catch {
       // Losing the traffic costs the api half of the recording and nothing else. It is
       // not worth throwing away the steps over.

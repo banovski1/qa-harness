@@ -52,6 +52,11 @@ export function redact(handle: string, value: unknown): string | undefined {
   return String(value);
 }
 
+export function redactAction(handle: string, action: string, value: unknown): string {
+  if (!SECRET.test(handle) || value === undefined || value === null) return action;
+  return action.replaceAll(String(value), '[redacted]');
+}
+
 const level = process.env.LOG_LEVEL ?? 'info';
 const pretty = !process.env.CI && process.env.LOG_FORMAT !== 'json';
 

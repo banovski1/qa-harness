@@ -7,7 +7,7 @@
 import { test, expect, type Locator, type Page } from '@playwright/test';
 import type { Logger } from 'pino';
 import { classify, ComponentError } from './diagnostics.ts';
-import { componentLogger, redact, type ComponentLog } from '../../support/logger.ts';
+import { componentLogger, redact, redactAction, type ComponentLog } from '../../support/logger.ts';
 
 export interface ComponentContext {
   /** The screen class that owns this component, for the failure report. */
@@ -73,30 +73,32 @@ export abstract class BaseComponent {
    * what this file is responsible for getting right.
    */
   protected async act<T>(action: string, fn: (target: Locator) => Promise<T>, arg?: unknown): Promise<T> {
-    return test.step(`${this.componentName} "${this.label}" › ${action}`, () => this.runAndLog(action, fn, arg));
+    const safeAction = redactAction(this.label, action, arg);
+    return test.step(`${this.componentName} "${this.label}" › ${safeAction}`, () => this.runAndLog(safeAction, fn, arg));
   }
 
   protected async runAndLog<T>(action: string, fn: (target: Locator) => Promise<T>, arg?: unknown): Promise<T> {
     const started = Date.now();
     const described = this.describe();
+    const safeAction = redactAction(this.label, action, arg);
     try {
       const result = await fn(this.locator());
       this.log.info({
         ...described,
         as: this.label,
         handle: this.label,
-        action,
+        action: safeAction,
         arg: redact(this.label, arg),
         outcome: 'ok',
         ms: Date.now() - started,
-      } satisfies Partial<ComponentLog>, `${this.componentName} "${this.label}" › ${action} ok`);
+      } satisfies Partial<ComponentLog>, `${this.componentName} "${this.label}" › ${safeAction} ok`);
       return result;
     } catch (cause) {
       const diagnosis = await classify(this.locator(), this.page, {
         component: this.componentName,
         label: this.label,
         screen: this.context.screen ?? 'unknown screen',
-        action,
+        action: safeAction,
         expectedUrl: this.context.expectedUrl ?? null,
         modelPath: this.context.modelPath ?? 'analysis.json',
         waitedMs: Date.now() - started,
@@ -107,11 +109,11 @@ export abstract class BaseComponent {
         ...described,
         as: this.label,
         handle: this.label,
-        action,
+        action: safeAction,
         arg: redact(this.label, arg),
         outcome: diagnosis.mode,
         ms: Date.now() - started,
-      } satisfies Partial<ComponentLog>, `${this.componentName} "${this.label}" › ${action} ${diagnosis.mode}`);
+      } satisfies Partial<ComponentLog>, `${this.componentName} "${this.label}" › ${safeAction} ${diagnosis.mode}`);
       throw new ComponentError(diagnosis, cause);
     }
   }

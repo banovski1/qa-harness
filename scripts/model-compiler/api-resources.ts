@@ -32,6 +32,16 @@ export interface ResourceOp {
   summary?: string | null;
   requiredFields: string[];
   optionalFields: string[];
+  /**
+   * How a delete names the record it removes, when its path does not.
+   *
+   * Plenty of REST surfaces delete through the collection and carry the ids in the
+   * body — `DELETE /customers` with `{"ids":[13]}` — rather than through
+   * `DELETE /customers/13`. Without this, a generated cleanup calls the collection
+   * with no payload, which deletes nothing and is answered 4xx. `array` says the
+   * field takes a list, so one id still has to be wrapped.
+   */
+  idIn?: { field: string; array: boolean };
   source?: string;
 }
 
@@ -167,6 +177,14 @@ export function deriveResources(endpoints: EndpointRow[]): Record<string, Resour
       summary: ep.summary ?? null, requiredKnown: required.length > 0,
       requiredFields: required, optionalFields: optional, source: ep.source,
     };
+    // A delete whose path names no record must be told which one in its body. Only a
+    // single required field can be that instruction: two would be a filter, and
+    // guessing which of them carries the id is exactly the kind of invention that
+    // makes a cleanup silently remove the wrong rows.
+    if (kind === 'delete' && !/\{\w+\}/.test(ep.path) && required.length === 1) {
+      const field = required[0];
+      op.idIn = { field, array: String((ep.request as any)?.[field] ?? '').toLowerCase() === 'array' };
+    }
 
     const resource = byEntity.get(name) ?? {
       name, basePath: collectionPath, ops: {}, requires: [], establishes: null, cleanup: 'none' as const,

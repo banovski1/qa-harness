@@ -30,7 +30,16 @@ function bodyFor(name: string, r: any): string[] {
       `   */\n  async create<T = any>(data: Record<string, unknown>): Promise<T> {\n    return this.api.post<T>(${q(ops.create.path)}, data);\n  }`);
   }
   if (ops.update) body.push(`${doc(ops.update)}  async update<T = any>(params: Record<string, string | number>, data: Record<string, unknown>): Promise<T> {\n    return this.api.${ops.update.method === 'PATCH' ? 'patch' : 'put'}<T>(fillPath(${q(ops.update.path)}, params), data);\n  }`);
-  if (ops.delete) body.push(`${doc(ops.delete)}  async remove(params: Record<string, string | number>): Promise<void> {\n    await this.api.delete(fillPath(${q(ops.delete.path)}, params));\n  }`);
+  if (ops.delete) {
+    const idIn = (ops.delete as any).idIn as { field: string; array: boolean } | undefined;
+    body.push(idIn
+      // The record is named in the body, not the path. `id` is taken rather than the
+      // whole params bag so a caller cannot accidentally widen the delete.
+      ? `${doc(ops.delete)}  async remove(params: Record<string, string | number>): Promise<void> {\n`
+        + `    const id = params[${q(idIn.field)}] ?? params.id;\n`
+        + `    await this.api.delete(${q(ops.delete.path)}, { ${JSON.stringify(idIn.field)}: ${idIn.array ? '[id]' : 'id'} });\n  }`
+      : `${doc(ops.delete)}  async remove(params: Record<string, string | number>): Promise<void> {\n    await this.api.delete(fillPath(${q(ops.delete.path)}, params));\n  }`);
+  }
   // An action's name has to survive two endpoints that differ only by a trailing
   // id: /candidates/{id}/history and /candidates/{id}/history/{historyId} are a
   // list and a fetch, and naming both getHistory does not compile.
@@ -149,12 +158,38 @@ export function renderPreconditions(model: AppModel): string {
     // deletes an article by {slug} and never returns an "id", so looking for "id" here
     // would throw on a record that is perfectly addressable.
     const keys = (deleteOp?.path.match(/\{(\w+)\}/g) ?? []).map((s: string) => s.slice(1, -1));
-    const idField = keys[keys.length - 1] ?? 'id';
-    const undo = deleteOp
-      ? `    this.created.push({\n      label: \`${name} \${id}\`,\n      undo: () => this.api.${prop(name)}.remove({ ${keys.map((k: string) => `${k}: id`).join(', ')} }),\n    });`
+    // Where the delete names the record in its body instead of its path, that field is
+    // what the id has to be handed to. Falling back to the path keys here is what
+    // emitted `remove({ })` — a cleanup that passes no id at all.
+    const idIn = (deleteOp as any)?.idIn as { field: string } | undefined;
+    const undoArgs = keys.length ? keys.map((k: string) => `${k}: id`) : (idIn ? [`${idIn.field}: id`] : []);
+    // Which field of the create response actually identifies the record.
+    //
+    // The delete path is the first authority — Conduit deletes an article by {slug} and
+    // never returns an "id". But a delete that names the record in its BODY says nothing
+    // about the field's name: `DELETE /employees` with `{ids:[…]}` leaves the record's
+    // key unnamed, and defaulting to "id" then invents one. The read-by-id path is the
+    // honest second source, because the parameter it takes is the key by definition:
+    // /pim/employees/{empNumber} says the key is empNumber, and a create that answers
+    // {"data":{"empNumber":176}} carries no "id" for idOf() to find.
+    const readPath = (res.ops.get?.path ?? '') as string;
+    const readKeys = [...readPath.matchAll(/\{(\w+)\}/g)].map(m => m[1]);
+    const idField = keys[keys.length - 1] ?? readKeys[readKeys.length - 1] ?? 'id';
+    const undo = deleteOp && undoArgs.length
+      ? `    this.created.push({\n      label: \`${name} \${id}\`,\n      undo: () => this.api.${prop(name)}.remove({ ${undoArgs.join(', ')} }),\n    });`
+      : deleteOp
+      ? `    // ${name}'s delete names no id — not in its path, not as a lone required body field. Calling it would remove nothing, or everything.`
       : `    // The API declares no delete for ${name}: this record cannot be cleaned up.`;
     lines.push(
-      `  /** Makes true: ${res.establishes}.${res.requires.length ? ` Needs an existing ${res.requires.join(' and ')} — pass their ids in overrides.` : ''} */`,
+      // One doc line per resource is one comment per ~10 code lines, which puts this
+      // file over the write-guard's comment budget the moment it is emitted — the
+      // generator would be shipping a file its own hook forbids anyone to edit. So the
+      // line survives only where it says something the method name does not:
+      // `employee()` makes an Employee exist and needs no telling, but a resource that
+      // cannot be created before another exists does.
+      ...(res.requires.length
+        ? [`  /** Needs an existing ${res.requires.join(' and ')} — pass their ids in overrides. */`]
+        : []),
       `  async ${camel(name)}(overrides: Record<string, unknown> = {}): Promise<{ id: string | number; data: any }> {`,
       `    const payload = ${defaults};`,
       `    const response = await this.api.${prop(name)}.create(payload);`,
