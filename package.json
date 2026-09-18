@@ -15,13 +15,13 @@
   ],
   "license": "Apache-2.0",
   "author": "Tsvetomir Banovski",
-  "homepage": "https://github.com/bklv1/qa-harness#readme",
+  "homepage": "https://github.com/banovski1/qa-harness#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bklv1/qa-harness.git"
+    "url": "git+https://github.com/banovski1/qa-harness.git"
   },
   "bugs": {
-    "url": "https://github.com/bklv1/qa-harness/issues"
+    "url": "https://github.com/banovski1/qa-harness/issues"
   },
   "engines": {
     "node": ">=22"

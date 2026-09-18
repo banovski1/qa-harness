@@ -6,12 +6,12 @@
 
 Then describe a test in plain English, and an agent writes it.
 
-[![CI](https://github.com/bklv1/qa-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/bklv1/qa-harness/actions/workflows/ci.yml)
+[![CI](https://github.com/banovski1/qa-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/banovski1/qa-harness/actions/workflows/ci.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Node 22+](https://img.shields.io/badge/node-22%2B-5FA04E.svg)](https://nodejs.org)
-[![Sponsor](https://img.shields.io/badge/sponsor-%E2%9D%A4-db61a2.svg)](https://github.com/sponsors/bklv1)
+[![Sponsor](https://img.shields.io/badge/sponsor-%E2%9D%A4-db61a2.svg)](https://github.com/sponsors/banovski1)
 
-<sub>Built by [Tsvetomir Banovski](https://github.com/bklv1) · [what this is and why](#who-built-this-and-why)</sub>
+<sub>Built by [Tsvetomir Banovski](https://github.com/banovski1) · [what this is and why](#who-built-this-and-why)</sub>
 
 </div>
 
@@ -96,7 +96,7 @@ could create or change data. Point it at staging first anyway.
 ### 1 · Install
 
 ```bash
-git clone https://github.com/bklv1/qa-harness.git && cd qa-harness
+git clone https://github.com/banovski1/qa-harness.git && cd qa-harness
 npm install && npm run setup
 npm run pipeline:test    # if these pass, the pipeline itself is sound
 ```
@@ -296,7 +296,7 @@ produced, every create test names its record through `uniqueName('Contact')` →
 
 ## Who built this, and why
 
-I'm [Tsvetomir Banovski](https://github.com/bklv1). I write test automation, and I got
+I'm [Tsvetomir Banovski](https://github.com/banovski1). I write test automation, and I got
 tired of the same failure: a page object full of CSS selectors, a redesign, and a week of
 work that produces no new coverage — only the same coverage, re-addressed.
 
@@ -313,8 +313,8 @@ the crawl proved it resolves to one element. A screen the crawl could not reach 
 and ask for a recording instead of writing a test that will fail on step three.
 
 If that resonates, or you want to talk about testing, agents, or any of the decisions
-above — [open an issue](https://github.com/bklv1/qa-harness/issues), or find me on
-[GitHub](https://github.com/bklv1).
+above — [open an issue](https://github.com/banovski1/qa-harness/issues), or find me on
+[GitHub](https://github.com/banovski1).
 
 ---
 
@@ -337,7 +337,7 @@ is `$skill-name` in Codex.
 ## Support this project
 
 qa-harness is Apache-2.0 and free to use. If it saved you a week of writing page
-objects, [**sponsor it**](https://github.com/sponsors/bklv1) — it funds the corpus of
+objects, [**sponsor it**](https://github.com/sponsors/banovski1) — it funds the corpus of
 apps every generator change is validated against.
 
 ## Licence
