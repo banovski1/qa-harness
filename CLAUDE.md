@@ -319,8 +319,7 @@ one that exists already spent its one run.
 
 `.claude/settings.json` registers a `PreToolUse` hook on every Write/Edit/MultiEdit. Writes under
 `generated-framework/` run through `.claude/hooks/guard-write.mjs`, which **rejects** the write when
-a rule in `.claude/hooks/rules/` fails; the Playwright MCP tools are rejected outright. This applies
-to every writer — `test-writer`, `test-runner`, and you.
+a rule in `.claude/hooks/rules/` fails. This applies to every writer — `test-writer`, `test-runner`, and you.
 
 `paths.mjs` (a generated smoke spec is not the place for your scenario),
 `locators.mjs` (locators live in the component layer), `comments.mjs`,

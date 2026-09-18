@@ -9,15 +9,6 @@
             "command": "node .claude/hooks/guard-write.mjs"
           }
         ]
-      },
-      {
-        "matcher": "mcp__playwright__.*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node .claude/hooks/deny-mcp-playwright.mjs"
-          }
-        ]
       }
     ]
   },
