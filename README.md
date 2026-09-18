@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/logo.png" alt="qa-harness" width="440">
+
 # qa-harness
 
 **Point it at a web app. Get a solid Playwright framework foundation and build on top of it using agents.**
