@@ -31,21 +31,6 @@ jobs:
       - name: write-guard rules
         run: npm run hooks:test
 
-  agent-configs:
-    name: agent configs in sync
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - name: Codex tree matches .claude/
-        run: npm run codex:check
-      - name: OpenCode tree matches .claude/
-        run: npm run opencode:check
-
   secrets:
     name: no credentials in the diff
     runs-on: ubuntu-latest

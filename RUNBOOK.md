@@ -155,49 +155,6 @@ before a failure show how the control was being addressed right up to the step t
 
 ---
 
-## Other agent clients
-
-`CLAUDE.md` and `.claude/` are the editable sources. The Codex and OpenCode trees are
-generated from them with [RuleSync](https://github.com/dyoshikawa/rulesync), pinned to
-16.31.0. CI fails if they drift.
-
-```bash
-npm run codex:sync && npm run opencode:sync
-npm run codex:check && npm run opencode:check
-```
-
-Both commands generate identical shared instructions, so their order does not matter.
-Generation does **not** delete obsolete outputs: remove a retired skill or agent
-explicitly.
-
-### Codex
-
-Open this checkout in Codex and start a session to discover `AGENTS.md`, the skills in
-`.agents/skills/`, and the agents in `.codex/agents/`. Use `$setup` after filling in
-`.env`; Claude's `/skill-name` examples mean `$skill-name`. Agents inherit your session
-model.
-
-### OpenCode
-
-Open the checkout and ask it to use the `setup` skill. OpenCode reads the shared
-`AGENTS.md`, the skills in `.opencode/skills/`, and the subagents in `.opencode/agents/`.
-You can mention an agent directly, for example `@test-preconditions`. See the official
-[skills](https://opencode.ai/docs/skills/) and [agents](https://opencode.ai/docs/agents/)
-docs.
-
-### The hook limitation
-
-Claude's write hooks require Claude tool payloads and are not registered in Codex or
-OpenCode. Their policies are carried into `AGENTS.md` as instructions, **without
-automatic write blocking**. Claude plugin enablement and scheduled-task state are
-client-specific.
-
-This repo declares no MCP servers, so there is no `.mcp.json` to translate. If you add
-one, the sync picks it up — and note that `playwright-cli` remains the only thing allowed
-to drive a browser here, so the Playwright MCP is not the server to add.
-
----
-
 ## The tests of the pipeline itself
 
 ```bash

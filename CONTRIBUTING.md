@@ -51,16 +51,6 @@ anywhere outside a component class, `assertNoSelectors` will fail and it is righ
 break the repo's rules, with the fix named in the rejection. Adding a rule means
 adding a fixture in `.claude/hooks/__fixtures__/`.
 
-**Claude is the source; Codex and OpenCode are generated.** Edit `CLAUDE.md` and
-`.claude/`, then:
-
-```bash
-npm run codex:sync && npm run opencode:sync
-npm run codex:check && npm run opencode:check
-```
-
-CI fails if the generated trees drift from their source.
-
 ## What not to send
 
 - Hand-edits to `analysis.json`. It is produced. Fix the skill that wrote it.

@@ -11,7 +11,6 @@
 - [ ] `npm run pipeline:test` passes
 - [ ] `npm run pipeline:typecheck` passes
 - [ ] `npm run hooks:test` passes
-- [ ] `npm run codex:check && npm run opencode:check` pass (if `.claude/` or `CLAUDE.md` changed)
 - [ ] No selector outside the component layer
 - [ ] No hand-edit of `analysis.json` or `recordings/`
 - [ ] No real credential anywhere in the diff

@@ -24,6 +24,13 @@ your app running ───┘                                                   
                                                         test-preconditions → test-writer → test-runner
 ```
 
+> **Where it stands today.** The project is built on top of two things: **Claude Code**,
+> which runs the skills and agents, and **Playwright**, which the generated framework
+> targets. That is a deliberate starting point, not the intended end state — I would
+> like to extend it to other agent clients and other runners, and I am looking for
+> collaborators to do that with. If that interests you, see
+> [CONTRIBUTING.md](CONTRIBUTING.md) or open an issue.
+
 ---
 
 ## Why this exists
@@ -81,7 +88,7 @@ So the misdiagnosis that ends in a pasted `waitForTimeout` is simply not availab
 | | why |
 | --- | --- |
 | **Node.js 22+** | the pipeline runs on it |
-| **Claude Code, Codex, or OpenCode** | the skills and agents that drive analysis and test writing |
+| **Claude Code** | the skills and agents that drive analysis and test writing |
 | **A clone of the app's source** | declared routes, entities, endpoints. Any language |
 | **A running instance you may crawl** | staging, a local `docker compose`, or a public demo |
 | **`playwright-cli`** | the only thing allowed to drive a browser here — `npm i -g @playwright/cli@latest` |
@@ -327,12 +334,6 @@ above — [open an issue](https://github.com/banovski1/qa-harness/issues), or fi
 | [**CONTRIBUTING.md**](CONTRIBUTING.md) | how to send a change, and what a good one looks like |
 | `scripts/analysis/README.md` | the `analysis.json` contract, section by section |
 | `.claude/agents/` | exactly what each agent will and will not do |
-
-Using **Codex** or **OpenCode** instead of Claude Code? Both are supported —
-[RUNBOOK.md](RUNBOOK.md#other-agent-clients) has the details. Claude's `/skill-name`
-is `$skill-name` in Codex.
-
----
 
 ## Support this project
 
