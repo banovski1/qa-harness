@@ -20,6 +20,8 @@ import { writeFile, mkdtemp, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+// @ts-ignore - the shared launcher is plain JS used across the pipeline
+import { playwrightCliArgv } from '../config/playwright-cli.mjs';
 import { Jar } from './http.ts';
 import { deriveReplay, describeReplay, type Harvest } from './replay.ts';
 import { credentialsFromEnv, type Attempt, type Credential } from './strategies.ts';
@@ -67,7 +69,8 @@ async function harvest(config: unknown): Promise<HarvestResult> {
   try {
     // The CLI can exit non-zero having already printed a complete result, so the
     // output decides rather than the exit code — the same rule the crawler follows.
-    ({ stdout } = await run('playwright-cli', ['-s=' + SESSION, '--raw', 'run-code', '--filename=' + file], {
+    const [cli, argv] = playwrightCliArgv(['-s=' + SESSION, '--raw', 'run-code', '--filename=' + file]);
+    ({ stdout } = await run(cli, argv, {
       maxBuffer: 32 * 1024 * 1024,
     }));
   } catch (error) {

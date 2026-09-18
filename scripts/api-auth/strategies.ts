@@ -191,20 +191,28 @@ export async function sessionLogin(baseUrl: string, auth: AuthBlock, loginPageUr
 
   const csrfField = auth.csrf?.field;
   if (csrfField) {
-    const pageUrl = loginPageUrl ?? resolve(baseUrl, String(auth.csrf?.from ?? '').match(/\/\S+/)?.[0] ?? '/');
+    // `fromPath` is a path the analysis states outright, so it beats the UI login URL
+    // from the profile: an app that mints its token at a JSON pre-login endpoint keeps
+    // nothing on the login page, and the generic URL would silently win and find none.
+    const pageUrl = auth.csrf?.fromPath
+      ? resolve(baseUrl, auth.csrf.fromPath)
+      : loginPageUrl ?? resolve(baseUrl, String(auth.csrf?.from ?? '').match(/\/\S+/)?.[0] ?? '/');
     const page = await send(pageUrl, { jar });
     // The path this run actually used. `auth.csrf.from` is a sentence; this is a fact.
     facts.loginPagePath = new URL(pageUrl).pathname;
-    const token = csrfToken(page.body, csrfField);
+    // Read under the name the app publishes, send under the name it accepts.
+    const readAs = auth.csrf?.readAs ?? csrfField;
+    const token = csrfToken(page.body, readAs);
+    const named = readAs === csrfField ? csrfField : `${readAs} (posted as ${csrfField})`;
     observations.push({
       step: 'csrf',
       request: `GET ${pageUrl}`,
       status: page.status,
       ok: Boolean(token),
-      detail: token ? `read ${csrfField} (${token.length} chars)` : `no ${csrfField} on the login page`,
+      detail: token ? `read ${named} (${token.length} chars)` : `no ${readAs} at ${new URL(pageUrl).pathname}`,
     });
     if (!token) {
-      return { credential: null, reason: `the login page carried no ${csrfField}`, observations, facts };
+      return { credential: null, reason: `${new URL(pageUrl).pathname} carried no ${readAs}`, observations, facts };
     }
     form.set(csrfField, token);
   }

@@ -14,6 +14,7 @@ import { renderAuthPlan, authFacts } from './auth.ts';
 import { renderRoundTripGate } from './gate.ts';
 import { staticProject } from './project.ts';
 import type { AppModel } from '../../model-compiler/model-types.ts';
+import { pathToFileURL } from 'node:url';
 
 /**
  * An API layer may only be built on a login that was executed against the running
@@ -100,7 +101,12 @@ export function modelFromAnalysis(): AppModel {
   } as AppModel;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+// `file://${process.argv[1]}` is not this module's URL on Windows: argv carries a
+// drive-letter path with backslashes and import.meta.url is a percent-encoded file
+// URL with forward slashes. The two never matched, so running this file directly did
+// nothing at all and said so with exit code 0. pathToFileURL is the comparison that
+// holds on every platform.
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const dryRun = process.argv.includes('--dry-run');
   const force = process.argv.includes('--force');
   const outputDir = join(ROOT, 'generated-framework');

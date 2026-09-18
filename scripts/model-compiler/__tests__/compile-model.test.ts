@@ -42,6 +42,21 @@ test('a label containing a dot or a bracket is not mistaken for a selector', () 
   assert.doesNotThrow(() => assertNoSelectors([ok]));
 });
 
+test('a label carrying markup is not mistaken for a selector', () => {
+  // An application that renders labels through innerHTML puts tags in them, and the
+  // closing angle bracket of one reads as a child combinator.
+  const ok: any = { name: 'X', uses: [
+    { component: 'TextField', as: 'a', label: 'Search, <strong>without</strong> multiselect' },
+    { component: 'Button', as: 'b', label: 'Delete <em>everything</em>' },
+  ] };
+  assert.doesNotThrow(() => assertNoSelectors([ok]));
+});
+
+test('stripping markup does not let a real selector through', () => {
+  const bad: any = { name: 'X', uses: [{ component: 'Button', as: 'b', label: 'div > .primary' }] };
+  assert.throws(() => assertNoSelectors([bad]), /looks like a selector/);
+});
+
 // A miniature app, so the joining rules are tested on data small enough to read.
 // One file, the shape a skill writes: `matches` is how many elements the control's
 // semantic handle addresses, and 1 is the only value that makes it usable.
@@ -294,4 +309,25 @@ test('no component carries the app-wide field template', () => {
   for (const [name, component] of Object.entries(model.components)) {
     assert.ok(!('fieldTemplate' in component), `${name} carries a fieldTemplate`);
   }
+});
+
+test('a label read off markup is flattened to the name the browser computes', () => {
+  // The accessible name collapses runs of whitespace, so a label carrying the newlines
+  // and tabs of the markup it came from would resolve to nothing at run time — and, in
+  // a single-quoted TypeScript literal, would not even parse.
+  const dir = addScreen(fixture(), {
+    path: '/uploads', url: 'https://demo.test/uploads', title: 'Uploads',
+    headings: [{ level: 1, text: 'Uploads', y: 0 }], tables: [],
+    controls: [control({
+      role: 'button',
+      name: '<div>Max. no. of files: 5</div>\n\t\t\t<div>max. size: 50MB</div>',
+      nameSource: 'accessible',
+    })],
+    links: [],
+  });
+  const uploads = compile(dir, 'T').screens.find(s => s.path === '/uploads')!;
+  const use = uploads.uses.find(u => (u.label ?? '').startsWith('<div>Max.'))!;
+  assert.ok(use, 'the control is still addressable');
+  assert.equal(use.label, '<div>Max. no. of files: 5</div> <div>max. size: 50MB</div>');
+  assert.ok(!/[\n\t]/.test(use.label!), 'no raw newline or tab survives into an identity');
 });

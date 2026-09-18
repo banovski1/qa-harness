@@ -36,6 +36,12 @@ export interface AuthBlock {
   } | null;
   csrf?: {
     field?: string;
+    /**
+     * The key the token is published under, when it differs from the field it is sent
+     * back as. An app that mints its token in a JSON pre-login response commonly names
+     * it one thing there and accepts it under another on the form. Defaults to `field`.
+     */
+    readAs?: string;
     /** Prose: "a hidden input on /auth/login". Human-readable, not machine-readable. */
     from?: string;
     /**

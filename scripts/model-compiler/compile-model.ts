@@ -15,6 +15,7 @@ import { scoreScreens, verdictFor } from '../analysis/testability.ts';
 import { deriveResources, tagEndpoints } from './api-resources.ts';
 import { mergeRecordings } from './merge-recordings.ts';
 import type { AppModel, ComponentDef, ComponentUse, Screen, LocatorSpec } from './model-types.ts';
+import { pathToFileURL } from 'node:url';
 
 /** A region is shared when it recurs on this many screens... */
 export const RECURRENCE_MIN_SCREENS = 2;
@@ -46,13 +47,20 @@ interface CrawlScreen {
 // syntax. A label may contain a dot ("A.Beike") or a bracket; only these shapes are banned.
 const CSS_SHAPED = /^\s*[.#\[]|[>~]\s*[.#\w]|:nth-|:has\(|\[[\w-]+[~^$*|]?=|^locator\(|^getBy/;
 
+// An application that renders its labels through innerHTML can put markup in one, and
+// "<strong>without</strong> multiselect" carries a `>w` that reads exactly like a child
+// combinator. The tags are not what makes a string a selector, so take them out before
+// asking: a real selector is still a selector without them, and a sentence is still a
+// sentence.
+const withoutMarkup = (value: string) => value.replace(/<\/?[a-zA-Z][^>]*>/g, ' ');
+
 /** Invariant 1: a screen may carry English, never a selector. Enforced, not intended. */
 export function assertNoSelectors(screens: Screen[]): void {
   for (const s of screens) {
     for (const u of s.uses) {
       for (const [k, v] of Object.entries(u)) {
         if (typeof v !== 'string' || k === 'as' || k === 'component') continue;
-        if (CSS_SHAPED.test(v)) {
+        if (CSS_SHAPED.test(withoutMarkup(v))) {
           throw new Error(
             `${s.name}.${u.as}: identity "${k}" looks like a selector (${v}). ` +
             `A screen carries labels; a component owns selectors.`,
@@ -158,13 +166,21 @@ function semanticMatches(el: CrawlElement, id: { label?: string; field?: string;
   return Math.min(...pool.map(c => c.matchCount));
 }
 
+/**
+ * A handle as the accessibility tree reports it: runs of whitespace collapse to one
+ * space. The browser computes an accessible name that way, so a label carrying the
+ * newlines and tabs of the markup it was read from cannot match the name it came from —
+ * the getter would be emitted, typecheck, and resolve to nothing at run time.
+ */
+const flatten = (s: string): string => s.replace(/\s+/g, ' ').trim();
+
 /** The element's English handle, preferring what a human would recognise. */
 function identityOf(el: CrawlElement): { label?: string; field?: string; via?: 'proximity' } | null {
-  const name = (el.name || '').trim();
+  const name = flatten(el.name || '');
   // A proximity name has to be marked, or the runtime asks the accessibility tree for a
   // name the app never put there and every getter on the screen fails with NOT_FOUND.
   if (name) return el.nameSource === 'proximity' ? { label: name, via: 'proximity' } : { label: name };
-  const label = (el.label || el.placeholder || '').trim();
+  const label = flatten(el.label || el.placeholder || '');
   if (label) return { label };
   const dataName = el.data?.['data-name'] ?? el.nameAttr ?? null;
   if (dataName) return { field: dataName };
@@ -763,7 +779,12 @@ export function foldIntoAnalysis(model: AppModel): { write: number; total: numbe
   return { write: testability.summary.write, total: testability.summary.total };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+// `file://${process.argv[1]}` is not this module's URL on Windows: argv carries a
+// drive-letter path with backslashes and import.meta.url is a percent-encoded file
+// URL with forward slashes. The two never matched, so running this file directly did
+// nothing at all and said so with exit code 0. pathToFileURL is the comparison that
+// holds on every platform.
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const model = compile(REPO_ROOT);
   const { write, total } = foldIntoAnalysis(model);
   console.log(`analysis.json  ${JSON.stringify(model.stats)}`);

@@ -35,14 +35,42 @@ function parseArgs(argv: string[]): Args {
 
 /**
  * Pick reads that ought to be protected: a GET with no path parameter, so no
- * record has to exist for it to answer. Tier A first — those are contract-declared.
+ * record has to exist for it to answer. Tier A goes first — those are
+ * contract-declared — but the budget is shared rather than given to it outright.
+ *
+ * An app can expose more than one credential domain: a documented partner API behind
+ * Basic and, separately, the surface its own UI calls behind a session. Sorting the
+ * candidates strictly by tier let the documented half take every slot, and a perfectly
+ * good session credential was reported as refused because the only reads it was tried
+ * against were ones it is not meant to open. Taking turns across the tiers costs
+ * nothing when there is only one and is the whole difference when there are two.
  */
 function probeCandidates(endpoints: Endpoint[]): Endpoint[] {
-  return endpoints
+  const usable = endpoints
     .filter((e) => e.method?.toUpperCase() === 'GET' && !e.path.includes('{') && !e.path.includes(':'))
-    .filter((e) => e.auth !== false)
-    .sort((a, b) => (a.tier === 'A' ? 0 : 1) - (b.tier === 'A' ? 0 : 1) || a.path.length - b.path.length)
-    .slice(0, MAX_PROBES);
+    .filter((e) => e.auth !== false);
+
+  const byTier = new Map<string, Endpoint[]>();
+  for (const e of usable) {
+    const tier = e.tier ?? 'Z';
+    if (!byTier.has(tier)) byTier.set(tier, []);
+    byTier.get(tier)!.push(e);
+  }
+  // Within a tier the shortest path is the likeliest to be a plain collection read.
+  const queues = [...byTier.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([, list]) => list.sort((a, b) => a.path.length - b.path.length));
+
+  const picked: Endpoint[] = [];
+  for (let round = 0; picked.length < MAX_PROBES; round += 1) {
+    const before = picked.length;
+    for (const queue of queues) {
+      if (picked.length >= MAX_PROBES) break;
+      if (queue[round]) picked.push(queue[round]);
+    }
+    if (picked.length === before) break; // every queue is exhausted
+  }
+  return picked;
 }
 
 async function verify(): Promise<VerifyResult> {

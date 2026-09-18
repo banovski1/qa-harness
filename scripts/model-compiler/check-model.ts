@@ -12,6 +12,7 @@ import type { AppModel } from './model-types.ts';
 import { SECTION_OWNER, type Section } from '../analysis/analysis-types.ts';
 import { modelFromAnalysis } from '../framework-generator/emit/emit.ts';
 import { ROOT } from '../config/profile.mjs';
+import { pathToFileURL } from 'node:url';
 
 interface Finding { level: 'error' | 'warning'; message: string }
 
@@ -116,15 +117,34 @@ export function checkModel(appDir: string, model: AppModel): Finding[] {
     warn('nothing was crawled, so every page object is a URL and nothing else');
   }
 
-  const unverifiedRatio = model.stats.uses ? model.stats.unverified / (model.stats.uses + model.stats.unverified) : 0;
-  if (unverifiedRatio > 0.5) {
-    warn(`${Math.round(unverifiedRatio * 100)}% of crawled controls could not be named. ` +
+  // Whether controls can be addressed BY NAME is what this warning is about, so it reads
+  // the two counts that mean exactly that. `stats.unverified` is a wider number: it also
+  // counts every control no field component applies to at all, which is not a naming
+  // problem and is usually the larger half. Using it sent a reader looking for an
+  // accessible-name fault in an application whose controls are named perfectly well.
+  let addressable = 0;
+  let unaddressable = 0;
+  for (const s of model.screens) {
+    addressable += s.testability?.addressable ?? 0;
+    unaddressable += s.testability?.unaddressable ?? 0;
+  }
+  const namedRatio = addressable + unaddressable
+    ? unaddressable / (addressable + unaddressable)
+    : 0;
+  if (namedRatio > 0.5) {
+    warn(`${Math.round(namedRatio * 100)}% of crawled controls could not be addressed by name ` +
+         `(${unaddressable} of ${addressable + unaddressable}). ` +
          `Check the app for an accessible-name problem before trusting the page objects.`);
   }
   return out;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+// `file://${process.argv[1]}` is not this module's URL on Windows: argv carries a
+// drive-letter path with backslashes and import.meta.url is a percent-encoded file
+// URL with forward slashes. The two never matched, so running this file directly did
+// nothing at all and said so with exit code 0. pathToFileURL is the comparison that
+// holds on every platform.
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const model: AppModel = modelFromAnalysis();
   const findings = checkModel(ROOT, model);
   for (const f of findings) console.log(`${f.level === 'error' ? 'ERROR  ' : 'warning'} ${f.message}`);

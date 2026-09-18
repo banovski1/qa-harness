@@ -30,6 +30,7 @@ import { ROOT, readAnalysis, writeSection } from './analysis-file.ts';
 import { scoreScreens, verdictFor } from './testability.ts';
 import { classify } from './locator-rung.ts';
 import type { AnalysisRecording, RecordedStep, RecordedRequest } from './analysis-types.ts';
+import { pathToFileURL } from 'node:url';
 
 /** The session document the app-recorder skill writes beside its Markdown record. */
 interface SessionDoc {
@@ -196,4 +197,9 @@ function main(): void {
   console.log('reach screens, components and api.resources through merge-recordings.ts.');
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) main();
+// `file://${process.argv[1]}` is not this module's URL on Windows: argv carries a
+// drive-letter path with backslashes and import.meta.url is a percent-encoded file
+// URL with forward slashes. The two never matched, so running this file directly did
+// nothing at all and said so with exit code 0. pathToFileURL is the comparison that
+// holds on every platform.
+if (import.meta.url === pathToFileURL(process.argv[1]).href) main();

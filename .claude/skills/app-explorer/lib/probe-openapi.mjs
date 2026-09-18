@@ -9,6 +9,7 @@ import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { promisify } from 'node:util';
 import { loadProfile, ROOT } from '../../../../scripts/config/profile.mjs';
+import { playwrightCliArgv } from '../../../../scripts/config/playwright-cli.mjs';
 
 const run = promisify(execFile);
 
@@ -69,7 +70,7 @@ const script = `async page => {
 
 const scriptFile = join(outDir, '.probe.js');
 await writeFile(scriptFile, script, 'utf8');
-const { stdout } = await run('playwright-cli', ['-s=' + session, '--raw', 'run-code', '--filename=' + scriptFile], {
+const { stdout } = await run(...playwrightCliArgv(['-s=' + session, '--raw', 'run-code', '--filename=' + scriptFile]), {
   maxBuffer: 64 * 1024 * 1024,
 });
 await rm(scriptFile, { force: true });

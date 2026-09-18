@@ -9,6 +9,7 @@ import { join } from 'node:path';
 import { ROOT } from '../../config/profile.mjs';
 import { renderDraft } from './draft-render.ts';
 import { modelFromAnalysis } from './emit.ts';
+import { pathToFileURL } from 'node:url';
 
 export const DRAFT_PATH = join(ROOT, 'framework-draft.md');
 export const LOCK_PATH = join(ROOT, '.framework-draft.lock');
@@ -48,7 +49,12 @@ export function currentDraft(): { markdown: string; repoCommit: string } {
   return { markdown: renderDraft(model, analysis.conventions), repoCommit: model.app.repoCommit };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+// `file://${process.argv[1]}` is not this module's URL on Windows: argv carries a
+// drive-letter path with backslashes and import.meta.url is a percent-encoded file
+// URL with forward slashes. The two never matched, so running this file directly did
+// nothing at all and said so with exit code 0. pathToFileURL is the comparison that
+// holds on every platform.
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const { markdown, repoCommit } = currentDraft();
   writeDraft(markdown);
   if (process.argv.includes('--approve')) {

@@ -30,6 +30,7 @@ import { ROOT } from './analysis-file.ts';
 import { classify } from './locator-rung.ts';
 // @ts-ignore -- the small .env reader the whole pipeline shares
 import { loadEnv } from '../config/profile.mjs';
+import { pathToFileURL } from 'node:url';
 
 interface Step {
   action: string;
@@ -321,4 +322,9 @@ function markdown(doc: ReturnType<typeof Object> & Record<string, any>, code: st
   return lines.join('\n');
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) main();
+// `file://${process.argv[1]}` is not this module's URL on Windows: argv carries a
+// drive-letter path with backslashes and import.meta.url is a percent-encoded file
+// URL with forward slashes. The two never matched, so running this file directly did
+// nothing at all and said so with exit code 0. pathToFileURL is the comparison that
+// holds on every platform.
+if (import.meta.url === pathToFileURL(process.argv[1]).href) main();

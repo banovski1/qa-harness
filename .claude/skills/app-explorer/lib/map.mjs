@@ -9,6 +9,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 import { loadEnv, loadProfile, resolveEnvValue, ROOT } from '../../../../scripts/config/profile.mjs';
+import { playwrightCliArgv } from '../../../../scripts/config/playwright-cli.mjs';
 
 const run = promisify(execFile);
 const here = dirname(fileURLToPath(import.meta.url));
@@ -54,7 +55,7 @@ async function runCode(source) {
   // on the way out is not a failed crawl. The output decides, not the exit code.
   let stdout;
   try {
-    ({ stdout } = await run('playwright-cli', ['-s=' + session, '--raw', 'run-code', '--filename=' + file], {
+    ({ stdout } = await run(...playwrightCliArgv(['-s=' + session, '--raw', 'run-code', '--filename=' + file]), {
       maxBuffer: 128 * 1024 * 1024,
     }));
   } catch (error) {

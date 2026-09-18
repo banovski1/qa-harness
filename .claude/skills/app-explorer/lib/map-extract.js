@@ -270,8 +270,14 @@ function __mapNav(options) {
 
   const groups = [];
   for (const [container, weight] of containers) {
-    const candidates = Array.from(container.querySelectorAll(ITEM)).filter(visible)
+    let candidates = Array.from(container.querySelectorAll(ITEM)).filter(visible)
       .filter((el) => { const n = nameOf(el); return n && n.length <= 40; });
+    // The broad ITEM selector matches an entry's wrapper as well as the entry. Grouping
+    // by name catches that only while the two agree, and they need not: here the <li>
+    // reads "HOME" from its icon while the <a> inside it is aria-labelled "Compliance
+    // Manager", so one entry arrived as two modules. A candidate that contains another
+    // candidate is a wrapper, whatever the two are called.
+    candidates = candidates.filter((el) => !candidates.some((other) => other !== el && el.contains(other)));
     // The broader selector matches a wrapper and the link inside it. Keep one per
     // name, and prefer the element that carries a real href: the wrapper owns the
     // popup, but the link is the only thing that says where the entry goes.
@@ -288,29 +294,69 @@ function __mapNav(options) {
       const outermost = group.reduce((a, b) => (a.contains(b) ? a : b));
       chosen.set(key, { el: linked || outermost, popupSource: outermost });
     }
-    const items = candidates
+    let items = candidates
       .filter((el) => chosen.get(nameOf(el).toLowerCase()).el === el)
       .map((el) => ({ el, popupSource: chosen.get(nameOf(el).toLowerCase()).popupSource }));
-    if (items.length < 2) continue;
-    // A container that merely wraps another candidate contributes nothing new.
-    if (groups.some((g) => g.container !== container && g.container.contains(container))) continue;
-    const boxes = items.map(({ el }) => el.getBoundingClientRect());
-    const vertical = new Set(boxes.map((b) => Math.round(b.x / 20))).size <= 2;
-    groups.push({
-      container,
-      items,
-      vertical,
-      top: Math.min(...boxes.map((b) => b.y)),
-      left: Math.min(...boxes.map((b) => b.x)),
-      count: items.length,
-      weight,
-    });
+
+    // A menu is one list, and a landmark can hold several. This application's <nav>
+    // holds the thirteen modules in one tree and, beside it, the screens of whichever
+    // module is open in another. Read as a single menu that was 58 modules for a
+    // 13-module application, and the crawl spent its whole budget re-walking one branch.
+    // So split the landmark into one menu per list. They compete on their own merits
+    // afterwards: the module list wins on size and becomes `primary`, and the open
+    // module's own list stays available as a secondary menu, which is exactly what the
+    // per-module walk goes looking for. A menu with no inner list yields one partition
+    // and is untouched.
+    const NEST = 'ul,ol,[role="group"],[role="menu"],[role="tree"],[role="menubar"]';
+    const listOf = (el) => {
+      for (let n = el.parentElement; n && n !== container; n = n.parentElement) {
+        if (n.matches && n.matches(NEST)) return n;
+      }
+      return container;
+    };
+    const byList = new Map();
+    for (const entry of items) {
+      const list = listOf(entry.el);
+      if (!byList.has(list)) byList.set(list, []);
+      byList.get(list).push(entry);
+    }
+    const partitions = byList.size > 1 ? [...byList.entries()] : [[container, items]];
+
+    for (const [host, hostItems] of partitions) {
+      if (hostItems.length < 2) continue;
+      // Two landmarks can partition to the same list — a <nav> and the wrapper around
+      // it both reach it. Recording it twice is not merely redundant: `contains` is
+      // reflexive, so the pair below would then disqualify each other and the menu
+      // would disappear entirely.
+      if (groups.some((g) => g.container === host)) continue;
+      // A container that merely wraps another candidate contributes nothing new.
+      if (groups.some((g) => g.container !== host && g.container.contains(host))) continue;
+      const boxes = hostItems.map(({ el }) => el.getBoundingClientRect());
+      const vertical = new Set(boxes.map((b) => Math.round(b.x / 20))).size <= 2;
+      groups.push({
+        container: host,
+        items: hostItems,
+        vertical,
+        top: Math.min(...boxes.map((b) => b.y)),
+        left: Math.min(...boxes.map((b) => b.x)),
+        count: hostItems.length,
+        weight,
+        // The application's own menu lives in the shell, around the routed screen. A
+        // landmark rendered INSIDE the content region belongs to whatever screen is
+        // currently showing, however navigational it looks.
+        shell: !host.closest('main, [role="main"], article, [role="article"]'),
+      });
+    }
   }
   // Drop a group entirely contained in a larger one.
   const kept = groups.filter((g) => !groups.some((other) => other !== g && other.container.contains(g.container) && other.count >= g.count));
-  // Landmark first, size second: a <nav> of three entries is the menu, and a list of
-  // twenty links that is not a landmark is content.
-  kept.sort((a, b) => (b.weight - a.weight) || (b.count - a.count));
+  // Shell first, then landmark, then size. Size is the last resort for a reason: it is
+  // the signal that is wrong most often. An overview screen that offers twenty "Add a…"
+  // shortcuts inside its own <nav> outranked a primary menu of thirteen on count alone,
+  // and the crawl then mapped the shortcuts as if they were the application's modules.
+  // Both were landmarks, so weight could not separate them; which side of <main> they
+  // sit on could.
+  kept.sort((a, b) => (Number(b.shell) - Number(a.shell)) || (b.weight - a.weight) || (b.count - a.count));
 
   const exclude = new Set((options && options.excludeNames || []).map((n) => n.toLowerCase()));
   const asMenu = (group) => ({

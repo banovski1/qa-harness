@@ -143,3 +143,67 @@ test('every strategy refuses an empty credential rather than trying it', async (
     if (before.p === undefined) delete process.env.APP_PASSWORD; else process.env.APP_PASSWORD = before.p;
   }
 });
+
+test('sessionLogin reads the token under readAs and posts it under field', async () => {
+  // An app whose pre-login endpoint publishes the token as JSON under one name and
+  // accepts it on the form under another. Reading and sending had been one name.
+  const restore = withCredentials();
+  let posted = '';
+  const net = wire([
+    { path: '/webapi/login/status', body: `{"XSRFToken":"tok-json-1","authenticated":false}` },
+    { path: '/webapi/login/login', method: 'POST', status: 200, body: `{"authenticated":true}`,
+      cookies: ['JSESSIONID=sid-1; Path=/; HttpOnly'] },
+  ]);
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = (async (input: unknown, init?: { method?: string; body?: unknown }) => {
+    if (init?.method === 'POST') posted = String(init.body ?? '');
+    return realFetch(input as never, init as never);
+  }) as typeof globalThis.fetch;
+  try {
+    const attempt = await sessionLogin(BASE, {
+      kind: 'session',
+      loginEndpoint: {
+        method: 'POST',
+        path: '/webapi/login/login',
+        fields: { username: 'env:APP_USERNAME', password: 'env:APP_PASSWORD' },
+      },
+      csrf: { field: 'randomToken', readAs: 'XSRFToken', fromPath: '/webapi/login/status' },
+      success: { status: 200, cookie: 'JSESSIONID' },
+    } as never);
+    assert.ok(attempt.credential, attempt.reason);
+    assert.equal(attempt.credential.name, 'JSESSIONID');
+    assert.match(posted, /randomToken=tok-json-1/);
+    assert.doesNotMatch(posted, /XSRFToken=/);
+    assert.equal(attempt.observations[0].step, 'csrf');
+    assert.match(attempt.observations[0].detail, /XSRFToken \(posted as randomToken\)/);
+  } finally {
+    net.restore();
+    restore();
+  }
+});
+
+test('sessionLogin prefers csrf.fromPath over the profile login URL', async () => {
+  // The profile's AUTH_LOGIN_URL points at the SPA's own login route, which carries
+  // no token. An explicit fromPath is a stated fact and must win over it.
+  const restore = withCredentials();
+  const net = wire([
+    { path: '/webapi/login/status', body: `{"XSRFToken":"tok-json-2"}` },
+    { path: '/webapi/login/login', method: 'POST', status: 200, cookies: ['JSESSIONID=sid-2; Path=/'] },
+  ]);
+  try {
+    const attempt = await sessionLogin(BASE, {
+      kind: 'session',
+      loginEndpoint: { method: 'POST', path: '/webapi/login/login' },
+      csrf: { field: 'randomToken', readAs: 'XSRFToken', fromPath: '/webapi/login/status' },
+    } as never, `${BASE}/mco/new/#/auth/login`);
+    assert.ok(attempt.credential, attempt.reason);
+    assert.deepEqual(net.calls, [
+      `GET ${BASE}/webapi/login/status`,
+      `POST ${BASE}/webapi/login/login`,
+    ]);
+    assert.equal(attempt.facts?.loginPagePath, '/webapi/login/status');
+  } finally {
+    net.restore();
+    restore();
+  }
+});

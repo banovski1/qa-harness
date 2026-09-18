@@ -134,8 +134,16 @@ if (!env.AUTH_LOGIN_URL) {
 
 // -- 6. The toolchain ----------------------------------------------------------
 function version(cmd, args) {
+  // On Windows a global npm install lands as a .cmd shim, which execFileSync cannot
+  // execute directly: the bare name is ENOENT and the .cmd is EINVAL. Route through
+  // cmd.exe there so an installed tool is not reported missing.
+  const [exe, argv] = process.platform === 'win32'
+    ? ['cmd.exe', ['/d', '/s', '/c', cmd, ...args]]
+    : [cmd, args];
   try {
-    return execFileSync(cmd, args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+    const out = execFileSync(exe, argv, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+    // A tool may print a banner before its version; the version is the last line.
+    return out.split(/\r?\n/).filter(Boolean).pop() ?? null;
   } catch {
     return null;
   }

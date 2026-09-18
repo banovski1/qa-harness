@@ -10,8 +10,22 @@ export const camel = (s: string): string => {
   return p ? p[0].toLowerCase() + p.slice(1) : '';
 };
 
+/**
+ * A TypeScript single-quoted string literal for any input.
+ *
+ * Escaping the backslash and the quote is not enough. A label read off a rendered
+ * tooltip can carry real newlines, and a literal newline inside '…' is a syntax error —
+ * so one such label made its whole page object unparseable. The generator runs once,
+ * which makes a file it cannot parse rather more than a warning to fix later.
+ */
 export const q = (s: string): string =>
-  `'${String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
+  `'${String(s)
+    .replace(/\\/g, '\\\\')
+    .replace(/'/g, "\\'")
+    .replace(/\n/g, '\\n')
+    .replace(/\r/g, '\\r')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029')}'`;
 
 /** The module folder a screen lives in: its first real path segment. */
 export function moduleOf(path: string): string {

@@ -8,6 +8,7 @@ import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { promisify } from 'node:util';
 import { loadEnv, loadProfile, resolveEnvValue, ROOT } from '../../../../scripts/config/profile.mjs';
+import { playwrightCliArgv } from '../../../../scripts/config/playwright-cli.mjs';
 import { buildBundle } from './build-bundle.mjs';
 import { writeScreensSection } from './write-screens.mjs';
 
@@ -113,7 +114,7 @@ async function runBatch(config) {
   await buildBundle({ config, outFile: bundleFile });
   let stdout;
   try {
-    ({ stdout } = await run('playwright-cli', ['-s=' + session, '--raw', 'run-code', '--filename=' + bundleFile], {
+    ({ stdout } = await run(...playwrightCliArgv(['-s=' + session, '--raw', 'run-code', '--filename=' + bundleFile]), {
       maxBuffer: 256 * 1024 * 1024,
     }));
   } catch (error) {
